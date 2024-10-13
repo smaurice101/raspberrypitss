@@ -12196,3 +12196,4 @@ Already up to date.
 [INFO 2024-10-13_23:10:00] {'name': ['Project with slug "myawesometmlsolution-2344" already exists.']}
 [INFO 2024-10-13_23:13:23] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-2344.py
 [INFO 2024-10-13_23:13:27] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-2344.py
+[INFO 2024-10-13_23:13:30] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-2344.py
