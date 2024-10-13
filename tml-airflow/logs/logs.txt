@@ -12162,3 +12162,13 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-10-13_17:16:06] {'name': ['Project with slug "realtimeiotprocessingwithmap-3f10" already exists.']}
 [INFO 2024-10-13_17:35:25] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypi.git, AIRFLOWPORT=9000
 [INFO 2024-10-13_17:36:04] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypi.git, AIRFLOWPORT=9000
+[INFO 2024-10-13_21:19:18] TML Solution Studio: TML Project Creation: Creating new TML project: /raspberrypitss/tml-airflow/dags/tml-solutions/testproject-3f10
+[INFO 2024-10-13_21:19:19] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2024-10-13_21:19:53] TML Solution Studio: Starting Git commit process for project: testproject-3f10
+[INFO 2024-10-13_21:19:53] TML Solution Studio: git commit -a Status for project testproject-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2024-10-13_21:19:53] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2024-10-13_21:19:53] TML Solution Studio: git add . Status: 
+[INFO 2024-10-13_21:19:53] TML Solution Studio: git commit -a Status for project testproject-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2024-10-13_21:19:54] TML Solution Studio: git push Status for project testproject-3f10: Everything up-to-date
