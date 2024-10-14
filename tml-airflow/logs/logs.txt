@@ -12622,3 +12622,4 @@ Already up to date.
 [INFO 2024-10-14_19:54:36] {'name': ['Project with slug "cybermqtt2-3f10" already exists.']}
 [INFO 2024-10-14_19:55:12] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_19:55:14] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_19:55:16] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
