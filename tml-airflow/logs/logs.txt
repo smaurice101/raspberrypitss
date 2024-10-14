@@ -12452,3 +12452,4 @@ Already up to date.
 [INFO 2024-10-14_17:52:56] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_17:53:08] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_17:53:14] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_17:53:59] {'name': ['Project with slug "cybermqtt2-3f10" already exists.']}
