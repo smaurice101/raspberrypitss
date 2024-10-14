@@ -12433,3 +12433,4 @@ Already up to date.
 [INFO 2024-10-14_17:42:44] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_17:42:47] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_17:42:50] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_17:43:01] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybermqtt2-3f10.py
