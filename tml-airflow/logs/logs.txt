@@ -12370,3 +12370,4 @@ Already up to date.
 [INFO 2024-10-14_16:38:26] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-testproject2-3f10.py
 [INFO 2024-10-14_16:38:28] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-testproject2-3f10.py
 [INFO 2024-10-14_16:38:34] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-testproject2-3f10.py
+[INFO 2024-10-14_16:38:36] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-testproject2-3f10.py
