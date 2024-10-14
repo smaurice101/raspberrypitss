@@ -12345,3 +12345,4 @@ Already up to date.
 [INFO 2024-10-14_15:54:31] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
 [INFO 2024-10-14_15:54:33] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
 [INFO 2024-10-14_15:54:35] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
+[INFO 2024-10-14_15:54:36] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
