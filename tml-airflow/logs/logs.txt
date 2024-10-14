@@ -12576,3 +12576,5 @@ Already up to date.
 [INFO 2024-10-14_19:38:22] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_19:38:23] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_19:38:34] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_19:39:32] {'name': ['Project with slug "cybermqtt2-3f10" already exists.']}
+[INFO 2024-10-14_19:39:36] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
