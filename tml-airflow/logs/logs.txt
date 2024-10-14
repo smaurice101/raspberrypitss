@@ -12266,3 +12266,4 @@ Already up to date.
 [INFO 2024-10-14_00:32:58] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-14_00:33:06] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-14_00:33:08] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-10-14_00:33:10] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
