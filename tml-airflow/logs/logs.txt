@@ -12501,3 +12501,4 @@ Already up to date.
 [INFO 2024-10-14_18:24:35] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_18:24:38] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_18:24:41] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_18:24:43] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
