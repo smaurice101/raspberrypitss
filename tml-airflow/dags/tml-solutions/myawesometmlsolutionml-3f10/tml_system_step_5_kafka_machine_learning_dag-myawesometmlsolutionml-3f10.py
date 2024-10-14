@@ -213,6 +213,7 @@ if __name__ == '__main__':
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
         except Exception as e:
             #git push -f origin main
+            print("Error=",e)
             os.chdir("/{}".format(repo))
             subprocess.call("git push -f origin main", shell=True)
             
@@ -229,6 +230,7 @@ if __name__ == '__main__':
           performSupervisedMachineLearning()
           time.sleep(1)
          except Exception as e:
+          print("error1=",e)
           tsslogging.locallogs("ERROR", "STEP 5: Machine Learning DAG in {} {}".format(os.path.basename(__file__),e))
           tsslogging.tsslogit("Machine Learning DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
