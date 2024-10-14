@@ -12350,3 +12350,4 @@ Already up to date.
 [INFO 2024-10-14_15:54:45] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
 [INFO 2024-10-14_15:54:47] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
 [INFO 2024-10-14_15:54:49] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
+[INFO 2024-10-14_15:54:58] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
