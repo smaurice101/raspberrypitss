@@ -12417,3 +12417,4 @@ Already up to date.
 [INFO 2024-10-14_17:30:40] TML Solution Studio: git commit -a Status for project cybermqtt2-3f10: fatal: paths 'testproject2-3f10 ...' with -a does not make sense
 [INFO 2024-10-14_17:30:40] TML Solution Studio: git push Status for project cybermqtt2-3f10: Everything up-to-date
 [INFO 2024-10-14_17:34:58] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_17:35:00] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
