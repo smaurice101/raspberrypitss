@@ -12282,3 +12282,4 @@ Already up to date.
 [INFO 2024-10-14_00:58:47] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-14_00:59:01] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-14_00:59:54] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-10-14_01:06:47] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
