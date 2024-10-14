@@ -12558,3 +12558,4 @@ Already up to date.
 [INFO 2024-10-14_19:29:05] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_19:29:08] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
 [INFO 2024-10-14_19:29:11] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
+[INFO 2024-10-14_19:29:13] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybermqtt2-3f10.py
