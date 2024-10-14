@@ -12248,3 +12248,4 @@ Already up to date.
 [INFO 2024-10-13_23:42:38] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-realtimeiotdataprocessing-with-ml-3f10.py
 [INFO 2024-10-13_23:43:18] {'name': ['Project with slug "realtimeiotdataprocessing-with-ml-3f10" already exists.']}
 [INFO 2024-10-14_00:29:40] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-10-14_00:29:42] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
