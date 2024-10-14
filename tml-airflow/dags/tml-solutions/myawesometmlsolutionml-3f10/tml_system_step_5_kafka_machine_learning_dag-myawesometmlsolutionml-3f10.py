@@ -147,7 +147,7 @@ def performSupervisedMachineLearning():
                                       deploy,modelruns,modelsearchtuner,HPDEPORT,offset,islogistic,
                                       brokerhost,brokerport,networktimeout,microserviceid,topicid,maintopic,
                                       independentvariables,dependentvariable,rollbackoffsets,fullpathtotrainingdata,processlogic,identifier)    
- 
+      print("result=",result) 
 
 def windowname(wtype,sname,dagname):
     randomNumber = random.randrange(10, 9999)
