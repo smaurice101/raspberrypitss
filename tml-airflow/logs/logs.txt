@@ -12297,3 +12297,4 @@ Already up to date.
 [INFO 2024-10-14_01:29:12] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-2344.py
 [INFO 2024-10-14_01:29:14] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-2344.py
 [INFO 2024-10-14_01:29:29] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-2344.py
+[INFO 2024-10-14_01:30:26] {'name': ['Project with slug "myawesometmlsolutionml-2344" already exists.']}
