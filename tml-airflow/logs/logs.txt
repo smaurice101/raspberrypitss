@@ -12347,3 +12347,4 @@ Already up to date.
 [INFO 2024-10-14_15:54:35] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
 [INFO 2024-10-14_15:54:36] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
 [INFO 2024-10-14_15:54:39] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
+[INFO 2024-10-14_15:54:45] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-and-mqtt-3f10.py
