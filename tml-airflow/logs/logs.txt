@@ -12779,3 +12779,4 @@ Already up to date.
 [INFO 2024-10-17_20:48:28] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
 [INFO 2024-10-17_20:48:30] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
 [INFO 2024-10-17_20:48:32] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
+[INFO 2024-10-17_20:48:35] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
