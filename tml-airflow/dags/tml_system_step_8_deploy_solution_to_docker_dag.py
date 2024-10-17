@@ -71,16 +71,15 @@ def dockerit(**context):
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
          time.sleep(10)    
          if v != 0:   
-           tsslogging.locallogs("WARN", "STEP 8: There seems be an issue creating the container.  Here is the commit command: {} - message={}".format(cbuf,v)) 
+           tsslogging.locallogs("WARN", "STEP 8: There seems to be an issue creating the container.  Here is the commit command: {} - message={}.  Container NOT pushed.".format(cbuf,v)) 
          else:
-           tsslogging.locallogs("INFO", "STEP 8: Docker Container created.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v)) 
-        
-         v=subprocess.call("docker push {}".format(cname), shell=True)  
-         time.sleep(10)               
-         if v != 0:   
-            tsslogging.locallogs("WARN", "STEP 8: There seems to an issue pushing to Docker.  Here is the command: docker push {} - message={}".format(cname,v)) 
-         else:                   
-            tsslogging.locallogs("INFO", "STEP 8: Docker push is: docker push {} - message={}".format(cname,v)) 
+           tsslogging.locallogs("INFO", "STEP 8: Docker Container created.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v))         
+           v=subprocess.call("docker push {}".format(cname), shell=True)  
+           time.sleep(10)               
+           if v != 0:   
+              tsslogging.locallogs("WARN", "STEP 8: There seems to an issue pushing to Docker.  Here is the command: docker push {} - message={}".format(cname,v)) 
+           else:                   
+              tsslogging.locallogs("INFO", "STEP 8: Successfully ran Docker push: docker push {} - message={}".format(cname,v)) 
            
        os.environ['tssbuild']="1"
     
