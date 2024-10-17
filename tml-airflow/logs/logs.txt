@@ -12829,3 +12829,4 @@ Already up to date.
 [INFO 2024-10-17_23:34:44] Visualization DAG in tml_system_step_7_kafka_visualization_dag-maryproject-ml-3f10.py
 [INFO 2024-10-17_23:34:59] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-maryproject-ml-3f10.py
 [ERROR 2024-10-17_23:35:16] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-maryproject-ml-3f10.py: name 'time' is not defined
+[INFO 2024-10-17_23:35:28] {'name': ['Project with slug "maryproject-ml-3f10" already exists.']}
