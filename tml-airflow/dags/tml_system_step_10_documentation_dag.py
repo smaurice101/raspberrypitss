@@ -661,9 +661,11 @@ def generatedoc(**context):
      updatebranch(sname,"main")
      triggerbuild(sname)
      ti = context['task_instance']
-     ti.xcom_push(key="{}_RTD".format(sname), value="DONE")
+     ti.xcom_push(key="{}_RTD".format(sname), value="DONE")    
+     tsslogging.locallogs("ERROR", "STEP 10: Documentation successfully created. Check https://{}.readthedocs.io".format(sname))    
     except Exception as e:
-     print("ERROR=",e)
+     tsslogging.locallogs("ERROR", "STEP 10: There seems to an issue created the documentation.  Error={}".format(e))
+    
 
     try:
        sf = "" 
