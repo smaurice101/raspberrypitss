@@ -69,14 +69,14 @@ def dockerit(**context):
          subprocess.call("docker rmi -f $(docker images --filter 'dangling=true' -q --no-trunc)", shell=True)
          cbuf="docker commit {} {}".format(cid,cname)
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
-         time.sleep(10)    
+         time.sleep(7)    
          if v != 0:   
            tsslogging.locallogs("WARN", "STEP 8: There seems to be an issue creating the container.  Here is the commit command: {} - message={}.  Container may NOT pushed.".format(cbuf,v)) 
          else:
            tsslogging.locallogs("INFO", "STEP 8: Docker Container created.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v))         
            
          v=subprocess.call("docker push {}".format(cname), shell=True)  
-         time.sleep(10)               
+         time.sleep(7)               
          if v != 0:   
               tsslogging.locallogs("WARN", "STEP 8: There seems to an issue pushing to Docker.  Here is the command: docker push {} - message={}".format(cname,v)) 
          else:                   
