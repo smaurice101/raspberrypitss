@@ -519,14 +519,14 @@ def generatedoc(**context):
     subprocess.call(["sed", "-i", "-e",  "s/--githublogs--/{}/g".format(githublogs), "/{}/docs/source/logs.rst".format(sname)])
     tsslogging.locallogs("INFO", "STEP 10: Documentation successfully built on GitHub..Readthedocs build in process and should complete in few seconds")
 
-    #try:
-    #   sf = "" 
-    #   with open('/dagslocalbackup/logs.txt', "r") as f:
-    #        sf=f.read()
-    #   doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
-    #except Exception as e:
-    #  print("Cannot open file - ",e)  
-    #  pass        
+    try:
+       sf = "" 
+       with open('/dagslocalbackup/logs.txt', "r") as f:
+            sf=f.read()
+       doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
+    except Exception as e:
+      print("Cannot open file - ",e)  
+      pass        
     
     #-------------------    
     airflowurl = "http:\/\/localhost:{}".format(airflowport[1:])
@@ -660,26 +660,8 @@ def generatedoc(**context):
     
      ti = context['task_instance']
      ti.xcom_push(key="{}_RTD".format(sname), value="DONE")    
-     tsslogging.locallogs("ERROR", "STEP 10: Documentation successfully created. Check https://{}.readthedocs.io".format(sname))    
-     try:
-       sf = "" 
-       with open('/dagslocalbackup/logs.txt', "r") as f:
-            sf=f.read()
-       doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
-     except Exception as e:
-      print("Cannot open file - ",e)  
-      pass        
-        
      updatebranch(sname,"main")
      triggerbuild(sname)
         
     except Exception as e:
-     tsslogging.locallogs("ERROR", "STEP 10: There seems to an issue created the documentation.  Error={}".format(e))
-     try:
-       sf = "" 
-       with open('/dagslocalbackup/logs.txt', "r") as f:
-            sf=f.read()
-       doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
-     except Exception as e:
-      print("Cannot open file - ",e)  
-      pass
+       print("Error=",e)
