@@ -518,14 +518,15 @@ def generatedoc(**context):
     #-----------------------
     subprocess.call(["sed", "-i", "-e",  "s/--githublogs--/{}/g".format(githublogs), "/{}/docs/source/logs.rst".format(sname)])
     tsslogging.locallogs("INFO", "STEP 10: Documentation successfully built on GitHub..Readthedocs build in process and should complete in few seconds")
-    try:
-       sf = "" 
-       with open('/dagslocalbackup/logs.txt', "r") as f:
-            sf=f.read()
-       doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
-    except Exception as e:
-      print("Cannot open file - ",e)  
-      pass        
+
+    #try:
+    #   sf = "" 
+    #   with open('/dagslocalbackup/logs.txt', "r") as f:
+    #        sf=f.read()
+    #   doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
+    #except Exception as e:
+    #  print("Cannot open file - ",e)  
+    #  pass        
     
     #-------------------    
     airflowurl = "http:\/\/localhost:{}".format(airflowport[1:])
@@ -663,3 +664,12 @@ def generatedoc(**context):
      ti.xcom_push(key="{}_RTD".format(sname), value="DONE")
     except Exception as e:
      print("ERROR=",e)
+
+    try:
+       sf = "" 
+       with open('/dagslocalbackup/logs.txt', "r") as f:
+            sf=f.read()
+       doparse("/{}/docs/source/logs.rst".format(sname), ["--logs--;{}".format(sf)])
+    except Exception as e:
+      print("Cannot open file - ",e)  
+      pass
