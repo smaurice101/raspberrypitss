@@ -12775,3 +12775,4 @@ Already up to date.
 [INFO 2024-10-17_20:17:29] TML Solution Studio: git add . Status: 
 [INFO 2024-10-17_20:17:29] TML Solution Studio: git commit -a Status for project maryproject-ml-3f10: fatal: paths 'project ...' with -a does not make sense
 [INFO 2024-10-17_20:17:29] TML Solution Studio: git push Status for project maryproject-ml-3f10: Everything up-to-date
+[INFO 2024-10-17_20:48:25] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
