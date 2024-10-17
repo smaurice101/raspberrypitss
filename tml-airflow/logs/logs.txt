@@ -12781,3 +12781,4 @@ Already up to date.
 [INFO 2024-10-17_20:48:32] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
 [INFO 2024-10-17_20:48:35] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
 [INFO 2024-10-17_20:48:38] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-maryproject-ml-3f10.py
+[INFO 2024-10-17_20:48:45] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-maryproject-ml-3f10.py
