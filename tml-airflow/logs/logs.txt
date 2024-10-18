@@ -12879,3 +12879,4 @@ Already up to date.
 [INFO 2024-10-18_14:35:24] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-18_14:35:27] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-18_14:35:28] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-10-18_14:35:40] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
