@@ -12904,3 +12904,4 @@ Already up to date.
 [INFO 2024-10-18_14:53:40] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-18_14:53:42] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
 [INFO 2024-10-18_14:53:45] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-10-18_14:53:47] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
