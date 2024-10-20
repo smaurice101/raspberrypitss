@@ -11,7 +11,7 @@ import subprocess
 import tsslogging
 import shutil
 from git import Repo
-
+import time
 sys.dont_write_bytecode = True
 
 ######################################################USER CHOSEN PARAMETERS ###########################################################
@@ -25,7 +25,7 @@ default_args = {
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
 # Instantiate your DAG
-@dag(dag_id="tml_system_step_10_documentation_dag_myawesometmlsolution-3f10", default_args=default_args, tags=["tml_system_step_10_documentation_dag_myawesometmlsolution-3f10"], schedule=None,  catchup=False)
+@dag(dag_id="tml_system_step_10_documentation_dag", default_args=default_args, tags=["tml_system_step_10_documentation_dag"], schedule=None,  catchup=False)
 def startdocumentation():
     # Define tasks
     def empty():
@@ -518,6 +518,7 @@ def generatedoc(**context):
     #-----------------------
     subprocess.call(["sed", "-i", "-e",  "s/--githublogs--/{}/g".format(githublogs), "/{}/docs/source/logs.rst".format(sname)])
     tsslogging.locallogs("INFO", "STEP 10: Documentation successfully built on GitHub..Readthedocs build in process and should complete in few seconds")
+
     try:
        sf = "" 
        with open('/dagslocalbackup/logs.txt', "r") as f:
@@ -656,10 +657,11 @@ def generatedoc(**context):
         print(response.json())
         tsslogging.tsslogit(response.json())
         os.environ['tssdoc']="1"
-    
+     time.sleep(10)
+     ti = context['task_instance']
+     ti.xcom_push(key="{}_RTD".format(sname), value="DONE")    
      updatebranch(sname,"main")
      triggerbuild(sname)
-     ti = context['task_instance']
-     ti.xcom_push(key="{}_RTD".format(sname), value="DONE")
+        
     except Exception as e:
-     print("ERROR=",e)
+       print("Error=",e)
