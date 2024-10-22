@@ -13107,3 +13107,4 @@ Already up to date.
 [INFO 2024-10-22_13:24:43] TML Solution Studio: DELETE initiated for project project1-3f10 by smaurice101
 [INFO 2024-10-22_13:24:43] TML Solution Studio: GIT REPO project1-3f10 DELETED by smaurice101
 [INFO 2024-10-22_13:24:43] TML Solution Studio: LOCAL DOCKER IMAGE project1-3f10-amd64 DELETED by maadsdocker
+[INFO 2024-10-22_13:26:51] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
