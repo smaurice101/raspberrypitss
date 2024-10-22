@@ -13098,3 +13098,6 @@ Already up to date.
 [INFO 2024-10-22_13:23:48] TML Solution Studio: DELETE initiated for project testproject2-3f10 by smaurice101
 [INFO 2024-10-22_13:23:48] TML Solution Studio: GIT REPO testproject2-3f10 DELETED by smaurice101
 [INFO 2024-10-22_13:23:48] TML Solution Studio: LOCAL DOCKER IMAGE testproject2-3f10-amd64 DELETED by maadsdocker
+[INFO 2024-10-22_13:23:58] TML Solution Studio: DELETE initiated for project testproject4-3f10 by smaurice101
+[INFO 2024-10-22_13:23:58] TML Solution Studio: GIT REPO testproject4-3f10 DELETED by smaurice101
+[INFO 2024-10-22_13:23:58] TML Solution Studio: LOCAL DOCKER IMAGE testproject4-3f10-amd64 DELETED by maadsdocker
