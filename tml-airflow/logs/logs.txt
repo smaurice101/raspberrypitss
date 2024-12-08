@@ -18404,3 +18404,5 @@ branch.main.merge=refs/heads/main
 [INFO 2024-12-08_20:00:13] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
 [INFO 2024-12-08_20:00:59] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-08_20:01:43] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-08_20:02:04] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
