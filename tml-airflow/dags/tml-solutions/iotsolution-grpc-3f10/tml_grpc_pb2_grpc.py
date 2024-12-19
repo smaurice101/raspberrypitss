@@ -54,9 +54,10 @@ class TmlprotoServicer(object):
 
         Obtains the MessageResponse at a given position.
         """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        #context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('You reached the server')
+        return request 
+        #raise NotImplementedError('Method not implemented!')
 
 
 def add_TmlprotoServicer_to_server(servicer, server):
