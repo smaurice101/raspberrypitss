@@ -1,6 +1,7 @@
 import asyncio
 import signal
 from google.protobuf.json_format import MessageToJson
+from grpc_reflection.v1alpha import reflection
 import maadstml
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -128,6 +129,11 @@ async def serve() -> None:
            return
 
     tsslogging.locallogs("INFO", "STEP 3: gRPC server started .. waiting for connections")
+    SERVICE_NAMES = (
+        pb2.DESCRIPTOR.services_by_name["TmlGreeter"].full_name,
+        reflection.SERVICE_NAME,
+    )
+    reflection.enable_server_reflection(SERVICE_NAMES, server)
     await server.start()
     print("gRPC server started - listening on port ",mainport)
     await server.wait_for_termination()
