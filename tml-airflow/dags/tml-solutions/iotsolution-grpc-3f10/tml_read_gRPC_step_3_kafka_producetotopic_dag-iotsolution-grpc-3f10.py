@@ -65,7 +65,7 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
     maintopic = default_args['topics']
     producerid = default_args['producerid']
 
-    message = request.message
+    message = MessageToJson(request.message)
     try:
       inputbuf=f"{message}"
       print("inputbuf=",inputbuf)
