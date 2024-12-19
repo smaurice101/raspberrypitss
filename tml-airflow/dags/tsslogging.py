@@ -9,7 +9,11 @@ import os
 import socket
 import time
 
-def ingress(sname):
+def ingress(sname,producetype):
+  mport=80
+  if 'gRPC' in producetype:
+     mport=80
+    
   ing = """
     ############# nginx-ingress-{}.yml
     apiVersion: networking.k8s.io/v1
@@ -91,10 +95,14 @@ def ingressnoext(sname): # Localfile being accessed
 def genkubeyaml(sname,containername,clientport,solutionairflowport,solutionvipervizport,solutionexternalport,sdag,
                 guser,grepo,chip,dockerusername,externalport,kuser,mqttuser,airflowport,vipervizport,
                step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step1solutiontitle,step1description,
-               step9rollbackoffset,kubebroker,kafkabroker):
+               step9rollbackoffset,kubebroker,kafkabroker,producetype):
     cp = ""
     cpp = ""
-    
+    if 'gRPC' in producetype:
+        mport='443'
+    else:
+        mport='80'
+      
     if len(clientport) > 1:
         cp = """    - containerPort: {}
              - containerPort: {}
@@ -264,14 +272,14 @@ def genkubeyaml(sname,containername,clientport,solutionairflowport,solutionviper
      spec:
        type: ClusterIP
        ports:
-       - port: 80 # Ingress port, if using port 443 will need to setup TLS certs
+       - port: {} # Ingress port, if using port 443 will need to setup TLS certs
          name: p2
          protocol: TCP
          targetPort: {}
        selector:
          app: {}""".format(sname,sname,sname,sname,containername,cp,sname,sdag,guser,grepo,solutionexternalport,chip,solutionairflowport,solutionvipervizport,dockerusername,cpp,externalport,kuser,vipervizport,mqttuser,airflowport,step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step9rollbackoffset,step1solutiontitle,step1description,kubebroker,kafkabroker,
                       sname,sname,solutionvipervizport,sname,
-                      sname,sname,cpp,sname)
+                      sname,sname,mport,cpp,sname)
                     
     return kcmd
 
