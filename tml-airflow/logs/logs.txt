@@ -713,3 +713,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-19_16:57:31] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
 [ERROR 2024-12-19_16:57:32] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - module 'grpc_reflection.v1alpha.reflection' has no attribute 'Register'
 [INFO 2024-12-19_16:59:42] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_17:47:59] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
