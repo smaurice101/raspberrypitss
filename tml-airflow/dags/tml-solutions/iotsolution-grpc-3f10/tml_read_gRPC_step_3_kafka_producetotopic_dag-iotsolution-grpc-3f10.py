@@ -85,7 +85,8 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
         result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,'',
                                             topicid,identifier)
       except Exception as e:
-        print("ERROR:",e)
+        #print("ERROR:",e)
+        pass
      except Exception as e:
       pass
    
