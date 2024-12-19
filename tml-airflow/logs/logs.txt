@@ -686,3 +686,5 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-19_02:16:06] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
 [INFO 2024-12-19_02:16:07] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
 [INFO 2024-12-19_02:16:38] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:44] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-19_02:22:07] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
