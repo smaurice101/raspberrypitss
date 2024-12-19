@@ -216,6 +216,7 @@ if __name__ == '__main__':
          server = None
          signal.signal(signal.SIGTERM, handle_sigterm)
          try:
+            print("Starting asyncio event loop")
             asyncio.get_event_loop().run_until_complete(serve())
          except KeyboardInterrupt:
            pass
