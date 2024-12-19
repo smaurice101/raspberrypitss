@@ -9,10 +9,7 @@ import os
 import socket
 import time
 
-def ingress(sname,producetype):
-  mport=80
-  if 'gRPC' in producetype:
-     mport=80
+def ingress(sname):
     
   ing = """
     ############# nginx-ingress-{}.yml
@@ -52,6 +49,72 @@ def ingress(sname,producetype):
       namespace: ingress-nginx
     data:
       allow-snippet-annotations: "true"
+  """.format(sname,sname,sname)
+
+  return ing
+
+def ingressgrpc(sname):
+    
+  ing = """
+    ############# nginx-ingress-{}.yml
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: tml-ingress
+      annotations:
+        nginx.ingress.kubernetes.io/use-regex: "true"
+        nginx.ingress.kubernetes.io/rewrite-target: /$2
+    spec:
+      ingressClassName: nginx
+      rules:
+        - host: tml.tss
+          http:
+            paths:
+              - path: /viz(/|$)(.*)
+                pathType: ImplementationSpecific
+                backend:
+                  service:
+                    name: {}-visualization-service
+                    port:
+                      number: 80
+    ---
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: tml-ingress-grpc
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "GRPCS"
+        nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    spec:
+      ingressClassName: nginx
+      tls:
+      - hosts:
+        - tml.tss
+        secretName: self-tls    
+      rules:
+        - host: tml.tss
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: {}-external-service
+                    port:
+                      number: 443
+    ---
+    apiVersion: v1
+    kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: ingress-nginx-controller
+      namespace: ingress-nginx
+    data:
+      allow-snippet-annotations: "true"
+      http2: "True"
+      use-forwarded-headers: "true"     
   """.format(sname,sname,sname)
 
   return ing
