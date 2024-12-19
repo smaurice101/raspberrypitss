@@ -67,10 +67,10 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
   async def GetServerResponse(self, request, context):
     maintopic = default_args['topics']
     producerid = default_args['producerid']
-
-    message = MessageToJson(request.message)
-    print("Message=", message)
-    try:
+    if request.message:
+     message = MessageToJson(request.message)
+     print("Message=", message)
+     try:
       inputbuf=f"{message}"
       print("inputbuf=",inputbuf)
 
@@ -85,8 +85,8 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
                                             topicid,identifier)
       except Exception as e:
         print("ERROR:",e)
-    except Exception as e:
-     pass
+     except Exception as e:
+      pass
 
 
 async def serve() -> None:
