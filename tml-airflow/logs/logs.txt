@@ -680,3 +680,6 @@ branch.main.merge=refs/heads/main
 [INFO 2024-12-19_02:13:31] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
 [INFO 2024-12-19_02:14:52] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:15:39] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-19_02:16:00] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:03] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
