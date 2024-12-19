@@ -130,7 +130,7 @@ async def serve() -> None:
 
     tsslogging.locallogs("INFO", "STEP 3: gRPC server started .. waiting for connections")
     SERVICE_NAMES = (
-        pb2.DESCRIPTOR.services_by_name["TmlprotoService"].full_name,
+        pb2.DESCRIPTOR.services_by_name["tml_grpc_pb2"].full_name,
         reflection.SERVICE_NAME,
     )
     reflection.enable_server_reflection(SERVICE_NAMES, server)
