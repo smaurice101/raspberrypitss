@@ -64,7 +64,7 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
   def __init__(self, *args, **kwargs):
     pass
 
-  def GetServerResponse(self, request, context):
+  async def GetServerResponse(self, request, context):
     maintopic = default_args['topics']
     producerid = default_args['producerid']
     if request.message:
@@ -93,7 +93,7 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
 #    rmsg = '{"message":"Message received","received": 1}'
     return "rmsg"
 
-def serve() -> None:
+async def serve() -> None:
     tsslogging.locallogs("INFO", "STEP 3: producing data started")
     repo=tsslogging.getrepo()
     tsslogging.tsslogit("gRPC producing DAG in {}".format(os.path.basename(__file__)), "INFO" )
@@ -141,18 +141,18 @@ def serve() -> None:
            return
 
     tsslogging.locallogs("INFO", "STEP 3: gRPC server started .. waiting for connections")
-    server.start()
+    await server.start()
     print("gRPC server started - listening on port ",mainport)
-    server.wait_for_termination()
+    await server.wait_for_termination()
 
-def shutdown_server(server) -> None:
+async def shutdown_server(server) -> None:
 #    http://logging.info ("Shutting down server...")
     server.stop(None)
 
 def handle_sigterm(sig, frame) -> None:
     asyncio.create_task(shutdown_server(server))
 
-def handle_sigint() -> None:
+async def handle_sigint() -> None:
     loop = asyncio.get_running_loop()
     for sig in (signal.SIGINT, signal.SIGTERM):
         loop.add_signal_handler(sig, loop.stop)
@@ -225,12 +225,12 @@ if __name__ == '__main__':
          VIPERTOKEN = sys.argv[2]
          VIPERHOST = sys.argv[3]
          VIPERPORT = sys.argv[4]
-         serve()
+      #   serve()
 
-#         server = None
- #        signal.signal(signal.SIGTERM, handle_sigterm)
-  #       try:
-   #         print("Starting asyncio event loop")
-    #        asyncio.get_event_loop().run_until_complete(serve())
-     #    except KeyboardInterrupt:
-      #     pass
+         server = None
+         signal.signal(signal.SIGTERM, handle_sigterm)
+         try:
+            print("Starting asyncio event loop")
+            asyncio.get_event_loop().run_until_complete(serve())
+         except KeyboardInterrupt:
+           pass
