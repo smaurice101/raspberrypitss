@@ -1,3 +1,5 @@
+import asyncio
+import signal
 import maadstml
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -82,7 +84,7 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
      pass
 
 
-def serve():
+async def serve() -> None:
     tsslogging.locallogs("INFO", "STEP 3: producing data started")
     repo=tsslogging.getrepo()
     tsslogging.tsslogit("gRPC producing DAG in {}".format(os.path.basename(__file__)), "INFO" )
@@ -110,11 +112,11 @@ def serve():
            server_cert = f.read()
           server_creds = grpc.ssl_server_credentials( [(server_key, server_cert)] )
           mainport=int(default_args['gRPC_Port'])
-          server.add_secure_port("0.0.0.0:{}".format(int(default_args['gRPC_Port'])), server_creds)
+          server.add_secure_port("[::]:{}".format(int(default_args['gRPC_Port'])), server_creds)
 
 #          server.add_insecure_port("0.0.0.0:{}".format(int(default_args['gRPC_Port'])))
         else:
-          server.add_insecure_port("0.0.0.0:{}".format(int(default_args['tss_gRPC_Port'])))
+          server.add_insecure_port("[::]:{}".format(int(default_args['tss_gRPC_Port'])))
           mainport=int(default_args['tss_gRPC_Port'])
     except Exception as e:
            tsslogging.locallogs("ERROR", "STEP 3: Cannot connect to gRPC server in {} - {}".format(os.path.basename(__file__),e))
@@ -129,6 +131,17 @@ def serve():
     print("gRPC server started - listening on port ",mainport)
     server.wait_for_termination()
 
+async def shutdown_server(server) -> None:
+#    http://logging.info ("Shutting down server...")
+    await server.stop(None)
+
+def handle_sigterm(sig, frame) -> None:
+    asyncio.create_task(shutdown_server(server))
+
+async def handle_sigint() -> None:
+    loop = asyncio.get_running_loop()
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        loop.add_signal_handler(sig, loop.stop)
 
 def windowname(wtype,sname,dagname):
     randomNumber = random.randrange(10, 9999)
@@ -198,4 +211,11 @@ if __name__ == '__main__':
          VIPERTOKEN = sys.argv[2]
          VIPERHOST = sys.argv[3]
          VIPERPORT = sys.argv[4]
-         serve()
+#         serve()
+
+         server = None
+         signal.signal(signal.SIGTERM, handle_sigterm)
+         try:
+            asyncio.get_event_loop().run_until_complete(serve())
+         except KeyboardInterrupt:
+           pass
