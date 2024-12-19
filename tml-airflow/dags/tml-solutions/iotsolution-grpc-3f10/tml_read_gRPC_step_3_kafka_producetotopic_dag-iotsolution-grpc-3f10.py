@@ -128,9 +128,9 @@ async def serve() -> None:
            return
 
     tsslogging.locallogs("INFO", "STEP 3: gRPC server started .. waiting for connections")
-    server.start()
+    await server.start()
     print("gRPC server started - listening on port ",mainport)
-    server.wait_for_termination()
+    await server.wait_for_termination()
 
 async def shutdown_server(server) -> None:
 #    http://logging.info ("Shutting down server...")
