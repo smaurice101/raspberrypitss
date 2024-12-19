@@ -67,7 +67,7 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
   async def GetServerResponse(self, request, context):
     maintopic = default_args['topics']
     producerid = default_args['producerid']
-    if request.message:
+    if request:
      message = MessageToJson(request)
      print("Message=", message)
      try:
