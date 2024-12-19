@@ -56,7 +56,6 @@ class TmlprotoServicer(object):
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('You reached the gRPC server!!')
-#        return request
         raise NotImplementedError('Method not implemented!')
 
 
