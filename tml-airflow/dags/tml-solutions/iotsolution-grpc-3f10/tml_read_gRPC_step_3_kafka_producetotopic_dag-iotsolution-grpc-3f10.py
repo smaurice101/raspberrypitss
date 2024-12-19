@@ -90,8 +90,8 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
      except Exception as e:
       pass
    
-#    rmsg = '{"message":"Message received","received": 1}'
-    return "rmsg"
+    rmsg = '{"message":"Message received","received": 1}'
+    return rmsg
 
 async def serve() -> None:
     tsslogging.locallogs("INFO", "STEP 3: producing data started")
