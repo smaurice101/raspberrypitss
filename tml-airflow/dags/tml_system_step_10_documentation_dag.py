@@ -714,7 +714,7 @@ def generatedoc(**context):
       kcmd2=tsslogging.genkubeyaml(sname,containername,TMLCLIENTPORT[1:],solutionairflowport[1:],solutionvipervizport[1:],solutionexternalport[1:],
                        sd,os.environ['GITUSERNAME'],os.environ['GITREPOURL'],chipmain,os.environ['DOCKERUSERNAME'],
                        externalport[1:],kafkacloudusername,mqttusername,airflowport[1:],vipervizport[1:],
-                       step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step1solutiontitle,step1description,step9rollbackoffset,kubebroker,kafkabroker,PRODUCETYPE)
+                       step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step1solutiontitle,step1description,step9rollbackoffset,kubebroker,kafkabroker)
     else: 
       kcmd2=tsslogging.genkubeyamlnoext(sname,containername,TMLCLIENTPORT[1:],solutionairflowport[1:],solutionvipervizport[1:],solutionexternalport[1:],
                        sd,os.environ['GITUSERNAME'],os.environ['GITREPOURL'],chipmain,os.environ['DOCKERUSERNAME'],
@@ -730,7 +730,10 @@ def generatedoc(**context):
     doparse("/{}/docs/source/kube.rst".format(sname), ["--nginxname--;{}".format(sname)])
 
     if len(CLIENTPORT) > 1:
-      kcmd3=tsslogging.ingress(sname,PRODUCETYPE)
+      if 'gRPC' in PRODUCETYPE:
+        kcmd3=tsslogging.ingressgrpc(sname) 
+      else: 
+        kcmd3=tsslogging.ingress(sname) 
     else:   # localfile being processed
       kcmd3=tsslogging.ingressnoext(sname)
      
