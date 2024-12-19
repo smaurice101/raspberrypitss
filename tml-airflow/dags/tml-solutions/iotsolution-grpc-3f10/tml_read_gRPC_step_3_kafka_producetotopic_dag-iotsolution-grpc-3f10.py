@@ -1,5 +1,6 @@
 import asyncio
 import signal
+from google.protobuf.json_format import MessageToJson
 import maadstml
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -60,7 +61,7 @@ class TmlprotoService(pb2_grpc.TmlprotoServicer):
   def __init__(self, *args, **kwargs):
     pass
 
-  def GetServerResponse(self, request, context):
+  async def GetServerResponse(self, request, context):
     maintopic = default_args['topics']
     producerid = default_args['producerid']
 
