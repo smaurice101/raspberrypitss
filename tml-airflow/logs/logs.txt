@@ -1,0 +1,1770 @@
+[INFO 2024-12-16_02:17:42] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-16_02:18:58] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:00] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:02] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:04] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:06] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:08] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:14] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:16] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:19] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:24] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:25] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:19:36] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_02:20:46] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-16_02:37:47] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:37:48] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:37:50] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:37:52] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:37:54] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:38:01] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:38:06] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:38:07] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:38:16] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:38:21] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_02:39:34] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-16_13:16:04] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_13:16:06] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-16_13:16:06] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_13:16:07] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_13:18:15] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:28:31] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_13:28:32] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-16_13:28:32] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_13:28:32] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_13:30:27] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:31] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:34] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:37] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:40] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:43] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:55] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:30:59] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:31:02] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:31:05] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:31:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_13:32:38] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_13:35:38] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:35:41] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:35:44] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:35:47] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:35:50] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:35:53] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:36:05] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:36:09] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:36:11] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:36:26] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_13:37:47] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-16_13:40:37] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:40:40] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:40:43] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:40:46] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:40:49] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:40:52] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:41:02] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:41:06] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:41:10] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:41:14] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:41:16] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:41:30] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_13:42:56] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-16_13:46:56] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:46:59] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:01] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:05] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:08] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:21] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:25] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:27] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:39] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:47:47] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_13:49:17] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-16_14:06:52] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_14:06:53] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-16_14:06:53] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_14:06:53] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_14:08:27] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_14:09:16] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_14:09:37] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_14:09:44] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_14:09:48] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_14:09:49] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_14:10:30] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_14:34:10] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_14:34:11] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-16_14:34:11] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_14:34:11] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_14:39:10] TML Solution Studio: TML Project Creation: Creating new TML project: /raspberrypitss/tml-airflow/dags/tml-solutions/iotsolution-restapi-3f10
+[INFO 2024-12-16_14:39:10] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2024-12-16_14:39:45] TML Solution Studio: Starting Git commit process for project: iotsolution-restapi-3f10
+[INFO 2024-12-16_14:39:45] TML Solution Studio: git commit -a Status for project iotsolution-restapi-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2024-12-16_14:39:45] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2024-12-16_14:39:45] TML Solution Studio: git add . Status: 
+[INFO 2024-12-16_14:39:45] TML Solution Studio: git commit -a Status for project iotsolution-restapi-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2024-12-16_14:39:45] TML Solution Studio: git push Status for project iotsolution-restapi-3f10: Everything up-to-date
+[INFO 2024-12-16_14:40:01] TML Solution Studio: TML Project Creation: Creating new TML project: /raspberrypitss/tml-airflow/dags/tml-solutions/iotsolution-grpc-3f10
+[INFO 2024-12-16_14:40:01] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2024-12-16_14:40:36] TML Solution Studio: Starting Git commit process for project: iotsolution-grpc-3f10
+[INFO 2024-12-16_14:40:36] TML Solution Studio: git commit -a Status for project iotsolution-grpc-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2024-12-16_14:40:36] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2024-12-16_14:40:36] TML Solution Studio: git add . Status: 
+[INFO 2024-12-16_14:40:36] TML Solution Studio: git commit -a Status for project iotsolution-grpc-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2024-12-16_14:40:36] TML Solution Studio: git push Status for project iotsolution-grpc-3f10: Everything up-to-date
+[INFO 2024-12-16_14:57:15] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:17] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:18] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:20] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:22] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:24] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:31] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:33] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:34] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:57:45] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_14:58:46] {'_links': {'_self': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/', 'builds': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/builds/', 'environmentvariables': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/environmentvariables/', 'notifications': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/notifications/', 'redirects': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/redirects/', 'subprojects': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/subprojects/', 'superproject': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/superproject/', 'sync_versions': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/sync-versions/', 'translations': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/translations/', 'versions': 'https://readthedocs.org/api/v3/projects/iotsolution-restapi-3f10/versions/'}, 'created': '2024-12-16T14:58:46.489044Z', 'default_branch': 'master', 'default_version': 'latest', 'external_builds_privacy_level': 'public', 'homepage': 'http://template.readthedocs.io/', 'id': 1125722, 'language': {'code': 'en', 'name': 'English'}, 'modified': '2024-12-16T14:58:46.489063Z', 'name': 'iotsolution-restapi-3f10', 'privacy_level': 'public', 'programming_language': {'code': 'py', 'name': 'Python'}, 'repository': {'type': 'git', 'url': 'https://github.com/smaurice101/iotsolution-restapi-3f10'}, 'single_version': False, 'slug': 'iotsolution-restapi-3f10', 'subproject_of': None, 'tags': ['automation', 'sphinx'], 'translation_of': None, 'urls': {'builds': 'https://readthedocs.org/projects/iotsolution-restapi-3f10/builds/', 'documentation': 'https://iotsolution-restapi-3f10.readthedocs.io/en/latest/', 'downloads': 'https://readthedocs.org/projects/iotsolution-restapi-3f10/downloads/', 'home': 'https://readthedocs.org/projects/iotsolution-restapi-3f10/', 'versions': 'https://readthedocs.org/projects/iotsolution-restapi-3f10/versions/'}, 'users': [{'username': 'sebastian.maurice@gmail.com'}], 'versioning_scheme': 'multiple_versions_with_translations'}
+[INFO 2024-12-16_15:05:48] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:05:50] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:05:52] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:05:54] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:05:55] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:05:57] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:06:04] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:06:06] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:06:07] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:06:18] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_15:07:20] {'_links': {'_self': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/', 'builds': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/builds/', 'environmentvariables': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/environmentvariables/', 'notifications': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/notifications/', 'redirects': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/redirects/', 'subprojects': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/subprojects/', 'superproject': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/superproject/', 'sync_versions': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/sync-versions/', 'translations': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/translations/', 'versions': 'https://readthedocs.org/api/v3/projects/iotsolution-grpc-3f10/versions/'}, 'created': '2024-12-16T15:07:20.300298Z', 'default_branch': 'master', 'default_version': 'latest', 'external_builds_privacy_level': 'public', 'homepage': 'http://template.readthedocs.io/', 'id': 1125724, 'language': {'code': 'en', 'name': 'English'}, 'modified': '2024-12-16T15:07:20.300320Z', 'name': 'iotsolution-grpc-3f10', 'privacy_level': 'public', 'programming_language': {'code': 'py', 'name': 'Python'}, 'repository': {'type': 'git', 'url': 'https://github.com/smaurice101/iotsolution-grpc-3f10'}, 'single_version': False, 'slug': 'iotsolution-grpc-3f10', 'subproject_of': None, 'tags': ['automation', 'sphinx'], 'translation_of': None, 'urls': {'builds': 'https://readthedocs.org/projects/iotsolution-grpc-3f10/builds/', 'documentation': 'https://iotsolution-grpc-3f10.readthedocs.io/en/latest/', 'downloads': 'https://readthedocs.org/projects/iotsolution-grpc-3f10/downloads/', 'home': 'https://readthedocs.org/projects/iotsolution-grpc-3f10/', 'versions': 'https://readthedocs.org/projects/iotsolution-grpc-3f10/versions/'}, 'users': [{'username': 'sebastian.maurice@gmail.com'}], 'versioning_scheme': 'multiple_versions_with_translations'}
+[INFO 2024-12-16_15:28:55] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_15:28:55] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-16_15:28:55] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_15:28:55] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_15:30:02] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:30:55] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-16_15:31:13] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:31:18] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:31:20] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:31:50] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:32:08] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-16_15:40:09] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:44:42] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_15:47:07] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_16:09:01] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_16:09:01] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-16_16:09:01] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_16:09:01] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_16:12:27] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:28] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:30] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:32] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:34] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:36] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:43] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:45] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:48] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:49] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:12:59] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_16:14:01] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_17:05:39] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_17:05:39] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-16_17:05:39] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_17:05:39] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_17:07:46] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:07:49] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:07:50] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:07:53] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:07:55] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:07:57] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:08:03] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:08:05] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:08:08] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:08:09] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:08:20] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:09:23] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_17:11:49] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:11:51] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:11:52] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:11:54] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:11:56] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:11:58] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:12:04] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:12:06] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:12:08] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:12:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_17:13:24] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-16_17:15:47] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:15:49] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:15:50] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:15:53] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:15:55] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:15:57] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:16:03] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:16:05] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:16:08] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:16:10] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:16:11] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:16:22] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_17:17:27] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-16_17:19:02] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:04] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:06] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:08] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:10] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:12] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:19] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:22] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:23] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:19:34] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:20:38] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_17:22:16] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:18] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:20] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:22] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:24] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:26] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:33] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:35] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:37] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:22:48] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:23:49] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_17:32:55] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:32:57] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:32:59] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:00] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:02] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:09] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:11] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:13] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:22] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:33:26] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:34:32] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-16_17:53:40] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:53:43] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:53:45] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:53:47] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:53:50] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:53:59] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:54:03] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:54:05] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:54:14] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:54:18] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-16_17:55:25] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-16_17:57:29] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:32] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:34] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:36] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:38] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:39] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:46] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:48] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:51] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:57:52] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:58:03] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-16_17:59:06] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-16_18:00:00] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:02] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:04] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:07] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:09] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:11] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:17] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:20] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:21] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:00:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-16_18:01:36] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-16_18:02:40] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:42] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:44] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:46] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:48] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:50] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:57] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:02:59] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:03:02] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:03:04] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:03:05] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:03:16] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-16_18:04:22] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-16_18:08:09] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:11] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:15] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:17] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:20] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:22] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:31] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:33] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:35] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:37] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:08:48] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_18:09:58] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-16_18:11:08] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:10] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:12] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:14] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:16] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:18] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:25] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:27] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:30] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:31] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_18:11:42] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_23:13:40] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_23:13:41] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-16_23:13:41] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_23:13:41] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_23:15:34] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_23:16:54] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-16_23:17:30] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_23:17:41] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_23:17:56] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_23:18:03] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_23:18:23] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-16_23:31:50] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-16_23:31:51] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-16_23:31:51] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-16_23:31:51] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-16_23:33:35] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_23:34:48] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-16_23:35:21] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_23:35:35] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_23:35:44] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_23:35:51] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-16_23:36:12] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_00:12:04] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-17_00:12:07] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-17_00:12:07] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-17_00:12:07] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-17_00:48:27] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-17_00:48:28] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-17_00:48:28] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-17_00:48:28] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-17_00:54:30] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:33] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:36] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:38] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:40] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:42] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:49] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:52] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:54] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:54:56] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:55:09] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_00:57:30] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-17_00:59:53] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_00:59:55] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_00:59:57] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_00:59:59] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:02] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:04] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:13] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:15] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:18] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:20] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:00:31] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-17_01:01:39] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-17_03:52:05] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-17_03:52:05] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-17_03:52:05] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-17_03:52:05] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-17_03:53:11] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_03:53:57] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-17_03:54:17] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_03:54:21] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_03:54:29] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_03:54:31] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_03:54:49] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_03:55:02] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-17_13:18:04] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-17_23:16:52] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:16:53] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Argument 'server_credentials' has incorrect type (expected grpc._cython.cygrpc.ServerCredentials, got grpc._cython.cygrpc.SSLChannelCredentials)
+[INFO 2024-12-17_23:18:19] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:18:20] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Argument 'server_credentials' has incorrect type (expected grpc._cython.cygrpc.ServerCredentials, got grpc._cython.cygrpc.SSLChannelCredentials)
+[INFO 2024-12-17_23:30:18] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:30:19] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Argument 'server_credentials' has incorrect type (expected grpc._cython.cygrpc.ServerCredentials, got grpc._cython.cygrpc.SSLChannelCredentials)
+[INFO 2024-12-17_23:40:36] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:40:36] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-17_23:41:27] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:41:28] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-17_23:42:59] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:43:00] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9001; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-17_23:43:40] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:43:40] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:443; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-17_23:44:20] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:44:21] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-17_23:53:44] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:53:45] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-17_23:54:31] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:54:32] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - _Server.add_secure_port() missing 1 required positional argument: 'server_credentials'
+[INFO 2024-12-17_23:56:08] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-17_23:56:09] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-18_00:12:07] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:12:08] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-18_00:13:24] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:13:25] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - [Errno 2] No such file or directory: '/Viper-produce/server.key.pem'
+[INFO 2024-12-18_00:13:48] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:13:49] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-18_00:14:05] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:14:06] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-18_00:16:44] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:16:45] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - cannot unpack non-iterable int object
+[INFO 2024-12-18_00:42:33] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:42:34] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - cannot unpack non-iterable int object
+[INFO 2024-12-18_00:43:16] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_00:55:16] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:55:16] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - [Errno 2] No such file or directory: '/Viper-produce/server.key.pem'
+[INFO 2024-12-18_00:55:44] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_00:55:45] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - Failed to bind to address [::]:9002; set GRPC_VERBOSITY=debug environment variable to see detailed error message.
+[INFO 2024-12-18_00:58:42] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_01:23:13] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-18_01:23:14] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - [Errno 2] No such file or directory: 'raspberrypitss/tml-airflow/certs/tml.key'
+[INFO 2024-12-18_01:23:49] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_14:27:22] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_14:29:25] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_14:40:07] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_14:54:47] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:17:10] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:17:23] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:19:11] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:21:40] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:39:10] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:39:39] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_15:39:55] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_17:19:34] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_18:04:57] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_18:21:46] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:02:48] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-18_21:02:48] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-18_21:02:48] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-18_21:02:48] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-18_21:04:31] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:04:35] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:04:39] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:04:42] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:04:46] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:04:49] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:05:02] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:05:06] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:05:10] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:05:12] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:05:29] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:06:50] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-18_21:31:11] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-18_21:31:12] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-18_21:31:12] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-18_21:31:12] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-18_21:33:49] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:39:13] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-18_21:39:13] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-18_21:39:13] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+[INFO 2024-12-18_21:39:13] TML Solution Studio: Github Remote Status: origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-18_21:40:50] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:40:59] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:41:07] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:41:09] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:41:27] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-18_21:41:39] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-18_21:44:02] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_00:40:19] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-19_00:40:20] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - too many values to unpack (expected 2)
+[INFO 2024-12-19_00:41:32] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:13:31] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_02:13:31] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-19_02:13:31] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_02:13:31] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_02:14:52] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:15:39] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-19_02:16:00] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:03] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:06] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:07] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:38] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:16:44] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-19_02:22:07] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:47:40] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_02:52:33] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_03:07:44] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_03:09:47] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_03:28:57] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_03:40:35] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_12:52:59] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_12:53:48] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:00:53] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:06:35] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:07:36] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:20:51] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:25:52] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:29:11] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:34:42] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_13:46:42] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_14:35:03] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_15:04:55] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_15:47:00] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_15:48:36] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_16:34:53] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_16:38:19] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_16:57:31] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[ERROR 2024-12-19_16:57:32] ERROR: Cannot connect to gRPC server in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py - module 'grpc_reflection.v1alpha.reflection' has no attribute 'Register'
+[INFO 2024-12-19_16:59:42] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_17:47:59] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_17:49:29] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_17:51:00] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_17:55:21] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:02:36] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:05:11] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:07:42] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:09:58] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:12:23] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:16:10] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:19:24] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:22:55] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:24:57] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:29:45] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:34:07] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:35:28] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:39:55] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:47:59] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:50:46] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:53:49] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_18:54:52] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_19:01:32] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_19:02:39] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_20:34:08] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_20:34:08] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_20:34:08] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_20:34:08] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_20:44:32] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_20:44:32] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_20:44:32] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_20:44:32] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_20:53:10] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_20:53:10] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_20:53:10] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_20:53:10] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_20:54:45] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_20:54:45] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_20:54:45] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_20:54:45] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_20:58:33] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_20:58:34] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_20:58:34] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_20:58:34] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_22:55:31] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_22:55:31] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_22:55:31] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_22:55:31] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_22:57:35] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:57:38] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:57:41] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:57:46] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:57:50] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:57:52] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:58:04] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:58:08] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:58:12] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:58:15] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_22:58:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:08:32] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-19_23:08:35] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-19_23:08:35] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-19_23:08:35] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-19_23:13:15] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:18] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:21] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:24] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:27] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:30] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:40] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:46] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:50] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:13:53] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:14:07] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-19_23:15:28] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-19_23:19:17] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:20] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:23] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:25] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:31] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:33] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:44] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:47] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:19:50] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:20:07] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-19_23:21:28] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-19_23:24:14] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:17] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:20] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:22] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:25] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:28] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:42] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:46] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:50] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:54] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:24:56] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:25:10] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-19_23:26:36] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-19_23:32:38] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:32:43] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:32:46] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:32:49] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:32:51] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:33:03] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:33:07] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:33:09] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:33:24] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:33:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-19_23:35:06] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-19_23:42:43] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:42:45] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:42:48] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:42:51] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:42:54] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:42:57] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:43:11] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:43:15] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:43:19] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:43:21] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:43:35] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-19_23:45:05] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-19_23:47:00] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:03] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:07] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:10] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:13] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:15] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:28] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:32] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:36] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:41] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:47:56] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-19_23:49:25] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-20_15:00:24] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_15:00:24] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-20_15:00:24] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_15:00:24] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_15:04:26] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_15:42:46] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_15:42:47] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_15:42:47] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_15:42:47] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_15:47:15] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:17] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:20] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:22] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:25] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:27] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:37] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:45] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:47:47] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:48:00] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_15:49:18] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-20_15:50:22] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:25] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:27] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:30] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:33] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:36] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:50] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:53] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:50:57] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:51:01] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:51:03] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:51:20] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-20_15:52:33] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-20_15:54:29] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:31] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:32] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:34] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:36] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:42] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:47] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:48] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:54:57] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:55:01] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-20_15:56:11] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-20_16:00:44] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:00:46] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:00:47] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:00:49] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:00:51] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:00:53] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:00:58] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:01:00] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:01:02] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:01:03] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:01:16] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-20_16:02:25] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-20_16:07:31] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:32] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:34] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:36] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:38] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:43] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:49] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:51] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:53] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:07:55] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:08:05] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:09:14] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-20_16:11:10] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:15] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:17] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:19] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:20] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:22] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:28] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:30] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:33] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:34] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:11:44] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-20_16:12:52] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-20_16:29:31] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_16:29:32] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-20_16:29:32] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_16:29:32] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_16:30:25] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:31:23] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-20_16:31:49] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:31:57] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:32:01] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:32:03] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_16:32:25] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:08:11] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_20:08:13] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-20_20:08:13] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_20:08:13] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_20:12:31] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:14:00] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-20_20:15:08] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:15:37] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:22:29] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_20:22:30] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-20_20:22:30] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_20:22:30] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_20:27:11] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:28:38] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-20_20:29:29] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:29:57] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:30:39] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:31:11] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_20:31:12] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-20_20:31:12] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+[INFO 2024-12-20_20:31:12] TML Solution Studio: Github Remote Status: origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_20:33:57] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:35:01] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:35:20] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:35:29] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:35:36] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:35:39] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:35:54] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-20_20:36:22] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-20_20:49:59] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_20:49:59] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_20:49:59] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_20:49:59] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_20:54:46] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_20:54:46] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-20_20:54:46] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_20:54:46] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_21:02:33] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_21:02:34] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_21:02:34] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_21:02:34] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_21:05:54] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_21:05:54] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_21:05:54] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_21:05:54] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_21:13:56] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_21:13:56] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_21:13:56] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_21:13:56] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_21:20:51] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_21:20:52] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_21:20:52] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_21:20:52] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_21:32:47] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_21:32:47] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_21:32:47] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_21:32:47] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_22:07:00] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:02] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:04] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:05] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:07] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:09] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:15] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:17] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:20] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:07:30] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_22:09:42] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-20_22:32:29] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_22:32:29] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_22:32:29] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_22:32:29] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_22:52:49] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_22:52:50] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_22:52:50] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_22:52:50] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_22:59:50] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_22:59:50] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_22:59:50] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_22:59:50] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_23:21:01] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_23:21:02] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_23:21:02] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_23:21:02] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-20_23:30:31] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:33] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:35] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:37] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:41] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:43] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:48] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:50] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:30:51] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:31:01] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-20_23:33:35] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-20_23:48:45] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-20_23:48:45] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-20_23:48:45] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-20_23:48:45] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_00:01:15] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_00:01:15] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-21_00:01:15] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_00:01:15] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_00:11:04] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_00:11:04] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-21_00:11:04] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_00:11:04] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_00:26:51] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:26:53] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:26:55] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:26:57] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:27:01] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:27:03] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:27:09] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:27:10] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:27:11] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:27:22] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:32:18] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_00:32:18] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-21_00:32:18] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_00:32:18] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_00:35:56] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:35:58] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:00] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:02] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:04] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:06] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:11] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:13] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:14] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:36:27] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_00:38:29] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_01:58:24] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_01:58:24] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-21_01:58:24] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_01:58:24] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_02:01:31] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:33] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:34] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:36] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:38] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:40] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:47] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:49] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:01:50] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:02:00] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:04:06] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_02:06:14] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:06:16] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:06:18] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:06:20] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:06:22] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:28] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:30] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:31] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:33] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:35] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:37] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:43] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:45] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:46] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:13:57] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:15:04] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_02:22:26] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_02:22:26] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-21_02:22:26] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_02:22:26] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_02:26:08] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:11] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:14] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:17] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:20] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:23] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:36] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:41] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:26:43] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:27:00] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_02:29:31] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_02:36:56] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:36:59] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:02] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:06] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:09] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:12] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:25] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:29] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:34] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:38] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:40] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:37:56] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_02:39:23] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-21_02:56:39] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_02:56:39] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-21_02:56:39] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_02:56:39] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_03:01:19] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:22] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:25] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:28] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:32] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:34] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:48] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:52] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:01:57] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:02:01] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:02:04] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:02:20] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_03:03:44] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-21_03:05:28] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:31] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:33] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:37] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:40] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:43] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:55] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:05:59] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:06:01] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:06:17] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_03:07:48] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_03:14:50] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:14:53] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:14:56] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:14:59] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:02] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:05] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:18] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:22] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:27] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:29] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:15:45] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
+[INFO 2024-12-21_03:17:12] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
+[INFO 2024-12-21_03:19:26] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:29] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:32] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:35] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:38] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:41] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:54] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:19:59] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:20:04] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:20:06] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:20:23] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-21_03:21:51] {'name': ['Project with slug "iotsolution-grpc-3f10" already exists.']}
+[INFO 2024-12-21_03:35:08] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:11] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:14] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:17] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:20] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:33] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:38] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:40] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:35:53] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:36:02] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2024-12-21_03:37:29] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[INFO 2024-12-21_03:41:01] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:04] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:07] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:11] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:14] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:17] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:30] RESTAPI producing DAG in tml_read_RESTAPI_step_3_kafka_producetotopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:35] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:39] Preprocessing2 DAG in tml_system_step_4b_kafka_preprocess_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:42] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:41:59] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_03:43:27] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-21_14:13:48] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_14:13:48] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-21_14:13:48] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_14:13:48] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_14:14:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_14:15:06] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-21_14:15:22] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:25] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:27] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:29] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:32] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:35] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:45] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:50] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:15:51] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:16:05] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:31:21] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_14:31:21] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-21_14:31:21] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_14:31:21] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_14:31:51] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2024-12-21_14:32:39] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2024-12-21_14:32:55] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:00] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:03] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:07] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:10] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:13] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:24] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:28] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:30] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:33:45] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:48:34] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_14:48:34] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-21_14:48:34] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_14:48:34] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_14:49:04] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:49:47] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_14:50:04] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:07] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:09] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:13] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:16] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:19] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:30] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:34] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:36] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_14:50:51] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:55:35] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_16:55:36] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-21_16:55:36] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_16:55:36] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_16:55:58] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:06] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-21_16:56:41] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:43] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:45] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:46] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:48] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:50] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:55] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:58] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:56:59] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_16:57:09] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:15:37] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_18:15:37] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-21_18:15:37] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_18:15:37] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_18:16:00] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-21_18:16:08] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-21_18:16:43] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:16:46] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:16:48] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:16:50] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:16:51] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:16:53] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:16:58] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:17:00] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:17:01] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:17:11] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-21_18:20:40] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-21_18:20:40] TML Solution Studio: Docker Login Status: Error response from daemon: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2024-12-21_18:20:40] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+user.email=smaurice101@email
+user.name=smaurice101
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2024-12-21_18:20:40] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2024-12-21_18:21:02] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
