@@ -534,6 +534,7 @@ def optimizecontainer(cname,sname):
 
     i=0
     exists=0
+    ret=-1
     while True:
       i = i + 1  
       time.sleep(5)          
