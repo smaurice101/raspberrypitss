@@ -2648,3 +2648,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-22_22:38:02] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
 [INFO 2024-12-22_22:38:04] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
 [INFO 2024-12-22_22:38:05] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
+[INFO 2024-12-22_22:38:07] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-restapi-3f10.py
