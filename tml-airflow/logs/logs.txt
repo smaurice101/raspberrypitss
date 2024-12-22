@@ -2359,3 +2359,5 @@ user.email=smaurice101@email
 user.name=smaurice101
 [INFO 2024-12-22_18:54:18] TML Solution Studio: Github Remote Status: 
 [INFO 2024-12-22_18:54:36] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-22_18:54:53] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-22_18:55:32] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
