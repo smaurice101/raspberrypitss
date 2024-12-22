@@ -534,7 +534,6 @@ def optimizecontainer(cname,sname):
 
     i=0
     exists=0
-    ret=-1
     while True:
       i = i + 1  
       time.sleep(5)          
@@ -544,24 +543,15 @@ def optimizecontainer(cname,sname):
          break
         
       try:  
-        cname2="{}/{}-temp2:squashed".format(os.environ['DOCKERUSERNAME'], sname)  
-        print("cname2=",cname2)
+        cname2="{}/{}-temp2".format(os.environ['DOCKERUSERNAME'], sname)  
         ret=subprocess.check_output("docker ps -a | grep '{}' | wc -l".format(cname2), shell=True)        
-        ret=ret.strip() 
-        ret=ret.decode("utf-8")
-        ret=int(ret)
         if ret > 0:
           exists=1
         if (exists and ret==0):
           print("INFO: Container optimized")  
           break
 
-        print("in exists=",exists)
-        print("in ret=",ret)   
-            
       except Exception as e:
-         print("exists=",exists)
-         print("ret=",ret)   
          continue
             
     buf="docker image tag  {}sq:latest  {}".format(cname,cname)
