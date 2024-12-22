@@ -545,7 +545,10 @@ def optimizecontainer(cname,sname):
         
       try:  
         cname2="{}/{}sq:latest".format(os.environ['DOCKERUSERNAME'], cname)  
-        ret=subprocess.check_output("docker ps -a | grep '{}' | wc -l".format(cname2), shell=True)        
+        greps="docker ps -a | grep '{}' | wc -l".format(cname2)
+        print("greps=",greps)
+
+        ret=subprocess.check_output(greps, shell=True)        
         ret=ret.decode("utf-8")
         ret=ret.strip()
         ret=int(ret)            
