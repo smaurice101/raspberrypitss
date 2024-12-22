@@ -544,15 +544,12 @@ def optimizecontainer(cname,sname):
          break
         
       try:  
-        cname2="{}sq".format(cname)  
-        greps="docker ps -a | grep '{}' | wc -l".format(cname2)
-        print("greps=",greps)
-
+       # cname2="{}sq".format(cname)  
+        greps="docker ps"
         ret=subprocess.check_output(greps, shell=True)        
         ret=ret.decode("utf-8")
         ret=ret.strip()
-        ret=int(ret)            
-        if ret > 0:
+        if cname not in ret:
           break
         
         print("IN ret={},exists={}".format(ret,exists)) 
