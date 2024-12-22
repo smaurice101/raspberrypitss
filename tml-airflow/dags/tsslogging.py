@@ -552,6 +552,8 @@ def optimizecontainer(cname,sname):
           break
 
       except Exception as e:
+         print("exists=",exists)
+         print("ret=",ret)   
          continue
             
     buf="docker image tag  {}sq:latest  {}".format(cname,cname)
