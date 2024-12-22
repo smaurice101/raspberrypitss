@@ -552,9 +552,8 @@ def optimizecontainer(cname,sname):
         if cname not in ret:
           break
         
-        print("IN ret={},exists={}".format(ret,exists)) 
       except Exception as e:
-         print("ret={},exists={}".format(ret,exists)) 
+         print("ERROR: ",e)
          continue
             
     buf="docker image tag  {}sq:latest  {}".format(cname,cname)
