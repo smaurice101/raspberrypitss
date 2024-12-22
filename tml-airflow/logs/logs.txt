@@ -2625,3 +2625,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-22_22:15:50] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
 [INFO 2024-12-22_22:15:52] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
 [INFO 2024-12-22_22:15:53] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-iotsolution-grpc-3f10.py
+[INFO 2024-12-22_22:16:00] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-iotsolution-grpc-3f10.py
