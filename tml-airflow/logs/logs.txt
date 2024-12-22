@@ -2410,3 +2410,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-22_19:17:18] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 [ERROR 2024-12-22_19:17:37] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py: cannot access local variable 'ret' where it is not associated with a value
 [INFO 2024-12-22_19:17:51] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-22_19:19:16] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
