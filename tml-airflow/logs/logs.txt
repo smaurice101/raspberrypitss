@@ -2655,3 +2655,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-22_22:38:21] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
 [INFO 2024-12-22_22:38:31] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
 [INFO 2024-12-22_22:40:35] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-22_22:41:34] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
