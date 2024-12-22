@@ -556,6 +556,9 @@ def optimizecontainer(cname,sname):
           print("INFO: Container optimized")  
           break
 
+        print("in exists=",exists)
+        print("in ret=",ret)   
+            
       except Exception as e:
          print("exists=",exists)
          print("ret=",ret)   
