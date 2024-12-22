@@ -535,8 +535,10 @@ def optimizecontainer(cname,sname):
     i=0
     while True:
       i = i + 1  
-      time.sleep(1)     
-      if i > 90:
+      time.sleep(10)     
+      exists=0
+    
+      if i > 9:
          print("WARN: Unable to optimize container")
          break
         
