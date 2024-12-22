@@ -550,7 +550,7 @@ def optimizecontainer(cname,sname):
         ret=ret.strip()
         ret=int(ret)            
         if ret > 0:
-          brerak
+          break
         
         print("IN ret={},exists={}".format(ret,exists)) 
       except Exception as e:
