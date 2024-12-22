@@ -543,7 +543,7 @@ def optimizecontainer(cname,sname):
          break
         
       try:  
-        cname2="{}/{}-temp2".format(os.environ['DOCKERUSERNAME'], sname)  
+        cname2="{}/{}-temp2:squashed".format(os.environ['DOCKERUSERNAME'], sname)  
         ret=subprocess.check_output("docker ps -a | grep '{}' | wc -l".format(cname2), shell=True)        
         if ret > 0:
           exists=1
