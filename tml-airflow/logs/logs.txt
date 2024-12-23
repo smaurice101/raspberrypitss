@@ -3035,3 +3035,11 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-23_18:00:00] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_18:00:10] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_18:01:00] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-23_18:39:40] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2024-12-23_18:39:41] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2024-12-23_18:39:41] TML Solution Studio: Github Config Status: 
+[INFO 2024-12-23_18:39:41] TML Solution Studio: Github Remote Status: 
