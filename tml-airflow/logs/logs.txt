@@ -2880,3 +2880,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-23_03:48:14] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_03:48:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_03:49:16] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2024-12-23_04:01:07] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
