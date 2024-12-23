@@ -3150,3 +3150,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-23_22:19:23] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_22:19:24] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_22:19:26] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-23_22:19:32] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
