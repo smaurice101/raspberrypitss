@@ -2925,3 +2925,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-23_15:52:42] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_15:52:44] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_15:52:55] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+[ERROR 2024-12-23_15:53:45] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py: [Errno 2] No such file or directory: 'docker push maadsdocker/myawesometmlsolution-3f10-amd64'
