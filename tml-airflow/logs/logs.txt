@@ -2729,3 +2729,4 @@ branch.main.merge=refs/heads/main
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
 [INFO 2024-12-23_00:55:56] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
 [INFO 2024-12-23_00:55:57] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
+[INFO 2024-12-23_00:55:59] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
