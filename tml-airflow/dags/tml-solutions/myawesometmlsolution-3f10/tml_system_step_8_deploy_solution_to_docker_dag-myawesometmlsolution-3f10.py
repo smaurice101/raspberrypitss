@@ -79,8 +79,6 @@ def dockerit(**context):
          #v=subprocess.call("docker push {}".format(cname), shell=True) 
          proc=subprocess.Popen("docker push {}".format(cname), shell=True)
          time.sleep(3)   
-         out,err=proc.communicate(timeout=5)   
-         print("out={},err={}".format(out,err))
          proc.terminate()
          proc.wait()
 
