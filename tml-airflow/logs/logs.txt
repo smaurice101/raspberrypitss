@@ -3672,3 +3672,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-24_22:15:21] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2024-12-24_22:16:17] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
 [INFO 2024-12-24_22:17:32] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
+[INFO 2024-12-24_22:17:32] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-iotsolution-3f10.py
