@@ -3511,3 +3511,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-24_19:50:25] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-mytmlsolution2-3f10.py
 [INFO 2024-12-24_19:50:26] Visualization DAG in tml_system_step_7_kafka_visualization_dag-mytmlsolution2-3f10.py
 [INFO 2024-12-24_19:50:37] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-mytmlsolution2-3f10.py
+[INFO 2024-12-24_19:51:38] {'name': ['Project with slug "mytmlsolution2-3f10" already exists.']}
