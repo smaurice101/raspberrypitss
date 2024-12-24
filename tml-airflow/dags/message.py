@@ -1,3 +1,4 @@
+from airflow import DAG
 from airflow.decorators import dag, task
 
 # Instantiate your DAG
