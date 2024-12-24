@@ -3707,3 +3707,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2024-12-24_22:27:31] Visualization DAG in tml_system_step_7_kafka_visualization_dag-iotsolution-restapi-3f10.py
 [INFO 2024-12-24_22:27:42] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-restapi-3f10.py
 [INFO 2024-12-24_22:28:39] {'name': ['Project with slug "iotsolution-restapi-3f10" already exists.']}
+[INFO 2024-12-24_22:29:52] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-3f10.py
