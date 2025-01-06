@@ -4264,3 +4264,4 @@ Already up to date.
 [INFO 2025-01-06_14:32:42] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-tmlanotherproject-3f10.py
 [INFO 2025-01-06_14:32:45] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-tmlanotherproject-3f10.py
 [INFO 2025-01-06_14:32:47] Visualization DAG in tml_system_step_7_kafka_visualization_dag-tmlanotherproject-3f10.py
+[INFO 2025-01-06_14:33:05] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-tmlanotherproject-3f10.py
