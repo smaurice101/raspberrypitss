@@ -8,31 +8,29 @@ from airflow.sensors.external_task import ExternalTaskSensor
 import tsslogging
 import os
 from datetime import datetime
-
 import importlib
 from airflow.operators.python import (
     ExternalPythonOperator,
     PythonOperator
 )
-step1 = importlib.import_module("tml_system_step_1_getparams_dag")
-step2 = importlib.import_module("tml_system_step_2_kafka_createtopic_dag")
-step3 = importlib.import_module("tml_read_RESTAPI_step_3_kafka_producetotopic_dag")
-step4 = importlib.import_module("tml_system_step_4_kafka_preprocess_dag")
-step5 = importlib.import_module("tml_system_step_5_kafka_machine_learning_dag")
-step6 = importlib.import_module("tml_system_step_6_kafka_predictions_dag")
-step7 = importlib.import_module("tml_system_step_7_kafka_visualization_dag")
-step8 = importlib.import_module("tml_system_step_8_deploy_solution_to_docker_dag")
-step9 = importlib.import_module("tml_system_step_9_privategpt_qdrant_dag")
-step10 = importlib.import_module("tml_system_step_10_documentation_dag")
-
+step1 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_1_getparams_dag-tmlanotherproject-3f10")
+step2 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10")
+step3 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-tmlanotherproject-3f10")
+step4 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_4_kafka_preprocess_dag-tmlanotherproject-3f10")
+step5 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_5_kafka_machine_learning_dag-tmlanotherproject-3f10")
+step6 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_6_kafka_predictions_dag-tmlanotherproject-3f10")
+step7 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_7_kafka_visualization_dag-tmlanotherproject-3f10")
+step8 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_8_deploy_solution_to_docker_dag-tmlanotherproject-3f10")
+step9 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_9_privategpt_qdrant_dag-tmlanotherproject-3f10")
+step10 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_10_documentation_dag-tmlanotherproject-3f10")
 
 with DAG(
-    dag_id="solution_preprocessing_ml_restapi_dag",
+    dag_id="solution_preprocessing_ml_dag",
     start_date=datetime(2023, 1, 1),
     schedule=None,
 ) as dag:
   start_task = BashOperator(
-    task_id="start_tasks_tml_preprocessing_ml_restapi",
+    task_id="start_tasks_tml_preprocessing_ml",
     bash_command="echo 'Start task'",
   )
 # STEP 1: Get the Parameters
