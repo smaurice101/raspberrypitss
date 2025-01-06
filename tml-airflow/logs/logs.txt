@@ -4259,3 +4259,4 @@ Already up to date.
 [INFO 2025-01-06_14:32:27] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10.py
 [INFO 2025-01-06_14:32:28] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10.py
 [INFO 2025-01-06_14:32:29] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10.py
+[INFO 2025-01-06_14:32:30] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10.py
