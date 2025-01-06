@@ -13,25 +13,24 @@ from airflow.operators.python import (
     ExternalPythonOperator,
     PythonOperator
 )
-step1 = importlib.import_module("tml_system_step_1_getparams_dag")
-step2 = importlib.import_module("tml_system_step_2_kafka_createtopic_dag")
-step3 = importlib.import_module("tml_read_gRPC_step_3_kafka_producetotopic_dag")
-step4 = importlib.import_module("tml_system_step_4_kafka_preprocess_dag")
-step5 = importlib.import_module("tml_system_step_5_kafka_machine_learning_dag")
-step6 = importlib.import_module("tml_system_step_6_kafka_predictions_dag")
-step7 = importlib.import_module("tml_system_step_7_kafka_visualization_dag")
-step8 = importlib.import_module("tml_system_step_8_deploy_solution_to_docker_dag")
-step9 = importlib.import_module("tml_system_step_9_privategpt_qdrant_dag")
-step10 = importlib.import_module("tml_system_step_10_documentation_dag")
-
+step1 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_1_getparams_dag-tmlanotherproject-3f10")
+step2 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10")
+step3 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-tmlanotherproject-3f10")
+step4 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_4_kafka_preprocess_dag-tmlanotherproject-3f10")
+step5 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_5_kafka_machine_learning_dag-tmlanotherproject-3f10")
+step6 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_6_kafka_predictions_dag-tmlanotherproject-3f10")
+step7 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_7_kafka_visualization_dag-tmlanotherproject-3f10")
+step8 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_8_deploy_solution_to_docker_dag-tmlanotherproject-3f10")
+step9 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_9_privategpt_qdrant_dag-tmlanotherproject-3f10")
+step10 = importlib.import_module("tml-solutions.tmlanotherproject-3f10.tml_system_step_10_documentation_dag-tmlanotherproject-3f10")
 
 with DAG(
-    dag_id="solution_preprocessing_ai_grpc_dag_TEMPLATE_DO_NOT_USE",
+    dag_id="solution_preprocessing_ml_dag-tmlanotherproject-3f10",
     start_date=datetime(2023, 1, 1),
     schedule=None,
 ) as dag:
   start_task = BashOperator(
-    task_id="start_tasks_tml_preprocessing_ai_grpc",
+    task_id="start_tasks_tml_preprocessing_ml",
     bash_command="echo 'Start task'",
   )
 # STEP 1: Get the Parameters
@@ -59,25 +58,31 @@ with DAG(
       python_callable=step4.dopreprocessing,
       provide_context=True,
   )
-# STEP 7: Containerize the solution     
+# STEP 5: ML        
   sensor_E = PythonOperator(
+      task_id="step_5_solution_task_ml",
+      python_callable=step5.startml,
+      provide_context=True,
+  )
+# STEP 6: Predictions        
+  sensor_F = PythonOperator(
+      task_id="step_6_solution_task_prediction",
+      python_callable=step6.startpredictions,
+      provide_context=True,
+  )    
+    
+# STEP 7: Visualization the solution     
+  sensor_G = PythonOperator(
       task_id="step_7_solution_task_visualization",
       python_callable=step7.startstreamingengine,
       provide_context=True,
   )
 # STEP 8: Containerize the solution        
-  sensor_F = PythonOperator(
+  sensor_H = PythonOperator(
       task_id="step_8_solution_task_containerize",
       python_callable=step8.dockerit,
       provide_context=True,      
-      op_args=['ai'],
   )
-# STEP 9: PrivateGPT      
-  sensor_I = PythonOperator(
-      task_id="step_9_solution_task_ai",
-      python_callable=step9.startprivategpt,
-      provide_context=True,      
-  )       
   start_task2 = BashOperator(
     task_id="Starting_Docker",
     bash_command="echo 'Start task Completed'",
@@ -91,10 +96,10 @@ with DAG(
     bash_command="echo 'Start task Completed'",
   )
 # STEP 10: Document the solution
-  sensor_G = PythonOperator(
+  sensor_J = PythonOperator(
       task_id="step_10_solution_task_document",
       python_callable=step10.generatedoc,
       provide_context=True,      
   )
 
-  start_task >> sensor_A >> sensor_B  >> start_task4 >> [sensor_I, sensor_C, sensor_D, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
+  start_task >> sensor_A >> sensor_B >> start_task4 >> [sensor_C, sensor_D, sensor_E, sensor_F, sensor_G] >> start_task2 >> sensor_H >> start_task3 >> sensor_J

@@ -4245,3 +4245,13 @@ Already up to date.
 [INFO 2025-01-06_14:29:47] TML Solution Studio: DELETE initiated for project tmlanotherproject-3f10 by smaurice101
 [INFO 2025-01-06_14:29:47] TML Solution Studio: GIT REPO tmlanotherproject-3f10 DELETED by smaurice101
 [INFO 2025-01-06_14:29:47] TML Solution Studio: LOCAL DOCKER IMAGE tmlanotherproject-3f10-amd64 DELETED by maadsdocker
+[INFO 2025-01-06_14:30:31] TML Solution Studio: TML Project Creation: Creating new TML project: /raspberrypitss/tml-airflow/dags/tml-solutions/tmlanotherproject-3f10
+[INFO 2025-01-06_14:30:31] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2025-01-06_14:31:11] TML Solution Studio: Starting Git commit process for project: tmlanotherproject-3f10
+[INFO 2025-01-06_14:31:11] TML Solution Studio: git commit -a Status for project tmlanotherproject-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2025-01-06_14:31:12] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2025-01-06_14:31:12] TML Solution Studio: git add . Status: 
+[INFO 2025-01-06_14:31:12] TML Solution Studio: git commit -a Status for project tmlanotherproject-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2025-01-06_14:31:12] TML Solution Studio: git push Status for project tmlanotherproject-3f10: Everything up-to-date
