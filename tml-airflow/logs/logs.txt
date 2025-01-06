@@ -4229,3 +4229,6 @@ Already up to date.
 [INFO 2025-01-06_13:54:01] TML Solution Studio: git add . Status: 
 [INFO 2025-01-06_13:54:01] TML Solution Studio: git commit -a Status for project tmlanotherproject-3f10: fatal: paths 'project ...' with -a does not make sense
 [INFO 2025-01-06_13:54:01] TML Solution Studio: git push Status for project tmlanotherproject-3f10: Everything up-to-date
+[INFO 2025-01-06_14:17:46] TML Solution Studio: DELETE initiated for project tmlanotherproject-3f10 by smaurice101
+[INFO 2025-01-06_14:17:46] TML Solution Studio: GIT REPO tmlanotherproject-3f10 DELETED by smaurice101
+[INFO 2025-01-06_14:17:46] TML Solution Studio: LOCAL DOCKER IMAGE tmlanotherproject-3f10-amd64 DELETED by maadsdocker
