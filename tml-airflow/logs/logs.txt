@@ -4256,3 +4256,4 @@ Already up to date.
 [INFO 2025-01-06_14:31:12] TML Solution Studio: git commit -a Status for project tmlanotherproject-3f10: fatal: paths 'project ...' with -a does not make sense
 [INFO 2025-01-06_14:31:12] TML Solution Studio: git push Status for project tmlanotherproject-3f10: Everything up-to-date
 [INFO 2025-01-06_14:32:26] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10.py
+[INFO 2025-01-06_14:32:27] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-tmlanotherproject-3f10.py
