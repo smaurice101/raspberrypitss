@@ -2457,7 +2457,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 				  predictionvalue = Number(predictionvalue);
 				//  datainchart.push(predictionvalue)
 
-				 arr=[createdon,winstart,winend,msgiddatastr,processvariable,processtype,predictionvalue,totalmessages,kafkakey,offset,partition];
+				 arr=[createdon,winstart,winend,messagebuf,processvariable,processtype,predictionvalue,totalmessages,kafkakey,offset,partition];
 				 if (mainkafkatopic=="iot-preprocess"){
 		     	  dataintable.push(arr)		          
 				  }
