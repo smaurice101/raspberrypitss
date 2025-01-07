@@ -18,7 +18,7 @@ default_args = {
   'owner' : 'Sebastian Maurice',  # <<< *** Change as needed      
   'enabletls': '1', # <<< *** 1=connection is encrypted, 0=no encryption
   'microserviceid' : '',  # <<< *** leave blank
-  'producerid' : 'iotsolution',   # <<< *** Change as needed   
+  'producerid' : 'cybersecuritysolution',   # <<< *** Change as needed   
   'raw_data_topic' : 'iot-raw-data', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
   'preprocess_data_topic' : 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
   'maxrows' : '800', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
@@ -36,16 +36,16 @@ default_args = {
   'tmlfilepath' : '', # leave blank
   'usemysql' : '1', # do not modify
   'streamstojoin' : '', # leave blank
-  'identifier' : 'IoT device performance and failures', # <<< ** Change as needed
-  'preprocesstypes' : 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'identifier' : 'TML Entity Based Cybersecurity Detection', # <<< ** Change as needed
+  'preprocesstypes' : 'anomprob,trend,avg,min,max', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
   'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
-  'jsoncriteria' : 'uid=metadata.dsn,filter:allrecords~\
-subtopics=metadata.property_name~\
-values=datapoint.value~\
-identifiers=metadata.display_name~\
-datetime=datapoint.updated_at~\
-msgid=datapoint.id~\
-latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'jsoncriteria' : 'uid=_source.destination.address|_source.network.direction|_source.source.address,filter:allrecords~\
+subtopics=_source.destination.bytes,_source.destination.packets,_source.source.bytes,_source.source.packets,_source.network.bytes,_source.network.packets~\
+values=_source.destination.bytes,_source.destination.packets,_source.source.bytes,_source.source.packets,_source.network.bytes,_source.network.packets~\
+identifiers=_source.destination.geo.city_name,_source.destination.port,_source.source.geo.city_name,_source.source.port,_source.network.direction,_source.related.ip~\
+datetime=_source.@timestamp~\
+msgid=_id~\
+latlong=_source.source.geo.location.lat:_source.source.geo.location.lon' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
