@@ -4460,3 +4460,4 @@ Already up to date.
 [INFO 2025-01-07_16:39:45] TML Solution Studio: git add . Status: 
 [INFO 2025-01-07_16:39:45] TML Solution Studio: git commit -a Status for project tml-entity-cybersecurity-sourceip-destinationip-network-3f10: fatal: paths 'us_dod_disa_3_entities_sourceip_destinationip_network-3f10 ...' with -a does not make sense
 [INFO 2025-01-07_16:39:45] TML Solution Studio: git push Status for project tml-entity-cybersecurity-sourceip-destinationip-network-3f10: Everything up-to-date
+[INFO 2025-01-07_17:58:27] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
