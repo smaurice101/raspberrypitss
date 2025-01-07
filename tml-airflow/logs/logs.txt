@@ -4435,3 +4435,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-07_16:07:28] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
 [INFO 2025-01-07_16:07:34] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
 [INFO 2025-01-07_16:07:50] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
+[INFO 2025-01-07_16:07:54] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
