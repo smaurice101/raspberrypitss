@@ -37,7 +37,7 @@ default_args = {
   'usemysql' : '1', # do not modify
   'streamstojoin' : '', # leave blank
   'identifier' : 'TML Entity Based Cybersecurity Detection', # <<< ** Change as needed
-  'preprocesstypes' : 'anomprob,trend,avg,min,max,variance,skewness,kurtosis,sum,outliers,mad,gm', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'preprocesstypes' : 'anomprob,trend,avg,min,max,skewness,kurtosis,sum,outliers,mad,gm', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
   'pathtotmlattrs' : 'oem=_source.source.address,lat=_source.source.geo.location.lat,long=_source.source.geo.location.lon,location=_source.source.as.organization.name,identifier=_source.destination.address', # Change as needed     
   'jsoncriteria' : 'uid=_source.destination.address|_source.network.direction|_source.source.address,filter:allrecords~\
 subtopics=_source.destination.bytes,_source.destination.packets,_source.source.bytes,_source.source.packets,_source.network.bytes,_source.network.packets~\
