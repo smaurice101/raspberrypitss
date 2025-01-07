@@ -2372,6 +2372,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 
 				 msgiddata=jsondata.TopicReads[j].MsgIdData;
 				 if (msgiddata){
+                 messagebuf="";    
 				 msgiddatastr = msgiddata.join();
 				 msgjoined=jsondata.TopicReads[j].Identifier; // get the Mainuid
 	 		      idkeyarr = msgjoined.split("~");	
@@ -2382,9 +2383,21 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 					 if (vbuf.includes("mainuid=")){
 						 dsn = vbuf.split("=")[1];	
 						 dsn = dsn.substring(0,dsn.length-1);
-						 msgiddatastr = "DSN: " + dsn + "---DATAPOINT IDs--->" + msgiddatastr; 
-						 break;
+						 messagebuf = "ENTITY: " + dsn + ";" + messagebuf; 
+						 //break;
 					 }
+					 if (vbuf.includes("oem:")){
+						 dsn = vbuf.split(":")[1];	
+						 dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_IP: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }
+					 if (vbuf.includes("identifier:")){
+						 dsn = vbuf.split(":")[1];	
+						 dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "DESTINATION_IP: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }                        
 				 
 				  }
 				 }
