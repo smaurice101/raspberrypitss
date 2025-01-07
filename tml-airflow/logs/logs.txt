@@ -4450,3 +4450,13 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-07_16:34:55] Visualization DAG in tml_system_step_7_kafka_visualization_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
 [INFO 2025-01-07_16:35:09] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
 [INFO 2025-01-07_16:36:35] {'name': ['Project with slug "us-dod-disa-3-entities-sourceip-destinationip-network-3f10" already exists.']}
+[INFO 2025-01-07_16:39:09] TML Solution Studio: TML Project Creation: Copying old project : us_dod_disa_3_entities_sourceip_destinationip_network-3f10  ---> To create new project: /raspberrypitss/tml-airflow/dags/tml-solutions/tml-entity-cybersecurity-sourceip-destinationip-network-3f10
+[INFO 2025-01-07_16:39:09] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2025-01-07_16:39:45] TML Solution Studio: Starting Git commit process for project: tml-entity-cybersecurity-sourceip-destinationip-network-3f10
+[INFO 2025-01-07_16:39:45] TML Solution Studio: git commit -a Status for project tml-entity-cybersecurity-sourceip-destinationip-network-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2025-01-07_16:39:45] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2025-01-07_16:39:45] TML Solution Studio: git add . Status: 
+[INFO 2025-01-07_16:39:45] TML Solution Studio: git commit -a Status for project tml-entity-cybersecurity-sourceip-destinationip-network-3f10: fatal: paths 'us_dod_disa_3_entities_sourceip_destinationip_network-3f10 ...' with -a does not make sense
+[INFO 2025-01-07_16:39:45] TML Solution Studio: git push Status for project tml-entity-cybersecurity-sourceip-destinationip-network-3f10: Everything up-to-date
