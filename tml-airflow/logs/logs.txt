@@ -4438,3 +4438,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-07_16:07:54] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
 [INFO 2025-01-07_16:07:56] Visualization DAG in tml_system_step_7_kafka_visualization_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
 [INFO 2025-01-07_16:08:11] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-us_dod_disa_3_entities_sourceip_destinationip_network-3f10.py
+[INFO 2025-01-07_16:09:31] {'name': ['Project with slug "us-dod-disa-3-entities-sourceip-destinationip-network-3f10" already exists.']}
