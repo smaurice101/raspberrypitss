@@ -4538,3 +4538,4 @@ Already up to date.
 [INFO 2025-01-08_00:41:17] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_00:42:47] {'name': ['Project with slug "tml-entity-cybersecurity-sourceip-destinationip-network-3f10" already exists.']}
 [INFO 2025-01-08_01:38:25] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
+[INFO 2025-01-08_01:38:26] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
