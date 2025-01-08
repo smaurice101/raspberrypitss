@@ -4557,3 +4557,4 @@ Already up to date.
 [INFO 2025-01-08_13:19:11] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_13:19:15] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_13:19:17] Visualization DAG in tml_system_step_7_kafka_visualization_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
+[INFO 2025-01-08_13:19:33] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
