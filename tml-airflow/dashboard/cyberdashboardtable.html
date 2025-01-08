@@ -381,7 +381,7 @@ function image(thetype,mess) {
 					 
 					 if (vbuf.includes("mainuid=")){
 						 dsn = vbuf.split("=")[1];	
-						 dsn = dsn.substring(0,dsn.length-1);
+						// dsn = dsn.substring(0,dsn.length-1);
 						 messagebuf = "ENTITY: " + dsn + ";" + messagebuf; 
 						 //break;
 					 }
