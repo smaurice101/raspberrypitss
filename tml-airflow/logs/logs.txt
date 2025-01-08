@@ -4531,3 +4531,4 @@ Already up to date.
 [INFO 2025-01-08_00:40:53] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_00:40:54] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_00:40:55] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
+[INFO 2025-01-08_00:40:56] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
