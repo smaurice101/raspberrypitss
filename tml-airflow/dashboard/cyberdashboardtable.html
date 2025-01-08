@@ -382,39 +382,39 @@ function image(thetype,mess) {
 					 if (vbuf.includes("mainuid=")){
 						 dsn = vbuf.split("=")[1];	
 						// dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "<b><font color=red size=5>ENTITY: " + dsn + "</font></b>;" + messagebuf; 
+						 messagebuf = "<b><font color=red size=3>ENTITY: " + dsn + "</font></b>;" + messagebuf; 
 						 //break;
 					 }
 					 if (vbuf.includes("oem:")){
 						 dsn = vbuf.split(":")[1];	
 						// dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "SOURCE_IP: " + dsn + ";" + messagebuf;
+						 messagebuf = "<b>SOURCE_IP:</b> " + dsn + ";" + messagebuf;
 					//	 break;
 					 }
 					 if (vbuf.includes("identifier:") && !vbuf.includes("Joinedidentifiers:")){
 						 dsn = vbuf.split(":")[1];	
 						 dsn2 = dsn.split(",")[0];	                        
 					//	 dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "DESTINATION_IP: " + dsn2 + ";" + messagebuf;
+						 messagebuf = "<b>DESTINATION_IP:</b> " + dsn2 + ";" + messagebuf;
                          //console.log("Vbuf=",vbuf);
 					//	 break;
 					 }                        
 					 if (vbuf.includes("location:")){
 						 dsn = vbuf.split(":")[1];	
 						 //dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "SOURCE_GEO: " + dsn + ";" + messagebuf;
+						 messagebuf = "<b>SOURCE_GEO:</b> " + dsn + ";" + messagebuf;
 					//	 break;
 					 }                        
          			 if (vbuf.includes("lat:")){
 						 dsn = vbuf.split(":")[1];	
 						 //dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "SOURCE_LAT: " + dsn + ";" + messagebuf;
+						 messagebuf = "<b>SOURCE_LAT:</b> " + dsn + ";" + messagebuf;
 					//	 break;
 					 }                        
          			 if (vbuf.includes("long:")){
 						 dsn = vbuf.split(":")[1];	
 						 //dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "SOURCE_LONG: " + dsn + ";" + messagebuf;
+						 messagebuf = "<b>SOURCE_LONG:</b> " + dsn + ";" + messagebuf;
 					//	 break;
 					 }                        
                         
