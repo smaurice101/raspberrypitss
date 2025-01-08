@@ -1042,9 +1042,9 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 	    			mainmsg = mainmsg + "<b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + "<br>At: " + tlabel + "<br>";
 				}else{
 					if (typerisk < RISKTHRESH*100){
-     				   mainmsg = mainmsg + "<b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + " (" + typerisk + "%)<br>At: " + tlabel + "<br>";  
+     				   mainmsg = mainmsg + "<b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + " (" + typerisk + ")<br>At: " + tlabel + "<br>";  
 					}else{
-     				   mainmsg = mainmsg + "<font color=red><b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + " (" + typerisk + "%)<br>At: " + tlabel + "</font><br>";  
+     				   mainmsg = mainmsg + "<font color=red><b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + " (" + typerisk + ")<br>At: " + tlabel + "</font><br>";  
 					}
 				}
 
