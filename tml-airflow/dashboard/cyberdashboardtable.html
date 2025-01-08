@@ -370,9 +370,47 @@ function image(thetype,mess) {
                       timeend = winend;
 
                       msgiddata = jsondata.TopicReads[j].MsgIdData;
-                      if (msgiddata) {
-                          msgiddatastr = msgiddata.join();
-                      }
+				 if (msgiddata){
+                 messagebuf="";    
+				 msgiddatastr = msgiddata.join();
+				 msgjoined=jsondata.TopicReads[j].Identifier; // get the Mainuid
+	 		      idkeyarr = msgjoined.split("~");	
+					for (id in idkeyarr){
+					 vbuf = idkeyarr[id];
+				//	 console.log("vbuf===",vbuf);
+					 
+					 if (vbuf.includes("mainuid=")){
+						 dsn = vbuf.split("=")[1];	
+						 dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "ENTITY: " + dsn + ";" + messagebuf; 
+						 //break;
+					 }
+					 if (vbuf.includes("oem:")){
+						 dsn = vbuf.split(":")[1];	
+						// dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_IP: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }
+					 if (vbuf.includes("identifier:") && !vbuf.includes("Joinedidentifiers:")){
+						 dsn = vbuf.split(":")[1];	
+						 dsn2 = dsn.split(",")[0];	                        
+					//	 dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "DESTINATION_IP: " + dsn2 + ";" + messagebuf;
+                         console.log("Vbuf=",vbuf);
+					//	 break;
+					 }                        
+					 if (vbuf.includes("location:")){
+						 dsn = vbuf.split(":")[1];	
+						 //dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_GEO: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }                        
+                        
+				 
+				  }
+				 }
+                      
+                      
                       try {
                           processvariable = jsondata.TopicReads[j].Identifier;
                           processvariable = processvariable.split("~")[0];
@@ -398,7 +436,7 @@ function image(thetype,mess) {
                       predictionvalue = Number(predictionvalue);
                       //  datainchart.push(predictionvalue)
 
-                      arr = [createdon, winstart, winend, msgiddatastr, processvariable, processtype, predictionvalue, totalmessages, kafkakey, offset, partition];
+                      arr = [createdon, winstart, winend, messagebuf, processvariable, processtype, predictionvalue, totalmessages, kafkakey, offset, partition];
                       dataintable.push(arr)
                       rownum++;
 
