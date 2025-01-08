@@ -758,8 +758,9 @@ function addHeatdata(jsondata) {
 
 		topic = jsondata.TopicReads[j].Topic;
 		var xvalue = "";
-
-		anomaly = jsondata.TopicReads[j].hyperprediction;
+        anomaly = 0.3;
+                             
+		hypervalue = jsondata.TopicReads[j].hyperprediction;
 		generated = jsondata.TopicReads[j].TimeStamp;
 		winstarttime = jsondata.TopicReads[j].WindowStartTime;
 		winendtime = jsondata.TopicReads[j].WindowEndTime;
@@ -875,14 +876,13 @@ function addHeatdata(jsondata) {
                              
                              
 
-			if (xvalue != "" && Number(anomaly) > .3) {				
+			if (xvalue != "" && preprocesstype == "AnomProb") {				
 				retbuf = type + "=" + typename + "=" + anomaly + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
 				mainheattablemap.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				mainhosts.push(loghost);
 
-			}
-			  if ((preprocesstype == "Max" || preprocesstype == "Avg") && Number(xvalue) > MINTHRESH){
-				retbuf = type + "=" + typename + "=" + anomaly + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
+			}else{
+   				retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
 				piechartdata.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				piehosts.push(loghost);
 			  }
