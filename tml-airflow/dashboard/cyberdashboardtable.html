@@ -382,7 +382,7 @@ function image(thetype,mess) {
 					 if (vbuf.includes("mainuid=")){
 						 dsn = vbuf.split("=")[1];	
 						// dsn = dsn.substring(0,dsn.length-1);
-						 messagebuf = "ENTITY: " + dsn + ";" + messagebuf; 
+						 messagebuf = "<b><font color=red size=5>ENTITY: " + dsn + "</font></b>;" + messagebuf; 
 						 //break;
 					 }
 					 if (vbuf.includes("oem:")){
