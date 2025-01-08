@@ -2392,7 +2392,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 						 messagebuf = "SOURCE_IP: " + dsn + ";" + messagebuf;
 					//	 break;
 					 }
-					 if (vbuf.includes("identifier:")){
+					 if (vbuf.includes("identifier:") && !vbuf.includes("Joinedidentifiers:")){
 						 dsn = vbuf.split(":")[1];	
 						 dsn2 = dsn.split(",")[0];	                        
 					//	 dsn = dsn.substring(0,dsn.length-1);
