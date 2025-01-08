@@ -1035,7 +1035,7 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 				}
 				
 				labelarr.push(Number(ca2[2]));
-				typerisk = (Number(ca2[2])*100).toFixed(2);
+				typerisk = (Number(ca2[2])).toFixed(2);
 				if (xlabel=="pingStatus" && pvalue==0){
 					pvalue="SUCCESS";
 	    			mainmsg = mainmsg + "<b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + "<br>At: " + tlabel + "<br>";
@@ -1043,7 +1043,7 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 					pvalue="FAILURE";
 	    			mainmsg = mainmsg + "<b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + "<br>At: " + tlabel + "<br>";
 				}else{
-					if (typerisk < RISKTHRESH*100){
+					if (typerisk < RISKTHRESH){
      				   mainmsg = mainmsg + "<b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + " (" + typerisk + ")<br>At: " + tlabel + "<br>";  
 					}else{
      				   mainmsg = mainmsg + "<font color=red><b>" + xlabel + " (" + ptype + ")</b>:<br>" + pvalue + " (" + typerisk + ")<br>At: " + tlabel + "</font><br>";  
