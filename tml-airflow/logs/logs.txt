@@ -4563,3 +4563,4 @@ Already up to date.
 [INFO 2025-01-08_20:42:29] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_20:42:29] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-08_20:42:30] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
+[INFO 2025-01-08_20:42:32] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
