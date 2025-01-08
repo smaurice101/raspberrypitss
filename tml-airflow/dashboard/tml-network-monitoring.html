@@ -868,25 +868,15 @@ function addHeatdata(jsondata) {
 				}
 
 			}
-            
-//            if(Number(nummessages) < MINMESSAGECOUNT){
-  //               	anomaly = 0.3;
-    //                computedanomaly=0.3;
-                    ///hypervalue=0.3;
-      //         }
-            //console.log("Number of message=", Number(nummessages)); 
-            //console.log("anomaly=", Number(anomaly));                
-                             
+                                         
                              
 
-//			if (xvalue != "" ) {				
 				retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly + "=nummess=" + nummessages;
 				mainheattablemap.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				mainhosts.push(loghost);
 
 				piechartdata.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				piehosts.push(loghost);
-  //           }                
 			  
 
 		}
