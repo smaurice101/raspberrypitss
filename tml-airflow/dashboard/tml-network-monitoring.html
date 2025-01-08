@@ -1048,7 +1048,9 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 					
 				}
 				
-				labelarr.push(Number(ca2[2]));
+				//labelarr.push(Number(ca2[2]));
+				labelarr.push(anomalyrisk);
+                                                                                        
 				typerisk = (Number(ca2[2])).toFixed(2);
 				if (xlabel=="pingStatus" && pvalue==0){
 					pvalue="SUCCESS";
