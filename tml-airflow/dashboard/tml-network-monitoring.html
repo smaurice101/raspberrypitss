@@ -802,7 +802,7 @@ function addHeatdata(jsondata) {
 		if (loghost != "undefined" && loghost != "") {
 			xvalue = hypervalue;
 			////////////////////////////////////////////COMPUTE RISK //////////////////////
-			if (Number(anomaly) >= RISKTHRESH && preprocesstype == "AnomProb") {
+			if (Number(xvalue) >= RISKTHRESH && preprocesstype == "AnomProb") {
 		//		if (preprocesstype == "AnomProb") {
 			
 				riskhostsanomaly.push(loghost);
