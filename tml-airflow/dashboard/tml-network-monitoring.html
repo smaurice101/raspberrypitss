@@ -770,8 +770,8 @@ function addHeatdata(jsondata) {
 		idkeyarr = jbuf.split("~");
         console.log("jbuf=",jbuf);
                              
-		let type = idkeyarr[0];
-		let typename = idkeyarr[3].split(",")[2].split(":")[1];
+		let type = "SUBTOPIC";
+		let typename = idkeyarr[0];
 
 		for (id in idkeyarr) {
 			vbuf = idkeyarr[id];
