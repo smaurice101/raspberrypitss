@@ -768,6 +768,8 @@ function addHeatdata(jsondata) {
 		preprocesstype = jsondata.TopicReads[j].Preprocesstype;
 
 		idkeyarr = jbuf.split("~");
+        console.log("jbuf=",jbuf);
+                             
 		let type = idkeyarr[0];
 		let typename = idkeyarr[3].split(",")[2].split(":")[1];
 
