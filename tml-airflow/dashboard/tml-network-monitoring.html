@@ -1025,7 +1025,10 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 				rvalue = ca2[2];
                 nummess = ca2[7];                            
 				  anomalyrisk = ca2[5];
-				
+                                            
+				console.log("CA===",ca2);
+                                            
+                                            
 				if (ptype == "AnomProb"){
 				  anomalyarr.push(Number(pvalue));
 				  avganomalyrisk = avganomalyrisk + Number(pvalue);
