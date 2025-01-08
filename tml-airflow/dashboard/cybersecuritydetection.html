@@ -2400,7 +2400,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 					 }                        
 					 if (vbuf.includes("location:")){
 						 dsn = vbuf.split(":")[1];	
-						 dsn = dsn.substring(0,dsn.length-1);
+						 //dsn = dsn.substring(0,dsn.length-1);
 						 messagebuf = "SOURCE_GEO: " + dsn + ";" + messagebuf;
 					//	 break;
 					 }                        
