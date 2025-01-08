@@ -877,7 +877,7 @@ function addHeatdata(jsondata) {
                              
 
 			if (xvalue != "" && preprocesstype == "AnomProb") {				
-				retbuf = type + "=" + typename + "=" + anomaly + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
+				retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
 				mainheattablemap.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				mainhosts.push(loghost);
 
