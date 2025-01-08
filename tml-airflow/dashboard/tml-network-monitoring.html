@@ -762,6 +762,7 @@ function addHeatdata(jsondata) {
 		generated = jsondata.TopicReads[j].TimeStamp;
 		winstarttime = jsondata.TopicReads[j].WindowStartTime;
 		winendtime = jsondata.TopicReads[j].WindowEndTime;
+        nummessages = jsondata.TopicReads[j].Numberofmessages;
 
 		jbuf = jsondata.TopicReads[j].Identifier;
 		msgidarr = jsondata.TopicReads[j].MsgIdData;
