@@ -759,6 +759,7 @@ function addHeatdata(jsondata) {
 		topic = jsondata.TopicReads[j].Topic;
 		var xvalue = "";
         anomaly = 0.3;
+        computedanomaly = 0.3;
                              
 		hypervalue = jsondata.TopicReads[j].hyperprediction;
 		generated = jsondata.TopicReads[j].TimeStamp;
@@ -883,8 +884,6 @@ function addHeatdata(jsondata) {
 				mainheattablemap.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				mainhosts.push(loghost);
 
-			
-               	retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
 				piechartdata.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				piehosts.push(loghost);
              }                
