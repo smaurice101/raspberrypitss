@@ -805,7 +805,7 @@ function addHeatdata(jsondata) {
 			if (Number(xvalue) >= RISKTHRESH && preprocesstype == "AnomProb") {
 		//		if (preprocesstype == "AnomProb") {
 			
-				anomaly = Number(anomaly);
+				anomaly = Number(xvalue);
 				computedanomaly = Number(anomaly);
                 if ( computedanomaly >= RISKTHRESH){            
 				   riskhostsanomaly.push(loghost);
