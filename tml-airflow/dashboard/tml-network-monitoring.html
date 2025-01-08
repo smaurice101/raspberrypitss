@@ -878,16 +878,17 @@ function addHeatdata(jsondata) {
                              
                              
 
-			if (xvalue != "" && preprocesstype == "AnomProb") {				
+			if (xvalue != "" ) {				
 				retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
 				mainheattablemap.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				mainhosts.push(loghost);
 
-			}else{
-   				retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
+			
+               	retbuf = type + "=" + typename + "=" + Number(hypervalue) + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
 				piechartdata.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				piehosts.push(loghost);
-			  }
+             }                
+			  
 
 		}
 
