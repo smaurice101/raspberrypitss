@@ -1020,7 +1020,7 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 				ptype = ca2[3];
 				rvalue = ca2[2];
 				
-				if (ptype == "AnomProb" && (xlabel=="inboundpackets" || xlabel=="outboundpackets" )){
+				if (ptype == "AnomProb"){
 				  anomalyrisk = ca2[5];
 				  anomalyarr.push(Number(pvalue));
 				  avganomalyrisk = avganomalyrisk + Number(pvalue);
