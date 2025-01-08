@@ -779,13 +779,15 @@ function addHeatdata(jsondata) {
 
 			if (vbuf.includes("mainuid=")) {
 				loghost = vbuf.split("=")[1];
-				loghost = loghost.substring(0, loghost.length);
+                if(loghost.includes(".")){             
+				  loghost = loghost.substring(0, loghost.length);
 
-				if (msgidarr) {
+				  if (msgidarr) {
 					msgidarr = msgidarr.toString();
-				} else {
+			   	  } else {
 					msgidarr = "None";
-				}
+				  }
+               }              
 			}
 		}
 		 
