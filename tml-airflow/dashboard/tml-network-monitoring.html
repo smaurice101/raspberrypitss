@@ -1017,7 +1017,6 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 			let pvalue = ca[3];
 			//let anomalyvalue = ca[4];
 //            let anomalyrisk = 0.3;                         
-				  anomalyrisk = ca2[5];
 
 			if (hlabel == uhosts) {
 				let ca2 = valuebuf.split('=');
@@ -1025,6 +1024,7 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 				ptype = ca2[3];
 				rvalue = ca2[2];
                 nummess = ca2[7];                            
+				  anomalyrisk = ca2[5];
 				
 				if (ptype == "AnomProb"){
 				  anomalyarr.push(Number(pvalue));
