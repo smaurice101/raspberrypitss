@@ -807,7 +807,7 @@ function addHeatdata(jsondata) {
 			
 				anomaly = Number(xvalue);
 				computedanomaly = Number(anomaly);
-                if ( computedanomaly >= RISKTHRESH){            
+                if ( computedanomaly >= RISKTHRESH && Number(nummessages) >= MINMESSAGECOUNT){            
 				   riskhostsanomaly.push(loghost);
                 }
                              
@@ -1026,7 +1026,7 @@ function mainheatmapdata(uniquehosts, mainheattablemap, xaxis) {
 				ptype = ca2[3];
 				rvalue = ca2[2];
                 nummess = ca2[7];           
-                if (ptype == "AnomProb"){                            
+                if (ptype == "AnomProb" && Number(nummess) >= MINMESSAGECOUNT){                            
 				  anomalyrisk = Number(ca2[4]);
                 }else{
 				  anomalyrisk = Number(ca2[5]);                                            
