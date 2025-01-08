@@ -867,10 +867,13 @@ function addHeatdata(jsondata) {
 
 			}
             
-            console.log("Number of message=", Number(nummessages));                
             if(Number(nummessages) < MINMESSAGECOUNT){
                  	anomaly = 0.3;
                }
+            console.log("Number of message=", Number(nummessages)); 
+            console.log("anomaly=", Number(anomaly));                
+                             
+                             
 
 			if (xvalue != "" && Number(anomaly) > .3) {				
 				retbuf = type + "=" + typename + "=" + anomaly + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
