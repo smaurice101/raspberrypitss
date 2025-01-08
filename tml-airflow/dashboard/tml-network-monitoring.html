@@ -781,7 +781,7 @@ function addHeatdata(jsondata) {
 
 			if (vbuf.includes("mainuid=")) {
 				loghost = vbuf.split("=")[1];
-                if(loghost.includes(".") && Number(nummessages) >= MINMESSAGECOUNT){             
+                if(loghost.includes(".")){             
 				  loghost = loghost.substring(0, loghost.length);
 
 				  if (msgidarr) {
@@ -866,6 +866,10 @@ function addHeatdata(jsondata) {
 				}
 
 			}
+            
+            if(Number(nummessages) < MINMESSAGECOUNT){
+                 	anomaly = 0.3;
+               }
 
 			if (xvalue != "" && Number(anomaly) > .3) {				
 				retbuf = type + "=" + typename + "=" + anomaly + "=" + preprocesstype + "=" + xvalue + "=" + computedanomaly;
