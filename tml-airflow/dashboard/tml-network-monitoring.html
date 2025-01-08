@@ -800,7 +800,7 @@ function addHeatdata(jsondata) {
 		computedanomaly=0;
 		
 		if (loghost != "undefined" && loghost != "") {
-			xvalue = anomaly;
+			xvalue = hypervalue;
 			////////////////////////////////////////////COMPUTE RISK //////////////////////
 			if (Number(anomaly) >= RISKTHRESH && preprocesstype == "AnomProb") {
 		//		if (preprocesstype == "AnomProb") {
@@ -878,6 +878,7 @@ function addHeatdata(jsondata) {
 				piechartdata.set(loghost + "_" + generated + "_" + typename + "_" + xvalue + "_" + winstarttime + "_" + winendtime + "_" + msgidarr + "_" + anomaly + "_" + preprocesstype + "_" + type, retbuf);
 				piehosts.push(loghost);
 			  
+                             
 
 		}
 
