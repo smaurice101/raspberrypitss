@@ -1187,103 +1187,186 @@ function heatmaptable(datas, datatime) {
 	//}
 }
 
-function drawChart(jsondata, topic) {
+      function drawChart(jsondata, topic) {
 
-	if (jsondata) {
+          issues = "";
+          issuecount = 0;
+          if (jsondata) {
+              var text;
+              var val;
+              var createdon;
+              var winstart;
+              var winend;
+              var symptom;
+              var processtype;
+              var identifier;
+              var idarr;
+              var symptomcode;
+              var processbuf;
+              var normalvalue;
+              var processvariable = "";
+              var ubound;
+              var predictionvalue;
+              var totalmessages;
+              var kafkakey;
+              var offset;
+              var partition;
+              var arr;
+              var st;
+              var ed;
+              var et;
+              var vbuf;
+              var buf;
+              var vbuf2;
+              var varr;
+              var msgiddatastr = "";
+              var Maintopic;
+              let rownum = 0;
 
-		var text;
-		var val;
-		//  var partitionarr=[];
-		var createdon;
-		var winstart;
-		var winend;
+              for (j in jsondata.TopicReads) {
+                  //get the fields
+                  kafkakey = jsondata.TopicReads[j].kafkakey;
+                  //try {
+                  if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
+                      kafkakeyarr.push(kafkakey);
+                      createdon = jsondata.TopicReads[j].TimeStamp;
+                      maintimestamp = createdon;
+                      winstart = jsondata.TopicReads[j].WindowStartTime;
+                      timestart = winstart;
+                      winend = jsondata.TopicReads[j].WindowEndTime;
+                      timeend = winend;
 
-		var processtype;
+                      msgiddata = jsondata.TopicReads[j].MsgIdData;
+				 if (msgiddata){
+                 messagebuf="";    
+				 msgiddatastr = msgiddata.join();
+				 msgjoined=jsondata.TopicReads[j].Identifier; // get the Mainuid
+	 		      idkeyarr = msgjoined.split("~");	
+					for (id in idkeyarr){
+					 vbuf = idkeyarr[id];
+				//	 console.log("vbuf===",vbuf);
+					 
+					 if (vbuf.includes("mainuid=")){
+						 dsn = vbuf.split("=")[1];	
+						// dsn = dsn.substring(0,dsn.length-1);
+						// messagebuf = "<b><font color=red size=3>ENTITY: " + dsn + "</font></b>;" + messagebuf; 
+                         messagebuf = "ENTITY: " + dsn + ";" + messagebuf; 
 
-		var identifier;
-		var idarr;
-		//var topic;
-		var processbuf;
-		var normalvalue;
-		var processvariable = "";
-		var ubound;
-		var predictionvalue;
-		var totalmessages;
-		var kafkakey;
-		var offset;
-		var partition;
-		var arr;
-		var st;
-		var ed;
-		var et;
-		var vbuf;
-		var buf;
-		var vbuf2;
-		var varr;
-		var msgiddatastr = "";
-		var Maintopic;
+						 //break;
+					 }
+					 if (vbuf.includes("oem:")){
+						 dsn = vbuf.split(":")[1];	
+						// dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_IP: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }
+					 if (vbuf.includes("identifier:") && !vbuf.includes("Joinedidentifiers:")){
+						 dsn = vbuf.split(":")[1];	
+						 dsn2 = dsn.split(",")[0];	                        
+					//	 dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "DESTINATION_IP: " + dsn2 + ";" + messagebuf;
+                         //console.log("Vbuf=",vbuf);
+					//	 break;
+					 }                        
+					 if (vbuf.includes("location:")){
+						 dsn = vbuf.split(":")[1];	
+						 //dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_GEO: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }                        
+         			 if (vbuf.includes("lat:")){
+						 dsn = vbuf.split(":")[1];	
+						 //dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_LAT: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }                        
+         			 if (vbuf.includes("long:")){
+						 dsn = vbuf.split(":")[1];	
+						 //dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_LONG: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }                        
+                        
+				 
+				  }
+				 }
+                      
+                      
+                      try {
+                          processvariable = jsondata.TopicReads[j].Identifier;
+                          processvariable = processvariable.split("~")[0];
+                      } catch (e) {
+                          continue;
+                      }
+                      //}
 
-		let rownum = 0;
+                      processtype = jsondata.TopicReads[j].Preprocesstype;
 
-		for (j in jsondata.TopicReads) {
-			//get the fields
-			kafkakey = jsondata.TopicReads[j].kafkakey;
-			//try {
-			if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
-				kafkakeyarr.push(kafkakey);
+                      identifier = jsondata.TopicReads[j].Identifier;
+                      idarr = identifier.split("~");
+                      //symptomcode = idarr[0];
+                      topic = jsondata.TopicReads[j].Topic;
+                      Maintopic = jsondata.TopicReads[j].Maintopic;
+                      processbuf = "_preprocessed_" + processtype;
+                      predictionvalue = jsondata.TopicReads[j].hyperprediction;
+                      totalmessages = jsondata.TopicReads[j].Numberofmessages;
+                      kafkakey = jsondata.TopicReads[j].kafkakey;
+                      offset = jsondata.TopicReads[j].Offset;
+                      partition = jsondata.TopicReads[j].Partition;
 
-				createdon = jsondata.TopicReads[j].TimeStamp;
-				winstart = jsondata.TopicReads[j].WindowStartTime;
-				timestart = winstart;
-				winend = jsondata.TopicReads[j].WindowEndTime;
-				timeend = winend;
+                      predictionvalue = Number(predictionvalue);
+                      //  datainchart.push(predictionvalue)
 
-				processtype = jsondata.TopicReads[j].Preprocesstype;
+                      arr = [createdon, winstart, winend, messagebuf, processvariable, processtype, predictionvalue, totalmessages, kafkakey, offset, partition];
+                      dataintable.push(arr)
+                      rownum++;
 
-				identifier = jsondata.TopicReads[j].Identifier;
-				idarr = identifier.split("~");
-				processvariable0 = idarr[3];
-				processvariable = processvariable0.split(",")[3].split(":")[1];
+                     // predictioncount = predictioncount + 1;
 
-				let indm = idarr.findIndex(element => element.includes("mainuid="))
-					msgiddatastr = idarr[indm].split("=")[1]
+                  }
+              }
 
-				topic = jsondata.TopicReads[j].Topic;
-				Maintopic = jsondata.TopicReads[j].Maintopic;
-				processbuf = "_preprocessed_" + processtype;
-				predictionvalue = jsondata.TopicReads[j].hyperprediction;
-				totalmessages = jsondata.TopicReads[j].Numberofmessages;
-				kafkakey = jsondata.TopicReads[j].kafkakey;
-				offset = jsondata.TopicReads[j].Offset;
-				partition = jsondata.TopicReads[j].Partition;
+              maintotalmessages = maintotalmessages + rownum;
+              document.getElementById('totrecs').innerHTML = maintotalmessages;
+              document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
 
-				if (processvariable == "pingStatus") {
-					predictionvalue = -1;
-					processtype = processtype + " (" + idarr[1] + ")";
-				} else {
-					predictionvalue = Number(predictionvalue);
-				}
+              drawTable2();
 
-				arr = [createdon, winstart, winend, "192.168." + msgiddatastr, processvariable, processtype, predictionvalue, totalmessages, kafkakey, offset, partition];
-				dataintable.push(arr)
-				rownum++;
+          }
 
-				//predictioncount = predictioncount + 1;
+          //   i=null;
+          text = null;
+          val = null;
+          // partitionarr=null;
+          kafkakey = null;
+          createdon = null;
+          winstart = null;
+          winend = null;
+          symptom = null;
+          processtype = null;
+          identifier = null;
+          idarr = null;
+          symptomcode = null;
+          // topic=null;
+          processbuf = null;
+          normalvalue = null;
+          ubound = null;
+          predictionvalue = null;
+          totalmessages = null;
+          rownum = null;
 
-			}
-		}
+          offset = null;
+          partition = null;
+          arr = null;
+          st = null;
+          ed = null;
+          et = null;
+          vbuf = null;
+          buf = null;
+          vbuf2 = null;
+          varr = null;
 
-		maintotalmessages = maintotalmessages + rownum;
-		document.getElementById('totrecs').innerHTML = maintotalmessages;
-
-		if (rownum > 0) {
-			document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
-				drawTable2();
-
-		}
-	}
-
-}
+      }
 
 function drawTable2() {
 
