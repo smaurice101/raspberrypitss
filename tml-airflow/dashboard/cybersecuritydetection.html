@@ -2394,6 +2394,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 					 }
 					 if (vbuf.includes("identifier:")){
 						 dsn = vbuf.split(":")[1];	
+						 dsn = dsn.split(",")[0];	                        
 					//	 dsn = dsn.substring(0,dsn.length-1);
 						 messagebuf = "DESTINATION_IP: " + dsn + ";" + messagebuf;
 					//	 break;
