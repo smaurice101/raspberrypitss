@@ -2398,6 +2398,13 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 						 messagebuf = "DESTINATION_IP: " + dsn + ";" + messagebuf;
 					//	 break;
 					 }                        
+					 if (vbuf.includes("location:")){
+						 dsn = vbuf.split(":")[1];	
+						 dsn = dsn.substring(0,dsn.length-1);
+						 messagebuf = "SOURCE_GEO: " + dsn + ";" + messagebuf;
+					//	 break;
+					 }                        
+                        
 				 
 				  }
 				 }
