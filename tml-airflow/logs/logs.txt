@@ -4668,3 +4668,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-09_23:38:30] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-09_23:38:32] Visualization DAG in tml_system_step_7_kafka_visualization_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-09_23:38:48] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
+[INFO 2025-01-09_23:40:26] {'name': ['Project with slug "tml-entity-cybersecurity-sourceip-destinationip-network-3f10" already exists.']}
