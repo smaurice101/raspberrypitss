@@ -4660,3 +4660,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-09_15:11:57] {'name': ['Project with slug "tml-entity-cybersecurity-sourceip-destinationip-network-3f10" already exists.']}
 [INFO 2025-01-09_23:38:07] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
 [INFO 2025-01-09_23:38:09] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
+[INFO 2025-01-09_23:38:10] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-tml-entity-cybersecurity-sourceip-destinationip-network-3f10.py
