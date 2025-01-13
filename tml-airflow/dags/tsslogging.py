@@ -297,6 +297,14 @@ def genkubeyaml(sname,containername,clientport,solutionairflowport,solutionviper
                value: '{}'                              
              - name: step9rollbackoffset # STEP 9 rollbackoffset field can be adjusted here.  Higher the number more information sent to privateGPT, BUT more memory needed.
                value: '{}'                                             
+             - name: step9prompt # STEP 9 Enter PGPT prompt
+               value: ''                  
+             - name: step9context # STEP 9 Enter PGPT context
+               value: ''             
+             - name: step9keyattribute
+               value: '' # Step 9 key attribtes change as needed  
+             - name: step9keyprocesstype
+               value: '' # Step 9 key processtypes change as needed                                
              - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
                value: '{}'                              
              - name: step1description # STEP 1 description field can be adjusted here. 
@@ -483,7 +491,15 @@ def genkubeyamlnoext(sname,containername,clientport,solutionairflowport,solution
              - name: step6maxrows # STEP 6 maxrows field can be adjusted here.  Higher the number more predictions to make, BUT more memory needed.
                value: '{}'                              
              - name: step9rollbackoffset # STEP 9 rollbackoffset field can be adjusted here.  Higher the number more information sent to privateGPT, BUT more memory needed.
-               value: '{}'                                             
+               value: '{}'                  
+             - name: step9prompt # STEP 9 Enter PGPT prompt
+               value: ''                  
+             - name: step9context # STEP 9 Enter PGPT context
+               value: ''                                 
+             - name: step9keyattribute
+               value: '' # Step 9 key attribtes change as needed  
+             - name: step9keyprocesstype
+               value: '' # Step 9 key processtypes change as needed                                               
              - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
                value: '{}'                              
              - name: step1description # STEP 1 description field can be adjusted here. 

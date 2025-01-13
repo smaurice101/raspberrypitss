@@ -154,11 +154,39 @@ def consumetopicdata():
 def gatherdataforprivategpt(result):
 
    privategptmessage = []
-   prompt = default_args['prompt']
-   context = default_args['context']
+   if 'step9prompt' in os.environ:
+      if os.environ['step9prompt'] != '':
+        prompt = os.environ['step9prompt']
+      else:
+       prompt = default_args['prompt']
+   else: 
+      prompt = default_args['prompt']
+
+   if 'step9context' in os.environ:
+      if os.environ['step9context'] != '':
+        context = os.environ['step9context']
+      else:
+        context = default_args['context']  
+   else: 
+     context = default_args['context']
+
    jsonkeytogather = default_args['jsonkeytogather']
-   attribute = default_args['keyattribute']
-   processtype = default_args['keyprocesstype']
+
+   if 'step9keyattribute' in os.environ:
+     if os.environ['step9keyattribute'] != '':
+       attribute = os.environ['step9keyattribute']
+     else: 
+       attribute = default_args['keyattribute']      
+   else:
+    attribute = default_args['keyattribute']
+
+   if 'step9keyprocesstype' in os.environ:
+     if os.environ['step9keyprocesstype'] != '':
+        processtype = os.environ['step9keyprocesstype']
+     else: 
+       processtype = default_args['keyprocesstype']    
+   else: 
+     processtype = default_args['keyprocesstype']
 
    res=json.loads(result,strict='False')
    message = ""
