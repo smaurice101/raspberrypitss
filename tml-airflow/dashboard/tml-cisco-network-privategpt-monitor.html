@@ -782,7 +782,7 @@ var div = document.getElementById('gpt');
  
   //console.log(jsondata);
         
-        intro="<b><font color='red' size=4>&nbsp;&nbsp;&nbsp;Hi, there!  I am your GenAI Cyber security analyst.  I will do my best to perform post-analysis of your data.</font></b><br>"
+        intro="<b><font color='red' size=5>&nbsp;&nbsp;&nbsp;Hi, there, I am CYBER!  I am your GenAI Cyber security analyst.  I will do my best to perform post-analysis of your data.</font></b><br>"
                                        
 		document.getElementById("gpt").style.display = "block";
  
@@ -815,11 +815,11 @@ var div = document.getElementById('gpt');
 		//not possible for me to determine if this machine should be investigated
 		if (message[0].includes("should be investigate") && !message[0].includes("it is not clear if this machine should be investigated") &&
       		!message[0].includes("not possible for me to determine if this machine should be investigated")){
-                                       highmess += "<font size=5 color='red'><b>PROMPT: " + message[2] + "<br>(" + message[1] + "):</b> " + message[0] + "</font><br>-------------------<br>";			
+                                       highmess += "<font size=5 color='red'><b>PROMPT: " + message[2] + "<br>CYBER RESPONSE:: (" + message[1] + "):</b> " + message[0] + "</font><br>-------------------<br>";			
 			let parr = message[1].split("-");
 			//console.log(parr[1]);
 			}else{
-              lowmess += "<font size=4><b>PROMPT: " + message[2] + "<br>(" + message[1] + "):</b> " + message[0] + "</font><br>-----------------------<br>";
+              lowmess += "<font size=4><b>PROMPT: " + message[2] + "<br>CYBER RESPONSE (" + message[1] + "):</b> " + message[0] + "</font><br>-----------------------<br>";
             }			
         } 
        
