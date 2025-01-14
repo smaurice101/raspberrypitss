@@ -789,7 +789,9 @@ var div = document.getElementById('gpt');
 
 		message = jsondata.TopicReads[j].choices[0].message.content;		
 		details = jsondata.TopicReads[j].responsedetails;
-		if (details){
+		prompt = jsondata.TopicReads[j].prompt;
+                                       
+		if (message){
 			  message=message.replaceAll("Question", "<br>Answer");
 			  message=message.replace("\\n", "");
               message=message.replace("\\n", "");
@@ -798,6 +800,8 @@ var div = document.getElementById('gpt');
 		   mainmessages.push([message,details]);
 		}
 	}	
+                                       
+                                       
 	let uniquemessages = [...new Set(mainmessages)];
 	  for (j in uniquemessages) {
 	  message=uniquemessages[j];
