@@ -566,6 +566,9 @@ def optimizecontainer(cname,sname,sd):
         ret=subprocess.check_output(greps, shell=True)        
         ret=ret.decode("utf-8")
         ret=ret.strip()
+        pritn("cname=",cname)
+        print("ret=",ret)
+        
         if cname not in ret:
           print("INFO: Container optimized")  
           status="good"
