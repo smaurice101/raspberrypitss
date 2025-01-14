@@ -1017,9 +1017,7 @@ function addHeatdata(jsondata) {
 	mainheatmapdata(uniquehosts, mainheattablemap, xaxis);
 
 	processpiedata(uniquepiehosts, piechartdata, xaxis);
-    
-    addGptdata(jsondata); // <---------------------PrivateGPT Data
-                                       
+                                           
 }
 
 var inboundpacketsmax = new Map();
@@ -1622,7 +1620,8 @@ function streamLiveKafkaData() {
     		if (mainkafkatopic!="cisco-network-privategpt"){
 		    	addHeatdata(obj);
 			}else{
-//			 console.log("-------------maindata=",maindata);
+//			 console.log("-------------maindata=",maindata);  // <---------------------PrivateGPT Data
+
 		    	addGptdata(obj);			
 			}
 	        
