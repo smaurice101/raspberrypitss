@@ -788,8 +788,8 @@ var div = document.getElementById('gpt');
 	for (j in jsondata.TopicReads) {
 
 		message = jsondata.TopicReads[j].choices[0].message.content;		
-		details = jsondata.TopicReads[j].choices.identifier;
-		prompt = jsondata.TopicReads[j].choices.prompt;
+		details = jsondata.TopicReads[j].identifier;
+		prompt = jsondata.TopicReads[j].prompt;
                                        
 		if (message){
 			  message=message.replaceAll("Question", "<br>Answer");
