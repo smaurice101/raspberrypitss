@@ -1014,6 +1014,9 @@ function addHeatdata(jsondata) {
 	mainheatmapdata(uniquehosts, mainheattablemap, xaxis);
 
 	processpiedata(uniquepiehosts, piechartdata, xaxis);
+    
+    addGptdata(jsondata); // <---------------------PrivateGPT Data
+                                       
 }
 
 var inboundpacketsmax = new Map();
