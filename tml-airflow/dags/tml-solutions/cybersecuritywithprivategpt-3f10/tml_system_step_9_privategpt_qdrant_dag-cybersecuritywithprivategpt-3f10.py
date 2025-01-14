@@ -35,7 +35,7 @@ default_args = {
  'pgptport' : '8001', # PrivateGPT listening on this port
  'preprocesstype' : '', # Leave as is 
  'partition' : '-1', # Leave as is 
- 'prompt': 'Do the device data show any malfunction or defects?', # Enter your prompt here
+ 'prompt': 'Do the anaomaly probabilites show any risk of a cyber attack?', # Enter your prompt here
  'context' : 'This is network data from devices. The data are \
 anomaly probabilities for cyber threats from analysis of inbound and outbound packets device. If inbound or outbound \
 probabilities are low, it is likely the risk of a cyber attack is also low.', # what is this data about? Provide context to PrivateGPT
