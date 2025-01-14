@@ -5154,3 +5154,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-14_16:04:34] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-14_16:04:40] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-14_16:05:49] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
+[ERROR 2025-01-14_19:39:12] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py the JSON object must be str, bytes or bytearray, not NoneType
