@@ -797,7 +797,7 @@ var div = document.getElementById('gpt');
               message=message.replace("\\n", "");
 
 			  
-		   mainmessages.push([message,details]);
+		   mainmessages.push([message,details,prompt]);
 		}
 	}	
                                        
@@ -824,7 +824,7 @@ var div = document.getElementById('gpt');
        
 	   
 	   if (lowmess!="" || highmess!=""){
-            div.innerHTML = "  <b>PROMPT: " + prompt + "</b><br>" + highmess + lowmess + "<br>---------------------------";
+            div.innerHTML = "  <b>PROMPT: " + message[2] + "</b><br>" + highmess + lowmess + "<br>---------------------------";
 	   }		
 
 }
