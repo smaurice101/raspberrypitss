@@ -5483,3 +5483,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [ERROR 2025-01-15_02:32:59] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py the JSON object must be str, bytes or bytearray, not NoneType
 [ERROR 2025-01-15_02:33:05] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py the JSON object must be str, bytes or bytearray, not NoneType
 [ERROR 2025-01-15_02:33:11] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py the JSON object must be str, bytes or bytearray, not NoneType
+[ERROR 2025-01-15_02:33:17] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py the JSON object must be str, bytes or bytearray, not NoneType
