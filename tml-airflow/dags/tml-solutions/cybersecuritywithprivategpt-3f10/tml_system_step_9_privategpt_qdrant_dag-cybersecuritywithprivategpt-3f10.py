@@ -42,7 +42,7 @@ anomaly probabilities are less than 0.60, it is likely the risk of a cyber attac
  'jsonkeytogather' : 'hyperprediction', # enter key you want to gather data from to analyse with PrivateGpt i.e. Identifier or hyperprediction
  'keyattribute' : 'inboundpackets,outboundpackets', # change as needed  
  'keyprocesstype' : 'anomprob',  # change as needed
- 'hyperbatch' : '0', # Set to 1 if you want to batch all of the hyperpredictions and sent to chatgpt, set to 0, if you want to send it one by one   
+ 'hyperbatch' : '1', # Set to 1 if you want to batch all of the hyperpredictions and sent to chatgpt, set to 0, if you want to send it one by one   
  'vectordbcollectionname' : 'tml', # change as needed
  'concurrency' : '1', # change as needed Leave at 1
  'CUDA_VISIBLE_DEVICES' : '0' # change as needed
