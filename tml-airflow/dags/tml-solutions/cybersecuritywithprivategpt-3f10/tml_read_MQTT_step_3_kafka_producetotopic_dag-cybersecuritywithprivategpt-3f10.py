@@ -27,7 +27,7 @@ default_args = {
   'owner' : 'Sebastian Maurice',    
   'enabletls': '1',
   'microserviceid' : '',
-  'producerid' : 'iotsolution',  
+  'producerid' : 'cybersecurity',  
   'topics' : 'cisco-network-mainstream', # *************** This is one of the topic you created in SYSTEM STEP 2
   'identifier' : 'TML solution',  
   'mqtt_broker' : 'b526253c5560459da5337e561c142369.s1.eu.hivemq.cloud', # <<<****** Enter MQTT broker i.e. test.mosquitto.org
