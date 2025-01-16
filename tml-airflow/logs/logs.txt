@@ -5985,3 +5985,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-16_02:58:51] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-16_02:58:52] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-16_02:58:53] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2025-01-16_02:59:00] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
