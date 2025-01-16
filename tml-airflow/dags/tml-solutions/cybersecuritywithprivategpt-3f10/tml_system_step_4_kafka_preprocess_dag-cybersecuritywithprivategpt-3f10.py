@@ -45,7 +45,7 @@ values=inboundpackets,outboundpackets,pingStatus~\
 identifiers=inboundpackets,outboundpackets,pingStatus~\
 datetime=lastUpdated~\
 msgid=~\
-latlong=’,
+latlong='
 }
 ######################################## DO NOT MODIFY BELOW #############################################
 
