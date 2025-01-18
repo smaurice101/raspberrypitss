@@ -6099,3 +6099,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-18_19:53:56] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-18_19:58:02] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-18_20:03:55] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2025-01-18_20:06:02] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecuritywithprivategpt-3f10.py
