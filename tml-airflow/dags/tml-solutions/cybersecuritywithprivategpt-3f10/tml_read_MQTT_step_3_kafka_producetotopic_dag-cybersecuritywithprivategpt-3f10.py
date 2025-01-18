@@ -125,6 +125,8 @@ def readdata(valuedata):
   # MAin Kafka topic to store the real-time data
   maintopic = default_args['topics']
   producerid = default_args['producerid']
+
+  print("readdata")
   #try:
   producetokafka(valuedata, "", "",producerid,maintopic,"",default_args)
       # change time to speed up or slow down data   
