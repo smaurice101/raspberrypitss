@@ -6095,3 +6095,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-18_19:49:06] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-18_19:49:08] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-18_19:49:27] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2025-01-18_19:50:48] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
