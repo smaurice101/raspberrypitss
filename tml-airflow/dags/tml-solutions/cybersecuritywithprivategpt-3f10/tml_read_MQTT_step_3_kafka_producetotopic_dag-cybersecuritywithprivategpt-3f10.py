@@ -125,13 +125,13 @@ def readdata(valuedata):
   # MAin Kafka topic to store the real-time data
   maintopic = default_args['topics']
   producerid = default_args['producerid']
-  try:
-      producetokafka(valuedata, "", "",producerid,maintopic,"",default_args)
+  #try:
+  producetokafka(valuedata, "", "",producerid,maintopic,"",default_args)
       # change time to speed up or slow down data   
       #time.sleep(0.15)
-  except Exception as e:
-      print(e)  
-      pass  
+  #except Exception as e:
+   #   print(e)  
+    #  pass  
 
 def windowname(wtype,sname,dagname):
     randomNumber = random.randrange(10, 9999)
