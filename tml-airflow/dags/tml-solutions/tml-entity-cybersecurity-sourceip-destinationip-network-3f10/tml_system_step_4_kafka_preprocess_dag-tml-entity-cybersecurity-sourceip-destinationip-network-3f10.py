@@ -18,10 +18,10 @@ default_args = {
   'owner' : 'Sebastian Maurice',  # <<< *** Change as needed      
   'enabletls': '1', # <<< *** 1=connection is encrypted, 0=no encryption
   'microserviceid' : '',  # <<< *** leave blank
-  'producerid' : 'cybersecuritysolution',   # <<< *** Change as needed   
+  'producerid' : 'iotsolution',   # <<< *** Change as needed   
   'raw_data_topic' : 'iot-raw-data', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
   'preprocess_data_topic' : 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-  'maxrows' : '400', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+  'maxrows' : '800', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
   'offset' : '-1', # <<< Rollback from the end of the data streams  
   'brokerhost' : '',   # <<< *** Leave as is
   'brokerport' : '-999',  # <<< *** Leave as is   
@@ -36,16 +36,16 @@ default_args = {
   'tmlfilepath' : '', # leave blank
   'usemysql' : '1', # do not modify
   'streamstojoin' : '', # leave blank
-  'identifier' : 'TML Entity Based Cybersecurity Detection', # <<< ** Change as needed
-  'preprocesstypes' : 'anomprob,trend,avg,min,max,skewness,kurtosis,sum,outliers,mad,gm,trimean,variance', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
-  'pathtotmlattrs' : 'oem=_source.source.address,lat=_source.source.geo.location.lat,long=_source.source.geo.location.lon,location=_source.source.geo.country_name,identifier=_source.destination.address', # Change as needed     
-  'jsoncriteria' : 'uid=_source.destination.address|_source.network.direction|_source.source.address,filter:allrecords~\
-subtopics=_source.destination.bytes,_source.destination.packets,_source.source.bytes,_source.source.packets,_source.network.bytes,_source.network.packets~\
-values=_source.destination.bytes,_source.destination.packets,_source.source.bytes,_source.source.packets,_source.network.bytes,_source.network.packets~\
-identifiers=_source.destination.geo.city_name,_source.destination.port,_source.source.geo.city_name,_source.source.port,_source.network.direction,_source.related.ip~\
-datetime=_source.@timestamp~\
-msgid=_id~\
-latlong=_source.source.geo.location.lat:_source.source.geo.location.lon' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'identifier' : 'IoT device performance and failures', # <<< ** Change as needed
+  'preprocesstypes' : 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
+  'jsoncriteria' : 'uid=metadata.dsn,filter:allrecords~\
+subtopics=metadata.property_name~\
+values=datapoint.value~\
+identifiers=metadata.display_name~\
+datetime=datapoint.updated_at~\
+msgid=datapoint.id~\
+latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -168,10 +168,13 @@ def dopreprocessing(**context):
        ti.xcom_push(key="{}_identifier".format(sname), value=default_args['identifier'])
        ti.xcom_push(key="{}_jsoncriteria".format(sname), value=default_args['jsoncriteria'])
 
+       maxrows=default_args['maxrows']
        if 'step4maxrows' in os.environ:
          ti.xcom_push(key="{}_maxrows".format(sname), value="_{}".format(os.environ['step4maxrows']))                
+         maxrows=os.environ['step4maxrows']
        else:  
          ti.xcom_push(key="{}_maxrows".format(sname), value="_{}".format(default_args['maxrows']))
+         
         
        repo=tsslogging.getrepo() 
        if sname != '_mysolution_':
@@ -182,15 +185,12 @@ def dopreprocessing(**context):
        wn = windowname('preprocess',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:]), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
        if sys.argv[1] == "1": 
         repo=tsslogging.getrepo()
-        if 'step4maxrows' in os.environ:
-          if os.environ['step4maxrows'] != '' and os.environ['step4maxrows'] != '-1':
-            default_args['maxrows']=os.environ['step4maxrows']
         try:            
           tsslogging.tsslogit("Preprocessing DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
@@ -202,6 +202,9 @@ if __name__ == '__main__':
         VIPERTOKEN = sys.argv[2]
         VIPERHOST = sys.argv[3] 
         VIPERPORT = sys.argv[4]                  
+        maxrows =  sys.argv[5]
+        default_args['maxrows'] = maxrows
+         
         tsslogging.locallogs("INFO", "STEP 4: Preprocessing started")
                      
         while True:
