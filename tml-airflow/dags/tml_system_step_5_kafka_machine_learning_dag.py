@@ -198,15 +198,12 @@ def startml(**context):
        wn = windowname('ml',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-ml", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {}{} {}".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:], HPDEADDR, HPDEHOST, HPDEPORT[1:]), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {}{} {} {}".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:], HPDEADDR, HPDEHOST, HPDEPORT[1:],context), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
        if sys.argv[1] == "1":          
         repo=tsslogging.getrepo()
-        if 'step5rollbackoffsets' in os.environ:
-          if os.environ['step5rollbackoffsets'] != '' and os.environ['step5rollbackoffsets'] != '-1':
-            default_args['rollbackoffsets'] = os.environ['step5rollbackoffsets']
         try:
           tsslogging.tsslogit("Machine Learning DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
@@ -220,6 +217,11 @@ if __name__ == '__main__':
         VIPERPORT = sys.argv[4]
         HPDEHOST = sys.argv[5]
         HPDEPORT = sys.argv[6]
+        context =  sys.argv[7]
+        sd = context['dag'].dag_id
+        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))         
+        rollbackoffsets = context['ti'].xcom_pull(task_ids='step_5_solution_task_ml',key="{}_rollbackoffsets".format(sname))
+        default_args['rollbackoffsets'] = rollbackoffsets[1:]
         
         tsslogging.locallogs("INFO", "STEP 5: Machine learning started")
     

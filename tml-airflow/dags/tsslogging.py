@@ -8,6 +8,25 @@ import subprocess
 import os
 import socket
 import time
+import fcntl
+
+class LockDirectory(object):
+    def __init__(self, directory):
+        #assert os.path.exists(directory)
+        self.directory = directory
+        print(self.directory)
+
+    def __enter__(self):
+        self.dir_fd = os.open(self.directory, os.O_RDONLY)
+        try:
+            fcntl.flock(self.dir_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except IOError as ex:             
+            raise Exception('Somebody else is locking %r - quitting.' % self.directory)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):       
+        fcntl.flock(self.dir_fd,fcntl.LOCK_UN)
+        os.close(self.dir_fd)
 
 def ingress(sname):
     
@@ -159,7 +178,8 @@ def genkubeyaml(sname,containername,clientport,solutionairflowport,solutionviper
                 guser,grepo,chip,dockerusername,externalport,kuser,mqttuser,airflowport,vipervizport,
                step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step1solutiontitle,step1description,
                step9rollbackoffset,kubebroker,kafkabroker,producetype,step9prompt,step9context,step9keyattribute,step9keyprocesstype,
-               step9hyperbatch,step9vectordbcollectionname,step9concurrency,cudavisibledevices):
+               step9hyperbatch,step9vectordbcollectionname,step9concurrency,cudavisibledevices,step9docfolder,
+               step9docfolderingestinterval,step9useidentifierinprompt):
                
     cp = ""
     cpp = ""
@@ -315,6 +335,12 @@ def genkubeyaml(sname,containername,clientport,solutionairflowport,solutionviper
                value: '{}'
              - name: CUDA_VISIBLE_DEVICES
                value: '{}' # 0 for any device or specify specific number 
+             - name: step9docfolder # privateGPT docfolder to load files in Qdrant vectorDB local context
+               value: '{}'
+             - name: step9docfolderingestinterval # privateGPT docfolderingestinterval, number of seconds to wait before reloading files in docfolder
+               value: '{}'
+             - name: step9useidentifierinprompt # privateGPT useidentifierinprompt, if 1, add TML output json field Identifier, if 0 use prompt
+               value: '{}'               
              - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
                value: '{}'                              
              - name: step1description # STEP 1 description field can be adjusted here. 
@@ -360,7 +386,7 @@ def genkubeyaml(sname,containername,clientport,solutionairflowport,solutionviper
        selector:
          app: {}""".format(sname,sname,sname,sname,containername,cp,sname,sdag,guser,grepo,solutionexternalport,chip,solutionairflowport,solutionvipervizport,dockerusername,cpp,externalport,kuser,vipervizport,mqttuser,airflowport,step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step9rollbackoffset,
                            step9prompt,step9context,step9keyattribute,step9keyprocesstype,step9hyperbatch,step9vectordbcollectionname,step9concurrency,cudavisibledevices,
-                           step1solutiontitle,step1description,kubebroker,kafkabroker,
+                           step9docfolder,step9docfolderingestinterval,step9useidentifierinprompt,step1solutiontitle,step1description,kubebroker,kafkabroker,
                            sname,sname,solutionvipervizport,sname,sname,sname,mport,cpp,sname)
                     
     return kcmd
@@ -369,7 +395,8 @@ def genkubeyamlnoext(sname,containername,clientport,solutionairflowport,solution
                      guser,grepo,chip,dockerusername,externalport,kuser,mqttuser,airflowport,vipervizport,
                      step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step1solutiontitle,step1description,
                      step9rollbackoffset,kubebroker,kafkabroker,step9prompt,step9context,step9keyattribute,step9keyprocesstype,
-                     step9hyperbatch,step9vectordbcollectionname,step9concurrency,cudavisibledevices):
+                     step9hyperbatch,step9vectordbcollectionname,step9concurrency,cudavisibledevices,step9docfolder,
+                     step9docfolderingestinterval,step9useidentifierinprompt,):
     cp = ""
     cpp = ""
     
@@ -520,6 +547,12 @@ def genkubeyamlnoext(sname,containername,clientport,solutionairflowport,solution
                value: '{}'
              - name: CUDA_VISIBLE_DEVICES
                value: '{}' # 0 for any device or specify specific number                
+             - name: step9docfolder # privateGPT docfolder to load files in Qdrant vectorDB local context
+               value: '{}'
+             - name: step9docfolderingestinterval # privateGPT docfolderingestinterval, number of seconds to wait before reloading files in docfolder
+               value: '{}'
+             - name: step9useidentifierinprompt # privateGPT useidentifierinprompt, if 1, add TML output json field Identifier, if 0 use prompt
+               value: '{}'                              
              - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
                value: '{}'                              
              - name: step1description # STEP 1 description field can be adjusted here. 
@@ -549,7 +582,7 @@ def genkubeyamlnoext(sname,containername,clientport,solutionairflowport,solution
        selector:
          app: {}""".format(sname,sname,sname,sname,containername,cp,sname,sdag,guser,grepo,solutionexternalport,chip,solutionairflowport,solutionvipervizport,dockerusername,cpp,externalport,kuser,vipervizport,mqttuser,airflowport,step4maxrows,step4bmaxrows,step5rollbackoffsets,step6maxrows,step9rollbackoffset,
                            step9prompt,step9context,step9keyattribute,step9keyprocesstype,step9hyperbatch,step9vectordbcollectionname,step9concurrency,cudavisibledevices,
-                           step1solutiontitle,step1description,kubebroker,kafkabroker,
+                           step9docfolder,step9docfolderingestinterval,step9useidentifierinprompt,step1solutiontitle,step1description,kubebroker,kafkabroker,
                            sname,sname,solutionvipervizport,sname)
                     
     return kcmd

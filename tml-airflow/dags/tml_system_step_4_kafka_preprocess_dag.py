@@ -182,15 +182,12 @@ def dopreprocessing(**context):
        wn = windowname('preprocess',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:]), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],context), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
        if sys.argv[1] == "1": 
         repo=tsslogging.getrepo()
-        if 'step4maxrows' in os.environ:
-          if os.environ['step4maxrows'] != '' and os.environ['step4maxrows'] != '-1':
-            default_args['maxrows']=os.environ['step4maxrows']
         try:            
           tsslogging.tsslogit("Preprocessing DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
@@ -202,6 +199,12 @@ if __name__ == '__main__':
         VIPERTOKEN = sys.argv[2]
         VIPERHOST = sys.argv[3] 
         VIPERPORT = sys.argv[4]                  
+        context =  sys.argv[5]
+        sd = context['dag'].dag_id
+        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))         
+        maxrows = context['ti'].xcom_pull(task_ids='step_4_solution_task_preprocess',key="{}_maxrows".format(sname))
+        default_args['maxrows'] = maxrows[1:]
+         
         tsslogging.locallogs("INFO", "STEP 4: Preprocessing started")
                      
         while True:
