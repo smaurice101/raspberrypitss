@@ -10,6 +10,9 @@ import maadstml
 import subprocess
 import random
 import json
+import threading
+from binaryornot.check import is_binary
+docidstrarr = []
 
 sys.dont_write_bytecode = True
 
