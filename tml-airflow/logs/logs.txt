@@ -6155,3 +6155,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-18_21:46:42] {'name': ['Project with slug "cybersecuritywithprivategpt-3f10" already exists.']}
 [INFO 2025-01-18_22:01:02] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-01-18_22:03:28] Deleting topic cisco-network-mainstream in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2025-01-18_22:03:29] Deleting topic cisco-network-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
