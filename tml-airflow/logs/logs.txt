@@ -6088,3 +6088,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-18_19:48:46] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
 [ERROR 2025-01-18_19:48:47] Cannot create topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py - 'Timeout' object does not support the context manager protocol
 [INFO 2025-01-18_19:48:48] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
+[ERROR 2025-01-18_19:48:49] Cannot create topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py - 'Timeout' object does not support the context manager protocol
