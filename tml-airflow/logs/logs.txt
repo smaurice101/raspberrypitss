@@ -6603,3 +6603,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-19_22:05:46] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-19_22:10:29] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-19_22:10:30] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-01-19_22:10:30] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
