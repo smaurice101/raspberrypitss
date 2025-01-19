@@ -246,7 +246,7 @@ if __name__ == '__main__':
         while True:
          try:     
           performSupervisedMachineLearning()
-          time.sleep(1)
+          time.sleep(10)
          except Exception as e:
           tsslogging.locallogs("ERROR", "STEP 5: Machine Learning DAG in {} {}".format(os.path.basename(__file__),e))
           tsslogging.tsslogit("Machine Learning DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
