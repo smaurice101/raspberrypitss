@@ -69,6 +69,7 @@ def readdata():
     file1 = open(inputfile, 'r')
     print("Data Producing to Kafka Started:",datetime.now())
   except Exception as e:
+    print("ERROR: ",e)
     tsslogging.locallogs("ERROR", "Localfile producing DAG in {} - {}".format(os.path.basename(__file__),e))     
     
     tsslogging.tsslogit("Localfile producing DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
