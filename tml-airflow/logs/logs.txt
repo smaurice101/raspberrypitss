@@ -6315,3 +6315,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-19_16:56:31] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-iotsolution-3f10.py
 [INFO 2025-01-19_16:58:06] {'name': ['Project with slug "iotsolution-3f10" already exists.']}
 [INFO 2025-01-19_17:07:10] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-01-19_17:07:10] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
