@@ -6596,3 +6596,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-19_21:53:00] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-19_21:53:04] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-19_21:53:08] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-01-19_21:53:12] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
