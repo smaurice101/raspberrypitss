@@ -341,6 +341,9 @@ def ingestfiles():
     docidstrarr = []
     basefolder='/rawdata/'
 
+    pgptip = default_args['pgpthost']
+    pgptport = default_args['pgptport']
+
  #   buf="/mnt/c/maads/tml-airflow/rawdata/mylogs,/mnt/c/maads/tml-airflow/rawdata/mylogs2"
     buf = default_args['docfolder']
  
