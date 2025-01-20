@@ -318,6 +318,7 @@ def gatherdataforprivategpt(result):
    return privategptmessage
 
 def startdirread():
+  print("INFO startdirread")  
   try:  
     t = threading.Thread(name='child procs', target=ingestfiles)
     t.start()
@@ -356,6 +357,8 @@ def ingestfiles():
             for mf in files:
                docids,docstr,docidstr=getingested(mf)
                deleteembeddings(docids)
+               print("INFO Ingestfiles:",mf)  
+ 
                if is_binary(mf):
                  maadstml.pgptingestdocs(mf,'binary',pgptip,pgptport,pgptendpoint)
                else:
