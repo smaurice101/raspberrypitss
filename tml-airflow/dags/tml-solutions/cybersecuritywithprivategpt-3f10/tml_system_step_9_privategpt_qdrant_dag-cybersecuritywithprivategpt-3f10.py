@@ -372,7 +372,8 @@ def ingestfiles():
                  maadstml.pgptingestdocs(mf,'text',pgptip,pgptport,pgptendpoint)
 
                docids,docstr,docidstr=getingested(mf)
-               docidstrarr.append(docidstr[0])
+               if len(docidstr) >= 1:
+                  docidstrarr.append(docidstr[0])
         else:
           print("WARN Directory Path: {} does not exist".format(dirp))
          
