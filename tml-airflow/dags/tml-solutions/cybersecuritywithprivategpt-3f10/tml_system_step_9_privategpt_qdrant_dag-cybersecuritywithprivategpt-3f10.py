@@ -327,11 +327,15 @@ def startdirread():
 
 def deleteembeddings(docids):
   pgptendpoint="/v1/ingest/"
+  pgptip = default_args['pgpthost']
+  pgptport = default_args['pgptport']
   maadstml.pgptdeleteembeddings(docids,pgptip,pgptport,pgptendpoint)   
 
 
 def getingested(docname):
   pgptendpoint="/v1/ingest/list"
+  pgptip = default_args['pgpthost']
+  pgptport = default_args['pgptport']
   docids,docstr,docidsstr=maadstml.pgptgetingestedembeddings(docname,pgptip,pgptport,pgptendpoint)
   return docids,docstr,docidsstr
 
@@ -366,7 +370,8 @@ def ingestfiles():
                  maadstml.pgptingestdocs(mf,'text',pgptip,pgptport,pgptendpoint)
 
                docids,docstr,docidstr=getingested(mf)
-               docidstrarr.append(docidstr[0])
+               if len(docidstr) >=1:
+                 docidstrarr.append(docidstr[0])
         else:
           print("WARN Directory Path: {} does not exist".format(dirp))
          
