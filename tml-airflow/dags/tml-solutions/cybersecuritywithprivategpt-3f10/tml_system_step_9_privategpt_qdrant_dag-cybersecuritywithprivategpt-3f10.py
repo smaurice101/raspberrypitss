@@ -638,6 +638,7 @@ if __name__ == '__main__':
         if docfolder != '':
           startdirread()
                    
+        print("here--------")
         while True:
          try:
              # Get preprocessed data from Kafka
