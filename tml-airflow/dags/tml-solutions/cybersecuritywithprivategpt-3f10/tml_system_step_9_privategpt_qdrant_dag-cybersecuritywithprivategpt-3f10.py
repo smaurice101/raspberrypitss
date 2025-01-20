@@ -318,8 +318,11 @@ def gatherdataforprivategpt(result):
    return privategptmessage
 
 def startdirread():
-  t = threading.Thread(name='child procs', target=ingestfiles)
-  t.start()
+  try:  
+    t = threading.Thread(name='child procs', target=ingestfiles)
+    t.start()
+  except Exception as e:
+    print(e)
 
 def deleteembeddings(docids):
   pgptendpoint="/v1/ingest/"
