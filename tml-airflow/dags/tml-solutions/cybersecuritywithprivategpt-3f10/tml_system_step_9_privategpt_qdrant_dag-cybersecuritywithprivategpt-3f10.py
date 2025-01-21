@@ -65,6 +65,7 @@ HTTPADDR=""
 maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
 
+
 def stopcontainers():
 
    subprocess.call("docker image ls > gptfiles.txt", shell=True)
