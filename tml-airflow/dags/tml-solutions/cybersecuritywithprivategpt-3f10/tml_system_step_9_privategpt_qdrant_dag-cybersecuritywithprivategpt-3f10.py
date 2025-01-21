@@ -38,7 +38,7 @@ default_args = {
  'pgptport' : '8001', # PrivateGPT listening on this port
  'preprocesstype' : '', # Leave as is 
  'partition' : '-1', # Leave as is 
- 'prompt': 'Are there any error or failures associated with 192.168.--identifier--? Does it show any evidence of a cyber attack?', # Enter your prompt here
+ 'prompt': 'Are there any failures in the logs associated with IP address --identifier--? Give a detailed response.', # Enter your prompt here
  'context' : 'This is network data from inbound and outbound packets. The data are \
 anomaly probabilities for cyber threats from analysis of inbound and outbound packets. If inbound or outbound \
 anomaly probabilities are less than 0.60, it is likely the risk of a cyber attack is also low. If its above 0.60, then risk is mid to high.', # what is this data about? Provide context to PrivateGPT
@@ -47,7 +47,7 @@ anomaly probabilities are less than 0.60, it is likely the risk of a cyber attac
  'keyprocesstype' : 'anomprob',  # change as needed
  'hyperbatch' : '0', # Set to 1 if you want to batch all of the hyperpredictions and sent to chatgpt, set to 0, if you want to send it one by one   
  'vectordbcollectionname' : 'tml', # change as needed
- 'concurrency' : '3', # change as needed Leave at 1
+ 'concurrency' : '2', # change as needed Leave at 1
  'CUDA_VISIBLE_DEVICES' : '0', # change as needed
  'docfolder': 'mylogs,mylogs2',  # You can specify the sub-folder that contains TEXT or PDF files..this is a subfolder in the MAIN folder mapped to /rawdata
                    # if this field in NON-EMPTY, privateGPT will query these documents as the CONTEXT to answer your prompt
