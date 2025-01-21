@@ -38,7 +38,7 @@ default_args = {
  'pgptport' : '8001', # PrivateGPT listening on this port
  'preprocesstype' : '', # Leave as is 
  'partition' : '-1', # Leave as is 
- 'prompt': 'Are there any failures in the logs associated with IP address --identifier--? Give a detailed response.', # Enter your prompt here
+ 'prompt': 'Are there any failures in the logs associated with IP address 192.168.--identifier--? Give a detailed response.', # Enter your prompt here
  'context' : 'This is network data from inbound and outbound packets. The data are \
 anomaly probabilities for cyber threats from analysis of inbound and outbound packets. If inbound or outbound \
 anomaly probabilities are less than 0.60, it is likely the risk of a cyber attack is also low. If its above 0.60, then risk is mid to high.', # what is this data about? Provide context to PrivateGPT
