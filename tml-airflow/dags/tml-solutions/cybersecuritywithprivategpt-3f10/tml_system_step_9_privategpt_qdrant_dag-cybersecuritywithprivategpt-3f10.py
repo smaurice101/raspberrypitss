@@ -66,6 +66,9 @@ maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
 
 def checkresponse(response):
+    if "ERROR:" in response:
+       return response
+
     print("Checkresponse:",response)
     try:
       r=json.loads(response)
