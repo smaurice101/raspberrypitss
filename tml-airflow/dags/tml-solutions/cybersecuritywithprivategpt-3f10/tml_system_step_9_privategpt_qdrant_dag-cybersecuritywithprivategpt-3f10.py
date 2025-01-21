@@ -65,6 +65,11 @@ HTTPADDR=""
 maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
 
+def checkresponse(response):
+    if "Let" and '=' and '(':
+        return "I am not able to find any information to answer your prompt"
+    
+    return response
 
 def stopcontainers():
 
