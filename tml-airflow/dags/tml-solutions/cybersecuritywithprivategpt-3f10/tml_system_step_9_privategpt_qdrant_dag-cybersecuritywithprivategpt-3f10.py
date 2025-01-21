@@ -433,6 +433,7 @@ def sendtoprivategpt(maindata,docfolder):
         response=pgptchat(m,mcontext,docidstrarr,mainport,False,mainip,pgptendpoint)
         # Produce data to Kafka
         if usingqdrant != '':
+           response=checkresponse(response) 
            m = m + ' (' + usingqdrant + ')'
         response = response[:-1] + "," + "\"prompt\":\"" + m + "\",\"identifier\":\"" + m1 + "\"}"
         print("PGPT response=",response)
