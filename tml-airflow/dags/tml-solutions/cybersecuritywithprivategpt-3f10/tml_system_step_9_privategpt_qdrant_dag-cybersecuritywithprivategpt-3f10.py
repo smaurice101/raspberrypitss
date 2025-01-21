@@ -66,22 +66,18 @@ maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
 
 def checkresponse(response):
+    print("Checkresponse")
     if "ERROR:" in response:
-       return response
+         return response
 
-    print("Checkresponse:",response)
-    try:
-      r=json.loads(response)
-    except Exception as e:
-     print(e)
-
-    print("r main")
-    if "Let " in response and '=' in response and '(' in response and ')' in response:
-        r=json.loads(response) 
-        r=r['message']['content']="I am not able to find any information to answer your prompt"
-        print(r)  
-        response = json.dumps(r)
-        return response
+    response = response.replace("null","-1").replace("\n","")
+    r1=json.loads(response)
+    c1=r1['choices'][0]['message']['content']
+    if 'Let ' in c1 and '=' in c1 and '(' in c1 and ')' in c1:
+      r1['choices'][0]['message']['content'] = "The analysis of the document(s) did not find a proper result."
+      response = json.dumps(r1)
+      return response  
+        
     
     return response
 
