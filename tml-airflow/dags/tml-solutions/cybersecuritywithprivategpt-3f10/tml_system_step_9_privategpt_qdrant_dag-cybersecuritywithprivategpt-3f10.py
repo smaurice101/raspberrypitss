@@ -68,6 +68,7 @@ mainproducerid = default_args['producerid']
 def checkresponse(response):
     if "Let " in response and '=' in response and '(' in response and ')' in response:
         r=json.loads(response) 
+        print(r)
         r2=r['message']['content']="I am not able to find any information to answer your prompt"
         response = json.dumps(r2)
         return response
