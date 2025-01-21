@@ -7161,3 +7161,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [ERROR 2025-01-21_02:42:29] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py string indices must be integers, not 'str'
 [ERROR 2025-01-21_02:42:40] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py string indices must be integers, not 'str'
 [ERROR 2025-01-21_02:42:54] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py string indices must be integers, not 'str'
+[ERROR 2025-01-21_02:43:04] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py string indices must be integers, not 'str'
