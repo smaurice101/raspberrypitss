@@ -6888,3 +6888,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [ERROR 2025-01-21_01:31:40] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py 'message'
 [ERROR 2025-01-21_01:31:50] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py 'message'
 [ERROR 2025-01-21_01:31:59] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py 'message'
+[INFO 2025-01-21_01:33:37] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
