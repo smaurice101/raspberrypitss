@@ -67,7 +67,7 @@ mainproducerid = default_args['producerid']
 
 def checkresponse(response):
     if "Let" in response and '=' in response and '(' in response and ')' in response:
-        return "I am not able to find any information to answer your prompt"
+        return "I am not able to find any information to answer your prompt "
     
     return response
 
