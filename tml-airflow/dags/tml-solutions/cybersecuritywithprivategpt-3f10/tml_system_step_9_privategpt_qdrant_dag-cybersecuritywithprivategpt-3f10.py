@@ -67,7 +67,11 @@ mainproducerid = default_args['producerid']
 
 def checkresponse(response):
     print("Checkresponse")
-    r=json.loads(response)
+    try:
+      r=json.loads(response)
+    except Exception as e:
+     print(e)
+
     print("r main")
     if "Let " in response and '=' in response and '(' in response and ')' in response:
         r=json.loads(response) 
