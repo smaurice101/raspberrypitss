@@ -51,7 +51,7 @@ anomaly probabilities are less than 0.60, it is likely the risk of a cyber attac
  'docfolder': '',  # You can specify the sub-folder that contains TEXT or PDF files..this is a subfolder in the MAIN folder mapped to /rawdata
                    # if this field in NON-EMPTY, privateGPT will query these documents as the CONTEXT to answer your prompt
                    # separate multiple folders with a comma
- 'docfolderingestinterval': '', # how often you want TML to RE-LOAD the files in docfolder - enter the number of SECONDS
+ 'docfolderingestinterval': '300', # how often you want TML to RE-LOAD the files in docfolder - enter the number of SECONDS
  'useidentifierinprompt': '1', # If 1, this uses the identifier in the TML json output and appends it to prompt, If 0, it uses the prompt only
 }
 
@@ -63,6 +63,22 @@ VIPERPORT=""
 HTTPADDR=""
 maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
+
+def checkresponse(response):
+    print("Checkresponse")
+    if "ERROR:" in response:
+         return response
+
+    response = response.replace("null","-1").replace("\n","")
+    r1=json.loads(response)
+    c1=r1['choices'][0]['message']['content']
+    if 'Let ' in c1 and '=' in c1 and '(' in c1 and ')' in c1:
+      r1['choices'][0]['message']['content'] = "The analysis of the document(s) did not find a proper result."
+      response = json.dumps(r1)
+      return response  
+        
+    
+    return response
 
 def stopcontainers():
 
@@ -91,9 +107,9 @@ def startpgptcontainer():
           buf = "docker run -d -p {}:{} --net=host --env PORT={} --env GPU=0 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,pgptcontainername)       
       else: 
         if os.environ['TSS'] == "1":       
-          buf = "docker run -d -p {}:{} --net=host --gpus all -v /var/run/docker.sock:/var/run/docker.sock:z --env PORT={} --env TSS=1 --env GPU=1 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,pgptcontainername)
+          buf = "docker run -d -p {}:{} --net=host --gpus all -v /var/run/docker.sock:/var/run/docker.sock:z --env PORT={} --env TSS=1 --env GPU=1 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} --env TOKENIZERS_PARALLELISM=true {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,pgptcontainername)
         else:
-          buf = "docker run -d -p {}:{} --net=bridge --gpus all -v /var/run/docker.sock:/var/run/docker.sock:z --env PORT={} --env TSS=0 --env GPU=1 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,pgptcontainername)
+          buf = "docker run -d -p {}:{} --net=bridge --gpus all -v /var/run/docker.sock:/var/run/docker.sock:z --env PORT={} --env TSS=0 --env GPU=1 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} --env TOKENIZERS_PARALLELISM=true {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,pgptcontainername)
          
       v=subprocess.call(buf, shell=True)
       print("INFO STEP 9: PrivateGPT container.  Here is the run command: {}, v={}".format(buf,v))
@@ -317,16 +333,24 @@ def gatherdataforprivategpt(result):
    return privategptmessage
 
 def startdirread():
-  t = threading.Thread(name='child procs', target=ingestfiles)
-  t.start()
+  print("INFO startdirread")  
+  try:  
+    t = threading.Thread(name='child procs', target=ingestfiles)
+    t.start()
+  except Exception as e:
+    print(e)
 
 def deleteembeddings(docids):
   pgptendpoint="/v1/ingest/"
+  pgptip = default_args['pgpthost']
+  pgptport = default_args['pgptport']
   maadstml.pgptdeleteembeddings(docids,pgptip,pgptport,pgptendpoint)   
 
 
 def getingested(docname):
   pgptendpoint="/v1/ingest/list"
+  pgptip = default_args['pgpthost']
+  pgptport = default_args['pgptport']
   docids,docstr,docidsstr=maadstml.pgptgetingestedembeddings(docname,pgptip,pgptport,pgptendpoint)
   return docids,docstr,docidsstr
 
@@ -335,7 +359,8 @@ def ingestfiles():
     pgptendpoint="/v1/ingest"
     docidstrarr = []
     basefolder='/rawdata/'
-
+    pgptip = default_args['pgpthost']
+    pgptport = default_args['pgptport']
  #   buf="/mnt/c/maads/tml-airflow/rawdata/mylogs,/mnt/c/maads/tml-airflow/rawdata/mylogs2"
     buf = default_args['docfolder']
  
@@ -352,13 +377,16 @@ def ingestfiles():
             for mf in files:
                docids,docstr,docidstr=getingested(mf)
                deleteembeddings(docids)
+               print("INFO Ingestfiles:",mf)  
+ 
                if is_binary(mf):
                  maadstml.pgptingestdocs(mf,'binary',pgptip,pgptport,pgptendpoint)
                else:
                  maadstml.pgptingestdocs(mf,'text',pgptip,pgptport,pgptendpoint)
 
                docids,docstr,docidstr=getingested(mf)
-               docidstrarr.append(docidstr[0])
+               if len(docidstr) >=1:
+                 docidstrarr.append(docidstr[0])
         else:
           print("WARN Directory Path: {} does not exist".format(dirp))
          
@@ -414,6 +442,7 @@ def sendtoprivategpt(maindata,docfolder):
         response=pgptchat(m,mcontext,docidstrarr,mainport,False,mainip,pgptendpoint)
         # Produce data to Kafka
         if usingqdrant != '':
+           response=checkresponse(response) 
            m = m + ' (' + usingqdrant + ')'
         response = response[:-1] + "," + "\"prompt\":\"" + m + "\",\"identifier\":\"" + m1 + "\"}"
         print("PGPT response=",response)
@@ -621,7 +650,8 @@ if __name__ == '__main__':
           tsslogging.locallogs("INFO", "STEP 9: [KUBERNETES] Starting privateGPT - LOOKS LIKE THIS IS RUNNING IN KUBERNETES")
           tsslogging.locallogs("INFO", "STEP 9: [KUBERNETES] Make sure you have applied the private GPT YAML files and have the privateGPT Pod running")
 
-        if default_args['docfolder'] != '':
+        print("Docfolder=",docfolder)
+        if docfolder != '':
           startdirread()
                    
         while True:
@@ -637,6 +667,7 @@ if __name__ == '__main__':
               sendtoprivategpt(maindata,docfolder)                      
              time.sleep(2)
          except Exception as e:
+            
           tsslogging.locallogs("ERROR", "STEP 9: PrivateGPT Step 9 DAG in {} {}".format(os.path.basename(__file__),e))
           tsslogging.tsslogit("PrivateGPT Step 9 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")
