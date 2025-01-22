@@ -54,7 +54,7 @@ anomaly probabilities are less than 0.60, it is likely the risk of a cyber attac
                    # separate multiple folders with a comma
  'docfolderingestinterval': '900', # how often you want TML to RE-LOAD the files in docfolder - enter the number of SECONDS
  'useidentifierinprompt': '1', # If 1, this uses the identifier in the TML json output and appends it to prompt, If 0, it uses the prompt only    
- 'searchterms': '--192.168.--identifier--,authentication failure'
+ 'searchterms': '192.168.--identifier--,authentication failure'
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
@@ -70,19 +70,30 @@ GPTONLINE=0
 def checkresponse(response):
     global GPTONLINE
     print("Checkresponse")
+    st="false"
+    
     if "ERROR:" in response:         
-         return response
+         return response,st
+        
     GPTONLINE=1
+                
     response = response.replace("null","-1").replace("\n","")
     r1=json.loads(response)
     c1=r1['choices'][0]['message']['content']
-    if 'Let ' in c1 and '=' in c1 and '(' in c1 and ')' in c1:
+    if '=' in c1 and 'Answer:' in c1:
       r1['choices'][0]['message']['content'] = "The analysis of the document(s) did not find a proper result."
       response = json.dumps(r1)
-      return response  
+      return response,st  
         
-    
-    return response
+    if default_args['searchterms'] != '':
+          
+          starr = default_args['searchterms'].split(",")
+          for t in starr:
+              if t in  r1['choices'][0]['message']['content']:
+                st="true"
+                break
+
+    return response,st
 
 def stopcontainers():
 
@@ -452,10 +463,11 @@ def sendtoprivategpt(maindata,docfolder):
         
         response=pgptchat(m,mcontext,docidstrarr,mainport,False,mainip,pgptendpoint)
         # Produce data to Kafka
+        sf="false"
         if usingqdrant != '':
-           response=checkresponse(response) 
+           response,sf=checkresponse(response) 
            m = m + ' (' + usingqdrant + ')'
-        response = response[:-1] + "," + "\"prompt\":\"" + m + "\",\"identifier\":\"" + m1 + "\"}"
+        response = response[:-1] + "," + "\"prompt\":\"" + m + "\",\"identifier\":\"" + m1 + "\",\"searchfound\":\"" + sf + "\"}"
         print("PGPT response=",response)
         if 'ERROR:' not in response:         
           response = response.replace('\\"',"'").replace('\n',' ')  
