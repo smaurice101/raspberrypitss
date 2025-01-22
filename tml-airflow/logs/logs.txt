@@ -7565,3 +7565,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-22_19:54:54] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-22_19:56:45] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
 [INFO 2025-01-22_20:05:56] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-01-22_20:22:13] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
