@@ -80,7 +80,7 @@ def checkresponse(response,ident):
     response = response.replace("null","-1").replace("\n","")
     r1=json.loads(response)
     c1=r1['choices'][0]['message']['content']
-    if '=' in c1 and 'Answer:' in c1:
+    if '=' in c1 and ('Answer:' in c1 or 'A:' in c1):
       r1['choices'][0]['message']['content'] = "The analysis of the document(s) did not find a proper result."
       response = json.dumps(r1)
       return response,st  
