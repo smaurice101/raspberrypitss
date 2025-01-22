@@ -27,7 +27,7 @@ default_args = {
   'mylocation' : 'Your location', # <<< *** Change as needed      
   'brokerhost' : '', # <<< *** Leave as is 
   'brokerport' : '-999', # <<< *** Leave as is
-  'streamstojoin' : 'Power_preprocessed_AnomProb,Current_preprocessed_AnomProb', # << ** These are the streams in the preprocess_data_topic for these independent variables
+  'streamstojoin' : 'Power_preprocessed_Avg', # << ** These are the streams in the preprocess_data_topic for these independent variables
   'inputdata' : '', # << ** You can specify independent variables manually - rather than consuming from the preprocess_data_topic stream
   'consumefrom' : 'ml-data', # << This is ml_data_topic in STEP 5 that contains the estimated parameters
   'mainalgokey' : '', # leave blank
