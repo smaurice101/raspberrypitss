@@ -54,7 +54,8 @@ anomaly probabilities are less than 0.60, it is likely the risk of a cyber attac
                    # separate multiple folders with a comma
  'docfolderingestinterval': '900', # how often you want TML to RE-LOAD the files in docfolder - enter the number of SECONDS
  'useidentifierinprompt': '1', # If 1, this uses the identifier in the TML json output and appends it to prompt, If 0, it uses the prompt only    
- 'searchterms': '192.168.--identifier--,authentication failure'
+ 'searchterms': '192.168.--identifier--,authentication failure',
+ 'streamall': '1',    
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
