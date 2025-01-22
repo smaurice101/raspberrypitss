@@ -576,7 +576,7 @@ def startprivategpt(**context):
        ti.xcom_push(key="{}_docfolder".format(sname), value="{}".format(default_args['docfolder']))
        ti.xcom_push(key="{}_docfolderingestinterval".format(sname), value="_{}".format(default_args['docfolderingestinterval']))
        ti.xcom_push(key="{}_useidentifierinprompt".format(sname), value="_{}".format(default_args['useidentifierinprompt']))
-       ti.xcom_push(key="{}_searchterms".format(sname), value="_{}".format(default_args['searchterms']))
+       ti.xcom_push(key="{}_searchterms".format(sname), value="{}".format(default_args['searchterms']))
     
 
        repo=tsslogging.getrepo()
