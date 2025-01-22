@@ -621,7 +621,7 @@ if __name__ == '__main__':
         default_args['docfolder'] = docfolder
         default_args['docfolderingestinterval'] = docfolderingestinterval
         default_args['useidentifierinprompt'] = useidentifierinprompt
-        default_args['useidentifierinprompt'] = searchterms
+        default_args['searchterms'] = searchterms
 
         if "KUBE" not in os.environ:          
           v,buf=qdrantcontainer()
