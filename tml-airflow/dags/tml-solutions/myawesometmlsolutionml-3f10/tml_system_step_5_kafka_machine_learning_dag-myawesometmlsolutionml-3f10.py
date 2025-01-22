@@ -1,3 +1,4 @@
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
@@ -35,7 +36,7 @@ default_args = {
   'modelsearchtuner' : '90', # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.      
   'dependentvariable' : 'failure', # <<< *** Change as needed, 
   'independentvariables': 'Power_preprocessed_Avg', # <<< *** Change as needed, 
-  'rollbackoffsets' : '1200', # <<< *** Change as needed, 
+  'rollbackoffsets' : '1000', # <<< *** Change as needed, 
   'consumeridtrainingdata2': '', # leave blank
   'partition_training' : '',  # leave blank
   'consumefrom' : '',  # leave blank
