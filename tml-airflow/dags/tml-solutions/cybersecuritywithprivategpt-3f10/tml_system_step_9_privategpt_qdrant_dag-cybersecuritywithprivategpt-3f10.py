@@ -523,6 +523,9 @@ def startprivategpt(**context):
        if 'step9useidentifierinprompt' in os.environ:
           if os.environ['step9useidentifierinprompt'] != '':
             default_args['useidentifierinprompt'] = os.environ['step9useidentifierinprompt']
+       if 'step9searchterms' in os.environ:
+          if os.environ['searchterms'] != '':
+            default_args['searchterms'] = os.environ['searchterms']
 
        VIPERTOKEN = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_VIPERTOKEN".format(sname))
        VIPERHOST = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_VIPERHOSTPREPROCESSPGPT".format(sname))
@@ -560,7 +563,7 @@ def startprivategpt(**context):
        ti.xcom_push(key="{}_docfolder".format(sname), value="{}".format(default_args['docfolder']))
        ti.xcom_push(key="{}_docfolderingestinterval".format(sname), value="_{}".format(default_args['docfolderingestinterval']))
        ti.xcom_push(key="{}_useidentifierinprompt".format(sname), value="_{}".format(default_args['useidentifierinprompt']))
-       ti.xcom_push(key="{}_useidentifierinprompt".format(sname), value="_{}".format(default_args['searchterms']))
+       ti.xcom_push(key="{}_searchterms".format(sname), value="_{}".format(default_args['searchterms']))
     
 
        repo=tsslogging.getrepo()
