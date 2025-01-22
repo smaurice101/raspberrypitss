@@ -7394,3 +7394,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [ERROR 2025-01-22_14:51:59] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py Expecting value: line 1 column 1 (char 0)
 [ERROR 2025-01-22_14:52:14] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py Expecting value: line 1 column 1 (char 0)
 [ERROR 2025-01-22_14:52:30] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py Expecting value: line 1 column 1 (char 0)
+[ERROR 2025-01-22_14:52:45] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py Expecting value: line 1 column 1 (char 0)
