@@ -64,12 +64,14 @@ VIPERPORT=""
 HTTPADDR=""
 maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
+GPTONLINE=0
 
 def checkresponse(response):
+    global GPTONLINE
     print("Checkresponse")
-    if "ERROR:" in response:
+    if "ERROR:" in response:         
          return response
-
+    GPTONLINE=1
     response = response.replace("null","-1").replace("\n","")
     r1=json.loads(response)
     c1=r1['choices'][0]['message']['content']
@@ -334,6 +336,7 @@ def gatherdataforprivategpt(result):
    return privategptmessage
 
 def startdirread():
+  global GPTONLINE
   print("INFO startdirread")  
   try:  
     t = threading.Thread(name='child procs', target=ingestfiles)
@@ -356,7 +359,7 @@ def getingested(docname):
   return docids,docstr,docidsstr
 
 def ingestfiles():
-    global docidstrarr
+    global docidstrarr, GPTONLINE
     pgptendpoint="/v1/ingest"
     docidstrarr = []
     basefolder='/rawdata/'
@@ -367,8 +370,9 @@ def ingestfiles():
  
     bufarr=buf.split(",")
     while True:
-     docidstrarr = []
-     for dirp in bufarr:
+     if GPTONLINE:
+      docidstrarr = []
+      for dirp in bufarr:
         # lock the directory
         dirp = basefolder + dirp
         if os.path.exists(dirp):
@@ -395,8 +399,9 @@ def ingestfiles():
         else:
           print("WARN Directory Path: {} does not exist".format(dirp))
          
-     time.sleep(int(default_args['docfolderingestinterval']))
-     print("docidsstr=",docidstrarr)
+      time.sleep(int(default_args['docfolderingestinterval']))
+      print("docidsstr=",docidstrarr)
+     time.sleep(1)
 
 def sendtoprivategpt(maindata,docfolder):
    global docidstrarr
