@@ -560,6 +560,8 @@ def startprivategpt(**context):
        ti.xcom_push(key="{}_docfolder".format(sname), value="{}".format(default_args['docfolder']))
        ti.xcom_push(key="{}_docfolderingestinterval".format(sname), value="_{}".format(default_args['docfolderingestinterval']))
        ti.xcom_push(key="{}_useidentifierinprompt".format(sname), value="_{}".format(default_args['useidentifierinprompt']))
+       ti.xcom_push(key="{}_useidentifierinprompt".format(sname), value="_{}".format(default_args['searchterms']))
+    
 
        repo=tsslogging.getrepo()
        if sname != '_mysolution_':
@@ -570,10 +572,10 @@ def startprivategpt(**context):
        wn = windowname('ai',sname,sd)
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess-pgpt", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\"".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:],
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\"".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:],
                        default_args['vectordbcollectionname'],default_args['concurrency'],default_args['CUDA_VISIBLE_DEVICES'],default_args['rollbackoffset'],
                        default_args['prompt'],default_args['context'],default_args['keyattribute'],default_args['keyprocesstype'],
-                       default_args['hyperbatch'],default_args['docfolder'],default_args['docfolderingestinterval'],default_args['useidentifierinprompt']), "ENTER"])
+                       default_args['hyperbatch'],default_args['docfolder'],default_args['docfolderingestinterval'],default_args['useidentifierinprompt'],default_args['searchterms']), "ENTER"])
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -603,6 +605,7 @@ if __name__ == '__main__':
         docfolder =  sys.argv[14]
         docfolderingestinterval =  sys.argv[15]
         useidentifierinprompt =  sys.argv[16]
+        searchterms =  sys.argv[17]
         
         default_args['rollbackoffset']=rollbackoffset
         default_args['prompt'] = prompt
@@ -618,7 +621,8 @@ if __name__ == '__main__':
         default_args['docfolder'] = docfolder
         default_args['docfolderingestinterval'] = docfolderingestinterval
         default_args['useidentifierinprompt'] = useidentifierinprompt
- 
+        default_args['useidentifierinprompt'] = searchterms
+
         if "KUBE" not in os.environ:          
           v,buf=qdrantcontainer()
           if buf != "":
