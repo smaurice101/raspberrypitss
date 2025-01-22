@@ -67,7 +67,7 @@ maintopic =  default_args['consumefrom']
 mainproducerid = default_args['producerid']
 GPTONLINE=0
 
-def checkresponse(response):
+def checkresponse(response,ident):
     global GPTONLINE
     print("Checkresponse")
     st="false"
@@ -85,11 +85,12 @@ def checkresponse(response):
       response = json.dumps(r1)
       return response,st  
         
-    if default_args['searchterms'] != '':
-          
+    if default_args['searchterms'] != '':          
           starr = default_args['searchterms'].split(",")
           for t in starr:
-              if t in  r1['choices'][0]['message']['content']:
+              if '--identifier--' in t:
+                  t = t.replace("--identifier--",ident)   
+              if t in  c1:
                 st="true"
                 break
 
@@ -465,7 +466,7 @@ def sendtoprivategpt(maindata,docfolder):
         # Produce data to Kafka
         sf="false"
         if usingqdrant != '':
-           response,sf=checkresponse(response) 
+           response,sf=checkresponse(response,m1) 
            m = m + ' (' + usingqdrant + ')'
         response = response[:-1] + "," + "\"prompt\":\"" + m + "\",\"identifier\":\"" + m1 + "\",\"searchfound\":\"" + sf + "\"}"
         print("PGPT response=",response)
