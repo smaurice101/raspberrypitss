@@ -473,7 +473,7 @@ def sendtoprivategpt(maindata,docfolder):
         if 'ERROR:' not in response:         
           response = response.replace('\\"',"'").replace('\n',' ')  
           producegpttokafka(response,maintopic)
-          time.sleep(1)
+        #  time.sleep(1)
         else:
           counter += 1
           time.sleep(1)
