@@ -383,11 +383,15 @@ def ingestfiles():
                if is_binary(mf):
                  maadstml.pgptingestdocs(mf,'binary',pgptip,pgptport,pgptendpoint)
                else:
-                 maadstml.pgptingestdocs(mf,'text',pgptip,pgptport,pgptendpoint)
+                 try:
+                    maadstml.pgptingestdocs(mf,'text',pgptip,pgptport,pgptendpoint)
+                 except Exception as e:
+                     print("ERROR:",e)
 
                docids,docstr,docidstr=getingested(mf)
                if len(docidstr) >=1:
                  docidstrarr.append(docidstr[0])
+               
         else:
           print("WARN Directory Path: {} does not exist".format(dirp))
          
