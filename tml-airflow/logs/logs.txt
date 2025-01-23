@@ -7822,3 +7822,13 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-01-23_01:43:15] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-23_01:43:28] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-01-23_01:44:45] {'name': ['Project with slug "myawesometmlsolutionml-3f10" already exists.']}
+[INFO 2025-01-23_01:45:24] TML Solution Studio: TML Project Creation: Copying old project : myawesometmlsolutionml-3f10  ---> To create new project: /raspberrypitss/tml-airflow/dags/tml-solutions/myawesometmlsolutionml-backup-3f10
+[INFO 2025-01-23_01:45:25] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2025-01-23_01:46:01] TML Solution Studio: Starting Git commit process for project: myawesometmlsolutionml-backup-3f10
+[INFO 2025-01-23_01:46:01] TML Solution Studio: git commit -a Status for project myawesometmlsolutionml-backup-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2025-01-23_01:46:02] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2025-01-23_01:46:02] TML Solution Studio: git add . Status: 
+[INFO 2025-01-23_01:46:02] TML Solution Studio: git commit -a Status for project myawesometmlsolutionml-backup-3f10: fatal: paths 'myawesometmlsolutionml-3f10 ...' with -a does not make sense
+[INFO 2025-01-23_01:46:02] TML Solution Studio: git push Status for project myawesometmlsolutionml-backup-3f10: Everything up-to-date
