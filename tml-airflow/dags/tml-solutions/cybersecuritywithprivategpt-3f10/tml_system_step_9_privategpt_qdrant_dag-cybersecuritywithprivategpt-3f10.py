@@ -712,7 +712,8 @@ if __name__ == '__main__':
           try:  
              v,buf=startpgptcontainer()
           except Exception as e:
-              print("Error=",e)
+            tsslogging.locallogs("ERROR", "STEP 9: Starting privateGPT: {}".format(e))
+            print("Error=",e)
                 
           if v==1:
             tsslogging.locallogs("WARN", "STEP 9: There seems to be an issue starting the privateGPT container.  Here is the run command - try to run it nanually for testing: {}".format(buf))
