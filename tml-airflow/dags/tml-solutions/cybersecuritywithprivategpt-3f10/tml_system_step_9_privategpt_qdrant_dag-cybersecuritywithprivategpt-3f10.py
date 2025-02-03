@@ -123,7 +123,7 @@ def stopcontainers():
             print(buf)
             subprocess.call(buf, shell=True)
    if cfound==0:
-      print("INFO STEP 9: PrivateGPT container not found.  It may need to be pulled.")
+      print("INFO STEP 9: PrivateGPT container {} not found.  It may need to be pulled.".format(pgptcontainername))
       tsslogging.locallogs("WARN", "STEP 9: PrivateGPT container not found. It may need to be pulled if it does not start: docker pull {}".format(pgptcontainername))
 
 def startpgptcontainer():
