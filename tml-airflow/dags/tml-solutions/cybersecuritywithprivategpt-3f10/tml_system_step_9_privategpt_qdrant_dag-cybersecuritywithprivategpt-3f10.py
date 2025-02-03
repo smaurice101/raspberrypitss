@@ -113,6 +113,7 @@ def stopcontainers():
             subprocess.call(buf, shell=True)
 
 def startpgptcontainer():
+      print("In start gpt container")
       collection = default_args['vectordbcollectionname']
       concurrency = default_args['concurrency']
       pgptcontainername = default_args['pgptcontainername']
