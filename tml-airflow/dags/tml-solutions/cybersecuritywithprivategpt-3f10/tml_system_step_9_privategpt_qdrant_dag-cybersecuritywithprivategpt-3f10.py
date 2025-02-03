@@ -678,7 +678,7 @@ if __name__ == '__main__':
         
           time.sleep(5)  # wait for containers to start
          
-          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT")
+          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT No Kube")
           v,buf=startpgptcontainer()
           if v==1:
             tsslogging.locallogs("WARN", "STEP 9: There seems to be an issue starting the privateGPT container.  Here is the run command - try to run it nanually for testing: {}".format(buf))
