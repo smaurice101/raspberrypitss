@@ -708,7 +708,7 @@ if __name__ == '__main__':
         
           time.sleep(5)  # wait for containers to start         
          
-          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT")
+          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT Kube=0")
           try:  
              v,buf=startpgptcontainer()
           except Exception as e:
