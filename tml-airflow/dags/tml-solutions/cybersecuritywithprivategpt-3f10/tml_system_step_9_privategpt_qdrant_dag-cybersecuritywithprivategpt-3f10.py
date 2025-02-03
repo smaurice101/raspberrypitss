@@ -120,8 +120,10 @@ def startpgptcontainer():
       cuda = int(default_args['CUDA_VISIBLE_DEVICES'])
       temp = default_args['temperature']
       vectorsearchtype = default_args['vectorsearchtype']
- 
-      stopcontainers()
+      try:
+       stopcontainers()
+      except Exception as e:
+       pass
 #      buf="docker stop $(docker ps -q --filter ancestor={} )".format(pgptcontainername)
  #     subprocess.call(buf, shell=True)
       time.sleep(10)
