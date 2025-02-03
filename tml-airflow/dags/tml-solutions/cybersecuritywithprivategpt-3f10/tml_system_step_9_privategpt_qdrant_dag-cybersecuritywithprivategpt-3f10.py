@@ -122,6 +122,8 @@ def stopcontainers():
 
 def startpgptcontainer():
       print("In start gpt container")
+      return
+
       collection = default_args['vectordbcollectionname']
       concurrency = default_args['concurrency']
       pgptcontainername = default_args['pgptcontainername']
