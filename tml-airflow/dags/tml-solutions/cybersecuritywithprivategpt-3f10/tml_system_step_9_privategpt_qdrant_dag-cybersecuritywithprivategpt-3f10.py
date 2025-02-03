@@ -99,6 +99,14 @@ def checkresponse(response,ident):
 
     return response,st
 
+
+def stopcontainerscurrent():
+      pgptcontainername = default_args['pgptcontainername']
+
+      buf="docker stop $(docker ps -q --filter ancestor={} )".format(pgptcontainername)
+      print(buf)
+      subprocess.call(buf, shell=True)
+
 def stopcontainers():
 
    subprocess.call("docker image ls > gptfiles.txt", shell=True)
@@ -122,12 +130,12 @@ def startpgptcontainer():
       temp = default_args['temperature']
       vectorsearchtype = default_args['vectorsearchtype']
       try:
-       stopcontainers()
+       stopcontainerscurrent()
       except Exception as e:
        pass
 #      buf="docker stop $(docker ps -q --filter ancestor={} )".format(pgptcontainername)
  #     subprocess.call(buf, shell=True)
-      time.sleep(10)
+      time.sleep(5)
       if '-no-gpu-' in pgptcontainername:       
           buf = "docker run -d -p {}:{} --net=host --env PORT={} --env GPU=0 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} --env temperature={} --env vectorsearchtype=\"{}\" {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,temperature,vectorsearchtype,pgptcontainername)       
       else: 
