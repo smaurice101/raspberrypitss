@@ -122,7 +122,7 @@ def stopcontainers():
 
 def startpgptcontainer():
       print("In start gpt container")
-      return
+      
 
       collection = default_args['vectordbcollectionname']
       concurrency = default_args['concurrency']
@@ -131,6 +131,12 @@ def startpgptcontainer():
       cuda = int(default_args['CUDA_VISIBLE_DEVICES'])
       temp = default_args['temperature']
       vectorsearchtype = default_args['vectorsearchtype']
+      buf = "docker run -d -p {}:{} --net=host --gpus all -v /var/run/docker.sock:/var/run/docker.sock:z --env PORT={} --env TSS=1 --env GPU=1 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} --env TOKENIZERS_PARALLELISM=false --env temperature={} --env vectorsearchtype=\"{}\" {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,temperature,vectorsearchtype,pgptcontainername)
+      print("---------buf=",buf)
+      tsslogging.locallogs("INFO", "STEP 9: PrivateGPT container.  Here is the run command: {},".format(buf))
+        
+      return
+
       try:
        stopcontainerscurrent()
       except Exception as e:
