@@ -47,7 +47,7 @@ VIPERHOST=""
 VIPERPORT=""
 HTTPADDR=""  
 VIPERHOSTFROM=""
-    
+# this is change 5    
 # setting callbacks for different events to see if it works, print the message etc.
 def on_connect(client, userdata, flags, rc, properties=None):
   print("CONNACK received with code %s." % rc)
@@ -179,7 +179,7 @@ def startproducing(**context):
        ti.xcom_push(key="{}_TSSCLIENTPORT".format(sname),value="_{}".format(default_args['mqtt_port']))
        ti.xcom_push(key="{}_TMLCLIENTPORT".format(sname),value="_{}".format(default_args['mqtt_port']))
 
-       ti.xcom_push(key="{}_PORT".format(sname),value=VIPERPORT)
+       ti.xcom_push(key="{}_PORT".format(sname),value="_{}".format(VIPERPORT))
        ti.xcom_push(key="{}_HTTPADDR".format(sname),value=HTTPADDR)
        sd = context['dag'].dag_id
        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))

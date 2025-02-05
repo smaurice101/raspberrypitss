@@ -39,6 +39,7 @@ default_args = {
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
+
     
 # This sets the lat/longs for the IoT devices so it can be map
 VIPERTOKEN=""
@@ -46,7 +47,7 @@ VIPERHOST=""
 VIPERPORT=""
 HTTPADDR=""  
 VIPERHOSTFROM=""
-    
+# this is change 5    
 # setting callbacks for different events to see if it works, print the message etc.
 def on_connect(client, userdata, flags, rc, properties=None):
   print("CONNACK received with code %s." % rc)
@@ -95,9 +96,15 @@ def mqttserverconnect():
    tsslogging.locallogs("INFO", "MQTT connection established...")
    client.on_subscribe = on_subscribe
    client.on_message = on_message
-   client.subscribe(default_args['mqtt_subscribe_topic'], qos=1)            
-   client.on_connect = on_connect
-   client.loop_forever()
+   b=client.subscribe(default_args['mqtt_subscribe_topic'], qos=1)      
+   if 'MQTT_ERR_SUCCESS' not in str(b):
+           print("ERROR Making a connection to HiveMQ:",b)
+           tsslogging.locallogs("ERROR", "Cannot connect to MQTT broker in {} - {}".format(os.path.basename(__file__),str(b))) 
+           tsslogging.tsslogit("CANNOT Connect to MQTT Broker in {}".format(os.path.basename(__file__)), "ERROR" )                     
+           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")        
+   else:
+     client.on_connect = on_connect
+     client.loop_forever()
  else:   
     print("Cannot Connect")   
     tsslogging.locallogs("ERROR", "Cannot connect to MQTT broker in {} - {}".format(os.path.basename(__file__),e)) 
@@ -114,26 +121,24 @@ def producetokafka(value, tmlid, identifier,producerid,maintopic,substream,args)
  enabletls = int(args['enabletls'])
  identifier = args['identifier']
 
-# try:
- result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,substream,
+ try:
+    result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,substream,
                                         topicid,identifier)
-# except Exception as e:
- #   print("ERROR1:",e)
+ except Exception as e:
+    print("ERROR:",e)
 
     
 def readdata(valuedata):
   # MAin Kafka topic to store the real-time data
   maintopic = default_args['topics']
   producerid = default_args['producerid']
-
-  print("readdata")
-  #try:
-  producetokafka(valuedata, "", "",producerid,maintopic,"",default_args)
+  try:
+      producetokafka(valuedata, "", "",producerid,maintopic,"",default_args)
       # change time to speed up or slow down data   
       #time.sleep(0.15)
-  #except Exception as e:
-   #   print(e)  
-    #  pass  
+  except Exception as e:
+      print(e)  
+      pass  
 
 def windowname(wtype,sname,dagname):
     randomNumber = random.randrange(10, 9999)
@@ -174,7 +179,7 @@ def startproducing(**context):
        ti.xcom_push(key="{}_TSSCLIENTPORT".format(sname),value="_{}".format(default_args['mqtt_port']))
        ti.xcom_push(key="{}_TMLCLIENTPORT".format(sname),value="_{}".format(default_args['mqtt_port']))
 
-       ti.xcom_push(key="{}_PORT".format(sname),value=VIPERPORT)
+       ti.xcom_push(key="{}_PORT".format(sname),value="_{}".format(VIPERPORT))
        ti.xcom_push(key="{}_HTTPADDR".format(sname),value=HTTPADDR)
        sd = context['dag'].dag_id
        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))
