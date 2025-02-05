@@ -49,7 +49,7 @@ VIPERTOKEN=""
 VIPERHOST=""
 VIPERPORT=""
 HTTPADDR=""
-
+# this is a change
 def processtransactiondata():
          global VIPERTOKEN
          global VIPERHOST
@@ -207,4 +207,3 @@ if __name__ == '__main__':
            tsslogging.tsslogit("Preprocessing2 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
            tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
            break
-
