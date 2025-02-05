@@ -8502,3 +8502,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-05_16:02:56] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-02-05_16:02:57] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-02-05_16:03:06] PrivateGPT Step 9 DAG in tml_system_step_9_privategpt_qdrant_dag-cybersecuritywithprivategpt-3f10.py
+[INFO 2025-02-05_16:03:10] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
