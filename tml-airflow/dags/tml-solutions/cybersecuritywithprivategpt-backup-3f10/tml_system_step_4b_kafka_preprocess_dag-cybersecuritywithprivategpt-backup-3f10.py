@@ -49,7 +49,7 @@ VIPERTOKEN=""
 VIPERHOST=""
 VIPERPORT=""
 HTTPADDR=""
-# this is a change
+
 def processtransactiondata():
          global VIPERTOKEN
          global VIPERHOST
