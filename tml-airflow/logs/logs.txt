@@ -8870,3 +8870,4 @@ Already up to date.
 [INFO 2025-02-10_15:26:42] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-10_15:26:43] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-10_15:26:44] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
+[INFO 2025-02-10_15:26:45] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
