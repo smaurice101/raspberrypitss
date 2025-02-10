@@ -8862,3 +8862,4 @@ Already up to date.
 [INFO 2025-02-10_15:23:19] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-10_15:23:31] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-elastalink-3f10.py
 [INFO 2025-02-10_15:23:35] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-elastalink-3f10.py
+[INFO 2025-02-10_15:23:37] Visualization DAG in tml_system_step_7_kafka_visualization_dag-elastalink-3f10.py
