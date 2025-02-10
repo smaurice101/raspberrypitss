@@ -24,7 +24,7 @@ default_args = {
  'solutionairflowport' : '4040', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionexternalport' : '5050', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionvipervizport' : '6060', # << If -1, TSS will choose a free port randonly, or set this to a fixed number   
- 'description': 'This is an awesome real-time solution built by TSS',   # <<< *** Provide a description of your solution
+ 'description': 'This is an awesome real-time solution built by TSS for ElastaLink',   # <<< *** Provide a description of your solution
  'HTTPADDR' : 'https://',
  'COMPANYNAME' : 'My company',       
  'WRITELASTCOMMIT' : '0',   ## <<<<<<<<< ******************** FOR DETAILS ON BELOW PARAMETER SEE: https://tml.readthedocs.io/en/latest/viper.html
