@@ -8875,3 +8875,4 @@ Already up to date.
 [INFO 2025-02-10_15:27:02] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-elastalink-3f10.py
 [INFO 2025-02-10_15:27:04] Visualization DAG in tml_system_step_7_kafka_visualization_dag-elastalink-3f10.py
 [INFO 2025-02-10_15:27:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-elastalink-3f10.py
+[INFO 2025-02-10_15:28:45] {'name': ['Project with slug "elastalink-3f10" already exists.']}
