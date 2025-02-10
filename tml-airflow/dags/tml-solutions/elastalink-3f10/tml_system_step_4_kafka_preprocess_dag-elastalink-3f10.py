@@ -43,7 +43,7 @@ default_args = {
 subtopics=metadata.property_name~\
 values=datapoint.value~\
 identifiers=metadata.display_name~\
-datetime=datapoint.updated_at~\
+datetime=datapoint.created_at~\
 msgid=datapoint.id~\
 latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
