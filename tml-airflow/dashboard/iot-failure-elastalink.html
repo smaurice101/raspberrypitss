@@ -2289,6 +2289,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 	
 	
 	function drawJustgage(jsondata,topic){
+      console.log(mainkafkatopic);
 	    if (mainkafkatopic=="iot-preprocess"){
            getAvgRisk(jsondata);
            
