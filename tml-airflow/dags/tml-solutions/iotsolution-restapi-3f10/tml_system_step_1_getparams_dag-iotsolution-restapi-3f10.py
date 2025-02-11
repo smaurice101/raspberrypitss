@@ -75,7 +75,6 @@ default_args = {
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
-
     
 def reinitbinaries(sname):  
     pywindowfiles=glob.glob("/tmux/pythonwindows_*") 
@@ -278,8 +277,10 @@ def getparams(**context):
   HPDEPORTPREDICT = ""
 
   tsslogging.locallogs("INFO", "STEP 1: Build started") 
-    
-  sname = args['solutionname']    
+
+  sd = context['dag'].dag_id 
+  pname = args['solutionname']    
+  sname = tsslogging.rtdprojects(pname,sd)
 
   if 'step1description' in os.environ:
     desc = os.environ['step1description']
@@ -410,7 +411,6 @@ def getparams(**context):
         externalport = os.environ['EXTERNALPORT']
         
   tss = os.environ['TSS']          
-  sd = context['dag'].dag_id 
   task_instance = context['task_instance']
     
   if tss == "1":  
@@ -472,6 +472,7 @@ def getparams(**context):
   task_instance.xcom_push(key="{}_HPDEHOSTPREDICT".format(sname),value=HPDEHOSTPREDICT)
   task_instance.xcom_push(key="{}_HPDEPORTPREDICT".format(sname),value="_{}".format(HPDEPORTPREDICT))
   task_instance.xcom_push(key="{}_solutionname".format(sd),value=sname)
+  task_instance.xcom_push(key="{}_projectname".format(sd),value=pname)
   task_instance.xcom_push(key="{}_solutiondescription".format(sname),value=desc)
   task_instance.xcom_push(key="{}_solutiontitle".format(sname),value=stitle)
 
