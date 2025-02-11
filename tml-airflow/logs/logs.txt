@@ -9223,3 +9223,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-11_14:39:30] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-elastalink-3f10.py
 [INFO 2025-02-11_14:39:32] Visualization DAG in tml_system_step_7_kafka_visualization_dag-elastalink-3f10.py
 [INFO 2025-02-11_14:39:48] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-elastalink-3f10.py
+[INFO 2025-02-11_14:41:20] {'name': ['Project with slug "elastalink-3f10" already exists.']}
