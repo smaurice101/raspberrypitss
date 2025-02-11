@@ -2289,7 +2289,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 	
 	
 	function drawJustgage(jsondata,topic){
-      console.log(mainkafkatopic);
+      #console.log(mainkafkatopic);
 	    if (mainkafkatopic=="iot-preprocess"){
            getAvgRisk(jsondata);
            
@@ -2429,6 +2429,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 				   //}
 				 }
 			}
+            console.log("count=",count);
 			if (count!=0){
 			   maingaugepercentageavg=maingaugepercentageavg/count;
 			   maingaugepercentageavg=maingaugepercentageavg.toFixed(1) * 100;
