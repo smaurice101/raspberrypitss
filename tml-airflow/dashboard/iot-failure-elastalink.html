@@ -2414,7 +2414,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 			   maintopic=jsondata.TopicReads[j].Maintopic;
 			   topic=jsondata.TopicReads[j].Topic;
 			
-			   if (maintopic=="iot-preprocess2" && topic.includes("_AnomProb_")){
+			   if (maintopic=="iot-preprocess" && topic.includes("_AnomProb_")){
 				   jbuf=jsondata.TopicReads[j].Hyperprediction;
 				   maingaugepercentageavg = maingaugepercentageavg + Number(jbuf);
 				   count = count + 1;
