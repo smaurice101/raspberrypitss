@@ -2174,9 +2174,6 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 		
 		function drawHealthriskchart(topic){
 		    
-            if (mainkafkatopic!="iot-preprocess2"){
-			   return;
-			}
 			
 			var data = new google.visualization.DataTable();
              	curTime = new Date();
@@ -2289,7 +2286,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 	
 	
 	function drawJustgage(jsondata,topic){
-      #console.log(mainkafkatopic);
+      //console.log(mainkafkatopic);
 	    if (mainkafkatopic=="iot-preprocess"){
            getAvgRisk(jsondata);
            
