@@ -9247,3 +9247,4 @@ Already up to date.
 [INFO 2025-02-11_16:04:00] TML Solution Studio: git push Status for project elastalink2-3f10: Everything up-to-date
 [INFO 2025-02-11_16:12:16] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-11_16:12:17] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
+[INFO 2025-02-11_16:12:18] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
