@@ -9096,3 +9096,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [ERROR 2025-02-11_03:42:04] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-elastalink-3f10.py: [Errno 2] No such file or directory: '/raspberrypitss/tml-airflow/dags/tml-solutions/_mysolution_-3f10/docker_run_stop-_mysolution_-3f10.py'
 [INFO 2025-02-11_03:42:11] {'name': ['Project with slug "mysolution-3f10" already exists.']}
 [INFO 2025-02-11_03:45:46] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
+[INFO 2025-02-11_03:45:46] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
