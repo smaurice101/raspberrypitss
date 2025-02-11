@@ -168,8 +168,8 @@ def generatedoc(**context):
     subprocess.call(["sed", "-i", "-e",  "s/--solutiontitle--/{}/g".format(stitle), "/{}/docs/source/index.rst".format(sname)])
     subprocess.call(["sed", "-i", "-e",  "s/--solutiondescription--/{}/g".format(sdesc), "/{}/docs/source/index.rst".format(sname)])
  
-#    projecturl="https:\/\/github.com\/{}\/{}\/tree\/main\/tml-airflow\/dags\/tml-solutions\/{}".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname)
-#    subprocess.call(["sed", "-i", "-e",  "s/`--projectname--<{}>`_/{}/g".format(projecturl,projectname), "/{}/docs/source/index.rst".format(sname)])
+    projecturl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname)
+ 
     doparse("/{}/docs/source/index.rst".format(sname), ["--projectname--;{}".format(projectname)])
 
     subprocess.call(["sed", "-i", "-e",  "s/--solutionname--/{}/g".format(sname), "/{}/docs/source/details.rst".format(sname)])
