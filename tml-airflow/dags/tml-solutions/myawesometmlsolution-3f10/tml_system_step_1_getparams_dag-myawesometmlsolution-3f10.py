@@ -471,8 +471,8 @@ def getparams(**context):
   task_instance.xcom_push(key="{}_HPDEPORT".format(sname),value="_{}".format(HPDEPORT))
   task_instance.xcom_push(key="{}_HPDEHOSTPREDICT".format(sname),value=HPDEHOSTPREDICT)
   task_instance.xcom_push(key="{}_HPDEPORTPREDICT".format(sname),value="_{}".format(HPDEPORTPREDICT))
-  task_instance.xcom_push(key="{}_solutionname".format(sname),value=sd)
-  task_instance.xcom_push(key="{}_projectname".format(sname),value=pname)
+  task_instance.xcom_push(key="{}_solutionname".format(sd),value=sname)
+  task_instance.xcom_push(key="{}_projectname".format(sd),value=pname)
   task_instance.xcom_push(key="{}_solutiondescription".format(sname),value=desc)
   task_instance.xcom_push(key="{}_solutiontitle".format(sname),value=stitle)
 
