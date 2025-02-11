@@ -1169,7 +1169,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 			  generated=jsondata.TopicReads[j].Generated;
 			  topic=jsondata.TopicReads[j].Topic;
 			  
-			  if (topic.includes("_AnomProb_")){
+			  if (topic.includes("_AnomProb")){
 						  
 		      idkeyarr = jbuf.split("~");	
 			  let type = idkeyarr[0];
@@ -2408,7 +2408,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 			
 		//	console.log("riskthreshold=",riskthreshold);
 
-           console.log(jsondata);      
+           //console.log(jsondata);      
 			
 			if (jsondata){
 			for (j in jsondata.TopicReads){
@@ -2427,7 +2427,7 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
 				   //}
 				 }
 			}
-            console.log("count=",count);
+            //console.log("count=",count);
 			if (count!=0){
 			   maingaugepercentageavg=maingaugepercentageavg/count;
 			   maingaugepercentageavg=maingaugepercentageavg.toFixed(1) * 100;
