@@ -20,7 +20,7 @@ default_args = {
  'cloudusername' : '',  # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API KEY  - LEAVE BLANK
  'cloudpassword' : '',  # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API SECRET - LEAVE BLANK   
  'solutionname': 'elastalink-3f10',   # <<< *** DO NOT MODIFY - THIS WILL BE AUTOMATICALLY UPDATED
- 'solutiontitle': 'ElastLink TML Solution', # <<< *** Provide a descriptive title for your solution
+ 'solutiontitle': 'ElastaLink TML Solution', # <<< *** Provide a descriptive title for your solution
  'solutionairflowport' : '4040', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionexternalport' : '5050', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionvipervizport' : '6060', # << If -1, TSS will choose a free port randonly, or set this to a fixed number   
