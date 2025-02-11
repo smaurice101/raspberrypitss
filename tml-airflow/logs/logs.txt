@@ -9191,3 +9191,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-11_14:16:24] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-11_14:16:25] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-11_14:16:42] Visualization DAG in tml_system_step_7_kafka_visualization_dag-elastalink-3f10.py
+[INFO 2025-02-11_14:17:01] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-elastalink-3f10.py
