@@ -9538,3 +9538,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-12_20:48:48] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-backup-3f10.py
 [INFO 2025-02-12_20:48:49] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-backup-3f10.py
 [INFO 2025-02-12_20:49:14] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-backup-3f10.py
+[INFO 2025-02-12_20:49:29] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-backup-3f10.py
