@@ -98,7 +98,8 @@ def checkresponse(response,ident):
     return response,st
 
 def stopcontainers():
-
+   pgptcontainername = default_args['pgptcontainername']
+   cfound=0
    subprocess.call("docker image ls > gptfiles.txt", shell=True)
    with open('gptfiles.txt', 'r', encoding='utf-8') as file:
         data = file.readlines()
@@ -107,8 +108,13 @@ def stopcontainers():
           darr = d.split(" ")
           if '-privategpt-' in darr[0]:
             buf="docker stop $(docker ps -q --filter ancestor={} )".format(darr[0])
+            if pgptcontainername in darr[0]:
+                cfound=1  
             print(buf)
             subprocess.call(buf, shell=True)
+   if cfound==0:
+      print("INFO STEP 9: PrivateGPT container {} not found.  It may need to be pulled.".format(pgptcontainername))
+      tsslogging.locallogs("WARN", "STEP 9: PrivateGPT container not found. It may need to be pulled if it does not start: docker pull {}".format(pgptcontainername))
 
 def startpgptcontainer():
       collection = default_args['vectordbcollectionname']
@@ -116,6 +122,9 @@ def startpgptcontainer():
       pgptcontainername = default_args['pgptcontainername']
       pgptport = int(default_args['pgptport'])
       cuda = int(default_args['CUDA_VISIBLE_DEVICES'])
+      temp = default_args['temperature']
+      vectorsearchtype = default_args['vectorsearchtype']
+ 
       stopcontainers()
 #      buf="docker stop $(docker ps -q --filter ancestor={} )".format(pgptcontainername)
  #     subprocess.call(buf, shell=True)
@@ -500,6 +509,7 @@ def windowname(wtype,sname,dagname):
 def startprivategpt(**context):
        sd = context['dag'].dag_id
        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))
+       pname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_projectname".format(sd))
 
        if 'step9rollbackoffset' in os.environ:
           if os.environ['step9rollbackoffset'] != '':
@@ -544,6 +554,13 @@ def startprivategpt(**context):
           if os.environ['searchterms'] != '':
             default_args['searchterms'] = os.environ['searchterms']
 
+       if 'step9temperature' in os.environ:
+          if os.environ['temperature'] != '':
+            default_args['temperature'] = os.environ['temperature']
+       if 'step9vectorsearchtype' in os.environ:
+          if os.environ['vectorsearchtype'] != '':
+            default_args['vectorsearchtype'] = os.environ['vectorsearchtype']
+
        VIPERTOKEN = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_VIPERTOKEN".format(sname))
        VIPERHOST = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_VIPERHOSTPREPROCESSPGPT".format(sname))
        VIPERPORT = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_VIPERPORTPREPROCESSPGPT".format(sname))
@@ -582,21 +599,24 @@ def startprivategpt(**context):
        ti.xcom_push(key="{}_useidentifierinprompt".format(sname), value="_{}".format(default_args['useidentifierinprompt']))
        ti.xcom_push(key="{}_searchterms".format(sname), value="{}".format(default_args['searchterms']))
        ti.xcom_push(key="{}_streamall".format(sname), value="_{}".format(default_args['streamall']))
+       ti.xcom_push(key="{}_temperature".format(sname), value="_{}".format(default_args['temperature']))
+       ti.xcom_push(key="{}_vectorsearchtype".format(sname), value="{}".format(default_args['vectorsearchtype']))
     
 
        repo=tsslogging.getrepo()
        if sname != '_mysolution_':
-        fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,sname,os.path.basename(__file__))
+        fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,pname,os.path.basename(__file__))
        else:
          fullpath="/{}/tml-airflow/dags/{}".format(repo,os.path.basename(__file__))
 
        wn = windowname('ai',sname,sd)
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess-pgpt", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" {}".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:],
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" {} {} {}".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:],
                        default_args['vectordbcollectionname'],default_args['concurrency'],default_args['CUDA_VISIBLE_DEVICES'],default_args['rollbackoffset'],
                        default_args['prompt'],default_args['context'],default_args['keyattribute'],default_args['keyprocesstype'],
-                       default_args['hyperbatch'],default_args['docfolder'],default_args['docfolderingestinterval'],default_args['useidentifierinprompt'],default_args['searchterms'],default_args['streamall']), "ENTER"])
+                       default_args['hyperbatch'],default_args['docfolder'],default_args['docfolderingestinterval'],
+                       default_args['useidentifierinprompt'],default_args['searchterms'],default_args['streamall'],default_args['temperature'],default_args['vectorsearchtype']), "ENTER"])
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -628,6 +648,8 @@ if __name__ == '__main__':
         useidentifierinprompt =  sys.argv[16]
         searchterms =  sys.argv[17]
         streamall =  sys.argv[18]
+        temperature = sys.argv[19]
+        vectorsearchtype = sys.argv[20]
         
         default_args['rollbackoffset']=rollbackoffset
         default_args['prompt'] = prompt
@@ -645,6 +667,8 @@ if __name__ == '__main__':
         default_args['useidentifierinprompt'] = useidentifierinprompt
         default_args['searchterms'] = searchterms
         default_args['streamall'] = streamall
+        default_args['temperature'] = temperature
+        default_args['vectorsearchtype'] = vectorsearchtype
 
         if "KUBE" not in os.environ:          
           v,buf=qdrantcontainer()

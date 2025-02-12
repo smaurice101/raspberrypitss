@@ -99,14 +99,6 @@ def checkresponse(response,ident):
 
     return response,st
 
-
-def stopcontainerscurrent():
-      pgptcontainername = default_args['pgptcontainername']
-
-      buf="docker stop $(docker ps -q --filter ancestor={} )".format(pgptcontainername)
-      print(buf)
-      subprocess.call(buf, shell=True)
-
 def stopcontainers():
    pgptcontainername = default_args['pgptcontainername']
    cfound=0
@@ -127,8 +119,6 @@ def stopcontainers():
       tsslogging.locallogs("WARN", "STEP 9: PrivateGPT container not found. It may need to be pulled if it does not start: docker pull {}".format(pgptcontainername))
 
 def startpgptcontainer():
-      
-
       collection = default_args['vectordbcollectionname']
       concurrency = default_args['concurrency']
       pgptcontainername = default_args['pgptcontainername']
@@ -136,14 +126,11 @@ def startpgptcontainer():
       cuda = int(default_args['CUDA_VISIBLE_DEVICES'])
       temp = default_args['temperature']
       vectorsearchtype = default_args['vectorsearchtype']
-
-      try:
-       stopcontainers()
-      except Exception as e:
-       pass
+ 
+      stopcontainers()
 #      buf="docker stop $(docker ps -q --filter ancestor={} )".format(pgptcontainername)
  #     subprocess.call(buf, shell=True)
-      time.sleep(5)
+      time.sleep(10)
       if '-no-gpu-' in pgptcontainername:       
           buf = "docker run -d -p {}:{} --net=host --env PORT={} --env GPU=0 --env COLLECTION={} --env WEB_CONCURRENCY={} --env CUDA_VISIBLE_DEVICES={} --env temperature={} --env vectorsearchtype=\"{}\" {}".format(pgptport,pgptport,pgptport,collection,concurrency,cuda,temperature,vectorsearchtype,pgptcontainername)       
       else: 
@@ -524,6 +511,7 @@ def windowname(wtype,sname,dagname):
 def startprivategpt(**context):
        sd = context['dag'].dag_id
        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))
+       pname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_projectname".format(sd))
 
        if 'step9rollbackoffset' in os.environ:
           if os.environ['step9rollbackoffset'] != '':
@@ -619,21 +607,18 @@ def startprivategpt(**context):
 
        repo=tsslogging.getrepo()
        if sname != '_mysolution_':
-        fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,sname,os.path.basename(__file__))
+        fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,pname,os.path.basename(__file__))
        else:
          fullpath="/{}/tml-airflow/dags/{}".format(repo,os.path.basename(__file__))
 
        wn = windowname('ai',sname,sd)
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess-pgpt", "ENTER"])
-       try:
-        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" {} {} {}".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:],
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" \"{}\" {} {} {}".format(fullpath,VIPERTOKEN, HTTPADDR, VIPERHOST, VIPERPORT[1:],
                        default_args['vectordbcollectionname'],default_args['concurrency'],default_args['CUDA_VISIBLE_DEVICES'],default_args['rollbackoffset'],
                        default_args['prompt'],default_args['context'],default_args['keyattribute'],default_args['keyprocesstype'],
                        default_args['hyperbatch'],default_args['docfolder'],default_args['docfolderingestinterval'],
                        default_args['useidentifierinprompt'],default_args['searchterms'],default_args['streamall'],default_args['temperature'],default_args['vectorsearchtype']), "ENTER"])
-       except Exception as e:
-         print("error=",e)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -697,7 +682,7 @@ if __name__ == '__main__':
         
           time.sleep(5)  # wait for containers to start
          
-          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT No Kube")
+          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT")
           v,buf=startpgptcontainer()
           if v==1:
             tsslogging.locallogs("WARN", "STEP 9: There seems to be an issue starting the privateGPT container.  Here is the run command - try to run it nanually for testing: {}".format(buf))
@@ -716,13 +701,8 @@ if __name__ == '__main__':
         
           time.sleep(5)  # wait for containers to start         
          
-          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT Kube=0")
-          try:  
-             v,buf=startpgptcontainer()
-          except Exception as e:
-            tsslogging.locallogs("ERROR", "STEP 9: Starting privateGPT: {}".format(e))
-            print("Error=",e)
-                
+          tsslogging.locallogs("INFO", "STEP 9: Starting privateGPT")
+          v,buf=startpgptcontainer()
           if v==1:
             tsslogging.locallogs("WARN", "STEP 9: There seems to be an issue starting the privateGPT container.  Here is the run command - try to run it nanually for testing: {}".format(buf))
           else:
