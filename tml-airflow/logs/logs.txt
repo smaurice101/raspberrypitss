@@ -9836,3 +9836,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-13_16:11:46] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-elastalink-3f10.py
 [INFO 2025-02-13_16:11:49] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-elastalink-3f10.py
 [INFO 2025-02-13_16:11:51] Predictions DAG in tml_system_step_6_kafka_predictions_dag-elastalink-3f10.py
+[INFO 2025-02-13_16:11:52] Visualization DAG in tml_system_step_7_kafka_visualization_dag-elastalink-3f10.py
