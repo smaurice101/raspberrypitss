@@ -9674,3 +9674,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-13_01:23:42] {'name': ['Project with slug "myawesometmlsolutionml-3f10-ml" already exists.']}
 [INFO 2025-02-13_01:32:17] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-13_01:32:18] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-02-13_01:32:19] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
