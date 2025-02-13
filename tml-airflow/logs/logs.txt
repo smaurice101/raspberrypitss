@@ -9632,3 +9632,4 @@ Already up to date.
 [INFO 2025-02-13_01:10:38] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-13_01:10:39] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-13_01:10:40] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-02-13_01:10:41] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
