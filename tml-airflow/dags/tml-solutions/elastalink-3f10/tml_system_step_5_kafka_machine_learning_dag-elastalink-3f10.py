@@ -41,7 +41,7 @@ default_args = {
   'consumefrom' : '',  # leave blank
   'topicid' : '-1',  # leave as is
   'fullpathtotrainingdata' : '/Viper-ml/viperlogs/elastalink',  #  # <<< *** Change as needed - add name for foldername that stores the training datasets
-  'processlogic' : 'classification_name=failure_prob:BandwidthUtilization_preprocessed_Avg=500,n',  # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
+  'processlogic' : 'classification_name=failure_prob:BandwidthUtilization_preprocessed_Avg=700,n',  # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
   'array' : '0',  # leave as is
   'transformtype' : '', # Sets the model to: log-lin,lin-log,log-log
   'sendcoefto' : '',  # you can send coefficients to another topic for further processing -- MUST BE SET IN STEP 2
