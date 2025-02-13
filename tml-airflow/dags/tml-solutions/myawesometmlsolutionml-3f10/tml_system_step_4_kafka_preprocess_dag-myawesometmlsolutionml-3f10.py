@@ -212,7 +212,7 @@ if __name__ == '__main__':
         while True:
           try: 
             processtransactiondata()
-            time.sleep(1)
+            time.sleep(.2)
           except Exception as e:    
            tsslogging.locallogs("ERROR", "STEP 4: Preprocessing DAG in {} {}".format(os.path.basename(__file__),e))
            tsslogging.tsslogit("Preprocessing DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
