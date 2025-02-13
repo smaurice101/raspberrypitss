@@ -9859,3 +9859,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-13_16:24:12] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-13_16:24:13] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-13_16:24:20] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-elastalink-3f10.py
+[INFO 2025-02-13_16:24:22] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-elastalink-3f10.py
