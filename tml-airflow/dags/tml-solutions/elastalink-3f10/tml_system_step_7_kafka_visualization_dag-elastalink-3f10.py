@@ -20,6 +20,8 @@ default_args = {
   'topic-ml' : 'iot-preprocess,iot-ml-prediction-results-output',    # <<< *** Separate multiple topics by a comma
   'dashboardhtml-ai': 'dashboard-ai.html', # <<< *** This one is you include AI dag
   'topic-ai' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma    
+  'dashboardhtml-ml-ai': 'dashboard-ml-ai.html', # <<< *** This one is you include ML-AI dag
+  'topic-ml-ai' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma      
   'secure': '1',   # <<< *** 1=connection is encrypted, 0=no encryption
   'offset' : '-1',    # <<< *** -1 indicates to read from the last offset always
   'append' : '0',   # << ** Do not append new data in the browser
