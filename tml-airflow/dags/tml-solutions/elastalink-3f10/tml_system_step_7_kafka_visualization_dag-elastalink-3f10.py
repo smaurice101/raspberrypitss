@@ -16,7 +16,7 @@ sys.dont_write_bytecode = True
 default_args = {
   'topic' : 'iot-preprocess',    # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
   'dashboardhtml': 'iot-failure-elastalink.html',#'iot-failure-elastalink.html', # <<< *** name of your dashboard html file  try: iot-failure-seneca.html
-  'dashboardhtml-ml': 'iot-failure-machinelearning-elastalink.htm', # <<< *** This one is IF you include ML dag
+  'dashboardhtml-ml': 'iot-failure-machinelearning-elastalink.html', # <<< *** This one is IF you include ML dag
   'topic-ml' : 'iot-preprocess,iot-ml-prediction-results-output',    # <<< *** Separate multiple topics by a comma
   'dashboardhtml-ai': 'dashboard-ai.html', # <<< *** This one is you include AI dag
   'topic-ai' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma    
