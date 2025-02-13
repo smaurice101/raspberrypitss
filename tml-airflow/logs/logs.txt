@@ -9574,3 +9574,13 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 [INFO 2025-02-13_00:01:30] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2025-02-13_00:01:46] TML Solution Studio: TML Project Creation: Copying old project : elastalink-3f10  ---> To create new project: /raspberrypitss/tml-airflow/dags/tml-solutions/elastalink2-3f10
+[INFO 2025-02-13_00:01:46] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2025-02-13_00:02:20] TML Solution Studio: Starting Git commit process for project: elastalink2-3f10
+[INFO 2025-02-13_00:02:20] TML Solution Studio: git commit -a Status for project elastalink2-3f10: fatal: paths 'project ...' with -a does not make sense
+[INFO 2025-02-13_00:02:21] TML Solution Studio: git push origin main Status: Everything up-to-date
+[INFO 2025-02-13_00:02:21] TML Solution Studio: git add . Status: 
+[INFO 2025-02-13_00:02:21] TML Solution Studio: git commit -a Status for project elastalink2-3f10: fatal: paths 'elastalink-3f10 ...' with -a does not make sense
+[INFO 2025-02-13_00:02:21] TML Solution Studio: git push Status for project elastalink2-3f10: Everything up-to-date
