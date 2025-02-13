@@ -9620,3 +9620,4 @@ Already up to date.
 [INFO 2025-02-13_00:42:57] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-13_00:42:59] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-13_00:43:14] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-02-13_00:44:47] {'name': ['Project with slug "myawesometmlsolutionml-3f10-ml" already exists.']}
