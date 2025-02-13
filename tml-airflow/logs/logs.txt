@@ -9752,3 +9752,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-13_15:34:34] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-13_15:34:37] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
 [INFO 2025-02-13_15:34:38] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
+[INFO 2025-02-13_15:34:39] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
