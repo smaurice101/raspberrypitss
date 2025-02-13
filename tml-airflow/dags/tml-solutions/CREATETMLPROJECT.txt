@@ -1,1 +1,1 @@
-elastalink>elastalink2
+.elastalink
