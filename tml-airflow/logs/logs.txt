@@ -10235,3 +10235,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-14_13:55:49] Visualization DAG in tml_system_step_7_kafka_visualization_dag-elastalink-3f10.py
 [INFO 2025-02-14_13:56:05] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-elastalink-3f10.py
 [INFO 2025-02-14_13:57:42] {'name': ['Project with slug "elastalink-3f10" already exists.']}
+[INFO 2025-02-14_14:07:46] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-elastalink-3f10.py
