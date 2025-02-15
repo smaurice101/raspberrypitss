@@ -68,7 +68,12 @@ def readallfiles(fd,cs=1024):
   return fdata    
 
 def ingestfiles():
+    args = default_args
     buf = default_args['docfolder']
+    chunks = int(default_args['chunks'])
+    maintopic = default_args['doctopic']
+    producerid='userfilestream'
+
     #gather files in the folders
     dirbuf = buf.split(",")
     filenames = []
@@ -84,9 +89,13 @@ def ingestfiles():
         contents = [readallfiles(file,chunks) for file in files]
         for d in contents:
             dstr = ','.join(d)
-            print(dstr) # send to Kafka
+            producetokafka(dstr.strip(), "", "",producerid,maintopic,"",args)
+
       
 def startdirread():
+  if 'docfolder' not in default_args and 'doctopic' not in default_args and 'chunks' not in default_args:
+     return
+    
   if default_args['docfolder'] != '' and default_args['doctopic'] != '':
     print("INFO startdirread")  
     try:  

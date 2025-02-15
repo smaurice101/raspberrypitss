@@ -29,8 +29,9 @@ default_args = {
   'delay' : '7000', # << ******* 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
   'topicid' : '-999', # <<< ********* do not modify  
   'sleep' : 0.15, # << Control how fast data streams - if 0 - the data will stream as fast as possible - BUT this may cause connecion reset by peer 
-  'docfolder':'', # You can read TEXT files or any file in these folders that are inside the volume mapped to /rawdata
-  'doctopic':'',  # This is the topic that will contain the docfolder file data
+  'docfolder' : '', # You can read TEXT files or any file in these folders that are inside the volume mapped to /rawdata
+  'doctopic' : '',  # This is the topic that will contain the docfolder file data
+  'chunks' : 0, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -74,7 +75,12 @@ def readallfiles(fd,cs=1024):
   return fdata    
 
 def ingestfiles():
+    args = default_args
     buf = default_args['docfolder']
+    chunks = int(default_args['chunks'])
+    maintopic = default_args['doctopic']
+    producerid='userfilestream'
+
     #gather files in the folders
     dirbuf = buf.split(",")
     filenames = []
@@ -90,9 +96,13 @@ def ingestfiles():
         contents = [readallfiles(file,chunks) for file in files]
         for d in contents:
             dstr = ','.join(d)
-            print(dstr) # send to Kafka
+            producetokafka(dstr.strip(), "", "",producerid,maintopic,"",args)
+
       
 def startdirread():
+  if 'docfolder' not in default_args and 'doctopic' not in default_args and 'chunks' not in default_args:
+     return
+    
   if default_args['docfolder'] != '' and default_args['doctopic'] != '':
     print("INFO startdirread")  
     try:  
