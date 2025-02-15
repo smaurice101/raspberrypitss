@@ -218,6 +218,17 @@ def startproducing(**context):
     
   ti.xcom_push(key="{}_PORT".format(sname),value="_{}".format(VIPERPORT))
   ti.xcom_push(key="{}_HTTPADDR".format(sname),value=HTTPADDR)
+
+  if 'docfolder' in default_args and 'doctopic' in default_args:
+    ti.xcom_push(key="{}_docfolder".format(sname),value=default_args['docfolder'])
+    ti.xcom_push(key="{}_doctopic".format(sname),value=default_args['doctopic'])
+    ti.xcom_push(key="{}_chunks".format(sname),value="_{}".format(default_args['chunks']))
+    ti.xcom_push(key="{}_docingestinterval".format(sname),value="_{}".format(default_args['docingestinterval']))
+  else:  
+    ti.xcom_push(key="{}_docfolder".format(sname),value='')
+    ti.xcom_push(key="{}_doctopic".format(sname),value='')
+    ti.xcom_push(key="{}_chunks".format(sname),value='')
+    ti.xcom_push(key="{}_docingestinterval".format(sname),value='')
         
   chip = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_chip".format(sname))   
 
