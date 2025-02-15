@@ -72,24 +72,30 @@ def ingestfiles():
     buf = default_args['docfolder']
     chunks = int(default_args['chunks'])
     maintopic = default_args['doctopic']
-    producerid='userfilestream'
+    producerid='userfilestream'     
+    interval=int(default_args['docingestinterval'])
 
     #gather files in the folders
     dirbuf = buf.split(",")
-    filenames = []
-    for dr in dirbuf:
-      if os.path.isdir("/rawdata/{}".format(dr)):
-        a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
-        os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
-        filenames.extend(a)
+    while True:
+      filenames = []
+      for dr in dirbuf:
+        if os.path.isdir("/rawdata/{}".format(dr)):
+          a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
+          os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
+          filenames.extend(a)
 
-    if len(filenames) > 0:
-      with ExitStack() as stack:
-        files = [stack.enter_context(open(i, "rb")) for i in filenames]
-        contents = [readallfiles(file,chunks) for file in files]
-        for d in contents:
-            dstr = ','.join(d)
-            producetokafka(dstr.strip(), "", "",producerid,maintopic,"",args)
+      if len(filenames) > 0:
+        with ExitStack() as stack:
+          files = [stack.enter_context(open(i, "rb")) for i in filenames]
+          contents = [readallfiles(file,chunks) for file in files]
+          for d in contents:
+              dstr = ','.join(d)
+              producetokafka(dstr.strip(), "", "",producerid,maintopic,"",args)
+      if interval==0:
+        break
+      else:  
+       time.sleep(interval)
 
       
 def startdirread():

@@ -423,7 +423,8 @@ def ingestfiles():
                
         else:
           print("WARN Directory Path: {} does not exist".format(dirp))
-         
+      if int(default_args['docfolderingestinterval'])==0:
+        break
       time.sleep(int(default_args['docfolderingestinterval']))
       print("docidsstr=",docidstrarr)
      time.sleep(1)
