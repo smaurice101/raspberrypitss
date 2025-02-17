@@ -25,7 +25,6 @@ default_args = {
   'offset' : '-1', # <<< Rollback from the end of the data streams  
   'brokerhost' : '',   # <<< *** Leave as is
   'brokerport' : '-999',  # <<< *** Leave as is   
-  'preprocessconditions' : '', ## <<< Leave blank      
   'delay' : '70', # Add a 70 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic     
   'array' : '0', # do not modify
   'saveasarray' : '1', # do not modify
@@ -35,17 +34,14 @@ default_args = {
   'timedelay' : '0', # <<< connection delay
   'tmlfilepath' : '', # leave blank
   'usemysql' : '1', # do not modify
-  'entitystream' : 'Voltage_preprocessed_AnomProb', # Change as needed - STREAM containing entities to cross-reference for RTMS
+  'rtmsstream' : 'rtms-data', # Change as needed - STREAM containing log file data (or other data) for RTMS
                                                     # If entitystream is empty, TML uses the preprocess type only.
   'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
-  'preprocesstypes' : '&authentication failures,--entity--', # main Search terms, if AND add &, if OR use | s first characters, default OR
+  'searchterms' : '&authentication failures,--entity--', # main Search terms, if AND add &, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
-                                                             # dynamically with the entities found in entitystream
+                                                             # dynamically with the entities found in raw_data_topic
   'rememberpastwindows' : '50', # Past windows to remember
-  'patternscorethreshold' : '20', # check for the number of patterns for the items in preprocesstypes
-  'pathtotmlattrs' : '', # Leave blank
-  'jsoncriteria' : '', #  Leave blank
-  'identifier' : 'TML solution',   # <<< *** Change as needed   
+  'patternscorethreshold' : '20', # check for the number of patterns for the items in searchterms
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -87,13 +83,6 @@ def processtransactiondata():
           #if load balancing enter the microsericeid to route the HTTP to a specific machine
          microserviceid=default_args['microserviceid']
 
-
-          # You can preprocess with the following functions: MAX, MIN, SUM, AVG, COUNT, DIFF,OUTLIERS
-          # here we will take max values of the arcturus-humidity, we will Diff arcturus-temperature, and average arcturus-Light_Intensity
-          # NOTE: The number of process logic functions MUST match the streams - the operations will be applied in the same order
-        #
-         preprocessconditions=default_args['preprocessconditions']
-
          # Add a 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic 
          delay=int(default_args['delay'])
          # USE TLS encryption when sending to Kafka Cloud (GCP/AWS/Azure)
@@ -105,25 +94,19 @@ def processtransactiondata():
          rawdataoutput=int(default_args['rawdataoutput'])
          asynctimeout=int(default_args['asynctimeout'])
          timedelay=int(default_args['timedelay'])
-
-         jsoncriteria = default_args['jsoncriteria']
-
          tmlfilepath=default_args['tmlfilepath']
          usemysql=int(default_args['usemysql'])
-
-         streamstojoin=default_args['streamstojoin']
+  
+         rtmsstream=default_args['rtmsstream']
          identifier = default_args['identifier']
-
-         # if dataage - use:dataage_utcoffset_timetype
-         preprocesstypes=default_args['preprocesstypes']
-
-         pathtotmlattrs=default_args['pathtotmlattrs']       
-         raw_data_topic = default_args['raw_data_topic']  
-         preprocess_data_topic = default_args['preprocess_data_topic']  
+         searchterms=default_args['searchterms']
+         rememberpastwindows = default_args['rememberpastwindows']  
+         patternscorethreshold = default_args['patternscorethreshold']  
 
          try:
-                result=maadstml.viperpreprocessproducetotopicstream(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
-                                                  brokerport,microserviceid,topicid,streamstojoin,preprocesstypes,preprocessconditions,identifier,preprocesstopic)
+                result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
+                                                  brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
+                                                  preprocesstopic,patternscorethreshold)
                 #print(result)
          except Exception as e:
                 print("ERROR:",e)
@@ -152,7 +135,6 @@ def dopreprocessing(**context):
        ti = context['task_instance']    
        ti.xcom_push(key="{}_raw_data_topic".format(sname), value=default_args['raw_data_topic'])
        ti.xcom_push(key="{}_preprocess_data_topic".format(sname), value=default_args['preprocess_data_topic'])
-       ti.xcom_push(key="{}_preprocessconditions".format(sname), value=default_args['preprocessconditions'])
        ti.xcom_push(key="{}_delay".format(sname), value="_{}".format(default_args['delay']))
        ti.xcom_push(key="{}_array".format(sname), value="_{}".format(default_args['array']))
        ti.xcom_push(key="{}_saveasarray".format(sname), value="_{}".format(default_args['saveasarray']))
@@ -161,18 +143,43 @@ def dopreprocessing(**context):
        ti.xcom_push(key="{}_asynctimeout".format(sname), value="_{}".format(default_args['asynctimeout']))
        ti.xcom_push(key="{}_timedelay".format(sname), value="_{}".format(default_args['timedelay']))
        ti.xcom_push(key="{}_usemysql".format(sname), value="_{}".format(default_args['usemysql']))
-       ti.xcom_push(key="{}_preprocesstypes".format(sname), value=default_args['preprocesstypes'])
-       ti.xcom_push(key="{}_pathtotmlattrs".format(sname), value=default_args['pathtotmlattrs'])
        ti.xcom_push(key="{}_identifier".format(sname), value=default_args['identifier'])
-       ti.xcom_push(key="{}_jsoncriteria".format(sname), value=default_args['jsoncriteria'])
 
        maxrows=default_args['maxrows']
-       if 'step4bmaxrows' in os.environ:
-         ti.xcom_push(key="{}_maxrows".format(sname), value="_{}".format(os.environ['step4bmaxrows']))         
-         maxrows=os.environ['step4bmaxrows']
+       if 'step4cmaxrows' in os.environ:
+         ti.xcom_push(key="{}_maxrows".format(sname), value="_{}".format(os.environ['step4cmaxrows']))         
+         maxrows=os.environ['step4cmaxrows']
        else:  
          ti.xcom_push(key="{}_maxrows".format(sname), value="_{}".format(default_args['maxrows']))
-        
+
+       searchterms=default_args['searchterms']
+       if 'step4csearchterms' in os.environ:
+         ti.xcom_push(key="{}_searchterms".format(sname), value="{}".format(os.environ['step4csearchterms']))         
+         searchterms=os.environ['step4csearchterms']
+       else:  
+         ti.xcom_push(key="{}_searchterms".format(sname), value=default_args['searchterms'])
+
+       raw_data_topic=default_args['raw_data_topic']
+       if 'step4crawdatatopic' in os.environ:
+         ti.xcom_push(key="{}_raw_data_topic".format(sname), value="{}".format(os.environ['step4crawdatatopic']))         
+         raw_data_topic=os.environ['step4crawdatatopic']
+       else:  
+         ti.xcom_push(key="{}_raw_data_topic".format(sname), value=default_args['raw_data_topic'])
+
+       rememberpastwindows=default_args['rememberpastwindows']
+       if 'step4crememberpastwindows' in os.environ:
+         ti.xcom_push(key="{}_rememberpastwindows".format(sname), value="_{}".format(os.environ['step4crememberpastwindows']))         
+         rememberpastwindows=os.environ['step4crememberpastwindows']
+       else:  
+         ti.xcom_push(key="{}_rememberpastwindows".format(sname), value="_{}".format(default_args['rememberpastwindows']))
+
+       patternscorethreshold=default_args['patternscorethreshold']
+       if 'step4cpatternscorethreshold' in os.environ:
+         ti.xcom_push(key="{}_patternscorethreshold".format(sname), value="_{}".format(os.environ['step4cpatternscorethreshold']))         
+         patternscorethreshold=os.environ['step4cpatternscorethreshold']
+       else:  
+         ti.xcom_push(key="{}_patternscorethreshold".format(sname), value="_{}".format(default_args['patternscorethreshold']))
+       
        repo=tsslogging.getrepo() 
        if sname != '_mysolution_':
         fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,pname,os.path.basename(__file__))  
@@ -182,14 +189,14 @@ def dopreprocessing(**context):
        wn = windowname('preprocess2',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess2", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternscorethreshold,raw_data_topic), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
        if sys.argv[1] == "1": 
         repo=tsslogging.getrepo()
         try:            
-          tsslogging.tsslogit("Preprocessing2 DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
+          tsslogging.tsslogit("Preprocessing3 DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
           tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
         except Exception as e:
             #git push -f origin main
@@ -201,15 +208,24 @@ if __name__ == '__main__':
         VIPERPORT = sys.argv[4]                  
         maxrows =  sys.argv[5]
         default_args['maxrows'] = maxrows
+
+        searchterms =  sys.argv[6]
+        default_args['searchterms'] = searchterms
+        rememberpastwindows =  sys.argv[7]
+        default_args['rememberpastwindows'] = rememberpastwindows
+        patternscorethreshold =  sys.argv[8]
+        default_args['patternscorethreshold'] = patternscorethreshold
+        rawdatatopic =  sys.argv[9]
+        default_args['raw_data_topic'] = rawdatatopic
          
-        tsslogging.locallogs("INFO", "STEP 4b: Preprocessing 2 started")
+        tsslogging.locallogs("INFO", "STEP 4c: Preprocessing 3 started")
 
         while True:
           try: 
             processtransactiondata()
             time.sleep(1)
           except Exception as e:     
-           tsslogging.locallogs("ERROR", "STEP 4b: Preprocessing2 DAG in {} {}".format(os.path.basename(__file__),e))
-           tsslogging.tsslogit("Preprocessing2 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
+           tsslogging.locallogs("ERROR", "STEP 4c: Preprocessing2 DAG in {} {}".format(os.path.basename(__file__),e))
+           tsslogging.tsslogit("Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
            tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
            break
