@@ -52,7 +52,7 @@ def read_in_chunks(file_object, chunk_size=1024):
                    data = data[:len(data)-ct]
           else:
             data = file_object.readline().decode('utf-8')            
-          data=data.replace('"','').replace("'","").replace("\\n"," ").replace('\n'," ").replace("\\r"," ").replace('\r'," ").replace('{',"").replace('}',"").strip()
+          data=data.replace('"','').replace("'","").replace("\\n"," ").replace('\n'," ").replace("\\r"," ").replace('\r'," ").strip()
           if not data:
                break
           yield data          
@@ -91,8 +91,8 @@ def ingestfiles():
           contents = [readallfiles(file,chunks) for file in files]
           for d in contents:
               dstr = ','.join(d)
-              jd = '{"message":"' + dstr + '"}'
-              producetokafka(jd, "", "",producerid,maintopic,"",args)
+              #jd = '{"message":"' + dstr + '"}'
+              producetokafka(dstr, "", "",producerid,maintopic,"",args)
       if interval==0:
         break
       else:  
