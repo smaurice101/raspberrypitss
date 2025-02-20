@@ -20,11 +20,11 @@ default_args = {
  'cloudusername' : '',  # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API KEY  - LEAVE BLANK
  'cloudpassword' : '',  # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API SECRET - LEAVE BLANK   
  'solutionname': 'cybersecuritywithrealtimememory-3f10',   # <<< *** DO NOT MODIFY - THIS WILL BE AUTOMATICALLY UPDATED
- 'solutiontitle': 'My Solution Title', # <<< *** Provide a descriptive title for your solution
+ 'solutiontitle': 'Entity-Based Real-Time Advanced Cybersecurity Prevention and Monitoring', # <<< *** Provide a descriptive title for your solution
  'solutionairflowport' : '4040', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionexternalport' : '5050', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionvipervizport' : '6060', # << If -1, TSS will choose a free port randonly, or set this to a fixed number   
- 'description': 'This is an awesome real-time solution built by TSS',   # <<< *** Provide a description of your solution
+ 'description': 'TML Real-Time Memory of Sliding Time Windows For Advanced Cybersecurity Prevention',   # <<< *** Provide a description of your solution
  'HTTPADDR' : 'https://',
  'COMPANYNAME' : 'My company',       
  'WRITELASTCOMMIT' : '0',   ## <<<<<<<<< ******************** FOR DETAILS ON BELOW PARAMETER SEE: https://tml.readthedocs.io/en/latest/viper.html
