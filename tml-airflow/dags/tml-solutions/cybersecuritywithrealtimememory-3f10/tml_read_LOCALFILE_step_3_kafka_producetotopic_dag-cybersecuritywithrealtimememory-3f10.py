@@ -174,8 +174,7 @@ def readdata():
   maintopic = args['topics']
   producerid = args['producerid']
   if maintopic=='':
-    return
-    
+     return
   k=0
   try:
     file1 = open(inputfile, 'r')
