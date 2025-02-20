@@ -10606,3 +10606,4 @@ Already up to date.
 [INFO 2025-02-20_02:22:57] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
 [INFO 2025-02-20_02:22:58] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
 [INFO 2025-02-20_02:23:00] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
+[INFO 2025-02-20_02:23:02] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
