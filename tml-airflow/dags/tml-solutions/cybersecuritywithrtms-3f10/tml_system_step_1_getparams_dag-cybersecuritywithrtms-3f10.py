@@ -317,7 +317,7 @@ def getparams(**context):
     with open('/Viper-preprocess3/viper.txt', 'r') as f:
       output = f.read()
       VIPERHOSTPREPROCESS3 = output.split(",")[0]
-      VIPERPORTPREPROCESS3 = output.split(",")[1]                   
+      VIPERPORTPREPROCESS3 = output.split(",")[1]             
     with open('/Viper-preprocess-pgpt/viper.txt', 'r') as f:
       output = f.read()
       VIPERHOSTPREPROCESSPGPT = output.split(",")[0]
