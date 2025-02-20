@@ -10748,3 +10748,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-20_18:25:26] Machine Learning DAG in tml_system_step_5_kafka_machine_learning_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-20_18:25:28] Predictions DAG in tml_system_step_6_kafka_predictions_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-02-20_18:25:29] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-02-20_18:25:40] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
