@@ -17,6 +17,8 @@ step1 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_sy
 step2 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10")
 step3 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecuritywithrtms-3f10")
 step4 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_system_step_4_kafka_preprocess_dag-cybersecuritywithrtms-3f10")
+step4c = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_system_step_4c_kafka_preprocess_dag-cybersecuritywithrtms-3f10")
+
 step5 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_system_step_5_kafka_machine_learning_dag-cybersecuritywithrtms-3f10")
 step6 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_system_step_6_kafka_predictions_dag-cybersecuritywithrtms-3f10")
 step7 = importlib.import_module("tml-solutions.cybersecuritywithrtms-3f10.tml_system_step_7_kafka_visualization_dag-cybersecuritywithrtms-3f10")
@@ -59,6 +61,12 @@ with DAG(
       python_callable=step4.dopreprocessing,
       provide_context=True,
   )
+# STEP 4c: Preprocess the data        
+  sensor_D2 = PythonOperator(
+      task_id="step_4c_solution_task_preprocess",
+      python_callable=step4c.dopreprocessing,
+      provide_context=True,
+  )  
 # STEP 7: Containerize the solution     
   sensor_E = PythonOperator(
       task_id="step_7_solution_task_visualization",
