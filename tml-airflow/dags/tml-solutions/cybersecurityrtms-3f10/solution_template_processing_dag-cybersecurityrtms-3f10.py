@@ -68,13 +68,13 @@ with DAG(
        provide_context=True,
    )  
 # STEP 7: Containerize the solution     
-   sensor_E = PythonOperator(
+  sensor_E = PythonOperator(
        task_id="step_7_solution_task_visualization",
        python_callable=step7.startstreamingengine,
        provide_context=True,
    )
 # STEP 8: Containerize the solution        
-   sensor_F = PythonOperator(
+  sensor_F = PythonOperator(
        task_id="step_8_solution_task_containerize",
        python_callable=step8.dockerit,
        provide_context=True,      
@@ -83,16 +83,16 @@ with DAG(
      task_id="Starting_Docker",
      bash_command="echo 'Start task Completed'",
    )    
-   start_task3 = BashOperator(
+  start_task3 = BashOperator(
      task_id="Starting_Documentation",
      bash_command="echo 'Start task Completed'",
    )
-   start_task4 = BashOperator(
+  start_task4 = BashOperator(
      task_id="Completed_TML_Setup_Now_Spawn_Main_Processes",
      bash_command="echo 'Start task Completed'",
    )
 # STEP 10: Document the solution
-   sensor_G = PythonOperator(
+  sensor_G = PythonOperator(
        task_id="step_10_solution_task_document",
        python_callable=step10.generatedoc,
        provide_context=True,      
