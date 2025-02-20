@@ -145,6 +145,13 @@ def dopreprocessing(**context):
        ti.xcom_push(key="{}_usemysql".format(sname), value="_{}".format(default_args['usemysql']))
        ti.xcom_push(key="{}_identifier".format(sname), value=default_args['identifier'])
 
+       rtmstream=default_args['rtmstream']
+       if 'step4crtmsstream' in os.environ:
+         ti.xcom_push(key="{}_rtmsstream".format(sname), value=os.environ['step4crtmsstream'])
+         rtmstream=os.environ['step4crtmsstream']
+       else:  
+         ti.xcom_push(key="{}_rtmsstream".format(sname), value=default_args['rtmstream'])
+
        maxrows=default_args['maxrows']
        if 'step4cmaxrows' in os.environ:
          ti.xcom_push(key="{}_maxrows".format(sname), value="_{}".format(os.environ['step4cmaxrows']))         
