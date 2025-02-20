@@ -62,42 +62,40 @@ with DAG(
       provide_context=True,
   )
 # STEP 4c: Preprocess the data        
-#  sensor_D2 = PythonOperator(
- #     task_id="step_4c_solution_task_preprocess",
-  #    python_callable=step4c.dopreprocessing,
-   #   provide_context=True,
-  #)  
+  sensor_D2 = PythonOperator(
+       task_id="step_4c_solution_task_preprocess",
+       python_callable=step4c.dopreprocessing,
+       provide_context=True,
+   )  
 # STEP 7: Containerize the solution     
-  #sensor_E = PythonOperator(
-   #   task_id="step_7_solution_task_visualization",
-    #  python_callable=step7.startstreamingengine,
-     # provide_context=True,
-  #)
+   sensor_E = PythonOperator(
+       task_id="step_7_solution_task_visualization",
+       python_callable=step7.startstreamingengine,
+       provide_context=True,
+   )
 # STEP 8: Containerize the solution        
-  #sensor_F = PythonOperator(
-   #   task_id="step_8_solution_task_containerize",
-    #  python_callable=step8.dockerit,
-     # provide_context=True,      
-  #)
-  #start_task2 = BashOperator(
-   # task_id="Starting_Docker",
-    #bash_command="echo 'Start task Completed'",
-  #)    
-  #start_task3 = BashOperator(
-   # task_id="Starting_Documentation",
-    #bash_command="echo 'Start task Completed'",
-  #)
-  #start_task4 = BashOperator(
-   # task_id="Completed_TML_Setup_Now_Spawn_Main_Processes",
-    #bash_command="echo 'Start task Completed'",
-  #)
+   sensor_F = PythonOperator(
+       task_id="step_8_solution_task_containerize",
+       python_callable=step8.dockerit,
+       provide_context=True,      
+   )
+  start_task2 = BashOperator(
+     task_id="Starting_Docker",
+     bash_command="echo 'Start task Completed'",
+   )    
+   start_task3 = BashOperator(
+     task_id="Starting_Documentation",
+     bash_command="echo 'Start task Completed'",
+   )
+   start_task4 = BashOperator(
+     task_id="Completed_TML_Setup_Now_Spawn_Main_Processes",
+     bash_command="echo 'Start task Completed'",
+   )
 # STEP 10: Document the solution
-  #sensor_G = PythonOperator(
-   #   task_id="step_10_solution_task_document",
-    #  python_callable=step10.generatedoc,
-     # provide_context=True,      
-  #)
+   sensor_G = PythonOperator(
+       task_id="step_10_solution_task_document",
+       python_callable=step10.generatedoc,
+       provide_context=True,      
+   )
 
-  start_task >> sensor_A >> sensor_B >> start_task4 >> [sensor_C, sensor_D]
-  
-  #, sensor_D2, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
+  start_task >> sensor_A >> sensor_B >> start_task4 >> [sensor_C, sensor_D, sensor_D2, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
