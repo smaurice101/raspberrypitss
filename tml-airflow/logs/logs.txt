@@ -10603,3 +10603,4 @@ Already up to date.
 [INFO 2025-02-20_02:22:11] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithrtms-3f10.py
 [INFO 2025-02-20_02:22:14] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithrtms-3f10.py
 [ERROR 2025-02-20_02:22:27] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithrtms-3f10.py: [Errno 2] No such file or directory: '/raspberrypitss/tml-airflow/dags/tml-solutions/None/docker_run_stop-None.py'
+[INFO 2025-02-20_02:22:57] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
