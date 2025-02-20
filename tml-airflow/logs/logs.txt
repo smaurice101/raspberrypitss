@@ -10609,3 +10609,4 @@ Already up to date.
 [INFO 2025-02-20_02:23:02] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
 [INFO 2025-02-20_02:23:04] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
 [INFO 2025-02-20_02:23:06] Deleting topic rtms-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
+[INFO 2025-02-20_02:23:08] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithrtms-3f10.py
