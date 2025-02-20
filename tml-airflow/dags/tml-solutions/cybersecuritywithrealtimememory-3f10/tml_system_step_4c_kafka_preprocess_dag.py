@@ -40,7 +40,7 @@ default_args = {
   'searchterms' : '&authentication failures,--entity--', # main Search terms, if AND add &, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
-  'rememberpastwindows' : '50', # Past windows to remember
+  'rememberpastwindows' : '500', # Past windows to remember
   'patternscorethreshold' : '20', # check for the number of patterns for the items in searchterms
 }
 
