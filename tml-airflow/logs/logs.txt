@@ -10968,3 +10968,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-21_22:26:20] Deleting topic rtms-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-02-21_22:26:23] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-02-21_22:26:27] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-02-21_22:26:30] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
