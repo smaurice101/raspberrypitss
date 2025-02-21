@@ -216,6 +216,7 @@ if __name__ == '__main__':
         maxrows =  sys.argv[5]
         default_args['maxrows'] = maxrows
 
+        print("Viperhost=",VIPERHOST,VIPERPORT)
         searchterms =  sys.argv[6]
         default_args['searchterms'] = searchterms
         rememberpastwindows =  sys.argv[7]
