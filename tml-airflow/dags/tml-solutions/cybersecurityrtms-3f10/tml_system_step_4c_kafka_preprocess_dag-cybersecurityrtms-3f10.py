@@ -107,7 +107,7 @@ def processtransactiondata():
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
                                                   preprocesstopic,patternscorethreshold,array,saveasarray,rawdataoutput)
-                print("result=====",result)
+                #print(result)
          except Exception as e:
                 print("ERROR:",e)
 
@@ -228,6 +228,7 @@ if __name__ == '__main__':
         default_args['rtmsstream'] = rtmsstream
          
         tsslogging.locallogs("INFO", "STEP 4c: Preprocessing 3 started")
+
         while True:
           try: 
             processtransactiondata()
@@ -236,5 +237,4 @@ if __name__ == '__main__':
            tsslogging.locallogs("ERROR", "STEP 4c: Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e))
            tsslogging.tsslogit("Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
            tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
-           print("ERROROR====",e)
            break
