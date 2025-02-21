@@ -34,13 +34,13 @@ default_args = {
   'timedelay' : '0', # <<< connection delay
   'tmlfilepath' : '', # leave blank
   'usemysql' : '1', # do not modify
-  'rtmsstream' : 'rtms-stream-mylogs,rtms-stream-mylogs2', # Change as needed - STREAM containing log file data (or other data) for RTMS
+  'rtmsstream' : 'rtms-data', # Change as needed - STREAM containing log file data (or other data) for RTMS
                                                     # If entitystream is empty, TML uses the preprocess type only.
   'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
-  'searchterms' : '&authentication failures,--entity--;|user unknown,--entity-- unknown', # main Search terms, if AND add &, if OR use | s first characters, default OR
+  'searchterms' : '&authentication failures,--entity--', # main Search terms, if AND add &, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
-  'rememberpastwindows' : '500', # Past windows to remember
+  'rememberpastwindows' : '50', # Past windows to remember
   'patternscorethreshold' : '20', # check for the number of patterns for the items in searchterms
 }
 
@@ -195,8 +195,8 @@ def dopreprocessing(**context):
             
        wn = windowname('preprocess3',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess2", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternscorethreshold,raw_data_topic,rtmsstream), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess3", "ENTER"])
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} {} \"{}\"".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternscorethreshold,raw_data_topic,rtmsstream), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -234,7 +234,7 @@ if __name__ == '__main__':
             processtransactiondata()
             time.sleep(1)
           except Exception as e:     
-           tsslogging.locallogs("ERROR", "STEP 4c: Preprocessing2 DAG in {} {}".format(os.path.basename(__file__),e))
+           tsslogging.locallogs("ERROR", "STEP 4c: Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e))
            tsslogging.tsslogit("Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
            tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
            break
