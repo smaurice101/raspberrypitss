@@ -30,7 +30,7 @@ default_args = {
   'topicid' : '-999', # <<< ********* do not modify  
   'sleep' : 0.15, # << Control how fast data streams - if 0 - the data will stream as fast as possible - BUT this may cause connecion reset by peer 
   'docfolder' : '/rawdata/mylogs,/rawdata/mylogs2', # You can read TEXT files or any file in these folders that are inside the volume mapped to /rawdata
-  'doctopic' : 'rtms-stream-mylogss,rtms-stream-mylogs2',  # This is the topic that will contain the docfolder file data
+  'doctopic' : 'rtms-stream-mylogs,rtms-stream-mylogs2',  # This is the topic that will contain the docfolder file data
   'chunks' : 0, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
   'docingestinterval' : 0, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
 }
