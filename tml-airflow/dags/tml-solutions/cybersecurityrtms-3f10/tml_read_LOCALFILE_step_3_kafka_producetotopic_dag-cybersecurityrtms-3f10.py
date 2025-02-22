@@ -87,6 +87,8 @@ def ingestfiles():
     dirbuf = buf.split(",")
     # check if user wants to split folders to separate topics
     maintopicbuf = maintopic.split(",")
+    print("maintopicbu=",maintopicbuf, len(dirbuf), len(maintopicbuf))
+
     if len(maintopicbuf) > 1:
       if len(dirbuf) != len(maintopicbuf):
         tsslogging.locallogs("ERROR", "STEP 3: Produce LOCALFILE in {} You specified multiple doctopics, then must match docfolder".format(os.path.basename(__file__)))
