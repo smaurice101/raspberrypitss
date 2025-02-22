@@ -87,22 +87,18 @@ def ingestfiles():
     dirbuf = buf.split(",")
     # check if user wants to split folders to separate topics
     maintopicbuf = maintopic.split(",")
-    print("maintopicbu=",maintopicbuf, len(dirbuf), len(maintopicbuf))
-
     if len(maintopicbuf) > 1:
       if len(dirbuf) != len(maintopicbuf):
         tsslogging.locallogs("ERROR", "STEP 3: Produce LOCALFILE in {} You specified multiple doctopics, then must match docfolder".format(os.path.basename(__file__)))
         return
       while True:
        for dr,tr in zip(dirbuf,maintopicbuf):
-         print("dr,tr",dr,tr)
          filenames = []
          if os.path.isdir("/rawdata/{}".format(dr)):
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
 
-           print("filename===",filenames)
            if len(filenames) > 0:
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]

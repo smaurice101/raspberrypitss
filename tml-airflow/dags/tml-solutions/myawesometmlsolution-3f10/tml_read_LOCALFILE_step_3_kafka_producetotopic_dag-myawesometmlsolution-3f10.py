@@ -174,6 +174,10 @@ def readdata():
   maintopic = args['topics']
   producerid = args['producerid']
 
+  startdirread()
+  
+  if maintopic=='' or inputfile=='':
+     return
   k=0
   try:
     file1 = open(inputfile, 'r')
