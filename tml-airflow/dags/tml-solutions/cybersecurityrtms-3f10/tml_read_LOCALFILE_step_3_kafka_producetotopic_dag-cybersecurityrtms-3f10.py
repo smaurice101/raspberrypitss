@@ -94,6 +94,7 @@ def ingestfiles():
         tsslogging.locallogs("ERROR", "STEP 3: Produce LOCALFILE in {} You specified multiple doctopics, then must match docfolder".format(os.path.basename(__file__)))
         return
       while True:
+       print("here--")
        for dr,tr in zip(dirbuf,maintopicbuf):
          filenames = []
          if os.path.isdir("/rawdata/{}".format(dr)):
