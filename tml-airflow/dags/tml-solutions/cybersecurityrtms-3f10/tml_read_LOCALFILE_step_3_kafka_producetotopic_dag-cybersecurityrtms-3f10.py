@@ -74,6 +74,7 @@ def readallfiles(fd,cs=1024):
         piece=re.sub(' +', ' ', piece)
         fdata.append(piece)
         print("piece====",piece)
+        producetokafka(dstr, "", "",producerid,tr,"",args)
   return fdata    
 
 def ingestfiles():
@@ -107,7 +108,7 @@ def ingestfiles():
                for d in contents:
                   dstr = ','.join(d)
                   #jd = '{"message":"' + dstr + '"}'
-                  producetokafka(dstr, "", "",producerid,tr,"",args)
+                #  producetokafka(dstr, "", "",producerid,tr,"",args)
        if interval==0:
          break
        else:  
