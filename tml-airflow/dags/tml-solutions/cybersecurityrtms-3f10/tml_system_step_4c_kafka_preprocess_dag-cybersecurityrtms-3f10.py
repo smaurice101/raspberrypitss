@@ -234,6 +234,7 @@ if __name__ == '__main__':
             processtransactiondata()
             time.sleep(1)
           except Exception as e:     
+           print("errror=",e)
            tsslogging.locallogs("ERROR", "STEP 4c: Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e))
            tsslogging.tsslogit("Preprocessing3 DAG in {} {}".format(os.path.basename(__file__),e), "ERROR" )                     
            tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")    
