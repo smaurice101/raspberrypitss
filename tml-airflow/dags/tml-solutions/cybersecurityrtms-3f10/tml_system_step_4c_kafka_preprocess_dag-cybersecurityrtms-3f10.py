@@ -103,12 +103,10 @@ def processtransactiondata():
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
 
-         print("---wwkwkw")  
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
                                                   preprocesstopic,patternscorethreshold,array,saveasarray,rawdataoutput)
-                print("result")
          except Exception as e:
                 print("ERROR:",e)
 
@@ -232,7 +230,6 @@ if __name__ == '__main__':
 
         while True:
           try: 
-            print("here")  
             processtransactiondata()
             time.sleep(1)
           except Exception as e:     
