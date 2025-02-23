@@ -67,14 +67,16 @@ def read_in_chunks(file_object, chunk_size=1024):
         except Exception as e:
            break
 
-def readallfiles(fd,cs=1024):
+def readallfiles(fd,tr,cs=1024):
   fdata = []  
+  args=default_args
+  producerid='userfilestream'
   #with open(filename,"r") as f:
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
         fdata.append(piece)
         print("piece====",piece)
-        producetokafka(dstr, "", "",producerid,tr,"",args)
+        producetokafka(piece, "", "",producerid,tr,"",args)
   return fdata    
 
 def ingestfiles():
@@ -104,7 +106,7 @@ def ingestfiles():
            if len(filenames) > 0:
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
-               contents = [readallfiles(file,chunks) for file in files]
+               contents = [readallfiles(file,tr,chunks) for file in files]
                for d in contents:
                   dstr = ','.join(d)
                   #jd = '{"message":"' + dstr + '"}'
