@@ -73,6 +73,7 @@ def readallfiles(fd,cs=1024):
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
         fdata.append(piece)
+        print("fdata====",fdata)
   return fdata    
 
 def ingestfiles():
