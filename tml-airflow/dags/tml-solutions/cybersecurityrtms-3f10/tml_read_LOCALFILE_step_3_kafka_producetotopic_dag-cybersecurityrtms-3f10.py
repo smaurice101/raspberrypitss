@@ -68,16 +68,16 @@ def read_in_chunks(file_object, chunk_size=1024):
            break
 
 def readallfiles(fd,tr,cs=1024):
-  fdata = []  
+#  fdata = []  
   args=default_args
   producerid='userfilestream'
   #with open(filename,"r") as f:
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
-        fdata.append(piece)
+ #       fdata.append(piece)
 #        print("piece====",piece)
         producetokafka(piece, "", "",producerid,tr,"",args)
-  return fdata    
+  return []    
 
 def ingestfiles():
     args = default_args
