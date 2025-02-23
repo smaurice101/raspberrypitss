@@ -98,7 +98,7 @@ def ingestfiles():
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
-
+           print("filename=",filename)
            if len(filenames) > 0:
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
@@ -158,6 +158,7 @@ def producetokafka(value, tmlid, identifier,producerid,maintopic,substream,args)
  try:
     result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,substream,
                                         topicid,identifier)
+    print("result=",result)
  except Exception as e:
     print("ERROR:",e)
 
