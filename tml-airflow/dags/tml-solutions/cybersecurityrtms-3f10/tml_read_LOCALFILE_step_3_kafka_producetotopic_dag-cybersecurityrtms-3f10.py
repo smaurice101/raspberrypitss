@@ -98,7 +98,7 @@ def ingestfiles():
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
-           print("filename=",filename)
+           print("filename=",filenames)
            if len(filenames) > 0:
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
