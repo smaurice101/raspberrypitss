@@ -103,6 +103,7 @@ def processtransactiondata():
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
 
+         print("---wwkwkw")  
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
