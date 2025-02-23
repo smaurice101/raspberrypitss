@@ -75,7 +75,7 @@ def readallfiles(fd,tr,cs=1024):
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
         fdata.append(piece)
-        print("piece====",piece)
+#        print("piece====",piece)
         producetokafka(piece, "", "",producerid,tr,"",args)
   return fdata    
 
@@ -107,8 +107,8 @@ def ingestfiles():
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
                contents = [readallfiles(file,tr,chunks) for file in files]
-               for d in contents:
-                  dstr = ','.join(d)
+#               for d in contents:
+ #                 dstr = ','.join(d)
                   #jd = '{"message":"' + dstr + '"}'
                 #  producetokafka(dstr, "", "",producerid,tr,"",args)
        if interval==0:
