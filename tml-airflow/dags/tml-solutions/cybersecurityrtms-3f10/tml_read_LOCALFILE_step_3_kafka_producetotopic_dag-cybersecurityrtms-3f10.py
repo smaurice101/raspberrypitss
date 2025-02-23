@@ -68,14 +68,10 @@ def read_in_chunks(file_object, chunk_size=1024):
            break
 
 def readallfiles(fd,tr,cs=1024):
-#  fdata = []  
   args=default_args
   producerid='userfilestream'
-  #with open(filename,"r") as f:
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
- #       fdata.append(piece)
-#        print("piece====",piece)
         producetokafka(piece, "", "",producerid,tr,"",args)
   return []    
 
@@ -107,10 +103,6 @@ def ingestfiles():
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
                contents = [readallfiles(file,tr,chunks) for file in files]
-#               for d in contents:
- #                 dstr = ','.join(d)
-                  #jd = '{"message":"' + dstr + '"}'
-                #  producetokafka(dstr, "", "",producerid,tr,"",args)
        if interval==0:
          break
        else:  
@@ -128,10 +120,6 @@ def ingestfiles():
         with ExitStack() as stack:
           files = [stack.enter_context(open(i, "rb")) for i in filenames]
           contents = [readallfiles(file,chunks) for file in files]
-          for d in contents:
-              dstr = ','.join(d)
-              #jd = '{"message":"' + dstr + '"}'
-              producetokafka(dstr, "", "",producerid,maintopic,"",args)
       if interval==0:
         break
       else:  
