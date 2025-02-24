@@ -28,7 +28,7 @@ default_args = {
  'HTTPADDR' : 'https://',
  'COMPANYNAME' : 'My company',       
  'WRITELASTCOMMIT' : '0',   ## <<<<<<<<< ******************** FOR DETAILS ON BELOW PARAMETER SEE: https://tml.readthedocs.io/en/latest/viper.html
- 'NOWINDOWOVERLAP' : '0',
+ 'NOWINDOWOVERLAP' : '1',
  'NUMWINDOWSFORDUPLICATECHECK' : '5',
  'DATARETENTIONINMINUTES' : '1440',
  'USEHTTP' : '0',
