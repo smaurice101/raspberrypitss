@@ -73,8 +73,6 @@ def readallfiles(fd,tr,cs=1024):
   print("fd=",fd.name)
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
-#        pj='{"RTMSMessage":"' + piece + '"}'
-        
         producetokafka(piece, "", "",producerid,tr,"",args)
   return []    
 
