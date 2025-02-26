@@ -15,6 +15,8 @@ import threading
 from contextlib import contextmanager
 from contextlib import ExitStack
 import re
+import nest_asyncio
+nest_asyncio.apply()
 
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
