@@ -11549,3 +11549,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-26_23:40:38] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-534a-3f10.py
 [INFO 2025-02-26_23:40:40] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-534a-3f10.py
 [INFO 2025-02-26_23:40:56] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-534a-3f10.py
+[INFO 2025-02-26_23:42:28] {'name': ['Project with slug "myawesometmlsolution-534a-3f10" already exists.']}
