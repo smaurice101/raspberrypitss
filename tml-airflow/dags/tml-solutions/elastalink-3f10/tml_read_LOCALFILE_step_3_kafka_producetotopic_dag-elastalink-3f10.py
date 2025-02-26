@@ -60,20 +60,23 @@ def read_in_chunks(file_object, chunk_size=1024):
                    data = data[:len(data)-ct]
           else:
             data = file_object.readline().decode('utf-8')            
-          data=data.replace('"','').replace("'","").replace("\\n"," ").replace('\n'," ").replace("\\r"," ").replace('\r'," ").strip()
+          data=data.replace('"','').replace("'","").replace("\\n"," ").replace('\n'," ").replace("\\r"," ").replace('\r'," ").replace(';'," ").replace('&'," ").strip()
           if not data:
                break
           yield data          
         except Exception as e:
            break
 
-def readallfiles(fd,cs=1024):
-  fdata = []  
-  #with open(filename,"r") as f:
+def readallfiles(fd,tr,cs=1024):
+  args=default_args
+  producerid='userfilestream'
+  print("fd=",fd.name)
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
-        fdata.append(piece)
-  return fdata    
+        pj='{"RTMSMessage":"' + piece + '"}'
+        
+        producetokafka(pj, "", "",producerid,tr,"",args)
+  return []    
 
 def ingestfiles():
     args = default_args
@@ -98,15 +101,11 @@ def ingestfiles():
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
-
+           print("filename=",filenames)
            if len(filenames) > 0:
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
-               contents = [readallfiles(file,chunks) for file in files]
-               for d in contents:
-                  dstr = ','.join(d)
-                  #jd = '{"message":"' + dstr + '"}'
-                  producetokafka(dstr, "", "",producerid,tr,"",args)
+               contents = [readallfiles(file,tr,chunks) for file in files]
        if interval==0:
          break
        else:  
@@ -124,10 +123,6 @@ def ingestfiles():
         with ExitStack() as stack:
           files = [stack.enter_context(open(i, "rb")) for i in filenames]
           contents = [readallfiles(file,chunks) for file in files]
-          for d in contents:
-              dstr = ','.join(d)
-              #jd = '{"message":"' + dstr + '"}'
-              producetokafka(dstr, "", "",producerid,maintopic,"",args)
       if interval==0:
         break
       else:  
@@ -158,6 +153,7 @@ def producetokafka(value, tmlid, identifier,producerid,maintopic,substream,args)
  try:
     result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,substream,
                                         topicid,identifier)
+#    print("result=",result)
  except Exception as e:
     print("ERROR:",e)
 
