@@ -87,6 +87,8 @@ def setupurls(projectname,producetype,sname):
     stepurl9="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_9_privategpt_qdrant_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
     stepurl10="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_10_documentation_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
 
+    print("stepurl1=",stepurl1)
+    
     doparse("/{}/docs/source/details.rst".format(sname), ["--step1url--;{}".format(stepurll)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step2url--;{}".format(stepurl2)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step3url--;{}".format(stepurl3)])
