@@ -1234,38 +1234,31 @@ function drawChart(jsondata, topic) {
 				kafkakeyarr.push(kafkakey);
 
 				createdon = jsondata.TopicReads[j].TimeStamp;
-				winstart = jsondata.TopicReads[j].WindowStartTime;
-				timestart = winstart;
-				winend = jsondata.TopicReads[j].WindowEndTime;
-				timeend = winend;
+
+                entity = jsondata.TopicReads[j].Entity;
+                rtms = jsondata.TopicReads[j].hyperprediction;
+                attack = jsondata.TopicReads[j].FinalAttackScore;
+                pattern = jsondata.TopicReads[j].FinalPatternScore;
+                numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
+                numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
 
 				processtype = jsondata.TopicReads[j].Preprocesstype;
+				usersearch = jsondata.TopicReads[j].UserSearchValues;
 
-				identifier = jsondata.TopicReads[j].Identifier;
-				idarr = identifier.split("~");
-				processvariable0 = idarr[3];
-				processvariable = processvariable0.split(",")[3].split(":")[1];
-
-				let indm = idarr.findIndex(element => element.includes("mainuid="))
-					msgiddatastr = idarr[indm].split("=")[1]
-
+				remember = jsondata.TopicReads[j].RememberPastWindows;
+				patternthresh = jsondata.TopicReads[j].PatternThreshold;
+				activity = jsondata.TopicReads[j].ActivityLevel;
+				comment = jsondata.TopicReads[j].TMLComment;
+				searchfound = jsondata.TopicReads[j].SearchTextFound;
+            
 				topic = jsondata.TopicReads[j].Topic;
 				Maintopic = jsondata.TopicReads[j].Maintopic;
-				processbuf = "_preprocessed_" + processtype;
-				predictionvalue = jsondata.TopicReads[j].hyperprediction;
-				totalmessages = jsondata.TopicReads[j].Numberofmessages;
 				kafkakey = jsondata.TopicReads[j].kafkakey;
 				offset = jsondata.TopicReads[j].Offset;
 				partition = jsondata.TopicReads[j].Partition;
 
-				if (processvariable == "pingStatus") {
-					predictionvalue = -1;
-					processtype = processtype + " (" + idarr[1] + ")";
-				} else {
-					predictionvalue = Number(predictionvalue);
-				}
 
-				arr = [createdon, winstart, winend, "192.168." + msgiddatastr, processvariable, processtype, predictionvalue, totalmessages, kafkakey, offset, partition];
+				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,topic,maintopic, kafkakey, offset, partition];
 				dataintable.push(arr)
 				rownum++;
 
@@ -1304,19 +1297,26 @@ function drawTable2() {
 	if (datatbl == null) {
 		datatbl = new google.visualization.DataTable();
 
+				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,topic,maintopic, kafkakey, offset, partition];
+
 		datatbl.addColumn('string', 'Date/Time');
-		datatbl.addColumn('string', 'Time Window Start');
-		datatbl.addColumn('string', 'Time Window End');
-		datatbl.addColumn('string', 'Subject Information');
-
-		datatbl.addColumn('string', 'ProcessVariable');
-
+		datatbl.addColumn('string', 'RTMS Score');
+		datatbl.addColumn('string', 'Attack Score');
+		datatbl.addColumn('string', 'Pattern Score');
+		datatbl.addColumn('string', 'Entity');
+		datatbl.addColumn('string', 'Attack Windows Found');
+		datatbl.addColumn('string', 'Pattern Windows Found');
 		datatbl.addColumn('string', 'Processtype');
 
-		datatbl.addColumn('number', 'Current Value');
-		//datatbl.addColumn('number', 'Normal Mean Value');
-		//datatbl.addColumn('number', 'Upper Bound Value');
-		datatbl.addColumn('number', 'Total Messages');
+		datatbl.addColumn('string', 'User Search Terms');
+		datatbl.addColumn('string', 'Sliding Windows to Remember');
+		datatbl.addColumn('string', 'Pattern Threshold');
+		datatbl.addColumn('string', 'Predicted Risk Level');
+		datatbl.addColumn('string', 'TML Comment');
+		datatbl.addColumn('string', 'Text Containing Search Terms');
+		datatbl.addColumn('string', 'Topic');
+		datatbl.addColumn('string', 'Main Topic');
+
 		datatbl.addColumn('string', 'Kafkakey');
 		datatbl.addColumn('number', 'Offset');
 		datatbl.addColumn('number', 'Partition');
