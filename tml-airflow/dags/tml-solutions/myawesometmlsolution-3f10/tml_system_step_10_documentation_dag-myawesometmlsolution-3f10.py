@@ -63,15 +63,15 @@ def updatebranch(sname,branch):
     
 def setupurls(projectname,producetype,sname):
 
-  ptype=""
-  if producetype=="LOCALFILE":
-    ptype=producetype
-  elif producetype=="REST":
-    ptype="RESTAPI"
-  elif producetype=="MQTT":
-    ptype=producetype
-  elif producetype=="gRPC":
-    ptype=producetype
+    ptype=""
+    if producetype=="LOCALFILE":
+      ptype=producetype
+    elif producetype=="REST":
+      ptype="RESTAPI"
+    elif producetype=="MQTT":
+      ptype=producetype
+    elif producetype=="gRPC":
+      ptype=producetype
 
     
     stepurll="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
