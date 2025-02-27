@@ -37,7 +37,7 @@ default_args = {
   'rtmsstream' : 'rtms-stream-mylogs,rtms-stream-mylogs2', # Change as needed - STREAM containing log file data (or other data) for RTMS
                                                     # If entitystream is empty, TML uses the preprocess type only.
   'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
-  'searchterms' : '@authentication failure,192.168.--entity--,Invalid user,password failure ~ |unknown user,attack,192.168.--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
+  'searchterms' : '@authentication failure,192.168.--entity--,Invalid user ~ |unknown user,attack,192.168.--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
   'rememberpastwindows' : '500', # Past windows to remember
