@@ -40,8 +40,8 @@ default_args = {
   'searchterms' : '$authentication failures,--entity-- password failure ~ |unknown--entity--', # main Search terms, if AND add $, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
-  'rememberpastwindows' : '50', # Past windows to remember
-  'patternscorethreshold' : '20', # check for the number of patterns for the items in searchterms
+  'rememberpastwindows' : '500', # Past windows to remember
+  'patternscorethreshold' : '30', # check for the number of patterns for the items in searchterms
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -107,7 +107,7 @@ def processtransactiondata():
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
                                                   preprocesstopic,patternscorethreshold,array,saveasarray,rawdataoutput)
-                print(result)
+#                print(result)
          except Exception as e:
                 print("ERROR:",e)
 
