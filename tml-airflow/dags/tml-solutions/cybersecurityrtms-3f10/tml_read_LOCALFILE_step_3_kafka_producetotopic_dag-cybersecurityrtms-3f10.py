@@ -35,7 +35,7 @@ default_args = {
   'docfolder' : 'mylogs,mylogs2', # You can read TEXT files or any file in these folders that are inside the volume mapped to /rawdata
   'doctopic' : 'rtms-stream-mylogs,rtms-stream-mylogs2',  # This is the topic that will contain the docfolder file data
   'chunks' :3000, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
-  'docingestinterval' : 0, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
+  'docingestinterval' : 30, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
