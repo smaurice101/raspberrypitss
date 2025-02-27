@@ -102,8 +102,6 @@ def setupurls(projectname,producetype):
     doparse("/{}/docs/source/details.rst".format(sname), ["--step9url--;{}".format(stepurl9)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step10url--;{}".format(stepurll0)])
 
-  return stepurl
-  
 def doparse(fname,farr):
       data = ''
       try:  
