@@ -1256,9 +1256,9 @@ function drawChart(jsondata, topic) {
 				kafkakey = jsondata.TopicReads[j].kafkakey;
 				offset = jsondata.TopicReads[j].Offset;
 				partition = jsondata.TopicReads[j].Partition;
+                searchentity=jsondata.TopicReads[j].SearchEntity;
 
-
-				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,topic,Maintopic, kafkakey, offset, partition];
+				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,searchentity,topic,Maintopic, kafkakey, offset, partition];
 				dataintable.push(arr)
 				rownum++;
 
