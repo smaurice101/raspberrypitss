@@ -61,7 +61,6 @@ def updatebranch(sname,branch):
             headers=HEADERS,
         )
     
-
 def setupurls(projectname,producetype):
 
   ptype=""
@@ -100,7 +99,7 @@ def setupurls(projectname,producetype):
     doparse("/{}/docs/source/details.rst".format(sname), ["--step8url--;{}".format(stepurl8)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step9url--;{}".format(stepurl9)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step10url--;{}".format(stepurll0)])
-
+    
 def doparse(fname,farr):
       data = ''
       try:  
@@ -950,8 +949,6 @@ def generatedoc(**context):
         data = file.readlines() 
         data.append("viper-produce")
         data.append("viper-preprocess")
-        data.append("viper-preprocess2")
-        data.append("viper-preprocess3")      
         data.append("viper-preprocess-pgpt")
         data.append("viper-ml")
         data.append("viper-predict")

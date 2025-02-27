@@ -107,7 +107,7 @@ def processtransactiondata():
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
                                                   preprocesstopic,patternscorethreshold,array,saveasarray,rawdataoutput)
-                #print(result)
+#                print(result)
          except Exception as e:
                 print("ERROR:",e)
 
