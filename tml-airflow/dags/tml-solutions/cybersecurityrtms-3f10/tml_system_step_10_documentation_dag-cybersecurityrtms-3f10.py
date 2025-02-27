@@ -61,7 +61,37 @@ def updatebranch(sname,branch):
             headers=HEADERS,
         )
     
-    
+
+def setupurls(step,projectname):
+
+  stepurl=""
+  if step=="1":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="2":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="3":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="4":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="4b":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="4c":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="5":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="6":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="7":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="8":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="9":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+  elif step=="10":
+    stepurl="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+
+  return stepurl
+  
 def doparse(fname,farr):
       data = ''
       try:  
@@ -910,6 +940,8 @@ def generatedoc(**context):
         data = file.readlines() 
         data.append("viper-produce")
         data.append("viper-preprocess")
+        data.append("viper-preprocess2")
+        data.append("viper-preprocess3")      
         data.append("viper-preprocess-pgpt")
         data.append("viper-ml")
         data.append("viper-predict")
