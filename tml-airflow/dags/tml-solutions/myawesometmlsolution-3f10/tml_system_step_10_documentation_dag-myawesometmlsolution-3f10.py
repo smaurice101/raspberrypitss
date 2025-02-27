@@ -276,6 +276,8 @@ def generatedoc(**context):
     TSSCLIENTPORT = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_TSSCLIENTPORT".format(sname))              
     TMLCLIENTPORT = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_TMLCLIENTPORT".format(sname))              
 
+    setupurls(projectname,PRODUCETYPE,sname)
+
     if PRODUCETYPE=='LOCALFILE':
       docfolderprocess = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_docfolder".format(sname))
       doctopic = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_doctopic".format(sname))
@@ -848,7 +850,6 @@ def generatedoc(**context):
                                                                               hpdehost,hpdeport[1:],hpdepredicthost,hpdepredictport[1:] ))
  
 
-    setupurls(projectname,PRODUCETYPE,sname)
     subprocess.call(["sed", "-i", "-e",  "s/--tmlbinaries--/{}/g".format(tmlbinaries), "/{}/docs/source/operating.rst".format(sname)])
     ########################## Kubernetes
    
