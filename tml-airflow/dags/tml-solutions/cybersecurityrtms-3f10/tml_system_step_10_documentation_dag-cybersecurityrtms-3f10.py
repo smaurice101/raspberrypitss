@@ -64,7 +64,6 @@ def updatebranch(sname,branch):
 
 def setupurls(projectname,producetype):
 
-  stepurl=""
   ptype=""
   if producetype=="LOCALFILE":
     ptype=producetype
