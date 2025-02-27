@@ -89,7 +89,7 @@ def setupurls(projectname,producetype,sname):
 
     print("stepurl1=",stepurl1)
     
-    doparse("/{}/docs/source/details.rst".format(sname), ["--step1url--;{}".format(stepurll)])
+    doparse("/{}/docs/source/details.rst".format(sname), ["--step1url--;{}".format(stepurl1)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step2url--;{}".format(stepurl2)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step3url--;{}".format(stepurl3)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step4url--;{}".format(stepurl4)])
