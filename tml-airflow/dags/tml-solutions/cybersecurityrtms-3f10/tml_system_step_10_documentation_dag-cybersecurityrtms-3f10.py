@@ -846,7 +846,8 @@ def generatedoc(**context):
                                                                               mlhost,mlport[1:],predictionhost,predictionport[1:],
                                                                               hpdehost,hpdeport[1:],hpdepredicthost,hpdepredictport[1:] ))
  
-    
+
+    setupurls(projectname,PRODUCETYPE)
     subprocess.call(["sed", "-i", "-e",  "s/--tmlbinaries--/{}/g".format(tmlbinaries), "/{}/docs/source/operating.rst".format(sname)])
     ########################## Kubernetes
    
