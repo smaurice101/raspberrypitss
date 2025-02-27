@@ -61,7 +61,7 @@ def updatebranch(sname,branch):
             headers=HEADERS,
         )
     
-def setupurls(projectname,producetype):
+def setupurls(projectname,producetype,sname):
 
   ptype=""
   if producetype=="LOCALFILE":
@@ -846,7 +846,7 @@ def generatedoc(**context):
                                                                               hpdehost,hpdeport[1:],hpdepredicthost,hpdepredictport[1:] ))
  
 
-    setupurls(projectname,PRODUCETYPE)
+    setupurls(projectname,PRODUCETYPE,sname)
     subprocess.call(["sed", "-i", "-e",  "s/--tmlbinaries--/{}/g".format(tmlbinaries), "/{}/docs/source/operating.rst".format(sname)])
     ########################## Kubernetes
    
