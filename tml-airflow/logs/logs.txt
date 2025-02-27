@@ -11662,3 +11662,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-27_13:06:00] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-02-27_13:06:03] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-02-27_13:06:06] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-02-27_13:06:09] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
