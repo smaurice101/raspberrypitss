@@ -11863,3 +11863,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-02-27_17:25:21] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
 [INFO 2025-02-27_17:25:22] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecurityrtms-3f10.py
 [INFO 2025-02-27_17:25:33] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2025-02-27_17:26:48] {'name': ['Project with slug "cybersecurityrtms-3f10" already exists.']}
