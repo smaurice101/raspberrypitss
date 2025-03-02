@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid51_json",
+ "Algo": "StreamConsumer_topicid51_jsonlgt",
+ "Forecastaccuracy": 0.779,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid51.csv",
+ "Fieldnames": "Date,topicid51_Power_preprocessed_Trend,topicid51_Voltage_preprocessed_Trend,topicid51_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid51_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T20:23:01.327102462Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e6b53638-7faa-11ec-85e2-d05949336aac(0,31.96860,-99.90181,Current,n/a,n/a,{});e7279c0a-7faa-11ec-30e6-32c475789d2f(0,31.96860,-99.90181,Current,n/a,n/a,{});e760aafe-7faa-11ec-b965-04af2a500ef5(0,31.96860,-99.90181,Current,n/a,n/a,{});e78f287a-7faa-11ec-5872-022690554179(0,31.96860,-99.90181,Current,n/a,n/a,{});e7a33838-7faa-11ec-884f-57e9ed6cb789(0,31.96860,-99.90181,Current,n/a,n/a,{});e7e4e6fc-7faa-11ec-4638-3a524f985ba0(0,31.96860,-99.90181,Current,n/a,n/a,{});e8155f62-7faa-11ec-2767-45e6f80cea7f(0,31.96860,-99.90181,Current,n/a,n/a,{});e83fcd56-7faa-11ec-be58-6585bfdea5cb(0,31.96860,-99.90181,Current,n/a,n/a,{});e7445610-7faa-11ec-0d3f-c85c55c5c8dd(0,31.96860,-99.90181,Current,n/a,n/a,{});e7caea54-7faa-11ec-c4a7-69ee446d92b1(0,31.96860,-99.90181,Current,n/a,n/a,{});e6da76aa-7faa-11ec-3cdd-1068dc88dd86(0,31.96860,-99.90181,Current,n/a,n/a,{});e70a1388-7faa-11ec-ea78-1f36289a1eac(0,31.96860,-99.90181,Current,n/a,n/a,{});e7fa0820-7faa-11ec-cd38-b2d085d15e30(0,31.96860,-99.90181,Current,n/a,n/a,{})~latlong=~mainuid=AC000W016399487",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-33.175:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "0.2137652,0.0000000,-1.3718896,0.0000000",
+ "HasConstantTerm": 1
+}

@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid52_json",
+ "Algo": "StreamConsumer_topicid52_jsonlgt",
+ "Forecastaccuracy": 0.701,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid52.csv",
+ "Fieldnames": "Date,topicid52_Power_preprocessed_Trend,topicid52_Voltage_preprocessed_Trend,topicid52_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid52_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T20:23:03.811765221Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e73fd75c-7faa-11ec-72d6-7ec53aebf156(0,38.90599,-77.03342,Current,n/a,n/a,{});e7d86ca6-7faa-11ec-5d45-ba3509d0d544(0,38.90599,-77.03342,Current,n/a,n/a,{});e80c557a-7faa-11ec-61df-65a13c9be799(0,38.90599,-77.03342,Current,n/a,n/a,{});e7236df6-7faa-11ec-3889-86bfcbdbba07(0,38.90599,-77.03342,Current,n/a,n/a,{});e75a55aa-7faa-11ec-1cbc-3cb112e98bb5(0,38.90599,-77.03342,Current,n/a,n/a,{});e79b19f0-7faa-11ec-f6f5-8224da37db96(0,38.90599,-77.03342,Current,n/a,n/a,{});e7b27280-7faa-11ec-c57f-8395a52f69e0(0,38.90599,-77.03342,Current,n/a,n/a,{});e6badb1a-7faa-11ec-dcf7-2841f79460fe(0,38.90599,-77.03342,Current,n/a,n/a,{});e6e060c4-7faa-11ec-5810-897c0b651ea8(0,38.90599,-77.03342,Current,n/a,n/a,{});e70a0924-7faa-11ec-bd61-9ad5e7c05f0f(0,38.90599,-77.03342,Current,n/a,n/a,{});e7809008-7faa-11ec-812a-de49b67347f0(0,38.90599,-77.03342,Current,n/a,n/a,{});e7f2ebee-7faa-11ec-95ed-625a519a86e3(0,38.90599,-77.03342,Current,n/a,n/a,{})~latlong=~mainuid=AC000W020486072",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-1.735:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "-0.3904086,0.0000000,-0.5055353,0.0000000",
+ "HasConstantTerm": 1
+}
