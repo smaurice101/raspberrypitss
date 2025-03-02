@@ -285,6 +285,17 @@ def getparams(**context):
   except Exception as e:
     pass
 
+  try: 
+     shutil.rmtree("/rawdata/rtms") 
+  except Exception as e:
+     pass
+  try: 
+     with open("/tmux/step5.txt", "r") as f:
+         dirbuf=f.read()
+         shutil.rmtree(dirbuf) 
+  except Exception as e:
+    pass
+ 
   sd = context['dag'].dag_id 
   pname = args['solutionname']    
   sname = tsslogging.rtdsolution(pname,sd)
