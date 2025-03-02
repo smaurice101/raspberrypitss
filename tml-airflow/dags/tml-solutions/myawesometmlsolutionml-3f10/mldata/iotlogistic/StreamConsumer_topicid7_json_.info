@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid7_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T21:02:25.617629949Z",
+ "Created": "2025-03-02T21:03:46.336518441Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
- "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=df17de76-7faa-11ec-3d32-628b3ce3fd7f(126388,61.52401,105.31876,Voltage,n/a,n/a,{});df694b12-7faa-11ec-9eab-ab06768e9bba(126388,61.52401,105.31876,Voltage,n/a,n/a,{});df80b9fa-7faa-11ec-b489-7b47b6534803(126272,61.52401,105.31876,Voltage,n/a,n/a,{});dfe55932-7faa-11ec-a1cb-326c4da2d8ec(126272,61.52401,105.31876,Voltage,n/a,n/a,{});de59c1de-7faa-11ec-729a-4ba03a30d054(126508,61.52401,105.31876,Voltage,n/a,n/a,{});ded37934-7faa-11ec-ed51-1600b1a12169(126317,61.52401,105.31876,Voltage,n/a,n/a,{});df39d652-7faa-11ec-aa19-6c0e56b34917(126231,61.52401,105.31876,Voltage,n/a,n/a,{});dfb0b1a0-7faa-11ec-bed3-1b07eab13a3d(126317,61.52401,105.31876,Voltage,n/a,n/a,{});de78528e-7faa-11ec-dd6d-01426a82fbcb(126388,61.52401,105.31876,Voltage,n/a,n/a,{});deae4394-7faa-11ec-b5dd-392a95f71ed7(126566,61.52401,105.31876,Voltage,n/a,n/a,{});defde214-7faa-11ec-123b-7c456a838875(126272,61.52401,105.31876,Voltage,n/a,n/a,{});dfc51208-7faa-11ec-90bd-5af72b9d5976(126317,61.52401,105.31876,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W016399127",
+ "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=def5bdbe-7faa-11ec-5fc7-c65e92506d13(5533,61.52401,105.31876,Power,n/a,n/a,{});dfa94e4c-7faa-11ec-61b3-b583c7c157ad(5533,61.52401,105.31876,Power,n/a,n/a,{});de6d3e94-7faa-11ec-21fd-8e7485d48aa5(5586,61.52401,105.31876,Power,n/a,n/a,{});dea7de96-7faa-11ec-60d0-a650243e3531(5586,61.52401,105.31876,Power,n/a,n/a,{});debc60aa-7faa-11ec-56d5-17314909c1cd(5533,61.52401,105.31876,Power,n/a,n/a,{});df10edb4-7faa-11ec-55cc-ddd9ad1c5cfd(5533,61.52401,105.31876,Power,n/a,n/a,{});df30b93c-7faa-11ec-7377-d25f9a8dfc6d(5480,61.52401,105.31876,Power,n/a,n/a,{});df4a0220-7faa-11ec-9fec-bb13182e71b9(5586,61.52401,105.31876,Power,n/a,n/a,{});df76b9be-7faa-11ec-88a7-743af4cc2588(5586,61.52401,105.31876,Power,n/a,n/a,{});dfbd7a0c-7faa-11ec-c3ef-f7012f643bee(5533,61.52401,105.31876,Power,n/a,n/a,{});de4b37b8-7faa-11ec-08ad-60b77adb2219(5427,61.52401,105.31876,Power,n/a,n/a,{});dfd066f8-7faa-11ec-f578-66c428f0d54f(5586,61.52401,105.31876,Power,n/a,n/a,{})~latlong=~mainuid=AC000W016399127",
  "AccuracyThreshold": 0.55,
- "Minmax": "-2.172:0.000,-7.038:0.000,0.000:0.021",
+ "Minmax": "-4.257:0.000,-11.660:0.000,0.000:0.007",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "-0.0648954,-0.6834804,-1.2051207,2.5267199",
+ "ParameterEstimates": "-0.3341392,-0.5668284,-0.6378821,0.7702134",
  "HasConstantTerm": 1
 }
