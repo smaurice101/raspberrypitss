@@ -61,20 +61,20 @@ def updatebranch(sname,branch):
             headers=HEADERS,
         )
     
-def setupurls(projectname,producetype):
+def setupurls(projectname,producetype,sname):
 
-  ptype=""
-  if producetype=="LOCALFILE":
-    ptype=producetype
-  elif producetype=="REST":
-    ptype="RESTAPI"
-  elif producetype=="MQTT":
-    ptype=producetype
-  elif producetype=="gRPC":
-    ptype=producetype
+    ptype=""
+    if producetype=="LOCALFILE":
+      ptype=producetype
+    elif producetype=="REST":
+      ptype="RESTAPI"
+    elif producetype=="MQTT":
+      ptype=producetype
+    elif producetype=="gRPC":
+      ptype=producetype
 
     
-    stepurll="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
+    stepurl1="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_1_getparams_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
     stepurl2="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_2_kafka_createtopic_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
     stepurl3="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_read_{}_step_3_kafka_producetotopic_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,ptype,projectname)
     stepurl4="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_4_kafka_preprocess_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
@@ -87,7 +87,9 @@ def setupurls(projectname,producetype):
     stepurl9="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_9_privategpt_qdrant_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
     stepurl10="https://github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/tml_system_step_10_documentation_dag-{}.py".format(os.environ['GITUSERNAME'],tsslogging.getrepo(),projectname,projectname)
 
-    doparse("/{}/docs/source/details.rst".format(sname), ["--step1url--;{}".format(stepurll)])
+    print("stepurl1=",stepurl1)
+    
+    doparse("/{}/docs/source/details.rst".format(sname), ["--step1url--;{}".format(stepurl1)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step2url--;{}".format(stepurl2)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step3url--;{}".format(stepurl3)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step4url--;{}".format(stepurl4)])
@@ -98,7 +100,7 @@ def setupurls(projectname,producetype):
     doparse("/{}/docs/source/details.rst".format(sname), ["--step7url--;{}".format(stepurl7)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step8url--;{}".format(stepurl8)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step9url--;{}".format(stepurl9)])
-    doparse("/{}/docs/source/details.rst".format(sname), ["--step10url--;{}".format(stepurll0)])
+    doparse("/{}/docs/source/details.rst".format(sname), ["--step10url--;{}".format(stepurl10)])
     
 def doparse(fname,farr):
       data = ''
@@ -156,7 +158,9 @@ def generatedoc(**context):
     step4crememberpastwindows=''
     step4cpatternscorethreshold=''
     step4crtmsstream=''
-
+    rtmsoutputurl=""
+    mloutputurl=""
+ 
     if "KUBE" in os.environ:
           if os.environ["KUBE"] == "1":
              kube=1
@@ -273,6 +277,8 @@ def generatedoc(**context):
     CLIENTPORT = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_CLIENTPORT".format(sname))              
     TSSCLIENTPORT = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_TSSCLIENTPORT".format(sname))              
     TMLCLIENTPORT = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_TMLCLIENTPORT".format(sname))              
+
+    setupurls(projectname,PRODUCETYPE,sname)
 
     if PRODUCETYPE=='LOCALFILE':
       docfolderprocess = context['ti'].xcom_pull(task_ids='step_3_solution_task_producetotopic',key="{}_docfolder".format(sname))
@@ -411,6 +417,8 @@ def generatedoc(**context):
         subprocess.call(["sed", "-i", "-e",  "s/--identifier3--/{}/g".format(identifier), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--maxrows3--/{}/g".format(maxrows4c[1:]), "/{}/docs/source/details.rst".format(sname)])
         doparse("/{}/docs/source/details.rst".format(sname), ["--rtmssearchterms--;{}".format(searchterms)])
+        rtmsoutputurl="https:\/\/github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/rtms".format(os.environ["GITUSERNAME"], tsslogging.getrepo(),projectname)
+        doparse("/{}/docs/source/details.rst".format(sname), ["--rtmsoutputurl--;{}".format(rtmsoutputurl)])
 
         step4crawdatatopic=raw_data_topic
         step4csearchterms=searchterms
@@ -439,6 +447,12 @@ def generatedoc(**context):
     coeftoprocess = context['ti'].xcom_pull(task_ids='step_5_solution_task_ml',key="{}_coeftoprocess".format(sname))
     coefsubtopicnames = context['ti'].xcom_pull(task_ids='step_5_solution_task_ml',key="{}_coefsubtopicnames".format(sname))
     processlogic = context['ti'].xcom_pull(task_ids='step_5_solution_task_ml',key="{}_processlogic".format(sname))
+    if fullpathtotrainingdata:
+         step5sp:=fullpathtotrainingdata.split("/")
+         if len(step5sp)>0:
+           mloutputurl="https:\/\/github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/{}".format(os.environ["GITUSERNAME"], tsslogging.getrepo(),projectname,step5sp[-1])
+           doparse("/{}/docs/source/details.rst".format(sname), ["--mloutputurl--;{}".format(mloutputurl)])
+     
     if processlogic:
       step5processlogic = processlogic
      
@@ -846,7 +860,6 @@ def generatedoc(**context):
                                                                               hpdehost,hpdeport[1:],hpdepredicthost,hpdepredictport[1:] ))
  
 
-    setupurls(projectname,PRODUCETYPE)
     subprocess.call(["sed", "-i", "-e",  "s/--tmlbinaries--/{}/g".format(tmlbinaries), "/{}/docs/source/operating.rst".format(sname)])
     ########################## Kubernetes
    

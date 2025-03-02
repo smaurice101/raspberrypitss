@@ -75,7 +75,6 @@ default_args = {
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
-
     
 def reinitbinaries(sname):  
     pywindowfiles=glob.glob("/tmux/pythonwindows_*") 
@@ -145,7 +144,7 @@ def updateviperenv():
           else: 
              default_args['brokerhost']="kafka-service"
            
-    filepaths = ['/Viper-produce/viper.env','/Viper-preprocess/viper.env','/Viper-preprocess-pgpt/viper.env','/Viper-preprocess2/viper.env','/Viper-ml/viper.env','/Viper-predict/viper.env','/Viperviz/viper.env']
+    filepaths = ['/Viper-produce/viper.env','/Viper-preprocess/viper.env','/Viper-preprocess-pgpt/viper.env','/Viper-preprocess2/viper.env','/Viper-preprocess3/viper.env','/Viper-ml/viper.env','/Viper-predict/viper.env','/Viperviz/viper.env']
     for mainfile in filepaths:
      with open(mainfile, 'r', encoding='utf-8') as file: 
        data = file.readlines() 
@@ -278,6 +277,12 @@ def getparams(**context):
   HPDEPORTPREDICT = ""
 
   tsslogging.locallogs("INFO", "STEP 1: Build started") 
+  try: 
+    f = open("/tmux/step1solution.txt", "w")
+    f.write(default_args['solutionname'])
+    f.close()
+  except Exception as e:
+    pass
 
   sd = context['dag'].dag_id 
   pname = args['solutionname']    
@@ -314,6 +319,10 @@ def getparams(**context):
       output = f.read()
       VIPERHOSTPREPROCESS2 = output.split(",")[0]
       VIPERPORTPREPROCESS2 = output.split(",")[1]        
+    with open('/Viper-preprocess3/viper.txt', 'r') as f:
+      output = f.read()
+      VIPERHOSTPREPROCESS3 = output.split(",")[0]
+      VIPERPORTPREPROCESS3 = output.split(",")[1]             
     with open('/Viper-preprocess-pgpt/viper.txt', 'r') as f:
       output = f.read()
       VIPERHOSTPREPROCESSPGPT = output.split(",")[0]
@@ -459,6 +468,8 @@ def getparams(**context):
   task_instance.xcom_push(key="{}_VIPERPORTPREPROCESS".format(sname),value="_{}".format(VIPERPORTPREPROCESS))
   task_instance.xcom_push(key="{}_VIPERHOSTPREPROCESS2".format(sname),value=VIPERHOSTPREPROCESS2)
   task_instance.xcom_push(key="{}_VIPERPORTPREPROCESS2".format(sname),value="_{}".format(VIPERPORTPREPROCESS2))
+  task_instance.xcom_push(key="{}_VIPERHOSTPREPROCESS3".format(sname),value=VIPERHOSTPREPROCESS3)
+  task_instance.xcom_push(key="{}_VIPERPORTPREPROCESS3".format(sname),value="_{}".format(VIPERPORTPREPROCESS3))
 
   task_instance.xcom_push(key="{}_VIPERHOSTPREPROCESSPGPT".format(sname),value=VIPERHOSTPREPROCESSPGPT)
   task_instance.xcom_push(key="{}_VIPERPORTPREPROCESSPGPT".format(sname),value="_{}".format(VIPERPORTPREPROCESSPGPT))

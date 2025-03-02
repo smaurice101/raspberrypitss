@@ -242,9 +242,15 @@ if __name__ == '__main__':
         independentvariables =  sys.argv[9]
         default_args['independentvariables'] = independentvariables
         subprocess.run("rm -rf {}".format(default_args['fullpathtotrainingdata']), shell=True)
-
+        
         tsslogging.locallogs("INFO", "STEP 5: Machine learning started")
-    
+        try: 
+          f = open("/tmux/step5.txt", "w")
+          f.write(default_args['fullpathtotrainingdata'])
+          f.close()
+        except Exception as e:
+          pass
+
         while True:
          try:     
           performSupervisedMachineLearning()
