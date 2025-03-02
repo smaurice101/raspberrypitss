@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid60_json",
+ "Algo": "StreamConsumer_topicid60_jsonlgt",
+ "Forecastaccuracy": 0.74,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid60.csv",
+ "Fieldnames": "Date,topicid60_Power_preprocessed_Trend,topicid60_Voltage_preprocessed_Trend,topicid60_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid60_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T18:33:42.099995631Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e978a634-7faa-11ec-7d0a-7ae6bd3024db(0,7.87305,80.77180,Power,n/a,n/a,{});ea0fe54e-7faa-11ec-7bec-e818478547bb(0,7.87305,80.77180,Power,n/a,n/a,{});ea59ee0a-7faa-11ec-0252-f32466304b68(0,7.87305,80.77180,Power,n/a,n/a,{});eab40c8c-7faa-11ec-d031-72db9c4ee2e9(0,7.87305,80.77180,Power,n/a,n/a,{});ead6400e-7faa-11ec-9378-886b7a83bf9b(0,7.87305,80.77180,Power,n/a,n/a,{});e9b9ee46-7faa-11ec-f233-0b1f8622b57d(0,7.87305,80.77180,Power,n/a,n/a,{});e9d6dfc4-7faa-11ec-0bdb-6139c069dece(0,7.87305,80.77180,Power,n/a,n/a,{});e9ed2766-7faa-11ec-8980-9a40f71ab9de(0,7.87305,80.77180,Power,n/a,n/a,{});ea3e172a-7faa-11ec-6795-70310b9e1863(0,7.87305,80.77180,Power,n/a,n/a,{});ea7763fe-7faa-11ec-710b-d7349fd349a8(0,7.87305,80.77180,Power,n/a,n/a,{});eaa46fc0-7faa-11ec-ef02-0454a031072d(0,7.87305,80.77180,Power,n/a,n/a,{});eafe2556-7faa-11ec-ea93-2ed8a90e6177(0,7.87305,80.77180,Power,n/a,n/a,{});e9978482-7faa-11ec-6143-1c6eba2f3ece(0,7.87305,80.77180,Power,n/a,n/a,{});ea274f54-7faa-11ec-4281-923a3135242f(0,7.87305,80.77180,Power,n/a,n/a,{});eb12a4ea-7faa-11ec-b41b-7c1a57fd1308(0,7.87305,80.77180,Power,n/a,n/a,{})~latlong=~mainuid=AC000W018211791",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-2.785:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "-0.4755738,0.0000000,-0.6387942,0.0000000",
+ "HasConstantTerm": 1
+}

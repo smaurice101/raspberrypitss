@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid6_json",
+ "Algo": "StreamConsumer_topicid6_jsonlgt",
+ "Forecastaccuracy": 0.74,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid6.csv",
+ "Fieldnames": "Date,topicid6_Power_preprocessed_Trend,topicid6_Voltage_preprocessed_Trend,topicid6_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid6_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T18:29:50.203244521Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=de4081d8-7faa-11ec-8faf-54a1bc041fd3(0,61.52401,105.31876,Power,n/a,n/a,{});de9af3d4-7faa-11ec-2cd3-5d9223b19518(0,61.52401,105.31876,Power,n/a,n/a,{});def56454-7faa-11ec-ad81-abe42e773801(0,61.52401,105.31876,Power,n/a,n/a,{});df5fc2b8-7faa-11ec-815d-8feefd10fe20(0,61.52401,105.31876,Power,n/a,n/a,{});de63ecd6-7faa-11ec-64f1-b4d1d0d4bb80(0,61.52401,105.31876,Power,n/a,n/a,{});df1e033c-7faa-11ec-b631-95003303298a(0,61.52401,105.31876,Power,n/a,n/a,{});dfcae7fa-7faa-11ec-39e9-6232d5c5530e(0,61.52401,105.31876,Power,n/a,n/a,{});de803b66-7faa-11ec-8150-e4cd3859dcfc(0,61.52401,105.31876,Power,n/a,n/a,{});deb83200-7faa-11ec-6aa3-184b9c694573(0,61.52401,105.31876,Power,n/a,n/a,{});df411d68-7faa-11ec-9982-c1fc96ed2b72(0,61.52401,105.31876,Power,n/a,n/a,{});dfb42236-7faa-11ec-773a-12d87bbfe2e1(0,61.52401,105.31876,Power,n/a,n/a,{})~latlong=~mainuid=AC000W018211905",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-36.221:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "-0.0512539,0.0000000,-0.8946962,0.0000000",
+ "HasConstantTerm": 1
+}

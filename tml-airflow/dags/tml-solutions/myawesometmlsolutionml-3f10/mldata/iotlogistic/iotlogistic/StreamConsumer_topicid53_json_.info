@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid53_json",
+ "Algo": "StreamConsumer_topicid53_jsonlgt",
+ "Forecastaccuracy": 0.909,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid53.csv",
+ "Fieldnames": "Date,topicid53_Power_preprocessed_Trend,topicid53_Voltage_preprocessed_Trend,topicid53_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid53_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T18:31:40.33306822Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e77e24e4-7faa-11ec-93a3-55e116903a80(0,7.87305,80.77180,Power,n/a,n/a,{});e7d48b4a-7faa-11ec-a457-170e152f6baa(0,7.87305,80.77180,Power,n/a,n/a,{});e741a80c-7faa-11ec-42e3-054253eeee47(0,7.87305,80.77180,Power,n/a,n/a,{});e7629986-7faa-11ec-69b0-43a3316a5f9f(19770,7.87305,80.77180,Power,n/a,n/a,{});e7ed379e-7faa-11ec-4ee6-7d77f37dc806(0,7.87305,80.77180,Power,n/a,n/a,{});e808874c-7faa-11ec-a287-d4e397bf1545(0,7.87305,80.77180,Power,n/a,n/a,{});e834f430-7faa-11ec-bcc2-304e79b76718(0,7.87305,80.77180,Power,n/a,n/a,{});e86bd446-7faa-11ec-1e3c-641fc701430f(0,7.87305,80.77180,Power,n/a,n/a,{});e888489c-7faa-11ec-2e0d-1eb85ee2cc90(0,7.87305,80.77180,Power,n/a,n/a,{});e71bd0fa-7faa-11ec-8c4b-88b77d3969f0(0,7.87305,80.77180,Power,n/a,n/a,{});e7b0c142-7faa-11ec-f288-b669ced9715e(0,7.87305,80.77180,Power,n/a,n/a,{});e81d222e-7faa-11ec-d7c6-aac24d86f471(0,7.87305,80.77180,Power,n/a,n/a,{})~latlong=~mainuid=AC000W020485383",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "-541.633:0.000,-16.986:0.000,-3.362:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "0.8815478,-1.6578707,-0.8276622,-0.9468337",
+ "HasConstantTerm": 1
+}
