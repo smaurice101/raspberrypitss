@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid18_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T20:19:10.766854088Z",
+ "Created": "2025-03-02T20:21:08.992708884Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
  "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e02a69fa-7faa-11ec-e82a-0f37f5fe026e(0,36.77826,-119.41793,Power,n/a,n/a,{});e04ec2fa-7faa-11ec-69bf-3f3078ef0f26(0,36.77826,-119.41793,Power,n/a,n/a,{});e0b095ac-7faa-11ec-9858-e772277b3271(0,36.77826,-119.41793,Power,n/a,n/a,{});e0f9b25a-7faa-11ec-e99f-5c6c4fd19047(0,36.77826,-119.41793,Power,n/a,n/a,{});e186de5a-7faa-11ec-00f5-07ca2ee89186(0,36.77826,-119.41793,Power,n/a,n/a,{});e0124afa-7faa-11ec-03d2-0184c2ca5342(0,36.77826,-119.41793,Power,n/a,n/a,{});e08a2c96-7faa-11ec-5a0d-d96662bdb720(0,36.77826,-119.41793,Power,n/a,n/a,{});e0e52236-7faa-11ec-bbf0-5ba4c6c92112(0,36.77826,-119.41793,Power,n/a,n/a,{});e15a9642-7faa-11ec-24c6-84f74d523b55(0,36.77826,-119.41793,Power,n/a,n/a,{});e1a21026-7faa-11ec-7eba-40eabe26e525(0,36.77826,-119.41793,Power,n/a,n/a,{});e1c28e8c-7faa-11ec-9c3e-9f5128edf569(0,36.77826,-119.41793,Power,n/a,n/a,{});e1ff04ca-7faa-11ec-9a05-2455f0decba3(0,36.77826,-119.41793,Power,n/a,n/a,{});dfced4d2-7faa-11ec-9e19-37741187cedb(0,36.77826,-119.41793,Power,n/a,n/a,{});e0c4bca8-7faa-11ec-c35e-90a643e09060(0,36.77826,-119.41793,Power,n/a,n/a,{});e14305a4-7faa-11ec-dff6-4a9b772e418c(0,36.77826,-119.41793,Power,n/a,n/a,{})~latlong=~mainuid=AC000W020485928",
  "AccuracyThreshold": 0.55,
- "Minmax": "0.000:0.000,0.000:0.369,0.000:0.000",
+ "Minmax": "0.000:0.000,0.000:5.943,0.000:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "-3.5031659,0.0000000,10.0661991,0.0000000",
+ "ParameterEstimates": "-3.4487913,0.0000000,10.9897476,0.0000000",
  "HasConstantTerm": 1
 }
