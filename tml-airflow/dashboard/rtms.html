@@ -1207,7 +1207,7 @@ function drawChart(jsondata, topic) {
 		if (rownum > 0) {
 			document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
 				drawTable2();
-
+                   document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
 		}
 	}
 
