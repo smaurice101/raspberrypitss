@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid5_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T19:59:45.000710389Z",
+ "Created": "2025-03-02T20:00:47.160434189Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
- "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=de7459e0-7faa-11ec-f8f4-062b0a04e60e(44,61.52401,105.31876,Current,n/a,n/a,{});df344fd4-7faa-11ec-d7bb-e9060ac9d800(43,61.52401,105.31876,Current,n/a,n/a,{});df7a1730-7faa-11ec-17df-df4462b2dd4e(44,61.52401,105.31876,Current,n/a,n/a,{});dfc12562-7faa-11ec-f0bb-b00653178e76(43,61.52401,105.31876,Current,n/a,n/a,{});dfd45f38-7faa-11ec-9711-102cc2440c57(44,61.52401,105.31876,Current,n/a,n/a,{});de550e00-7faa-11ec-2cb7-551b78719918(42,61.52401,105.31876,Current,n/a,n/a,{});deab2718-7faa-11ec-738e-3b53f4943fab(44,61.52401,105.31876,Current,n/a,n/a,{});dece4d38-7faa-11ec-0334-95e3d282013a(43,61.52401,105.31876,Current,n/a,n/a,{});def965ae-7faa-11ec-3b36-c0442e420d2f(43,61.52401,105.31876,Current,n/a,n/a,{});df1410ac-7faa-11ec-b87b-a2fd0029b0b8(43,61.52401,105.31876,Current,n/a,n/a,{});df65264a-7faa-11ec-ee1b-daf14dd7a95f(44,61.52401,105.31876,Current,n/a,n/a,{});dfad2c92-7faa-11ec-d13f-540eed50906a(43,61.52401,105.31876,Current,n/a,n/a,{})~latlong=~mainuid=AC000W016399127",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=deab2718-7faa-11ec-738e-3b53f4943fab(44,61.52401,105.31876,Current,n/a,n/a,{});dece4d38-7faa-11ec-0334-95e3d282013a(43,61.52401,105.31876,Current,n/a,n/a,{});def965ae-7faa-11ec-3b36-c0442e420d2f(43,61.52401,105.31876,Current,n/a,n/a,{});df1410ac-7faa-11ec-b87b-a2fd0029b0b8(43,61.52401,105.31876,Current,n/a,n/a,{});df65264a-7faa-11ec-ee1b-daf14dd7a95f(44,61.52401,105.31876,Current,n/a,n/a,{});dfad2c92-7faa-11ec-d13f-540eed50906a(43,61.52401,105.31876,Current,n/a,n/a,{});de550e00-7faa-11ec-2cb7-551b78719918(42,61.52401,105.31876,Current,n/a,n/a,{});de7459e0-7faa-11ec-f8f4-062b0a04e60e(44,61.52401,105.31876,Current,n/a,n/a,{});df344fd4-7faa-11ec-d7bb-e9060ac9d800(43,61.52401,105.31876,Current,n/a,n/a,{});df7a1730-7faa-11ec-17df-df4462b2dd4e(44,61.52401,105.31876,Current,n/a,n/a,{});dfc12562-7faa-11ec-f0bb-b00653178e76(43,61.52401,105.31876,Current,n/a,n/a,{});dfd45f38-7faa-11ec-9711-102cc2440c57(44,61.52401,105.31876,Current,n/a,n/a,{})~latlong=~mainuid=AC000W016399127",
  "AccuracyThreshold": 0.55,
- "Minmax": "0.000:1.800,-9.840:0.000,-0.091:0.000",
+ "Minmax": "0.000:1.789,-12.990:0.000,-0.035:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "2.4624603,23.2391963,-6.7627831,-2.5097301",
+ "ParameterEstimates": "1.6131564,18.3366094,-6.7979609,-2.7888629",
  "HasConstantTerm": 1
 }
