@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid37_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T18:31:12.10549424Z",
+ "Created": "2025-03-02T19:20:02.303494289Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
- "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e3d798d4-7faa-11ec-6918-c618bc885e74(41271,37.83933,-84.27002,Power,n/a,n/a,{});e4888158-7faa-11ec-6aca-db3439401944(41271,37.83933,-84.27002,Power,n/a,n/a,{});e3fc4382-7faa-11ec-0284-b7eacd3be117(41271,37.83933,-84.27002,Power,n/a,n/a,{});e441dc12-7faa-11ec-a3a1-25e0715fde6e(41271,37.83933,-84.27002,Power,n/a,n/a,{});e455026a-7faa-11ec-25d0-e994a4d68f70(41271,37.83933,-84.27002,Power,n/a,n/a,{});e4bb0bd2-7faa-11ec-218c-91a3f4a059d0(41271,37.83933,-84.27002,Power,n/a,n/a,{});e4f127a8-7faa-11ec-096b-9c6921075057(41271,37.83933,-84.27002,Power,n/a,n/a,{});e557d1c4-7faa-11ec-8635-2d8502638b36(41271,37.83933,-84.27002,Power,n/a,n/a,{});e57fcd0a-7faa-11ec-331b-ef02c2cf3b9a(41271,37.83933,-84.27002,Power,n/a,n/a,{});e5a72f08-7faa-11ec-a235-b800754b425f(41218,37.83933,-84.27002,Power,n/a,n/a,{});e41660f0-7faa-11ec-1bd6-72f04e61c6b2(41324,37.83933,-84.27002,Power,n/a,n/a,{});e50e5184-7faa-11ec-b0d7-e7dc47f7b577(41324,37.83933,-84.27002,Power,n/a,n/a,{});e52522b0-7faa-11ec-18dc-26154ce7c623(41271,37.83933,-84.27002,Power,n/a,n/a,{});e5700140-7faa-11ec-dc6f-8c127b8952c8(41271,37.83933,-84.27002,Power,n/a,n/a,{});e58f5d74-7faa-11ec-13f5-985116c0a679(41271,37.83933,-84.27002,Power,n/a,n/a,{})~latlong=~mainuid=AC000W020497083",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e41a2c3a-7faa-11ec-76d0-adf600ace94b(344,37.83933,-84.27002,Current,n/a,n/a,{});e445cd68-7faa-11ec-8e9d-1805f61ba0f9(344,37.83933,-84.27002,Current,n/a,n/a,{});e48c365e-7faa-11ec-3614-b929032d8532(343,37.83933,-84.27002,Current,n/a,n/a,{});e3e4e958-7faa-11ec-9396-3c59e64ca44a(344,37.83933,-84.27002,Current,n/a,n/a,{});e3fef410-7faa-11ec-a953-639dcb2186b2(344,37.83933,-84.27002,Current,n/a,n/a,{});e460bdd0-7faa-11ec-22ec-6e6118be3b94(343,37.83933,-84.27002,Current,n/a,n/a,{});e4d4b3c0-7faa-11ec-d781-d13d6114f2f1(343,37.83933,-84.27002,Current,n/a,n/a,{})~latlong=~mainuid=AC000W020497083",
  "AccuracyThreshold": 0.55,
- "Minmax": "-3.329:0.000,-10.425:0.000,-0.054:0.000",
+ "Minmax": "-4.388:0.000,-48.201:0.000,-0.213:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "-0.2906273,-0.1839467,-0.1926573,-0.1980693",
+ "ParameterEstimates": "-0.2879413,-0.1962454,-0.1961319,-0.1820585",
  "HasConstantTerm": 1
 }
