@@ -11971,3 +11971,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-02_03:07:47] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-02_03:12:58] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-02_03:16:43] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-03-02_14:44:05] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
