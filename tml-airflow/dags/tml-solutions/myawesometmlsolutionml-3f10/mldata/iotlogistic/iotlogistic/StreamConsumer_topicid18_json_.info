@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid18_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T19:06:36.202069498Z",
+ "Created": "2025-03-02T19:06:57.682548747Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
- "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e0399056-7faa-11ec-3509-199570d8a44a(124252,36.77826,-119.41793,Voltage,n/a,n/a,{});e0b8f134-7faa-11ec-baef-be1261e3951f(124470,36.77826,-119.41793,Voltage,n/a,n/a,{});e01d432e-7faa-11ec-0a31-cd0278c639af(124359,36.77826,-119.41793,Voltage,n/a,n/a,{});e09346c8-7faa-11ec-139c-d76293feca32(124570,36.77826,-119.41793,Voltage,n/a,n/a,{});dffad546-7faa-11ec-58de-48d40e9644f5(124252,36.77826,-119.41793,Voltage,n/a,n/a,{});e05d908c-7faa-11ec-c976-297a3406f90d(124577,36.77826,-119.41793,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W020485928",
+ "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e0b095ac-7faa-11ec-9858-e772277b3271(0,36.77826,-119.41793,Power,n/a,n/a,{});e0e52236-7faa-11ec-bbf0-5ba4c6c92112(0,36.77826,-119.41793,Power,n/a,n/a,{});dfced4d2-7faa-11ec-9e19-37741187cedb(0,36.77826,-119.41793,Power,n/a,n/a,{});e0124afa-7faa-11ec-03d2-0184c2ca5342(0,36.77826,-119.41793,Power,n/a,n/a,{});e02a69fa-7faa-11ec-e82a-0f37f5fe026e(0,36.77826,-119.41793,Power,n/a,n/a,{});e04ec2fa-7faa-11ec-69bf-3f3078ef0f26(0,36.77826,-119.41793,Power,n/a,n/a,{});e08a2c96-7faa-11ec-5a0d-d96662bdb720(0,36.77826,-119.41793,Power,n/a,n/a,{});e0c4bca8-7faa-11ec-c35e-90a643e09060(0,36.77826,-119.41793,Power,n/a,n/a,{});e0f9b25a-7faa-11ec-e99f-5c6c4fd19047(0,36.77826,-119.41793,Power,n/a,n/a,{})~latlong=~mainuid=AC000W020485928",
  "AccuracyThreshold": 0.55,
- "Minmax": "0.000:0.000,-10.593:0.000,0.000:0.000",
+ "Minmax": "0.000:0.000,-8.363:0.000,0.000:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "0.0346909,0.0000000,-0.5721397,0.0000000",
+ "ParameterEstimates": "-0.1066216,0.0000000,-0.5324275,0.0000000",
  "HasConstantTerm": 1
 }
