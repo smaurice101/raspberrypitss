@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid14_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T20:05:20.834177834Z",
+ "Created": "2025-03-02T20:08:58.948085258Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
- "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e0177570-7faa-11ec-38b6-f489f70c523a(123085,35.20105,-91.83183,Voltage,n/a,n/a,{});e03e84bc-7faa-11ec-f8f6-a48f58aa1b92(123085,35.20105,-91.83183,Voltage,n/a,n/a,{});e04efc52-7faa-11ec-cc17-3c9f504572f8(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});e0ebbf1a-7faa-11ec-61af-a635311d5cd6(123427,35.20105,-91.83183,Voltage,n/a,n/a,{});e150629e-7faa-11ec-ee6b-3b4da4e4bd24(123544,35.20105,-91.83183,Voltage,n/a,n/a,{});df6618ca-7faa-11ec-ec8f-29162eb3ea4e(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});dfd6cb06-7faa-11ec-65dd-965260c9b467(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});e1155276-7faa-11ec-adca-b7a331208b7b(123427,35.20105,-91.83183,Voltage,n/a,n/a,{});e131f58e-7faa-11ec-7a80-509930719657(123320,35.20105,-91.83183,Voltage,n/a,n/a,{});e15f6d66-7faa-11ec-4b5d-ef2af2b10d05(123320,35.20105,-91.83183,Voltage,n/a,n/a,{});dfbda37e-7faa-11ec-8e4e-bcab1842d615(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});e07160d0-7faa-11ec-242f-d9f1839ddab2(123186,35.20105,-91.83183,Voltage,n/a,n/a,{});e096bea2-7faa-11ec-094b-79683aa4fe35(123202,35.20105,-91.83183,Voltage,n/a,n/a,{});e0a8f3d8-7faa-11ec-4592-92be63585414(123427,35.20105,-91.83183,Voltage,n/a,n/a,{});e0dc7726-7faa-11ec-5dd5-5fa273515219(123427,35.20105,-91.83183,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W020499032",
+ "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=df6618ca-7faa-11ec-ec8f-29162eb3ea4e(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});dfbda37e-7faa-11ec-8e4e-bcab1842d615(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});e03e84bc-7faa-11ec-f8f6-a48f58aa1b92(123085,35.20105,-91.83183,Voltage,n/a,n/a,{});dfd6cb06-7faa-11ec-65dd-965260c9b467(122968,35.20105,-91.83183,Voltage,n/a,n/a,{});e0177570-7faa-11ec-38b6-f489f70c523a(123085,35.20105,-91.83183,Voltage,n/a,n/a,{});e04efc52-7faa-11ec-cc17-3c9f504572f8(122968,35.20105,-91.83183,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W020499032",
  "AccuracyThreshold": 0.55,
- "Minmax": "-0.709:0.000,0.000:10.058,-0.011:0.000",
+ "Minmax": "-5.005:0.000,0.000:3.647,0.000:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "0.2194017,-1.7159874,4.2599094,-1.4616137",
+ "ParameterEstimates": "1.8669517,-18.7752907,47.9106937,0.0000000",
  "HasConstantTerm": 1
 }
