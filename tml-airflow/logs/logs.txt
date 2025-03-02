@@ -12043,3 +12043,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-02_18:14:24] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-03-02_18:14:25] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2025-03-02_18:14:27] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2025-03-02_18:14:29] Deleting topic iot-ml-prediction-results-output in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolutionml-3f10.py
