@@ -1,19 +1,19 @@
 {
  "Algokey": "StreamConsumer_topicid2_json",
  "Algo": "StreamConsumer_topicid2_jsonlgt",
- "Forecastaccuracy": 0.882,
+ "Forecastaccuracy": 0.941,
  "DependentVariable": "failure_prob",
  "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid2.csv",
  "Fieldnames": "Date,topicid2_Power_preprocessed_Trend,topicid2_Voltage_preprocessed_Trend,topicid2_Current_preprocessed_Trend",
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid2_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T20:58:40.258100196Z",
+ "Created": "2025-03-02T20:58:53.459710183Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
  "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=deafada6-7faa-11ec-fdfb-b76507a1157f(124886,43.07597,-107.29028,Voltage,n/a,n/a,{});de45be6e-7faa-11ec-d818-bdecffb9540f(124774,43.07597,-107.29028,Voltage,n/a,n/a,{});de6a292a-7faa-11ec-bef3-b9db228f8a8a(124553,43.07597,-107.29028,Voltage,n/a,n/a,{});de872a16-7faa-11ec-2863-7060ad670726(124886,43.07597,-107.29028,Voltage,n/a,n/a,{});decb8f44-7faa-11ec-6615-f08a6869d493(124774,43.07597,-107.29028,Voltage,n/a,n/a,{});dee555f0-7faa-11ec-af22-da833a5d7f61(124774,43.07597,-107.29028,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W018211649",
  "AccuracyThreshold": 0.55,
- "Minmax": "-2195.524:0.000,-6.469:0.000,-9.196:0.000",
+ "Minmax": "-2144.067:0.000,-8.390:0.000,-6.289:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "-0.2454692,-0.2667353,-0.2190668,-0.1909180",
+ "ParameterEstimates": "1.7319430,0.9452845,-2.0220522,-3.1843526",
  "HasConstantTerm": 1
 }
