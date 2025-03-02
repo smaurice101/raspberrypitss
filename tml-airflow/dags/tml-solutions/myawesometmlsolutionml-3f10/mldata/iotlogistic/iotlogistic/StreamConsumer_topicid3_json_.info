@@ -8,12 +8,12 @@
  "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid3_json_predictions.csv",
  "Deployed": 1,
  "DeployedTo": "Local Machine Deploy Folder",
- "Created": "2025-03-02T19:05:10.553561845Z",
+ "Created": "2025-03-02T19:05:35.86727138Z",
  "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
  "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=df2d98e2-7faa-11ec-e777-2a1793abd180(644,43.07597,-107.29028,Current,n/a,n/a,{});df48fa88-7faa-11ec-38a1-825a007e1fe6(649,43.07597,-107.29028,Current,n/a,n/a,{});de420d8c-7faa-11ec-fa39-8a56ac3ec6fc(765,43.07597,-107.29028,Current,n/a,n/a,{});de65558a-7faa-11ec-df52-18d8455031fb(799,43.07597,-107.29028,Current,n/a,n/a,{});de837150-7faa-11ec-8102-f9372e59a7ff(678,43.07597,-107.29028,Current,n/a,n/a,{});deac2320-7faa-11ec-867e-20dae2218efc(678,43.07597,-107.29028,Current,n/a,n/a,{});debe2e58-7faa-11ec-2976-79d7a0840b0f(731,43.07597,-107.29028,Current,n/a,n/a,{});dedbc526-7faa-11ec-dd67-dd34fdce6a9b(782,43.07597,-107.29028,Current,n/a,n/a,{})~latlong=~mainuid=AC000W018211649",
  "AccuracyThreshold": 0.55,
- "Minmax": "-1485.477:0.000,0.000:11.571,-14.315:0.000",
+ "Minmax": "-1416.152:0.000,0.000:11.746,-13.826:0.000",
  "MachineLearningAlgorithm": "Logistic Regression",
- "ParameterEstimates": "1.2709280,-4.8546861,13.8896665,-1.8679312",
+ "ParameterEstimates": "3.0685856,-4.6045200,28.4435024,-6.9801351",
  "HasConstantTerm": 1
 }
