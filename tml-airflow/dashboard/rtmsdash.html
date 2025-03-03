@@ -331,7 +331,7 @@ function drawTable2() {
 //////////////////////////////////////////////////////////////////// MAIN WEBSOCKET STREAMING FUNCTION /////////////////////////////
 function streamLiveKafkaData() {
 
-	//if ("WebSocket" in window) {
+	if ("WebSocket" in window) {
 		var url = window.location.host;
 		console.log(url);
 		mainport = url.split(":")[1];
@@ -529,7 +529,11 @@ function streamLiveKafkaData() {
 
 		};
 
-	} 
+	} else {
+
+		// The browser doesn't support WebSocket
+		console.log("WebSocket NOT supported by your Browser!");
+	}
 }
 		
 	    function saveDynamicDataToFile(topic) {
