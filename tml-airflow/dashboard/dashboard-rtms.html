@@ -365,6 +365,8 @@ function image(thetype,mess) {
                   //try {
                   if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
                       kafkakeyarr.push(kafkakey);
+                      jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
+                      
                       createdon = jsondata.TopicReads[j].TimeStamp;
                       maintimestamp = createdon;
                       winstart = jsondata.TopicReads[j].WindowStartTime;
@@ -413,6 +415,8 @@ function image(thetype,mess) {
               maintotalmessages = maintotalmessages + rownum;
               document.getElementById('totrecs').innerHTML = maintotalmessages;
               document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
+
+               document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
 
               drawTable2();
 
