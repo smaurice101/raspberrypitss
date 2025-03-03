@@ -107,7 +107,6 @@ padding: 4px 5px 2px 2px;
         height: 500px;
 }
 
-
 </style>
 <script type="text/javascript" src="./js/attention.js"></script>   
 
@@ -131,26 +130,12 @@ padding: 4px 5px 2px 2px;
 </script>
 <script src="./js/d3.min.js"></script>
 <script src="./js/d3pie.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="./js/rtmsscripts.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat"
-      rel="stylesheet"
-    />
-
 
     
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 <link rel="stylesheet" href="./leaflet/leaflet.css" />
- <link rel="stylesheet" href="./css/rtmsstyles.css" />
+
 </head>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link href="./css/tilescrypto.css" rel="stylesheet">
@@ -165,16 +150,6 @@ padding: 4px 5px 2px 2px;
 
 <!-- <center><img src='./senecalogo.png' width=150 height=70> | <img src='./OTICS-New-Logo-Black.png' width=150 height=70></center> -->
 <!-- <center><img src='./senecalogo.png' width=150 height=70></center> -->
-
-<div class="row justify-content-md-center">
-
-    <div id="wrapper">
-	
-      <div class="content-area">
-	  <center>
-<label id="maintitle"><b><h1><font color='white'><b>Real-Time Cyber Threats and Network Monitoring with TML Real-Time Memory</b></h1></b></label>
-
-    <!-- /////////////////////////////////////////////////////////////////////////  -->
 
 <table style="width: 100%;height: 80px;    background: linear-gradient(135deg,  rgba(51, 0, 0,1) 0%,rgba(0, 128, 255,1) 50%,rgba(0, 128, 255,1) 51%,rgba(51, 0, 0,1) 100%);">
 <tr>
@@ -192,50 +167,7 @@ padding: 4px 5px 2px 2px;
 
 <div id="selectSymbol">
 <form id="idForm">
-
-                <div class="container-fluid">
-         
-          <div class="main">
-            <div class="row mt-4">
-              <div class="col-md-5">
-                <div class="box columnbox mt-4">
-                  <div id="columnchart"></div>
-                </div>
-              </div>
-              <div class="col-md-7">
-                <div class="box  mt-4">
-                  <div id="linechart"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-5">
-                <div class="box radialbox mt-4">
-                  <div id="circlechart"></div>
-                </div>
-              </div>
-              <div class="col-md-7">
-                <div class="box mt-4">
-                  <div class="mt-4">
-                    <div id="progress1"></div>
-                  </div>
-                  <div class="mt-4">
-                    <div id="progress2"></div>
-                  </div>
-                  <div class="mt-4">
-                    <div id="progress3"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-  
-          </div>
-        </div>
-      </div>
-    </div>
-
+		
 
 <h6>
 <b><font color='white'>Last Kafka Access Time:</font></b></b> <label id="accesstime"></label><br>
@@ -256,10 +188,83 @@ padding: 4px 5px 2px 2px;
 </tr>
 </table>				
 
+<table border=0 style='width: 500px;height: 400px; vertical-align: top;'>
+<tr>		
+
+<td style="text-align: left; vertical-align: top;">
+<table valign='top'  id="machinelearning" style="width: 100%; height: 100%;display:none; border-spacing: 10px;">
+<tr>
+<!-- ML models -->	
+<!--       END                        -->
+<td valign='top' >
+<div class="clear"></div>
+<center>
+<div id="downloadpatientdataurllog"></div>
+</center>
+<div class="clear"></div><br>
+<div id="barchartlog_div" style="text-align: top; vertical-align: top;width:300px;height: 370px" ></div>				 
+
+<!--               <table >				
+<tr>
+<td>
+<img src='./help.png' width=30 height=27  style="float: top;" onclick="image('barchart','')">	
+<div id="barchart_div" style="text-align: left; vertical-align: middle;width:300px;height: 450px" ></div>				 
+</td>
+<td>
+<div id="barchartlabel_div" style="text-align: left; vertical-align: left;width:100px;overflow-y:scroll;" ></div>				 
+
+</td>
+</table>
+-->			 
+
+</td>			   
+<!--       END                        -->
+
+
+</tr>
+</table>
 
 </td>
 
 
+<!--------------------------------------- -->
+<td  valign='top' style="width: 420px; height: 100%" >				
+<table id="xenese" valign='top' style="width: 400px; height: 100%;display:none">
+<tr>
+<td valign='top' width=350>
+<center>
+<div class="tile wide block" style="width: 380px; height: 100%">
+<div class="header" >
+<div id="blockcount" class="count"  >TBD</div>
+<div class="title" >Prediction Blocks Created in XENESE</div>
+<br>
+<img src='./help.png' width=30 height=27  class="padding" style="float: left;" onclick="image('block','')">				
+
+</div>
+</div><br>
+
+
+</center>				 
+</td>
+</tr>
+</table>
+</td>
+
+<!-- ================================================================= -->   
+<td  valign='top' >				
+<table valign='top' style="width: 350px; height: 100%; display:none">
+<tr>
+<td valign='top' >
+<center>
+<div class="tile wide resource" style="width: 330px;display:block"">
+</div>
+
+
+</center>				 
+</td>
+</tr>
+</table>
+</td>
 
 <td  >	
 <table>
@@ -267,6 +272,13 @@ padding: 4px 5px 2px 2px;
 <td>
 <table id="maptable" border=0 style="width: 2220px;height: 100%; vertical-align: top;float: left">
 
+<tr>
+
+<td valign='top' >	
+<label><font color=red size=6><b><label id="hostatrisk">Hosts At Risk:</label></b></font> <input type="input"  width=270 size=280 placeholder=""  name="Hosts" id='hostrisk'  /> 
+</label>
+</td>
+</tr>  
 
 <tr>				
 <center>
@@ -359,21 +371,8 @@ padding: 4px 5px 2px 2px;
 <td colspan=4>
 
 <table style="width: 100%;">
-<tr>
-<td>
-<img src='./help.png' width=30 height=27 class="padding" style="float: top;" onclick="image('table','')">	
-<center><a id="Export" href="#"> Download as CSV </a> | <a id="Export2" href="#">Download JSON</a></center>
-<div id="table_div"></div>
-</td>
-</tr>
-</table>
 
-</td>
 
-</tr>
-</table>		
-
-<table style="width: 100%;">
 <tr>
 <td>
 <img src='./help.png' width=30 height=27 class="padding" style="float: top;" onclick="image('table','')">	
@@ -382,8 +381,11 @@ padding: 4px 5px 2px 2px;
 </td>
 </tr>
 </table>
+</td>
 
- <textarea name="txtData" id="txtData" style="display: none;" class="textboxmulti"></textarea> 
+</tr>
+</table>				 
+<!--  <textarea name="txtData" id="txtData" style="display: none;" class="textboxmulti"></textarea> -->
 </form>
 </div>
 <div id="display"></div>
@@ -1222,7 +1224,7 @@ function drawChart(jsondata, topic) {
 		var varr;
 		var msgiddatastr = "";
 		var Maintopic;
-         var jsonhist="";
+
 		let rownum = 0;
 
 		for (j in jsondata.TopicReads) {
@@ -1230,9 +1232,6 @@ function drawChart(jsondata, topic) {
 			kafkakey = jsondata.TopicReads[j].kafkakey;
 			//try {
 			if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
-
-                jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
-             
 				kafkakeyarr.push(kafkakey);
 
 				createdon = jsondata.TopicReads[j].TimeStamp;
@@ -1275,7 +1274,7 @@ function drawChart(jsondata, topic) {
 		if (rownum > 0) {
 			document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
 				drawTable2();
-                   document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
+
 		}
 	}
 
@@ -1387,7 +1386,7 @@ function sleep (time) {
 //////////////////////////////////////////////////////////////////// MAIN WEBSOCKET STREAMING FUNCTION /////////////////////////////
 function streamLiveKafkaData() {
 
-	//if ("WebSocket" in window) {
+	if ("WebSocket" in window) {
 		var url = window.location.host;
 		console.log(url);
 		mainport = url.split(":")[1];
@@ -1457,7 +1456,7 @@ function streamLiveKafkaData() {
 				return
 			}
 
-//			 console.log("-------------maindata=",maindata);
+			 console.log("-------------maindata=",maindata);
 
 			var obj;
 			try {
@@ -1585,41 +1584,13 @@ function streamLiveKafkaData() {
 
 		};
 
-	
+	} else {
+
+		// The browser doesn't support WebSocket
+		console.log("WebSocket NOT supported by your Browser!");
+	}
 }
-		
-	    function saveDynamicDataToFile(topic) {
 
-            var userInput = document.getElementById("txtData").value;	
-            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
-           const sFileName = topic+"-LOG-JSON.json";	   // The file to save the data.
-
-           let newLink = document.createElement("a");
-           newLink.download = sFileName;
-
-           if (window.webkitURL != null) {
-              newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-           }
-           else {
-            newLink.href = window.URL.createObjectURL(textToBLOB);
-            newLink.style.display = "none";
-            document.body.appendChild(newLink);
-           }
-
-        newLink.click(); 
-		
-        }
-        
-
-	$('#Export2').click( function(e) {
-	
-	     e.preventDefault(); /*your_code_here;*/ 
-		 saveDynamicDataToFile(topic);
-		 
-		 
-		 return false; 
-	} );
-    
 $('#Export').click(function () {
 	if (topic.length > 0) {
 		var headerRow = "";
