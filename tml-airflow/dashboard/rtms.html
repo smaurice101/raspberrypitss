@@ -235,6 +235,80 @@ padding: 4px 5px 2px 2px;
 <table>
 <tr>
 <td>
+<table id="maptable" border=0 style="width: 2220px;height: 100%; vertical-align: top;float: left">
+
+<tr>
+
+<td valign='top' >	
+<label><font color=red size=6><b><label id="hostatrisk">Hosts At Risk:</label></b></font> <input type="input"  width=270 size=280 placeholder=""  name="Hosts" id='hostrisk'  /> 
+</label>
+</td>
+</tr>  
+
+<tr>				
+<center>
+<div class="tile wide job" style="width: 320px; height: 400">
+<div class="header" style="width: 320px; height: 100%" >
+<div id="totrecs" class="count">0</div>
+<div class="title">Total Kafka Messages Processed</div>
+</div>
+</div>
+<div class="tile wide job" style="width: 320px; height: 400">
+<div class="header" style="width: 320px; height: 100%" >
+<div id="totissues" class="count">0</div>
+<div class="title"><label id="potential">Hosts At Potential Risk</label></div>
+</div>
+</div>
+<div class="tile wide job" style="width: 320px; height: 400">
+<div class="header" style="width: 320px; height: 100%" >
+<div id="tottime" class="counttimewindow"><br><br></div>
+<div class="title">Kafka Time Window Analysed</div>
+</div>
+
+</div>
+</center>
+</tr>
+<tr>
+<br>
+<img src='./help.png' width=30 height=27  class="padding" style="float: right;" onclick="image('cyber','')">				
+
+<!---------------------------------------PIE -->
+<td >
+
+<table  id="pietable"  align='center' style="width: 100%; height: 380px; display: none;">
+<tr >	
+<td style="padding-left: 1px;padding-right: 1px;">
+<div class="header" >
+<div id="pie" class="count" ></div>
+</div>
+</td>
+
+<td style="padding-right: 1px;">
+<div class="header" >
+<div id="pie1" class="count" ></div>
+</div>
+</td>
+
+<td>
+<div class="header" >
+<div id="pie2" class="count" ></div>
+</div>
+</td>
+
+<td>
+<div class="header" >
+<div id="pie3" class="count" ></div>
+</div>
+</td>
+<td>
+<div class="header" >
+<div id="pie4" class="count" ></div>
+</div>
+</td>
+
+</tr>
+
+</table>
 </td>
 </tr>
 <tr>
