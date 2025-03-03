@@ -195,8 +195,386 @@ function drawChart(jsondata, topic) {
 
 
 
+function drawTable2() {
+
+	if (maintable == null) {
+		maintable = new google.visualization.Table(document.getElementById('table_div'));
+	}
+
+	var formatter = new google.visualization.NumberFormat({
+			groupingSymbol: '',
+			fractionDigits: 0
+		});
+	var formatter2 = new google.visualization.NumberFormat({
+			groupingSymbol: '',
+			fractionDigits: 3
+		});
+
+	if (datatbl == null) {
+		datatbl = new google.visualization.DataTable();
+
+				//arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,topic,maintopic, kafkakey, offset, partition];
+
+		datatbl.addColumn('string', 'Date/Time');
+		datatbl.addColumn('string', 'RTMS Score');
+		datatbl.addColumn('string', 'Attack Score');
+		datatbl.addColumn('string', 'Pattern Score');
+		datatbl.addColumn('string', 'Entity');
+		datatbl.addColumn('string', 'Attack Windows Found');
+		datatbl.addColumn('string', 'Pattern Windows Found');
+		datatbl.addColumn('string', 'Processtype');
+
+		datatbl.addColumn('string', 'User Search Terms');
+		datatbl.addColumn('string', 'Sliding Windows to Remember');
+		datatbl.addColumn('string', 'Pattern Threshold');
+		datatbl.addColumn('string', 'Predicted Risk Level');
+		datatbl.addColumn('string', 'TML Comment');
+		datatbl.addColumn('string', 'Text Containing Search Terms');
+		datatbl.addColumn('string', 'Search Entity');        
+		datatbl.addColumn('string', 'Topic');
+		datatbl.addColumn('string', 'Main Topic');
+
+		datatbl.addColumn('string', 'Kafkakey');
+		datatbl.addColumn('number', 'Offset');
+		datatbl.addColumn('number', 'Partition');
+
+		datatbl.sort({
+			column: 1,
+			desc: true
+		});
+
+		maintable.clearChart();
+
+		maintable.draw(datatbl, {
+			showRowNumber: true,
+			width: '100%',
+			height: '100%',
+			page: 'enable',
+			pageSize: 30,
+			allowHtml: true
+		});
+		if (append == 0) {
+			datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+		}
+	} else {
+
+		//console.log("datatbl=",datatbl);
 
 
+		formatter.format(datatbl, 1);
+		formatter2.format(datatbl, 2);
+		datatbl.sort({
+			column: 1,
+			desc: true
+		});
+		if (datatbl.getNumberOfRows() > 0 && append == 0) {
+			datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+		}
+
+		datatbl.addRows(dataintable);
+		maintable.clearChart();
+		maintable.draw(datatbl, {
+			showRowNumber: true,
+			width: '100%',
+			height: '100%',
+			page: 'enable',
+			pageSize: 30,
+			allowHtml: true,
+			'cssClassNames': cssClassNames
+		});
+
+		formatter = null;
+		formatter2 = null;
+	//	datatbl.removeRows(0,datatbl.getNumberOfRows()-1)
+
+	}
+
+	dataintable = [];
+
+}
+
+
+//////////////////////////////////////////////////////////////////// MAIN WEBSOCKET STREAMING FUNCTION /////////////////////////////
+function streamLiveKafkaData() {
+
+	if ("WebSocket" in window) {
+		var url = window.location.host;
+		console.log(url);
+		mainport = url.split(":")[1];
+
+		var urlParams = new URLSearchParams(window.location.search);
+		var keys = urlParams.keys();
+		var entries = urlParams.entries();
+		for (pair of entries) {
+			if (pair[0] == "topic") {
+				topic = pair[1];
+			}
+
+			if (pair[0] == "topictype") {
+				topictype = pair[1];
+			}
+			if (pair[0] == "secure") {
+				secure = pair[1];
+			}
+			if (pair[0] == "vipertoken") {
+				vipertoken = pair[1];
+			}
+
+			if (pair[0] == "consumerid") {
+				consumerid = pair[1];
+			}
+
+			if (pair[0] == "offset") {
+				offset = pair[1];
+			}
+
+			if (pair[0] == "rollbackoffset") {
+				rollbackoffset = pair[1];
+			}
+			if (pair[0] == "groupid") {
+				groupid = pair[1];
+			}
+			if (pair[0] == "append") {
+				append = pair[1];
+			}
+		}
+
+ <!-- ************************************* CREATE WEBSOCKET OBJECT **************************** -->
+            if (window.location.href.indexOf("http://")!=-1){
+		     if (window.location.href.indexOf("/viz/")!=-1){
+                ws = new WebSocket("ws://"+url+"/viz/ws");
+             }else{
+                  ws = new WebSocket("ws://"+url+"/ws");
+             } 
+        }else{
+             if (window.location.href.indexOf("/viz/")!=-1){                                                                            
+                 ws = new WebSocket("wss://"+url+"/viz/ws");
+             }else{
+               ws = new WebSocket("wss://"+url+"/ws");
+             }
+           }
+
+
+ <!-- ************************************* CREATE WEBSOCKET OBJECT **************************** -->
+		
+		ws.onmessage = function (event) {
+			curTime = new Date();
+			var eventdata = `${event.data}`;
+
+			var maindata = eventdata.replace(/\\"/g, '"');
+			maindata = maindata.substr(1, maindata.length - 3);
+			if (maindata == "") {
+				return
+			}
+
+//			 console.log("-------------maindata=",maindata);
+
+			var obj;
+			try {
+				obj = JSON.parse(maindata);
+			} catch (e) {
+				console.log("Json parse issue=", e.message);
+				return;
+			}
+
+			if (obj.ERROR) {
+				//				   $("#statustext").val("Websocket ERROR.."+obj.ERROR);
+				document.getElementById('statustext').innerHTML = "<font color='white'>Websocket ERROR.." + obj.ERROR + "</font>";
+
+				ws.close(1000);
+				alert(obj.ERROR);
+				ws = null;
+				$("#start").attr("disabled", false);
+				$("#start").html("Start Streaming");
+				return
+			}
+
+			if (START == 0) {
+				if (ws) {
+					ws.close(1000);
+				}
+				ws = null;
+				return;
+			}
+			if (append == 0) {
+				dataintable.splice(0, dataintable.length)
+
+				//     datainchart.splice(0, datainchart.length)
+				//predictioncount = 0;
+				jsonhist = null;
+				kafkakeyarr.splice(0, kafkakeyarr.length)
+			}
+
+			vipervizerror = "";
+
+			if (obj.VIPERVIZERROR) {
+				document.getElementById('statustext').innerHTML = "<font color='white'>TOO MANY PEOPLE CONNECTED</font>";
+				vipervizerror = "<font color='white'>TOO MANY PEOPLE CONNECTED</font>";
+				//			  alert(obj.VIPERVIZERROR);
+				return
+			}
+
+			kafkacluster = obj.Webkafkacluster
+			mainkafkatopic = obj.Webtopic
+
+			document.getElementById('accesstime').innerHTML = "<font color='white'>" + curTime + "</font>";
+			document.getElementById('kafkacluster').innerHTML = "<font color='white'>" + kafkacluster + ", Kafka Topic: " + obj.Webtopic + "</font>";
+
+			//////////////////////////////////////////////////// START FUNCTION CALLS FOR CHARTING
+			drawChart(obj, mainkafkatopic);
+			
+//			sleep(2000);
+		
+    		
+			//addHeatdata(obj);
+	        
+	//		sleep(2000);
+
+         	var status = document.getElementById("pietable").style.display;
+
+	        if (status == 'block' ) {		
+			 try{
+        	   startpiechart(mapset);			   
+			 }catch(e){
+               
+			 }				 
+	        }				
+			/////////////////////////////////////////////////////////////////////////////////////////
+
+			obj = null;
+			maindata = null;
+			eventdata = null;
+
+		};
+
+		ws.onclose = function (event) {
+			//console.log("event=",event);
+
+			if (event.wasClean) {
+				console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+			} else {
+				console.log('[close] Connection died');
+
+			}
+			if (ws) {
+				ws.close(1000);
+			}
+			ws = null;
+			var el = document.getElementById('loaderdiv');
+			el.style.display = "none";
+
+			$("#start").attr("disabled", false);
+			//$("#statustext").val("Websocket closed");
+			if (vipervizerror != "") {
+				document.getElementById('statustext').innerHTML = vipervizerror;
+			} else {
+				document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET Closed</font>";
+			}
+
+			$("#start").html("Start Streaming");
+		};
+		ws.onopen = function (error) {
+			var password = ""; //document.getElementById("dashpass").value;
+
+			// SEND DATA BACK TO VIPERVIZ ////////////////////////////////////////////
+			var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
+
+			ws.send(sendbuffer);
+			//////////////////////////////////////////////////////////////////////////
+			var el = document.getElementById('loaderdiv');
+			el.style.display = "block";
+
+		};
+
+		ws.onerror = function (error) {
+			if (ws) {
+				ws.close(1000);
+			}
+			console.log(`[error] ${error.message}`);
+			document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET ERROR.." + `[error] ${error.message}` + "</font>";
+
+		};
+
+	} else {
+
+		// The browser doesn't support WebSocket
+		console.log("WebSocket NOT supported by your Browser!");
+	}
+}
+		
+	    function saveDynamicDataToFile(topic) {
+
+            var userInput = document.getElementById("txtData").value;	
+            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+           const sFileName = topic+"-LOG-JSON.json";	   // The file to save the data.
+
+           let newLink = document.createElement("a");
+           newLink.download = sFileName;
+
+           if (window.webkitURL != null) {
+              newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+           }
+           else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+           }
+
+        newLink.click(); 
+		
+        }
+        
+
+	$('#Export2').click( function(e) {
+	
+	     e.preventDefault(); /*your_code_here;*/ 
+		 saveDynamicDataToFile(topic);
+		 
+		 
+		 return false; 
+	} );
+    
+$('#Export').click(function () {
+	if (topic.length > 0) {
+		var headerRow = "";
+		var number_of_columns = datatbl.getNumberOfColumns();
+		for (var i = 0; i < number_of_columns; i++) {
+			headerRow += datatbl.getColumnLabel(i).replace("\n", " : ");
+			headerRow += (i === number_of_columns - 1) ? "\n" : ",";
+		}
+		var csvFormattedDataTable = headerRow + google.visualization.dataTableToCsv(datatbl);
+		var encodedUri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvFormattedDataTable);
+		this.href = encodedUri;
+		this.download = topic + "-cyber-data.csv";
+		this.target = '_blank';
+	} else {
+		alert("Start streaming first");
+	}
+});
+
+$("#idForm").submit(function (e) {
+	if (ws && START == 1) {
+		ws.close(1000);
+		ws = null;
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+		START = 0;
+		$("#start").html("Start Streaming");
+		$("#start").attr("disabled", true);
+		//	    $("#statustext").val("WEBSOCKET CLOSING...");
+		document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET CLOSING...</font>";
+
+	} else {
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+		START = 1;
+		//   $("#statustext").val("WEBSOCKET OPEN..Receiving Kafka Msgs...");
+		document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET OPEN..Receiving Kafka Msgs...</font>";
+
+		$("#start").html("Stop Streaming");
+		streamLiveKafkaData();
+
+	}
+
+});
 
 </script>
 
