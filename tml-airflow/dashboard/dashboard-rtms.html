@@ -325,232 +325,196 @@ function image(thetype,mess) {
       };
 
 <!-- ******************************************** DRAW CHART ********************************************* -->
-      function drawChart(jsondata, topic) {
+function drawChart(jsondata, topic) {
 
-          issues = "";
-          issuecount = 0;
-          if (jsondata) {
-              var text;
-              var val;
-              var createdon;
-              var winstart;
-              var winend;
-              var symptom;
-              var processtype;
-              var identifier;
-              var idarr;
-              var symptomcode;
-              var processbuf;
-              var normalvalue;
-              var processvariable = "";
-              var ubound;
-              var predictionvalue;
-              var totalmessages;
-              var kafkakey;
-              var offset;
-              var partition;
-              var arr;
-              var st;
-              var ed;
-              var et;
-              var vbuf;
-              var buf;
-              var vbuf2;
-              var varr;
-              var msgiddatastr = "";
-              var Maintopic;
-              let rownum = 0;
-                jsonhist = "";
+	if (jsondata) {
 
-              for (j in jsondata.TopicReads) {
-                  //get the fields
-                  kafkakey = jsondata.TopicReads[j].kafkakey;
-                  //try {
-                  if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
-                      kafkakeyarr.push(kafkakey);
-                      jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
-                      
-                      createdon = jsondata.TopicReads[j].TimeStamp;
-                      maintimestamp = createdon;
-                      winstart = jsondata.TopicReads[j].WindowStartTime;
-                      timestart = winstart;
-                      winend = jsondata.TopicReads[j].WindowEndTime;
-                      timeend = winend;
+		var text;
+		var val;
+		//  var partitionarr=[];
+		var createdon;
+		var winstart;
+		var winend;
 
-                      msgiddata = jsondata.TopicReads[j].MsgIdData;
-                      if (msgiddata) {
-                          msgiddatastr = msgiddata.join();
-                      }
-                      try {
-                          processvariable = jsondata.TopicReads[j].Identifier;
-                          processvariable = processvariable.split("~")[0];
-                      } catch (e) {
-                          continue;
-                      }
-                      //}
+		var processtype;
 
-                      processtype = jsondata.TopicReads[j].Preprocesstype;
+		var identifier;
+		var idarr;
+		//var topic;
+		var processbuf;
+		var normalvalue;
+		var processvariable = "";
+		var ubound;
+		var predictionvalue;
+		var totalmessages;
+		var kafkakey;
+		var offset;
+		var partition;
+		var arr;
+		var st;
+		var ed;
+		var et;
+		var vbuf;
+		var buf;
+		var vbuf2;
+		var varr;
+		var msgiddatastr = "";
+		var Maintopic;
+        jsonhist="";
+		let rownum = 0;
 
-                      identifier = jsondata.TopicReads[j].Identifier;
-                      idarr = identifier.split("~");
-                      //symptomcode = idarr[0];
-                      topic = jsondata.TopicReads[j].Topic;
-                      Maintopic = jsondata.TopicReads[j].Maintopic;
-                      processbuf = "_preprocessed_" + processtype;
-                      predictionvalue = jsondata.TopicReads[j].hyperprediction;
-                      totalmessages = jsondata.TopicReads[j].Numberofmessages;
-                      kafkakey = jsondata.TopicReads[j].kafkakey;
-                      offset = jsondata.TopicReads[j].Offset;
-                      partition = jsondata.TopicReads[j].Partition;
+		for (j in jsondata.TopicReads) {
+			//get the fields
+			kafkakey = jsondata.TopicReads[j].kafkakey;
+			//try {
+			if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
+				kafkakeyarr.push(kafkakey);
 
-                      predictionvalue = Number(predictionvalue);
-                      //  datainchart.push(predictionvalue)
+				createdon = jsondata.TopicReads[j].TimeStamp;
+                jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
+    
+                entity = jsondata.TopicReads[j].Entity;
+                rtms = jsondata.TopicReads[j].hyperprediction;
+                attack = jsondata.TopicReads[j].FinalAttackScore;
+                pattern = jsondata.TopicReads[j].FinalPatternScore;
+                numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
+                numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
 
-                      arr = [createdon, winstart, winend, msgiddatastr, processvariable, processtype, predictionvalue, totalmessages, kafkakey, offset, partition];
-                      dataintable.push(arr)
-                      rownum++;
+				processtype = jsondata.TopicReads[j].Preprocesstype;
+				usersearch = jsondata.TopicReads[j].UserSearchValues;
 
-                      predictioncount = predictioncount + 1;
+				remember = jsondata.TopicReads[j].RememberPastWindows;
+				patternthresh = jsondata.TopicReads[j].PatternThreshold;
+				activity = jsondata.TopicReads[j].ActivityLevel;
+				comment = jsondata.TopicReads[j].TMLComment;
+				searchfound = jsondata.TopicReads[j].SearchTextFound;
+            
+				topic = jsondata.TopicReads[j].Topic;
+				Maintopic = jsondata.TopicReads[j].Maintopic;
+				kafkakey = jsondata.TopicReads[j].kafkakey;
+				offset = jsondata.TopicReads[j].Offset;
+				partition = jsondata.TopicReads[j].Partition;
+                searchentity=jsondata.TopicReads[j].SearchEntity;
 
-                  }
-              }
+				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,searchentity,topic,Maintopic, kafkakey, offset, partition];
+				dataintable.push(arr)
+				rownum++;
 
-              maintotalmessages = maintotalmessages + rownum;
-              document.getElementById('totrecs').innerHTML = maintotalmessages;
-              document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
+				//predictioncount = predictioncount + 1;
 
-               document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
+			}
+		}
 
-              drawTable2();
+		maintotalmessages = maintotalmessages + rownum;
+		document.getElementById('totrecs').innerHTML = maintotalmessages;
+		if (rownum > 0) {
+        document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
+        
+	//		document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
+				drawTable2();
 
-          }
+		}
+	}
 
-          //   i=null;
-          text = null;
-          val = null;
-          // partitionarr=null;
-          kafkakey = null;
-          createdon = null;
-          winstart = null;
-          winend = null;
-          symptom = null;
-          processtype = null;
-          identifier = null;
-          idarr = null;
-          symptomcode = null;
-          // topic=null;
-          processbuf = null;
-          normalvalue = null;
-          ubound = null;
-          predictionvalue = null;
-          totalmessages = null;
-          rownum = null;
+}
 
-          offset = null;
-          partition = null;
-          arr = null;
-          st = null;
-          ed = null;
-          et = null;
-          vbuf = null;
-          buf = null;
-          vbuf2 = null;
-          varr = null;
+function drawTable2() {
 
-      }
+	if (maintable == null) {
+		maintable = new google.visualization.Table(document.getElementById('table_div'));
+	}
 
-<!-- ******************************************** DRAW CHART ********************************************* -->
+	var formatter = new google.visualization.NumberFormat({
+			groupingSymbol: '',
+			fractionDigits: 0
+		});
+	var formatter2 = new google.visualization.NumberFormat({
+			groupingSymbol: '',
+			fractionDigits: 3
+		});
 
-<!-- ******************************************** DRAW TABLE ********************************************* -->
+	if (datatbl == null) {
+		datatbl = new google.visualization.DataTable();
 
-      function drawTable2() {
+				//arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,topic,maintopic, kafkakey, offset, partition];
 
-          if (maintable == null) {
-              maintable = new google.visualization.Table(document.getElementById('table_div'));
-          }
+		datatbl.addColumn('string', 'Date/Time');
+		datatbl.addColumn('string', 'RTMS Score');
+		datatbl.addColumn('string', 'Attack Score');
+		datatbl.addColumn('string', 'Pattern Score');
+		datatbl.addColumn('string', 'Entity');
+		datatbl.addColumn('string', 'Attack Windows Found');
+		datatbl.addColumn('string', 'Pattern Windows Found');
+		datatbl.addColumn('string', 'Processtype');
 
-          var formatter = new google.visualization.NumberFormat({
-              groupingSymbol: '',
-              fractionDigits: 0
-          });
-          var formatter2 = new google.visualization.NumberFormat({
-              groupingSymbol: '',
-              fractionDigits: 3
-          });
+		datatbl.addColumn('string', 'User Search Terms');
+		datatbl.addColumn('string', 'Sliding Windows to Remember');
+		datatbl.addColumn('string', 'Pattern Threshold');
+		datatbl.addColumn('string', 'Predicted Risk Level');
+		datatbl.addColumn('string', 'TML Comment');
+		datatbl.addColumn('string', 'Text Containing Search Terms');
+		datatbl.addColumn('string', 'Search Entity');        
+		datatbl.addColumn('string', 'Topic');
+		datatbl.addColumn('string', 'Main Topic');
 
-          if (datatbl == null) {
-              datatbl = new google.visualization.DataTable();
+		datatbl.addColumn('string', 'Kafkakey');
+		datatbl.addColumn('number', 'Offset');
+		datatbl.addColumn('number', 'Partition');
 
-              datatbl.addColumn('string', 'Date/Time');
-              datatbl.addColumn('string', 'Time Window Start');
-              datatbl.addColumn('string', 'Time Window End');
-              datatbl.addColumn('string', 'Subject Information');
-              //  datatbl.addColumn('string', 'Symptomcode');
+		datatbl.sort({
+			column: 1,
+			desc: true
+		});
 
-              datatbl.addColumn('string', 'ProcessVariable');
+		maintable.clearChart();
 
-              datatbl.addColumn('string', 'Processtype');
+		maintable.draw(datatbl, {
+			showRowNumber: true,
+			width: '100%',
+			height: '100%',
+			page: 'enable',
+			pageSize: 30,
+			allowHtml: true
+		});
+		if (append == 0) {
+			datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+		}
+	} else {
 
-              datatbl.addColumn('number', 'Current Value');
-              //datatbl.addColumn('number', 'Normal Mean Value');
-              //datatbl.addColumn('number', 'Upper Bound Value');
-              datatbl.addColumn('number', 'Total Messages');
-              datatbl.addColumn('string', 'Kafkakey');
-              datatbl.addColumn('number', 'Offset');
-              datatbl.addColumn('number', 'Partition');
+		//console.log("datatbl=",datatbl);
 
-              datatbl.sort({
-                  column: 1,
-                  desc: true
-              });
 
-              maintable.clearChart();
+		formatter.format(datatbl, 1);
+		formatter2.format(datatbl, 2);
+		datatbl.sort({
+			column: 1,
+			desc: true
+		});
+		if (datatbl.getNumberOfRows() > 0 && append == 0) {
+			datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+		}
 
-              maintable.draw(datatbl, {
-                  showRowNumber: true,
-                  width: '100%',
-                  height: '100%',
-                  page: 'enable',
-                  pageSize: 30,
-                  allowHtml: true
-              });
-              if (append == 0) {
-                  datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
-              }
-          } else {
+		datatbl.addRows(dataintable);
+		maintable.clearChart();
+		maintable.draw(datatbl, {
+			showRowNumber: true,
+			width: '100%',
+			height: '100%',
+			page: 'enable',
+			pageSize: 30,
+			allowHtml: true,
+			'cssClassNames': cssClassNames
+		});
 
-              //console.log("datatbl=",datatbl);
-              formatter.format(datatbl, 1);
-              formatter2.format(datatbl, 2);
-              datatbl.sort({
-                  column: 1,
-                  desc: true
-              });
-              if (datatbl.getNumberOfRows() > 0 && append == 0) {
-                  datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
-              }
+		formatter = null;
+		formatter2 = null;
+	//	datatbl.removeRows(0,datatbl.getNumberOfRows()-1)
 
-              datatbl.addRows(dataintable);
-              maintable.clearChart();
-              maintable.draw(datatbl, {
-                  showRowNumber: true,
-                  width: '100%',
-                  height: '100%',
-                  page: 'enable',
-                  pageSize: 30,
-                  allowHtml: true,
-                  'cssClassNames': cssClassNames
-              });
+	}
 
-              formatter = null;
-              formatter2 = null;
-              //datatbl=null;
+	dataintable = [];
 
-          }
-
-          dataintable = [];
-
-      }
+}
 
  <!-- ******************************************** DRAW TABLE ********************************************* -->
 
