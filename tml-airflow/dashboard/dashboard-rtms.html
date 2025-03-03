@@ -736,6 +736,38 @@ function image(thetype,mess) {
           }
       }
 
+	    function saveDynamicDataToFile(topic) {
+
+            var userInput = document.getElementById("txtData").value;	
+            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+           const sFileName = topic+"-LOG-JSON.json";	   // The file to save the data.
+
+           let newLink = document.createElement("a");
+           newLink.download = sFileName;
+
+           if (window.webkitURL != null) {
+              newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+           }
+           else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+           }
+
+        newLink.click(); 
+		
+        }
+
+
+	$('#Export2').click( function(e) {
+	
+	     e.preventDefault(); /*your_code_here;*/ 
+		 saveDynamicDataToFile(topic);
+		 
+		 
+		 return false; 
+	} );
+
       $('#Export').click(function () {
           if (topic.length > 0) {
               var headerRow = "";
