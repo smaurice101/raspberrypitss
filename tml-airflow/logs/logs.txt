@@ -12400,3 +12400,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-03_13:56:39] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-03_13:56:41] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-03_13:56:42] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecurityrtms-3f10.py
+[INFO 2025-03-03_13:56:54] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
