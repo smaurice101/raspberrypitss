@@ -83,6 +83,7 @@
     <script src="./js/rtmsscripts.js"></script>
 
 <!-- ============================================================  -->
+<script>
 // load current chart package
 google.charts.load("current", {
 	packages: ["corechart", "line"]
@@ -98,12 +99,106 @@ google.charts.setOnLoadCallback(drawTable2);
 var datatbl;
 
 
+function drawChart(jsondata, topic) {
+
+	if (jsondata) {
+
+		var text;
+		var val;
+		//  var partitionarr=[];
+		var createdon;
+		var winstart;
+		var winend;
+
+		var processtype;
+
+		var identifier;
+		var idarr;
+		//var topic;
+		var processbuf;
+		var normalvalue;
+		var processvariable = "";
+		var ubound;
+		var predictionvalue;
+		var totalmessages;
+		var kafkakey;
+		var offset;
+		var partition;
+		var arr;
+		var st;
+		var ed;
+		var et;
+		var vbuf;
+		var buf;
+		var vbuf2;
+		var varr;
+		var msgiddatastr = "";
+		var Maintopic;
+         var jsonhist="";
+		let rownum = 0;
+
+		for (j in jsondata.TopicReads) {
+			//get the fields
+			kafkakey = jsondata.TopicReads[j].kafkakey;
+			//try {
+			if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
+
+                jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
+             
+				kafkakeyarr.push(kafkakey);
+
+				createdon = jsondata.TopicReads[j].TimeStamp;
+
+                entity = jsondata.TopicReads[j].Entity;
+                rtms = jsondata.TopicReads[j].hyperprediction;
+                attack = jsondata.TopicReads[j].FinalAttackScore;
+                pattern = jsondata.TopicReads[j].FinalPatternScore;
+                numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
+                numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
+
+				processtype = jsondata.TopicReads[j].Preprocesstype;
+				usersearch = jsondata.TopicReads[j].UserSearchValues;
+
+				remember = jsondata.TopicReads[j].RememberPastWindows;
+				patternthresh = jsondata.TopicReads[j].PatternThreshold;
+				activity = jsondata.TopicReads[j].ActivityLevel;
+				comment = jsondata.TopicReads[j].TMLComment;
+				searchfound = jsondata.TopicReads[j].SearchTextFound;
+            
+				topic = jsondata.TopicReads[j].Topic;
+				Maintopic = jsondata.TopicReads[j].Maintopic;
+				kafkakey = jsondata.TopicReads[j].kafkakey;
+				offset = jsondata.TopicReads[j].Offset;
+				partition = jsondata.TopicReads[j].Partition;
+                searchentity=jsondata.TopicReads[j].SearchEntity;
+
+				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,searchentity,topic,Maintopic, kafkakey, offset, partition];
+				dataintable.push(arr)
+				rownum++;
+
+				//predictioncount = predictioncount + 1;
+
+			}
+		}
+
+		maintotalmessages = maintotalmessages + rownum;
+		document.getElementById('totrecs').innerHTML = maintotalmessages;
+
+		if (rownum > 0) {
+			document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
+				drawTable2();
+                   document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
+		}
+	}
+
+}
 
 
 
 
 
 
+</script>
 
 
 
