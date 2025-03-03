@@ -1446,6 +1446,15 @@ function streamLiveKafkaData() {
 	}
 }
 
+	$('#Export2').click( function(e) {
+	
+	     e.preventDefault(); /*your_code_here;*/ 
+		 saveDynamicDataToFile(topic);
+		 
+		 
+		 return false; 
+	} );
+    
 $('#Export').click(function () {
 	if (topic.length > 0) {
 		var headerRow = "";
