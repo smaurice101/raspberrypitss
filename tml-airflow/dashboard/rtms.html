@@ -1090,7 +1090,8 @@ function drawChart(jsondata, topic) {
 				kafkakeyarr.push(kafkakey);
 
 				createdon = jsondata.TopicReads[j].TimeStamp;
-
+                jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
+    
                 entity = jsondata.TopicReads[j].Entity;
                 rtms = jsondata.TopicReads[j].hyperprediction;
                 attack = jsondata.TopicReads[j].FinalAttackScore;
