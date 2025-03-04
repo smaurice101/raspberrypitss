@@ -127,8 +127,14 @@ def updatesearchterms(searchtermsfile):
     mainsearchterms=""
   
     if stcurr != "":
-       stcurrarr = stcurr.split(";")
-       stcurrarrfile = stcurrfile.split(";")
+       stcurrarr = stcurr.split("~")
+       stcurrarrfile = stcurrfile.split("~")
+       if len(stcurrarr) < len(stcurrarrfile) and len(stcurrarr)==1:
+          for i in range(len(stcurrarrfile)-1):
+            if stcurr[0]=='@' or stcurr[0]=='|':
+               stcurr = stcurr[1:]
+            stcurrarr.append(stcurr)
+            
        if len(stcurrarr) == len(stcurrarrfile):
            for st,stf in zip(stcurrarr,stcurrarrfile):
              if st != "":
@@ -139,26 +145,25 @@ def updatesearchterms(searchtermsfile):
                 for si in starr:
                   stfarr.append(si)
                 stfarr = set(stfarr)
-                mainsearchterms = mainsearchterms + ','.join(stfarr) + ";"
+                mainsearchterms = mainsearchterms + ','.join(stfarr) + "~"
            mainsearchterms = mainsearchterms[:-1]    
            return mainsearchterms
+       elif len(stcurrarr) > len(stcurrarrfile):
+         
+       elif len(stcurrarr) < len(stcurrarrfile):
+         
 
     return searchtermsfile         
 
 def ingestfiles():
     buf = default_args['localsearchtermfolder']
     interval=int(default_args['localsearchtermfolderinterval'])
-    maintopic = default_args['doctopic']
     searchtermsfile = ""
 
     dirbuf = buf.split(",")
-    # check if user wants to split folders to separate topics
-    maintopicbuf = maintopic.split(",")
-    if len(maintopicbuf) > 1:
-      if len(dirbuf) != len(maintopicbuf):
-        tsslogging.locallogs("ERROR", "STEP 4c:Preprocess in {} You specified multiple doctopics, they must match localsearchtermfolder".format(os.path.basename(__file__)))
-        return
-
+    if len(dirbuf) == 0:
+       return
+      
     while True:  
       lg=""
       searchtermsfile=""
@@ -191,7 +196,7 @@ def ingestfiles():
 
          if linebuf != "":
            linebuf = linebuf[:-1]
-           searchtermsfile = searchtermsfile + lg + linebuf +";"
+           searchtermsfile = searchtermsfile + lg + linebuf +"~"
       if searchtermsfile != "":    
         searchtermsfile = searchtermsfile[:-1]    
         searchtermsfile=updatesearchterms(searchtermsfile)
