@@ -159,6 +159,7 @@ def updatesearchterms(searchtermsfile,regx):
       
     return  mainsearchterms
 
+
 def ingestfiles():
     buf = default_args['localsearchtermfolder']
     interval=int(default_args['localsearchtermfolderinterval'])
