@@ -191,6 +191,7 @@ def ingestfiles():
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
 
+         print("Filename======",filename)
          if len(filenames) > 0:
            filenames = set(filenames)
            
