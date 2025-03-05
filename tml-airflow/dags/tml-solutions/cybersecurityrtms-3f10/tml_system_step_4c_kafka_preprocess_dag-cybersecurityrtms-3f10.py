@@ -149,7 +149,7 @@ def updatesearchterms(searchtermsfile,regx):
        stcurrarrfile = set(stcurrarrfile)
        mainsearchterms = mainsearchterms + ','.join(stcurrarrfile) + "~"
        mainsearchterms = mainsearchterms[:-1]
-    elif:
+    else:
        stcurrarrfile = stcurrfile.split("~")      
        stcurrarrfile = set(stcurrarrfile)
        mainsearchterms = mainsearchterms + ','.join(stcurrarrfile) + "~"
