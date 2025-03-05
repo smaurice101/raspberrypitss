@@ -148,13 +148,13 @@ def updatesearchterms(searchtermsfile,regx):
        for a in stcurrarr:
           stcurrarrfile.append(a)
        stcurrarrfile = set(stcurrarrfile)
-       mainsearchterms = mainsearchterms + ','.join(stcurrarrfile) + "~"
-       mainsearchterms = mainsearchterms[:-1]
+       mainsearchterms = mainsearchterms + '~'.join(stcurrarrfile) 
+       #mainsearchterms = mainsearchterms[:-1]
     else:
        stcurrarrfile = stcurrfile.split("~")      
        stcurrarrfile = set(stcurrarrfile)
-       mainsearchterms = mainsearchterms + ','.join(stcurrarrfile) + "~"
-       mainsearchterms = mainsearchterms[:-1]
+       mainsearchterms = mainsearchterms + '~'.join(stcurrarrfile) 
+       #mainsearchterms = mainsearchterms[:-1]
       
       
     return  mainsearchterms
