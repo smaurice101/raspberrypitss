@@ -11,7 +11,7 @@ import os
 import subprocess
 import time
 import random
-import urllib.parse
+import base64
 
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
@@ -111,7 +111,7 @@ def processtransactiondata():
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
 
-         searchterms=urllib.parse.quote(searchterms) # returns Hell%C3%B6%20W%C3%B6rld%40Python
+         searchterms = base64.b64encode(searchterms.encode('utf-8'))
 
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
