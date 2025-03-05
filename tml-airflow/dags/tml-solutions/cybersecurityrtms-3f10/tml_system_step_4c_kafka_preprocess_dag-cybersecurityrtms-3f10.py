@@ -11,6 +11,7 @@ import os
 import subprocess
 import time
 import random
+import base64
 
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
@@ -21,7 +22,7 @@ default_args = {
   'producerid' : 'rtmssolution',   # <<< *** Change as needed   
   'raw_data_topic' : 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
   'preprocess_data_topic' : 'iot-preprocess2', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-  'maxrows' : '5', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+  'maxrows' : '50', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
   'offset' : '-1', # <<< Rollback from the end of the data streams  
   'brokerhost' : '',   # <<< *** Leave as is
   'brokerport' : '-999',  # <<< *** Leave as is   
@@ -34,20 +35,20 @@ default_args = {
   'timedelay' : '0', # <<< connection delay
   'tmlfilepath' : '', # leave blank
   'usemysql' : '1', # do not modify
-  'rtmsstream' : 'rtms-stream-mylogs', # Change as needed - STREAM containing log file data (or other data) for RTMS
+  'rtmsstream' : 'rtms-stream-mylogs,rtms-stream-mylogs2', # Change as needed - STREAM containing log file data (or other data) for RTMS
                                                     # If entitystream is empty, TML uses the preprocess type only.
+  'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
+  'searchterms' : 'rgx:p([a-z]+)ch ~ @authentication failure,--entity-- password failure ~ |unknown--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
+                                                             # Must include --entity-- if correlating with entity - this will be replaced 
+                                                             # dynamically with the entities found in raw_data_topic
   'localsearchtermfolder': '', # Specify a folder of files containing search terms - each term must be on a new line - use comma
                                # to apply each folder to the rtmstream topic
                                # Use @ =AND, |=OR to specify whether the terms in the file should be AND, OR
                                # For example, @mysearchfolder1,|mysearchfolder2, means all terms in mysearchfolder1 should be AND
                                # |mysearchfolder2, means all search terms should be OR'ed
   'localsearchtermfolderinterval': '60', # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60, 
-                                       # The files will be read every 60 seconds - and searchterms will be updated  
-  'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
-  'searchterms' : 'rgx:p([a-z]+)ch ~ @authentication failure,192.168.--entity--,Invalid user ~ |invalid user,attack,failed password', # main Search terms, if AND add @, if OR use | s first characters, default OR
-                                                             # Must include --entity-- if correlating with entity - this will be replaced 
-                                                             # dynamically with the entities found in raw_data_topic
-  'rememberpastwindows' : '50', # Past windows to remember
+                                       # The files will be read every 60 seconds - and searchterms will be updated
+  'rememberpastwindows' : '500', # Past windows to remember
   'patternscorethreshold' : '30', # check for the number of patterns for the items in searchterms
 }
 
@@ -109,6 +110,8 @@ def processtransactiondata():
          searchterms=default_args['searchterms']
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
+
+         searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
 
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
