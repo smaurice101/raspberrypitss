@@ -169,7 +169,6 @@ def ingestfiles():
     if len(dirbuf) == 0:
        return
       
-    print("dirbuf==",dirbuf)
     while True:  
       lg=""
       searchtermsfile=""
@@ -192,7 +191,6 @@ def ingestfiles():
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
 
-         print("Filename======",filenames)
          if len(filenames) > 0:
            filenames = set(filenames)
            
