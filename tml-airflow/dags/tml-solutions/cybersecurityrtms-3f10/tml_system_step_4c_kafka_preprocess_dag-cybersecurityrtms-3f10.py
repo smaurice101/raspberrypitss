@@ -130,36 +130,33 @@ def windowname(wtype,sname,dagname):
 
     return wn
 
-def updatesearchterms(searchtermsfile):
+# add any non-fle search terms to the file search terms
+def updatesearchterms(searchtermsfile,regx):
     # check if search terms exist    
     stcurr = default_args['searchterms']
-    stcurrfile = default_args['searchtermsfile']  
+    stcurrfile = searchtermsfile
     mainsearchterms=""
-  
+
+    if len(regx) > 0:
+        for r in regx:
+           mainsearchterms = mainsearchterms + r + "~"
+      
     if stcurr != "":
        stcurrarr = stcurr.split("~")
        stcurrarrfile = stcurrfile.split("~")
-       if len(stcurrarr) < len(stcurrarrfile) and len(stcurrarr)==1:
-          for i in range(len(stcurrarrfile)-1):
-            if stcurr[0]=='@' or stcurr[0]=='|':
-               stcurr = stcurr[1:]
-            stcurrarr.append(stcurr)
-            
-       if len(stcurrarr) == len(stcurrarrfile):
-           for st,stf in zip(stcurrarr,stcurrarrfile):
-             if st != "":
-                if st[0]=='@' or st[0]=='|':
-                   st=st[1:]
-                starr = st.split(",")
-                stfarr = stf.split(",")               
-                for si in starr:
-                  stfarr.append(si)
-                stfarr = set(stfarr)
-                mainsearchterms = mainsearchterms + ','.join(stfarr) + "~"
-           mainsearchterms = mainsearchterms[:-1]    
-           return mainsearchterms         
-
-    return searchtermsfile         
+       for a in stcurrarr:
+          stcurrarrfile.append(a)
+       stcurrarrfile = set(stcurrarrfile)
+       mainsearchterms = mainsearchterms + ','.join(stcurrarrfile) + "~"
+       mainsearchterms = mainsearchterms[:-1]
+    elif:
+       stcurrarrfile = stcurrfile.split("~")      
+       stcurrarrfile = set(stcurrarrfile)
+       mainsearchterms = mainsearchterms + ','.join(stcurrarrfile) + "~"
+       mainsearchterms = mainsearchterms[:-1]
+      
+      
+    return  mainsearchterms
 
 def ingestfiles():
     buf = default_args['localsearchtermfolder']
@@ -173,6 +170,7 @@ def ingestfiles():
     while True:  
       lg=""
       searchtermsfile=""
+      rgx = []      
       for dr in dirbuf:        
          filenames = []
          linebuf="" 
@@ -198,14 +196,19 @@ def ingestfiles():
              with open(fdr) as f:
               lines = [line.rstrip('\n').strip() for line in f]
               lines = set(lines)
-              linebuf = linebuf + ','.join(lines) + ","
+              # check regex
+              for m in lines:
+                if 'rgx:' in m:
+                  rgx.append(m)
+                else:  
+                  linebuf = linebuf + ','.join(lines) + ","
 
          if linebuf != "":
            linebuf = linebuf[:-1]
            searchtermsfile = searchtermsfile + lg + linebuf +"~"
       if searchtermsfile != "":    
         searchtermsfile = searchtermsfile[:-1]    
-        searchtermsfile=updatesearchterms(searchtermsfile)
+        searchtermsfile=updatesearchterms(searchtermsfile,rgx)
         default_args['searchterms']=searchtermsfile
 
       if interval==0:
