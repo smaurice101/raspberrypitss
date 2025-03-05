@@ -12588,3 +12588,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-05_00:13:28] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-05_01:37:22] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-05_01:37:25] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-03-05_01:37:28] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
