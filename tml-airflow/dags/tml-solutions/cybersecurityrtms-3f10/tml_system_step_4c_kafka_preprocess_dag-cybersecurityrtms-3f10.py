@@ -210,6 +210,7 @@ def ingestfiles():
         searchtermsfile = searchtermsfile[:-1]    
         searchtermsfile=updatesearchterms(searchtermsfile,rgx)
         default_args['searchterms']=searchtermsfile
+        print("INFO:", searchtermsfile)
 
       if interval==0:
         break
