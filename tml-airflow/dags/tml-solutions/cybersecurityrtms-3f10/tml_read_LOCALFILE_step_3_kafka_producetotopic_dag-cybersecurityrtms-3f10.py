@@ -181,7 +181,7 @@ def readdata():
   while True:
     line = file1.readline()
     line = line.replace(";", " ")
-#    print("line=",line)
+    print("line=",line)
     # add lat/long/identifier
     k = k + 1
     try:
