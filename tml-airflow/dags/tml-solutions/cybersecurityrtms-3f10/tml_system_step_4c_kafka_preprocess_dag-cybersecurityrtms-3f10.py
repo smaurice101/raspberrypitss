@@ -11,7 +11,6 @@ import os
 import subprocess
 import time
 import random
-import base64
 
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
@@ -45,7 +44,7 @@ default_args = {
   'localsearchtermfolderinterval': '60', # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60, 
                                        # The files will be read every 60 seconds - and searchterms will be updated  
   'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
-  'searchterms' : '@authentication failure,192.168.--entity--,Invalid user,rgx:p([a-z]+)ch ~ |invalid user,attack,failed password', # main Search terms, if AND add @, if OR use | s first characters, default OR
+  'searchterms' : 'rgx:p([a-z]+)ch ~ @authentication failure,192.168.--entity--,Invalid user ~ |invalid user,attack,failed password', # main Search terms, if AND add @, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
   'rememberpastwindows' : '50', # Past windows to remember
@@ -110,8 +109,6 @@ def processtransactiondata():
          searchterms=default_args['searchterms']
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
-
-         searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
 
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
