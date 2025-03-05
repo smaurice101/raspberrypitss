@@ -185,11 +185,13 @@ def ingestfiles():
             else:  
               lg="|"
 
+         print("/rawdata/{}".format(dr))
+
          if os.path.isdir("/rawdata/{}".format(dr)):            
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
-
+         print("Filename=",filenames)
          if len(filenames) > 0:
            filenames = set(filenames)
            
