@@ -42,7 +42,7 @@ default_args = {
   'searchterms' : 'rgx:p([a-z]+)ch ~ @authentication failure,--entity-- password failure ~ |unknown--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
-  'localsearchtermfolder': '|/rawdata/mysearchfile1', # Specify a folder of files containing search terms - each term must be on a new line - use comma
+  'localsearchtermfolder': '|mysearchfile1', # Specify a folder of files containing search terms - each term must be on a new line - use comma
                                # to apply each folder to the rtmstream topic
                                # Use @ =AND, |=OR to specify whether the terms in the file should be AND, OR
                                # For example, @mysearchfolder1,|mysearchfolder2, means all terms in mysearchfolder1 should be AND
@@ -185,13 +185,11 @@ def ingestfiles():
             else:  
               lg="|"
 
-         print("/rawdata/{}".format(dr))
-
          if os.path.isdir("/rawdata/{}".format(dr)):            
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
-         print("Filename=",filenames)
+
          if len(filenames) > 0:
            filenames = set(filenames)
            
