@@ -1,0 +1,1 @@
+Mar 2025 22:29:48.2677 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
