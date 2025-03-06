@@ -589,11 +589,11 @@ function drawTable2() {
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
                   try{
                   //eventdata=JSON.stringify(eventdata);
-                  eventdata=JSON.parse(eventdata);
+                  obj=JSON.parse(eventdata);
                   //eventdata = eventdata.replace(/\\"/g, '"');
                   
-                  console.log(eventdata.Webtopic);
-                   console.log(eventdata);
+                  console.log(obj.Webkafkacluster);
+                   console.log(obj);
                   
                   obj=eventdata;
                   } catch(e){
