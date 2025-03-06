@@ -1,2 +1,0 @@
-.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-gs_38.txt}
