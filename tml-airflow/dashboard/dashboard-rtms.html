@@ -583,20 +583,21 @@ function drawTable2() {
  <!-- ************************************* CREATE WEBSOCKET EVENTS **************************** -->
 
               ws.onmessage = function (event) {  <!-- ON MESSAGE SOCKET EVENT ****************** -->
-
+                  var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
 
                  curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
           //      var maindata = eventdata.replace(/\\"/g, '"');
                   var maindata = eventdata;
-                console.log("maiindata=",maindata);
+                //console.log("maiindata=",maindata);
+                obj = JSON.parse(maindata);
+                console.log(obj);
                 
                   maindata = maindata.substr(1, maindata.length - 3);
                   if (maindata == "") {
                       return;
                   }
 
-                  var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
                   try {
                       obj = JSON.parse(maindata);
                   } catch (e) {
