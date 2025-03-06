@@ -1,1 +1,1 @@
-ms-stream-mylogs,na,Thu  06 Mar 2025 16:20:47.0302 UTC,0.00,iot-preprocess,0.00,|suspicious login attempt:ip address suspicious:unknown device:too many login attempts:address location banned;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
+ms-stream-mylogs,na,Thu  06 Mar 2025 16:33:07.2404 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
