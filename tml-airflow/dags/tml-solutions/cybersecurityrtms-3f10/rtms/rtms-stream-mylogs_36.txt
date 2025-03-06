@@ -1,1 +1,0 @@
-rd failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_36.txt}
