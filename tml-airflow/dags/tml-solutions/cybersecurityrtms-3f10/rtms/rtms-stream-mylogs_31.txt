@@ -1,4 +1,1 @@
-Partition=0 Offset=162625];,Thu  06 Mar 2025 13:57:11.9234 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-31,6.101,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=({"rtmsmessage":"00000009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=161863];,Thu  06 Mar 2025 13:56:04.7849 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-31,6.101,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=({"rtmsmessage":"00000009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=162251];,Thu  06 Mar 2025 13:56:38.6673 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-Partition=0 Offset=162625];,Thu  06 Mar 2025 13:57:11.9234 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
+1-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
