@@ -595,7 +595,7 @@ function drawTable2() {
                       console.log("Json parse issue=", e.message);
                       return;                  
                   }
-                  var maindata = eventdata.replace(/\\"/g, '"');
+                  var maindata = obj.replace(/\\"/g, '"');
                   maindata = maindata.substr(1, maindata.length - 3);
                   if (maindata == "") {
                       return;
