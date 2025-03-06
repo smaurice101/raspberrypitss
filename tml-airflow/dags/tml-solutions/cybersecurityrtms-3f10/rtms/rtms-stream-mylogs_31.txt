@@ -1,2 +1,0 @@
-address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-stream-mylogs_31.txt}
