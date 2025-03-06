@@ -1,3 +1,1 @@
-24,5.23,rtms-stream-mylogs,na,Thu  06 Mar 2025 15:23:53.3445 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_24.txt}
-process,0.00,-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c-stream-mylogs_24.txt}
-24,5.23,rtms-stream-mylogs,na,Thu  06 Mar 2025 15:23:53.3445 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_24.txt}
+ot-preprocess,0.00, @authentication failure:--entity-- password failure;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_24.txt}
