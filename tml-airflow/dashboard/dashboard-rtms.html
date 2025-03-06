@@ -589,7 +589,7 @@ function drawTable2() {
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
                   try{
                   eventdata=JSON.parse(eventdata);
-                  console.log(eventdata);
+             //     console.log(eventdata);
                   obj=eventdata;
                   } catch(e){
                       console.log("Json parse issue=", e.message);
@@ -601,7 +601,8 @@ function drawTable2() {
                       return;
                   }
                   obj=maindata; 
-
+                 console.log("OBJ=",obj);
+     
                   if (obj.ERROR) {
                       document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
                       ws.close(1000);
