@@ -1,1 +1,2 @@
 ?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_5.txt}
+m-mylogs,/rawdata/rtms/rtms-stream-mylogs_5.txt}
