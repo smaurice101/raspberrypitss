@@ -1,1 +1,2 @@
-t-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_22.txt}
+22,5.31,rtms-stream-mylogs,na,Thu  06 Mar 2025 22:41:21.6995 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_22.txt}
+-stream-mylogs_22.txt}
