@@ -583,24 +583,24 @@ function drawTable2() {
  <!-- ************************************* CREATE WEBSOCKET EVENTS **************************** -->
 
               ws.onmessage = function (event) {  <!-- ON MESSAGE SOCKET EVENT ****************** -->
+                  var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
+              
                   curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
+                  try{
                   eventdata=JSON.parse(eventdata);
                   console.log(eventdata);
-                  
-                  var maindata = eventdata.replace(/\\"/g, '"');
-                  maindata = maindata.substr(1, maindata.length - 3);
+                  obj=eventdata;
+                  } catch(e){
+                      console.log("Json parse issue=", e.message);
+                      return;                  
+                  }
+                  //var maindata = eventdata.replace(/\\"/g, '"');
+                  //maindata = maindata.substr(1, maindata.length - 3);
                   if (maindata == "") {
                       return;
                   }
 
-                  var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
-                  try {
-                      obj = JSON.parse(maindata);
-                  } catch (e) {
-                      console.log("Json parse issue=", e.message);
-                      return;
-                  }
 
                   if (obj.ERROR) {
                       document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
