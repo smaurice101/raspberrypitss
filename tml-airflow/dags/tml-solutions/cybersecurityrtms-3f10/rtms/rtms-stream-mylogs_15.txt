@@ -1,1 +1,1 @@
-entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_15.txt}
+pt:ip address suspicious:too many login attempts:unknown device;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_15.txt}
