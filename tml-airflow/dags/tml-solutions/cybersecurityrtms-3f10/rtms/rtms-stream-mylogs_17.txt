@@ -1,1 +1,1 @@
-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_17.txt}
+18:09:42.4229 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_17.txt}
