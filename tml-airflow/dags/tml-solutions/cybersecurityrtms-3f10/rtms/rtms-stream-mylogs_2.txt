@@ -1,2 +1,1 @@
-ogs,na,Thu  06 Mar 2025 22:31:55.2216 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
-2,5.14,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=241782];,Thu  06 Mar 2025 22:32:19.6526 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
+2,5.14,rtms-stream-mylogs,na,Thu  06 Mar 2025 22:33:39.3520 UTC,0.00,iot-preprocess,0.00,|address location banned:suspicious login attempt:ip address suspicious:too many login attempts:unknown device;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
