@@ -1,1 +1,1 @@
-s:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
+wn device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
