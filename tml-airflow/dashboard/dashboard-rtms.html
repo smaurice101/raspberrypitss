@@ -588,6 +588,9 @@ function drawTable2() {
                  curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
                 var maindata = eventdata.replace(/\\"/g, '"');
+
+                console.log("maiindata=",maindata);
+                
                   maindata = maindata.substr(1, maindata.length - 3);
                   if (maindata == "") {
                       return;
