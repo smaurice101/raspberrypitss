@@ -1,1 +1,1 @@
-2,5.14,rtms-stream-mylogs,na,Thu  06 Mar 2025 18:38:22.7698 UTC,0.00,iot-preprocess,0.00,|unknown device:too many login attempts:suspicious login attempt:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
+2,5.14,rtms-stream-mylogs,na,Thu  06 Mar 2025 18:38:58.0731 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
