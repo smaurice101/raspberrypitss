@@ -1,3 +1,1 @@
 7.3672 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_21.txt}
- attempt:ip address suspicious:too many login attempts:unknown device;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_21.txt}
-a/rtms/rtms-stream-mylogs_21.txt}
