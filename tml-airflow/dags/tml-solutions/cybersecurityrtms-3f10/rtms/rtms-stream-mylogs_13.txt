@@ -1,1 +1,1 @@
-picious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_13.txt}
+ation banned:too many login attempts:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_13.txt}
