@@ -1,2 +1,1 @@
 ilure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_35.txt}
-ilure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_35.txt}
