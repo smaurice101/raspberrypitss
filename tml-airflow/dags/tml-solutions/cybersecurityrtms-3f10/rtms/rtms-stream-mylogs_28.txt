@@ -1,2 +1,1 @@
-28,5.28,rtms-stream-mylogs,na,Thu  06 Mar 2025 22:17:59.5498 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_28.txt}
-28,5.28,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=231124];,Thu  06 Mar 2025 22:18:04.4790 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_28.txt}
+28,5.28,rtms-stream-mylogs,na,Thu  06 Mar 2025 22:19:04.8173 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_28.txt}
