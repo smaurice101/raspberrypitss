@@ -1,9 +1,1 @@
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:47:41.3391 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:09.0341 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:09.0373 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:09.0069 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:09.0217 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:08.9939 UTC,0.00,iot-preprocess,0.00,|ip address suspicious:address location banned:too many login attempts:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:09.0310 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:08.9552 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
-16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:48:08.9792 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
+16,6.12,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:47:41.3391 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_1-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_16.txt}
