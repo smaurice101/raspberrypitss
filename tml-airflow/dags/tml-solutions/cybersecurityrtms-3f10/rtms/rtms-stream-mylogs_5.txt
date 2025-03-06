@@ -1,2 +1,0 @@
-gx:p([a-z]+)ch)][Partition=0 Offset=53819];,Thu  06 Mar 2025 03:23:43.3310 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_5.txt}
-gx:p([a-z]+)ch)][Partition=0 Offset=53819];,Thu  06 Mar 2025 03:23:43.3310 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_5.txt}
