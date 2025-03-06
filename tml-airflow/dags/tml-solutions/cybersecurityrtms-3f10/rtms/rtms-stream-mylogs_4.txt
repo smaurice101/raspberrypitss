@@ -1,1 +1,1 @@
-r 2025 14:25:46.5829 UTC,0.00,iot-preprocess,0.00,|unknown device:too many login attempts:address location banned:suspicious login attempt:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_4.txt}
+ 06 Mar 2025 14:26:44.3039 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_4.txt}
