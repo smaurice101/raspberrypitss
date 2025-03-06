@@ -588,6 +588,7 @@ function drawTable2() {
                   curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
                   try{
+                  eventdata=JSON.stringify(eventdata);
                   eventdata=JSON.parse(eventdata);
                   console.log(eventdata);
                   obj=eventdata;
