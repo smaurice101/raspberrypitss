@@ -1,1 +1,1 @@
-t-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_32.txt}
+f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_32.txt}
