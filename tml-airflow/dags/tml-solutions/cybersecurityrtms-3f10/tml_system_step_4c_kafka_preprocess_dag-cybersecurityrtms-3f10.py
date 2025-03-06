@@ -159,7 +159,6 @@ def updatesearchterms(searchtermsfile,regx):
       
     return  mainsearchterms
 
-
 def ingestfiles():
     buf = default_args['localsearchtermfolder']
     interval=int(default_args['localsearchtermfolderinterval'])
@@ -196,14 +195,14 @@ def ingestfiles():
            
            for fdr in filenames:            
              with open(fdr) as f:
-              lines = [line.rstrip('\n').strip().replace(","," ") for line in f]
+              lines = [line.rstrip('\n').strip() for line in f]
               lines = set(lines)
               # check regex
               for m in lines:
                 if 'rgx:' in m:
                   rgx.append(m)
                 else:  
-                  linebuf = linebuf + m + ","
+                  linebuf = linebuf + ','.join(lines) + ","
 
          if linebuf != "":
            linebuf = linebuf[:-1]
