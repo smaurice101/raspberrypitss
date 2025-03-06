@@ -1,0 +1,2 @@
+lure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_3.txt}
+lure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_3.txt}
