@@ -1,1 +1,2 @@
-picious login attempt:ip address suspicious:too many login attempts:unknown device;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_5.txt}
+5,5.11,rtms-stream-mylogs,na,Thu  06 Mar 2025 15:28:04.2379 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_5.txt}
+tms/rtms-stream-mylogs_5.txt}
