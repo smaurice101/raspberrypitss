@@ -1,10 +1,1 @@
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 05:01:23.0889 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=({"rtmsmessage":"00000009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=123504];,Thu  06 Mar 2025 13:00:06.8048 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.9113 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.7605 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.8980 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.7522 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.8672 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.7768 UTC,0.00,iot-preprocess,0.00,|ip address suspicious:address location banned:too many login attempts:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.9151 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 13:01:54.9074 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
+:too many login attempts:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
