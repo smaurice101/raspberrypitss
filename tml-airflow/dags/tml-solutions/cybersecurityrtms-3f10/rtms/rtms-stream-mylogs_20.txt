@@ -1,2 +1,2 @@
-009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=43253];,Thu  06 Mar 2025 03:07:48.5509 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_20.txt}
-009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=43253];,Thu  06 Mar 2025 03:07:48.5509 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_20.txt}
+ocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_20.txt}
+20,5.30,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=({"rtmsmessage":"00000009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=44426];,Thu  06 Mar 2025 03:09:37.9211 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_20.txt}
