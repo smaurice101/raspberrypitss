@@ -592,7 +592,9 @@ function drawTable2() {
                   eventdata=JSON.parse(eventdata);
                   //eventdata = eventdata.replace(/\\"/g, '"');
                   
-                  console.log(eventdata.Topic);
+                  console.log(eventdata.Webtopic);
+                   console.log(eventdata);
+                  
                   obj=eventdata;
                   } catch(e){
                       console.log("Json parse issue=", e.message);
