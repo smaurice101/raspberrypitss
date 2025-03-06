@@ -577,8 +577,6 @@ function drawTable2() {
            }
 
 
- <!-- ************************************* CREATE WEBSOCKET OBJECT **************************** -->
-
 
  <!-- ************************************* CREATE WEBSOCKET EVENTS **************************** -->
 
@@ -590,23 +588,17 @@ function drawTable2() {
           //      var maindata = eventdata.replace(/\\"/g, '"');
                   var maindata = eventdata;
                 //console.log("maiindata=",maindata);
+
+                try{
                 obj = JSON.parse(JSON.parse(maindata));
                 console.log(obj);
-                 console.log("OBJ=",obj.Filecontent);
-     return;
-     
-                  maindata = maindata.substr(1, maindata.length - 3);
-                  if (maindata == "") {
-                      return;
-                  }
-
-                  try {
-                      obj = JSON.parse(maindata);
-                  } catch (e) {
+//                 console.log("OBJ=",obj.Filecontent);
+              } catch(e){
                       console.log("Json parse issue=", e.message);
                       return;
-                  }
-
+              
+              }
+  
                   if (obj.ERROR) {
                       document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
                       ws.close(1000);
@@ -617,43 +609,6 @@ function drawTable2() {
                       return
                   }
  
-return;
-              
-                  var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
-              
-                  curTime = new Date();
-                  var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
-                  try{
-                  //eventdata=JSON.stringify(eventdata);
-                  obj=JSON.parse(eventdata);
-                  //eventdata = eventdata.replace(/\\"/g, '"');
-                  
-                  console.log(obj.Webkafkacluster);
-                   console.log(obj);
-                  
-                  obj=eventdata;
-                  } catch(e){
-                      console.log("Json parse issue=", e.message);
-                      return;                  
-                  }
-                  var maindata = obj.replace(/\\"/g, '"');
-                  maindata = maindata.substr(1, maindata.length - 3);
-                  if (maindata == "") {
-                      return;
-                  }
-
-                  
-                 console.log("OBJ=",obj.Webkafkacluster);
-     
-                  if (obj.ERROR) {
-                      document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
-                      ws.close(1000);
-                      alert(obj.ERROR);
-                      ws = null;
-                      $("#start").attr("disabled", false);
-                      $("#start").html("Start Streaming");
-                      return
-                  }
  <!-- ************************************ SUCCESSFULLT RECEIVED MAIN DATA FROM VIPERVIZ  *********** -->
 
                   if (START == 0) {
