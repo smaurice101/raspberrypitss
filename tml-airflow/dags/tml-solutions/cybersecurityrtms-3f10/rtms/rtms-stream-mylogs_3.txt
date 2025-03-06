@@ -1,1 +1,1 @@
-ilure;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_3.txt}
+:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_3.txt}
