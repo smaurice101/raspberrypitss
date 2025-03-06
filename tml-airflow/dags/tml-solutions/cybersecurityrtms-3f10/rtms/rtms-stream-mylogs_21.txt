@@ -1,1 +1,1 @@
-t-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_21.txt}
+{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_21.txt}
