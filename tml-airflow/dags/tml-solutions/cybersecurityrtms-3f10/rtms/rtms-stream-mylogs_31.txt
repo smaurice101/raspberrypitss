@@ -1,3 +1,2 @@
 00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-a/rtms/rtms-stream-mylogs_31.txt}
+00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
