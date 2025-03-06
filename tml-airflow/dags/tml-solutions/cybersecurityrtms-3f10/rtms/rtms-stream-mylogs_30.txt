@@ -1,1 +1,1 @@
-tream-mylogs,na,Thu  06 Mar 2025 22:16:45.6349 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_30.txt}
+^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_30.txt}
