@@ -1,1 +1,1 @@
-ation banned:too many login attempts:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
+many login attempts:unknown device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
