@@ -113,7 +113,7 @@ def processtransactiondata():
          patternscorethreshold = default_args['patternscorethreshold']  
 
 #         searchterms2 = str(base64.b64encode(searchterms.encode('utf-8')))
-         searchterms2 = base64.b64encode(bytes(searchterms, 'utf-8'))
+         searchterms2 = str(base64.b64encode(bytes(searchterms, 'utf-8')))
          print("Searchterms2=",searchterms2)
 
          try:
