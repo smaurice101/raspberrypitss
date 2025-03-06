@@ -600,7 +600,9 @@ function drawTable2() {
                   if (maindata == "") {
                       return;
                   }
-                  obj=eval(maindata); 
+                  obj=JSON.parse(maindata); 
+                  obj = obj.replace(/\\"/g, '"');
+
                  console.log("OBJ=",obj.Webkafkacluster);
      
                   if (obj.ERROR) {
