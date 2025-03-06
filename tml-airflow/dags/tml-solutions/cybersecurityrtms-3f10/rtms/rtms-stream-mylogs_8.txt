@@ -1,2 +1,1 @@
-8,5.13,rtms-stream-mylogs,na,Thu  06 Mar 2025 19:15:35.2150 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
-8,5.13,rtms-stream-mylogs,na,Thu  06 Mar 2025 19:15:35.2150 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
+gin attempts:suspicious login attempt:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
