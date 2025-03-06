@@ -112,13 +112,11 @@ def processtransactiondata():
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
 
-         print("Searchterms==",searchterms)  
-         searchterms2 = str(base64.b64encode(searchterms.encode('utf-8')))
-         print("Searchterms2=",searchterms2)
-
+         
+         searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
-                                                  brokerport,microserviceid,topicid,rtmsstream,searchterms2,rememberpastwindows,identifier,
+                                                  brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
                                                   preprocesstopic,patternscorethreshold,array,saveasarray,rawdataoutput)
 #                print(result)
          except Exception as e:
