@@ -1,2 +1,0 @@
-rtition=0 Offset=6038];,Thu  06 Mar 2025 15:59:09.8259 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_12.txt}
-rtition=0 Offset=6038];,Thu  06 Mar 2025 15:59:09.8259 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_12.txt}
