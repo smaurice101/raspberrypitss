@@ -1,1 +1,2 @@
-0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_41.txt}
+,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_41.txt}
+/rtms/rtms-stream-mylogs_41.txt}
