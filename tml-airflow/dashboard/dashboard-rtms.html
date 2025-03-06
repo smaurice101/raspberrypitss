@@ -585,6 +585,7 @@ function drawTable2() {
               ws.onmessage = function (event) {  <!-- ON MESSAGE SOCKET EVENT ****************** -->
                   curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
+                  console.log(eventdata);
                   var maindata = eventdata.replace(/\\"/g, '"');
                   //var maindata = eventdata;
                   maindata = maindata.substr(1, maindata.length - 3);
@@ -592,7 +593,7 @@ function drawTable2() {
                       return;
                   }
 
-              console.log(maindata);
+              
                   var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
                   try {
                       obj = JSON.parse(maindata);
