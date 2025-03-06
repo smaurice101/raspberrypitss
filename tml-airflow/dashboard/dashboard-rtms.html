@@ -583,6 +583,36 @@ function drawTable2() {
  <!-- ************************************* CREATE WEBSOCKET EVENTS **************************** -->
 
               ws.onmessage = function (event) {  <!-- ON MESSAGE SOCKET EVENT ****************** -->
+
+
+                 curTime = new Date();
+                  var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
+       //           var maindata = eventdata.replace(/\\"/g, '"');
+                  maindata = maindata.substr(1, maindata.length - 3);
+                  if (maindata == "") {
+                      return;
+                  }
+
+                  var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
+                  try {
+                      obj = JSON.parse(maindata);
+                  } catch (e) {
+                      console.log("Json parse issue=", e.message);
+                      return;
+                  }
+
+                  if (obj.ERROR) {
+                      document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
+                      ws.close(1000);
+                      alert(obj.ERROR);
+                      ws = null;
+                      $("#start").attr("disabled", false);
+                      $("#start").html("Start Streaming");
+                      return
+                  }
+ 
+return;
+              
                   var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
               
                   curTime = new Date();
@@ -607,9 +637,6 @@ function drawTable2() {
                   }
 
                   
-    //              obj = JSON.parse(maindata); 
-    //              obj = obj.replace(/\\"/g, '"');
-
                  console.log("OBJ=",obj.Webkafkacluster);
      
                   if (obj.ERROR) {
