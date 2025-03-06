@@ -1,1 +1,0 @@
-location banned:ip address suspicious:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_6.txt}
