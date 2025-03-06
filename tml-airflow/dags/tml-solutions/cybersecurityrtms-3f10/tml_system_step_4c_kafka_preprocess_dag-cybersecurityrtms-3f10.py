@@ -202,7 +202,7 @@ def ingestfiles():
                 if 'rgx:' in m:
                   rgx.append(m)
                 else:  
-                  linebuf = linebuf + ','.join(lines) + ","
+                  linebuf = linebuf + m + ","
 
          if linebuf != "":
            linebuf = linebuf[:-1]
