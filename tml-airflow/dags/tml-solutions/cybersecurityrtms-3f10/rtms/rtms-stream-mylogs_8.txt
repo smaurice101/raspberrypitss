@@ -1,1 +1,1 @@
-$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
+3:13.8490 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
