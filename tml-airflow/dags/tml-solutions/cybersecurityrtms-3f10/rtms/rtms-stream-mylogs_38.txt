@@ -1,0 +1,2 @@
+$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
+m-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
