@@ -1,1 +1,1 @@
- 19:13:52.3799 UTC,0.00,iot-preprocess,0.00,|unknown device:too many login attempts:suspicious login attempt:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_36.txt}
+,0.00,|unknown device:too many login attempts:suspicious login attempt:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_36.txt}
