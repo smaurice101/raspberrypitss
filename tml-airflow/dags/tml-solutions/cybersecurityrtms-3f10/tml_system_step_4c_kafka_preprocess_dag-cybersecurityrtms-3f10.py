@@ -113,6 +113,7 @@ def processtransactiondata():
          patternscorethreshold = default_args['patternscorethreshold']  
 
          searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
+         print("Searchterms=",searchterms)
 
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
