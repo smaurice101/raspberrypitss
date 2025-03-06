@@ -1,2 +1,1 @@
-entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_14.txt}
-entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_14.txt}
+t-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_14.txt}
