@@ -1,2 +1,1 @@
-device;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_29.txt}
-am-mylogs,/rawdata/rtms/rtms-stream-mylogs_29.txt}
+15:21:34.1321 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_29.txt}
