@@ -1,1 +1,1 @@
-,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_42.txt}
+spicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_42.txt}
