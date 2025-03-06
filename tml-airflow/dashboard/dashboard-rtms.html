@@ -590,7 +590,7 @@ function drawTable2() {
           //      var maindata = eventdata.replace(/\\"/g, '"');
                   var maindata = eventdata;
                 //console.log("maiindata=",maindata);
-                obj = JSON.parse(maindata);
+                obj = JSON.parse(JSON.parse(maindata));
                 console.log(obj);
                  console.log("OBJ=",obj.Filecontent);
      return;
