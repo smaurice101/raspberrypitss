@@ -585,25 +585,19 @@ function drawTable2() {
               ws.onmessage = function (event) {  <!-- ON MESSAGE SOCKET EVENT ****************** -->
                   curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
+                  var maindata = eventdata.replace(/\\"/g, '"');
+                  maindata = maindata.substr(1, maindata.length - 3);
+                  if (maindata == "") {
+                      return;
+                  }
 
                   var obj; <!-- ************ MAIN DATA FROM VIPERVIZ - Cleaned Up *********** -->
                   try {
-                      obj = JSON.parse(eventdata);
+                      obj = JSON.parse(maindata);
                   } catch (e) {
                       console.log("Json parse issue=", e.message);
                       return;
                   }
-                  
-                  
-                  console.log("Eventdata2=",obj);
-                  //var maindata = eventdata.replace(/\\"/g, '"');
-//                  var maindata = eventdata;
-  //                maindata = maindata.substr(1, maindata.length - 3);
-    //              if (maindata == "") {
-      //                return;
-        //          }
-
-              
 
                   if (obj.ERROR) {
                       document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
