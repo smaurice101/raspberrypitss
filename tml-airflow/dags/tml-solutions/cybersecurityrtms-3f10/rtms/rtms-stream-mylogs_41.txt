@@ -1,2 +1,1 @@
 5 16:01:41.8870 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_41.txt}
-ess suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_41.txt}
