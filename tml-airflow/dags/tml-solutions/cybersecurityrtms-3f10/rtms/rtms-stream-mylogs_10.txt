@@ -1,2 +1,1 @@
-/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_10.txt}
-10,5.101,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=106753];,Thu  06 Mar 2025 18:14:04.3129 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_10.txt}
+ 18:15:09.6888 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_10.txt}
