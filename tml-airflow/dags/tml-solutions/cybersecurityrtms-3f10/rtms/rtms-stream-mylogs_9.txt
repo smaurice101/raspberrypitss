@@ -1,2 +1,1 @@
 22:04:12.3049 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_9.txt}
-rawdata/rtms/rtms-stream-mylogs_9.txt}
