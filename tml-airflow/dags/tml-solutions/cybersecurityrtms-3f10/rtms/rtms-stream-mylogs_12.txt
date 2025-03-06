@@ -1,1 +1,1 @@
-5.6392 UTC,0.00,iot-preprocess,0.00,|address location banned:suspicious login attempt:ip address suspicious:too many login attempts:unknown device;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_12.txt}
+-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_12.txt}
