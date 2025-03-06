@@ -1,1 +1,1 @@
-0,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_36.txt}
+s-stream-mylogs,na,Thu  06 Mar 2025 14:16:30.9838 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_36.txt}
