@@ -1,1 +1,0 @@
-25 19:02:31.8130 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_14.txt}
