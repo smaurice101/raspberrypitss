@@ -1,2 +1,1 @@
 14:22:24.8266 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
-on banned:suspicious login attempt:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
