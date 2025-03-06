@@ -1,1 +1,1 @@
-ogs,na,Thu  06 Mar 2025 15:56:49.1967 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
+:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
