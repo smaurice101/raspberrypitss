@@ -595,12 +595,12 @@ function drawTable2() {
                       console.log("Json parse issue=", e.message);
                       return;                  
                   }
-                  //var maindata = eventdata.replace(/\\"/g, '"');
-                  //maindata = maindata.substr(1, maindata.length - 3);
-            //      if (maindata == "") {
-              //        return;
-                //  }
-
+                  var maindata = eventdata.replace(/\\"/g, '"');
+                  maindata = maindata.substr(1, maindata.length - 3);
+                  if (maindata == "") {
+                      return;
+                  }
+                  obj=maindata; 
 
                   if (obj.ERROR) {
                       document.getElementById('statustext').innerHTML = "Websocket ERROR.." + obj.ERROR;
