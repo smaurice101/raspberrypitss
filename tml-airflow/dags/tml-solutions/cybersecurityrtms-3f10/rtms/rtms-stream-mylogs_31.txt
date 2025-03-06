@@ -1,1 +1,2 @@
-15:18:45.9010 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
+$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
+s-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
