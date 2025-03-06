@@ -1,1 +1,1 @@
-4.7164 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_42.txt}
+r 2025 19:44:05.5705 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_42.txt}
