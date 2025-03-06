@@ -1,2 +1,1 @@
-38,6.19,rtms-stream-mylogs,na,Thu  06 Mar 2025 03:17:29.7781 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
-ta/rtms/rtms-stream-mylogs_38.txt}
+wn device:suspicious login attempt;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
