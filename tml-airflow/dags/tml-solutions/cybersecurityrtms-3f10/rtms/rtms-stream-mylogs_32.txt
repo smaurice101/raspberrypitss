@@ -1,0 +1,1 @@
+us;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_32.txt}
