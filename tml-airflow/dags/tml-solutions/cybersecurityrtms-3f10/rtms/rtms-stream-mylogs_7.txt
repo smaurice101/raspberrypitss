@@ -1,4 +1,2 @@
 7,5.12,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=101618];,Thu  06 Mar 2025 18:07:11.3669 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
-icious login attempt:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
-ssword failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
-txt}
+7,5.12,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=101618];,Thu  06 Mar 2025 18:07:11.3669 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
