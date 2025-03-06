@@ -1,1 +1,1 @@
-:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_19.txt}
+\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_19.txt}
