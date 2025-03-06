@@ -1,1 +1,0 @@
-10,5.23,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=({"rtmsmessage":"00000009@2016/9/27)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=70315];,Thu  06 Mar 2025 03:48:05.2809 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_10.txt}
