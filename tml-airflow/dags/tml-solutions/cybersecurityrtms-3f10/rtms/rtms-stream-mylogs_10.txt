@@ -1,1 +1,1 @@
-eprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_10.txt}
+eprocess,0.00,rgx:p([a-z]+)ch;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_10.txt}
