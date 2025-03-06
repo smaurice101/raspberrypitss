@@ -1,1 +1,1 @@
-ddress location banned:suspicious login attempt:ip address suspicious:too many login attempts;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
+,na,Thu  06 Mar 2025 16:55:46.1801 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_7.txt}
