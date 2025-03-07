@@ -1,2 +1,0 @@
-{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_30.txt}
-{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_30.txt}
