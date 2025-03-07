@@ -1,1 +1,2 @@
-23,5.21,rtms-stream-mylogs,na,Fri  07 Mar 2025 01:17:58.0871 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_23.txt}
+23,5.21,rtms-stream-mylogs,na,Fri  07 Mar 2025 01:18:34.6947 UTC,0.00,iot-preprocess,0.00,|address location banned:suspicious login attempt:unknown device:ip address suspicious:too many login attempts;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_23.txt}
+23,5.21,rtms-stream-mylogs,na,Fri  07 Mar 2025 01:18:34.6947 UTC,0.00,iot-preprocess,0.00,|address location banned:suspicious login attempt:unknown device:ip address suspicious:too many login attempts;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_23.txt}
