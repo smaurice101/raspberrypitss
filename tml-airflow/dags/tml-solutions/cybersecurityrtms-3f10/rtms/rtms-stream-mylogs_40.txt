@@ -1,1 +1,0 @@
-eam-mylogs,na,Fri  07 Mar 2025 05:09:46.0118 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_40.txt}
