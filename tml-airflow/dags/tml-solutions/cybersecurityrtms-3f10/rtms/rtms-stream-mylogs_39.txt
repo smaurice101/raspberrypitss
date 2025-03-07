@@ -1,0 +1,2 @@
+39,6.13,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:57:59.9317 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_39.txt}
+39,6.13,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=351677];,Fri  07 Mar 2025 00:58:07.0946 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_39.txt}
