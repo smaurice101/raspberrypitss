@@ -1,1 +1,0 @@
-p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_18.txt}
