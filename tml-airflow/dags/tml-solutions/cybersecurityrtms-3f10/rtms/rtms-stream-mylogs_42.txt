@@ -1,1 +1,1 @@
- Mar 2025 06:21:51.0245 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_42.txt}
+42,6.10,rtms-stream-mylogs,na,Fri  07 Mar 2025 06:22:22.0492 UTC,0.00,iot-preprocess,0.00,-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x
