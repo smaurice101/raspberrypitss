@@ -1,1 +1,2 @@
-35,6.24,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:52:30.1045 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_35.txt}
+35,6.24,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:52:54.2603 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_35.txt}
+awdata/rtms/rtms-stream-mylogs_35.txt}
