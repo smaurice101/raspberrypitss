@@ -1,1 +1,0 @@
-r 2025 01:04:20.2891 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_4.txt}
