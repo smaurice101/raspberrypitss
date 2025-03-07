@@ -1,1 +1,1 @@
-attempt:too many login attempts:address location banned;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_25.txt}
+25,5.27,rtms-stream-mylogs,na,Fri  07 Mar 2025 11:10:27.1019 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:1
