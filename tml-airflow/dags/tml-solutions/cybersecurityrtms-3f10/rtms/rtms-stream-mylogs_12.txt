@@ -1,1 +1,0 @@
-mpts:address location banned;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_12.txt}
