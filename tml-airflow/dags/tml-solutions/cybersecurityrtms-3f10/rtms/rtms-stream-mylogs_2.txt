@@ -1,1 +1,0 @@
-ms-stream-mylogs,na,Fri  07 Mar 2025 05:41:33.4892 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
