@@ -1,1 +1,1 @@
-ri  07 Mar 2025 02:25:39.7860 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
+Fri  07 Mar 2025 02:26:17.8869 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_8.txt}
