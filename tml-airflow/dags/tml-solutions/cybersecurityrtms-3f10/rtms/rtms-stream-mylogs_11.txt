@@ -1,1 +1,1 @@
-{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_11.txt}
+07 Mar 2025 01:35:16.5626 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_11.txt}
