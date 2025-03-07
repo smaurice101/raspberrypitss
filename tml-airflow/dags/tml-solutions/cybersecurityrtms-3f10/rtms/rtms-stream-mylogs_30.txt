@@ -1,1 +1,1 @@
-TC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_30.txt}
+30,6.17,rtms-stream-mylogs,na,Fri  07 Mar 2025 02:38:14.9660 UTC,0.00,iot-preprocess,0.00,|too many login attempts:unknown device:suspicious login attempt:address location banned:ip address suspicious;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_30.txt}
