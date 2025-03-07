@@ -1,0 +1,2 @@
+location banned;{rtms-stream-mylogs,/rawd
+gs,na,Fri  07 Mar 2025 08:41:22.1307 UTC,0.00,iot-preprocess,0.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_1.txt}
