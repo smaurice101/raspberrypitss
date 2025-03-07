@@ -1,2 +1,3 @@
-18,5.29,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:48:29.1950 UTC,0.00,iot-preprocess,0.00,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_18.txt}
-18,5.29,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=344608];,Fri  07 Mar 2025 00:48:39.7969 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_18.txt}
+18,5.29,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:49:15.5734 UTC,0.00,iot-preprocess,0.00,|address location banned:suspicious login attempt:unknown device:ip address suspicious:too many login attempts;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_18.txt}
+logs_18.txt}
+x:p([a-z]+)ch)][Partition=0 Offset=344608];,Fri  07 Mar 2025 00:48:39.7969 UTC,1.00,iot-preprocess,1.00,rgx:p([a-z]+)ch ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_18.txt}
