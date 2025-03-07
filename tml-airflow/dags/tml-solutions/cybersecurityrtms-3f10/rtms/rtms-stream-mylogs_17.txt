@@ -1,1 +1,1 @@
--\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_17.txt}
+attempt:unknown device:ip address suspicious:too many login attempts;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_17.txt}

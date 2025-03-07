@@ -1,2 +1,2 @@
-29,5.17,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:52:09.8584 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_ream-mylogs_29.txt}
 29,5.17,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:52:51.0237 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_29.txt}
+29,5.17,rtms-stream-mylogs,na,Fri  07 Mar 2025 00:52:09.8584 UTC,0.00,iot-preprocess,0.00,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_ream-mylogs_29.txt}
