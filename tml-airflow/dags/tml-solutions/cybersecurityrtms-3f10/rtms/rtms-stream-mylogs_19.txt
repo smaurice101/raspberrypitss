@@ -1,0 +1,2 @@
+known--entity--;{rt
+attempts:address location banned;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_19.txt}
