@@ -1,2 +1,0 @@
-^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_6.txt}
-wdata/rtms/rtms-stream-mylogs_6.txt}
