@@ -1,0 +1,1 @@
+4,5.15,rtms-stream-mylogs,[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)][Partition=0 Offset=618474];,Fri  07 Mar 2025 07:40:55.1651 UTC,1
