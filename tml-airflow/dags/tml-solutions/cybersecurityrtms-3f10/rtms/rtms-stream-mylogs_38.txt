@@ -1,1 +1,1 @@
-38,6.18,rtms-stream-mylogs,na,Fri  07 Mar 2025 01:39:11.1423 UTC,0.00,iot-preprocess,0.00,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|};{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
+device:ip address suspicious:too many login attempts;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_38.txt}
