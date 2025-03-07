@@ -1,1 +1,1 @@
-\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_20.txt}
+20,5.22,rtms-stream-mylogs,na,Fri  07 Mar 2025 13:08:42.9980 UTC,0.00,iot-preprocess,0.00,|ip address suspicious:unknown device:suspicious login attempt:too many login attempts:address location banned;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_20.txt}
