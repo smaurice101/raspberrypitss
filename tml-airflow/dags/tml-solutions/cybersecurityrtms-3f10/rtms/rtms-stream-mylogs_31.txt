@@ -1,0 +1,2 @@
+31,6.20,rtms-stream-mylogs,na,Fri  07 Mar 2025 06:35:53.5468 UTC,0.00,iot-preprocess,0.00,|ip address suspicious:unknown device:suspicious login attempt:too many login attemptstream-mylogs_31.txt}
+ned;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_31.txt}
