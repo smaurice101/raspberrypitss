@@ -1,1 +1,1 @@
-2,5.14,rtms-stream-mylogs,na,Fri  07 Mar 2025 01:34:52.5374 UTC,0.00,iot-preprocess,0.00, @authentication failure:--entity-- password failure ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
+ms-stream-mylogs,na,Fri  07 Mar 2025 01:38:08.6637 UTC,0.00,iot-preprocess,0.00,rgx:^[0-9A-Za-z]{6:16}$;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
