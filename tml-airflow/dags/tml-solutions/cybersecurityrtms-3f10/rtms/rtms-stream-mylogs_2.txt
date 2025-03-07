@@ -1,1 +1,1 @@
-\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]);{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
+2,5.14,rtms-stream-mylogs,na,Fri  07 Mar 2025 01:33:52.8286 UTC,0.00,iot-preprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_2.txt}
