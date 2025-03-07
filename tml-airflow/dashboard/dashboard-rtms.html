@@ -587,7 +587,7 @@ function drawTable2() {
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
           //      var maindata = eventdata.replace(/\\"/g, '"');
                   var maindata = eventdata;
-               maindata.replace(/\\n/g, "\\n")
+               maindata=maindata.replace(/\\n/g, "\\n")
                .replace(/\\'/g, "\\'")
                .replace(/\\"/g, '\\"')
                .replace(/\\&/g, "\\&")
