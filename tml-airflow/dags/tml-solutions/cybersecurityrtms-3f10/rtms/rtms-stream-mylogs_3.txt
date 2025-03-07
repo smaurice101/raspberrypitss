@@ -1,2 +1,1 @@
 eprocess,0.00, |unknown--entity--;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_3.txt}
-am-mylogs,/rawdata/rtms/rtms-stream-mylogs_3.txt}
