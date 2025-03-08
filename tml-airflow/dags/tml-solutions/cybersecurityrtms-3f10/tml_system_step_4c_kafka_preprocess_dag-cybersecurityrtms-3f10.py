@@ -314,7 +314,29 @@ def dopreprocessing(**context):
          patternwindowthreshold=os.environ['step4cpatternwindowthreshold']
        else:  
          ti.xcom_push(key="{}_patternwindowthreshold".format(sname), value="_{}".format(default_args['patternwindowthreshold']))
-       
+
+       rtmsscorethreshold=default_args['rtmsscorethreshold']
+       if 'step4crtmsscorethreshold' in os.environ:
+         ti.xcom_push(key="{}_rtmsscorethreshold".format(sname), value="_{}".format(os.environ['step4crtmsscorethreshold']))         
+         rtmsscorethreshold=os.environ['step4crtmsscorethreshold']
+       else:  
+         ti.xcom_push(key="{}_rtmsscorethreshold".format(sname), value="_{}".format(default_args['rtmsscorethreshold']))
+
+       attackscorethreshold=default_args['attackscorethreshold']
+       if 'step4cattackscorethreshold' in os.environ:
+         ti.xcom_push(key="{}_attackscorethreshold".format(sname), value="_{}".format(os.environ['step4cattackscorethreshold']))         
+         attackscorethreshold=os.environ['step4cattackscorethreshold']
+       else:  
+         ti.xcom_push(key="{}_attackscorethreshold".format(sname), value="_{}".format(default_args['attackscorethreshold']))
+
+       patternscorethreshold=default_args['patternscorethreshold']
+       if 'step4cpatternscorethreshold' in os.environ:
+         ti.xcom_push(key="{}_patternscorethreshold".format(sname), value="_{}".format(os.environ['step4cpatternscorethreshold']))         
+         patternscorethreshold=os.environ['step4cpatternscorethreshold']
+       else:  
+         ti.xcom_push(key="{}_patternscorethreshold".format(sname), value="_{}".format(default_args['patternscorethreshold']))
+
+  
        repo=tsslogging.getrepo() 
        if sname != '_mysolution_':
         fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,pname,os.path.basename(__file__))  
@@ -324,7 +346,7 @@ def dopreprocessing(**context):
        wn = windowname('preprocess3',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess3", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} \"{}\" \"{}\"".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternwindowthreshold,raw_data_topic,rtmsstream), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} \"{}\" \"{}\" {} {} {}".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternwindowthreshold,raw_data_topic,rtmsstream,rtmsscorethreshold,attackscorethreshold,patternscorethreshold), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -354,6 +376,13 @@ if __name__ == '__main__':
         default_args['raw_data_topic'] = rawdatatopic
         rtmsstream =  sys.argv[10]
         default_args['rtmsstream'] = rtmsstream
+
+        rtmsscorethreshold =  sys.argv[11]
+        default_args['rtmsscorethreshold'] = rtmsscorethreshold
+        attackscorethreshold =  sys.argv[12]
+        default_args['attackscorethreshold'] = attackscorethreshold
+        patternscorethreshold =  sys.argv[13]
+        default_args['patternscorethreshold'] = patternscorethreshold
          
         tsslogging.locallogs("INFO", "STEP 4c: Preprocessing 3 started")
 
