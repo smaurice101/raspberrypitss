@@ -273,6 +273,10 @@ def dopreprocessing(**context):
        ti.xcom_push(key="{}_localsearchtermfolder".format(sname), value=default_args['localsearchtermfolder'])
        ti.xcom_push(key="{}_localsearchtermfolderinterval".format(sname), value="_{}".format(default_args['localsearchtermfolderinterval']))
 
+       ti.xcom_push(key="{}_rtmsscorethresholdtopic".format(sname), value=default_args['rtmsscorethresholdtopic'])
+       ti.xcom_push(key="{}_attackscorethresholdtopic".format(sname), value=default_args['attackscorethresholdtopic'])
+       ti.xcom_push(key="{}_patternscorethresholdtopic".format(sname), value=default_args['patternscorethresholdtopic'])
+
        rtmsstream=default_args['rtmsstream']
        if 'step4crtmsstream' in os.environ:
          ti.xcom_push(key="{}_rtmsstream".format(sname), value=os.environ['step4crtmsstream'])
