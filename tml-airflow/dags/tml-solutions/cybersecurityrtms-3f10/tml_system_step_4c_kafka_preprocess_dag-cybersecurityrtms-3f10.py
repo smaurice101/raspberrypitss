@@ -51,11 +51,11 @@ default_args = {
                                        # The files will be read every 60 seconds - and searchterms will be updated
   'rememberpastwindows' : '500', # Past windows to remember
   'patternwindowthreshold' : '30', # check for the number of patterns for the items in searchterms
-  'rtmsscorethreshold': '',  # RTMS score threshold i.e. '0.8'   
+  'rtmsscorethreshold': '0.8',  # RTMS score threshold i.e. '0.8'   
   'rtmsscorethresholdtopic': '',   # All rtms score greater than rtmsscorethreshold will be streamed to this topic
-  'attackscorethreshold': '',   # Attack score threshold i.e. '0.8'   
+  'attackscorethreshold': '0.8',   # Attack score threshold i.e. '0.8'   
   'attackscorethresholdtopic': '',   # All attack score greater than attackscorethreshold will be streamed to this topic
-  'patternscorethreshold': '',   # Pattern score threshold i.e. '0.8'   
+  'patternscorethreshold': '0.8',   # Pattern score threshold i.e. '0.8'   
   'patternscorethresholdtopic': '',   # All pattern score greater thn patternscorethreshold will be streamed to this topic
 
 }
