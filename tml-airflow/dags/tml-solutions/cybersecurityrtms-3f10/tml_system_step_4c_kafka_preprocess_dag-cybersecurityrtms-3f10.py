@@ -51,6 +51,13 @@ default_args = {
                                        # The files will be read every 60 seconds - and searchterms will be updated
   'rememberpastwindows' : '500', # Past windows to remember
   'patternwindowthreshold' : '30', # check for the number of patterns for the items in searchterms
+  'rtmsscorethreshold': '',  # RTMS score threshold i.e. '0.8'   
+  'rtmsscorethresholdtopic': '',   # All rtms score greater than rtmsscorethreshold will be streamed to this topic
+  'attackscorethreshold': '',   # Attack score threshold i.e. '0.8'   
+  'attackscorethresholdtopic': '',   # All attack score greater than attackscorethreshold will be streamed to this topic
+  'patternscorethreshold': '',   # Pattern score threshold i.e. '0.8'   
+  'patternscorethresholdtopic': '',   # All pattern score greater thn patternscorethreshold will be streamed to this topic
+
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -112,12 +119,20 @@ def processtransactiondata():
          rememberpastwindows = default_args['rememberpastwindows']  
          patternwindowthreshold = default_args['patternwindowthreshold']  
 
+         rtmsscorethreshold = default_args['rtmsscorethreshold']  
+         rtmsscorethresholdtopic = default_args['rtmsscorethresholdtopic']  
+         attackscorethreshold = default_args['attackscorethreshold']  
+         attackscorethresholdtopic = default_args['attackscorethresholdtopic']  
+         patternscorethreshold = default_args['patternscorethreshold']  
+         patternscorethresholdtopic = default_args['patternscorethresholdtopic']  
          
          searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
-                                                  preprocesstopic,patternwindowthreshold,array,saveasarray,rawdataoutput)
+                                                  preprocesstopic,patternwindowthreshold,array,saveasarray,rawdataoutput,
+                                                  rtmsscorethreshold,rtmsscorethresholdtopic,attackscorethreshold,
+                                                  attackscorethresholdtopic,patternscorethreshold,patternscorethresholdtopic)
 #                print(result)
          except Exception as e:
                 print("ERROR:",e)
