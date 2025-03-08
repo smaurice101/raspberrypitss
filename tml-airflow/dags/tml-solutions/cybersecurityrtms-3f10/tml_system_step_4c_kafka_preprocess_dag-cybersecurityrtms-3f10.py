@@ -50,7 +50,7 @@ default_args = {
   'localsearchtermfolderinterval': '60', # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60, 
                                        # The files will be read every 60 seconds - and searchterms will be updated
   'rememberpastwindows' : '500', # Past windows to remember
-  'patternscorethreshold' : '30', # check for the number of patterns for the items in searchterms
+  'patternwindowthreshold' : '30', # check for the number of patterns for the items in searchterms
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
