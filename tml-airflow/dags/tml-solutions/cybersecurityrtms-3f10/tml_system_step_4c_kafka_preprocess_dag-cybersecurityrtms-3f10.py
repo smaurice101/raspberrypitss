@@ -110,14 +110,14 @@ def processtransactiondata():
          identifier = default_args['identifier']
          searchterms=default_args['searchterms']
          rememberpastwindows = default_args['rememberpastwindows']  
-         patternscorethreshold = default_args['patternscorethreshold']  
+         patternwindowthreshold = default_args['patternwindowthreshold']  
 
          
          searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
-                                                  preprocesstopic,patternscorethreshold,array,saveasarray,rawdataoutput)
+                                                  preprocesstopic,patternwindowthreshold,array,saveasarray,rawdataoutput)
 #                print(result)
          except Exception as e:
                 print("ERROR:",e)
@@ -293,12 +293,12 @@ def dopreprocessing(**context):
        else:  
          ti.xcom_push(key="{}_rememberpastwindows".format(sname), value="_{}".format(default_args['rememberpastwindows']))
 
-       patternscorethreshold=default_args['patternscorethreshold']
-       if 'step4cpatternscorethreshold' in os.environ:
-         ti.xcom_push(key="{}_patternscorethreshold".format(sname), value="_{}".format(os.environ['step4cpatternscorethreshold']))         
-         patternscorethreshold=os.environ['step4cpatternscorethreshold']
+       patternwindowthreshold=default_args['patternwindowthreshold']
+       if 'step4cpatternwindowthreshold' in os.environ:
+         ti.xcom_push(key="{}_patternwindowthreshold".format(sname), value="_{}".format(os.environ['step4cpatternwindowthreshold']))         
+         patternwindowthreshold=os.environ['step4cpatternwindowthreshold']
        else:  
-         ti.xcom_push(key="{}_patternscorethreshold".format(sname), value="_{}".format(default_args['patternscorethreshold']))
+         ti.xcom_push(key="{}_patternwindowthreshold".format(sname), value="_{}".format(default_args['patternwindowthreshold']))
        
        repo=tsslogging.getrepo() 
        if sname != '_mysolution_':
@@ -309,7 +309,7 @@ def dopreprocessing(**context):
        wn = windowname('preprocess3',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess3", "ENTER"])
-       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} \"{}\" \"{}\"".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternscorethreshold,raw_data_topic,rtmsstream), "ENTER"])        
+       subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} {} \"{}\" {} {} \"{}\" \"{}\"".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],maxrows,searchterms,rememberpastwindows,patternwindowthreshold,raw_data_topic,rtmsstream), "ENTER"])        
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
@@ -333,8 +333,8 @@ if __name__ == '__main__':
         default_args['searchterms'] = searchterms
         rememberpastwindows =  sys.argv[7]
         default_args['rememberpastwindows'] = rememberpastwindows
-        patternscorethreshold =  sys.argv[8]
-        default_args['patternscorethreshold'] = patternscorethreshold
+        patternwindowthreshold =  sys.argv[8]
+        default_args['patternwindowthreshold'] = patternwindowthreshold
         rawdatatopic =  sys.argv[9]
         default_args['raw_data_topic'] = rawdatatopic
         rtmsstream =  sys.argv[10]
