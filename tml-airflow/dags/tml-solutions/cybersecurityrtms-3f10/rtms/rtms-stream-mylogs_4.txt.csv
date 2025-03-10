@@ -1,9 +1,0 @@
-0.00,0.00,na,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$,,{4,5.15}
-0.00,0.00,na, |unknown--entity--,,{4,5.15}
-0.00,0.00,na,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|},,{4,5.15}
-0.00,0.00,na,rgx:^[0-9A-Za-z]{6:16}$,,{4,5.15}
-0.00,0.00,na,|ip address suspicious:too many login attempts:unknown device:address location banned:suspicious login attempt,,{4,5.15}
-0.00,0.00,na,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|},,{4,5.15}
-0.00,0.00,na,rgx:p([a-z]+)ch,,{4,5.15}
-1.00,50.00,[Topic=rtms-stream-mylogs][MessageFound=(am_unix(sshd:auth): authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(onnecting: too many authentication failures for admin preauth)][UserSearch=(authentication failure)];, |authentication failure:--entity-- password failure ,0:2668;0:2669;0:2670;0:2671;0:2672;0:2673;0:2674;0:2675;0:2676;0:2677;0:2678;0:2679;0:2680;0:2681;0:2682;0:2683;0:2684;0:2685;0:2686;0:2687;0:2688;0:2689;0:2690;0:2691;0:2692;0:2693;0:2694;0:2695;0:2696;0:2697;0:2698;0:2699;0:2700;0:2701;0:2702;0:2703;0:2704;0:2705;0:2706;0:2707;0:2708;0:2709;0:2710;0:2711;0:2712;0:2713;0:2714;0:2715;0:2716;0:2717;,{4,5.15}
-0.00,0.00,na,-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]),,{4,5.15}
