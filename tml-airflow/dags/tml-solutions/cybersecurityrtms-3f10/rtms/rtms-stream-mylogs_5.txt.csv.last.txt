@@ -1,7 +1,7 @@
-29
-2403
-29.00
-48
-48
+30
+2532
+30.00
+49
+49
 [Topic=rtms-stream-mylogs][MessageFound=(am_unix(sshd:auth): authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(onnecting: too many authentication failures for admin preauth)][UserSearch=(authentication failure)];;[Topic=rtms-stream-mylogs][MessageFound=(am_unix(sshd:auth): authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(onnecting: too many authentication failures for admin preauth)][UserSearch=(authentication failure)];;
  |authentication failure:--entity-- password failure ;rgx:p([a-z]+)ch ; |authentication failure:--entity-- password failure;
