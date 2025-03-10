@@ -14,7 +14,7 @@ import random
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-  'topic' : 'iot-preprocess2',    # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
+  'topic' : 'rtms-preprocess',    # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
   'dashboardhtml': 'dashboard-rtms.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
   'dashboardhtml-ml': 'rtms.html', # <<< *** This one is IF you include ML dag
   'topic-ml' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma
