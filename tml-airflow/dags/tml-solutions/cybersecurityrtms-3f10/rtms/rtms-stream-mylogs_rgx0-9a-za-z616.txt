@@ -1,1 +1,0 @@
--1,-1,rtms-stream-mylogs,na,Mon  10 Mar 2025 16:18:50.8069 UTC,0.00,na,0.00,rgx:^[0-9A-Za-z]{6:16}$,;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_rgx0-9a-za-z616.txt}
