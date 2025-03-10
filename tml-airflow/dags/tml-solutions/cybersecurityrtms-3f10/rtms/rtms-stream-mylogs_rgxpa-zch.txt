@@ -1,0 +1,1 @@
+-1,-1,rtms-stream-mylogs,na,Mon  10 Mar 2025 15:24:15.0162 UTC,0.00,na,0.00,rgx:p([a-z]+)ch ,;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_rgxpa-zch.txt}
