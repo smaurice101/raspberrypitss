@@ -13165,3 +13165,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-10_21:49:34] Deleting topic patterntopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-10_21:49:37] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-10_21:49:39] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-03-10_21:49:41] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
