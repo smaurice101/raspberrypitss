@@ -1,7 +1,7 @@
-38
-38
-38.00
-84
-84
+39
+39
+39.00
+85
+85
 [Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;
 rgx:p([a-z]+)ch ;
