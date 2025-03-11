@@ -1,7 +1,7 @@
-17
-17
-17.00
-39
-39
+18
+18
+18.00
+40
+40
 [Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;
 rgx:p([a-z]+)ch ;
