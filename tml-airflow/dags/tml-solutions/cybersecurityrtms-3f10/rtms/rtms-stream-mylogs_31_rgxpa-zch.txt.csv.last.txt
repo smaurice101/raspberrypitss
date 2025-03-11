@@ -1,7 +1,7 @@
-1
-1
-1.00
-17
-17
-[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;
+2
+2
+2.00
+19
+19
+[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;[Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];;
 rgx:p([a-z]+)ch ;
