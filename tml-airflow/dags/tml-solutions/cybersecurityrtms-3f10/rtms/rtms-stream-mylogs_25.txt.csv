@@ -1,9 +1,0 @@
-0.00,0.00,na,rgx:^(?=.*?[0-9])(?=.*?[A-Za-z]).{8:32}$,,{25,6.18}
-0.00,0.00,na,rgx:(?:[a-z0-9!#$%&'*+\/=?^_`{|},,{25,6.18}
-0.00,0.00,na,-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]),,{25,6.18}
-1.00,50.00,[Topic=rtms-stream-mylogs][MessageFound=(am_unix(sshd:auth): authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(authentication failure logname= uid=0 euid)][UserSearch=(authentication failure)];[Topic=rtms-stream-mylogs][MessageFound=(onnecting: too many authentication failures for admin preauth)][UserSearch=(authentication failure)];, |authentication failure:--entity-- password failure ,0:67700;0:67701;0:67702;0:67703;0:67704;0:67705;0:67706;0:67707;0:67708;0:67709;0:67710;0:67711;0:67712;0:67713;0:67714;0:67715;0:67716;0:67717;0:67718;0:67719;0:67720;0:67721;0:67722;0:67723;0:67724;0:67725;0:67726;0:67727;0:67728;0:67729;0:67730;0:67731;0:67732;0:67733;0:67734;0:67735;0:67736;0:67737;0:67738;0:67739;0:67740;0:67741;0:67742;0:67743;0:67744;0:67745;0:67746;0:67747;0:67748;0:67749;,{25,6.18}
-0.00,0.00,na, |unknown--entity--,,{25,6.18}
-0.00,0.00,na,|ip address suspicious:suspicious login attempt:too many login attempts:unknown device:address location banned,,{25,6.18}
-0.00,0.00,na,rgx:p([a-z]+)ch ,,{25,6.18}
-0.00,0.00,na,rgx:^[0-9A-Za-z]{6:16}$,,{25,6.18}
-0.00,0.00,na,-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|},,{25,6.18}
