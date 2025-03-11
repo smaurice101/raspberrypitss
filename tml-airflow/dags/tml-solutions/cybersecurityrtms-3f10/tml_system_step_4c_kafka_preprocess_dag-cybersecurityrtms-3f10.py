@@ -223,7 +223,7 @@ def ingestfiles():
            linebuf = linebuf[:-1]
            searchtermsfile = searchtermsfile + lg + linebuf +"~~~"
       if searchtermsfile != "":    
-        searchtermsfile = searchtermsfile[:-1]    
+        searchtermsfile = searchtermsfile[:-3]    
         searchtermsfile=updatesearchterms(searchtermsfile,rgx)
         default_args['searchterms']=searchtermsfile
         print("INFO:", searchtermsfile)
