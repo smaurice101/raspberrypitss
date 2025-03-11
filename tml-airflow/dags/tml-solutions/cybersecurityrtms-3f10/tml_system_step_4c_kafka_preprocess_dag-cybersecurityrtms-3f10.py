@@ -155,20 +155,20 @@ def updatesearchterms(searchtermsfile,regx):
 
     if len(regx) > 0:
         for r in regx:
-           mainsearchterms = mainsearchterms + r + "~"
+           mainsearchterms = mainsearchterms + r + "~~~"
       
     if stcurr != "":
-       stcurrarr = stcurr.split("~")
-       stcurrarrfile = stcurrfile.split("~")
+       stcurrarr = stcurr.split("~~~")
+       stcurrarrfile = stcurrfile.split("~~~")
        for a in stcurrarr:
           stcurrarrfile.append(a)
        stcurrarrfile = set(stcurrarrfile)
-       mainsearchterms = mainsearchterms + '~'.join(stcurrarrfile) 
+       mainsearchterms = mainsearchterms + '~~~'.join(stcurrarrfile) 
        #mainsearchterms = mainsearchterms[:-1]
     else:
-       stcurrarrfile = stcurrfile.split("~")      
+       stcurrarrfile = stcurrfile.split("~~~")      
        stcurrarrfile = set(stcurrarrfile)
-       mainsearchterms = mainsearchterms + '~'.join(stcurrarrfile) 
+       mainsearchterms = mainsearchterms + '~~~'.join(stcurrarrfile) 
        #mainsearchterms = mainsearchterms[:-1]
       
       
@@ -221,7 +221,7 @@ def ingestfiles():
 
          if linebuf != "":
            linebuf = linebuf[:-1]
-           searchtermsfile = searchtermsfile + lg + linebuf +"~"
+           searchtermsfile = searchtermsfile + lg + linebuf +"~~~"
       if searchtermsfile != "":    
         searchtermsfile = searchtermsfile[:-1]    
         searchtermsfile=updatesearchterms(searchtermsfile,rgx)
