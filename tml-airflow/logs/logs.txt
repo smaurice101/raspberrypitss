@@ -13290,3 +13290,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-12_00:11:11] Deleting topic rtmstopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-12_00:11:13] Deleting topic patterntopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
 [INFO 2025-03-12_00:11:15] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-03-12_00:11:17] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
