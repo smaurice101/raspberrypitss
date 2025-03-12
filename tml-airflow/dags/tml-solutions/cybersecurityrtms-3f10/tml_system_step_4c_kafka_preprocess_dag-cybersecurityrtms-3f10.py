@@ -189,7 +189,8 @@ def ingestfiles():
       rgx = []      
       for dr in dirbuf:        
          filenames = []
-         linebuf="" 
+         linebuf=""
+         ibx = []
          if dr != "":
             if dr[0]=='@':
               dr = dr[1:]
@@ -216,12 +217,18 @@ def ingestfiles():
               for m in lines:
                 if 'rgx:' in m:
                   rgx.append(m)
+                elif '~~~' in m:
+                  ibx.append(m)
                 else:  
                   linebuf = linebuf + m + ","
 
          if linebuf != "":
            linebuf = linebuf[:-1]
            searchtermsfile = searchtermsfile + lg + linebuf +"~~~"
+         if len(ibx)>0:
+            ibxs = '~~~'.join(ibx) 
+            searchtermsfile = searchtermsfile + ibxs +"~~~"
+
       if searchtermsfile != "":    
         searchtermsfile = searchtermsfile[:-1]    
         searchtermsfile=updatesearchterms(searchtermsfile,rgx)
