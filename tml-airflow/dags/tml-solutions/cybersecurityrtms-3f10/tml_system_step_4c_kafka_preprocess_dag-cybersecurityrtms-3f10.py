@@ -226,7 +226,7 @@ def ingestfiles():
            linebuf = linebuf[:-1]
            searchtermsfile = searchtermsfile + lg + linebuf +"~~~"
          if len(ibx)>0:
-            ibxs = '~~~'.join(ibx) 
+            ibxs = ''.join(ibx) 
             searchtermsfile = searchtermsfile + ibxs +"~~~"
 
       if searchtermsfile != "":    
