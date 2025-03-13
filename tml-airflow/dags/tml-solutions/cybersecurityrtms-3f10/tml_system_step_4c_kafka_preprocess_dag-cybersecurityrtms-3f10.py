@@ -254,6 +254,7 @@ def startdirread():
     try:  
       t = threading.Thread(name='child procs', target=ingestfiles)
       t.start()
+
     except Exception as e:
       print(e)
       
