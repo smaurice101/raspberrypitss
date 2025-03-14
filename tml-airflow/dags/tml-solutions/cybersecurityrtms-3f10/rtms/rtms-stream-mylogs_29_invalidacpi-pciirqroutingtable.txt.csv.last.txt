@@ -1,7 +1,7 @@
 0
 0
 0.00
-68
-68
+74
+74
 
 Invalid ACPI-PCI IRQ routing table;
