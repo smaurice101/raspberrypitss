@@ -1,7 +1,7 @@
 0
 0
 0.00
-42
-42
+50
+50
 
 check pass; user unknown: system implementation error;
