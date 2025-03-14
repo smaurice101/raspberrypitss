@@ -13500,3 +13500,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2025-03-14_20:56:09] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-03-14_20:56:34] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecuritywithprivategpt-3f10.py
 [INFO 2025-03-14_20:56:59] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py
+[ERROR 2025-03-14_20:57:12] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-cybersecuritywithprivategpt-3f10.py: [Errno 2] No such file or directory: '/raspberrypitss/tml-airflow/dags/tml-solutions/_mysolution_/docker_run_stop-_mysolution_.py'
