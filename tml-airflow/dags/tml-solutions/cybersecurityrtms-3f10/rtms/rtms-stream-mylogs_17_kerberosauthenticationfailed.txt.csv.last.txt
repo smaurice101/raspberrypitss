@@ -1,7 +1,7 @@
 0
 0
 0.00
-70
-70
+77
+77
 
 Kerberos authentication failed;
