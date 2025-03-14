@@ -156,14 +156,8 @@ def generatedoc(**context):
     step4crawdatatopic=''
     step4csearchterms=''
     step4crememberpastwindows=''
-    step4cpatternwindowthreshold=''
-    step4crtmsstream=''
-    step4crtmsscorethreshold=''
-    step4cattackscorethreshold=''
     step4cpatternscorethreshold=''
-    step4clocalsearchtermfolder=''
-    step4clocalsearchtermfolderinterval=''
- 
+    step4crtmsstream=''
     rtmsoutputurl=""
     mloutputurl=""
  
@@ -404,26 +398,10 @@ def generatedoc(**context):
     searchterms = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_searchterms".format(sname))
     rememberpastwindows = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_rememberpastwindows".format(sname))
     identifier = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_identifier".format(sname))
-    patternwindowthreshold = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_patternwindowthreshold".format(sname))
+    patternscorethreshold = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_patternscorethreshold".format(sname))
     maxrows4c = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_maxrows".format(sname))
     rtmsstream = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_rtmsstream".format(sname))
-    rtmsscorethresholdtopic = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_rtmsscorethresholdtopic".format(sname))
-    attackscorethresholdtopic = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_attackscorethresholdtopic".format(sname))
-    patternscorethresholdtopic = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_patternscorethresholdtopic".format(sname))
-    rtmsscorethreshold = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_rtmsscorethreshold".format(sname))
-    attackscorethreshold = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_attackscorethreshold".format(sname))
-    patternscorethreshold = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_patternscorethreshold".format(sname))
-
-    localsearchtermfolder = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_localsearchtermfolder".format(sname))
-    localsearchtermfolderinterval = context['ti'].xcom_pull(task_ids='step_4c_solution_task_preprocess',key="{}_localsearchtermfolderinterval".format(sname))
-
     if searchterms:
-        doparse("/{}/docs/source/details.rst".format(sname), ["--rtmsscorethresholdtopic--;{}".format(rtmsscorethresholdtopic)])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--attackscorethresholdtopic--;{}".format(attackscorethresholdtopic)])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--patternscorethresholdtopic--;{}".format(patternscorethresholdtopic)])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--rtmsscorethreshold--;{}".format(rtmsscorethreshold[1:])])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--attackscorethreshold--;{}".format(attackscorethreshold[1:])])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--patternscorethreshold--;{}".format(patternscorethreshold[1:])])
         subprocess.call(["sed", "-i", "-e",  "s/--raw_data_topic3--/{}/g".format(raw_data_topic), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--preprocess_data_topic3--/{}/g".format(preprocess_data_topic), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--rtmsstream--/{}/g".format(rtmsstream), "/{}/docs/source/details.rst".format(sname)])
@@ -435,25 +413,18 @@ def generatedoc(**context):
         subprocess.call(["sed", "-i", "-e",  "s/--asynctimeout3--/{}/g".format(asynctimeout[1:]), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--timedelay3--/{}/g".format(timedelay[1:]), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--rememberpastwindows--/{}/g".format(rememberpastwindows[1:]), "/{}/docs/source/details.rst".format(sname)])
-        subprocess.call(["sed", "-i", "-e",  "s/--patternwindowthreshold--/{}/g".format(patternwindowthreshold[1:]), "/{}/docs/source/details.rst".format(sname)])
+        subprocess.call(["sed", "-i", "-e",  "s/--patternscorethreshold--/{}/g".format(patternscorethreshold[1:]), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--identifier3--/{}/g".format(identifier), "/{}/docs/source/details.rst".format(sname)])
         subprocess.call(["sed", "-i", "-e",  "s/--maxrows3--/{}/g".format(maxrows4c[1:]), "/{}/docs/source/details.rst".format(sname)])
         doparse("/{}/docs/source/details.rst".format(sname), ["--rtmssearchterms--;{}".format(searchterms)])
         rtmsoutputurl="https:\/\/github.com/{}/{}/tree/main/tml-airflow/dags/tml-solutions/{}/rtms".format(os.environ["GITUSERNAME"], tsslogging.getrepo(),projectname)
         doparse("/{}/docs/source/details.rst".format(sname), ["--rtmsoutputurl--;{}".format(rtmsoutputurl)])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--localsearchtermfolder--;{}".format(localsearchtermfolder)])
-        doparse("/{}/docs/source/details.rst".format(sname), ["--localsearchtermfolderinterval--;{}".format(localsearchtermfolderinterval[1:])])
 
         step4crawdatatopic=raw_data_topic
         step4csearchterms=searchterms
         step4crememberpastwindows=rememberpastwindows
-        step4cpatternwindowthreshold=patternwindowthreshold
-        step4crtmsstream=rtmsstream
-        step4crtmsscorethreshold=rtmsscorethreshold
-        step4cattackscorethreshold=attackscorethreshold
         step4cpatternscorethreshold=patternscorethreshold
-        step4clocalsearchtermfolder=localsearchtermfolder
-        step4clocalsearchtermfolderinterval=localsearchtermfolderinterval
+        step4crtmsstream=rtmsstream
 
     preprocess_data_topic = context['ti'].xcom_pull(task_ids='step_5_solution_task_ml',key="{}_preprocess_data_topic".format(sname))
     ml_data_topic = context['ti'].xcom_pull(task_ids='step_5_solution_task_ml',key="{}_ml_data_topic".format(sname))
@@ -953,8 +924,7 @@ def generatedoc(**context):
                        step9docfolder,step9docfolderingestinterval[1:],step9useidentifierinprompt[1:],step5processlogic,
                        step5independentvariables,step9searchterms,step9streamall[1:],step9temperature[1:],step9vectorsearchtype,
                        step9llmmodel,step9embedding,step9vectorsize,step4cmaxrows,step4crawdatatopic,step4csearchterms,step4crememberpastwindows[1:],
-                       step4cpatternwindowthreshold[1:],step4crtmsstream,projectname,step4crtmsscorethreshold[1:],step4cattackscorethreshold[1:],
-                       step4cpatternscorethreshold[1:],step4clocalsearchtermfolder,step4clocalsearchtermfolderinterval[1:])
+                       step4cpatternscorethreshold[1:],step4crtmsstream,projectname)
     else: 
       kcmd2=tsslogging.genkubeyamlnoext(sname,containername,TMLCLIENTPORT[1:],solutionairflowport[1:],solutionvipervizport[1:],solutionexternalport[1:],
                        sd,os.environ['GITUSERNAME'],os.environ['GITREPOURL'],chipmain,os.environ['DOCKERUSERNAME'],
@@ -965,8 +935,7 @@ def generatedoc(**context):
                        step9docfolder,step9docfolderingestinterval[1:],step9useidentifierinprompt[1:],step5processlogic,
                        step5independentvariables,step9searchterms,step9streamall[1:],step9temperature[1:],step9vectorsearchtype,
                        step9llmmodel,step9embedding,step9vectorsize,step4cmaxrows,step4crawdatatopic,step4csearchterms,step4crememberpastwindows[1:],
-                       step4cpatternwindowthreshold[1:],step4crtmsstream,projectname,step4crtmsscorethreshold[1:],step4cattackscorethreshold[1:],
-                       step4cpatternscorethreshold[1:],step4clocalsearchtermfolder,step4clocalsearchtermfolderinterval[1:])
+                       step4cpatternscorethreshold[1:],step4crtmsstream,projectname)
 
     doparse("/{}/docs/source/kube.rst".format(sname), ["--solutionnamecode--;{}".format(kcmd2)])
 

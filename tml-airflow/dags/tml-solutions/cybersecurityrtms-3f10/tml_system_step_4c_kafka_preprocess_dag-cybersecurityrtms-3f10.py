@@ -185,10 +185,10 @@ def ingestfiles():
       
     while True:  
       lg=""
-      searchtermsfile=""
       buf = default_args['localsearchtermfolder']
       interval=int(default_args['localsearchtermfolderinterval'])
-      dirbuf = buf.split(",")
+      searchtermsfile = ""
+      dirbuf = buf.split(",")      
       rgx = []      
       for dr in dirbuf:        
          filenames = []
@@ -254,7 +254,6 @@ def startdirread():
     try:  
       t = threading.Thread(name='child procs', target=ingestfiles)
       t.start()
-
     except Exception as e:
       print(e)
       

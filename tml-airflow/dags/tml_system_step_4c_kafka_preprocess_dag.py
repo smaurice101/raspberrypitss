@@ -23,7 +23,7 @@ default_args = {
   'producerid' : 'rtmssolution',   # <<< *** Change as needed   
   'raw_data_topic' : 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
   'preprocess_data_topic' : 'rtms-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-  'maxrows' : '50', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+  'maxrows' : '200', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
   'offset' : '-1', # <<< Rollback from the end of the data streams  
   'brokerhost' : '',   # <<< *** Leave as is
   'brokerport' : '-999',  # <<< *** Leave as is   
@@ -42,8 +42,7 @@ default_args = {
   'searchterms' : 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
                                                              # Must include --entity-- if correlating with entity - this will be replaced 
                                                              # dynamically with the entities found in raw_data_topic
-                                                             # Use THREE (3) ~ to separate searches, i.e. ~~~  
-  'localsearchtermfolder': '|mysearchfile1', # Specify a folder of files containing search terms - each term must be on a new line - use comma
+  'localsearchtermfolder': '|mysearchfile1,|mysearchfile2', # Specify a folder of files containing search terms - each term must be on a new line - use comma
                                # to apply each folder to the rtmstream topic
                                # Use @ =AND, |=OR to specify whether the terms in the file should be AND, OR
                                # For example, @mysearchfolder1,|mysearchfolder2, means all terms in mysearchfolder1 should be AND
@@ -186,11 +185,15 @@ def ingestfiles():
       
     while True:  
       lg=""
-      searchtermsfile=""
+      buf = default_args['localsearchtermfolder']
+      interval=int(default_args['localsearchtermfolderinterval'])
+      searchtermsfile = ""
+      dirbuf = buf.split(",")      
       rgx = []      
       for dr in dirbuf:        
          filenames = []
-         linebuf="" 
+         linebuf=""
+         ibx = []
          if dr != "":
             if dr[0]=='@':
               dr = dr[1:]
@@ -215,16 +218,24 @@ def ingestfiles():
               lines = set(lines)
               # check regex
               for m in lines:
-                if 'rgx:' in m:
-                  rgx.append(m)
-                else:  
-                  linebuf = linebuf + m + ","
+                if len(m) > 0:
+                  if 'rgx:' in m:
+                    rgx.append(m)
+                  elif '~~~' in m:                  
+                    ibx.append(m)
+                  else:  
+                    linebuf = linebuf + m + ","
 
          if linebuf != "":
            linebuf = linebuf[:-1]
            searchtermsfile = searchtermsfile + lg + linebuf +"~~~"
+         if len(ibx)>0:
+            ibxs = ''.join(ibx) 
+            ibxs=ibxs[3:]
+            searchtermsfile = searchtermsfile + ibxs +"~~~"
+
       if searchtermsfile != "":    
-        searchtermsfile = searchtermsfile[:-1]    
+        searchtermsfile = searchtermsfile[:-3]    
         searchtermsfile=updatesearchterms(searchtermsfile,rgx)
         default_args['searchterms']=searchtermsfile
         print("INFO:", searchtermsfile)

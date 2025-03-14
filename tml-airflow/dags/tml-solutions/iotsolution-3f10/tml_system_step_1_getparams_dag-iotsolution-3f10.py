@@ -19,7 +19,7 @@ default_args = {
  'brokerport' : '9092',     # <<<<***************** LOCAL AND CLOUD KAFKA listen on PORT 9092
  'cloudusername' : '',  # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API KEY  - LEAVE BLANK
  'cloudpassword' : '',  # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API SECRET - LEAVE BLANK   
- 'solutionname': '_mysolution_',   # <<< *** DO NOT MODIFY - THIS WILL BE AUTOMATICALLY UPDATED
+ 'solutionname': 'iotsolution-3f10',   # <<< *** DO NOT MODIFY - THIS WILL BE AUTOMATICALLY UPDATED
  'solutiontitle': 'My Solution Title', # <<< *** Provide a descriptive title for your solution
  'solutionairflowport' : '4040', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
  'solutionexternalport' : '5050', # << If -1, TSS will choose a free port randonly, or set this to a fixed number
@@ -281,13 +281,6 @@ def getparams(**context):
   try: 
     f = open("/tmux/step1solution.txt", "w")
     f.write(default_args['solutionname'])
-    f.close()
-  except Exception as e:
-    pass
-
-  try: 
-    f = open("/tmux/rtmsmax.txt", "w")
-    f.write(default_args['RTMSMAXWINDOWS'])
     f.close()
   except Exception as e:
     pass
