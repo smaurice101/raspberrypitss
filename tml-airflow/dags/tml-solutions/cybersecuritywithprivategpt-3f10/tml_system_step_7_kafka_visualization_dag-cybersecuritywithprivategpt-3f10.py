@@ -18,7 +18,7 @@ default_args = {
   'dashboardhtml': 'tml-cisco-network-privategpt-monitor.html', # <<< *** name of your dashboard html file  try: iot-failure-seneca.html
   'dashboardhtml-ml': '', # <<< *** This one is IF you include ML dag
   'topic-ml' : '',    # <<< *** Separate multiple topics by a comma
-  'dashboardhtml-ai': '', # <<< *** This one is you include AI dag
+  'dashboardhtml-ai': 'tml-cisco-network-privategpt-monitor.html', # <<< *** This one is you include AI dag
   'topic-ai' : '',    # <<< *** Separate multiple topics by a comma    
   'dashboardhtml-ml-ai': '', # <<< *** This one is you include ML-AI dag
   'topic-ml-ai' : '',    # <<< *** Separate multiple topics by a comma            
