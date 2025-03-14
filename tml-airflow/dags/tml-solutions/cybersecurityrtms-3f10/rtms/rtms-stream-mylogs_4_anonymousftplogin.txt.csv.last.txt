@@ -1,0 +1,7 @@
+1
+1
+1.00
+1
+1
+[Topic=rtms-stream-mylogs][MessageFound=(combo ftpd16781: anonymous ftp login from 84.102.20.2  ()][UserSearch=(anonymous ftp login)];;[Topic=rtms-stream-mylogs][MessageFound=(combo ftpd16781: anonymous ftp login from 84.102.20.2  ()][UserSearch=(anonymous ftp login)];;
+ANONYMOUS FTP LOGIN;

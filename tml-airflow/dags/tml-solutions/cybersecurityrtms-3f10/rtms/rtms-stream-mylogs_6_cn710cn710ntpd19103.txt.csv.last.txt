@@ -1,0 +1,7 @@
+1
+1
+1.00
+1
+1
+[Topic=rtms-stream-mylogs][MessageFound=(n710 nov 9 12:15:29 cn710/cn710 ntpd19103: synchronized to 10)][UserSearch=(cn710/cn710 ntpd[19103])];;[Topic=rtms-stream-mylogs][MessageFound=(n710 nov 9 12:15:29 cn710/cn710 ntpd19103: synchronized to 10)][UserSearch=(cn710/cn710 ntpd[19103])];;
+cn710/cn710 ntpd[19103];
