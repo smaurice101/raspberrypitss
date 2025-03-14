@@ -1,9 +1,7 @@
-1
-2
-1.00
-11
-11
-[Topic=rtms-stream-mylogs][MessageFound=(mbo klogind19272: kerberos authentication failed jun 30 20:53:04 com)][UserSearch=(kerberos authentication failed)];[Topic=rtms-stream-mylogs][MessageFound=(mbo klogind19277: kerberos authentication failed jun 30 20:53:06 com)][UserSearch=(kerberos authentication failed)];
-Kerberos authentication failed;
-Found=(mbo klogind19272: kerberos authentication failed jun 30 20:53:04 com)][UserSearch=(kerberos authentication failed)];[Topic=rtms-stream-mylogs][MessageFound=(mbo klogind19277: kerberos authentication failed jun 30 20:53:06 com)][UserSearch=(kerberos authentication failed)];;
+0
+0
+0.00
+7
+7
+
 Kerberos authentication failed;

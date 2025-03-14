@@ -1,9 +1,7 @@
-1
-1
-1.00
-10
-10
-[Topic=rtms-stream-mylogs][MessageFound=(combo kernel: pci: invalid acpi-pci irq routing table jul 27 14:41:59 com)][UserSearch=(invalid acpi-pci irq routing table)];
-Invalid ACPI-PCI IRQ routing table;
-d=(combo kernel: pci: invalid acpi-pci irq routing table jul 27 14:41:59 com)][UserSearch=(invalid acpi-pci irq routing table)];;
+0
+0
+0.00
+3
+3
+
 Invalid ACPI-PCI IRQ routing table;
