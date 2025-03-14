@@ -1,7 +1,7 @@
-1
-16
-1.00
-1
-1
+2
+24
+2.00
+2
+2
 [Topic=rtms-stream-mylogs][MessageFound=(46 combo logrotate: alert exited abnormally with 1 jul 10 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(05 combo logrotate: alert exited abnormally with 1 jul 11 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(42 combo logrotate: alert exited abnormally with 1 jul 12 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(45 combo logrotate: alert exited abnormally with 1 jul 13 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(03 combo logrotate: alert exited abnormally with 1 jul 15 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(34 combo logrotate: alert exited abnormally with 1 jul 16 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(23 combo logrotate: alert exited abnormally with 1 jul 17 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(25 combo logrotate: alert exited abnormally with 1 jul 18 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(45 combo logrotate: alert exited abnormally with 1 jul 19 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(04 combo logrotate: alert exited abnormally with 1 jul 20 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(47 combo logrotate: alert exited abnormally with 1 jul 22 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(37 combo logrotate: alert exited abnormally with 1 jul 23 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(42 combo logrotate: alert exited abnormally with 1 jul 24 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(00 combo logrotate: alert exited abnormally with 1 jul 25 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(24 combo logrotate: alert exited abnormally with 1 jul 26 04:)][UserSearch=(alert exited abnormally)];[Topic=rtms-stream-mylogs][MessageFound=(09 combo logrotate: alert exited abnormally with 1 jul 27 04:)][UserSearch=(alert exited abnormally)];;
 ALERT exited abnormally;
