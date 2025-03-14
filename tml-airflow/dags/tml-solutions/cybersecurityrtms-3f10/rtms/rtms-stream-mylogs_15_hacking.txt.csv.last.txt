@@ -1,7 +1,7 @@
-1
-1
-1.00
-1
-1
-[Topic=rtms-stream-mylogs][MessageFound=(31567284 2005.11.09 hacking tbird-admin1 nov 9)][UserSearch=(hacking)];;[Topic=rtms-stream-mylogs][MessageFound=(31567284 2005.11.09 hacking tbird-admin1 nov 9)][UserSearch=(hacking)];;
+2
+2
+2.00
+2
+2
+[Topic=rtms-stream-mylogs][MessageFound=(31567284 2005.11.09 hacking tbird-admin1 nov 9)][UserSearch=(hacking)];;[Topic=rtms-stream-mylogs][MessageFound=(hunderbird_A6 datasource - 1131567284 2005.11.09 hacking tbird-admin1 Nov 9 12:14:44 local@tbird-admin1 /a)][UserSearch=(hacking)]
 hacking;
