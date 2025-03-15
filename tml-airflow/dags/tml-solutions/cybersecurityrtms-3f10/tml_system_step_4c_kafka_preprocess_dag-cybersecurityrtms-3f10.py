@@ -213,7 +213,8 @@ def ingestfiles():
            filenames = set(filenames)
          
          print("filename=",filenames)             
-           for fdr in filenames:            
+
+         for fdr in filenames:            
              with open(fdr) as f:
               lines = [line.rstrip('\n').strip() for line in f]
               lines = set(lines)
