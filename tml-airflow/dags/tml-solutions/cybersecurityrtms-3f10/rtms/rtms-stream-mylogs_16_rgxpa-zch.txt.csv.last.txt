@@ -1,7 +1,7 @@
 1
 1
 1.00
-471
-471
+478
+478
 [Topic=rtms-stream-mylogs][MessageFound=(patch)][UserSearch=(rgx:p([a-z]+)ch)];
 rgx:p([a-z]+)ch;
