@@ -1,7 +1,7 @@
 0
 0
 0.00
-95
-95
+100
+100
 
 |too many login attempts:address location banned:ip address suspicious:suspicious login attempt:unknown device;
