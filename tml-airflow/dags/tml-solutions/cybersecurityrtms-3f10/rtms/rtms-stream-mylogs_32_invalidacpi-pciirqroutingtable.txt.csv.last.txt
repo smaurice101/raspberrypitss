@@ -1,7 +1,7 @@
 0
 0
 0.00
-389
-389
+396
+396
 
 Invalid ACPI-PCI IRQ routing table;
