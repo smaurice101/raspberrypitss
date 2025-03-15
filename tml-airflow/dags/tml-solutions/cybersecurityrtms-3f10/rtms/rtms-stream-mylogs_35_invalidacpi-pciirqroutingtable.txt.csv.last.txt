@@ -1,8 +1,7 @@
 0
 0
 0.00
-599
-98
+611
+110
 
 Invalid ACPI-PCI IRQ routing table;
-
