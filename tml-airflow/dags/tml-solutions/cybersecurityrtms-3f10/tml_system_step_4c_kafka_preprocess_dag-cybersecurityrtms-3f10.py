@@ -212,7 +212,6 @@ def ingestfiles():
          if len(filenames) > 0:
            filenames = set(filenames)
          
-         print("filename=",filenames)             
 
          for fdr in filenames:            
              with open(fdr) as f:
