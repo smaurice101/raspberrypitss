@@ -1,0 +1,17 @@
+[INFO 2025-04-11_22:22:25] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:22:40] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:22:55] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:07] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:21] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:34] Deleting topic rtms-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:50] Deleting topic attacktopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:03] Deleting topic rtmstopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:15] Deleting topic patterntopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:30] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:46] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:59] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:20] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:22] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:26] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:27] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:42] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
