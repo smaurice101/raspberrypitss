@@ -1,0 +1,89 @@
+[INFO 2025-04-11_22:22:25] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:22:40] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:22:55] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:07] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:21] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:34] Deleting topic rtms-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:23:50] Deleting topic attacktopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:03] Deleting topic rtmstopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:15] Deleting topic patterntopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:30] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:46] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:24:59] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:20] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:22] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:26] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:27] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-11_22:25:42] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:39:19] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2025-04-16_13:39:20] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2025-04-16_13:39:20] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2025-04-16_13:39:20] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2025-04-16_13:44:40] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:44:51] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:44:55] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:44:59] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:45:10] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:45:20] Deleting topic rtms-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:45:32] Deleting topic attacktopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:45:42] Deleting topic rtmstopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:45:52] Deleting topic patterntopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:03] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:15] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:25] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:43] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:45] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:48] Preprocessing DAG in tml_system_step_4a_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:51] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:46:52] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:47:06] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_13:49:05] {'name': ['Project with slug "cybersecurityrtms-3f10-ai" already exists.']}
+[INFO 2025-04-16_14:44:30] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2025-04-16_14:44:31] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2025-04-16_14:44:31] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2025-04-16_14:44:31] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+[INFO 2025-04-16_14:51:33] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:51:43] Deleting topic rtms-stream-mylogs in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:51:54] Deleting topic rtms-stream-mylogs2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:52:05] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:52:16] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:52:27] Deleting topic rtms-preprocess in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:52:39] Deleting topic attacktopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:52:49] Deleting topic rtmstopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:52:59] Deleting topic patterntopic in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:10] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:21] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:31] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:48] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:50] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:53] Preprocessing DAG in tml_system_step_4a_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:55] Preprocessing3 DAG in tml_system_step_4c_kafka_preprocess_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:53:56] Visualization DAG in tml_system_step_7_kafka_visualization_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:54:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2025-04-16_14:56:33] {'name': ['Project with slug "cybersecurityrtms-3f10-ai" already exists.']}
