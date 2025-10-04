@@ -1,0 +1,106 @@
+
+################# ollama.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  selector:
+    matchLabels:
+      app: ollama
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools # IF you DO NOT have NVIDIA GPU then CPU will be used
+        imagePullPolicy: IfNotPresent  # You can also use Always, Never
+        env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: DP_DISABLE_HEALTHCHECKS
+          value: xids
+        - name: WEB_CONCURRENCY
+          value: ""
+        - name: GPU
+          value: "1"
+        - name: COLLECTION
+          value: "tml-llm-model-v2"
+        - name: PORT
+          value: "11434"
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0"
+        - name: TOKENIZERS_PARALLELISM
+          value: "false"
+        - name: temperature
+          value: "0.1"
+        - name: rollbackoffset
+          value: "2"
+        - name: ollama-model
+          value: "llama3.1"
+        - name: deletevectordbcount
+          value: "5"
+        - name: vectordbpath
+          value: "/rawdata/vectordb"
+        - name: topicid
+          value: "-999"
+        - name: enabletls
+          value: "1"
+        - name: partition
+          value: "-1"
+        - name: vectordbcollectionname
+          value: "tml-llm-model-v2"
+        - name: ollamacontainername
+          value: "maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools"
+        - name: mainip
+          value: "http://127.0.0.1"
+        - name: mainport
+          value: "11434"
+        - name: embedding
+          value: "nomic-embed-text"
+        - name: agents_topic_prompt
+          value: "iot-preprocess:These real-time data are from IoT devices, they are being processed by TML.  There are several variables being processed              from each device such as voltage, current, power, engergy used.  I want you to extract insights from the data that show decrease or             increase in the hyperprediction field.  The type of processing being done is in the processtype field.  The value of the processing             is in the hyperprediction field.  Indicate the device data being processed, its name is in the mainuid field. For example, given this data             [hyperprediction=122601.750, processtype=avg, processvariable=voltage, mainuid=ac000w016399359], it says for processvariable=voltage,             and device name mainuid=ac000w016399359, the processtype avg or average, the avg value for voltage is 122601.758.               Do your analysis by grouping on the mainuid field and determine if there are any issues or anaomlies in the IoT devices?==        iot-ml-prediction-results-output:These are real-time machine learning IoT device failure probability predictions.  I want you to              analyse the hyperprediction field to determine if the failure probability predictions for devices exceed 0.80.  If it does exceed,             then this means the device is likely to fail, and you should flag this device for investigation. For example, given this data,             [hyperprediction=0.75, preprocesstype=probability prediction, mainuid=ac000w016399378], it says that device name mainuid=ac000w016399378             has a failure probability (processtype=probability prediction) of 75% (hyperprediction=0.75), so this device should NOT be investigated. But,             if [hyperprediction=0.95, processtype=probability prediction, mainuid=ac000w0163371], says the device name mainuid=ac000w0163371 has             a 95% (hyperprediction=0.95) of failing and so this device must be investigated.  You must flag the devices (in the mainuid field) that have a              high probability of failing greater than 0.80."
+        - name: teamlead_topic
+          value: "team-lead-responses"
+        - name: teamleadprompt
+          value: "Are there any issues or major concerns that require urgent attention, in the data? The data are from IoT devices that are being monitored by individual agents.        If you find issues or concerns, then       highlight the devices name (i.e. in the mainuid field) with details on whether the device failure probabilities are increasing or greater than 0.80.       Indicate if the issue is URGENT."
+        - name: supervisor_topic
+          value: "supervisor-responses"
+        - name: supervisorprompt
+          value: "Are there any major issues or concerns in the data?  This data is IoT data being monitored for potential failure from IoT devices.         If you find a URGENT concern in the failure probabilities of IoT devices indicated by the team lead agent,        then use the send_email tool to send an email message that        highlights devices with the issues that need investigation. Only send an email if its an URGENT issue."
+        - name: agenttoolfunctions
+          value: "send_email:send_email: You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to                     indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters                     smtp_server=                     smtp_port=0                     username=                     password=                     sender=                     recipient=                     subject=                     body=,        average:average:You are an average agent.  Take average of the device failure probabilities."
+        - name: agent_team_supervisor_topic
+          value: "all-agents-responses"
+        - name: TSS
+          value: "0"
+        - name: KUBE
+          value: "1"
+        resources:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+          limits:              # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+            nvidia.com/gpu: 1  # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        ports:
+        - containerPort: 11434
+      tolerations:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+      - key: nvidia.com/gpu    # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        operator: Exists       # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        effect: NoSchedule     # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  labels:
+    app: ollama-service
+spec:
+  type: NodePort #Exposes the service as a node ports
+  ports:
+  - port: 11434
+    name: p1
+    protocol: TCP
+    targetPort: 11434
+  selector:
+    app: ollama
