@@ -1,0 +1,108 @@
+
+################# ollama.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  selector:
+    matchLabels:
+      app: ollama
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools # IF you DO NOT have NVIDIA GPU then CPU will be used
+        imagePullPolicy: IfNotPresent  # You can also use Always, Never
+        env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: DP_DISABLE_HEALTHCHECKS
+          value: xids
+        - name: WEB_CONCURRENCY
+          value: ""
+        - name: GPU
+          value: "1"
+        - name: COLLECTION
+          value: "tml-llm-model-v2"
+        - name: PORT
+          value: "11434"
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0"
+        - name: TOKENIZERS_PARALLELISM
+          value: "false"
+        - name: temperature
+          value: "0.1"
+        - name: rollbackoffset
+          value: "15"
+        - name: ollama-model
+          value: "qwen2.5:3b,qwen2.5:3b,llama3.2:3b"
+        - name: deletevectordbcount
+          value: "5"
+        - name: vectordbpath
+          value: "/rawdata/vectordb"
+        - name: topicid
+          value: "-999"
+        - name: enabletls
+          value: "1"
+        - name: partition
+          value: "-1"
+        - name: vectordbcollectionname
+          value: "tml-llm-model-v2"
+        - name: ollamacontainername
+          value: "maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools"
+        - name: mainip
+          value: "http://127.0.0.1"
+        - name: mainport
+          value: "11434"
+        - name: embedding
+          value: "nomic-embed-text"
+        - name: agents_topic_prompt
+          value: "iot-preprocess<<-You are an IoT data analyst. Point out any anomalies or interesting insights that could help improve the performance and functioning of         IoT device.  The json data are from IOT devices.  the hp field shows the data that are processed for the process variable (pv), using the process types (pt) like:         avg or average, or trend analysis, or anomprob (i.e. anomaly probability) etc.  The device being processed is in the uid field of the json.         here is the json data:              <<data>>      Perform these exact steps only:        1. based on the process variable like voltage, current, power or energy used for each device, extract insights whether the values in the hp field are normal or abnormal/       2. highlight the devices (in the uid field) that show abnormal behavior and require investigations.       3. look at the data from similar uid devices to identify any abnormal trends in the pv field.       4. the voltage numbers are in millivolts.->>        iot-ml-prediction-results-output<<-You are a IoT data analyst and machine learning expert.  The json data below are real-time machine learning             failure probability predictions, in percentages, for IoT devices.  I want you to identify devices with a high failure probability shown in the hp field.             here is the json data:              <<data>>      Perform these exact steps only:        1. based on the value of the hp field determine if the value exceed 85, if so it has a high probability of failure and should be flagged and investigated.       2. highlight the devices (in the uid field) that have a high probability of failing.       3. look at the hp from similar uid devices to identify any abnormal trends in the failure probabilities.       4. only look at data where the pt=machine learning"
+        - name: teamlead_topic
+          value: "team-lead-responses"
+        - name: teamleadprompt
+          value: "Are there any issues or major concerns that require urgent attention, in the data? The data are from IoT devices that are being monitored by individual agents.        If you find issues or concerns, then       highlight the devices name (i.e. the devices name is in the uid field) with details on whether the device failure probabilities are greater than 90% -        this means they are URGENT and must be investigated.       Indicate if the issue is URGENT.         A low failure probability is between 0% to 50%, a medium failure probability is between 51%-75%,       a high probability is between 76% and 89%, and URGENT failure probability between 90% to 100%. ONLY flag URGENT failure probabilities. DO NOT write any              python script with libraries, or with any code, to automate this process.  Just analyse the data and extract important insights."
+        - name: supervisor_topic
+          value: "supervisor-responses"
+        - name: supervisorprompt
+          value: "Perform these exact steps only:        1. Use the send_email agent only if the Team lead identifies an urgent issue.       2. Do NOT send email if the issue is not urgent       3. if the issue is urgent, make sure to indicate the device name, subject and body of the email."
+        - name: agenttoolfunctions
+          value: "send_email<<-send_email<<- You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to                     indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters                     smtp_server=smtp.gmail.com                     smtp_port=587                     username=sebastian.maurice@gmail.com                     password=                     sender=sebastian.maurice@gmail.com                     recipient=sebastian.maurice@otics.ca,sebastian.maurice@gmail.com,smaurice@firstgenesis.com                     subject=                     body=->>        average<<-average<<-You are an average agent.  Take average of the device failure probabilities."
+        - name: agent_team_supervisor_topic
+          value: "all-agents-responses"
+        - name: contextwindow
+          value: "4096"          
+        - name: TSS
+          value: "0"
+        - name: KUBE
+          value: "1"
+        resources:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+          limits:              # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+            nvidia.com/gpu: 1  # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        ports:
+        - containerPort: 11434
+      tolerations:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+      - key: nvidia.com/gpu    # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        operator: Exists       # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        effect: NoSchedule     # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  labels:
+    app: ollama-service
+spec:
+  type: NodePort #Exposes the service as a node ports
+  ports:
+  - port: 11434
+    name: p1
+    protocol: TCP
+    targetPort: 11434
+  selector:
+    app: ollama
