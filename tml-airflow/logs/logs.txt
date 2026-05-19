@@ -8633,3 +8633,8 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
  * branch            main       -> FETCH_HEAD
 Already up to date.
 [INFO 2026-05-19_14:26:51] TML Solution Studio: Starting Git commit process for project: testtss26-3f10
+[INFO 2026-05-19_14:27:52] TML Solution Studio: TML Project Creation: Creating new TML project: /raspberrypitss/tml-airflow/dags/tml-solutions/testtss27-3f10
+[INFO 2026-05-19_14:27:53] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[INFO 2026-05-19_14:29:10] TML Solution Studio: Starting Git commit process for project: testtss27-3f10
