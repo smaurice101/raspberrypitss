@@ -66,9 +66,9 @@ default_args = {
     'agenttopic': 'agent-responses', # this topic containes the individual agent responses
     'agents_topic_prompt': '',
     'teamlead_topic': 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
-    'teamleadprompt': '',
+    'teamleadprompt': '''',
     'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
-    'supervisorprompt': '',
+    'supervisorprompt': '''',
     'agenttoolfunctions': """
         send_email<<-send_email<<- You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to
                      indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters
