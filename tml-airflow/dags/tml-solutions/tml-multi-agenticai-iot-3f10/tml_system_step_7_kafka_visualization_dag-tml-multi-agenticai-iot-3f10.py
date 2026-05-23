@@ -14,18 +14,18 @@ import random
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-  'topic' : '',    # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
-  'dashboardhtml': 'dashboard.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
-  'dashboardhtml-ml': 'iot-failure-machinelearning-agenticai.html', # <<< *** This one is IF you include ML dag
-  'topic-ml' : 'all-agents-responses,iot-preprocess,iot-ml-prediction-results-output',    # <<< *** Separate multiple topics by a comma
-  'dashboardhtml-ai': 'dashboard-ai.html', # <<< *** This one is you include AI dag
-  'topic-ai' : '',    # <<< *** Separate multiple topics by a comma  
-  'dashboardhtml-ml-ai': 'dashboard-ml-ai.html', # <<< *** This one is you include ML-AI dag
-  'topic-ml-ai' : '',    # <<< *** Separate multiple topics by a comma    
-  'secure': '1',   # <<< *** 1=connection is encrypted, 0=no encryption
-  'offset' : '-1',    # <<< *** -1 indicates to read from the last offset always
-  'append' : '0',   # << ** Do not append new data in the browser
-  'rollbackoffset' : '100', # *************** Rollback the data stream by rollbackoffset.  For example, if 500, then Viperviz wll grab all of the data from the last offset - 500
+    'topic': '', # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
+    'dashboardhtml': 'dashboard.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
+    'dashboardhtml-ml': 'iot-failure-machinelearning-agenticai.html', # <<< *** This one is IF you include ML dag
+    'topic-ml': 'all-agents-responses,iot-preprocess,iot-ml-prediction-results-output', # <<< *** Separate multiple topics by a comma
+    'dashboardhtml-ai': 'dashboard-ai.html', # <<< *** This one is you include AI dag
+    'topic-ai': '', # <<< *** Separate multiple topics by a comma
+    'dashboardhtml-ml-ai': 'dashboard-ml-ai.html', # <<< *** This one is you include ML-AI dag
+    'topic-ml-ai': '', # <<< *** Separate multiple topics by a comma
+    'secure': 1, # <<< *** 1=connection is encrypted, 0=no encryption
+    'offset': -1, # <<< *** -1 indicates to read from the last offset always
+    'append': 0, # << ** Do not append new data in the browser
+    'rollbackoffset': 100, # *************** Rollback the data stream by rollbackoffset.  For example, if 500, then Viperviz wll grab all of the data from the last offset - 500
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
