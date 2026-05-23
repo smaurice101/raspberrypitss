@@ -14,18 +14,18 @@ import random
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-  'topic' : 'rtms-preprocess',    # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
-  'dashboardhtml': 'dashboard-rtms.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
-  'dashboardhtml-ml': 'rtms.html', # <<< *** This one is IF you include ML dag
-  'topic-ml' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma
-  'dashboardhtml-ai': 'dashboard-rtms-ai-mitre.html', # <<< *** This one is you include AI dag
-  'topic-ai' : 'rtms-pgpt-ai-mitre',    # <<< *** Separate multiple topics by a comma  
-  'dashboardhtml-ml-ai': 'dashboard-ml-ai.html', # <<< *** This one is you include ML-AI dag
-  'topic-ml-ai' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma    
-  'secure': '1',   # <<< *** 1=connection is encrypted, 0=no encryption
-  'offset' : '-1',    # <<< *** -1 indicates to read from the last offset always
-  'append' : '0',   # << ** Do not append new data in the browser
-  'rollbackoffset' : '400', # *************** Rollback the data stream by rollbackoffset.  For example, if 500, then Viperviz wll grab all of the data from the last offset - 500
+    'topic': 'rtms-preprocess', # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
+    'dashboardhtml': 'dashboard-rtms.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
+    'dashboardhtml-ml': 'rtms.html', # <<< *** This one is IF you include ML dag
+    'topic-ml': ''iot-preprocess',
+    'dashboardhtml-ai': 'dashboard-rtms-ai-mitre.html', # <<< *** This one is you include AI dag
+    'topic-ai': 'rtms-pgpt-ai-mitre', # <<< *** Separate multiple topics by a comma
+    'dashboardhtml-ml-ai': 'dashboard-ml-ai.html', # <<< *** This one is you include ML-AI dag
+    'topic-ml-ai': ''iot-preprocess',
+    'secure': 1, # <<< *** 1=connection is encrypted, 0=no encryption
+    'offset': -1, # <<< *** -1 indicates to read from the last offset always
+    'append': 0, # << ** Do not append new data in the browser
+    'rollbackoffset': 400, # *************** Rollback the data stream by rollbackoffset.  For example, if 500, then Viperviz wll grab all of the data from the last offset - 500
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
