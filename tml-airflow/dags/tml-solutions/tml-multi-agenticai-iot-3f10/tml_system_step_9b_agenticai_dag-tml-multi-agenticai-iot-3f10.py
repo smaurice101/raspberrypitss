@@ -64,80 +64,11 @@ default_args = {
     'companyname': 'otics', # <<< *** Change as needed
     'consumerid': 'streamtopic', # <<< *** Leave as is
     'agenttopic': 'agent-responses', # this topic containes the individual agent responses
-    'agents_topic_prompt': """"""
-        iot-preprocess<<-You are a precise data analysis assistant. Your task is to point out any anomalies or interesting insights that could help improve the performance and functioning of 
-        IoT device.  The json data are from IOT devices.  the hp field shows the data that are processed for the process variable (pv), using the process types (pt) like: 
-        avg or average, or trend analysis, or anomprob (i.e. anomaly probability) etc.  The device being processed is in the uid field of the json.
-         here is the json data:
-    
-          <<data>>
-
-         INSTRUCTIONS:
-         1. Examine each number in the json array
-         2. Provide a brief analysis of the results
-         
-         FORMAT YOUR RESPONSE:
-         - Filtered results: [list the qualifying numbers with their "uid" fields]
-         - Count of qualifying numbers: [number]
-         - Analysis: [brief explanation of what the filter revealed]
-         
-         Be precise and concise in your response.->>
-        iot-ml-prediction-results-output<<-You are a precise data analysis assistant. Your task is to filter and analyze numeric data based on specified criteria.
-
-        TASK: Filter numbers from the given json array using the threshold: greater than 90
-
-        Input JSON arrary:
- 
-             <<data>>
-
-         INSTRUCTIONS:
-         1. Examine each number in the json array
-         2. Apply the filter condition: number > 90
-         3. Return only numbers that meet the criteria with their "uid" fields
-         4. If no numbers meet the criteria, explicitly state this
-         5. Provide a brief analysis of the results
-         
-         FORMAT YOUR RESPONSE:
-         - Filtered results: [list the qualifying numbers with their "uid" fields]
-         - Count of qualifying numbers: [number]
-         - Analysis: [brief explanation of what the filter revealed]
-         
-         Be precise and concise in your response.
-""",""", # <topic agent will monitor:prompt you want for the agent>
+    'agents_topic_prompt': '',
     'teamlead_topic': 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
-    'teamleadprompt': """"""
-         Analyze the dataset containing IoT device monitoring records managed by individual agents. 
-         Review all data fields to determine whether there are any issues or major concerns requiring urgent attention.
-
-         Focus on the following criteria:
-         1. Each record contains a unique device identifier stored in the field "uid".
-         2. Examine the failure probability for each device stored in the hp field.
-         3. Categorize the probabilities as follows:
-          - Low: 0% to 50%
-          - Medium: 51% to 75%
-          - High: 76% to 89%
-          - Urgent: 90% to 100%
-
-        Tasks:
-        - Identify and highlight devices (by their "uid") that have **urgent failure probabilities** (≥ 90%).
-        - For each flagged device, provide details and reasoning on why it may require immediate investigation.
-        - Only include devices that meet the urgent threshold. Do not report on low, medium, or high categories unless relevant for context.
-        - State clearly whether the identified issue is *urgent*.
-        - Do not use or generate any code; perform a reasoning-based analysis directly from the provided data cool.
-
-""",""", # Enter the team lead prompt
+    'teamleadprompt': '',
     'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
-    'supervisorprompt': """"""
-        You are a team supervisor analyzing operational device data and recommending whether an alert email should be send.  
-        You manage a send email expert and a average expert. 
-        For send email, use send_email agent. 
-        For average, use average agent.
-
-       INSTRUCTIONS:
-       1.Analyze the Team Lead assessment and determine the proper action:
-       - If devices are marked urgent or failure probabilities exceed 90%, select "send_email".
-       - If no urgent devices are found or probabilities remain below thresholds, then no action is needed.
-""",""", # Enter the supervisor prompt
+    'supervisorprompt': '',
     'agenttoolfunctions': """
         send_email<<-send_email<<- You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to
                      indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters
@@ -150,7 +81,7 @@ default_args = {
                      subject=''
                      body=''->>
         average<<-average<<-You are an average agent.  Take average of the device failure probabilities.             
-""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient),, # enter the tools : tool_function is the name of the funtions in the agenttools python file
+""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient),,, # enter the tools : tool_function is the name of the funtions in the agenttools python file
     'agent_team_supervisor_topic': 'all-agents-responses', # this topic will hold the responses from agents, team lead and supervisor
     'producerid': 'agentic-ai', # <<< *** Leave as is
     'identifier': 'This is analysing TML output with Agentic AI',
