@@ -81,7 +81,7 @@ default_args = {
                      subject=''
                      body=''->>
         average<<-average<<-You are an average agent.  Take average of the device failure probabilities.             
-""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient), # enter the tools : tool_function is the name of the funtions in the agenttools python file
+""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient),, # enter the tools : tool_function is the name of the funtions in the agenttools python file
     'agent_team_supervisor_topic': 'all-agents-responses', # this topic will hold the responses from agents, team lead and supervisor
     'producerid': 'agentic-ai', # <<< *** Leave as is
     'identifier': 'This is analysing TML output with Agentic AI',
