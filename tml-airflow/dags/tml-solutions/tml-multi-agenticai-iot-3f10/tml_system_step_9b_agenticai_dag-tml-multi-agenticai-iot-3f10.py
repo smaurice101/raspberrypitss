@@ -66,9 +66,39 @@ default_args = {
     'agenttopic': 'agent-responses', # this topic containes the individual agent responses
     'agents_topic_prompt': '',
     'teamlead_topic': 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
-    'teamleadprompt': '''',
+    'teamleadprompt': """"""
+         Analyze the dataset containing IoT device monitoring records managed by individual agents. 
+         Review all data fields to determine whether there are any issues or major concerns requiring urgent attention.
+
+         Focus on the following criteria:
+         1. Each record contains a unique device identifier stored in the field "uid".
+         2. Examine the failure probability for each device stored in the hp field.
+         3. Categorize the probabilities as follows:
+          - Low: 0% to 50%
+          - Medium: 51% to 75%
+          - High: 76% to 89%
+          - Urgent: 90% to 100%
+
+        Tasks:
+        - Identify and highlight devices (by their "uid") that have **urgent failure probabilities** (≥ 90%).
+        - For each flagged device, provide details and reasoning on why it may require immediate investigation.
+        - Only include devices that meet the urgent threshold. Do not report on low, medium, or high categories unless relevant for context.
+        - State clearly whether the identified issue is *urgent*.
+        - Do not use or generate any code; perform a reasoning-based analysis directly from the provided data.
+
+"""""",
     'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
-    'supervisorprompt': '''',
+    'supervisorprompt': """"""
+        You are a team supervisor analyzing operational device data and recommending whether an alert email should be send.  
+        You manage a send email expert and a average expert. 
+        For send email, use send_email agent. 
+        For average, use average agent.
+
+       INSTRUCTIONS:
+       1.Analyze the Team Lead assessment and determine the proper action:
+       - If devices are marked urgent or failure probabilities exceed 90%, select "send_email".
+       - If no urgent devices are found or probabilities remain below thresholds, then no action is needed.
+"""""",
     'agenttoolfunctions': """
         send_email<<-send_email<<- You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to
                      indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters
@@ -81,7 +111,7 @@ default_args = {
                      subject=''
                      body=''->>
         average<<-average<<-You are an average agent.  Take average of the device failure probabilities.             
-""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient),, # enter the tools : tool_function is the name of the funtions in the agenttools python file
+""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient), # enter the tools : tool_function is the name of the funtions in the agenttools python file
     'agent_team_supervisor_topic': 'all-agents-responses', # this topic will hold the responses from agents, team lead and supervisor
     'producerid': 'agentic-ai', # <<< *** Leave as is
     'identifier': 'This is analysing TML output with Agentic AI',
