@@ -64,7 +64,46 @@ default_args = {
     'companyname': 'otics main', # <<< *** Change as needed
     'consumerid': 'streamtopic', # <<< *** Leave as is
     'agenttopic': 'agent-responses', # this topic containes the individual agent responses
-    'agents_topic_prompt': '',
+    'agents_topic_prompt': """
+        iot-preprocess<<-You are a precise data analysis assistant. Your task is to point out any anomalies or interesting insights that could help improve the performance and functioning of 
+        IoT device.  The json data are from IOT devices.  the hp field shows the data that are processed for the process variable (pv), using the process types (pt) like: 
+        avg or average, or trend analysis, or anomprob (i.e. anomaly probability) etc.  The device being processed is in the uid field of the json.
+         here is the json data:
+    
+          <<data>>
+
+         INSTRUCTIONS:
+         1. Examine each number in the json array
+         2. Provide a brief analysis of the results
+         
+         FORMAT YOUR RESPONSE:
+         - Filtered results: [list the qualifying numbers with their "uid" fields]
+         - Count of qualifying numbers: [number]
+         - Analysis: [brief explanation of what the filter revealed]
+         
+         Be precise and concise in your response.->>
+        iot-ml-prediction-results-output<<-You are a precise data analysis assistant. Your task is to filter and analyze numeric data based on specified criteria.
+
+        TASK: Filter numbers from the given json array using the threshold: greater than 90
+
+        Input JSON arrary:
+ 
+             <<data>>
+
+         INSTRUCTIONS:
+         1. Examine each number in the json array
+         2. Apply the filter condition: number > 90
+         3. Return only numbers that meet the criteria with their "uid" fields
+         4. If no numbers meet the criteria, explicitly state this
+         5. Provide a brief analysis of the results
+         
+         FORMAT YOUR RESPONSE:
+         - Filtered results: [list the qualifying numbers with their "uid" fields]
+         - Count of qualifying numbers: [number]
+         - Analysis: [brief explanation of what the filter revealed]
+         
+         Be precise and concise in your response.
+""", 
     'teamlead_topic': 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
     'teamleadprompt': '',
     'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
