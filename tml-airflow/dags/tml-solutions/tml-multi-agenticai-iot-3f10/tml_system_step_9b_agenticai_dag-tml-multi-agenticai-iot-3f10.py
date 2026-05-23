@@ -61,7 +61,7 @@ default_args = {
     'microserviceid': '', # change as needed
     'topicid': -999, # leave as is
     'delay': 100, # change as needed
-    'companyname': 'otics', # <<< *** Change as needed
+    'companyname': 'otics main', # <<< *** Change as needed
     'consumerid': 'streamtopic', # <<< *** Leave as is
     'agenttopic': 'agent-responses', # this topic containes the individual agent responses
     'agents_topic_prompt': '',
