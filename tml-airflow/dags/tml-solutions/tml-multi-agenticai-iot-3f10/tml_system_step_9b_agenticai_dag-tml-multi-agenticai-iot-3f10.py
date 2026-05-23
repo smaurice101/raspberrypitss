@@ -127,7 +127,17 @@ default_args = {
 
 """, 
     'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
-    'supervisorprompt': '',
+    'supervisorprompt': """
+        You are a team supervisor analyzing operational device data and recommending whether an alert email should be send.  
+        You manage a send email expert and a average expert. 
+        For send email, use send_email agent. 
+        For average, use average agent.
+
+       INSTRUCTIONS:
+       1.Analyze the Team Lead assessment and determine the proper action:
+       - If devices are marked urgent or failure probabilities exceed 90%, select "send_email".
+       - If no urgent devices are found or probabilities remain below thresholds, then no action is needed.
+""", 
     'agenttoolfunctions': """
         send_email<<-send_email<<- You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to
                      indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters
