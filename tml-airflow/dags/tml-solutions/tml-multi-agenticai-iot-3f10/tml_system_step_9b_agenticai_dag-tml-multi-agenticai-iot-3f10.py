@@ -105,7 +105,27 @@ default_args = {
          Be precise and concise in your response.
 """, 
     'teamlead_topic': 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
-    'teamleadprompt': '',
+    'teamleadprompt': """
+         Analyze the dataset containing IoT device monitoring records managed by individual agents. 
+         Review all data fields to determine whether there are any issues or major concerns requiring urgent attention.
+
+         Focus on the following criteria:
+         1. Each record contains a unique device identifier stored in the field "uid".
+         2. Examine the failure probability for each device stored in the hp field.
+         3. Categorize the probabilities as follows:
+          - Low: 0% to 50%
+          - Medium: 51% to 75%
+          - High: 76% to 89%
+          - Urgent: 90% to 100%
+
+        Tasks:
+        - Identify and highlight devices (by their "uid") that have **urgent failure probabilities** (≥ 90%).
+        - For each flagged device, provide details and reasoning on why it may require immediate investigation.
+        - Only include devices that meet the urgent threshold. Do not report on low, medium, or high categories unless relevant for context.
+        - State clearly whether the identified issue is *urgent*.
+        - Do not use or generate any code; perform a reasoning-based analysis directly from the provided data.
+
+""", 
     'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
     'supervisorprompt': '',
     'agenttoolfunctions': """
