@@ -51,20 +51,20 @@ if 'recipient' in os.environ:
    recipient=os.environ['recipient']
 
 default_args = {
- 'owner': 'Sebastian Maurice',   # <<< *** Change as needed
- 'ollamacontainername' : 'maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools', #'maadsdocker/tml-privategpt-no-gpu-amd64',  # enter a valid container https://hub.docker.com/r/maadsdocker/tml-privategpt-no-gpu-amd64
- 'rollbackoffset' : '15',  # <<< *** Change as needed
- 'offset' : '-1', # leave as is
- 'enabletls' : '1', # change as needed
- 'brokerhost' : '', # <<< *** Leave as is
- 'brokerport' : '-999', # <<< *** Leave as is
- 'microserviceid' : '',  # change as needed
- 'topicid' : '-999', # leave as is
- 'delay' : '100', # change as needed
- 'companyname' : 'otics',  # <<< *** Change as needed
- 'consumerid' : 'streamtopic',  # <<< *** Leave as is
- 'agenttopic' : 'agent-responses', # this topic containes the individual agent responses 
- 'agents_topic_prompt' : """
+    'owner': 'Sebastian Maurice', # <<< *** Change as needed
+    'ollamacontainername': 'maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools', # 'maadsdocker/tml-privategpt-no-gpu-amd64',  # enter a valid container https://hub.docker.com/r/maadsdocker/tml-privategpt-no-gpu-amd64
+    'rollbackoffset': 15, # <<< *** Change as needed
+    'offset': -1, # leave as is
+    'enabletls': 1, # change as needed
+    'brokerhost': '', # <<< *** Leave as is
+    'brokerport': -999, # <<< *** Leave as is
+    'microserviceid': '', # change as needed
+    'topicid': -999, # leave as is
+    'delay': 100, # change as needed
+    'companyname': 'otics', # <<< *** Change as needed
+    'consumerid': 'streamtopic', # <<< *** Leave as is
+    'agenttopic': 'agent-responses', # this topic containes the individual agent responses
+    'agents_topic_prompt': """"""
         iot-preprocess<<-You are a precise data analysis assistant. Your task is to point out any anomalies or interesting insights that could help improve the performance and functioning of 
         IoT device.  The json data are from IOT devices.  the hp field shows the data that are processed for the process variable (pv), using the process types (pt) like: 
         avg or average, or trend analysis, or anomprob (i.e. anomaly probability) etc.  The device being processed is in the uid field of the json.
@@ -103,9 +103,9 @@ default_args = {
          - Analysis: [brief explanation of what the filter revealed]
          
          Be precise and concise in your response.
-""", # <topic agent will monitor:prompt you want for the agent>
- 'teamlead_topic' : 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
- 'teamleadprompt' : """
+""",""", # <topic agent will monitor:prompt you want for the agent>
+    'teamlead_topic': 'team-lead-responses', # Enter the team lead topic - all team lead responses will be written to this topic
+    'teamleadprompt': """"""
          Analyze the dataset containing IoT device monitoring records managed by individual agents. 
          Review all data fields to determine whether there are any issues or major concerns requiring urgent attention.
 
@@ -123,11 +123,11 @@ default_args = {
         - For each flagged device, provide details and reasoning on why it may require immediate investigation.
         - Only include devices that meet the urgent threshold. Do not report on low, medium, or high categories unless relevant for context.
         - State clearly whether the identified issue is *urgent*.
-        - Do not use or generate any code; perform a reasoning-based analysis directly from the provided data.
+        - Do not use or generate any code; perform a reasoning-based analysis directly from the provided data cool.
 
-""", # Enter the team lead prompt 
-'supervisor_topic' : 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic 
-'supervisorprompt' : """
+""",""", # Enter the team lead prompt
+    'supervisor_topic': 'supervisor-responses', # Enter the supervisor topic - all supervisor responses will be written to this topic
+    'supervisorprompt': """"""
         You are a team supervisor analyzing operational device data and recommending whether an alert email should be send.  
         You manage a send email expert and a average expert. 
         For send email, use send_email agent. 
@@ -137,8 +137,8 @@ default_args = {
        1.Analyze the Team Lead assessment and determine the proper action:
        - If devices are marked urgent or failure probabilities exceed 90%, select "send_email".
        - If no urgent devices are found or probabilities remain below thresholds, then no action is needed.
-""", # Enter the supervisor prompt 
- 'agenttoolfunctions' : """
+""",""", # Enter the supervisor prompt
+    'agenttoolfunctions': """
         send_email<<-send_email<<- You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to
                      indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters
                      smtp_server='{}'
@@ -150,25 +150,24 @@ default_args = {
                      subject=''
                      body=''->>
         average<<-average<<-You are an average agent.  Take average of the device failure probabilities.             
-""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient),  # enter the tools : tool_function is the name of the funtions in the agenttools python file
- 'agent_team_supervisor_topic': 'all-agents-responses', # this topic will hold the responses from agents, team lead and supervisor
-'producerid' : 'agentic-ai',   # <<< *** Leave as is
- 'identifier' : 'This is analysing TML output with Agentic AI',
- 'mainip': 'http://127.0.0.1', # Ollama server container listening on this host
- 'mainport' : '11434', # Ollama listening on this port
- 'embedding': 'nomic-embed-text', # Embedding model
- 'preprocesstype' : '', # Leave as is 
- 'partition' : '-1', # Leave as is 
- 'vectordbcollectionname' : 'tml-llm-model-v2', # change as needed
- 'concurrency' : '2', # change as needed Leave at 1
- 'CUDA_VISIBLE_DEVICES' : '0', # change as needed
- 'temperature' : '0.1', # This value ranges between 0 and 1, it controls how conservative LLM model will be, if 0 very very, if 1 it will hallucinate
- #--------------------
- 'ollama-model': 'phi3:3.8b,phi3:3.8b,llama3.2:3b', # maximum  3 models can be specified: agent,teamlead,supervisor
- 'deletevectordbcount': '5',
- 'vectordbpath': '/rawdata/vectordb',
- 'contextwindow': '4096',
- 'localmodelsfolder': '/mnt/c/maads/tml-airflow/rawdata/ollama'
+""".format(SMTP_SERVER,SMTP_PORT,SMTP_USERNAME,SMTP_PASSWORD,SMTP_USERNAME,recipient),, # enter the tools : tool_function is the name of the funtions in the agenttools python file
+    'agent_team_supervisor_topic': 'all-agents-responses', # this topic will hold the responses from agents, team lead and supervisor
+    'producerid': 'agentic-ai', # <<< *** Leave as is
+    'identifier': 'This is analysing TML output with Agentic AI',
+    'mainip': 'http://127.0.0.1', # Ollama server container listening on this host
+    'mainport': 11434, # Ollama listening on this port
+    'embedding': 'nomic-embed-text', # Embedding model
+    'preprocesstype': '', # Leave as is
+    'partition': -1, # Leave as is
+    'vectordbcollectionname': 'tml-llm-model-v2', # change as needed
+    'concurrency': 2, # change as needed Leave at 1
+    'CUDA_VISIBLE_DEVICES': 0, # change as needed
+    'temperature': 0.1, # This value ranges between 0 and 1, it controls how conservative LLM model will be, if 0 very very, if 1 it will hallucinate
+    'ollama-model': 'phi3:3.8b,phi3:3.8b,llama3.2:3b', # maximum  3 models can be specified: agent,teamlead,supervisor
+    'deletevectordbcount': 5,
+    'vectordbpath': '/rawdata/vectordb',
+    'contextwindow': 4096,
+    'localmodelsfolder': '/mnt/c/maads/tml-airflow/rawdata/ollama',
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
