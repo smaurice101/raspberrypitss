@@ -39,12 +39,12 @@ default_args = {
     'identifier': 'IoT device performance and failures main', # <<< ** Change as needed
     'preprocesstypes': 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
     'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed
-    'jsoncriteria': """uid=metadata.dsn,filter:allrecords' + chr(126) + '\\
-subtopics=metadata.property_name' + chr(126) + '\\
-values=datapoint.value' + chr(126) + '\\
-identifiers=metadata.display_name' + chr(126) + '\\
-datetime=datapoint.updated_at' + chr(126) + '\\
-msgid=datapoint.id' + chr(126) + '\\
+    'jsoncriteria': """uid=metadata.dsn,filter:allrecords~\
+subtopics=metadata.property_name~\
+values=datapoint.value~\
+identifiers=metadata.display_name~\
+datetime=datapoint.updated_at~\
+msgid=datapoint.id~\
 latlong=lat:long""", 
 }
 
