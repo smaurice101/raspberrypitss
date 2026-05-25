@@ -39,7 +39,7 @@ default_args = {
     'identifier': 'RTMS Cybersecurity Prevention', # <<< ** Change as needed
     'preprocesstypes': 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
     'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed
-    'jsoncriteria': 'uid=hostName,filter:allrecords~',
+    'jsoncriteria': 'uid=hostName,filter:allrecords' + chr(126) + '',
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
