@@ -127,7 +127,7 @@
              - name: step4preprocess_data_topic # STEP 4
                value: 'iot-preprocess'                                                         
              - name: step4preprocesstypes # STEP 4
-               value: 'anomprob,trend,avg'                                                         
+               value: 'anomprob,trend,std'                                                         
              - name: step4jsoncriteria # STEP 4
                value: 'uid=metadata.dsn,filter:allrecords~subtopics=metadata.property_name~values=datapoint.value~identifiers=metadata.display_name~datetime=datapoint.updated_at~msgid=datapoint.id~latlong=lat:long'                           
              - name: step4ajsoncriteria # STEP 4a 
