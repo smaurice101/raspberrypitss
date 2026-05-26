@@ -37,7 +37,7 @@ default_args = {
     'usemysql': 1, # do not modify
     'streamstojoin': '', # leave blank
     'identifier': 'IoT device performance and failures', # <<< ** Change as needed
-    'preprocesstypes': ''anomprob',
+    'preprocesstypes': 'anomprob,avg,trend',
     'pathtotmlattrs': ''oem=n/a',
     'jsoncriteria': ''uid=metadata.dsn',
 }
