@@ -18,6 +18,46 @@ sys.dont_write_bytecode = True
 
 ######################################################USER CHOSEN PARAMETERS ###########################################################
 default_args = {
+ 'owner': 'Sebastian Maurice',   # <<< *** Change as needed
+ 'pgptcontainername' : 'maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-v2', #'maadsdocker/tml-privategpt-no-gpu-amd64',  # enter a valid container https://hub.docker.com/r/maadsdocker/tml-privategpt-no-gpu-amd64
+ 'rollbackoffset' : '5',  # <<< *** Change as needed
+ 'offset' : '-1', # leave as is
+ 'enabletls' : '1', # change as needed
+ 'brokerhost' : '', # <<< *** Leave as is
+ 'brokerport' : '-999', # <<< *** Leave as is
+ 'microserviceid' : '',  # change as needed
+ 'topicid' : '-999', # leave as is
+ 'delay' : '100', # change as needed
+ 'companyname' : 'otics',  # <<< *** Change as needed
+ 'consumerid' : 'streamtopic',  # <<< *** Leave as is
+ 'consumefrom' : 'cisco-network-preprocess',    # <<< *** Change as needed
+ 'pgpt_data_topic' : 'cisco-network-privategpt',
+ 'producerid' : 'private-gpt',   # <<< *** Leave as is
+ 'identifier' : 'This is analysing TML output with privategpt',
+ 'pgpthost': 'http://127.0.0.1', # PrivateGPT container listening on this host
+ 'pgptport' : '8001', # PrivateGPT listening on this port
+ 'preprocesstype' : '', # Leave as is 
+ 'partition' : '-1', # Leave as is 
+ 'prompt': '[INST] Are there any errors in the  logs? Give s detailed response including IP addresses and host machines.[/INST]', # Enter your prompt here
+ 'context' : 'This is network data from inbound and outbound packets. The data are \
+anomaly probabilities for cyber threats from analysis of inbound and outbound packets. If inbound or outbound \
+anomaly probabilities are less than 0.60, it is likely the risk of a cyber attack is also low. If its above 0.60, then risk is mid to high.', # what is this data about? Provide context to PrivateGPT
+ 'jsonkeytogather' : 'hyperprediction', # enter key you want to gather data from to analyse with PrivateGpt i.e. Identifier or hyperprediction
+ 'keyattribute' : 'inboundpackets,outboundpackets', # change as needed  
+ 'keyprocesstype' : 'anomprob',  # change as needed
+ 'hyperbatch' : '0', # Set to 1 if you want to batch all of the hyperpredictions and sent to chatgpt, set to 0, if you want to send it one by one   
+ 'vectordbcollectionname' : 'tml-llm-model-v2', # change as needed
+ 'concurrency' : '2', # change as needed Leave at 1
+ 'CUDA_VISIBLE_DEVICES' : '0', # change as needed
+ 'docfolder': 'mylogs,mylogs2',  # You can specify the sub-folder that contains TEXT or PDF files..this is a subfolder in the MAIN folder mapped to /rawdata
+                   # if this field in NON-EMPTY, privateGPT will query these documents as the CONTEXT to answer your prompt
+                   # separate multiple folders with a comma
+ 'docfolderingestinterval': '900', # how often you want TML to RE-LOAD the files in docfolder - enter the number of SECONDS
+ 'useidentifierinprompt': '1', # If 1, this uses the identifier in the TML json output and appends it to prompt, If 0, it uses the prompt only    
+ 'searchterms': '192.168.--identifier--,authentication failure',
+ 'temperature' : '0.1', # This value ranges between 0 and 1, it controls how conservative LLM model will be, if 0 very very, if 1 it will hallucinate
+ 'vectorsearchtype' : 'Manhattan', # this is for the Qdrant Search algorithm.  it can be: Cosine, Euclidean, Dot, or Manhattan
+ 'streamall': '1'
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
