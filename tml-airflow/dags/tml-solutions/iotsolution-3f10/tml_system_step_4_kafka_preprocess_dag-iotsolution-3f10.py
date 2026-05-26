@@ -39,7 +39,13 @@ default_args = {
     'identifier': 'IoT device performance and failures', # <<< ** Change as needed
     'preprocesstypes': 'anomprob,avg,trend',
     'pathtotmlattrs': ''oem=n/a',
-    'jsoncriteria': ''uid=metadata.dsn',
+    'jsoncriteria': """uid=metadata.dsn,filter:allrecords~\
+subtopics=metadata.property_name~\
+values=datapoint.value~\
+identifiers=metadata.display_name~\
+datetime=datapoint.updated_at~\
+msgid=datapoint.id~\
+latlong=lat:long""", 
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
