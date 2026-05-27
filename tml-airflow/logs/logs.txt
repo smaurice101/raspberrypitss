@@ -9392,3 +9392,4 @@ Already up to date.
 [INFO 2026-05-27_19:00:37] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
 [INFO 2026-05-27_19:04:14] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
 [INFO 2026-05-27_19:05:23] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2026-05-27_19:06:10] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
