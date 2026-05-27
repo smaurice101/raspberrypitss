@@ -9396,3 +9396,4 @@ Already up to date.
 [INFO 2026-05-27_19:06:16] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 [INFO 2026-05-27_19:15:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 [INFO 2026-05-27_19:22:12] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
+[INFO 2026-05-27_19:22:58] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
