@@ -38,7 +38,7 @@ default_args = {
     'streamstojoin': '', # leave blank
     'identifier': 'IoT device performance and failures', # <<< ** Change as needed
     'preprocesstypes': 'anomprob,avg,trend',
-    'pathtotmlattrs': ''oem=n/a',
+    'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a',
     'jsoncriteria': """uid=metadata.dsn,filter:allrecords~\
 subtopics=metadata.property_name~\
 values=datapoint.value~\
