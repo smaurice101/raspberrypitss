@@ -17,7 +17,7 @@ default_args = {
     'topic': 'rtms-preprocess', # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
     'dashboardhtml': 'dashboard-rtms.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
     'dashboardhtml-ml': 'rtms.html', # <<< *** This one is IF you include ML dag
-    'topic-ml': ''iot-preprocess',
+    'topic-ml': 'iot-preprocess',
     'dashboardhtml-ai': 'dashboard-rtms-ai-mitre.html', # <<< *** This one is you include AI dag
     'topic-ai': 'rtms-pgpt-ai-mitre', # <<< *** Separate multiple topics by a comma
     'dashboardhtml-ml-ai': 'dashboard-ml-ai.html', # <<< *** This one is you include ML-AI dag
