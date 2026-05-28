@@ -24,8 +24,8 @@ default_args = {
     'brokerhost': '', # <<< ********** Leave as is
     'brokerport': -999, # <<< ********** Leave as is
     'microserviceid': '', # <<< ********** You change as needed
-    'raw_data_topic': ''iot-raw-data',
-    'preprocess_data_topic': ''iot-preprocess',
+    'raw_data_topic': 'iot-raw-data',
+    'preprocess_data_topic': 'iot-preprocess',
     'ml_data_topic': 'ml-data', # Separate multiple topics with comma <<< ********** You change topic names as needed
     'prediction_data_topic': 'prediction-data', # Separate multiple topics with comma <<< ********** You change topic names as needed
     'pgpt_data_topic': 'cisco-network-privategpt', # PrivateGPT will produce responses to this topic - change as  needed
