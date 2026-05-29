@@ -77,12 +77,7 @@ def dockerit(**context):
            tsslogging.locallogs("INFO", "STEP 8: Docker Container created and optimized.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v))         
            
          #v=subprocess.call("docker push {}".format(cname), shell=True) 
-         proc = subprocess.Popen(
-            ["docker", "push", cname],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-         )             
-         #proc=subprocess.Popen("docker push {}".format(cname), shell=True)
+         proc=subprocess.Popen("docker push {}".format(cname), shell=True)
          #time.sleep(3)   
          #proc.terminate()
          #proc.wait()
