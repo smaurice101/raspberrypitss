@@ -9925,3 +9925,4 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2026-05-29_14:10:25] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
 [INFO 2026-05-29_14:10:42] {'name': ['Project with slug "cybersecurityrtms-3f10" already exists.']}
 [WARN 2026-05-29_14:17:39] Unable to optimize container
+[WARN 2026-05-29_14:18:51] Unable to optimize container
