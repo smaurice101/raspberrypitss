@@ -9,10 +9,11 @@ import tsslogging
 import git
 import time
 import sys
+import threading
 
 sys.dont_write_bytecode = True
 
-############################################################### DO NOT MODIFY BELOW ####################################################
+############################################################### DO NOT MODIFY BELOW ####################################################    
 
 def doparse(fname,farr):
       data = ''
@@ -70,17 +71,24 @@ def dockerit(**context):
          cbuf="docker commit {} {}".format(cid,cname)
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
        
-         status=tsslogging.optimizecontainer(cname,sname,sd) 
-         if status=="":   
-           tsslogging.locallogs("WARN", "STEP 8: There seems to be an issue optimizing the container.  Here is the commit command: {} - message={}.  Container may NOT pushed.".format(cbuf,v)) 
-         else:
-           tsslogging.locallogs("INFO", "STEP 8: Docker Container created and optimized.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v))         
+         #status=tsslogging.optimizecontainer(cname,sname,sd) 
+         optimize_thread = threading.Thread(
+            target=tsslogging.optimizecontainer, 
+            args=(cname, sname, sd)
+         )
+         optimize_thread.daemon = True  # Allows your main program to exit cleanly if it restarts
+         optimize_thread.start()
+
+         #if status=="":   
+          # tsslogging.locallogs("WARN", "STEP 8: There seems to be an issue optimizing the container.  Here is the commit command: {} - message={}.  Container may NOT pushed.".format(cbuf,v)) 
+         #else:
+         tsslogging.locallogs("INFO", "STEP 8: Docker Container created and optimized.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v))         
            
          #v=subprocess.call("docker push {}".format(cname), shell=True) 
-         proc=subprocess.Popen("docker push {}".format(cname), shell=True)
-         time.sleep(3)   
-         proc.terminate()
-         proc.wait()
+         #proc=subprocess.Popen("docker push {}".format(cname), shell=True)
+         #time.sleep(3)   
+         #proc.terminate()
+         #proc.wait()
 
        elif len(cid) <= 1:
               tsslogging.locallogs("ERROR", "STEP 8: There seems to be an issue with docker commit. Here is the command: docker commit {} {}".format(cid,cname)) 
