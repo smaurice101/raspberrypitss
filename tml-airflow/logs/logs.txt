@@ -9992,3 +9992,4 @@ Already up to date.
 [WARN 2026-05-29_15:53:00] Unable to optimize container: CNAME=maadsdocker/myawesometmlsolution-3f10-amd64, SNAME=myawesometmlsolution-3f10, SD=solution_preprocessing_dag-myawesometmlsolution-3f10, REPO=raspberrypitss
 [INFO 2026-05-29_15:58:32] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2026-05-29_15:58:39] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+[WARN 2026-05-29_16:37:43] Unable to optimize container: CNAME=maadsdocker/myawesometmlsolution-3f10-amd64, SNAME=myawesometmlsolution-3f10, SD=solution_preprocessing_dag-myawesometmlsolution-3f10, REPO=raspberrypitss
