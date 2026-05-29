@@ -71,25 +71,18 @@ def dockerit(**context):
          subprocess.call("docker rmi -f $(docker images --filter 'dangling=true' -q --no-trunc)", shell=True)
          cbuf="docker commit {} {}".format(cid,cname)
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
-       
-         script_env = os.environ.copy()
-         script_env["DOCKERUSERNAME"] = os.environ.get('DOCKERUSERNAME', '')
-         docker_password = os.environ.get('DOCKERPASSWORD', '')
-         
-         unique_id = uuid.uuid4().hex
-         token_file = f"/tmp/.docker_token_{unique_id}"
-         with open(token_file, "w") as f:
-            f.write(docker_password)
-      
-         # Spawns the script asynchronously and moves to the next line of Python instantly
-         proc = subprocess.Popen(
-            ["/tmux/optimizedocker.sh", cname, sname, sd, repo, token_file],
-            env=script_env,
-            stdout=subprocess.DEVNULL,  # Suppresses output so it runs completely silently
-            stderr=subprocess.DEVNULL,
-            start_new_session=True      # Detaches the script so it keeps running even if the main Python process restarts
-          )
 
+         QUEUE_DIR = "/tmux/optimizer_queue"
+         os.makedirs(QUEUE_DIR, exist_ok=True)
+         job_file = os.path.join(QUEUE_DIR, f"{cname}.job")
+    
+          # Write the arguments inside the file as metadata
+         with open(job_file, "w") as f:
+              f.write(f"CNAME={cname}\n")
+              f.write(f"SNAME={sname}\n")
+              f.write(f"SD={sd}\n")
+              f.write(f"REPO={repo}\n")
+          
          tsslogging.locallogs("INFO", "STEP 8: Docker Container process started - check Github logs for status - it could take few minutes. Here is the commit command: {} - message={}".format(cbuf,v))         
            
        elif len(cid) <= 1:
