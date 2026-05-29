@@ -39,7 +39,13 @@ default_args = {
     'identifier': 'RTMS Cybersecurity Prevention', # <<< ** Change as needed
     'preprocesstypes': 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
     'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed
-    'jsoncriteria': 'uid=hostName,filter:allrecords' + chr(126) + '',
+    'jsoncriteria': """uid=metadata.dsn,filter:allrecords~\
+subtopics=metadata.property_name~\
+values=datapoint.value~\
+identifiers=metadata.display_name~\
+datetime=datapoint.updated_at~\
+msgid=datapoint.id~\
+latlong=lat:long""", 
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
