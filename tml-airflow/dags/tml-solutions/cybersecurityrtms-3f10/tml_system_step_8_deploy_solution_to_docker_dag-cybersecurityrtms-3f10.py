@@ -10,6 +10,7 @@ import git
 import time
 import sys
 import threading
+import uuid
 
 sys.dont_write_bytecode = True
 
@@ -73,11 +74,16 @@ def dockerit(**context):
        
          script_env = os.environ.copy()
          script_env["DOCKERUSERNAME"] = os.environ.get('DOCKERUSERNAME', '')
-         script_env["DOCKERPASSWORD"] = os.environ.get('DOCKERPASSWORD', '')
-
+         docker_password = os.environ.get('DOCKERPASSWORD', '')
+         
+         unique_id = uuid.uuid4().hex
+         token_file = f"/tmp/.docker_token_{unique_id}"
+         with open(token_file, "w") as f:
+            f.write(docker_password)
+      
          # Spawns the script asynchronously and moves to the next line of Python instantly
          proc = subprocess.Popen(
-            ["/tmux/optimizedocker.sh", cname, sname, sd, repo],
+            ["/tmux/optimizedocker.sh", cname, sname, sd, repo, token_file],
             env=script_env,
             stdout=subprocess.DEVNULL,  # Suppresses output so it runs completely silently
             stderr=subprocess.DEVNULL,
