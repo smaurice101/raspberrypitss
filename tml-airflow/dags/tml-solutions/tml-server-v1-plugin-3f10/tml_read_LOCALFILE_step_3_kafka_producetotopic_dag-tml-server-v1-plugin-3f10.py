@@ -60,23 +60,20 @@ def read_in_chunks(file_object, chunk_size=1024):
                    data = data[:len(data)-ct]
           else:
             data = file_object.readline().decode('utf-8')            
-          data=data.replace('"','').replace("'","").replace("\\n"," ").replace('\n'," ").replace("\\r"," ").replace('\r'," ").replace(';'," ").replace('&'," ").strip()
+          data=data.replace('"','').replace("'","").replace("\\n"," ").replace('\n'," ").replace("\\r"," ").replace('\r'," ").strip()
           if not data:
                break
           yield data          
         except Exception as e:
            break
 
-def readallfiles(fd,tr,cs=1024):
-  args=default_args
-  producerid='userfilestream'
-  print("fd=",fd.name)
+def readallfiles(fd,cs=1024):
+  fdata = []  
+  #with open(filename,"r") as f:
   for piece in read_in_chunks(fd,cs):
         piece=re.sub(' +', ' ', piece)
-        pj='{"RTMSMessage":"' + piece + '"}'
-        
-        producetokafka(pj, "", "",producerid,tr,"",args)
-  return []    
+        fdata.append(piece)
+  return fdata    
 
 def ingestfiles():
     args = default_args
@@ -94,28 +91,48 @@ def ingestfiles():
       if len(dirbuf) != len(maintopicbuf):
         tsslogging.locallogs("ERROR", "STEP 3: Produce LOCALFILE in {} You specified multiple doctopics, then must match docfolder".format(os.path.basename(__file__)))
         return
-    elif len(maintopicbuf) == 1 and len(dirbuf) > 0:
-       for i in range(len(dirbuf)):
-         maintopicbuf.append(maintopic)
-    else:
-       return
-  
-    while True:
+      while True:
        for dr,tr in zip(dirbuf,maintopicbuf):
          filenames = []
          if os.path.isdir("/rawdata/{}".format(dr)):
            a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
            os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
            filenames.extend(a)
-           print("filename=",filenames)
+
            if len(filenames) > 0:
              with ExitStack() as stack:
                files = [stack.enter_context(open(i, "rb")) for i in filenames]
-               contents = [readallfiles(file,tr,chunks) for file in files]
+               contents = [readallfiles(file,chunks) for file in files]
+               for d in contents:
+                  dstr = ','.join(d)
+                  #jd = '{"message":"' + dstr + '"}'
+                  producetokafka(dstr, "", "",producerid,tr,"",args)
        if interval==0:
          break
        else:  
         time.sleep(interval)         
+    else:
+     while True:
+      filenames = []
+      for dr in dirbuf:
+        if os.path.isdir("/rawdata/{}".format(dr)):
+          a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
+          os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
+          filenames.extend(a)
+
+      if len(filenames) > 0:
+        with ExitStack() as stack:
+          files = [stack.enter_context(open(i, "rb")) for i in filenames]
+          contents = [readallfiles(file,chunks) for file in files]
+          for d in contents:
+              dstr = ','.join(d)
+              #jd = '{"message":"' + dstr + '"}'
+              producetokafka(dstr, "", "",producerid,maintopic,"",args)
+      if interval==0:
+        break
+      else:  
+       time.sleep(interval)
+
       
 def startdirread():
   if 'docfolder' not in default_args and 'doctopic' not in default_args and 'chunks' not in default_args and 'docingestinterval' not in default_args:
@@ -141,7 +158,6 @@ def producetokafka(value, tmlid, identifier,producerid,maintopic,substream,args)
  try:
     result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,substream,
                                         topicid,identifier)
-#    print("result=",result)
  except Exception as e:
     print("ERROR:",e)
 
@@ -158,10 +174,6 @@ def readdata():
   maintopic = args['topics']
   producerid = args['producerid']
 
-  startdirread()
-  
-  if maintopic=='' or inputfile=='':
-     return
   k=0
   try:
     file1 = open(inputfile, 'r')
@@ -235,16 +247,7 @@ def startproducing(**context):
   ti.xcom_push(key="{}_PORT".format(sname),value="_{}".format(VIPERPORT))
   ti.xcom_push(key="{}_HTTPADDR".format(sname),value=HTTPADDR)
 
-  inputfile=default_args['inputfile']
-  if 'step3localfileinputfile' in os.environ:
-       default_args['inputfile']=os.environ['step3localfileinputfile']
-       ti.xcom_push(key="{}_inputfile".format(sname),value=default_args['inputfile'])
-  else:
-       ti.xcom_push(key="{}_inputfile".format(sname),value=default_args['inputfile'])
-  
-  docfolder=''
   if 'docfolder' in default_args and 'doctopic' in default_args:
-    docfolder=default_args['docfolder']
     ti.xcom_push(key="{}_docfolder".format(sname),value=default_args['docfolder'])
     ti.xcom_push(key="{}_doctopic".format(sname),value=default_args['doctopic'])
     ti.xcom_push(key="{}_chunks".format(sname),value="_{}".format(default_args['chunks']))
@@ -254,10 +257,6 @@ def startproducing(**context):
     ti.xcom_push(key="{}_doctopic".format(sname),value='')
     ti.xcom_push(key="{}_chunks".format(sname),value='')
     ti.xcom_push(key="{}_docingestinterval".format(sname),value='')
-
-  if 'step3localfiledocfolder' in os.environ:
-       default_args['docfolder']=os.environ['step3localfiledocfolder']
-       ti.xcom_push(key="{}_docfolder".format(sname),value=default_args['docfolder'])
         
   chip = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_chip".format(sname))   
 
@@ -271,7 +270,7 @@ def startproducing(**context):
   wn = windowname('produce',sname,sd)  
   subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
   subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-produce", "ENTER"])
-  subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} \"{}\" \"{}\"".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:],inputfile,docfolder), "ENTER"])        
+  subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "python {} 1 {} {}{} {} ".format(fullpath,VIPERTOKEN,HTTPADDR,VIPERHOST,VIPERPORT[1:]), "ENTER"])        
         
 if __name__ == '__main__':
     
@@ -280,8 +279,4 @@ if __name__ == '__main__':
          VIPERTOKEN = sys.argv[2]
          VIPERHOST = sys.argv[3] 
          VIPERPORT = sys.argv[4]          
-         inputfile = sys.argv[5]          
-         default_args['inputfile']=inputfile
-         docfolder = sys.argv[6]                   
-         default_args['docfolder']=docfolder
          readdata()
