@@ -77,10 +77,15 @@ def dockerit(**context):
            tsslogging.locallogs("INFO", "STEP 8: Docker Container created and optimized.  Will push it now.  Here is the commit command: {} - message={}".format(cbuf,v))         
            
          #v=subprocess.call("docker push {}".format(cname), shell=True) 
-         proc=subprocess.Popen("docker push {}".format(cname), shell=True)
-         time.sleep(3)   
-         proc.terminate()
-         proc.wait()
+         proc = subprocess.Popen(
+            ["docker", "push", cname],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+         )             
+         #proc=subprocess.Popen("docker push {}".format(cname), shell=True)
+         #time.sleep(3)   
+         #proc.terminate()
+         #proc.wait()
 
        elif len(cid) <= 1:
               tsslogging.locallogs("ERROR", "STEP 8: There seems to be an issue with docker commit. Here is the command: docker commit {} {}".format(cid,cname)) 
