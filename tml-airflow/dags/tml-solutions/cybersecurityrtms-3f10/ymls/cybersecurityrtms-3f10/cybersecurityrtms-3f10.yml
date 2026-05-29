@@ -85,7 +85,7 @@
              - name: KUBE
                value: '1'
              - name: step3localfileinputfile # STEP 3 localfile inputfile field can be adjusted here.
-               value: ''
+               value: '/rawdatademo/cisco_network_data.txt'
              - name: step3localfiledocfolder # STEP 3 # STEP 3 docfolder inputfile field can be adjusted here.
                value: '/rawdatademo/mylogsdemo,/rawdatademo/mylogs2demo'               
              - name: step4maxrows # STEP 4 maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
