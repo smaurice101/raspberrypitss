@@ -72,14 +72,17 @@ def dockerit(**context):
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
        
          script_env = os.environ.copy()
+      
+         # Spawns the script asynchronously and moves to the next line of Python instantly
          proc = subprocess.Popen(
-                ["/tmux/optimizedocker.sh", cname, sname, sd, repo],
-                env=script_env,
-                stdout=subprocess.DEVNULL,  # Suppresses output so it runs completely silently
-                stderr=subprocess.DEVNULL,
-                start_new_session=True      # Detaches the script so it keeps running even if the main Python process restarts
-         )
-         tsslogging.locallogs("INFO", "STEP 8: Docker Container process started - check Github logs for status - it could take few minutes.  Here is the commit command: {} - message={}".format(cbuf,v))         
+            ["/tmux/optimizedocker.sh", cname, sname, sd, repo],
+            env=script_env,
+            stdout=subprocess.DEVNULL,  # Suppresses output so it runs completely silently
+            stderr=subprocess.DEVNULL,
+            start_new_session=True      # Detaches the script so it keeps running even if the main Python process restarts
+          )
+
+         tsslogging.locallogs("INFO", "STEP 8: Docker Container process started - check Github logs for status - it could take few minutes. Here is the commit command: {} - message={}".format(cbuf,v))         
            
        elif len(cid) <= 1:
               tsslogging.locallogs("ERROR", "STEP 8: There seems to be an issue with docker commit. Here is the command: docker commit {} {}".format(cid,cname)) 
