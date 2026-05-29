@@ -72,8 +72,8 @@ def dockerit(**context):
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
        
          script_env = os.environ.copy()
-         script_env["DOCKERUSERNAME"] = os.environ['DOCKERUSERNAME']
-         script_env["DOCKERPASSWORD"] = os.environ['DOCKERPASSWORD']
+         script_env["DOCKERUSERNAME"] = os.environ.get('DOCKERUSERNAME', '')
+         script_env["DOCKERPASSWORD"] = os.environ.get('DOCKERPASSWORD', '')
 
          # Spawns the script asynchronously and moves to the next line of Python instantly
          proc = subprocess.Popen(
