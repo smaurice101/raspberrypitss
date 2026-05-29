@@ -208,9 +208,9 @@ def ingestfiles():
             else:  
               lg="|"
 
-         if os.path.isdir("/rawdata/{}".format(dr)):            
-           a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
-           os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
+         if os.path.isdir("{}".format(dr)):            
+           a = [os.path.join("{}".format(dr), f) for f in os.listdir("{}".format(dr)) if 
+           os.path.isfile(os.path.join("{}".format(dr), f))]
            filenames.extend(a)
 
          if len(filenames) > 0:
@@ -452,16 +452,16 @@ if __name__ == '__main__':
 
         tsslogging.locallogs("INFO", "STEP 4c: Preprocessing 3 started")
         try:
-          shutil.rmtree("/rawdata/{}".format(rtmsfoldername),ignore_errors=True)
+          shutil.rmtree("{}".format(rtmsfoldername),ignore_errors=True)
         except Exception as e:
            pass
           
         try:
-         directory="/rawdata/{}".format(rtmsfoldername)         
+         directory="{}".format(rtmsfoldername)         
          if not os.path.exists(directory):
             os.makedirs(directory)
         except Exception as e:
-           tsslogging.locallogs("ERROR", "STEP 4c: Cannot make directory /rawdata/{} in {} {}".format(rtmsfoldername,os.path.basename(__file__),e))         
+           tsslogging.locallogs("ERROR", "STEP 4c: Cannot make directory {} in {} {}".format(rtmsfoldername,os.path.basename(__file__),e))         
 
         startdirread()
         while True:
