@@ -72,7 +72,9 @@ def dockerit(**context):
          v=subprocess.call("docker commit {} {}".format(cid,cname), shell=True)
        
          script_env = os.environ.copy()
-      
+         script_env["DOCKERUSERNAME"] = os.environ['DOCKERUSERNAME']
+         script_env["DOCKERPASSWORD"] = os.environ['DOCKERPASSWORD']
+
          # Spawns the script asynchronously and moves to the next line of Python instantly
          proc = subprocess.Popen(
             ["/tmux/optimizedocker.sh", cname, sname, sd, repo],
