@@ -74,10 +74,10 @@ def dockerit(**context):
 
          QUEUE_DIR = "/tmux/optimizer_queue"
          os.makedirs(QUEUE_DIR, exist_ok=True)
-         job_file = os.path.join(QUEUE_DIR, f"{cname}.job")
+         #job_file = os.path.join(QUEUE_DIR, f"{cname}.job")
     
           # Write the arguments inside the file as metadata
-         with open(job_file, "w") as f:
+         with open(f"{QUEUE_DIR}/{cname}.job", "w") as f:
               f.write(f"CNAME={cname}\n")
               f.write(f"SNAME={sname}\n")
               f.write(f"SD={sd}\n")
