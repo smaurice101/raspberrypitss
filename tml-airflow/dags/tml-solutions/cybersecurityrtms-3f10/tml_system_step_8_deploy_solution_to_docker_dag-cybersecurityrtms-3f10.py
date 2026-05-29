@@ -46,7 +46,8 @@ def dockerit(**context):
        
        chip = context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_chip".format(sname))         
        cname = os.environ['DOCKERUSERNAME']  + "/{}-{}".format(sname,chip)          
-      
+       dockercname="{}-{}".format(sname,chip)    
+           
        print("Containername=",cname)
        tsslogging.locallogs("INFO", "STEP 8: Starting docker push for: {}".format(cname))
        if os.environ['TSS'] == "1":
@@ -77,7 +78,7 @@ def dockerit(**context):
          #job_file = os.path.join(QUEUE_DIR, f"{cname}.job")
     
           # Write the arguments inside the file as metadata
-         with open(f"{QUEUE_DIR}/{cname}.job", "w") as f:
+         with open(f"{QUEUE_DIR}/{dockercname}.job", "w") as f:
               f.write(f"CNAME={cname}\n")
               f.write(f"SNAME={sname}\n")
               f.write(f"SD={sd}\n")
