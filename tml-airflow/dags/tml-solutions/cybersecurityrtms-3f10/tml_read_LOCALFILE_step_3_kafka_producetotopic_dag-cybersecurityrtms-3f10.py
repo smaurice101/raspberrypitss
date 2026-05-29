@@ -32,7 +32,7 @@ default_args = {
     'delay': 7000, # << ******* 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
     'topicid': -999, # <<< ********* do not modify
     'sleep': 0.15, # << Control how fast data streams - if 0 - the data will stream as fast as possible - BUT this may cause connecion reset by peer
-    'docfolder': 'mylogs',
+    'docfolder': 'mylogsdemo',
     'doctopic': 'rtms-stream-mylogs', # This is the topic that will contain the docfolder file data
     'chunks': 3000, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
     'docingestinterval': 30, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
