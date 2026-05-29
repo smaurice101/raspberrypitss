@@ -10060,3 +10060,4 @@ Already up to date.
 [INFO 2026-05-29_18:45:25] TML Solution Studio: Starting Git commit process for project: testmytss2-3f10
 [INFO 2026-05-29_18:46:45] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
 [INFO 2026-05-29_18:46:54] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[ERROR 2026-05-29_18:47:03] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py: [Errno 8] Exec format error: '/tmux/optimizedocker.sh'
