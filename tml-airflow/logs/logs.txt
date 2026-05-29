@@ -10285,3 +10285,19 @@ branch.main.merge=refs/heads/main
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
 [INFO 2026-05-29_20:52:37] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
 [INFO 2026-05-29_20:52:43] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2026-05-29_20:55:53] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
+[INFO 2026-05-29_20:55:53] TML Solution Studio: Docker Login Status: Get "https://registry-1.docker.io/v2/": unauthorized: incorrect username or password
+[INFO 2026-05-29_20:55:53] TML Solution Studio: Github Config Status: safe.directory=/raspberrypitss
+pull.rebase=true
+url.https://smaurice101:<personal access token hidden>@github.com/.insteadof=https://github.com/
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+user.email=smaurice101@email.local
+user.name=smaurice101
+remote.origin.url=https://github.com/smaurice101/raspberrypitss.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+remote.origin.pushurl=https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git
+[INFO 2026-05-29_20:55:53] TML Solution Studio: Github Remote Status: origin	https://smaurice101:<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (fetch)
+origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
