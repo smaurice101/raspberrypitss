@@ -1392,15 +1392,9 @@ def optimizecontainer(cname,sname,sd):
         
         # 3. Trigger the background push safely
         print("🚀 Optimization verified. Initiating async push for {}...".format(cname))
-        proc = subprocess.Popen(
-            "docker push {}".format(cname), 
-            shell=True,
-            stdout=subprocess.DEVNULL,  # Prevents 17GB of progress bars from flooding your logs
-            stderr=subprocess.DEVNULL
-        )
-        
-        # 4. Clean up dangling builder layers AFTER the push process is handed off to the engine daemon
-        subprocess.call("docker image prune -f", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)    
+        # Remove Popen and use call so Airflow waits for the full upload to finish
+        subprocess.call("docker push {}".format(cname), shell=True)        
+        subprocess.call("docker image prune -f", shell=True)
 
     return status
     
