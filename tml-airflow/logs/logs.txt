@@ -10560,3 +10560,11 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 📦 [2026-05-30_13:42:04] Found a new optimization job: cybersecurityrtms-3f10-amd64.job
 [INFO 2026-05-30_13:42:04] Processing maadsdocker/cybersecurityrtms-3f10-amd64...
 [INFO 2026-05-30_13:42:11] {'name': ['Project with slug "cybersecurityrtms-3f10" already exists.']}
+🧹 [2026-05-30_13:44:33] Running precise workspace purge on Node/unused files...
+✅ [2026-05-30_13:44:33] Workspace optimization phase complete. Core datasets preserved.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-05-30_13:44:33] Pushing clean image maadsdocker/cybersecurityrtms-3f10-amd64:latest to Docker Hub...
