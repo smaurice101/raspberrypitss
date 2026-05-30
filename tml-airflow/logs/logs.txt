@@ -10821,3 +10821,4 @@ The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-a
 [INFO 2026-05-30_22:22:37] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
 [INFO 2026-05-30_22:27:36] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
 [INFO 2026-05-30_22:28:46] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-05-30_22:29:11] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
