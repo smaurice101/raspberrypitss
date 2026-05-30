@@ -11092,3 +11092,5 @@ The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-a
 bcf82a1c52d9: Preparing
 [INFO 2026-05-30_23:59:17] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2026-05-30_23:59:23] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+📦 [2026-05-30_23:59:38] Forking background worker for job: myawesometmlsolutionml-3f10-ml-amd64.job
+[INFO 2026-05-30_23:59:38] Starting asynchronous processing for maadsdocker/myawesometmlsolutionml-3f10-ml-amd64...
