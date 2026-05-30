@@ -10675,3 +10675,13 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 📦 [2026-05-30_15:11:26] Forking background worker for job: cybersecurityrtms-3f10-amd64.job
 [INFO 2026-05-30_15:11:26] Starting asynchronous processing for maadsdocker/cybersecurityrtms-3f10-amd64...
 [INFO 2026-05-30_15:11:35] {'name': ['Project with slug "cybersecurityrtms-3f10" already exists.']}
+🧹 [2026-05-30_15:13:40] Running precise workspace purge on Node/unused files for maadsdocker/cybersecurityrtms-3f10-amd64...
+✅ [2026-05-30_15:13:40] Workspace optimization complete for maadsdocker/cybersecurityrtms-3f10-amd64.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-05-30_15:13:40] Pushing clean image maadsdocker/cybersecurityrtms-3f10-amd64:latest to Docker Hub...
+The push refers to repository [docker.io/maadsdocker/cybersecurityrtms-3f10-amd64]
+5e4b193a9e53: Preparing
