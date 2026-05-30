@@ -10377,3 +10377,4 @@ The push refers to repository [docker.io/maadsdocker/cybersecurityrtms-3f10-amd6
 81061c317edc: Pushed
 [INFO 2026-05-30_00:04:12] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
 [INFO 2026-05-30_00:04:17] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2026-05-30_00:04:56] {'name': ['Project with slug "cybersecurityrtms-3f10" already exists.']}
