@@ -10569,3 +10569,4 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 [INFO 2026-05-30_13:44:33] Pushing clean image maadsdocker/cybersecurityrtms-3f10-amd64:latest to Docker Hub...
 [INFO 2026-05-30_13:50:41] Completed job for maadsdocker/cybersecurityrtms-3f10-amd64.
+[INFO 2026-05-30_14:17:20] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
