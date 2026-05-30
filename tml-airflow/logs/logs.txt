@@ -10374,3 +10374,5 @@ Login Succeeded
 The push refers to repository [docker.io/maadsdocker/cybersecurityrtms-3f10-amd64]
 81061c317edc: Preparing
 44d8666387fd: Preparing
+81061c317edc: Pushed
+[INFO 2026-05-30_00:04:12] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
