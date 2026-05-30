@@ -10685,3 +10685,4 @@ Login Succeeded
 [INFO 2026-05-30_15:13:40] Pushing clean image maadsdocker/cybersecurityrtms-3f10-amd64:latest to Docker Hub...
 The push refers to repository [docker.io/maadsdocker/cybersecurityrtms-3f10-amd64]
 5e4b193a9e53: Preparing
+[INFO 2026-05-30_15:20:01] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
