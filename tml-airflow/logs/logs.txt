@@ -10571,3 +10571,6 @@ Login Succeeded
 [INFO 2026-05-30_13:50:41] Completed job for maadsdocker/cybersecurityrtms-3f10-amd64.
 [INFO 2026-05-30_14:17:20] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
 [INFO 2026-05-30_14:17:26] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
+[INFO 2026-05-30_14:18:06] {'name': ['Project with slug "cybersecurityrtms-3f10" already exists.']}
+📦 [2026-05-30_14:18:09] Found a new optimization job: cybersecurityrtms-3f10-amd64.job
+[INFO 2026-05-30_14:18:09] Processing maadsdocker/cybersecurityrtms-3f10-amd64...
