@@ -10852,3 +10852,6 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2026-05-30_22:42:54] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
 [INFO 2026-05-30_22:43:15] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
 [INFO 2026-05-30_22:46:23] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+📦 [2026-05-30_22:46:42] Forking background worker for job: myawesometmlsolution-3f10-amd64.job
+[INFO 2026-05-30_22:46:42] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
+[INFO 2026-05-30_22:46:45] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
