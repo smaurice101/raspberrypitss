@@ -11621,3 +11621,6 @@ latest: digest: sha256:8950aa5e034a07240bdc491296d85119f80ef77c4b3a945d3d553c648
 latest: digest: sha256:8fcba72fd7ad47e9f68bd68d84187de2aa6fc3e3d0116d42c96bf68172aa9e66 size: 532
 [INFO 2026-05-31_15:58:25] Completed job thread for maadsdocker/myawesometmlsolution-3f10-amd64.
 [INFO 2026-05-31_15:58:34] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+📦 [2026-05-31_15:58:46] Forking background worker for job: myawesometmlsolution-3f10-amd64.job
+[INFO 2026-05-31_15:58:46] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
+[INFO 2026-05-31_15:58:49] File Missing, unable to parse replacement mappings: /myawesometmlsolution-3f10/docs/source/index.rst
