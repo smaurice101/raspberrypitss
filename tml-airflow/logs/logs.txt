@@ -11380,3 +11380,13 @@ latest: digest: sha256:4b11b394d6888e406daa5cb94756197ba9d78fe31aaec052e6e8e5269
 [INFO 2026-05-31_14:49:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 📦 [2026-05-31_14:49:49] Forking background worker for job: myawesometmlsolution-3f10-amd64.job
 [INFO 2026-05-31_14:49:49] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
+🧹 [2026-05-31_14:54:12] Running precise workspace purge on Node/unused files for maadsdocker/myawesometmlsolution-3f10-amd64...
+✅ [2026-05-31_14:54:12] Workspace optimization complete for maadsdocker/myawesometmlsolution-3f10-amd64.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-05-31_14:54:12] Pushing clean image maadsdocker/myawesometmlsolution-3f10-amd64:latest to Docker Hub...
+The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
+e68b3b8f168c: Preparing
