@@ -11146,3 +11146,5 @@ branch.main.merge=refs/heads/main
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
 [INFO 2026-05-31_01:07:40] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
 [INFO 2026-05-31_01:07:46] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+📦 [2026-05-31_01:08:00] Forking background worker for job: myawesometmlsolutionml-3f10-ml-amd64.job
+[INFO 2026-05-31_01:08:00] Starting asynchronous processing for maadsdocker/myawesometmlsolutionml-3f10-ml-amd64...
