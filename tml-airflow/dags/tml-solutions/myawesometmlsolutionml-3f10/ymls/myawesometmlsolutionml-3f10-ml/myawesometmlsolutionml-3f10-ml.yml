@@ -15,7 +15,7 @@
          spec:
            containers:
            - name: myawesometmlsolutionml-3f10-ml
-             image: maadsdocker/myawesometmlsolutionml-3f10-ml-amd64:latest
+             image: maadsdocker/myawesometmlsolution-3f10-amd64:latest
              volumeMounts:
              - name: dockerpath
                mountPath: /var/run/docker.sock
