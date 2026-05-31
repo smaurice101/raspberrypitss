@@ -15,103 +15,37 @@ import time
 sys.dont_write_bytecode = True
 
 ######################################################USER CHOSEN PARAMETERS ###########################################################
-default_args = {    
- 'conf_project' : 'Transactional Machine Learning (TML)',
- 'conf_copyright' : '2024, Otics Advanced Analytics, Incorporated - For Support email support@otics.ca',
- 'conf_author' : 'Sebastian Maurice',
- 'conf_release' : '0.1',
- 'conf_version' : '0.1.0',
- 'dockerenv': 'step4cmaxrows=100***step4crawdatatopic=iot-preprocess***step4csearchterms=rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ***\
- step4crememberpastwindows=500***step4cpatternwindowthreshold=30***step4crtmsscorethreshold=0.6***step4cattackscorethreshold=0.6***\
- step4cpatternscorethreshold=0.6***step4crtmsstream=rtms-stream-mylogs***step4clocalsearchtermfolder=|mysearchfile1,|mysearchfile2***\
- step4clocalsearchtermfolderinterval=60***step4crtmsfoldername=rtms2***step3localfiledocfolder=mylogs,mylogs2***step4crtmsmaxwindows=1000000***\
- step9pgptcontainername=maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-v2***step9contextwindow=8192***step9vectordimension=768***\
- step9temperature=0.1***step4raw_data_topic=iot-raw-data***step4preprocesstypes=anomprob,trend,avg***\
- step4jsoncriteria=uid=hostName,filter:allrecords~\
-subtopics=hostName,hostName,hostName~\
-values=inboundpackets,outboundpackets,pingStatus~\
-identifiers=inboundpackets,outboundpackets,pingStatus~\
-datetime=lastUpdated~\
-msgid=~\
-latlong=***step4preprocess_data_topic=iot-preprocess***\
-step4ajsoncriteria=uid=tactic,filter:allrecords~\
-subtopics=technique,technique,technique~\
-values=FinalAttackScore,FinalPatternScore,RTMSSCORE~\
-identifiers=FinalAttackScore,FinalPatternScore,RTMSSCORE~\
-datetime=TimeStamp~\
-msgid=Entity,PartitionOffsetFound,NumAttackWindowsFound,NumPatternWindowsFound,SearchEntity,rtmsfolder,CurrentRTMSMAXWINDOW~\
-latlong=***step4amaxrows=50***step4apreprocesstypes=avg***step4araw_data_topic=rtms-pgpt-ai***step4apreprocess_data_topic=rtms-pgpt-ai-mitre', # add any environmental variables for docker must be: variable1=value1***variable2=value2
- 'dockerinstructions': """To run this docker container Enter the following CORE parameters: 
-
-      #. KAFKABROKERHOST=127.0.0.1:9092 - this uses the Local Kafka installed in your TML solution container.  
-         You can specify a Kafka Cloud URL if using AWS MSK or Confluent Kafka Cloud, simply replace this field.
-         
-      #. Enter KAFKACLOUDUSERNAME and  KAFKACLOUDPASSWORD IF using Kafka Cloud from AWS MSK and Confluent, if using local kafka (127.0.0.1:9092), these MUST be empty.
-      
-      #. SASLMECHANISM=PLAIN is set for Local Kafka and Confluent Kafka Cloud.  If using AWS MSK, this MUST be changed to SCRAM512.
-      
-      #. Enter GITUSERNAME 
-      
-      #. Enter GITPASSWORD 
-      
-      #. Enter READTHEDOCS 
-      
-      #. Update volume mapping: /your_localmachine/foldername:/rawdata:z 
-      
-      #. IF YOU ARE DISTRUBUTING THIS CONTAINER TO OTHERS THEN SEND THEM THIS DOCKER RUN BUT THEY WILL NEED TO ENTER THE ABOVE CORE PARAMETERS. 
-         TO MAKE IT EASY FOR OTHERS TO RUN YOUR SOLUTION YOU CAN USE THE TSSTMLDEMO GITHUB AND READTHEDOCS ACCOUNT - UPDATE THE FOLLOWING: 
-      
-      #.  GITUSERNAME=tsstmldemo 
-      
-      #. GITREPOURL=https://github.com/tsstmldemo/tsstmldemo 
-      
-      #. GITPASSWORD=<Will be retrieved from OS IF using tsstmldemo> 
-      
-      #. READTHEDOCS=aefa71df39ad764ac2785b3167b77e8c1d7c553a 
-
-      #. step4cmaxrows=100 this means the number of offsets to rollback.  Change to higher or lower number.  Higher number more data will be processed and more memory consumed.
-
-      #. step4crawdatatopic=iot-preprocess, this is the Step 4 preprocessing topic of the entities.  If this is empty string, no entities are cross-refenced with the log files.  Only log files will be processed.
-
-      #. step4csearchterms=rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure, these are the fixed search terms.  You can specify dynamic search terms in the field step4clocalsearchtermfolder
-
-      #. step4crememberpastwindows=500, this is the past, short-term windows for TML to remember.  TML RTMS will go back 500 sliding time windows.
-
-      #. step4cpatternwindowthreshold=30, this is the maximum pattern threshold before raising an alarm.
-
-      #. step4crtmsscorethreshold=0.6, this is the RTMS score threshold.  This is used to send messages that exceed this RTMS threshold to its own rtms topic.
-
-      #. step4cattackscorethreshold=0.6, this is the Attack score threshold.  This is used to send messages that exceed this attack threshold to its own attack topic.
-
-      #. step4cpatternscorethreshold=0.6, this is the Pattern score threshold.  This is used to send messages that exceed this pattern threshold to its own pattern topic.
-
-      #. step4crtmsstream=rtms-stream-mylogs, this is the kafka topic that stores ALL the results from RTMS.
-
-      #. step4clocalsearchtermfolder=|mysearchfile1,|mysearchfile2, this is name of the folders that contain text files for searches. A | for OR, and @ for AND.  TML will read the search terms in real-time and immediately start applying them to the streamed data.
-
-      #. step4clocalsearchtermfolderinterval=60, this is the number in seconds that the files in the folders specified in step4clocalsearchtermfolder, will be read.  So, 60 means, read files every 60 seconds.
-
-      #. step4crtmsfoldername=rtms2, TML RTMS will output logs of the search results to GitHub.  This is convenient for testing and validation.  NOTE: Only the latest 950 files will be sent to GitHub because GitHub has a maximum file limit of 1000.  
-
-      #. step3localfiledocfolder=mylogs,mylogs2, these are the folders that contain your log text log files.  These are read in STEP 3 LOCALFILE task. 
-
-      #. step4crtmsmaxwindows=1000000, this is the maximum number of windows for LONG-TERM pattern matching.  Here, TML will go-back 1,000,000 sliding time windows, which in effect could be months of analysis.  Yoi can easily increase this number.
-      
-      - PLEASE NOTE: THE GITHUB AND READTHEDOCS ACCOUNTS ARE PUBLIC AND SHARED ACCOUNTS BY OTHERS.  
-      
-      - THEY ARE MEANT ONLY FOR QUICK DEMOS.  IDEALLY, PERSONAL GITHUB AND READTHEDOCS ACCONTS SHOULD BE USED.""", # add instructions on how to run the docker container  
+default_args = {
+    'conf_project': 'Transactional Machine Learning (TML)',
+    'conf_copyright': '2024, Otics Advanced Analytics, Incorporated - For Support email support@otics.ca',
+    'conf_author': 'Sebastian Maurice',
+    'conf_release': 0.1,
+    'conf_version': '0.1.0',
+    'dockerenv': '', # add any environmental variables for docker must be: variable1=value1, variable2=value2
+    'dockerinstructions': '', # add instructions on how to run the docker container
 }
 
 ############################################################### DO NOT MODIFY BELOW ####################################################
 
 def triggerbuild(sname):
-
         URL = "https://readthedocs.org/api/v3/projects/{}/versions/latest/builds/".format(sname)
+        
+        if 'READTHEDOCS' not in os.environ:
+             logger.error("READTHEDOCS Token missing from target environment context variable.")
+             raise KeyError("Missing required READTHEDOCS authentication vector.")
+             
         TOKEN = os.environ['READTHEDOCS']
         HEADERS = {'Authorization': f'token {TOKEN}'}
-        response = requests.post(URL, headers=HEADERS)
-        print(response.json())
+        
+        tsslogging.tsslogit(f"Dispatching API outbound trigger payload to: {URL}")
 
+        response = requests.post(URL, headers=HEADERS)
+        
+        # 🟢 CRITICAL: Force the script to crash explicitly if Read the Docs returns an error (4xx/5xx)
+        response.raise_for_status()
+        
+        tsslogging.tsslogit(f"Read the Docs Build Response Received: {json.dumps(response.json())}")
+    
 def updatebranch(sname,branch):
     
         URL = "https://readthedocs.org/api/v3/projects/{}/".format(sname)
@@ -184,23 +118,28 @@ def setupurls(projectname,producetype,sname):
     doparse("/{}/docs/source/details.rst".format(sname), ["--step9url--;{}".format(stepurl9)])
     doparse("/{}/docs/source/details.rst".format(sname), ["--step9burl--;{}".format(stepurl9b)]) 
     doparse("/{}/docs/source/details.rst".format(sname), ["--step10url--;{}".format(stepurl10)])
-    
-def doparse(fname,farr):
-      data = ''
-      try:  
-       with open(fname, 'r', encoding='utf-8') as file: 
-        data = file.readlines() 
-        r=0
-        for d in data:        
-            for f in farr:
+
+
+def doparse(fname, farr):
+      """Parses string replacement criteria safely without swallowing execution errors."""
+      if not os.path.exists(fname):
+           # 🟢 Force visibility in the logs when git fails to supply target file layouts
+           tsslogging.tsslogit(f"File Missing, unable to parse replacement mappings: {fname}")          
+           raise FileNotFoundError(f"Target document pathway was missing during execution block: {fname}")
+
+      with open(fname, 'r', encoding='utf-8') as file: 
+           data = file.readlines() 
+      
+      for r in range(len(data)):        
+           for f in farr:
                 fs = f.split(";")
-                if fs[0] in d:
-                    data[r] = d.replace(fs[0],fs[1])
-            r += 1  
-       with open(fname, 'w', encoding='utf-8') as file: 
-        file.writelines(data)
-      except Exception as e:
-         pass
+                if len(fs) > 1 and fs[0] in data[r]:
+                     data[r] = data[r].replace(fs[0], fs[1])
+                     
+      with open(fname, 'w', encoding='utf-8') as file: 
+           file.writelines(data)
+      tsslogging.tsslogit(f"DAG 10: Successfully processed inline template criteria tokens for asset: {fname}")          
+    
 
 def updateollamaandpgpt(op,ollamacontainername,concurrency,collection,temp,rollback,ollama,deletevector,vectordbpath,topicid,enabletls,partition,mainip,
                        mainport,embedding,agents_topic_prompt,teamlead_topic,teamleadprompt,supervisor_topic,supervisorprompt,agenttoolfunctions,agent_team_supervisor_topic,contextwindow,
@@ -1615,7 +1554,7 @@ def generatedoc(**context):
             json=data,
             headers=HEADERS,
         )
-        print(response.json())
+#        print(response.json())
         tsslogging.tsslogit(response.json())
         os.environ['tssdoc']="1"
      time.sleep(10)
