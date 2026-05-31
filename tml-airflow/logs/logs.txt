@@ -12275,3 +12275,4 @@ The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-a
 b732331a27ca: Preparing
 b732331a27ca: Preparing
 [INFO 2026-05-31_16:58:34] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-05-31_16:58:40] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
