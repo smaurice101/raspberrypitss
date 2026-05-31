@@ -13791,3 +13791,4 @@ latest: digest: sha256:f74b89eda535ed8ace335b64369b3c50b080476c4f2c90086256da06f
 [INFO 2026-05-31_20:10:52] Completed job thread for maadsdocker/myawesometmlsolution-3f10-amd64.
 latest: digest: sha256:cd7e9169d1c0c95e2a0d317d8ba41eb894f2120ce99e957c36b1bce24ca77081 size: 532
 [INFO 2026-05-31_20:10:52] Completed job thread for maadsdocker/myawesometmlsolution-3f10-amd64.
+[INFO 2026-05-31_20:13:28] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
