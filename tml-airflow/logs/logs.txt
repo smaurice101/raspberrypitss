@@ -13358,3 +13358,5 @@ latest: digest: sha256:afe54b0e6bc1da2db4b753f2acb4f2bb7c9ce1209d271041ad11c5e1e
 [INFO 2026-05-31_19:26:17] Completed job thread for maadsdocker/myawesometmlsolution-3f10-amd64.
 [INFO 2026-05-31_19:37:12] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
 [INFO 2026-05-31_19:37:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
+📦 [2026-05-31_19:37:36] Forking background worker for job: myawesometmlsolution-3f10-amd64.job
+[INFO 2026-05-31_19:37:36] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
