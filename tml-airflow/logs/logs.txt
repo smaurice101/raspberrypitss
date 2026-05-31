@@ -11356,3 +11356,4 @@ Login Succeeded
 [INFO 2026-05-31_14:33:13] Pushing clean image maadsdocker/myawesometmlsolutionml-3f10-ml-amd64:latest to Docker Hub...
 The push refers to repository [docker.io/maadsdocker/myawesometmlsolutionml-3f10-ml-amd64]
 616cdefb25a1: Preparing
+[INFO 2026-05-31_14:35:52] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
