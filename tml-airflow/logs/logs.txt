@@ -11593,3 +11593,14 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 [INFO 2026-05-31_15:52:13] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 📦 [2026-05-31_15:52:23] Forking background worker for job: myawesometmlsolution-3f10-amd64.job
 [INFO 2026-05-31_15:52:23] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
+[INFO 2026-05-31_15:52:27] File Missing, unable to parse replacement mappings: /myawesometmlsolution-3f10/docs/source/index.rst
+🧹 [2026-05-31_15:52:30] Running precise workspace purge on Node/unused files for maadsdocker/myawesometmlsolution-3f10-amd64...
+✅ [2026-05-31_15:52:31] Workspace optimization complete for maadsdocker/myawesometmlsolution-3f10-amd64.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-05-31_15:52:31] Pushing clean image maadsdocker/myawesometmlsolution-3f10-amd64:latest to Docker Hub...
+The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
+3b215be03d33: Preparing
