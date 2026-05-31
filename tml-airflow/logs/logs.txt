@@ -11229,3 +11229,6 @@ Login Succeeded
 The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
 a0e2ef130e36: Preparing
 [INFO 2026-05-31_02:05:45] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
+📦 [2026-05-31_02:05:58] Forking background worker for job: myawesometmlsolutionml-3f10-ml-amd64.job
+[INFO 2026-05-31_02:05:58] Starting asynchronous processing for maadsdocker/myawesometmlsolutionml-3f10-ml-amd64...
+[INFO 2026-05-31_02:06:03] {'name': ['Project with slug "myawesometmlsolutionml-3f10-ml" already exists.']}
