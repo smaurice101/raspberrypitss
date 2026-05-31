@@ -11533,3 +11533,4 @@ Login Succeeded
 The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
 033b56d30481: Preparing
 [INFO 2026-05-31_15:34:44] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-05-31_15:34:50] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
