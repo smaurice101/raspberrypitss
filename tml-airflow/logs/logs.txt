@@ -13357,3 +13357,4 @@ The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-a
 latest: digest: sha256:afe54b0e6bc1da2db4b753f2acb4f2bb7c9ce1209d271041ad11c5e1eda30235 size: 532
 [INFO 2026-05-31_19:26:17] Completed job thread for maadsdocker/myawesometmlsolution-3f10-amd64.
 [INFO 2026-05-31_19:37:12] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-05-31_19:37:19] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
