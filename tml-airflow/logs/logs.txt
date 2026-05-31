@@ -11342,3 +11342,4 @@ latest: digest: sha256:6802495f0a6d92f547eabfbf4b6dfbdb0ea8e4fec6d11f6bdb5aade4d
 [INFO 2026-05-31_13:48:30] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
 [INFO 2026-05-31_14:25:17] {'name': ['Project with slug "myawesometmlsolutionml-3f10-ml" already exists.']}
 [INFO 2026-05-31_14:29:34] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolutionml-3f10.py
+[INFO 2026-05-31_14:29:40] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolutionml-3f10.py
