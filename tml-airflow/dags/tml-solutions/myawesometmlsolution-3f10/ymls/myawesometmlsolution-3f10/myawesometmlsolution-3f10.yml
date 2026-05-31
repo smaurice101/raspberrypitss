@@ -23,7 +23,7 @@
                mountPath: /rawdata   # container folder where the local folder will be mounted                           
              ports:
              - containerPort: 5050
-             - containerPort: 4042
+             - containerPort: 4040
              - containerPort: 6060
              env:
              - name: TSS
@@ -43,7 +43,7 @@
              - name: CHIP
                value: 'amd64'
              - name: SOLUTIONAIRFLOWPORT
-               value: '4042'
+               value: '4040'
              - name: SOLUTIONVIPERVIZPORT
                value: '6060'
              - name: DOCKERUSERNAME
