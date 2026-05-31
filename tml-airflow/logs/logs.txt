@@ -11236,3 +11236,4 @@ a0e2ef130e36: Preparing
 [INFO 2026-05-31_02:06:34] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
 📦 [2026-05-31_02:06:53] Forking background worker for job: myawesometmlsolution-3f10-amd64.job
 [INFO 2026-05-31_02:06:53] Starting asynchronous processing for maadsdocker/myawesometmlsolution-3f10-amd64...
+[INFO 2026-05-31_02:06:58] {'name': ['Project with slug "myawesometmlsolution-3f10" already exists.']}
