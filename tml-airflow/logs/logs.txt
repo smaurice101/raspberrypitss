@@ -15391,3 +15391,12 @@ Login Succeeded
 Pushing.. (maadsdocker/myawesometmlsolution-3f10-amd64)
 📦 [2026-06-01_12:56:16] Forking background worker for job: cybersecurityrtms-3f10-amd64.processing
 [INFO 2026-06-01_12:56:16] Starting asynchronous processing for maadsdocker/cybersecurityrtms-3f10-amd64...
+🧹 [2026-06-01_12:58:51] Running precise workspace purge on Node/unused files for maadsdocker/cybersecurityrtms-3f10-amd64...
+✅ [2026-06-01_12:58:51] Workspace optimization complete for maadsdocker/cybersecurityrtms-3f10-amd64.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-06-01_12:58:52] Pushing clean image maadsdocker/cybersecurityrtms-3f10-amd64:latest to Docker Hub...
+Pushing.. (maadsdocker/cybersecurityrtms-3f10-amd64)
