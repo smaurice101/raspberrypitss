@@ -15675,3 +15675,10 @@ b660c3f603a1: Preparing
 35f182497a45: Layer already exists
 b660c3f603a1: Pushed
 latest: digest: sha256:d2cc42c516f09ded88428b0c759f8b8df1bb58bd5fd5a90c40f735dfcef2376f size: 739
+81214cb760dba2b6b59c65f652b3d285879ad9ee69eb5008ad0d74bdf8a5f89a
+sha256:db7b242645e20861e490e7137a5aabb77240f1ea660b901557132a0f57e80724
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
