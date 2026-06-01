@@ -15673,3 +15673,5 @@ The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-a
 b660c3f603a1: Preparing
 35f182497a45: Preparing
 35f182497a45: Layer already exists
+b660c3f603a1: Pushed
+latest: digest: sha256:d2cc42c516f09ded88428b0c759f8b8df1bb58bd5fd5a90c40f735dfcef2376f size: 739
