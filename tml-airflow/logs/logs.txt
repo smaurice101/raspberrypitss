@@ -15662,3 +15662,14 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 docker.io/maadsdocker/myawesometmlsolution-3f10-amd64:latest
+4003381aa5b006d47137e5133358c04a9839f8a2a10a88cc1e023a86646ab2e3
+sha256:d4c201ed4e4d45d0dba55ea47cc00dcde3a35cbac25ebf6ad4a635e4b66c788b
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
+b660c3f603a1: Preparing
+35f182497a45: Preparing
+35f182497a45: Layer already exists
