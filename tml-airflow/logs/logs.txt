@@ -98,3 +98,26 @@ e4570931f250: Layer already exists
 latest: digest: sha256:8fc85a8d28a417e5d357d9db50490528ecd58bf54b110f48d8c0f70d506a90eb size: 1157
 ✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
 =============================================================
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+c3d39c6b6e1ca778807bb176d3cf9ab815d1b05a7ffe9c5382c87e406e698af6
+sha256:393777a8190fab010584b04c14983bc6f145fb4f2a6480b00a66160212a96c8c
+[STEP 4/4] Logged into Hub. Exporting optimized image...
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
+32ea9619e2cc: Preparing
+660175c5f371: Preparing
+e4570931f250: Preparing
+6e70d15a6c3d: Preparing
+e4570931f250: Layer already exists
+6e70d15a6c3d: Layer already exists
+660175c5f371: Layer already exists
+32ea9619e2cc: Pushed
+latest: digest: sha256:36126a90c90df763836b74cee0d5c243b62b37206761508c8be66c22f58ab14b size: 1157
+✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
+=============================================================
