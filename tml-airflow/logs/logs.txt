@@ -152,3 +152,15 @@ Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
+The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
+d5b3e89feea0: Preparing
+660175c5f371: Preparing
+e4570931f250: Preparing
+6e70d15a6c3d: Preparing
+660175c5f371: Layer already exists
+e4570931f250: Layer already exists
+6e70d15a6c3d: Layer already exists
+d5b3e89feea0: Pushed
+latest: digest: sha256:d612dc3534dc85dc8b3dba0c88f30f4fe13e6a636947da5279b1df0af25756d7 size: 1157
+✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
+=============================================================
