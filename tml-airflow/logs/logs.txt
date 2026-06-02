@@ -15930,3 +15930,4 @@ Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64-tmlworkingb:la
 docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64-tmlworkingb:latest not found: manifest unknown: manifest unknown.
 See 'docker run --help'.
 [INFO 2026-06-02_01:36:47] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-06-02_01:36:53] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
