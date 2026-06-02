@@ -15905,3 +15905,9 @@ Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64-tmlworkingb:la
 docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64-tmlworkingb:latest not found: manifest unknown: manifest unknown.
 See 'docker run --help'.
 [ERROR] Failed to start container instance template.
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64-tmlworkingb:latest' locally
+docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64-tmlworkingb:latest not found: manifest unknown: manifest unknown.
+See 'docker run --help'.
