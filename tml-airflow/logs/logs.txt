@@ -141,3 +141,14 @@ e4570931f250: Preparing
 e4570931f250: Layer already exists
 6e70d15a6c3d: Layer already exists
 37011e2b59d0: Pushed
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+359b34c9e223daf86d55e90bdabb2131befad5d4d84ef9eb4e347c906ee37c81
+sha256:1d0a4b6d465772d96f82c998a25c5dbc5abe5c622332ef4c230011fe3f2f9946
+[STEP 4/4] Logged into Hub. Exporting optimized image...
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
