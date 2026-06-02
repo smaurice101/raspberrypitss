@@ -69,3 +69,9 @@ e4570931f250: Layer already exists
 latest: digest: sha256:696137cd88d86ffb22725130e9399aace777204c4b0aaf2641b38f2cbc2f8cf6 size: 1157
 ✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
 =============================================================
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking:latest' locally
+docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking:latest not found: manifest unknown: manifest unknown.
+See 'docker run --help'.
