@@ -15857,3 +15857,10 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 [INFO 2026-06-02_01:11:26] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64_tmlworking
+=============================================================
+Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64_tmlworkingb:latest' locally
+docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64_tmlworkingb:latest not found: manifest unknown: manifest unknown.
+See 'docker run --help'.
+[ERROR] Failed to start container instance template.
