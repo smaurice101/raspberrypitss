@@ -190,3 +190,9 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
 =============================================================
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+a896b258766e604e081c853f8e02b4e657c41089f0d46fdb20670a6c04434a84
+sha256:dc47b1cc40f996ce3c0d5200b605b41724437df8b849de7000a96d3b03cd29a5
+[STEP 4/4] Logged into Hub. Exporting optimized image...
