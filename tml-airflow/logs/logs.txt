@@ -17,3 +17,9 @@ e4570931f250: Preparing
 6e70d15a6c3d: Preparing
 660175c5f371: Pushed
 e4570931f250: Pushed
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking:latest' locally
+docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking:latest not found: manifest unknown: manifest unknown.
+See 'docker run --help'.
