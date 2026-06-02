@@ -75,3 +75,26 @@ latest: digest: sha256:696137cd88d86ffb22725130e9399aace777204c4b0aaf2641b38f2cb
 Unable to find image 'maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking:latest' locally
 docker: Error response from daemon: manifest for maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking:latest not found: manifest unknown: manifest unknown.
 See 'docker run --help'.
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
+=============================================================
+0bdbcc90a8902a21b352201eeab219c88532026cbc32af0c22b2ec3211f57122
+sha256:0d5981e96347de12c66c10d02bfc71dcf560d84026470ecc197f3d1adcaab535
+[STEP 4/4] Logged into Hub. Exporting optimized image...
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+The push refers to repository [docker.io/maadsdocker/myawesometmlsolution-3f10-amd64]
+4b55a50c86b3: Preparing
+660175c5f371: Preparing
+e4570931f250: Preparing
+6e70d15a6c3d: Preparing
+660175c5f371: Layer already exists
+e4570931f250: Layer already exists
+6e70d15a6c3d: Layer already exists
+4b55a50c86b3: Pushed
+latest: digest: sha256:8fc85a8d28a417e5d357d9db50490528ecd58bf54b110f48d8c0f70d506a90eb size: 1157
+✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
+=============================================================
