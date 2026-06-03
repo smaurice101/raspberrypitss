@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 """
-You must here define all your tools here for your agents to execute
+You must here and now define all your tools here for your agents to execute
 You can define as many agents tools you want
 
 YOU MUST ALSO update funcname
