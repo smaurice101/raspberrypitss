@@ -22,7 +22,7 @@ NOTE: You can assign multiple functions to agents - separate multiple functions 
 
 # if your tool requires a package you can install it using the install_package function
 # the function will check if package is already installed
-def install_package(package_name, importname):
+def install_package(package_name, importname2):
     """
     Installs a specified Python package using pip.
     """
