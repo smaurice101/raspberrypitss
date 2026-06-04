@@ -12,7 +12,7 @@ import shutil
 import glob
 
 sys.dont_write_bytecode = True
-######################################################USER CHOSEN PARAMETERS ###########################################################
+######################################################USER CHOSEN PARAMETERS-- ###########################################################
 default_args = {
     'owner': 'Sebastian Maurice', # <<< ******** change as needed
     'brokerhost': '127.0.0.1', # <<<<***************** THIS WILL ACCESS LOCAL KAFKA - YOU CAN CHANGE TO CLOUD KAFKA HOST
