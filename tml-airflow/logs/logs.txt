@@ -7223,3 +7223,4 @@ Login Succeeded
 [INFO 2026-06-09_00:27:38] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/ymls/cybersecurityrtms-3f10/ollama.yml
 [INFO 2026-06-09_00:27:38] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/ymls/cybersecurityrtms-3f10/ollama.yml
 [INFO 2026-06-09_00:27:40] {'detail': 'Invalid token header. Token string should not contain spaces.'}
+[INFO 2026-06-09_00:27:50] Dispatching API outbound trigger payload to: https://readthedocs.org/api/v3/projects/cybersecurityrtms-3f10/versions/latest/builds/
