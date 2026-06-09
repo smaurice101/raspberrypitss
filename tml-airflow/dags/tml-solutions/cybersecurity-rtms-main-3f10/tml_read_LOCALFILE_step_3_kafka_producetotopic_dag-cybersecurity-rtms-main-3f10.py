@@ -22,7 +22,7 @@ default_args = {
     'owner': 'Sebastian Maurice', # <<< *** Change as needed
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
-    'producerid': 'iotsolution2', # <<< *** Change as needed
+    'producerid': 'iotsolution', # <<< *** Change as needed
     'topics': 'iot-raw-data', # *************** This is one of the topic you created in SYSTEM STEP 2
     'identifier': 'TML solution', # <<< *** Change as needed
     'inputfile': '/rawdatademo/IoTData.txt', # <<< ***** replace ?  to input file name to read. NOTE this data file should be JSON messages per line and stored in the HOST folder mapped to /rawdata folder
@@ -37,7 +37,7 @@ default_args = {
 
 ######################################## DO NOT MODIFY BELOW #############################################
 
-# This sets the lat/longs for the IoT devices so it can be map
+# This sets a the lat/longs for the IoT devices so it can be map
 VIPERTOKEN=""
 VIPERHOST=""
 VIPERPORT=""
