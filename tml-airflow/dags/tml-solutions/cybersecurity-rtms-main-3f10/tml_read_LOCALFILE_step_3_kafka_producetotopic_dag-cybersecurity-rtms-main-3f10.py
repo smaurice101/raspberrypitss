@@ -22,7 +22,7 @@ default_args = {
     'owner': 'Sebastian kkkk Maurice', # <<< *** Change as needed
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
-    'producerid': 'iotsolution', # <<< *** Change as needed
+    'producerid': 'iotsolution23', # <<< *** Change as needed
     'topics': 'iot-raw-data', # *************** This is one of the topic you created in SYSTEM STEP 2
     'identifier': 'TML solution main', # <<< *** Change as needed
     'inputfile': '/rawdatademo/IoTData.txt', # <<< ***** replace ?  to input file name to read. NOTE this data file should be JSON messages per line and stored in the HOST folder mapped to /rawdata folder
