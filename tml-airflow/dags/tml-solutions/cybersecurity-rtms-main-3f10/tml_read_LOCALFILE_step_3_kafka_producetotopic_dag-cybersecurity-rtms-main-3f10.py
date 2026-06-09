@@ -19,7 +19,7 @@ import re
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-    'owner': 'Sebastian ddd Maurice', # <<< *** Change as needed
+    'owner': 'Sebastian kkk Maurice', # <<< *** Change as needed
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
     'producerid': 'iotsolution', # <<< *** Change as needed
