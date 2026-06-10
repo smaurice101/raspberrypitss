@@ -14,7 +14,7 @@ import glob
 sys.dont_write_bytecode = True
 ######################################################USER CHOSEN PARAMETERS ###########################################################
 default_args = {
-    'owner': 'Sebastian aa Maurice', # <<< ******** change as needed
+    'owner': 'Sebastian Maurice', # <<< ******** change as needed
     'brokerhost': '127.0.0.1', # <<<<***************** THIS WILL ACCESS LOCAL KAFKA - YOU CAN CHANGE TO CLOUD KAFKA HOST
     'brokerport': 9092, # <<<<***************** LOCAL AND CLOUD KAFKA listen on PORT 9092
     'cloudusername': '', # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API KEY  - LEAVE BLANK
@@ -71,7 +71,7 @@ default_args = {
 ############################################################### DO NOT MODIFY BELOW ####################################################
     
 def reinitbinaries(sname):  
-    # --- 1. CLEAN now PYTHON WINDOWS ---
+    # --- 1. CLEAN PYTHON WINDOWS ---
     pywindowfiles = glob.glob("/tmux/pythonwindows_*") 
     
     for f in pywindowfiles: 
