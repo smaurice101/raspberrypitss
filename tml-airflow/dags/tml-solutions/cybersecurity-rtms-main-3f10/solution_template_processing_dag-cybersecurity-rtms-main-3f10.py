@@ -17,6 +17,7 @@ step1 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_
 step2 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_2_kafka_createtopic_dag-cybersecurity-rtms-main-3f10")
 step3 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10")
 step4 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_4_kafka_preprocess_dag-cybersecurity-rtms-main-3f10")
+step4c = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_4c_kafka_preprocess_dag-cybersecurity-rtms-main-3f10")
 step5 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_5_kafka_machine_learning_dag-cybersecurity-rtms-main-3f10")
 step6 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_6_kafka_predictions_dag-cybersecurity-rtms-main-3f10")
 step7 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_7_kafka_visualization_dag-cybersecurity-rtms-main-3f10")
@@ -35,7 +36,7 @@ with DAG(
     bash_command="echo 'Start task'",
   )
 # STEP 1: Get the Parameters
-  sensor_A1 = PythonOperator(
+  sensor_A = PythonOperator(
             task_id="step_1_solution_task_getparams",
             python_callable=step1.getparams,
             provide_context=True,
