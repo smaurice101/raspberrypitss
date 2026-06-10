@@ -15,40 +15,40 @@ import random
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-  'myname' : 'Sebastian Maurice',   # <<< *** Change as needed      
-  'enabletls': '1',   # <<< *** 1=connection is encrypted, 0=no encryption
-  'microserviceid' : '', # <<< *** leave blank
-  'producerid' : 'iotsolution',    # <<< *** Change as needed   
-  'preprocess_data_topic' : 'iot-preprocess', # << *** topic/data to use for training datasets - You created this in STEP 2
-  'ml_data_topic' : 'ml-data', # topic to store the trained algorithms  - You created this in STEP 2
-  'identifier' : 'TML solution',    # <<< *** Change as needed   
-  'companyname' : 'Your company', # <<< *** Change as needed      
-  'myemail' : 'Your email', # <<< *** Change as needed      
-  'mylocation' : 'Your location', # <<< *** Change as needed      
-  'brokerhost' : '', # <<< *** Leave as is   
-  'brokerport' : '-999', # <<< *** Leave as is
-  'deploy' : '1', # <<< *** do not modofy
-  'modelruns': '100', # <<< *** Change as needed      
-  'offset' : '-1', # <<< *** Do not modify
-  'islogistic' : '1',  # <<< *** Change as needed, 1=logistic, 0=not logistic
-  'networktimeout' : '600', # <<< *** Change as needed      
-  'modelsearchtuner' : '90', # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.      
-  'dependentvariable' : 'failure', # <<< *** Change as needed, 
-  'independentvariables': 'Power_preprocessed_Trend,Voltage_preprocessed_Trend,Current_preprocessed_Trend', # <<< *** Change as needed, 
-  'rollbackoffsets' : '600', # <<< *** Change as needed, 
-  'consumeridtrainingdata2': '', # leave blank
-  'partition_training' : '',  # leave blank
-  'consumefrom' : '',  # leave blank
-  'topicid' : '-1',  # leave as is
-  'fullpathtotrainingdata' : '/Viper-ml/viperlogs/iotlogistic',  #  # <<< *** Change as needed - add name for foldername that stores the training datasets
-  'processlogic' : 'classification_name=failure_prob:Power_preprocessed_Trend=-n,0:Voltage_preprocessed_Trend=-n,0:Current_preprocessed_Trend=-n,0',  # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
-  'array' : '0',  # leave as is
-  'transformtype' : '', # Sets the model to: log-lin,lin-log,log-log
-  'sendcoefto' : '',  # you can send coefficients to another topic for further processing -- MUST BE SET IN STEP 2
-  'coeftoprocess' : '', # indicate the index of the coefficients to process i.e. 0,1,2 For example, for a 3 estimated parameters 0=constant, 1,2 are the other estmated paramters
-  'coefsubtopicnames' : '',  # Give the coefficients a name: constant,elasticity,elasticity2    
-  'viperconfigfile' : '/Viper-ml/viper.env', # Do not modify
-  'HPDEADDR' : 'http://'
+    'myname': 'Sebastian Maurice', # <<< *** Change as needed
+    'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
+    'microserviceid': '', # <<< *** leave blank
+    'producerid': 'iotsolution', # <<< *** Change as needed
+    'preprocess_data_topic': 'iot-preprocess', # << *** topic/data to use for training datasets - You created this in STEP 2
+    'ml_data_topic': 'ml-data', # topic to store the trained algorithms  - You created this in STEP 2
+    'identifier': 'TML solution', # <<< *** Change as needed
+    'companyname': 'Your company', # <<< *** Change as needed
+    'myemail': 'Your email', # <<< *** Change as needed
+    'mylocation': 'Your location', # <<< *** Change as needed
+    'brokerhost': '', # <<< *** Leave as is
+    'brokerport': -999, # <<< *** Leave as is
+    'deploy': 1, # <<< *** do not modofy
+    'modelruns': 100, # <<< *** Change as needed
+    'offset': -1, # <<< *** Do not modify
+    'islogistic': 1, # <<< *** Change as needed, 1=logistic, 0=not logistic
+    'networktimeout': 600, # <<< *** Change as needed
+    'modelsearchtuner': 90, # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.
+    'dependentvariable': 'failure', # <<< *** Change as needed,
+    'independentvariables': 'Power_preprocessed_Trend,Voltage_preprocessed_Trend,Current_preprocessed_Trend', # <<< *** Change as needed,
+    'rollbackoffsets': 600, # <<< *** Change as needed,
+    'consumeridtrainingdata2': '', # leave blank
+    'partition_training': '', # leave blank
+    'consumefrom': '', # leave blank
+    'topicid': -1, # leave as is
+    'fullpathtotrainingdata': '/Viper-ml/viperlogs/iotlogistic', # # <<< *** Change as needed - add name for foldername that stores the training datasets
+    'processlogic': 'classification_name=failure_prob:Power_preprocessed_Trend=-n,0:Voltage_preprocessed_Trend=-n,0:Current_preprocessed_Trend=-n,0', # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
+    'array': 0, # leave as is
+    'transformtype': '', # Sets the model to: log-lin,lin-log,log-log
+    'sendcoefto': '', # you can send coefficients to another topic for further processing -- MUST BE SET IN STEP 2
+    'coeftoprocess': '', # indicate the index of the coefficients to process i.e. 0,1,2 For example, for a 3 estimated parameters 0=constant, 1,2 are the other estmated paramters
+    'coefsubtopicnames': '', # Give the coefficients a name: constant,elasticity,elasticity2
+    'viperconfigfile': '/Viper-ml/viper.env', # Do not modify
+    'HPDEADDR': 'http://',
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
