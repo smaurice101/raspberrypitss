@@ -71,7 +71,7 @@ default_args = {
 ############################################################### DO NOT MODIFY BELOW ####################################################
     
 def reinitbinaries(sname):  
-    # --- 1. CLEAN PYTHON WINDOWS ---
+    # --- 1. CLEAN now PYTHON WINDOWS ---
     pywindowfiles = glob.glob("/tmux/pythonwindows_*") 
     
     for f in pywindowfiles: 
