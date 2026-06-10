@@ -35,7 +35,7 @@ with DAG(
     bash_command="echo 'Start task'",
   )
 # STEP 1: Get the Parameters
-  sensor_A = PythonOperator(
+  sensor_A1 = PythonOperator(
             task_id="step_1_solution_task_getparams",
             python_callable=step1.getparams,
             provide_context=True,
