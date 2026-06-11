@@ -15,18 +15,19 @@ import re
 sys.dont_write_bytecode = True
 ######################################################USER CHOSEN PARAMETERS ###########################################################
 default_args = {
-    'owner': 'Sebastian Maurice', # <<< ******** change as needed
+    'owner': 'Sebastian a Maurice', # <<< ******** change as needed
     'brokerhost': '127.0.0.1', # <<<<***************** THIS WILL ACCESS LOCAL KAFKA - YOU CAN CHANGE TO CLOUD KAFKA HOST
     'brokerport': 9092, # <<<<***************** LOCAL AND CLOUD KAFKA listen on PORT 9092
     'cloudusername': '', # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API KEY  - LEAVE BLANK
     'cloudpassword': '', # <<<< --THIS WILL BE UPDATED FOR YOU IF USING KAFKA CLOUD WITH API SECRET - LEAVE BLANK
-    'solutionname': 'cybersecurity-rtms-main-3f10', # <<< *** DO NOT MODIFY - THIS WILL BE AUTOMATICALLY UPDATED
+    'solutionname': 'testmytss2-3f10', # <<< *** DO NOT MODIFY - THIS WILL BE AUTOMATICALLY UPDATED
     'solutiontitle': 'My Solution Title', # <<< *** Provide a descriptive title for your solution
     'solutionairflowport': 4040, # << If -1, TSS will choose a free port randonly, or set this to a fixed number
     'solutionexternalport': 5050, # << If -1, TSS will choose a free port randonly, or set this to a fixed number
     'solutionvipervizport': 6060, # << If -1, TSS will choose a free port randonly, or set this to a fixed number
     'description': 'This is an awesome real-time solution built by TSS', # <<< *** Provide a description of your solution
     'HTTPADDR': 'https://',
+    'COMPANYNAME': 'My company',
     'WRITELASTCOMMIT': 0, # # <<<<<<<<< ******************** FOR DETAILS ON BELOW PARAMETER SEE: https://tml.readthedocs.io/en/latest/viper.html
     'NOWINDOWOVERLAP': 0,
     'NUMWINDOWSFORDUPLICATECHECK': 5,
@@ -54,8 +55,10 @@ default_args = {
     'MYSQLMAXLIFETIMEMINUTES': 4,
     'MYSQLMAXCONN': 4,
     'MYSQLMAXIDLE': 10,
+    'MYSQLHOSTNAME': '127.0.0.1:3306',
     'KUBEMYSQLHOSTNAME': 'mysql-service:3306', # this is the mysql service in kubernetes
     'MYSQLDB': 'tmlids',
+    'MYSQLUSER': 'root',
     'SASLMECHANISM': 'PLAIN',
     'MINFORECASTACCURACY': 55,
     'COMPRESSIONTYPE': 'gzip',
@@ -66,6 +69,8 @@ default_args = {
     'SMTP_PASSWORD': '',
     'SMTP_SSLTLS': 'true',
     'SSL_CLIENT_CERT_FILE': 'client.cer.pem',
+    'SSL_CLIENT_KEY_FILE': 'client.key.pem',
+    'SSL_SERVER_CERT_FILE': 'server.cer.pem',
     'KUBERNETES': 0,
 }
 
