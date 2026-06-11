@@ -34,8 +34,9 @@ default_args = {
 
 ######################################## DO NOT MODIFY BELOW #############################################
 
+lklk;;
 def deletetopics(topic):
-kaksksk
+
     if 'KUBE' in os.environ:
        if os.environ['KUBE'] == "1":
          return
