@@ -37,7 +37,7 @@
              - name: GITUSERNAME
                value: 'smaurice101'
              - name: GITREPOURL
-               value: 'https://github.com/smaurice101/raspberrypitss'
+               value: 'https://github.com/smaurice101/raspberrypitss.git'
              - name: SOLUTIONEXTERNALPORT
                value: '5050'
              - name: CHIP
@@ -47,7 +47,7 @@
              - name: SOLUTIONVIPERVIZPORT
                value: '6060'
              - name: DOCKERUSERNAME
-               value: ''
+               value: 'maadsdocker'
              - name: CLIENTPORT
                value: '0'
              - name: EXTERNALPORT
