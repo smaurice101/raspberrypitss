@@ -9811,3 +9811,36 @@ Login Succeeded
 ✅ PIPELINE COMPLETE: maadsdocker/testmytss2-3f10-amd64 has been processed successfully.
 =============================================================
 [INFO 2026-06-11_21:42:47] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10.py
+[INFO 2026-06-11_21:43:42] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/index.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/index.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/logs.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_21:43:43] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
