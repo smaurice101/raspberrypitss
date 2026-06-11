@@ -34,7 +34,6 @@ default_args = {
 
 ######################################## DO NOT MODIFY BELOW #############################################
 
-lklk;;
 def deletetopics(topic):
 
     if 'KUBE' in os.environ:
