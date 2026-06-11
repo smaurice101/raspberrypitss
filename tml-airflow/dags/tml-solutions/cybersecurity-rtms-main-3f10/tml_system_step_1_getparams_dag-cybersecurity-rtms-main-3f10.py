@@ -62,7 +62,7 @@ default_args = {
     'SASLMECHANISM': 'PLAIN',
     'MINFORECASTACCURACY': 55,
     'COMPRESSIONTYPE': 'gzip',
-    'MAILSERVER': '', # i.e.  smtp.broadband.rogers.com,
+    'MAILSERVER': '', # i.e.  -smtp.broadband.rogers.com,
     'MAILPORT': '', # i.e. 465,
     'FROMADDR': '',
     'SMTP_USERNAME': '',
