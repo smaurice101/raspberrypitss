@@ -7,7 +7,7 @@ import maadstml
 import sys
 import tsslogging
 import os
-import subprocess--
+import subprocess
 
 sys.dont_write_bytecode = True
 
