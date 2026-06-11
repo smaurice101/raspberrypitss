@@ -10177,3 +10177,11 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/testmytss2-3f10-amd64-tmlworking
 =============================================================
 bde420ddc10075fda5fece050af6639fa20a703f6ff135059ce2dc582bc69242
+sha256:b75b42d7769b1dcc0d72f356db4d6489f462643bed7153068d6356d41368e313
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+✅ PIPELINE COMPLETE: maadsdocker/testmytss2-3f10-amd64 has been processed successfully.
+=============================================================
