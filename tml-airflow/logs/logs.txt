@@ -8911,3 +8911,4 @@ Already up to date.
 [INFO 2026-06-11_01:05:51] TML Solution Studio: Starting Git commit process for project: mytestprojectmain-3f10
 [INFO 2026-06-11_02:17:03] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
 [INFO 2026-06-11_02:17:03] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
+[INFO 2026-06-11_02:17:12] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-3f10.py
