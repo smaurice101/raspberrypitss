@@ -10416,3 +10416,113 @@ Login Succeeded
 ✅ PIPELINE COMPLETE: maadsdocker/testmytss2-3f10-amd64 has been processed successfully.
 =============================================================
 [INFO 2026-06-11_23:23:47] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10.py
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/index.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/index.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/logs.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:09] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:10] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/testmytss2-3f10-amd64-tmlworking
+=============================================================
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+c81c12091807b77fa430389e3e92d090d653f3bb20cdb107d39ecda28a3c0aea
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/details.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/logs.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+[INFO 2026-06-11_23:24:11] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/operating.rst
+sha256:cf9314f2f941163db638d857fd3a364cf550bd2c475109c2fd4e4be3d462ddb4
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: /testmytss2-3f10/docs/source/kube.rst
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+[INFO 2026-06-11_23:24:13] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/testmytss2-3f10/ymls/testmytss2-3f10/ollama.yml
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-06-11_23:24:14] {'name': ['Project with slug "testmytss2-3f10" already exists.']}
