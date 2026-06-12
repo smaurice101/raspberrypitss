@@ -29,7 +29,7 @@ default_args = {
     'ml_data_topic': 'ml-data', # Separate multiple topics with comma <<< ********** You change topic names as needed
     'prediction_data_topic': 'prediction-data', # Separate multiple topics with comma <<< ********** You change topic names as needed
     'pgpt_data_topic': 'cisco-network-privategpt', # PrivateGPT will produce responses to this topic - change as  needed
-    'descriptions': 'Topics to store iot data',
+    'description': 'Topics to store iot data',
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
