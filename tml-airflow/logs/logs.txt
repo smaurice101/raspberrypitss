@@ -221,3 +221,10 @@ Login Succeeded
 =============================================================
 9836de9ba50a3ac4781e9468f6c6ebe3861d3aacf1c5a6c5cb36a9bed21c1956
 sha256:ec6d4c4a01e0128f6bf3d1593b14c433bc9d6947dd39e567697e63fa5ce43eec
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolutionml-3f10-ml-amd64 has been processed successfully.
+=============================================================
