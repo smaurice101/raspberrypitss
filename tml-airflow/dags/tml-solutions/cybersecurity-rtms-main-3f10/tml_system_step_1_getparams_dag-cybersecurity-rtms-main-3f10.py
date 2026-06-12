@@ -12,7 +12,6 @@ import shutil
 import glob
 import re
 
-dfef:
 
 sys.dont_write_bytecode = True
 ######################################################USER CHOSEN PARAMETERS ###########################################################
