@@ -28,7 +28,7 @@ default_args = {
     'solutionvipervizport': 6060, # << If -1, TSS will choose a free port randonly, or set this to a fixed number
     'description': 'This an awesome real-time solution built by TSS', # <<< *** Provide a description of your solution
     'HTTPADDR': 'https://',
-    'COMPANYNAME': 'My company',
+    'COMPANYNAME': 'My compan',
     'WRITELASTCOMMIT': 0, # # <<<<<<<<< ******************** FOR DETAILS ON BELOW PARAMETER SEE: https://tml.readthedocs.io/en/latest/viper.html
     'NOWINDOWOVERLAP': 0,
     'NUMWINDOWSFORDUPLICATECHECK': 5,
