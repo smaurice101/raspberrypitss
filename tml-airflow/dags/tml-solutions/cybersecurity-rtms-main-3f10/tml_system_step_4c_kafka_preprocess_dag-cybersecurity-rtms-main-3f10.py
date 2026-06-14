@@ -33,7 +33,7 @@ default_args = {
     'saveasarray': 1, # do not modify
     'topicid': -999, # do not modify
     'rawdataoutput': 1, # <<< 1 to output raw data used in the preprocessing, 0 do not output
-    'asynctimeout': 12, # <<< 120 seconds for connection timeout
+    'asynctimeout': 120, # <<< 120 seconds for connection timeout
     'timedelay': 0, # <<< connection delay
     'tmlfilepath': '', # leave blank
     'usemysql': 1, # do not modify
