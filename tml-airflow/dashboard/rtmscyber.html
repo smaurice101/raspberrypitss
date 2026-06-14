@@ -282,6 +282,8 @@
         }
 
         function drawChart(jsondata, topic) {
+			console.log("jsondata==",jsondata);
+
             if (jsondata) {
                 var createdon, entity, rtms, attack, pattern, numattack, numpattern;
                 var processtype, remember, patternthresh, activity, comment, searchfound, Maintopic, kafkakey, offset, partition, searchentity;
