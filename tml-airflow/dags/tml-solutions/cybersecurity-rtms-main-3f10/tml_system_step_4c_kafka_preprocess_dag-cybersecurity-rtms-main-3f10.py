@@ -18,7 +18,7 @@ import shutil
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-    'owner': 'Sebastian xx Maurice', # <<< *** Change as needed
+    'owner': 'Sebastian Maurice', # <<< *** Change as needed
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
     'producerid': 'rtmssolution', # <<< *** Change as needed
