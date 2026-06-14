@@ -25,7 +25,7 @@ default_args = {
     'offset': -1, # <<< Rollback from the end of the data streams
     'brokerhost': '', # <<< *** Leave as is
     'brokerport': -999, # <<< *** Leave as is
-    'preprocessconditions': '', # # <<< Leave blank good
+    'preprocessconditions': '', # # <<< Leave blank
     'delay': 70, # Add a 70 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
     'array': 0, # do not modify
     'saveasarray': 1, # do not modify
@@ -35,8 +35,17 @@ default_args = {
     'timedelay': 0, # <<< connection delay
     'tmlfilepath': '', # leave blank
     'usemysql': 1, # do not modify
-    'streamstojoin': '', # leave blank good
+    'streamstojoin': '', # leave blank
     'identifier': 'IoT device performance and failures', # <<< ** Change as needed
+    'preprocesstypes': 'anomprob,trend,avg2', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+    'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed
+    'jsoncriteria': """uid=metadata.dsn,filter:allrecords~\
+subtopics=metadata.property_name~\
+values=datapoint.value~\
+identifiers=metadata.display_name~\
+datetime=datapoint.updated_at~\
+msgid=datapoint.id~\
+latlong=lat:long""",  # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
