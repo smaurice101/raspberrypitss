@@ -15,7 +15,7 @@ sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
     'topic': 'iot-preprocess,iot-preprocess2', # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
-    'dashboardhtml': 'cybersecuritydetection.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
+    'dashboardhtml': 'rtmscyber.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
     'dashboardhtml-ml': 'dashboard-ml.html', # <<< *** This one is IF you include ML dag
     'topic-ml': 'iot-preprocess,iot-preprocess2', # <<< *** Separate multiple topics by a comma
     'dashboardhtml-ai': 'dashboard-ai.html', # <<< *** This one is you include AI dag
