@@ -40,7 +40,7 @@ default_args = {
     'rtmsstream': 'rtms-stream-mylogs', # Change as needed - STREAM containing log file data (or other data) for RTMS
     'identifier': 'RTMS Past Memory of Events', # <<< ** Change as needed
     'searchterms': 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
-    'localsearchtermfolder': '|/rawdatademo/mysearchfile1demo,|/rawdatademo/mysearchfile2demo', # Specify a folder of files containing search terms - each term must be on a new line - use comma
+    'localsearchtermfolder': '|/rawdata/mysearchfile1,|/rawdata/mysearchfile2', # Specify a folder of files containing search terms - each term must be on a new line - use comma
     'localsearchtermfolderinterval': 60, # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60,
     'rememberpastwindows': 500, # Past windows to remember
     'patternwindowthreshold': 30, # check for the number of patterns for the items in searchterms
