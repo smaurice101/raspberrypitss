@@ -32,7 +32,6 @@ default_args = {
     'array': 0, # do not modify
     'saveasarray': 1, # do not modify
     'topicid': -999, # do not modify
-    'test': 1,
     'rawdataoutput': 1, # <<< 1 to output raw data used in the preprocessing, 0 do not output
     'asynctimeout': 120, # <<< 120 seconds for connection timeout
     'timedelay': 0, # <<< connection delay
