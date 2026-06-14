@@ -18,7 +18,7 @@ import shutil
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-    'owner': 'Sebastian xx Maurice', # <<< *** Change as needed
+    'owner': 'Sebastian Maurice', # <<< *** Change as needed
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
     'producerid': 'rtmssolution', # <<< *** Change as needed
@@ -48,10 +48,9 @@ default_args = {
     'attackscorethresholdtopic': 'attacktopic', # All attack score greater than attackscorethreshold will be streamed to this topic
     'patternscorethreshold': 0.6, # Pattern score threshold i.e. '0.8'
     'patternscorethresholdtopic': 'patterntopic', # All pattern score greater thn patternscorethreshold will be streamed to this topic
-    'rtmsfoldername': 'rtms3',
+    'rtmsfoldername': 'rtms2',
     'rtmsmaxwindows': 1000000,
 }
-
 
 
 ######################################## DO NOT MODIFY BELOW #############################################
