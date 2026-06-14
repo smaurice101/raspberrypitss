@@ -17,39 +17,48 @@ import shutil
 
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
-default_args = {
-    'owner': 'Sebastian Maurice', # <<< *** Change as needed
-    'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
-    'microserviceid': '', # <<< *** leave blank
-    'producerid': 'rtmssolution', # <<< *** Change as needed
-    'raw_data_topic': 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-    'preprocess_data_topic': 'rtms-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-    'maxrows': 200, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
-    'offset': -1, # <<< Rollback from the end of the data streams
-    'brokerhost': '', # <<< *** Leave as is
-    'brokerport': -999, # <<< *** Leave as is
-    'delay': 70, # Add a 70 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
-    'array': 0, # do not modify
-    'saveasarray': 1, # do not modify
-    'topicid': -999, # do not modify
-    'rawdataoutput': 1, # <<< 1 to output raw data used in the preprocessing, 0 do not output
-    'asynctimeout': 120, # <<< 120 seconds for connection timeout
-    'timedelay': 0, # <<< connection delay
-    'tmlfilepath': '', # leave blank
-    'usemysql': 1, # do not modify
-    'rtmsstream': 'rtms-stream-mylogs', # Change as needed - STREAM containing log file data (or other data) for RTMS
-    'identifier': 'RTMS Past Memory of Events', # <<< ** Change as needed
-    'localsearchtermfolderinterval': 60, # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60,
-    'rememberpastwindows': 500, # Past windows to remember
-    'patternwindowthreshold': 30, # check for the number of patterns for the items in searchterms
-    'rtmsscorethreshold': 0.6, # RTMS score threshold i.e. '0.8'
-    'rtmsscorethresholdtopic': 'rtmstopic', # All rtms score greater than rtmsscorethreshold will be streamed to this topic
-    'attackscorethreshold': 0.6, # Attack score threshold i.e. '0.8'
-    'attackscorethresholdtopic': 'attacktopic', # All attack score greater than attackscorethreshold will be streamed to this topic
-    'patternscorethreshold': 0.6, # Pattern score threshold i.e. '0.8'
-    'patternscorethresholdtopic': 'patterntopic', # All pattern score greater thn patternscorethreshold will be streamed to this topic
-    'rtmsfoldername': 'rtms',
-    'rtmsmaxwindows': 10000,
+  'owner' : 'Sebastian Maurice',  # <<< *** Change as needed      
+  'enabletls': '1', # <<< *** 1=connection is encrypted, 0=no encryption
+  'microserviceid' : '',  # <<< *** leave blank
+  'producerid' : 'rtmssolution',   # <<< *** Change as needed   
+  'raw_data_topic' : 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
+  'preprocess_data_topic' : 'rtms-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
+  'maxrows' : '200', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+  'offset' : '-1', # <<< Rollback from the end of the data streams  
+  'brokerhost' : '',   # <<< *** Leave as is
+  'brokerport' : '-999',  # <<< *** Leave as is   
+  'delay' : '70', # Add a 70 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic     
+  'array' : '0', # do not modify
+  'saveasarray' : '1', # do not modify
+  'topicid' : '-999', # do not modify
+  'rawdataoutput' : '1', # <<< 1 to output raw data used in the preprocessing, 0 do not output
+  'asynctimeout' : '120', # <<< 120 seconds for connection timeout 
+  'timedelay' : '0', # <<< connection delay
+  'tmlfilepath' : '', # leave blank
+  'usemysql' : '1', # do not modify
+  'rtmsstream' : 'rtms-stream-mylogs', # Change as needed - STREAM containing log file data (or other data) for RTMS
+                                                    # If entitystream is empty, TML uses the preprocess type only.
+  'identifier' : 'RTMS Past Memory of Events', # <<< ** Change as needed
+  'searchterms' : 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
+                                                             # Must include --entity-- if correlating with entity - this will be replaced 
+                                                             # dynamically with the entities found in raw_data_topic
+  'localsearchtermfolder': '|/rawdatademo/mysearchfile1demo,|/rawdatademo/mysearchfile2demo', # Specify a folder of files containing search terms - each term must be on a new line - use comma
+                               # to apply each folder to the rtmstream topic
+                               # Use @ =AND, |=OR to specify whether the terms in the file should be AND, OR
+                               # For example, @mysearchfolder1,|mysearchfolder2, means all terms in mysearchfolder1 should be AND
+                               # |mysearchfolder2, means all search terms should be OR'ed
+  'localsearchtermfolderinterval': '60', # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60, 
+                                       # The files will be read every 60 seconds - and searchterms will be updated
+  'rememberpastwindows' : '500', # Past windows to remember
+  'patternwindowthreshold' : '30', # check for the number of patterns for the items in searchterms
+  'rtmsscorethreshold': '0.6',  # RTMS score threshold i.e. '0.8'   
+  'rtmsscorethresholdtopic': 'rtmstopic',   # All rtms score greater than rtmsscorethreshold will be streamed to this topic
+  'attackscorethreshold': '0.6',   # Attack score threshold i.e. '0.8'   
+  'attackscorethresholdtopic': 'attacktopic',   # All attack score greater than attackscorethreshold will be streamed to this topic
+  'patternscorethreshold': '0.6',   # Pattern score threshold i.e. '0.8'   
+  'patternscorethresholdtopic': 'patterntopic',   # All pattern score greater thn patternscorethreshold will be streamed to this topic
+  'rtmsfoldername': 'rtms2',
+  'rtmsmaxwindows': '1000000'
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
