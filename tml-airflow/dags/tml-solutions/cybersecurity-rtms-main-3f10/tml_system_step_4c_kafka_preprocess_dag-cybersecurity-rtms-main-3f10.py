@@ -25,7 +25,7 @@ default_args = {
     'raw_data_topic': 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
     'preprocess_data_topic': 'rtms-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
     'maxrows': 200, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
-    'offset': -1, # <<< Rollback from the end of the data streams
+    'offset': -1, # <<< Rollback from the end of the data streams fast
     'brokerhost': '', # <<< *** Leave as is
     'brokerport': -999, # <<< *** Leave as is
     'delay': 70, # Add a 70 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
