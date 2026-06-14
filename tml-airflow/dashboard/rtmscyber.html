@@ -282,8 +282,7 @@
         }
 
         function drawChart(jsondata, topic) {
-			console.log("jsondata==",jsondata);
-
+		
             if (jsondata) {
                 var createdon, entity, rtms, attack, pattern, numattack, numpattern;
                 var processtype, remember, patternthresh, activity, comment, searchfound, Maintopic, kafkakey, offset, partition, searchentity;
@@ -433,6 +432,8 @@
                     var curTime = new Date();
                     var eventdata = `${event.data}`;
                     var maindata = eventdata;
+	console.log("maindata ==",maindata );
+
                     maindata = maindata.replace(/\\n/g, "\\n")
                                        .replace(/\\',/g, "\\'")
                                        .replace(/\\"/g, '\\"')
