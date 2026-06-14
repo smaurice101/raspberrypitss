@@ -18,7 +18,7 @@ import shutil
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-    'owner': 'Sebastian a Maurice', # <<< *** Change as needed
+    'owner': 'Sebastian Maurice', # <<< *** Change as needed
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
     'producerid': 'rtmssolution', # <<< *** Change as needed
@@ -33,7 +33,7 @@ default_args = {
     'saveasarray': 1, # do not modify
     'topicid': -999, # do not modify
     'rawdataoutput': 1, # <<< 1 to output raw data used in the preprocessing, 0 do not output
-    'asynctimeout': 120, # <<< 120 seconds for connection timeout
+    'asynctimeout': 12, # <<< 120 seconds for connection timeout
     'timedelay': 0, # <<< connection delay
     'tmlfilepath': '', # leave blank
     'usemysql': 1, # do not modify
