@@ -40,7 +40,7 @@ default_args = {
     'rtmsstream': 'rtms-stream-mylogs', # Change as needed - STREAM containing log file data (or other data) for RTMS
     'identifier': 'RTMS Past Memory of Events', # <<< ** Change as needed
     'localsearchtermfolderinterval': 60, # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60,
-    'rememberpastwindows': 500, # Past windows to remember
+    'rememberpastwindows': 500, # Past windows to remember 1
     'patternwindowthreshold': 30, # check for the number of patterns for the items in searchterms
     'rtmsscorethreshold': 0.6, # RTMS score threshold i.e. '0.8'
     'rtmsscorethresholdtopic': 'rtmstopic', # All rtms score greater than rtmsscorethreshold will be streamed to this topic
