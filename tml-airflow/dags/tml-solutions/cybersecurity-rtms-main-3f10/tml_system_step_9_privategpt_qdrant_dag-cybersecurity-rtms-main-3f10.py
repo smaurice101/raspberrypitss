@@ -36,7 +36,7 @@ default_args = {
     'producerid': 'private-gpt', # <<< *** Leave as is
     'identifier': 'This is analysing TML output with privategpt',
     'pgpthost': 'http://127.0.0.1', # PrivateGPT container listening on this host
-    'pgptport': 8002, # PrivateGPT listening on this port
+    'pgptport': 8001, # PrivateGPT listening on this port
     'preprocesstype': '', # Leave as is
     'partition': -1, # Leave as is
     'prompt': '[INST] Are there any errors in the  logs? Give s detailed response including IP addresses and host machines.[/INST]', # Enter your prompt here
