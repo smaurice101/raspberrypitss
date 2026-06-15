@@ -3841,3 +3841,10 @@ Login Succeeded
 =============================================================
 0123da1f26a2f806bc9f3bf8356ddbb1a5cb51cf1cdc5fbeb1e04635bb34f1ec
 sha256:bc294ea6c2f9471dea30274cca4c1b34dde3dcb6ce8a7a46f03a8c78a220a2b5
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+✅ PIPELINE COMPLETE: maadsdocker/cybersecurity-rtms-main-3f10-amd64 has been processed successfully.
+=============================================================
