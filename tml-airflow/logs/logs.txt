@@ -2857,3 +2857,4 @@ Login Succeeded
 =============================================================
 [INFO 2026-06-15_01:55:23] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
 [INFO 2026-06-15_01:55:30] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
+[ERROR 2026-06-15_01:55:37] ERROR: Cannot connect to MQTT broker in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py - invalid literal for int() with base 10: ''
