@@ -2238,3 +2238,41 @@ Login Succeeded
 [INFO 2026-06-15_01:46:25] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
 [INFO 2026-06-15_01:46:35] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
 [INFO 2026-06-15_01:47:04] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10.py
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/cybersecurity-rtms-main-3f10-ml_agenticai_mqtt-amd64-tmlworking
+=============================================================
+d2d6a9b56c16f90fb585b4fe5b27280ae9b681bde59e4347f5922b4743229920
+sha256:2322c6c6d9fe1520778c805f6c06f50885ef75875cbbb8ad566eef7df2c8940c
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/index.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/index.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/operating.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/logs.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/kube.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
+[INFO 2026-06-15_01:47:45] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10-ml_agenticai_mqtt/docs/source/details.rst
