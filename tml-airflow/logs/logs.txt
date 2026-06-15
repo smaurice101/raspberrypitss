@@ -2860,3 +2860,8 @@ Login Succeeded
 [ERROR 2026-06-15_01:55:37] ERROR: Cannot connect to MQTT broker in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py - invalid literal for int() with base 10: ''
 [INFO 2026-06-15_01:55:45] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10.py
 [INFO 2026-06-15_01:55:55] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10.py
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/cybersecurity-rtms-main-3f10-amd64-tmlworking
+=============================================================
+a117ad0b6c3f7964e754d17ea63ab74796e141b418d8dfab0c177c765bf2dba9
+[INFO 2026-06-15_01:56:35] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-main-3f10/docs/source/index.rst
