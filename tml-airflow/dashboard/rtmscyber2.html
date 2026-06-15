@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="/" />    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="./oticsico.png" />
+    <title>AegisRTMS // Cyber Threat Intelligence Matrix</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@300;400;700;800&display=swap');
+
+        :root {
+            --font-sans: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background-color: #020205;
+            color: #f4f4f5;
+            background-image: 
+                radial-gradient(circle at 50% -10%, rgba(6, 182, 212, 0.15), transparent 60%),
+                radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.06), transparent 50%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.007) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+            background-attachment: fixed;
+        }
+
+        /* Interactive Scanning Horizon Beam */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 0%, 
+                rgba(34, 211, 238, 0.02) 50%, 
+                rgba(18, 16, 16, 0) 100%
+            );
+            z-index: 99999;
+            opacity: 0.8;
+            pointer-events: none;
+            background-size: 100% 8px;
+            animation: gridScan 12s linear infinite;
+        }
+
+        @keyframes gridScan {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 1000px; }
+        }
+
+        /* Premium Minimalist Scrollbar Design Layout */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(34, 211, 238, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(244, 63, 94, 0.8);
+        }
+
+        /* Overhauling Stale Google Visualization Frame Templates */
+        .columnTitle {
+            font-family: var(--font-sans) !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.15em !important;
+            color: #22d3ee !important;
+            background: #09090b !important;
+            border-bottom: 2px solid rgba(6, 182, 212, 0.4) !important;
+            padding: 14px 16px !important;
+        }
+        .google-visualization-table-table {
+            background-color: transparent !important;
+            color: #e4e4e7 !important;
+            border: 1px solid rgba(63, 63, 70, 0.3) !important;
+            font-family: var(--font-mono) !important;
+            width: 100% !important;
+        }
+        .google-visualization-table-tr-odd, .beige-background {
+            background-color: rgba(255, 255, 255, 0.01) !important;
+        }
+        .google-visualization-table-tr-even {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+        }
+        .google-visualization-table-tr-sel, .orange-background {
+            background-color: rgba(244, 63, 94, 0.15) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(244, 63, 94, 0.6) !important;
+            box-shadow: inset 0 0 15px rgba(244, 63, 94, 0.1);
+        }
+        .google-visualization-table-td {
+            padding: 12px 16px !important;
+            border-color: rgba(39, 39, 42, 0.4) !important;
+            font-size: 11px !important;
+        }
+        .google-visualization-table-page-number {
+            color: #22d3ee !important;
+            background: #09090b !important;
+            border: 1px solid rgba(63, 63, 70, 0.5) !important;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .google-visualization-table-page-number:hover {
+            border-color: #22d3ee;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+        }
+    </style>
+
+    <link href="./css/attention.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen p-4 md:p-8 flex flex-col gap-6 selection:bg-cyan-500/30 selection:text-cyan-200 antialiased">
+
+    <header class="relative border border-zinc-800/80 bg-zinc-950/60 backdrop-blur-2xl p-6 rounded-2xl flex flex-col xl:flex-row items-center justify-between gap-6 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden group">
+        <div class="absolute top-0 left-0 w-48 h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-pulse" />
+        
+        <div class="flex items-center gap-5 w-full xl:w-auto">
+            <div class="h-12 w-12 rounded-xl bg-black border border-cyan-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.15)] shrink-0 relative overflow-hidden">
+                <div class="absolute inset-0 bg-cyan-500/10 animate-pulse" />
+                <span class="text-cyan-400 font-sans font-black text-lg relative z-10">Ω</span>
+            </div>
+            <div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <h1 class="text-2xl font-black font-sans tracking-tight text-white uppercase italic">
+                        Aegis<span class="text-cyan-400 font-light">RTMS</span> <span class="text-zinc-800 font-normal">/</span> <span class="text-xs font-mono tracking-[0.2em] text-zinc-500 font-bold">Threat_Matrix</span>
+                    </h1>
+                    <span id="pulse-indicator" class="h-2 w-2 rounded-full bg-zinc-800 transition-all duration-500" />
+                </div>
+                <p class="text-[10px] text-zinc-500 font-bold tracking-[0.25em] uppercase mt-1">Real-Time Cyber Threat Streaming Deck</p>
+            </div>
+        </div>
+
+        <form id="idForm" class="flex flex-wrap items-center gap-4 w-full xl:w-auto justify-start xl:justify-end relative z-10">
+            <textarea name="txtData" id="txtData" class="hidden"></textarea> 
+
+            <div class="flex flex-col text-[10px] font-mono bg-black/40 border border-zinc-900 px-4 py-2.5 rounded-xl text-zinc-400 min-w-[280px] shadow-inner">
+                <div class="flex justify-between"><span class="text-zinc-600 font-bold uppercase tracking-wider">METRIC SYNC:</span> <span id="accesstime" class="text-cyan-400 font-bold">STANDBY</span></div>
+                <div class="truncate max-w-[260px] flex justify-between mt-0.5"><span class="text-zinc-600 font-bold uppercase tracking-wider">KAFKA NODE:</span> <span id="kafkacluster" class="text-purple-400 font-bold">OFFLINE</span></div>
+            </div>
+
+            <div class="hidden items-center justify-center w-12 h-12 rounded-xl border border-cyan-500/20 bg-cyan-950/20 backdrop-blur-md" id="loaderdiv">
+                <div class="w-5 h-5 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+
+            <button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-r from-zinc-900 to-black text-cyan-400 border border-cyan-500/30 px-6 py-3.5 rounded-xl text-xs font-black tracking-widest hover:from-cyan-500 hover:to-cyan-400 hover:text-black hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 uppercase cursor-pointer relative overflow-hidden group">
+                Start Ingestion Feed
+            </button>
+            <span id="statustext" class="text-[9px] font-bold text-zinc-600 tracking-widest uppercase font-mono"></span>
+        </form>
+    </header>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <div class="relative border border-zinc-900 bg-zinc-950/40 backdrop-blur-md p-5 rounded-2xl flex items-center justify-between shadow-xl transition-all duration-300 hover:border-zinc-800 group overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <div>
+                <span class="text-[9px] font-black text-zinc-500 tracking-[0.15em] uppercase block">Telemetry Load Volume</span>
+                <span class="text-[11px] font-bold text-zinc-300 uppercase tracking-wide block mt-1">Kafka Messages Extracted</span>
+            </div>
+            <div id="totrecs" class="text-4xl font-black font-sans text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-mono tracking-tighter drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                0
+            </div>
+        </div>
+
+        <div class="relative border border-zinc-900 bg-zinc-950/40 backdrop-blur-md p-5 rounded-2xl flex items-center justify-between shadow-xl transition-all duration-300 hover:border-zinc-800 group overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <div>
+                <span class="text-[9px] font-black text-zinc-500 tracking-[0.15em] uppercase block">Threat Vector Status</span>
+                <span id="threat-label" class="text-xs font-black text-emerald-400 uppercase tracking-widest block mt-2 border border-emerald-500/20 bg-emerald-500/5 px-2.5 py-1 rounded-md">DECK NOMINAL</span>
+            </div>
+            <div class="text-right text-[9px] font-bold text-zinc-600 tracking-widest leading-normal">
+                STREAM CHANNEL<br><span class="text-purple-400 font-black">STABLE_FEED</span>
+            </div>
+        </div>
+
+        <div class="relative border border-zinc-900 bg-zinc-950/40 backdrop-blur-md p-5 rounded-2xl flex flex-col justify-center gap-2 shadow-xl transition-all duration-300 hover:border-zinc-800 group">
+            <div class="flex items-center justify-between text-[9px] font-black text-zinc-500 tracking-[0.15em] uppercase mb-1">
+                <span>Data Export Matrix</span>
+                <span class="text-zinc-400 cursor-pointer hover:text-cyan-400 transition-colors uppercase tracking-widest text-[8px]" onclick="image('table','')">[ℹ Matrix Docs]</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <a id="Export" href="#" class="border border-zinc-900 bg-black/60 hover:bg-zinc-900 hover:border-zinc-800 text-zinc-300 py-2.5 px-3 rounded-xl text-center text-[10px] font-bold tracking-wider transition-all shadow-inner">
+                    🗂 CSV Extract
+                </a>
+                <a id="Export2" href="#" class="border border-zinc-900 bg-black/60 hover:bg-zinc-900 hover:border-zinc-800 text-zinc-300 py-2.5 px-3 rounded-xl text-center text-[10px] font-bold tracking-wider transition-all shadow-inner">
+                    📦 JSON Array
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="flex-1 border border-zinc-900 bg-zinc-950/20 backdrop-blur-2xl rounded-2xl overflow-hidden flex flex-col shadow-2xl min-h-[550px] relative">
+        <div class="bg-zinc-950/60 px-6 py-4 border-b border-zinc-900/60 flex justify-between items-center backdrop-blur-md">
+            <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
+                <span class="text-xs font-black tracking-widest uppercase text-zinc-200 font-sans">
+                    Preprocessed Memory Telemetry Feed
+                </span>
+            </div>
+            <span class="text-[9px] font-bold text-zinc-600 uppercase tracking-widest font-mono">VIPER // DATA PLATFORM</span>
+        </div>
+
+        <div class="p-4 flex-1 overflow-x-auto min-h-[480px]">
+            <div id="table_div" class="w-full min-h-[450px]">
+                <div class="text-zinc-600 text-xs italic h-64 flex flex-col items-center justify-center gap-3">
+                    <div class="w-5 h-5 border-2 border-zinc-800 border-t-zinc-400 rounded-full animate-spin"></div>
+                    <span class="tracking-[0.2em] uppercase font-black text-[9px] text-zinc-500 mt-2">Awaiting Stream Initialization Parameters...</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-zinc-900/40 pt-5 flex flex-col sm:flex-row justify-between items-center text-[9px] text-zinc-600 font-bold tracking-[0.15em] uppercase gap-2 select-none font-mono">
+        <div>Chassis Configuration Suite: v2.6.0 // Buffers Secure</div>
+        <div>Viper Core System Deck // OTICS Advanced Analytics, Inc.</div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="./js/attention.js"></script>
+    <script type="text/javascript" src="./js/r.min.js"></script>
+    <script type="text/javascript" src="./js/justgage.js"></script>
+    <script type="text/javascript" src="./js/justgage.min.js"></script>
+    <script src="./js/d3.min.js"></script>
+    <script src="./js/d3pie.js"></script>
+
+    <script>
+        // Initialize Google Table rendering engines
+        google.charts.load("current", { packages: ["corechart", "line"] });
+        google.charts.load('current', {'packages':['table','annotatedtimeline','gauge','bar','sankey']});
+        google.charts.setOnLoadCallback(drawTable2);
+
+        var START = 0;
+        var ws;
+        var topic = "";
+        var mainusertopic = "";
+        var offset = -1;
+        var append = 0;
+        var rollbackoffset = 0;
+        var topictype = "";
+        var vipertoken = "";
+        var consumerid = "";
+        var secure = 0;
+        var mainport = "";
+        var jsonhist = "";
+        var datatbl;
+        var maintable;
+        var dataintable = [];
+        var kafkakeyarr = [];
+        var kafkacluster = "";
+        var maintotalmessages = 0;
+        var mainkafkatopic = "";
+
+        var cssClassNames = {
+            'headerRow': 'columnTitle',
+            'tableRow': '',
+            'oddTableRow': 'beige-background',
+            'selectedTableRow': 'orange-background large-font',
+            'hoverTableRow': '',
+            'headerCell': '',
+            'tableCell': '',
+            'rowNumberCell': ''
+        };
+
+        function image(thetype, mess) {
+            var titletext = "";
+            var helptext = "";
+            if (thetype == "barchart") {
+                titletext = "Failure Monitoring Bar Chart";
+                helptext = "The Failure Monitoring Bar Chart shows the count of Total Failure records in the data stream (GREY Bar), against the Failure that are above the upper bound (BLUE Bar).";
+            } else if (thetype == "table") {
+                titletext = "Table Data Ledger Metrics";
+                helptext = "The data in the table shows the preprocessed values for every device used in the preprocessing of IoT Device data. KAFKAKEY is a unique hash key for the Kafka message. OFFSET/PARTITION show the actual location of the PROCESSED message in Kafka.";
+            } else if (thetype == "ml") {
+                titletext = "Transactional Machine Learning Models";
+                helptext = "These are the ML models TML has built for every device. They are Failure Probability predictions via local logistic regressions.";
+            }
+            new Attention.Prompt({ title: titletext, content: helptext });
+        }
+
+        function drawChart(jsondata, topic) {
+            if (jsondata) {
+                var createdon, entity, rtms, attack, pattern, numattack, numpattern;
+                var processtype, remember, patternthresh, activity, comment, searchfound, Maintopic, kafkakey, offset, partition, searchentity;
+                jsonhist = "";
+                let rownum = 0;
+
+                for (j in jsondata.TopicReads) {
+                    kafkakey = jsondata.TopicReads[j].kafkakey;
+                    if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
+                        kafkakeyarr.push(kafkakey);
+
+                        createdon = jsondata.TopicReads[j].TimeStamp;
+                        jsonhist = jsonhist + JSON.stringify(jsondata.TopicReads[j]) + ",";
+            
+                        entity = jsondata.TopicReads[j].Entity;
+                        rtms = jsondata.TopicReads[j].hyperprediction;
+                        attack = jsondata.TopicReads[j].FinalAttackScore;
+                        pattern = jsondata.TopicReads[j].FinalPatternScore;
+                        numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
+                        numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
+                        processtype = jsondata.TopicReads[j].Preprocesstype;
+                        remember = jsondata.TopicReads[j].RememberPastWindows;
+                        patternthresh = jsondata.TopicReads[j].PatternThreshold;
+                        activity = jsondata.TopicReads[j].ActivityLevel;
+                        comment = jsondata.TopicReads[j].TMLComment;
+                        searchfound = jsondata.TopicReads[j].SearchTextFound.toString();
+                        topic = jsondata.TopicReads[j].Topic;
+                        Maintopic = jsondata.TopicReads[j].Maintopic;
+                        offset = jsondata.TopicReads[j].Offset;
+                        partition = jsondata.TopicReads[j].Partition;
+                        searchentity = jsondata.TopicReads[j].SearchEntity;
+
+                        var arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, remember, patternthresh, activity, comment, searchfound, searchentity, topic, Maintopic, kafkakey, offset, partition];
+                        dataintable.push(arr);
+                        rownum++;
+                    }
+                }
+
+                maintotalmessages = maintotalmessages + rownum;
+                document.getElementById('totrecs').innerHTML = maintotalmessages;
+                
+                const threatLabel = document.getElementById('threat-label');
+                if (maintotalmessages > 25) {
+                    threatLabel.innerHTML = "CRITICAL METRIC OVERLOAD";
+                    threatLabel.className = "text-xs font-black text-rose-400 uppercase tracking-widest block mt-2 border border-rose-500/30 bg-rose-500/10 px-2.5 py-1 rounded-md animate-pulse shadow-[0_0_15px_rgba(244,63,94,0.2)]";
+                } else if (maintotalmessages > 0) {
+                    threatLabel.innerHTML = "WARNING: ACTIVE ANALYSIS";
+                    threatLabel.className = "text-xs font-black text-amber-400 uppercase tracking-widest block mt-2 border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-md";
+                }
+
+                if (rownum > 0) {
+                    document.getElementById("txtData").value = "[" + jsonhist.slice(0, -1) + "]";
+                    drawTable2();
+                }
+            }
+        }
+
+        function drawTable2() {
+            if (maintable == null) {
+                maintable = new google.visualization.Table(document.getElementById('table_div'));
+            }
+
+            var formatter = new google.visualization.NumberFormat({ groupingSymbol: '', fractionDigits: 0 });
+            var formatter2 = new google.visualization.NumberFormat({ groupingSymbol: '', fractionDigits: 3 });
+
+            if (datatbl == null) {
+                datatbl = new google.visualization.DataTable();
+
+                datatbl.addColumn('string', 'Date/Time');
+                datatbl.addColumn('string', 'RTMS Score');
+                datatbl.addColumn('string', 'Attack Score');
+                datatbl.addColumn('string', 'Pattern Score');
+                datatbl.addColumn('string', 'Entity');
+                datatbl.addColumn('string', 'Attack Windows');
+                datatbl.addColumn('string', 'Pattern Windows');
+                datatbl.addColumn('string', 'Processtype');
+                datatbl.addColumn('string', 'Sliding Windows');
+                datatbl.addColumn('string', 'Pattern Threshold');
+                datatbl.addColumn('string', 'Risk Level');
+                datatbl.addColumn('string', 'TML Comment');
+                datatbl.addColumn('string', 'Search Text Logs');
+                datatbl.addColumn('string', 'Search Entity');        
+                datatbl.addColumn('string', 'Topic');
+                datatbl.addColumn('string', 'Main Topic');
+                datatbl.addColumn('string', 'Kafkakey');
+                datatbl.addColumn('number', 'Offset');
+                datatbl.addColumn('number', 'Partition');
+
+                datatbl.sort({ column: 1, desc: true });
+                maintable.clearChart();
+                maintable.draw(datatbl, { showRowNumber: true, width: '100%', height: '100%', page: 'enable', pageSize: 30, allowHtml: true });
+                if (append == 0) {
+                    datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+                }
+            } else {
+                formatter.format(datatbl, 1);
+                formatter2.format(datatbl, 2);
+                datatbl.sort({ column: 1, desc: true });
+                if (datatbl.getNumberOfRows() > 0 && append == 0) {
+                    datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+                }
+
+                datatbl.addRows(dataintable);
+                maintable.clearChart();
+                maintable.draw(datatbl, {
+                    showRowNumber: true,
+                    width: '100%',
+                    height: '100%',
+                    page: 'enable',
+                    pageSize: 30,
+                    allowHtml: true,
+                    'cssClassNames': cssClassNames
+                });
+                formatter = null;
+                formatter2 = null;
+            }
+            dataintable = [];
+        }
+
+        function streamLiveKafkaData() {
+            if ("WebSocket" in window) {
+                var url = window.location.host;
+                mainport = url.split(":")[1];
+
+                var urlParams = new URLSearchParams(window.location.search);
+                var entries = urlParams.entries();
+                for (pair of entries) {
+                    if (pair[0] == "topic") topic = pair[1];
+                    if (pair[0] == "topictype") topictype = pair[1];
+                    if (pair[0] == "secure") secure = pair[1];
+                    if (pair[0] == "vipertoken") vipertoken = pair[1];
+                    if (pair[0] == "consumerid") consumerid = pair[1];
+                    if (pair[0] == "offset") offset = pair[1];
+                    if (pair[0] == "rollbackoffset") rollbackoffset = pair[1];
+                    if (pair[0] == "groupid") groupid = pair[1];
+                    if (pair[0] == "append") append = pair[1];
+                }
+
+                if (window.location.href.indexOf("http://") != -1) {
+                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("ws://"+url+"/viz/ws") : new WebSocket("ws://"+url+"/ws");
+                } else {
+                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("wss://"+url+"/viz/ws") : new WebSocket("wss://"+url+"/ws");
+                }
+
+                ws.onmessage = function (event) {
+                    var obj;
+                    var curTime = new Date();
+                    var eventdata = `${event.data}`;
+                    var maindata = eventdata;
+
+                    maindata = maindata.replace(/\\n/g, "\\n")
+                                       .replace(/\\',/g, "\\'")
+                                       .replace(/\\"/g, '\\"')
+                                       .replace(/\\&/g, "\\&")
+                                       .replace(/\\r/g, "\\r")
+                                       .replace(/\\t/g, "\\t")
+                                       .replace(/\\b/g, "\\b")
+                                       .replace(/\\f/g, "\\f");
+                    try {
+                        obj = JSON.parse(JSON.parse(maindata));
+                    } catch(e) {
+                        console.log("Json parse issue=", e.message);
+                        return;
+                    }
+
+                    if (obj.ERROR) {
+                        document.getElementById('statustext').innerHTML = "ERR: " + obj.ERROR;
+                        ws.close(1000);
+                        alert(obj.ERROR);
+                        ws = null;
+                        $("#start").attr("disabled", false).html("Start Ingestion Feed");
+                        return;
+                    }
+
+                    if (START == 0) {
+                        if (ws) ws.close(1000);
+                        ws = null;
+                        return;
+                    }
+                    if (append == 0) {
+                        dataintable.splice(0, dataintable.length);
+                        jsonhist = null;
+                        kafkakeyarr.splice(0, kafkakeyarr.length);
+                    }
+
+                    kafkacluster = obj.Webkafkacluster;
+                    mainkafkatopic = obj.Webtopic;
+                    document.getElementById('accesstime').innerHTML = curTime.toLocaleTimeString();
+                    document.getElementById('kafkacluster').innerHTML = "Cluster: " + kafkacluster + " // Topic: " + obj.Webtopic;
+                    
+                    drawChart(obj, mainkafkatopic);
+                    obj = null; maindata = null; eventdata = null;
+                };
+
+                ws.onclose = function (event) {
+                    if (ws) ws.close(1000);
+                    ws = null;
+                    document.getElementById('loaderdiv').style.display = "none";
+                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-zinc-800";
+                    $("#start").attr("disabled", false).html("Start Ingestion Feed");
+                    document.getElementById('statustext').innerHTML = "// CONN_CLOSED";
+                };
+
+                ws.onopen = function (error) {
+                    var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
+                    ws.send(sendbuffer);
+                    document.getElementById('loaderdiv').style.display = "flex";
+                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_12px_#06b6d4] animate-pulse";
+                };
+
+                ws.onerror = function (error) {
+                    if (ws) ws.close(1000);
+                    document.getElementById('statustext').innerHTML = "MATRIX ERROR: " + error.message;
+                };
+            }
+        }
+
+        function saveDynamicDataToFile(topic) {
+            var userInput = document.getElementById("txtData").value;	
+            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+            const sFileName = topic + "-LOG-JSON.json";
+
+            let newLink = document.createElement("a");
+            newLink.download = sFileName;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+            newLink.click(); 
+        }
+
+        $('#Export2').click(function(e) {
+            e.preventDefault(); 
+            saveDynamicDataToFile(topic);
+            return false; 
+        });
+
+        $('#Export').click(function () {
+            if (topic.length > 0) {
+                var headerRow = "";
+                var number_of_columns = datatbl.getNumberOfColumns();
+                for (var i = 0; i < number_of_columns; i++) {
+                    headerRow += datatbl.getColumnLabel(i).replace("\n", " : ");
+                    headerRow += (i === number_of_columns - 1) ? "\n" : ",";
+                }
+                var csvFormattedDataTable = headerRow + google.visualization.dataTableToCsv(datatbl);
+                var encodedUri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvFormattedDataTable);
+                this.href = encodedUri;
+                this.download = "iot-data.csv";
+                this.target = '_blank';
+            } else {
+                alert("Initialize matrix streaming first");
+            }
+        });
+
+        $("#idForm").submit(function (e) {
+            e.preventDefault();
+            if (ws && START == 1) {
+                ws.close(1000);
+                ws = null;
+                START = 0;
+                $("#start").html("Start Ingestion Feed").attr("disabled", true);
+                document.getElementById('statustext').innerHTML = "DISCONNECTING...";
+            } else {
+                START = 1;
+                document.getElementById('statustext').innerHTML = "LISTENING...";
+                $("#start").html("Stop Ingestion Deck");
+                streamLiveKafkaData();
+            }
+        });
+    </script>
+</body>
+</html>
