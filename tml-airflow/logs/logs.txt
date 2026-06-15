@@ -3485,3 +3485,4 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 [INFO 2026-06-15_12:14:04] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurityrtms-3f10.py
+[INFO 2026-06-15_12:14:13] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurityrtms-3f10.py
