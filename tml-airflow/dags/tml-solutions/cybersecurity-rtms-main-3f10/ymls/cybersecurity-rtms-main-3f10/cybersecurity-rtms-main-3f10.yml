@@ -237,7 +237,7 @@
              - name: step9blocalmodelsfolder
                value: ''                                             
              - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
-               value: 'My Solution Title'                              
+               value: 'Cybersecurity Solution: Log Analysis'                              
              - name: step1description # STEP 1 description field can be adjusted here. 
                value: 'This an awesome real-time solution built by TSS'                                          
              - name: KUBEBROKERHOST
