@@ -15,7 +15,7 @@
          spec:
            containers:
            - name: cybersecurity-rtms-main-3f10
-             image: maadsdocker/cybersecurity-rtms-main-3f10-ml_agenticai_mqtt-amd64:latest
+             image: maadsdocker/cybersecurity-rtms-main-3f10-amd64:latest
              volumeMounts:
              - name: dockerpath
                mountPath: /var/run/docker.sock
