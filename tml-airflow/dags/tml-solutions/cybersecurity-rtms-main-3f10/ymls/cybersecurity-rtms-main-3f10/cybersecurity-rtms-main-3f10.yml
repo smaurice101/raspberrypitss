@@ -15,7 +15,7 @@
          spec:
            containers:
            - name: cybersecurity-rtms-main-3f10
-             image: maadsdocker/cybersecurity-rtms-main-3f10-amd64:latest
+             image: maadsdocker/cybersecurity-rtms-main-3f10-ml_agenticai_mqtt-amd64:latest
              volumeMounts:
              - name: dockerpath
                mountPath: /var/run/docker.sock
@@ -123,13 +123,13 @@
              - name: step2preprocess_data_topic # STEP 2 
                value: 'iot-preprocess'                           
              - name: step4raw_data_topic # STEP 4
-               value: 'iot-raw-data'                           
+               value: ''                           
              - name: step4preprocess_data_topic # STEP 4
-               value: 'iot-preprocess'                                                         
+               value: ''                                                         
              - name: step4preprocesstypes # STEP 4
-               value: 'anomprob,trend,avg'                                                         
+               value: ''                                                         
              - name: step4jsoncriteria # STEP 4
-               value: 'uid=metadata.dsn,filter:allrecords~subtopics=metadata.property_name~values=datapoint.value~identifiers=metadata.display_name~datetime=datapoint.updated_at~msgid=datapoint.id~latlong=lat:long'                           
+               value: ''                           
              - name: step4ajsoncriteria # STEP 4a 
                value: ''                           
              - name: step4amaxrows # STEP 4a
