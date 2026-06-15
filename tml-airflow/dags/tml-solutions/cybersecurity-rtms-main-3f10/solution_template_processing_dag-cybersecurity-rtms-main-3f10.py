@@ -53,12 +53,6 @@ with DAG(
       python_callable=step3.startproducing,
       provide_context=True,
   )
-# STEP 4: Preprocess the data        
-  sensor_D = PythonOperator(
-      task_id="step_4_solution_task_preprocess",
-      python_callable=step4.dopreprocessing,
-      provide_context=True,
-  )
 # STEP 4c: Preprocess the data        
   sensor_D2 = PythonOperator(
        task_id="step_4c_solution_task_preprocess",
@@ -96,4 +90,4 @@ with DAG(
       provide_context=True,      
   )
 
-  start_task >> sensor_A >> sensor_B >> start_task4 >> [sensor_C, sensor_D,  sensor_D2, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
+  start_task >> sensor_A >> sensor_B >> start_task4 >> [sensor_C  sensor_D2, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
