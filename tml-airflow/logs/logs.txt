@@ -2548,3 +2548,4 @@ Login Succeeded
 =============================================================
 [INFO 2026-06-15_01:51:19] MQTT producing DAG in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
 [ERROR 2026-06-15_01:51:31] ERROR: Cannot connect to MQTT broker in tml_read_MQTT_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py - invalid literal for int() with base 10: ''
+[INFO 2026-06-15_01:51:38] gRPC producing DAG in tml_read_gRPC_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
