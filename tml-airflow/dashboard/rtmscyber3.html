@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="/" />    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="./oticsico.png" />
+    <title>AegisRTMS Panel // Global Security Command Intelligence</title>
+
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        :root {
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #030407;
+            color: #f1f5f9;
+            /* Advanced Micro-Grid Topology Layer */
+            background-image: 
+                radial-gradient(circle at 50% -10%, rgba(14, 165, 233, 0.15), transparent 65%),
+                radial-gradient(circle at 0% 100%, rgba(99, 102, 241, 0.04), transparent 45%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.005) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+            background-attachment: fixed;
+        }
+
+        /* Luxury Obsidian Glass Panel Blueprint */
+        .obsidian-glass {
+            background: linear-gradient(135deg, rgba(10, 12, 20, 0.7) 0%, rgba(4, 5, 10, 0.85) 100%);
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0px rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .obsidian-glass:hover {
+            border-color: rgba(14, 165, 233, 0.25);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.7),
+                0 0 40px rgba(14, 165, 233, 0.04),
+                inset 0 1px 0px rgba(255, 255, 255, 0.08);
+        }
+
+        /* Premium Dynamic Glow States for Core KPI Engine */
+        .kpi-glow-sky {
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.03), inset 0 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .kpi-glow-sky:hover {
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.12), inset 0 1px 0px rgba(255, 255, 255, 0.1);
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+
+        .kpi-glow-rose {
+            box-shadow: 0 0 30px rgba(244, 63, 94, 0.03), inset 0 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .kpi-glow-rose:hover {
+            box-shadow: 0 0 40px rgba(244, 63, 94, 0.15), inset 0 1px 0px rgba(255, 255, 255, 0.1);
+            border-color: rgba(244, 63, 94, 0.4);
+        }
+
+        .kpi-glow-violet {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.03), inset 0 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .kpi-glow-violet:hover {
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.12), inset 0 1px 0px rgba(255, 255, 255, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        /* Professional Master Scrollbar Architecture */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030407;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(14, 165, 233, 0.5);
+        }
+
+        /* High-Fidelity Google Visualization Matrix Injections */
+        .columnTitle {
+            font-family: var(--font-sans) !important;
+            font-size: 10px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            color: #64748b !important;
+            background: #07090e !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            padding: 16px 24px !important;
+        }
+        .google-visualization-table-table {
+            background-color: transparent !important;
+            color: #cbd5e1 !important;
+            border: none !important;
+            font-family: var(--font-mono) !important;
+            width: 100% !important;
+        }
+        .google-visualization-table-tr-odd, .beige-background {
+            background-color: rgba(255, 255, 255, 0.003) !important;
+        }
+        .google-visualization-table-tr-even {
+            background-color: transparent !important;
+        }
+        /* Illuminated Laser-Row Selection Profile */
+        .google-visualization-table-tr-sel, .orange-background {
+            background-color: rgba(14, 165, 233, 0.07) !important;
+            color: #ffffff !important;
+            box-shadow: inset 2px 0 0 #0ea5e9;
+        }
+        .google-visualization-table-td {
+            padding: 15px 24px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.015) !important;
+            font-size: 11px !important;
+            font-weight: 500;
+        }
+        .google-visualization-table-page-number {
+            color: #94a3b8 !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .google-visualization-table-page-number:hover {
+            color: #fff !important;
+            background: rgba(14, 165, 233, 0.15) !important;
+            border-color: rgba(14, 165, 233, 0.4) !important;
+        }
+    </style>
+
+    <link href="./css/attention.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen p-6 xl:p-10 flex flex-col gap-6 selection:bg-sky-500/30 selection:text-sky-100 antialiased">
+
+    <!-- TOP CONTROL DECK -->
+    <header class="obsidian-glass p-6 rounded-2xl flex flex-col xl:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sky-500/20 to-transparent" />
+        
+        <div class="flex items-center gap-5 w-full xl:w-auto">
+            <div class="h-11 w-11 rounded-xl bg-slate-950 border border-white/10 flex items-center justify-center relative shadow-inner">
+                <span class="text-sky-400 font-sans font-semibold text-lg relative z-10 tracking-tighter">𝚵</span>
+                <div class="absolute inset-0 bg-sky-500/5 rounded-xl blur-sm animate-pulse" />
+            </div>
+            <div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <h1 class="text-lg font-bold font-sans tracking-tight text-white uppercase">
+                        Aegis<span class="text-sky-400 font-light">RTMS</span> <span class="text-zinc-800 font-normal">/</span> <span class="text-[10px] font-mono tracking-[0.2em] text-zinc-400 font-semibold">GLOBAL_INTELLIGENCE_NODE</span>
+                    </h1>
+                    <span id="pulse-indicator" class="h-1.5 w-1.5 rounded-full bg-zinc-700 transition-all duration-1000" />
+                </div>
+                <p class="text-[9px] text-zinc-500 font-semibold tracking-[0.2em] uppercase mt-1">Tier-1 Threat Telemetry Orchestration Matrix</p>
+            </div>
+        </div>
+
+        <!-- Connection Parameters & Submission Pipeline -->
+        <form id="idForm" class="flex flex-wrap items-center gap-4 w-full xl:w-auto justify-start xl:justify-end">
+            <textarea name="txtData" id="txtData" class="hidden"></textarea> 
+
+            <div class="flex flex-col text-[10px] font-mono bg-black/40 border border-white/5 px-4 py-2.5 rounded-xl text-zinc-400 min-w-[320px] shadow-inner">
+                <div class="flex justify-between"><span class="text-zinc-600 font-semibold">METRIC SYNCHRONICITY:</span> <span id="accesstime" class="text-sky-400 font-semibold tracking-wide">STANDBY</span></div>
+                <div class="truncate max-w-[300px] flex justify-between mt-1"><span class="text-zinc-600 font-semibold">KAFKA ATTESTATION:</span> <span id="kafkacluster" class="text-slate-400 font-semibold truncate">OFFLINE_CLUSTER_BUS</span></div>
+            </div>
+
+            <!-- Loader Signal -->
+            <div class="hidden items-center justify-center w-11 h-11 rounded-xl border border-white/5 bg-white/5" id="loaderdiv">
+                <div class="w-4 h-4 border-2 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+
+            <button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-b from-sky-500 to-sky-600 text-white font-sans px-5 py-3 rounded-xl text-xs font-semibold tracking-wide hover:from-sky-400 hover:to-sky-500 transition-all duration-300 shadow-lg shadow-sky-500/10 active:scale-[0.99] cursor-pointer uppercase">
+                Initialize Ingest
+            </button>
+            <span id="statustext" class="text-[10px] font-mono font-medium text-zinc-500 tracking-wider uppercase"></span>
+        </form>
+    </header>
+
+    <!-- EXECUTIVE HIGH-GLOW TELEMETRY MATRIX -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- RTMS SCORE BLOCK -->
+        <div class="obsidian-glass kpi-glow-sky p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl transition-all duration-500 group-hover:bg-sky-500/10" />
+            <div class="flex items-center justify-between z-10">
+                <span class="text-[10px] font-bold text-sky-400/80 tracking-[0.15em] uppercase font-sans">RTMS Kernel Index</span>
+                <span class="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded border border-white/5">SYS_REF_A</span>
+            </div>
+            <div class="mt-4 flex items-baseline justify-between z-10">
+                <span id="rtms-kpi" class="text-5xl font-light font-sans tracking-tight text-white drop-shadow-[0_0_15px_rgba(14,165,233,0.15)] transition-all duration-300">
+                    0.000
+                </span>
+                <span class="text-[10px] font-mono text-zinc-400 font-semibold uppercase tracking-wider">Hyper Prediction</span>
+            </div>
+        </div>
+
+        <!-- ATTACK SCORE BLOCK -->
+        <div class="obsidian-glass kpi-glow-rose p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-rose-500/5 rounded-full blur-2xl transition-all duration-500 group-hover:bg-rose-500/10" />
+            <div class="flex items-center justify-between z-10">
+                <span class="text-[10px] font-bold text-rose-400/80 tracking-[0.15em] uppercase font-sans">Attack Vectors</span>
+                <span class="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded border border-white/5">SYS_REF_B</span>
+            </div>
+            <div class="mt-4 flex items-baseline justify-between z-10">
+                <span id="attack-kpi" class="text-5xl font-light font-sans tracking-tight text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.15)] transition-all duration-300">
+                    0.00
+                </span>
+                <span class="text-[10px] font-mono text-zinc-400 font-semibold uppercase tracking-wider">Final Threat Layer</span>
+            </div>
+        </div>
+
+        <!-- PATTERN SCORE BLOCK -->
+        <div class="obsidian-glass kpi-glow-violet p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-violet-500/5 rounded-full blur-2xl transition-all duration-500 group-hover:bg-violet-500/10" />
+            <div class="flex items-center justify-between z-10">
+                <span class="text-[10px] font-bold text-violet-400/80 tracking-[0.15em] uppercase font-sans">Pattern Diagnostics</span>
+                <span class="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded border border-white/5">SYS_REF_C</span>
+            </div>
+            <div class="mt-4 flex items-baseline justify-between z-10">
+                <span id="pattern-kpi" class="text-5xl font-light font-sans tracking-tight text-white drop-shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300">
+                    0.00
+                </span>
+                <span class="text-[10px] font-mono text-zinc-400 font-semibold uppercase tracking-wider">Deviation Envelope</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIPELINE LOAD & METRICS DECK -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Counter Deck -->
+        <div class="obsidian-glass p-6 rounded-2xl flex items-center justify-between group">
+            <div>
+                <span class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase block">Pipeline Ingestion Load</span>
+                <span class="text-xs font-medium text-zinc-300 uppercase block mt-1">Active Kafka Segment</span>
+            </div>
+            <div id="totrecs" class="text-4xl font-light font-sans text-white tracking-tighter bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+                0
+            </div>
+        </div>
+
+        <!-- Status Deck -->
+        <div class="obsidian-glass p-6 rounded-2xl flex items-center justify-between">
+            <div>
+                <span class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase block">Heuristic Risk Index</span>
+                <span id="threat-label" class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mt-2 px-3 py-1 rounded border border-emerald-500/10 bg-emerald-500/5">NOMINAL_STATE</span>
+            </div>
+            <div class="text-right text-[9px] font-mono font-medium text-zinc-500 tracking-widest leading-relaxed">
+                BUS_CHANNEL_LAYER<br><span class="text-sky-400 font-semibold">DATA_STREAM_OK</span>
+            </div>
+        </div>
+
+        <!-- Action Export Desk -->
+        <div class="obsidian-glass p-6 rounded-2xl flex flex-col justify-center gap-2">
+            <div class="flex items-center justify-between text-[10px] font-bold text-zinc-500 tracking-widest uppercase mb-1">
+                <span>Data Extraction Interface</span>
+                <span class="text-zinc-500 cursor-pointer hover:text-sky-400 transition-colors tracking-wide text-[9px]" onclick="image('table','')">[Schema Manifest]</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <a id="Export" href="#" class="border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 text-zinc-300 py-2.5 px-3 rounded-xl text-center text-xs font-medium tracking-wide transition-all shadow-sm">
+                    Extract CSV
+                </a>
+                <a id="Export2" href="#" class="border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 text-zinc-300 py-2.5 px-3 rounded-xl text-center text-xs font-medium tracking-wide transition-all shadow-sm">
+                    Extract JSON
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE DATA MATRIX TABLE CHASSIS -->
+    <main class="flex-1 obsidian-glass rounded-2xl overflow-hidden flex flex-col min-h-[600px]">
+        <div class="bg-slate-950/50 px-6 py-4 border-b border-white/5 flex justify-between items-center">
+            <div class="flex items-center gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_#0ea5e9]" />
+                <span class="text-xs font-semibold tracking-wide text-zinc-300 font-sans">
+                    Preprocessed Memory Telemetry Kernel Ledger
+                </span>
+            </div>
+            <span class="text-[9px] font-mono font-semibold text-zinc-500 tracking-widest">VIPER_ENGINE_V2.6</span>
+        </div>
+
+        <!-- Scrollable Table Ingest Deck Container -->
+        <div class="p-6 flex-1 overflow-x-auto min-h-[520px]">
+            <div id="table_div" class="w-full min-h-[480px]">
+                <div class="text-zinc-500 text-xs h-64 flex flex-col items-center justify-center gap-3">
+                    <div class="w-4 h-4 border-2 border-white/10 border-t-sky-400 rounded-full animate-spin"></div>
+                    <span class="tracking-widest text-[9px] text-zinc-500 font-semibold mt-2 uppercase font-mono">Awaiting Core Data Matrix Connection String...</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER TELEMETRY LAYER -->
+    <footer class="border-t border-white/5 pt-5 flex flex-col sm:flex-row justify-between items-center text-[10px] text-zinc-500 tracking-wider uppercase gap-2 select-none font-mono">
+        <div>Platform Context: Enterprise Mesh Matrix v2.6.0</div>
+        <div>OTICS Advanced Analytics, Inc. // Proprietary Protection Layer</div>
+    </footer>
+
+    <!-- LOGIC INFRASTRUCTURE PIPELINES -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="./js/attention.js"></script>
+    <script type="text/javascript" src="./js/r.min.js"></script>
+    <script type="text/javascript" src="./js/justgage.js"></script>
+    <script type="text/javascript" src="./js/justgage.min.js"></script>
+    <script src="./js/d3.min.js"></script>
+    <script src="./js/d3pie.js"></script>
+
+    <script>
+        google.charts.load("current", { packages: ["corechart", "line"] });
+        google.charts.load('current', {'packages':['table','annotatedtimeline','gauge','bar','sankey']});
+        google.charts.setOnLoadCallback(drawTable2);
+
+        var START = 0;
+        var ws;
+        var topic = "";
+        var mainusertopic = "";
+        var offset = -1;
+        var append = 0;
+        var rollbackoffset = 0;
+        var topictype = "";
+        var vipertoken = "";
+        var consumerid = "";
+        var secure = 0;
+        var mainport = "";
+        var jsonhist = "";
+        var datatbl;
+        var maintable;
+        var dataintable = [];
+        var kafkakeyarr = [];
+        var kafkacluster = "";
+        var maintotalmessages = 0;
+        var mainkafkatopic = "";
+
+        var cssClassNames = {
+            'headerRow': 'columnTitle',
+            'tableRow': '',
+            'oddTableRow': 'beige-background',
+            'selectedTableRow': 'orange-background large-font',
+            'hoverTableRow': '',
+            'headerCell': '',
+            'tableCell': '',
+            'rowNumberCell': ''
+        };
+
+        function image(thetype, mess) {
+            var titletext = "";
+            var helptext = "";
+            if (thetype == "barchart") {
+                titletext = "Failure Monitoring Bar Chart";
+                helptext = "The Failure Monitoring Bar Chart shows the count of Total Failure records in the data stream (GREY Bar), against the Failure that are above the upper bound (BLUE Bar).";
+            } else if (thetype == "table") {
+                titletext = "Table Data Ledger Metrics";
+                helptext = "The data in the table shows the preprocessed values for every device used in the preprocessing of IoT Device data. KAFKAKEY is a unique hash key for the Kafka message. OFFSET/PARTITION show the actual location of the PROCESSED message in Kafka.";
+            } else if (thetype == "ml") {
+                titletext = "Transactional Machine Learning Models";
+                helptext = "These are the ML models TML has built for every device. They are Failure Probability predictions via local logistic regressions.";
+            }
+            new Attention.Prompt({ title: titletext, content: helptext });
+        }
+
+        function drawChart(jsondata, topic) {
+            if (jsondata) {
+                var createdon, entity, rtms, attack, pattern, numattack, numpattern;
+                var processtype, remember, patternthresh, activity, comment, searchfound, Maintopic, kafkakey, offset, partition, searchentity;
+                jsonhist = "";
+                let rownum = 0;
+
+                // Trackers for banner averages/latest metrics
+                let lastRtms = "0.000";
+                let lastAttack = "0.00";
+                let lastPattern = "0.00";
+
+                for (j in jsondata.TopicReads) {
+                    kafkakey = jsondata.TopicReads[j].kafkakey;
+                    if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
+                        kafkakeyarr.push(kafkakey);
+
+                        createdon = jsondata.TopicReads[j].TimeStamp;
+                        jsonhist = jsonhist + JSON.stringify(jsondata.TopicReads[j]) + ",";
+            
+                        entity = jsondata.TopicReads[j].Entity;
+                        rtms = jsondata.TopicReads[j].hyperprediction;
+                        attack = jsondata.TopicReads[j].FinalAttackScore;
+                        pattern = jsondata.TopicReads[j].FinalPatternScore;
+                        numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
+                        numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
+                        processtype = jsondata.TopicReads[j].Preprocesstype;
+                        remember = jsondata.TopicReads[j].RememberPastWindows;
+                        patternthresh = jsondata.TopicReads[j].PatternThreshold;
+                        activity = jsondata.TopicReads[j].ActivityLevel;
+                        comment = jsondata.TopicReads[j].TMLComment;
+                        searchfound = jsondata.TopicReads[j].SearchTextFound.toString();
+                        topic = jsondata.TopicReads[j].Topic;
+                        Maintopic = jsondata.TopicReads[j].Maintopic;
+                        offset = jsondata.TopicReads[j].Offset;
+                        partition = jsondata.TopicReads[j].Partition;
+                        searchentity = jsondata.TopicReads[j].SearchEntity;
+
+                        // Retain the newest values for executive banner display
+                        if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
+                        if(attack) lastAttack = parseFloat(attack).toFixed(2);
+                        if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
+
+                        var arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, remember, patternthresh, activity, comment, searchfound, searchentity, topic, Maintopic, kafkakey, offset, partition];
+                        dataintable.push(arr);
+                        rownum++;
+                    }
+                }
+
+                maintotalmessages = maintotalmessages + rownum;
+                document.getElementById('totrecs').innerHTML = maintotalmessages;
+                
+                // Inject metrics directly into our top luxury display decks
+                if (rownum > 0) {
+                    document.getElementById('rtms-kpi').innerHTML = lastRtms;
+                    document.getElementById('attack-kpi').innerHTML = lastAttack;
+                    document.getElementById('pattern-kpi').innerHTML = lastPattern;
+                }
+                
+                const threatLabel = document.getElementById('threat-label');
+                if (maintotalmessages > 25) {
+                    threatLabel.innerHTML = "ANOMALOUS ACTIVITY ALERT";
+                    threatLabel.className = "text-[10px] font-bold text-rose-400 uppercase tracking-widest block mt-2 px-3 py-1 rounded border border-rose-500/20 bg-rose-500/10 shadow-[0_0_20px_rgba(244,63,94,0.15)] animate-pulse";
+                } else if (maintotalmessages > 0) {
+                    threatLabel.innerHTML = "HEURISTIC RUNTIME EVALUATION";
+                    threatLabel.className = "text-[10px] font-bold text-amber-400 uppercase tracking-widest block mt-2 px-3 py-1 rounded border border-amber-500/20 bg-amber-500/10";
+                }
+
+                if (rownum > 0) {
+                    document.getElementById("txtData").value = "[" + jsonhist.slice(0, -1) + "]";
+                    drawTable2();
+                }
+            }
+        }
+
+        function drawTable2() {
+            if (maintable == null) {
+                maintable = new google.visualization.Table(document.getElementById('table_div'));
+            }
+
+            var formatter = new google.visualization.NumberFormat({ groupingSymbol: '', fractionDigits: 0 });
+            var formatter2 = new google.visualization.NumberFormat({ groupingSymbol: '', fractionDigits: 3 });
+
+            if (datatbl == null) {
+                datatbl = new google.visualization.DataTable();
+
+                datatbl.addColumn('string', 'Date/Time');
+                datatbl.addColumn('string', 'RTMS Score');
+                datatbl.addColumn('string', 'Attack Score');
+                datatbl.addColumn('string', 'Pattern Score');
+                datatbl.addColumn('string', 'Entity');
+                datatbl.addColumn('string', 'Attack Windows');
+                datatbl.addColumn('string', 'Pattern Windows');
+                datatbl.addColumn('string', 'Processtype');
+                datatbl.addColumn('string', 'Sliding Windows');
+                datatbl.addColumn('string', 'Pattern Threshold');
+                datatbl.addColumn('string', 'Risk Level');
+                datatbl.addColumn('string', 'TML Comment');
+                datatbl.addColumn('string', 'Search Text Logs');
+                datatbl.addColumn('string', 'Search Entity');        
+                datatbl.addColumn('string', 'Topic');
+                datatbl.addColumn('string', 'Main Topic');
+                datatbl.addColumn('string', 'Kafkakey');
+                datatbl.addColumn('number', 'Offset');
+                datatbl.addColumn('number', 'Partition');
+
+                datatbl.sort({ column: 1, desc: true });
+                maintable.clearChart();
+                maintable.draw(datatbl, { showRowNumber: true, width: '100%', height: '100%', page: 'enable', pageSize: 30, allowHtml: true });
+                if (append == 0) {
+                    datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+                }
+            } else {
+                formatter.format(datatbl, 1);
+                formatter2.format(datatbl, 2);
+                datatbl.sort({ column: 1, desc: true });
+                if (datatbl.getNumberOfRows() > 0 && append == 0) {
+                    datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+                }
+
+                datatbl.addRows(dataintable);
+                maintable.clearChart();
+                maintable.draw(datatbl, {
+                    showRowNumber: true,
+                    width: '100%',
+                    height: '100%',
+                    page: 'enable',
+                    pageSize: 30,
+                    allowHtml: true,
+                    'cssClassNames': cssClassNames
+                });
+                formatter = null;
+                formatter2 = null;
+            }
+            dataintable = [];
+        }
+
+        function streamLiveKafkaData() {
+            if ("WebSocket" in window) {
+                var url = window.location.host;
+                mainport = url.split(":")[1];
+
+                var urlParams = new URLSearchParams(window.location.search);
+                var entries = urlParams.entries();
+                for (pair of entries) {
+                    if (pair[0] == "topic") topic = pair[1];
+                    if (pair[0] == "topictype") topictype = pair[1];
+                    if (pair[0] == "secure") secure = pair[1];
+                    if (pair[0] == "vipertoken") vipertoken = pair[1];
+                    if (pair[0] == "consumerid") consumerid = pair[1];
+                    if (pair[0] == "offset") offset = pair[1];
+                    if (pair[0] == "rollbackoffset") rollbackoffset = pair[1];
+                    if (pair[0] == "groupid") groupid = pair[1];
+                    if (pair[0] == "append") append = pair[1];
+                }
+
+                if (window.location.href.indexOf("http://") != -1) {
+                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("ws://"+url+"/viz/ws") : new WebSocket("ws://"+url+"/ws");
+                } else {
+                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("wss://"+url+"/viz/ws") : new WebSocket("wss://"+url+"/ws");
+                }
+
+                ws.onmessage = function (event) {
+                    var obj;
+                    var curTime = new Date();
+                    var eventdata = `${event.data}`;
+                    var maindata = eventdata;
+
+                    maindata = maindata.replace(/\\n/g, "\\n")
+                                       .replace(/\\',/g, "\\'")
+                                       .replace(/\\"/g, '\\"')
+                                       .replace(/\\&/g, "\\&")
+                                       .replace(/\\r/g, "\\r")
+                                       .replace(/\\t/g, "\\t")
+                                       .replace(/\\b/g, "\\b")
+                                       .replace(/\\f/g, "\\f");
+                    try {
+                        obj = JSON.parse(JSON.parse(maindata));
+                    } catch(e) {
+                        console.log("Json parse issue=", e.message);
+                        return;
+                    }
+
+                    if (obj.ERROR) {
+                        document.getElementById('statustext').innerHTML = "ERR: " + obj.ERROR;
+                        ws.close(1000);
+                        alert(obj.ERROR);
+                        ws = null;
+                        $("#start").attr("disabled", false).html("Initialize Ingest");
+                        return;
+                    }
+
+                    if (START == 0) {
+                        if (ws) ws.close(1000);
+                        ws = null;
+                        return;
+                    }
+                    if (append == 0) {
+                        dataintable.splice(0, dataintable.length);
+                        jsonhist = null;
+                        kafkakeyarr.splice(0, kafkakeyarr.length);
+                    }
+
+                    kafkacluster = obj.Webkafkacluster;
+                    mainkafkatopic = obj.Webtopic;
+                    document.getElementById('accesstime').innerHTML = curTime.toLocaleTimeString();
+                    document.getElementById('kafkacluster').innerHTML = "Cluster: " + kafkacluster + " // Segment: " + obj.Webtopic;
+                    
+                    drawChart(obj, mainkafkatopic);
+                    obj = null; maindata = null; eventdata = null;
+                };
+
+                ws.onclose = function (event) {
+                    if (ws) ws.close(1000);
+                    ws = null;
+                    document.getElementById('loaderdiv').style.display = "none";
+                    document.getElementById('pulse-indicator').className = "h-1.5 w-1.5 rounded-full bg-zinc-700";
+                    $("#start").attr("disabled", false).html("Initialize Ingest");
+                    document.getElementById('statustext').innerHTML = "// BUS_DISCONNECTED";
+                };
+
+                ws.onopen = function (error) {
+                    var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
+                    ws.send(sendbuffer);
+                    document.getElementById('loaderdiv').style.display = "flex";
+                    document.getElementById('pulse-indicator').className = "h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(14,165,233,1)] animate-pulse";
+                };
+
+                ws.onerror = function (error) {
+                    if (ws) ws.close(1000);
+                    document.getElementById('statustext').innerHTML = "CLUSTER BUS ERROR: " + error.message;
+                };
+            }
+        }
+
+        function saveDynamicDataToFile(topic) {
+            var userInput = document.getElementById("txtData").value;	
+            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+            const sFileName = topic + "-LOG-JSON.json";
+
+            let newLink = document.createElement("a");
+            newLink.download = sFileName;
+
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            } else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+            newLink.click(); 
+        }
+
+        $('#Export2').click(function(e) {
+            e.preventDefault(); 
+            saveDynamicDataToFile(topic);
+            return false; 
+        });
+
+        $('#Export').click(function () {
+            if (topic.length > 0) {
+                var headerRow = "";
+                var number_of_columns = datatbl.getNumberOfColumns();
+                for (var i = 0; i < number_of_columns; i++) {
+                    headerRow += datatbl.getColumnLabel(i).replace("\n", " : ");
+                    headerRow += (i === number_of_columns - 1) ? "\n" : ",";
+                }
+                var csvFormattedDataTable = headerRow + google.visualization.dataTableToCsv(datatbl);
+                var encodedUri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvFormattedDataTable);
+                this.href = encodedUri;
+                this.download = "iot-data.csv";
+                this.target = '_blank';
+            } else {
+                alert("Initialize matrix streaming first");
+            }
+        });
+
+        $("#idForm").submit(function (e) {
+            e.preventDefault();
+            if (ws && START == 1) {
+                ws.close(1000);
+                ws = null;
+                START = 0;
+                $("#start").html("Initialize Ingest").attr("disabled", true);
+                document.getElementById('statustext').innerHTML = "TEARING_DOWN_BUS...";
+            } else {
+                START = 1;
+                document.getElementById('statustext').innerHTML = "ESTABLISHING_FEED...";
+                $("#start").html("Terminate Stream");
+                streamLiveKafkaData();
+            }
+        });
+    </script>
+</body>
+</html>
