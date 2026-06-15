@@ -16,7 +16,6 @@ from airflow.operators.python import (
 step1 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_1_getparams_dag-cybersecurity-rtms-main-3f10")
 step2 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_2_kafka_createtopic_dag-cybersecurity-rtms-main-3f10")
 step3 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10")
-step4 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_4_kafka_preprocess_dag-cybersecurity-rtms-main-3f10")
 step4c = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_4c_kafka_preprocess_dag-cybersecurity-rtms-main-3f10")
 step5 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_5_kafka_machine_learning_dag-cybersecurity-rtms-main-3f10")
 step6 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_6_kafka_predictions_dag-cybersecurity-rtms-main-3f10")
