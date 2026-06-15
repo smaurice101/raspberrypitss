@@ -3602,3 +3602,4 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ✅ PIPELINE COMPLETE: maadsdocker/cybersecurityrtms-3f10-amd64 has been processed successfully.
 =============================================================
+[INFO 2026-06-15_16:29:12] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
