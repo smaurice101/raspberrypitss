@@ -7,11 +7,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="./oticsico.png" />
     <title>AegisRTMS Panel // Global Security Command Intelligence</title>
 
-    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
         :root {
             --font-sans: 'Plus Jakarta Sans', sans-serif;
@@ -20,299 +19,306 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: #030407;
-            color: #f1f5f9;
-            /* Advanced Micro-Grid Topology Layer */
+            background-color: #020306;
+            color: #f8fafc;
+            /* Institutional Grid Overlay with Deep Nebula Aura Radial Shifting */
             background-image: 
-                radial-gradient(circle at 50% -10%, rgba(14, 165, 233, 0.15), transparent 65%),
-                radial-gradient(circle at 0% 100%, rgba(99, 102, 241, 0.04), transparent 45%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.005) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.12), transparent 50%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.007) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
             background-attachment: fixed;
         }
 
-        /* Luxury Obsidian Glass Panel Blueprint */
-        .obsidian-glass {
-            background: linear-gradient(135deg, rgba(10, 12, 20, 0.7) 0%, rgba(4, 5, 10, 0.85) 100%);
-            backdrop-filter: blur(24px) saturate(190%);
-            -webkit-backdrop-filter: blur(24px) saturate(190%);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+        /* 💎 Elite Ultra-Glassmorphism Blueprint with True Specular Reflections */
+        .glass-chassis {
+            background: linear-gradient(135deg, rgba(8, 10, 18, 0.45) 0%, rgba(4, 5, 10, 0.65) 100%);
+            backdrop-filter: blur(30px) saturate(220%);
+            -webkit-backdrop-filter: blur(30px) saturate(220%);
+            border: 1px solid rgba(255, 255, 255, 0.09);
             box-shadow: 
-                0 20px 50px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0px rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                0 30px 70px rgba(0, 0, 0, 0.8),
+                inset 0 1px 1px rgba(255, 255, 255, 0.12),
+                inset 0 0 20px rgba(14, 165, 233, 0.02);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .obsidian-glass:hover {
-            border-color: rgba(14, 165, 233, 0.25);
+        .glass-chassis:hover {
+            border-color: rgba(14, 165, 233, 0.35);
+            background: linear-gradient(135deg, rgba(12, 16, 28, 0.55) 0%, rgba(6, 8, 15, 0.75) 100%);
             box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.7),
-                0 0 40px rgba(14, 165, 233, 0.04),
-                inset 0 1px 0px rgba(255, 255, 255, 0.08);
+                0 40px 90px rgba(0, 0, 0, 0.9),
+                0 0 50px rgba(14, 165, 233, 0.08),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
         }
 
-        /* Premium Dynamic Glow States for Core KPI Engine */
-        .kpi-glow-sky {
-            box-shadow: 0 0 30px rgba(14, 165, 233, 0.03), inset 0 1px 0px rgba(255, 255, 255, 0.05);
+        /* Tactical Micro-Edge Highlight Overlays */
+        .glass-glow-sky {
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.12);
         }
-        .kpi-glow-sky:hover {
-            box-shadow: 0 0 40px rgba(14, 165, 233, 0.12), inset 0 1px 0px rgba(255, 255, 255, 0.1);
-            border-color: rgba(14, 165, 233, 0.4);
-        }
-
-        .kpi-glow-rose {
-            box-shadow: 0 0 30px rgba(244, 63, 94, 0.03), inset 0 1px 0px rgba(255, 255, 255, 0.05);
-        }
-        .kpi-glow-rose:hover {
-            box-shadow: 0 0 40px rgba(244, 63, 94, 0.15), inset 0 1px 0px rgba(255, 255, 255, 0.1);
-            border-color: rgba(244, 63, 94, 0.4);
+        .glass-glow-sky:hover {
+            box-shadow: 0 0 50px rgba(14, 165, 233, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+            border-color: rgba(14, 165, 233, 0.5);
         }
 
-        .kpi-glow-violet {
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.03), inset 0 1px 0px rgba(255, 255, 255, 0.05);
+        .glass-glow-rose {
+            box-shadow: 0 0 40px rgba(244, 63, 94, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.12);
         }
-        .kpi-glow-violet:hover {
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.12), inset 0 1px 0px rgba(255, 255, 255, 0.1);
-            border-color: rgba(139, 92, 246, 0.4);
-        }
-
-        /* Professional Master Scrollbar Architecture */
-        ::-webkit-scrollbar {
-            width: 4px;
-            height: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #030407;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(14, 165, 233, 0.5);
+        .glass-glow-rose:hover {
+            box-shadow: 0 0 50px rgba(244, 63, 94, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+            border-color: rgba(244, 63, 94, 0.5);
         }
 
-        /* High-Fidelity Google Visualization Matrix Injections */
+        .glass-glow-violet {
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .glass-glow-violet:hover {
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        /* Professional Master Table Injections */
         .columnTitle {
             font-family: var(--font-sans) !important;
-            font-size: 10px !important;
-            font-weight: 700 !important;
+            font-size: 12px !important;
+            font-weight: 800 !important;
             text-transform: uppercase !important;
-            letter-spacing: 0.1em !important;
-            color: #64748b !important;
-            background: #07090e !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-            padding: 16px 24px !important;
+            letter-spacing: 0.12em !important;
+            color: #94a3b8 !important;
+            background: rgba(15, 23, 42, 0.8) !important;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 20px 24px !important;
         }
         .google-visualization-table-table {
             background-color: transparent !important;
-            color: #cbd5e1 !important;
+            color: #e2e8f0 !important;
             border: none !important;
             font-family: var(--font-mono) !important;
             width: 100% !important;
         }
         .google-visualization-table-tr-odd, .beige-background {
-            background-color: rgba(255, 255, 255, 0.003) !important;
+            background-color: rgba(255, 255, 255, 0.01) !important;
         }
         .google-visualization-table-tr-even {
             background-color: transparent !important;
         }
-        /* Illuminated Laser-Row Selection Profile */
         .google-visualization-table-tr-sel, .orange-background {
-            background-color: rgba(14, 165, 233, 0.07) !important;
+            background-color: rgba(14, 165, 233, 0.15) !important;
             color: #ffffff !important;
-            box-shadow: inset 2px 0 0 #0ea5e9;
+            box-shadow: inset 4px 0 0 #0ea5e9;
         }
         .google-visualization-table-td {
-            padding: 15px 24px !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.015) !important;
-            font-size: 11px !important;
+            padding: 18px 24px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+            font-size: 12px !important;
             font-weight: 500;
         }
-        .google-visualization-table-page-number {
-            color: #94a3b8 !important;
-            background: rgba(255, 255, 255, 0.02) !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            border-radius: 8px;
-            padding: 6px 14px;
-            font-family: var(--font-sans);
-            font-size: 11px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .google-visualization-table-page-number:hover {
-            color: #fff !important;
-            background: rgba(14, 165, 233, 0.15) !important;
-            border-color: rgba(14, 165, 233, 0.4) !important;
-        }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(14, 165, 233, 0.6); }
     </style>
 
     <link href="./css/attention.css" rel="stylesheet">
 </head>
 
-<body class="min-h-screen p-6 xl:p-10 flex flex-col gap-6 selection:bg-sky-500/30 selection:text-sky-100 antialiased">
+<body class="min-h-screen p-6 xl:p-8 flex flex-col gap-6 selection:bg-sky-500/30 selection:text-sky-100 antialiased">
 
-    <!-- TOP CONTROL DECK -->
-    <header class="obsidian-glass p-6 rounded-2xl flex flex-col xl:flex-row items-center justify-between gap-6 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sky-500/20 to-transparent" />
+    <header class="glass-chassis p-6 rounded-3xl flex flex-col xl:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
         
-        <div class="flex items-center gap-5 w-full xl:w-auto">
-            <div class="h-11 w-11 rounded-xl bg-slate-950 border border-white/10 flex items-center justify-center relative shadow-inner">
-                <span class="text-sky-400 font-sans font-semibold text-lg relative z-10 tracking-tighter">𝚵</span>
-                <div class="absolute inset-0 bg-sky-500/5 rounded-xl blur-sm animate-pulse" />
+        <div class="flex items-center gap-6 w-full xl:w-auto">
+            <div class="h-14 w-14 rounded-2xl bg-slate-950/80 border border-white/15 flex items-center justify-center relative shadow-inner">
+                <span class="text-sky-400 font-sans font-extrabold text-2xl relative z-10 tracking-tighter">𝚵</span>
+                <div class="absolute inset-0 bg-sky-500/10 rounded-2xl blur-md animate-pulse" />
             </div>
             <div>
-                <div class="flex items-center gap-3 flex-wrap">
-                    <h1 class="text-lg font-bold font-sans tracking-tight text-white uppercase">
-                        Aegis<span class="text-sky-400 font-light">RTMS</span> <span class="text-zinc-800 font-normal">/</span> <span class="text-[10px] font-mono tracking-[0.2em] text-zinc-400 font-semibold">GLOBAL_INTELLIGENCE_NODE</span>
+                <div class="flex items-center gap-4 flex-wrap">
+                    <h1 class="text-2xl font-black font-sans tracking-tight text-white uppercase">
+                        Aegis<span class="text-sky-400 font-light">RTMS</span> <span class="text-zinc-700 font-normal">/</span> <span class="text-xs font-mono tracking-[0.25em] text-sky-400 font-bold bg-sky-500/10 px-3 py-1 rounded border border-sky-500/20">GLOBAL_SECURITY_INTELLIGENCE</span>
                     </h1>
-                    <span id="pulse-indicator" class="h-1.5 w-1.5 rounded-full bg-zinc-700 transition-all duration-1000" />
+                    <span id="pulse-indicator" class="h-2 w-2 rounded-full bg-zinc-600 transition-all duration-1000" />
                 </div>
-                <p class="text-[9px] text-zinc-500 font-semibold tracking-[0.2em] uppercase mt-1">Tier-1 Threat Telemetry Orchestration Matrix</p>
+                <p class="text-xs text-zinc-400 font-bold tracking-[0.2em] uppercase mt-1.5">Tier-1 Threat Telemetry Orchestration Matrix & Live Control Console</p>
             </div>
         </div>
 
-        <!-- Connection Parameters & Submission Pipeline -->
         <form id="idForm" class="flex flex-wrap items-center gap-4 w-full xl:w-auto justify-start xl:justify-end">
             <textarea name="txtData" id="txtData" class="hidden"></textarea> 
 
-            <div class="flex flex-col text-[10px] font-mono bg-black/40 border border-white/5 px-4 py-2.5 rounded-xl text-zinc-400 min-w-[320px] shadow-inner">
-                <div class="flex justify-between"><span class="text-zinc-600 font-semibold">METRIC SYNCHRONICITY:</span> <span id="accesstime" class="text-sky-400 font-semibold tracking-wide">STANDBY</span></div>
-                <div class="truncate max-w-[300px] flex justify-between mt-1"><span class="text-zinc-600 font-semibold">KAFKA ATTESTATION:</span> <span id="kafkacluster" class="text-slate-400 font-semibold truncate">OFFLINE_CLUSTER_BUS</span></div>
+            <div class="flex flex-col text-xs font-mono bg-black/50 border border-white/10 px-5 py-3 rounded-2xl text-zinc-300 min-w-[360px] shadow-inner">
+                <div class="flex justify-between"><span class="text-zinc-500 font-bold">METRIC SYNCHRONICITY:</span> <span id="accesstime" class="text-sky-400 font-bold tracking-wide">STANDBY</span></div>
+                <div class="truncate max-w-[340px] flex justify-between mt-1.5"><span class="text-zinc-500 font-bold">KAFKA ATTESTATION:</span> <span id="kafkacluster" class="text-slate-400 font-bold truncate">OFFLINE_CLUSTER_BUS</span></div>
             </div>
 
-            <!-- Loader Signal -->
-            <div class="hidden items-center justify-center w-11 h-11 rounded-xl border border-white/5 bg-white/5" id="loaderdiv">
-                <div class="w-4 h-4 border-2 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
+            <div class="hidden items-center justify-center w-12 h-12 rounded-2xl border border-white/10 bg-white/5" id="loaderdiv">
+                <div class="w-5 h-5 border-2 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
             </div>
 
-            <button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-b from-sky-500 to-sky-600 text-white font-sans px-5 py-3 rounded-xl text-xs font-semibold tracking-wide hover:from-sky-400 hover:to-sky-500 transition-all duration-300 shadow-lg shadow-sky-500/10 active:scale-[0.99] cursor-pointer uppercase">
+            <button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-b from-sky-400 to-sky-600 hover:from-sky-300 hover:to-sky-500 text-white font-sans px-6 py-3.5 rounded-2xl text-sm font-extrabold tracking-wider transition-all duration-300 shadow-lg shadow-sky-500/20 active:scale-[0.98] cursor-pointer uppercase">
                 Initialize Ingest
             </button>
-            <span id="statustext" class="text-[10px] font-mono font-medium text-zinc-500 tracking-wider uppercase"></span>
+            <span id="statustext" class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase"></span>
         </form>
     </header>
 
-    <!-- EXECUTIVE HIGH-GLOW TELEMETRY MATRIX -->
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- RTMS SCORE BLOCK -->
-        <div class="obsidian-glass kpi-glow-sky p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-sky-500/5 rounded-full blur-2xl transition-all duration-500 group-hover:bg-sky-500/10" />
+        <div class="glass-chassis glass-glow-sky p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-sky-500/20" />
             <div class="flex items-center justify-between z-10">
-                <span class="text-[10px] font-bold text-sky-400/80 tracking-[0.15em] uppercase font-sans">RTMS Kernel Index</span>
-                <span class="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded border border-white/5">SYS_REF_A</span>
+                <span class="text-xs font-black text-sky-400 tracking-[0.18em] uppercase font-sans">RTMS Kernel Index</span>
+                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_A</span>
             </div>
-            <div class="mt-4 flex items-baseline justify-between z-10">
-                <span id="rtms-kpi" class="text-5xl font-light font-sans tracking-tight text-white drop-shadow-[0_0_15px_rgba(14,165,233,0.15)] transition-all duration-300">
+            <div class="mt-6 flex items-baseline justify-between z-10">
+                <span id="rtms-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(14,165,233,0.35)] transition-all duration-300">
                     0.000
                 </span>
-                <span class="text-[10px] font-mono text-zinc-400 font-semibold uppercase tracking-wider">Hyper Prediction</span>
+                <div class="text-right">
+                    <span class="text-xs font-mono text-sky-400 font-bold uppercase block tracking-wider">Hyper Prediction</span>
+                    <span class="text-[10px] text-zinc-500 font-mono block">Variance: &plusmn;0.002</span>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between z-10">
+                <span class="text-[10px] font-mono text-zinc-500 font-bold uppercase">Streaming Volatility</span>
+                <div class="flex items-end gap-1 h-5">
+                    <div class="w-1 bg-sky-500/30 h-2 rounded-full animate-pulse"></div>
+                    <div class="w-1 bg-sky-500/50 h-4 rounded-full"></div>
+                    <div class="w-1 bg-sky-500 h-3 rounded-full animate-pulse"></div>
+                    <div class="w-1 bg-sky-400 h-5 rounded-full"></div>
+                    <div class="w-1 bg-sky-500/40 h-2 rounded-full"></div>
+                </div>
             </div>
         </div>
 
-        <!-- ATTACK SCORE BLOCK -->
-        <div class="obsidian-glass kpi-glow-rose p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-rose-500/5 rounded-full blur-2xl transition-all duration-500 group-hover:bg-rose-500/10" />
+        <div class="glass-chassis glass-glow-rose p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-rose-500/20" />
             <div class="flex items-center justify-between z-10">
-                <span class="text-[10px] font-bold text-rose-400/80 tracking-[0.15em] uppercase font-sans">Attack Vectors</span>
-                <span class="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded border border-white/5">SYS_REF_B</span>
+                <span class="text-xs font-black text-rose-400 tracking-[0.18em] uppercase font-sans">Attack Vectors</span>
+                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_B</span>
             </div>
-            <div class="mt-4 flex items-baseline justify-between z-10">
-                <span id="attack-kpi" class="text-5xl font-light font-sans tracking-tight text-white drop-shadow-[0_0_15px_rgba(244,63,94,0.15)] transition-all duration-300">
+            <div class="mt-6 flex items-baseline justify-between z-10">
+                <span id="attack-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(244,63,94,0.35)] transition-all duration-300">
                     0.00
                 </span>
-                <span class="text-[10px] font-mono text-zinc-400 font-semibold uppercase tracking-wider">Final Threat Layer</span>
+                <div class="text-right">
+                    <span class="text-xs font-mono text-rose-400 font-bold uppercase block tracking-wider">Final Threat Layer</span>
+                    <span class="text-[10px] text-zinc-500 font-mono block">Confidence: 99.4%</span>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/5 flex flex-col gap-1.5 z-10">
+                <div class="flex justify-between text-[10px] font-mono text-zinc-500 font-bold uppercase">
+                    <span>Threat Envelope Scale</span>
+                    <span class="text-rose-400">0.00% Limit</span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden border border-white/5">
+                    <div id="threat-bar" class="w-[5%] h-full bg-gradient-to-r from-emerald-500 to-rose-500 transition-all duration-500"></div>
+                </div>
             </div>
         </div>
 
-        <!-- PATTERN SCORE BLOCK -->
-        <div class="obsidian-glass kpi-glow-violet p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-violet-500/5 rounded-full blur-2xl transition-all duration-500 group-hover:bg-violet-500/10" />
+        <div class="glass-chassis glass-glow-violet p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-violet-500/20" />
             <div class="flex items-center justify-between z-10">
-                <span class="text-[10px] font-bold text-violet-400/80 tracking-[0.15em] uppercase font-sans">Pattern Diagnostics</span>
-                <span class="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded border border-white/5">SYS_REF_C</span>
+                <span class="text-xs font-black text-violet-400 tracking-[0.18em] uppercase font-sans">Pattern Diagnostics</span>
+                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_C</span>
             </div>
-            <div class="mt-4 flex items-baseline justify-between z-10">
-                <span id="pattern-kpi" class="text-5xl font-light font-sans tracking-tight text-white drop-shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300">
+            <div class="mt-6 flex items-baseline justify-between z-10">
+                <span id="pattern-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(139,92,246,0.35)] transition-all duration-300">
                     0.00
                 </span>
-                <span class="text-[10px] font-mono text-zinc-400 font-semibold uppercase tracking-wider">Deviation Envelope</span>
+                <div class="text-right">
+                    <span class="text-xs font-mono text-violet-400 font-bold uppercase block tracking-wider">Deviation Envelope</span>
+                    <span class="text-[10px] text-zinc-500 font-mono block">Entropy: Static</span>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between z-10">
+                <span class="text-[10px] font-mono text-zinc-500 font-bold uppercase">Fourier Space Mapping</span>
+                <div class="flex gap-1">
+                    <span class="h-2 w-2 rounded-full bg-violet-500/20 border border-violet-500/40"></span>
+                    <span class="h-2 w-2 rounded-full bg-violet-500/20 border border-violet-500/40"></span>
+                    <span class="h-2 w-2 rounded-full bg-violet-500 animate-ping"></span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PIPELINE LOAD & METRICS DECK -->
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Counter Deck -->
-        <div class="obsidian-glass p-6 rounded-2xl flex items-center justify-between group">
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="glass-chassis p-6 rounded-3xl flex items-center justify-between group">
             <div>
-                <span class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase block">Pipeline Ingestion Load</span>
-                <span class="text-xs font-medium text-zinc-300 uppercase block mt-1">Active Kafka Segment</span>
+                <span class="text-xs font-black text-zinc-400 tracking-widest uppercase block">Pipeline Ingestion Load</span>
+                <span class="text-xs font-medium text-zinc-500 uppercase block mt-1">Active Kafka Segment</span>
             </div>
-            <div id="totrecs" class="text-4xl font-light font-sans text-white tracking-tighter bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+            <div id="totrecs" class="text-5xl font-black font-sans text-white tracking-tighter bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                 0
             </div>
         </div>
 
-        <!-- Status Deck -->
-        <div class="obsidian-glass p-6 rounded-2xl flex items-center justify-between">
-            <div>
-                <span class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase block">Heuristic Risk Index</span>
-                <span id="threat-label" class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mt-2 px-3 py-1 rounded border border-emerald-500/10 bg-emerald-500/5">NOMINAL_STATE</span>
-            </div>
-            <div class="text-right text-[9px] font-mono font-medium text-zinc-500 tracking-widest leading-relaxed">
-                BUS_CHANNEL_LAYER<br><span class="text-sky-400 font-semibold">DATA_STREAM_OK</span>
+        <div class="glass-chassis p-6 rounded-3xl flex flex-col justify-between">
+            <span class="text-xs font-black text-zinc-400 tracking-widest uppercase block">Heuristic Risk Status</span>
+            <div class="flex items-center justify-between mt-2">
+                <span id="threat-label" class="text-xs font-black text-emerald-400 uppercase tracking-widest block px-3 py-1.5 rounded-xl border border-emerald-500/20 bg-emerald-500/10">NOMINAL_STATE</span>
+                <span class="text-right text-[10px] font-mono font-bold text-sky-400 tracking-widest uppercase">STREAM_OK</span>
             </div>
         </div>
 
-        <!-- Action Export Desk -->
-        <div class="obsidian-glass p-6 rounded-2xl flex flex-col justify-center gap-2">
-            <div class="flex items-center justify-between text-[10px] font-bold text-zinc-500 tracking-widest uppercase mb-1">
+        <div class="glass-chassis p-5 rounded-3xl flex items-center justify-between relative overflow-hidden">
+            <div>
+                <span class="text-xs font-black text-zinc-400 tracking-widest uppercase block">Processor Matrix Load</span>
+                <span class="text-[10px] font-mono text-zinc-500 block mt-0.5">Viper Engine Array Allocation</span>
+            </div>
+            <div class="relative flex items-center justify-center h-14 w-14">
+                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                    <path class="text-zinc-800" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="text-cyan-400 drop-shadow-[0_0_8px_#22d3ee]" stroke-dasharray="75, 100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="absolute text-[10px] font-mono font-bold text-white">75%</span>
+            </div>
+        </div>
+
+        <div class="glass-chassis p-5 rounded-3xl flex flex-col justify-center gap-2">
+            <div class="flex items-center justify-between text-xs font-black text-zinc-400 tracking-widest uppercase mb-0.5">
                 <span>Data Extraction Interface</span>
-                <span class="text-zinc-500 cursor-pointer hover:text-sky-400 transition-colors tracking-wide text-[9px]" onclick="image('table','')">[Schema Manifest]</span>
+                <span class="text-zinc-500 cursor-pointer hover:text-sky-400 transition-colors tracking-wide text-[10px]" onclick="image('table','')">[Schema Manifest]</span>
             </div>
             <div class="grid grid-cols-2 gap-3">
-                <a id="Export" href="#" class="border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 text-zinc-300 py-2.5 px-3 rounded-xl text-center text-xs font-medium tracking-wide transition-all shadow-sm">
+                <a id="Export" href="#" class="border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-zinc-200 py-2 rounded-xl text-center text-xs font-bold tracking-wider transition-all shadow-sm">
                     Extract CSV
                 </a>
-                <a id="Export2" href="#" class="border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 text-zinc-300 py-2.5 px-3 rounded-xl text-center text-xs font-medium tracking-wide transition-all shadow-sm">
+                <a id="Export2" href="#" class="border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-zinc-200 py-2 rounded-xl text-center text-xs font-bold tracking-wider transition-all shadow-sm">
                     Extract JSON
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- LIVE DATA MATRIX TABLE CHASSIS -->
-    <main class="flex-1 obsidian-glass rounded-2xl overflow-hidden flex flex-col min-h-[600px]">
-        <div class="bg-slate-950/50 px-6 py-4 border-b border-white/5 flex justify-between items-center">
-            <div class="flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_#0ea5e9]" />
-                <span class="text-xs font-semibold tracking-wide text-zinc-300 font-sans">
+    <main class="flex-1 glass-chassis rounded-3xl overflow-hidden flex flex-col min-h-[600px]">
+        <div class="bg-slate-950/40 px-6 py-5 border-b border-white/10 flex justify-between items-center backdrop-blur-md">
+            <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_#0ea5e9] animate-pulse" />
+                <span class="text-sm font-extrabold tracking-wide text-zinc-200 font-sans uppercase">
                     Preprocessed Memory Telemetry Kernel Ledger
                 </span>
             </div>
-            <span class="text-[9px] font-mono font-semibold text-zinc-500 tracking-widest">VIPER_ENGINE_V2.6</span>
+            <span class="text-xs font-mono font-bold text-zinc-500 tracking-widest bg-black/40 px-3 py-1 rounded-md border border-white/5">VIPER_ENGINE_V2.6</span>
         </div>
 
-        <!-- Scrollable Table Ingest Deck Container -->
         <div class="p-6 flex-1 overflow-x-auto min-h-[520px]">
             <div id="table_div" class="w-full min-h-[480px]">
-                <div class="text-zinc-500 text-xs h-64 flex flex-col items-center justify-center gap-3">
-                    <div class="w-4 h-4 border-2 border-white/10 border-t-sky-400 rounded-full animate-spin"></div>
-                    <span class="tracking-widest text-[9px] text-zinc-500 font-semibold mt-2 uppercase font-mono">Awaiting Core Data Matrix Connection String...</span>
+                <div class="text-zinc-500 text-xs h-64 flex flex-col items-center justify-center gap-4">
+                    <div class="w-6 h-6 border-2 border-white/10 border-t-sky-400 rounded-full animate-spin"></div>
+                    <span class="tracking-widest text-xs text-zinc-400 font-bold uppercase font-mono">Awaiting Core Data Matrix Connection String...</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER TELEMETRY LAYER -->
-    <footer class="border-t border-white/5 pt-5 flex flex-col sm:flex-row justify-between items-center text-[10px] text-zinc-500 tracking-wider uppercase gap-2 select-none font-mono">
+    <footer class="border-t border-white/5 pt-5 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-500 tracking-wider uppercase gap-2 select-none font-mono font-bold">
         <div>Platform Context: Enterprise Mesh Matrix v2.6.0</div>
         <div>OTICS Advanced Analytics, Inc. // Proprietary Protection Layer</div>
     </footer>
 
-    <!-- LOGIC INFRASTRUCTURE PIPELINES -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="./js/attention.js"></script>
@@ -382,7 +388,6 @@
                 jsonhist = "";
                 let rownum = 0;
 
-                // Trackers for banner averages/latest metrics
                 let lastRtms = "0.000";
                 let lastAttack = "0.00";
                 let lastPattern = "0.00";
@@ -413,7 +418,6 @@
                         partition = jsondata.TopicReads[j].Partition;
                         searchentity = jsondata.TopicReads[j].SearchEntity;
 
-                        // Retain the newest values for executive banner display
                         if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
                         if(attack) lastAttack = parseFloat(attack).toFixed(2);
                         if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
@@ -427,20 +431,23 @@
                 maintotalmessages = maintotalmessages + rownum;
                 document.getElementById('totrecs').innerHTML = maintotalmessages;
                 
-                // Inject metrics directly into our top luxury display decks
                 if (rownum > 0) {
                     document.getElementById('rtms-kpi').innerHTML = lastRtms;
                     document.getElementById('attack-kpi').innerHTML = lastAttack;
                     document.getElementById('pattern-kpi').innerHTML = lastPattern;
+
+                    // Update live visual tracking elements
+                    let threatPct = Math.min(Math.max(parseFloat(lastAttack) * 10, 5), 100);
+                    document.getElementById('threat-bar').style.width = threatPct + "%";
                 }
                 
                 const threatLabel = document.getElementById('threat-label');
                 if (maintotalmessages > 25) {
                     threatLabel.innerHTML = "ANOMALOUS ACTIVITY ALERT";
-                    threatLabel.className = "text-[10px] font-bold text-rose-400 uppercase tracking-widest block mt-2 px-3 py-1 rounded border border-rose-500/20 bg-rose-500/10 shadow-[0_0_20px_rgba(244,63,94,0.15)] animate-pulse";
+                    threatLabel.className = "text-xs font-black text-rose-400 uppercase tracking-widest block px-3 py-1.5 rounded-xl border border-rose-500/30 bg-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.3)] animate-pulse";
                 } else if (maintotalmessages > 0) {
-                    threatLabel.innerHTML = "HEURISTIC RUNTIME EVALUATION";
-                    threatLabel.className = "text-[10px] font-bold text-amber-400 uppercase tracking-widest block mt-2 px-3 py-1 rounded border border-amber-500/20 bg-amber-500/10";
+                    threatLabel.innerHTML = "RUNNING HEURISTICS EVAL";
+                    threatLabel.className = "text-xs font-black text-amber-400 uppercase tracking-widest block px-3 py-1.5 rounded-xl border border-amber-500/30 bg-amber-500/10";
                 }
 
                 if (rownum > 0) {
@@ -591,7 +598,7 @@
                     if (ws) ws.close(1000);
                     ws = null;
                     document.getElementById('loaderdiv').style.display = "none";
-                    document.getElementById('pulse-indicator').className = "h-1.5 w-1.5 rounded-full bg-zinc-700";
+                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-zinc-700";
                     $("#start").attr("disabled", false).html("Initialize Ingest");
                     document.getElementById('statustext').innerHTML = "// BUS_DISCONNECTED";
                 };
@@ -600,7 +607,7 @@
                     var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
                     ws.send(sendbuffer);
                     document.getElementById('loaderdiv').style.display = "flex";
-                    document.getElementById('pulse-indicator').className = "h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(14,165,233,1)] animate-pulse";
+                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(14,165,233,1)] animate-pulse";
                 };
 
                 ws.onerror = function (error) {
