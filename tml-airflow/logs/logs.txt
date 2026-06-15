@@ -2107,3 +2107,13 @@ Login Succeeded
 =============================================================
 [INFO 2026-06-15_00:11:30] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10.py
 [INFO 2026-06-15_00:11:32] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10.py
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/cybersecurity-rtms-main-3f10-amd64-tmlworking
+=============================================================
+ee04f228f48c5c86ed57bfa4b2353f10e82969d1c05f6c0a0f54296cf59add3c
+sha256:9098a2ef4ea9031dd13bf9582b32b9b07f1935e9d5e6e5071bbb5195288cfdc6
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
