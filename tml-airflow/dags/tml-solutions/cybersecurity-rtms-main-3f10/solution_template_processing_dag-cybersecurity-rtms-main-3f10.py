@@ -17,11 +17,8 @@ step1 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_
 step2 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_2_kafka_createtopic_dag-cybersecurity-rtms-main-3f10")
 step3 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-main-3f10")
 step4c = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_4c_kafka_preprocess_dag-cybersecurity-rtms-main-3f10")
-step5 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_5_kafka_machine_learning_dag-cybersecurity-rtms-main-3f10")
-step6 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_6_kafka_predictions_dag-cybersecurity-rtms-main-3f10")
 step7 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_7_kafka_visualization_dag-cybersecurity-rtms-main-3f10")
 step8 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-main-3f10")
-step9 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_9_privategpt_qdrant_dag-cybersecurity-rtms-main-3f10")
 step10 = importlib.import_module("tml-solutions.cybersecurity-rtms-main-3f10.tml_system_step_10_documentation_dag-cybersecurity-rtms-main-3f10")
 
 
@@ -54,7 +51,7 @@ with DAG(
       provide_context=True,
   )
 # STEP 4c: Preprocess the data        
-  sensor_D2 = PythonOperator(
+  sensor_D = PythonOperator(
        task_id="step_4c_solution_task_preprocess",
        python_callable=step4c.dopreprocessing,
        provide_context=True,
@@ -75,14 +72,6 @@ with DAG(
     task_id="Starting_Docker",
     bash_command="echo 'Start task Completed'",
   )    
-  start_task3 = BashOperator(
-    task_id="Starting_Documentation",
-    bash_command="echo 'Start task Completed'",
-  )
-  start_task4 = BashOperator(
-    task_id="Completed_TML_Setup_Now_Spawn_Main_Processes",
-    bash_command="echo 'Start task Completed'",
-  )
 # STEP 10: Document the solution
   sensor_G = PythonOperator(
       task_id="step_10_solution_task_document",
@@ -90,4 +79,4 @@ with DAG(
       provide_context=True,      
   )
 
-  start_task >> sensor_A >> sensor_B >> start_task4 >> [sensor_C,  sensor_D2, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
+  start_task >> sensor_A >> sensor_B >> [sensor_C,  sensor_D, sensor_E] >> start_task2 >> sensor_F >> start_task3  >> sensor_G
