@@ -22,7 +22,7 @@ default_args = {
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
     'producerid': 'rtmssolution', # <<< *** Change as needed
-    'raw_data_topic': 'rtms-stream-mylogs', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
+    'raw_data_topic': '', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
     'preprocess_data_topic': 'rtms-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
     'maxrows': 200, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
     'offset': -1, # <<< Rollback from the end of the data streams
@@ -37,7 +37,7 @@ default_args = {
     'timedelay': 0, # <<< connection delay
     'tmlfilepath': '', # leave blank
     'usemysql': 1, # do not modify
-    'rtmsstream': 'rtms-stream-mylogs-preprocess', # Change as needed - STREAM containing log file data (or other data) for RTMS
+    'rtmsstream': 'rtms-stream-mylogs', # Change as needed - STREAM containing log file data (or other data) for RTMS
     'identifier': 'RTMS Past Memory of Events', # <<< ** Change as needed
     'searchterms': 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown--entity--', # main Search terms, if AND add @, if OR use | s first characters, default OR
     'localsearchtermfolder': '|/rawdata/mysearchfile1,|/rawdata/mysearchfile2', # Specify a folder of files containing search terms - each term must be on a new line - use comma
