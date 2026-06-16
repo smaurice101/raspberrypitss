@@ -348,7 +348,7 @@
                         if(attack) lastAttack = parseFloat(attack).toFixed(2);
                         if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
 
-                        var arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, remember, patternthresh, activity, comment, searchfound, searchentity, topic, Maintopic, kafkakey, offset, partition];
+                        var arr = [createdon, rtms, attack, pattern, "192.168." + entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
                     }
@@ -358,9 +358,9 @@
                 document.getElementById('totrecs').innerHTML = maintotalmessages;
                 
                 if (rownum > 0) {
-                  //  document.getElementById('rtms-kpi').innerHTML = lastRtms;
-                   // document.getElementById('attack-kpi').innerHTML = lastAttack;
-                    //document.getElementById('pattern-kpi').innerHTML = lastPattern;
+  //                  document.getElementById('rtms-kpi').innerHTML = lastRtms;
+//                    document.getElementById('attack-kpi').innerHTML = lastAttack;
+    //                document.getElementById('pattern-kpi').innerHTML = lastPattern;
 
                     // Update live visual tracking elements
                     let threatPct = Math.min(Math.max(parseFloat(lastAttack) * 10, 5), 100);
@@ -399,15 +399,15 @@
                 datatbl.addColumn('string', 'Attack Score');
                 datatbl.addColumn('string', 'Pattern Score');
                 datatbl.addColumn('string', 'Entity');
+                datatbl.addColumn('string', 'TML Comment');
+                datatbl.addColumn('string', 'Search Text Logs');
+                datatbl.addColumn('string', 'Search Entity');        				
                 datatbl.addColumn('string', 'Attack Windows');
                 datatbl.addColumn('string', 'Pattern Windows');
                 datatbl.addColumn('string', 'Processtype');
                 datatbl.addColumn('string', 'Sliding Windows');
                 datatbl.addColumn('string', 'Pattern Threshold');
                 datatbl.addColumn('string', 'Risk Level');
-                datatbl.addColumn('string', 'TML Comment');
-                datatbl.addColumn('string', 'Search Text Logs');
-                datatbl.addColumn('string', 'Search Entity');        
                 datatbl.addColumn('string', 'Topic');
                 datatbl.addColumn('string', 'Main Topic');
                 datatbl.addColumn('string', 'Kafkakey');
