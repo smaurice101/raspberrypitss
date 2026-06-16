@@ -152,7 +152,7 @@
             <textarea name="txtData" id="txtData" class="hidden"></textarea> 
 
             <div class="flex flex-col text-xs font-mono bg-black/50 border border-white/10 px-5 py-3 rounded-2xl text-zinc-300 min-w-[360px] shadow-inner">
-                <div class="flex justify-between"><span class="text-zinc-500 font-bold">METRIC SYNCHRONICITY:</span> <span id="accesstime" class="text-sky-400 font-bold tracking-wide">STANDBY</span></div>
+                <div class="flex justify-between"><span class="text-zinc-500 font-bold"></span> <span id="accesstime" class="text-sky-400 font-bold tracking-wide">STANDBY</span></div>
                 <div class="truncate max-w-[340px] flex justify-between mt-1.5"><span class="text-zinc-500 font-bold">KAFKA ATTESTATION:</span> <span id="kafkacluster" class="text-slate-400 font-bold truncate">OFFLINE_CLUSTER_BUS</span></div>
             </div>
 
@@ -160,92 +160,15 @@
                 <div class="w-5 h-5 border-2 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
             </div>
 
-            <button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-b from-sky-400 to-sky-600 hover:from-sky-300 hover:to-sky-500 text-white font-sans px-6 py-3.5 rounded-2xl text-sm font-extrabold tracking-wider transition-all duration-300 shadow-lg shadow-sky-500/20 active:scale-[0.98] cursor-pointer uppercase">
+<button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-b from-sky-400 to-sky-600 hover:from-sky-300 hover:to-sky-500 text-white font-sans px-6 py-3.5 mb-12 rounded-2xl text-sm font-extrabold tracking-wider transition-all duration-300 shadow-lg shadow-sky-500/20 active:scale-[0.98] cursor-pointer uppercase">
                 Initialize Ingest
             </button>
+			
             <span id="statustext" class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase"></span>
         </form>
     </header>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-chassis glass-glow-sky p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-sky-500/20" />
-            <div class="flex items-center justify-between z-10">
-                <span class="text-xs font-black text-sky-400 tracking-[0.18em] uppercase font-sans">RTMS Kernel Index</span>
-                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_A</span>
-            </div>
-            <div class="mt-6 flex items-baseline justify-between z-10">
-                <span id="rtms-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(14,165,233,0.35)] transition-all duration-300">
-                    0.000
-                </span>
-                <div class="text-right">
-                    <span class="text-xs font-mono text-sky-400 font-bold uppercase block tracking-wider">Hyper Prediction</span>
-                    <span class="text-[10px] text-zinc-500 font-mono block">Variance: &plusmn;0.002</span>
-                </div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between z-10">
-                <span class="text-[10px] font-mono text-zinc-500 font-bold uppercase">Streaming Volatility</span>
-                <div class="flex items-end gap-1 h-5">
-                    <div class="w-1 bg-sky-500/30 h-2 rounded-full animate-pulse"></div>
-                    <div class="w-1 bg-sky-500/50 h-4 rounded-full"></div>
-                    <div class="w-1 bg-sky-500 h-3 rounded-full animate-pulse"></div>
-                    <div class="w-1 bg-sky-400 h-5 rounded-full"></div>
-                    <div class="w-1 bg-sky-500/40 h-2 rounded-full"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-chassis glass-glow-rose p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-rose-500/20" />
-            <div class="flex items-center justify-between z-10">
-                <span class="text-xs font-black text-rose-400 tracking-[0.18em] uppercase font-sans">Attack Vectors</span>
-                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_B</span>
-            </div>
-            <div class="mt-6 flex items-baseline justify-between z-10">
-                <span id="attack-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(244,63,94,0.35)] transition-all duration-300">
-                    0.00
-                </span>
-                <div class="text-right">
-                    <span class="text-xs font-mono text-rose-400 font-bold uppercase block tracking-wider">Final Threat Layer</span>
-                    <span class="text-[10px] text-zinc-500 font-mono block">Confidence: 99.4%</span>
-                </div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/5 flex flex-col gap-1.5 z-10">
-                <div class="flex justify-between text-[10px] font-mono text-zinc-500 font-bold uppercase">
-                    <span>Threat Envelope Scale</span>
-                    <span class="text-rose-400">0.00% Limit</span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden border border-white/5">
-                    <div id="threat-bar" class="w-[5%] h-full bg-gradient-to-r from-emerald-500 to-rose-500 transition-all duration-500"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-chassis glass-glow-violet p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-violet-500/20" />
-            <div class="flex items-center justify-between z-10">
-                <span class="text-xs font-black text-violet-400 tracking-[0.18em] uppercase font-sans">Pattern Diagnostics</span>
-                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_C</span>
-            </div>
-            <div class="mt-6 flex items-baseline justify-between z-10">
-                <span id="pattern-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(139,92,246,0.35)] transition-all duration-300">
-                    0.00
-                </span>
-                <div class="text-right">
-                    <span class="text-xs font-mono text-violet-400 font-bold uppercase block tracking-wider">Deviation Envelope</span>
-                    <span class="text-[10px] text-zinc-500 font-mono block">Entropy: Static</span>
-                </div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between z-10">
-                <span class="text-[10px] font-mono text-zinc-500 font-bold uppercase">Fourier Space Mapping</span>
-                <div class="flex gap-1">
-                    <span class="h-2 w-2 rounded-full bg-violet-500/20 border border-violet-500/40"></span>
-                    <span class="h-2 w-2 rounded-full bg-violet-500/20 border border-violet-500/40"></span>
-                    <span class="h-2 w-2 rounded-full bg-violet-500 animate-ping"></span>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="glass-chassis p-6 rounded-3xl flex items-center justify-between group">
