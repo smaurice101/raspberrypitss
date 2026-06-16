@@ -7519,3 +7519,5 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
  * branch            main       -> FETCH_HEAD
 Already up to date.
 [INFO 2026-06-16_01:08:53] TML Solution Studio: Starting Git commit process for project: mytestproject5-3f10
+[INFO 2026-06-16_01:10:43] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-06-16_01:10:43] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
