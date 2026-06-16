@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base target="/" />    
+    <base target="_blank" />    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/x-icon" href="./oticsico.png" />
@@ -19,633 +19,301 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: #020306;
+            background-color: #010204;
             color: #f8fafc;
             /* Institutional Grid Overlay with Deep Nebula Aura Radial Shifting */
             background-image: 
-                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.12), transparent 50%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.007) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+                radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.15), transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.12), transparent 50%),
+                linear-gradient(rgba(14, 165, 233, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
             background-attachment: fixed;
         }
 
-        /* 💎 Elite Ultra-Glassmorphism Blueprint with True Specular Reflections */
-        .glass-chassis {
-            background: linear-gradient(135deg, rgba(8, 10, 18, 0.45) 0%, rgba(4, 5, 10, 0.65) 100%);
-            backdrop-filter: blur(30px) saturate(220%);
-            -webkit-backdrop-filter: blur(30px) saturate(220%);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 
-                0 30px 70px rgba(0, 0, 0, 0.8),
-                inset 0 1px 1px rgba(255, 255, 255, 0.12),
-                inset 0 0 20px rgba(14, 165, 233, 0.02);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        .font-mono { font-family: var(--font-mono); }
+
+        /* Premium Custom Neon Glow & Cyber Scrollbar System */
+        .cyber-glow-cyan {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.25), inset 0 0 12px rgba(14, 165, 233, 0.1);
+        }
+        
+        .cyber-glow-indigo {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), inset 0 0 12px rgba(99, 102, 241, 0.1);
         }
 
-        .glass-chassis:hover {
-            border-color: rgba(14, 165, 233, 0.35);
-            background: linear-gradient(135deg, rgba(12, 16, 28, 0.55) 0%, rgba(6, 8, 15, 0.75) 100%);
-            box-shadow: 
-                0 40px 90px rgba(0, 0, 0, 0.9),
-                0 0 50px rgba(14, 165, 233, 0.08),
-                inset 0 1px 2px rgba(255, 255, 255, 0.2);
+        /* Responsive Custom Scrollbar Blueprint */
+        .scroller::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
         }
-
-        /* Tactical Micro-Edge Highlight Overlays */
-        .glass-glow-sky {
-            box-shadow: 0 0 40px rgba(14, 165, 233, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        .scroller::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 99px;
         }
-        .glass-glow-sky:hover {
-            box-shadow: 0 0 50px rgba(14, 165, 233, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.25);
-            border-color: rgba(14, 165, 233, 0.5);
+        .scroller::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            border-radius: 99px;
+            box-shadow: 0 0 8px rgba(14, 165, 233, 0.8);
         }
-
-        .glass-glow-rose {
-            box-shadow: 0 0 40px rgba(244, 63, 94, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        .scroller::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
         }
-        .glass-glow-rose:hover {
-            box-shadow: 0 0 50px rgba(244, 63, 94, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.25);
-            border-color: rgba(244, 63, 94, 0.5);
-        }
-
-        .glass-glow-violet {
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.12);
-        }
-        .glass-glow-violet:hover {
-            box-shadow: 0 0 50px rgba(139, 92, 246, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.25);
-            border-color: rgba(139, 92, 246, 0.5);
-        }
-
-        /* Professional Master Table Injections */
-/* Professional Master Table Injections */
-        .columnTitle {
-            font-family: var(--font-sans) !important;
-            /* Scaled up 20% from 12px to 14.4px */
-            font-size: 14.4px !important; 
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.12em !important;
-            /* Hard corporate black color */
-            color: #000000 !important; 
-            background: rgba(15, 23, 42, 0.8) !important;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
-            padding: 20px 24px !important;
-        }
-        .google-visualization-table-table {
-            background-color: transparent !important;
-            color: #e2e8f0 !important;
-            border: none !important;
-            font-family: var(--font-mono) !important;
-            width: 100% !important;
-        }
-        .google-visualization-table-tr-odd, .beige-background {
-            background-color: rgba(255, 255, 255, 0.01) !important;
-        }
-        .google-visualization-table-tr-even {
-            background-color: transparent !important;
-        }
-        .google-visualization-table-tr-sel, .orange-background {
-            background-color: rgba(14, 165, 233, 0.15) !important;
-            color: #ffffff !important;
-            box-shadow: inset 4px 0 0 #0ea5e9;
-        }
-        .google-visualization-table-td {
-            padding: 18px 24px !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
-            font-size: 12px !important;
-            font-weight: 500;
-        }
-
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(14, 165, 233, 0.6); }
     </style>
 
-    <link href="./css/attention.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<body class="min-h-screen flex flex-col selection:bg-sky-500/30 selection:text-sky-200">
 
-<body class="min-h-screen p-6 xl:p-8 flex flex-col gap-6 selection:bg-sky-500/30 selection:text-sky-100 antialiased">
-
-    <header class="glass-chassis p-6 rounded-3xl flex flex-col xl:flex-row items-center justify-between gap-6 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
-        
-        <div class="flex items-center gap-6 w-full xl:w-auto">
-            <div class="h-14 w-14 rounded-2xl bg-slate-950/80 border border-white/15 flex items-center justify-center relative shadow-inner">
-                <span class="text-sky-400 font-sans font-extrabold text-2xl relative z-10 tracking-tighter">𝚵</span>
-                <div class="absolute inset-0 bg-sky-500/10 rounded-2xl blur-md animate-pulse" />
-            </div>
+    <header class="border-b border-white/10 bg-slate-950/40 backdrop-blur-md px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 sticky top-0 z-50 shadow-lg shadow-black/40">
+        <div class="flex items-center gap-3">
+            <div class="h-3 w-3 rounded-full bg-sky-500 animate-ping shadow-[0_0_10px_#0ea5e9]"></div>
             <div>
-                <div class="flex items-center gap-4 flex-wrap">
-                    <h1 class="text-2xl font-black font-sans tracking-tight text-white uppercase">
-                        Aegis<span class="text-sky-400 font-light">RTMS</span> <span class="text-zinc-700 font-normal">/</span> <span class="text-xs font-mono tracking-[0.25em] text-sky-400 font-bold bg-sky-500/10 px-3 py-1 rounded border border-sky-500/20">GLOBAL_SECURITY_INTELLIGENCE</span>
-                    </h1>
-                    <span id="pulse-indicator" class="h-2 w-2 rounded-full bg-zinc-600 transition-all duration-1000" />
-                </div>
-                <p class="text-xs text-zinc-400 font-bold tracking-[0.2em] uppercase mt-1.5">Tier-1 Threat Telemetry Orchestration Matrix & Live Control Console</p>
+                <h1 class="text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 uppercase font-mono">
+                    AegisRTMS // Network Command Console
+                </h1>
+                <p class="text-xs text-slate-400 font-mono">SECURE LIVE KAFKA MATRIX FEED</p>
             </div>
         </div>
 
-        <form id="idForm" class="flex flex-wrap items-center gap-4 w-full xl:w-auto justify-start xl:justify-end">
-            <textarea name="txtData" id="txtData" class="hidden"></textarea> 
-
-            <div class="flex flex-col text-xs font-mono bg-black/50 border border-white/10 px-5 py-3 rounded-2xl text-zinc-300 min-w-[360px] shadow-inner">
-                <div class="flex justify-between"><span class="text-zinc-500 font-bold">METRIC SYNCHRONICITY:</span> <span id="accesstime" class="text-sky-400 font-bold tracking-wide">STANDBY</span></div>
-                <div class="truncate max-w-[340px] flex justify-between mt-1.5"><span class="text-zinc-500 font-bold">KAFKA ATTESTATION:</span> <span id="kafkacluster" class="text-slate-400 font-bold truncate">OFFLINE_CLUSTER_BUS</span></div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
+            <div class="px-3 py-1.5 rounded-md bg-slate-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-2">
+                <span class="text-slate-500">HOST:</span>
+                <span id="hosttext" class="text-sky-400 font-bold drop-shadow-[0_0_5px_rgba(14,165,233,0.5)]">UNASSIGNED</span>
             </div>
-
-            <div class="hidden items-center justify-center w-12 h-12 rounded-2xl border border-white/10 bg-white/5" id="loaderdiv">
-                <div class="w-5 h-5 border-2 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
+            <div class="px-3 py-1.5 rounded-md bg-slate-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-2">
+                <span class="text-slate-500">TOPIC:</span>
+                <span id="topictext" class="text-indigo-400 font-bold drop-shadow-[0_0_5px_rgba(99,102,241,0.5)]">NOT_CONNECTED</span>
             </div>
-
-            <button id="start" type="submit" class="w-full sm:w-auto bg-gradient-to-b from-sky-400 to-sky-600 hover:from-sky-300 hover:to-sky-500 text-white font-sans px-6 py-3.5 rounded-2xl text-sm font-extrabold tracking-wider transition-all duration-300 shadow-lg shadow-sky-500/20 active:scale-[0.98] cursor-pointer uppercase">
-                Initialize Ingest
-            </button>
-            <span id="statustext" class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase"></span>
-        </form>
+            <div class="px-3 py-1.5 rounded-md bg-slate-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-2">
+                <span class="text-slate-500">STATUS:</span>
+                <span id="statustext" class="text-amber-400 font-bold animate-pulse">STANDBY_BUS</span>
+            </div>
+        </div>
     </header>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-chassis glass-glow-sky p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-sky-500/20" />
-            <div class="flex items-center justify-between z-10">
-                <span class="text-xs font-black text-sky-400 tracking-[0.18em] uppercase font-sans">RTMS Kernel Index</span>
-                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_A</span>
-            </div>
-            <div class="mt-6 flex items-baseline justify-between z-10">
-                <span id="rtms-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(14,165,233,0.35)] transition-all duration-300">
-                    0.000
-                </span>
-                <div class="text-right">
-                    <span class="text-xs font-mono text-sky-400 font-bold uppercase block tracking-wider">Hyper Prediction</span>
-                    <span class="text-[10px] text-zinc-500 font-mono block">Variance: &plusmn;0.002</span>
+    <main class="flex-1 p-6 max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-4 flex flex-col gap-6">
+            
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-cyan flex flex-col gap-4">
+                <div class="border-b border-white/10 pb-2 flex items-center justify-between">
+                    <h2 class="text-sm font-bold font-mono text-sky-400 tracking-wide uppercase">Ingest parameters</h2>
+                    <span class="text-[10px] bg-sky-500/10 border border-sky-500/20 text-sky-400 px-2 py-0.5 rounded font-mono">V3.4</span>
                 </div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between z-10">
-                <span class="text-[10px] font-mono text-zinc-500 font-bold uppercase">Streaming Volatility</span>
-                <div class="flex items-end gap-1 h-5">
-                    <div class="w-1 bg-sky-500/30 h-2 rounded-full animate-pulse"></div>
-                    <div class="w-1 bg-sky-500/50 h-4 rounded-full"></div>
-                    <div class="w-1 bg-sky-500 h-3 rounded-full animate-pulse"></div>
-                    <div class="w-1 bg-sky-400 h-5 rounded-full"></div>
-                    <div class="w-1 bg-sky-500/40 h-2 rounded-full"></div>
+
+                <form id="idForm" class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400 font-mono" for="cip">Stream Entrypoint IP / URL</label>
+                        <input type="text" id="cip" value="localhost" placeholder="e.g., 10.0.0.1" required
+                            class="w-full bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition font-mono shadow-inner" />
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400 font-mono" for="cport">Deployment Port</label>
+                        <input type="text" id="cport" value="serverport" placeholder="e.g., 8080" required
+                            class="w-full bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition font-mono shadow-inner" />
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400 font-mono" for="ctopic">Target Topic</label>
+                        <input type="text" id="ctopic" value="topicname" placeholder="e.g., firewall_logs" required
+                            class="w-full bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition font-mono shadow-inner" />
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+                        <button type="submit" id="start"
+                            class="bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 active:scale-[0.98] transition font-bold font-mono text-xs uppercase px-4 py-3 rounded-lg shadow-lg shadow-sky-500/20 text-slate-950 tracking-wider">
+                            Initialize Ingest
+                        </button>
+                        <button type="button" id="downloadcsv"
+                            class="bg-slate-950/80 hover:bg-slate-900 border border-white/10 hover:border-white/20 active:scale-[0.98] transition font-bold font-mono text-xs uppercase px-4 py-3 rounded-lg tracking-wider text-slate-300 flex items-center justify-center gap-2">
+                            Export Matrix Data
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-indigo flex flex-col gap-3 flex-1 min-h-[250px]">
+                <div class="border-b border-white/10 pb-2 flex items-center justify-between">
+                    <h2 class="text-sm font-bold font-mono text-indigo-400 tracking-wide uppercase">Live Pipeline Stream</h2>
+                    <div class="h-2 w-2 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_8px_#6366f1]"></div>
                 </div>
-            </div>
+                <div id="pipelogger" class="flex-1 bg-slate-950/80 border border-white/5 rounded-lg p-3 font-mono text-[11px] text-emerald-400/90 overflow-x-auto overflow-y-auto scroller leading-relaxed h-[250px] whitespace-nowrap shadow-inner">
+                    <p class="text-slate-500">[SYSTEM] Awaiting Bus Stream Command Sequence...</p>
+                </div>
+            </section>
         </div>
 
-        <div class="glass-chassis glass-glow-rose p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-rose-500/20" />
-            <div class="flex items-center justify-between z-10">
-                <span class="text-xs font-black text-rose-400 tracking-[0.18em] uppercase font-sans">Attack Vectors</span>
-                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_B</span>
-            </div>
-            <div class="mt-6 flex items-baseline justify-between z-10">
-                <span id="attack-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(244,63,94,0.35)] transition-all duration-300">
-                    0.00
-                </span>
-                <div class="text-right">
-                    <span class="text-xs font-mono text-rose-400 font-bold uppercase block tracking-wider">Final Threat Layer</span>
-                    <span class="text-[10px] text-zinc-500 font-mono block">Confidence: 99.4%</span>
+        <div class="lg:col-span-8 flex flex-col gap-6">
+            
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-cyan flex flex-col gap-4">
+                <div class="border-b border-white/10 pb-2">
+                    <h2 class="text-sm font-bold font-mono text-sky-400 tracking-wide uppercase">Realtime Matrix Analytics</h2>
                 </div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/5 flex flex-col gap-1.5 z-10">
-                <div class="flex justify-between text-[10px] font-mono text-zinc-500 font-bold uppercase">
-                    <span>Threat Envelope Scale</span>
-                    <span class="text-rose-400">0.00% Limit</span>
+                <div class="w-full overflow-x-auto scroller pb-2">
+                    <div class="min-w-[700px] grid grid-cols-2 gap-4">
+                        <div class="bg-slate-950/40 border border-white/5 rounded-lg p-2 backdrop-blur-sm shadow-md">
+                            <div id="chart_div" class="w-full h-[240px]"></div>
+                        </div>
+                        <div class="bg-slate-950/40 border border-white/5 rounded-lg p-2 backdrop-blur-sm shadow-md">
+                            <div id="chart_div2" class="w-full h-[240px]"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden border border-white/5">
-                    <div id="threat-bar" class="w-[5%] h-full bg-gradient-to-r from-emerald-500 to-rose-500 transition-all duration-500"></div>
+            </section>
+
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-indigo flex flex-col gap-3">
+                <div class="border-b border-white/10 pb-2">
+                    <h2 class="text-sm font-bold font-mono text-indigo-400 tracking-wide uppercase">Sensor Metrics Ledger</h2>
                 </div>
-            </div>
-        </div>
-
-        <div class="glass-chassis glass-glow-violet p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 rounded-full blur-3xl transition-all duration-500 group-hover:bg-violet-500/20" />
-            <div class="flex items-center justify-between z-10">
-                <span class="text-xs font-black text-violet-400 tracking-[0.18em] uppercase font-sans">Pattern Diagnostics</span>
-                <span class="text-xs font-mono text-zinc-400 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 font-bold">SYS_REF_C</span>
-            </div>
-            <div class="mt-6 flex items-baseline justify-between z-10">
-                <span id="pattern-kpi" class="text-6xl font-extrabold font-sans tracking-tight text-white drop-shadow-[0_0_25px_rgba(139,92,246,0.35)] transition-all duration-300">
-                    0.00
-                </span>
-                <div class="text-right">
-                    <span class="text-xs font-mono text-violet-400 font-bold uppercase block tracking-wider">Deviation Envelope</span>
-                    <span class="text-[10px] text-zinc-500 font-mono block">Entropy: Static</span>
+                <div class="w-full overflow-x-auto scroller border border-white/5 rounded-lg bg-slate-950/50 shadow-inner">
+                    <div class="min-w-[800px]">
+                        <div id="table_div" class="w-full text-sm font-mono p-1"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between z-10">
-                <span class="text-[10px] font-mono text-zinc-500 font-bold uppercase">Fourier Space Mapping</span>
-                <div class="flex gap-1">
-                    <span class="h-2 w-2 rounded-full bg-violet-500/20 border border-violet-500/40"></span>
-                    <span class="h-2 w-2 rounded-full bg-violet-500/20 border border-violet-500/40"></span>
-                    <span class="h-2 w-2 rounded-full bg-violet-500 animate-ping"></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="glass-chassis p-6 rounded-3xl flex items-center justify-between group">
-            <div>
-                <span class="text-xs font-black text-zinc-400 tracking-widest uppercase block">Pipeline Ingestion Load</span>
-                <span class="text-xs font-medium text-zinc-500 uppercase block mt-1">Active Kafka Segment</span>
-            </div>
-            <div id="totrecs" class="text-5xl font-black font-sans text-white tracking-tighter bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                0
-            </div>
-        </div>
-
-        <div class="glass-chassis p-6 rounded-3xl flex flex-col justify-between">
-            <span class="text-xs font-black text-zinc-400 tracking-widest uppercase block">Heuristic Risk Status</span>
-            <div class="flex items-center justify-between mt-2">
-                <span id="threat-label" class="text-xs font-black text-emerald-400 uppercase tracking-widest block px-3 py-1.5 rounded-xl border border-emerald-500/20 bg-emerald-500/10">NOMINAL_STATE</span>
-                <span class="text-right text-[10px] font-mono font-bold text-sky-400 tracking-widest uppercase">STREAM_OK</span>
-            </div>
-        </div>
-
-        <div class="glass-chassis p-5 rounded-3xl flex items-center justify-between relative overflow-hidden">
-            <div>
-                <span class="text-xs font-black text-zinc-400 tracking-widest uppercase block">Processor Matrix Load</span>
-                <span class="text-[10px] font-mono text-zinc-500 block mt-0.5">Viper Engine Array Allocation</span>
-            </div>
-            <div class="relative flex items-center justify-center h-14 w-14">
-                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                    <path class="text-zinc-800" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path class="text-cyan-400 drop-shadow-[0_0_8px_#22d3ee]" stroke-dasharray="75, 100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                </svg>
-                <span class="absolute text-[10px] font-mono font-bold text-white">75%</span>
-            </div>
-        </div>
-
-        <div class="glass-chassis p-5 rounded-3xl flex flex-col justify-center gap-2">
-            <div class="flex items-center justify-between text-xs font-black text-zinc-400 tracking-widest uppercase mb-0.5">
-                <span>Data Extraction Interface</span>
-                <span class="text-zinc-500 cursor-pointer hover:text-sky-400 transition-colors tracking-wide text-[10px]" onclick="image('table','')">[Schema Manifest]</span>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-                <a id="Export" href="#" class="border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-zinc-200 py-2 rounded-xl text-center text-xs font-bold tracking-wider transition-all shadow-sm">
-                    Extract CSV
-                </a>
-                <a id="Export2" href="#" class="border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 text-zinc-200 py-2 rounded-xl text-center text-xs font-bold tracking-wider transition-all shadow-sm">
-                    Extract JSON
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <main class="flex-1 glass-chassis rounded-3xl overflow-hidden flex flex-col min-h-[600px]">
-        <div class="bg-slate-950/40 px-6 py-5 border-b border-white/10 flex justify-between items-center backdrop-blur-md">
-            <div class="flex items-center gap-3">
-                <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_#0ea5e9] animate-pulse" />
-                <span class="text-sm font-extrabold tracking-wide text-zinc-200 font-sans uppercase">
-                    Preprocessed Memory Telemetry Kernel Ledger
-                </span>
-            </div>
-            <span class="text-xs font-mono font-bold text-zinc-500 tracking-widest bg-black/40 px-3 py-1 rounded-md border border-white/5">VIPER_ENGINE_V2.6</span>
-        </div>
-
-        <div class="p-6 flex-1 overflow-x-auto min-h-[520px]">
-            <div id="table_div" class="w-full min-h-[480px]">
-                <div class="text-zinc-500 text-xs h-64 flex flex-col items-center justify-center gap-4">
-                    <div class="w-6 h-6 border-2 border-white/10 border-t-sky-400 rounded-full animate-spin"></div>
-                    <span class="tracking-widest text-xs text-zinc-400 font-bold uppercase font-mono">Awaiting Core Data Matrix Connection String...</span>
-                </div>
-            </div>
+            </section>
         </div>
     </main>
 
-    <footer class="border-t border-white/5 pt-5 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-500 tracking-wider uppercase gap-2 select-none font-mono font-bold">
-        <div>Platform Context: Enterprise Mesh Matrix v2.6.0</div>
-        <div>OTICS Advanced Analytics, Inc. // Proprietary Protection Layer</div>
+    <footer class="mt-auto border-t border-white/10 bg-slate-950/60 backdrop-blur-md px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono text-slate-500 shadow-2xl">
+        <p>&copy; 2026 AegisRTMS Intelligence Operations Inc. All Rights Reserved.</p>
+        <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1.5">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> 
+                SSL_ENCRYPTED
+            </span>
+            <span class="text-slate-600">|</span>
+            <span>NODE_V2.14_STABLE</span>
+        </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="./js/attention.js"></script>
-    <script type="text/javascript" src="./js/r.min.js"></script>
-    <script type="text/javascript" src="./js/justgage.js"></script>
-    <script type="text/javascript" src="./js/justgage.min.js"></script>
-    <script src="./js/d3.min.js"></script>
-    <script src="./js/d3pie.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart', 'controls', 'table'] });
 
-    <script>
-        google.charts.load("current", { packages: ["corechart", "line"] });
-        google.charts.load('current', {'packages':['table','annotatedtimeline','gauge','bar','sankey']});
-        google.charts.setOnLoadCallback(drawTable2);
-
+        var ws = null;
         var START = 0;
-        var ws;
-        var topic = "";
-        var mainusertopic = "";
-        var offset = -1;
-        var append = 0;
-        var rollbackoffset = 0;
-        var topictype = "";
-        var vipertoken = "";
-        var consumerid = "";
-        var secure = 0;
-        var mainport = "";
-        var jsonhist = "";
         var datatbl;
-        var maintable;
-        var dataintable = [];
-        var kafkakeyarr = [];
-        var kafkacluster = "";
-        var maintotalmessages = 0;
-        var mainkafkatopic = "";
+        var chart;
+        var chart2;
+        var table;
+        var totalrows = 0;
 
-        var cssClassNames = {
-            'headerRow': 'columnTitle',
-            'tableRow': '',
-            'oddTableRow': 'beige-background',
-            'selectedTableRow': 'orange-background large-font',
-            'hoverTableRow': '',
-            'headerCell': '',
-            'tableCell': '',
-            'rowNumberCell': ''
-        };
-
-        function image(thetype, mess) {
-            var titletext = "";
-            var helptext = "";
-            if (thetype == "barchart") {
-                titletext = "Failure Monitoring Bar Chart";
-                helptext = "The Failure Monitoring Bar Chart shows the count of Total Failure records in the data stream (GREY Bar), against the Failure that are above the upper bound (BLUE Bar).";
-            } else if (thetype == "table") {
-                titletext = "Table Data Ledger Metrics";
-                helptext = "The data in the table shows the preprocessed values for every device used in the preprocessing of IoT Device data. KAFKAKEY is a unique hash key for the Kafka message. OFFSET/PARTITION show the actual location of the PROCESSED message in Kafka.";
-            } else if (thetype == "ml") {
-                titletext = "Transactional Machine Learning Models";
-                helptext = "These are the ML models TML has built for every device. They are Failure Probability predictions via local logistic regressions.";
-            }
-            new Attention.Prompt({ title: titletext, content: helptext });
-        }
-
-        function drawChart(jsondata, topic) {
-            if (jsondata) {
-                var createdon, entity, rtms, attack, pattern, numattack, numpattern;
-                var processtype, remember, patternthresh, activity, comment, searchfound, Maintopic, kafkakey, offset, partition, searchentity;
-                jsonhist = "";
-                let rownum = 0;
-
-                let lastRtms = "0.000";
-                let lastAttack = "0.00";
-                let lastPattern = "0.00";
-
-                for (j in jsondata.TopicReads) {
-                    kafkakey = jsondata.TopicReads[j].kafkakey;
-                    if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
-                        kafkakeyarr.push(kafkakey);
-
-                        createdon = jsondata.TopicReads[j].TimeStamp;
-                        jsonhist = jsonhist + JSON.stringify(jsondata.TopicReads[j]) + ",";
+        function appendLogMessage(message, level = 'INFO') {
+            const logger = $('#pipelogger');
+            const timestamp = new Date().toISOString().split('T')[1].substring(0, 8);
+            let colorClass = 'text-emerald-400/90';
             
-                        entity = jsondata.TopicReads[j].Entity;
-                        rtms = jsondata.TopicReads[j].hyperprediction;
-                        attack = jsondata.TopicReads[j].FinalAttackScore;
-                        pattern = jsondata.TopicReads[j].FinalPatternScore;
-                        numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
-                        numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
-                        processtype = jsondata.TopicReads[j].Preprocesstype;
-                        remember = jsondata.TopicReads[j].RememberPastWindows;
-                        patternthresh = jsondata.TopicReads[j].PatternThreshold;
-                        activity = jsondata.TopicReads[j].ActivityLevel;
-                        comment = jsondata.TopicReads[j].TMLComment;
-                        searchfound = jsondata.TopicReads[j].SearchTextFound.toString();
-                        topic = jsondata.TopicReads[j].Topic;
-                        Maintopic = jsondata.TopicReads[j].Maintopic;
-                        offset = jsondata.TopicReads[j].Offset;
-                        partition = jsondata.TopicReads[j].Partition;
-                        searchentity = jsondata.TopicReads[j].SearchEntity;
+            if (level === 'WARN') colorClass = 'text-amber-400';
+            if (level === 'ERROR') colorClass = 'text-rose-400 font-bold drop-shadow-[0_0_6px_rgba(244,63,94,0.4)]';
+            if (level === 'SYSTEM') colorClass = 'text-sky-400';
 
-                        if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
-                        if(attack) lastAttack = parseFloat(attack).toFixed(2);
-                        if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
-
-                        var arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, remember, patternthresh, activity, comment, searchfound, searchentity, topic, Maintopic, kafkakey, offset, partition];
-                        dataintable.push(arr);
-                        rownum++;
-                    }
-                }
-
-                maintotalmessages = maintotalmessages + rownum;
-                document.getElementById('totrecs').innerHTML = maintotalmessages;
-                
-                if (rownum > 0) {
-                    document.getElementById('rtms-kpi').innerHTML = lastRtms;
-                    document.getElementById('attack-kpi').innerHTML = lastAttack;
-                    document.getElementById('pattern-kpi').innerHTML = lastPattern;
-
-                    // Update live visual tracking elements
-                    let threatPct = Math.min(Math.max(parseFloat(lastAttack) * 10, 5), 100);
-                    document.getElementById('threat-bar').style.width = threatPct + "%";
-                }
-                
-                const threatLabel = document.getElementById('threat-label');
-                if (maintotalmessages > 25) {
-                    threatLabel.innerHTML = "ANOMALOUS ACTIVITY ALERT";
-                    threatLabel.className = "text-xs font-black text-rose-400 uppercase tracking-widest block px-3 py-1.5 rounded-xl border border-rose-500/30 bg-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.3)] animate-pulse";
-                } else if (maintotalmessages > 0) {
-                    threatLabel.innerHTML = "RUNNING HEURISTICS EVAL";
-                    threatLabel.className = "text-xs font-black text-amber-400 uppercase tracking-widest block px-3 py-1.5 rounded-xl border border-amber-500/30 bg-amber-500/10";
-                }
-
-                if (rownum > 0) {
-                    document.getElementById("txtData").value = "[" + jsonhist.slice(0, -1) + "]";
-                    drawTable2();
-                }
-            }
-        }
-
-        function drawTable2() {
-            if (maintable == null) {
-                maintable = new google.visualization.Table(document.getElementById('table_div'));
-            }
-
-            var formatter = new google.visualization.NumberFormat({ groupingSymbol: '', fractionDigits: 0 });
-            var formatter2 = new google.visualization.NumberFormat({ groupingSymbol: '', fractionDigits: 3 });
-
-            if (datatbl == null) {
-                datatbl = new google.visualization.DataTable();
-
-                datatbl.addColumn('string', 'Date/Time');
-                datatbl.addColumn('string', 'RTMS Score');
-                datatbl.addColumn('string', 'Attack Score');
-                datatbl.addColumn('string', 'Pattern Score');
-                datatbl.addColumn('string', 'Entity');
-                datatbl.addColumn('string', 'Attack Windows');
-                datatbl.addColumn('string', 'Pattern Windows');
-                datatbl.addColumn('string', 'Processtype');
-                datatbl.addColumn('string', 'Sliding Windows');
-                datatbl.addColumn('string', 'Pattern Threshold');
-                datatbl.addColumn('string', 'Risk Level');
-                datatbl.addColumn('string', 'TML Comment');
-                datatbl.addColumn('string', 'Search Text Logs');
-                datatbl.addColumn('string', 'Search Entity');        
-                datatbl.addColumn('string', 'Topic');
-                datatbl.addColumn('string', 'Main Topic');
-                datatbl.addColumn('string', 'Kafkakey');
-                datatbl.addColumn('number', 'Offset');
-                datatbl.addColumn('number', 'Partition');
-
-                datatbl.sort({ column: 1, desc: true });
-                maintable.clearChart();
-                maintable.draw(datatbl, { showRowNumber: true, width: '100%', height: '100%', page: 'enable', pageSize: 30, allowHtml: true });
-                if (append == 0) {
-                    datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
-                }
-            } else {
-                formatter.format(datatbl, 1);
-                formatter2.format(datatbl, 2);
-                datatbl.sort({ column: 1, desc: true });
-                if (datatbl.getNumberOfRows() > 0 && append == 0) {
-                    datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
-                }
-
-                datatbl.addRows(dataintable);
-                maintable.clearChart();
-                maintable.draw(datatbl, {
-                    showRowNumber: true,
-                    width: '100%',
-                    height: '100%',
-                    page: 'enable',
-                    pageSize: 30,
-                    allowHtml: true,
-                    'cssClassNames': cssClassNames
-                });
-                formatter = null;
-                formatter2 = null;
-            }
-            dataintable = [];
+            logger.append(`<p class="${colorClass}">[${timestamp}] [${level}] ${message}</p>`);
+            logger.scrollTop(logger[0].scrollHeight);
         }
 
         function streamLiveKafkaData() {
-            if ("WebSocket" in window) {
-                var url = window.location.host;
-                mainport = url.split(":")[1];
+            var ip = document.getElementById("cip").value;
+            var port = document.getElementById("cport").value;
+            var topic = document.getElementById("ctopic").value;
 
-                var urlParams = new URLSearchParams(window.location.search);
-                var entries = urlParams.entries();
-                for (pair of entries) {
-                    if (pair[0] == "topic") topic = pair[1];
-                    if (pair[0] == "topictype") topictype = pair[1];
-                    if (pair[0] == "secure") secure = pair[1];
-                    if (pair[0] == "vipertoken") vipertoken = pair[1];
-                    if (pair[0] == "consumerid") consumerid = pair[1];
-                    if (pair[0] == "offset") offset = pair[1];
-                    if (pair[0] == "rollbackoffset") rollbackoffset = pair[1];
-                    if (pair[0] == "groupid") groupid = pair[1];
-                    if (pair[0] == "append") append = pair[1];
+            document.getElementById('hosttext').innerHTML = ip + ":" + port;
+            document.getElementById('topictext').innerHTML = topic.toUpperCase();
+
+            var wsuri = "ws://" + ip + ":" + port + "/ws?topic=" + topic + "&subscribe=json";
+            appendLogMessage(`Connecting to bus: ${wsuri}`, 'SYSTEM');
+
+            if (ws) {
+                ws.close();
+                ws = null;
+            }
+
+            ws = new WebSocket(wsuri);
+
+            ws.onopen = function () {
+                appendLogMessage("Secure connection established over WS transport layer.", "SYSTEM");
+                document.getElementById('statustext').innerHTML = "INGESTING_STREAM";
+                $('#statustext').removeClass('text-amber-400 text-rose-500').addClass('text-emerald-400 drop-shadow-[0_0_5px_#10b981]');
+                $("#start").attr("disabled", false);
+            };
+
+            ws.onmessage = function (e) {
+                var data = JSON.parse(JSON.parse(e.data));
+                var keys = Object.keys(data);
+                var rowarr = [];
+                
+                totalrows++;
+                appendLogMessage(`Packet Ingested -> Frame Index: ${totalrows} | Width: ${keys.length} Metrics Found`);
+
+                if (totalrows == 1) {
+                    datatbl = new google.visualization.DataTable();
+                    for (var i = 0; i < keys.length; i++) {
+                        datatbl.addColumn('number', keys[i]);
+                    }
                 }
 
-                if (window.location.href.indexOf("http://") != -1) {
-                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("ws://"+url+"/viz/ws") : new WebSocket("ws://"+url+"/ws");
-                } else {
-                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("wss://"+url+"/viz/ws") : new WebSocket("wss://"+url+"/ws");
+                for (var i = 0; i < keys.length; i++) {
+                    rowarr.push(parseFloat(data[keys[i]]));
                 }
 
-                ws.onmessage = function (event) {
-                    var obj;
-                    var curTime = new Date();
-                    var eventdata = `${event.data}`;
-                    var maindata = eventdata;
+                datatbl.addRow(rowarr);
 
-                    maindata = maindata.replace(/\\n/g, "\\n")
-                                       .replace(/\\',/g, "\\'")
-                                       .replace(/\\"/g, '\\"')
-                                       .replace(/\\&/g, "\\&")
-                                       .replace(/\\r/g, "\\r")
-                                       .replace(/\\t/g, "\\t")
-                                       .replace(/\\b/g, "\\b")
-                                       .replace(/\\f/g, "\\f");
-                    try {
-                        obj = JSON.parse(JSON.parse(maindata));
-                    } catch(e) {
-                        console.log("Json parse issue=", e.message);
-                        return;
+                // Dynamically update viewports
+                chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(datatbl, {
+                    title: 'Live Variable Vector Stream',
+                    curveType: 'function',
+                    legend: { position: 'bottom' },
+                    backgroundColor: 'transparent',
+                    titleTextStyle: { color: '#e2e8f0', fontName: 'JetBrains Mono', fontSize: 13 },
+                    legendTextStyle: { color: '#94a3b8', fontName: 'JetBrains Mono' },
+                    hAxis: { textStyle: { color: '#64748b' }, gridlines: { color: '#334155/20' } },
+                    vAxis: { textStyle: { color: '#64748b' }, gridlines: { color: '#334155/20' } }
+                });
+
+                chart2 = new google.visualization.Histogram(document.getElementById('chart_div2'));
+                chart2.draw(datatbl, {
+                    title: 'Dynamic Data Distribution Density',
+                    legend: { position: 'none' },
+                    backgroundColor: 'transparent',
+                    titleTextStyle: { color: '#e2e8f0', fontName: 'JetBrains Mono', fontSize: 13 },
+                    hAxis: { textStyle: { color: '#64748b' } },
+                    vAxis: { textStyle: { color: '#64748b' } }
+                });
+
+                table = new google.visualization.Table(document.getElementById('table_div'));
+                table.draw(datatbl, { 
+                    showRowNumber: true, 
+                    width: '100%', 
+                    height: '100%',
+                    cssClassNames: {
+                        headerRow: 'bg-slate-900 border-b border-white/10 text-sky-400 text-xs font-mono font-bold uppercase tracking-wider',
+                        tableRow: 'bg-slate-950/40 hover:bg-slate-900/60 text-slate-300 text-xs font-mono border-b border-white/5 transition',
+                        oddTableRow: 'bg-slate-900/20 hover:bg-slate-900/60 text-slate-300 text-xs font-mono border-b border-white/5 transition',
+                        selectedTableRow: 'bg-indigo-500/20 text-indigo-200 border-b border-indigo-500/30 font-bold',
+                        hoverTableRow: 'bg-slate-900/60'
                     }
+                });
+            };
 
-                    if (obj.ERROR) {
-                        document.getElementById('statustext').innerHTML = "ERR: " + obj.ERROR;
-                        ws.close(1000);
-                        alert(obj.ERROR);
-                        ws = null;
-                        $("#start").attr("disabled", false).html("Initialize Ingest");
-                        return;
-                    }
+            ws.onclose = function (e) {
+                appendLogMessage(`WebSocket connection terminated. Code: ${e.code}`, "WARN");
+                document.getElementById('statustext').innerHTML = "BUS_DISCONNECTED";
+                $('#statustext').removeClass('text-emerald-400 text-amber-400').addClass('text-rose-500 drop-shadow-[0_0_5px_#f43f5e]');
+                $("#start").html("Initialize Ingest").attr("disabled", false);
+            };
 
-                    if (START == 0) {
-                        if (ws) ws.close(1000);
-                        ws = null;
-                        return;
-                    }
-                    if (append == 0) {
-                        dataintable.splice(0, dataintable.length);
-                        jsonhist = null;
-                        kafkakeyarr.splice(0, kafkakeyarr.length);
-                    }
-
-                    kafkacluster = obj.Webkafkacluster;
-                    mainkafkatopic = obj.Webtopic;
-                    document.getElementById('accesstime').innerHTML = curTime.toLocaleTimeString();
-                    document.getElementById('kafkacluster').innerHTML = "Cluster: " + kafkacluster + " // Segment: " + obj.Webtopic;
-                    
-                    drawChart(obj, mainkafkatopic);
-                    obj = null; maindata = null; eventdata = null;
-                };
-
-                ws.onclose = function (event) {
-                    if (ws) ws.close(1000);
-                    ws = null;
-                    document.getElementById('loaderdiv').style.display = "none";
-                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-zinc-700";
-                    $("#start").attr("disabled", false).html("Initialize Ingest");
-                    document.getElementById('statustext').innerHTML = "// BUS_DISCONNECTED";
-                };
-
-                ws.onopen = function (error) {
-                    var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
-                    ws.send(sendbuffer);
-                    document.getElementById('loaderdiv').style.display = "flex";
-                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(14,165,233,1)] animate-pulse";
-                };
-
-                ws.onerror = function (error) {
-                    if (ws) ws.close(1000);
-                    document.getElementById('statustext').innerHTML = "CLUSTER BUS ERROR: " + error.message;
-                };
-            }
+            ws.onerror = function (err) {
+                appendLogMessage("Critical WebSockets transmission exception encountered.", "ERROR");
+                console.error("WS Engine Failure Exception: ", err);
+            };
         }
 
-        function saveDynamicDataToFile(topic) {
-            var userInput = document.getElementById("txtData").value;	
-            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
-            const sFileName = topic + "-LOG-JSON.json";
-
-            let newLink = document.createElement("a");
-            newLink.download = sFileName;
-
-            if (window.webkitURL != null) {
-                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-            } else {
-                newLink.href = window.URL.createObjectURL(textToBLOB);
-                newLink.style.display = "none";
-                document.body.appendChild(newLink);
-            }
-            newLink.click(); 
-        }
-
-        $('#Export2').click(function(e) {
-            e.preventDefault(); 
-            saveDynamicDataToFile(topic);
-            return false; 
-        });
-
-        $('#Export').click(function () {
-            if (topic.length > 0) {
+        $("#downloadcsv").click(function () {
+            var topic = document.getElementById("ctopic").value;
+            if (topic.length > 0 && datatbl) {
+                appendLogMessage("Compiling and export local structural CSV data manifest...", "SYSTEM");
                 var headerRow = "";
                 var number_of_columns = datatbl.getNumberOfColumns();
                 for (var i = 0; i < number_of_columns; i++) {
@@ -655,10 +323,9 @@
                 var csvFormattedDataTable = headerRow + google.visualization.dataTableToCsv(datatbl);
                 var encodedUri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvFormattedDataTable);
                 this.href = encodedUri;
-                this.download = "iot-data.csv";
-                this.target = '_blank';
+                this.download = `aegis-matrix-${topic}.csv`;
             } else {
-                alert("Initialize matrix streaming first");
+                alert("Error: Initialize matrix ingestion before attempting data output pipelines.");
             }
         });
 
