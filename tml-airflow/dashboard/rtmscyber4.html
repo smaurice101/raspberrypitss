@@ -192,13 +192,26 @@
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart', 'controls', 'table'] });
 
-        var ws = null;
         var START = 0;
+        var ws;
+        var topic = "";
+        var mainusertopic = "";
+        var offset = -1;
+        var append = 0;
+        var rollbackoffset = 0;
+        var topictype = "";
+        var vipertoken = "";
+        var consumerid = "";
+        var secure = 0;
+        var mainport = "";
+        var jsonhist = "";
         var datatbl;
-        var chart;
-        var chart2;
-        var table;
-        var totalrows = 0;
+        var maintable;
+        var dataintable = [];
+        var kafkakeyarr = [];
+        var kafkacluster = "";
+        var maintotalmessages = 0;
+        var mainkafkatopic = "";
 
         function appendLogMessage(message, level = 'INFO') {
             const logger = $('#pipelogger');
