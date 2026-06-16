@@ -304,8 +304,8 @@
                 ws.onclose = function (event) {
                     if (ws) ws.close(1000);
                     ws = null;
-                    document.getElementById('loaderdiv').style.display = "none";
-                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-zinc-700";
+                    //document.getElementById('loaderdiv').style.display = "none";
+                    //document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-zinc-700";
                     $("#start").attr("disabled", false).html("Initialize Ingest");
                     document.getElementById('statustext').innerHTML = "// BUS_DISCONNECTED";
                 };
@@ -313,8 +313,8 @@
                 ws.onopen = function (error) {
                     var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
                     ws.send(sendbuffer);
-                    document.getElementById('loaderdiv').style.display = "flex";
-                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(14,165,233,1)] animate-pulse";
+                    //document.getElementById('loaderdiv').style.display = "flex";
+                    //document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(14,165,233,1)] animate-pulse";
                 };
 
                 ws.onerror = function (error) {
