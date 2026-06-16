@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_blank" />    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="./oticsico.png" />
+    <title>AegisRTMS Panel // Global Security Command Intelligence</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        :root {
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #010204;
+            color: #f8fafc;
+            /* Institutional Grid Overlay with Deep Nebula Aura Radial Shifting */
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.15), transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.12), transparent 50%),
+                linear-gradient(rgba(14, 165, 233, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+            background-attachment: fixed;
+        }
+
+        .font-mono { font-family: var(--font-mono); }
+
+        /* Premium Custom Neon Glow & Cyber Scrollbar System */
+        .cyber-glow-cyan {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.25), inset 0 0 12px rgba(14, 165, 233, 0.1);
+        }
+        
+        .cyber-glow-indigo {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), inset 0 0 12px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Responsive Custom Scrollbar Blueprint */
+        .scroller::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .scroller::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 99px;
+        }
+        .scroller::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            border-radius: 99px;
+            box-shadow: 0 0 8px rgba(14, 165, 233, 0.8);
+        }
+        .scroller::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sky-500/30 selection:text-sky-200">
+
+    <header class="border-b border-white/10 bg-slate-950/40 backdrop-blur-md px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 sticky top-0 z-50 shadow-lg shadow-black/40">
+        <div class="flex items-center gap-3">
+            <div class="h-3 w-3 rounded-full bg-sky-500 animate-ping shadow-[0_0_10px_#0ea5e9]"></div>
+            <div>
+                <h1 class="text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 uppercase font-mono">
+                    AegisRTMS // Network Command Console
+                </h1>
+                <p class="text-xs text-slate-400 font-mono">SECURE LIVE KAFKA MATRIX FEED</p>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
+            <div class="px-3 py-1.5 rounded-md bg-slate-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-2">
+                <span class="text-slate-500">HOST:</span>
+                <span id="hosttext" class="text-sky-400 font-bold drop-shadow-[0_0_5px_rgba(14,165,233,0.5)]">UNASSIGNED</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-md bg-slate-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-2">
+                <span class="text-slate-500">TOPIC:</span>
+                <span id="topictext" class="text-indigo-400 font-bold drop-shadow-[0_0_5px_rgba(99,102,241,0.5)]">NOT_CONNECTED</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-md bg-slate-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-2">
+                <span class="text-slate-500">STATUS:</span>
+                <span id="statustext" class="text-amber-400 font-bold animate-pulse">STANDBY_BUS</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 p-6 max-w-[1600px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-4 flex flex-col gap-6">
+            
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-cyan flex flex-col gap-4">
+                <div class="border-b border-white/10 pb-2 flex items-center justify-between">
+                    <h2 class="text-sm font-bold font-mono text-sky-400 tracking-wide uppercase">Ingest parameters</h2>
+                    <span class="text-[10px] bg-sky-500/10 border border-sky-500/20 text-sky-400 px-2 py-0.5 rounded font-mono">V3.4</span>
+                </div>
+
+                <form id="idForm" class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400 font-mono" for="cip">Stream Entrypoint IP / URL</label>
+                        <input type="text" id="cip" value="localhost" placeholder="e.g., 10.0.0.1" required
+                            class="w-full bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition font-mono shadow-inner" />
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400 font-mono" for="cport">Deployment Port</label>
+                        <input type="text" id="cport" value="serverport" placeholder="e.g., 8080" required
+                            class="w-full bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition font-mono shadow-inner" />
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-xs text-slate-400 font-mono" for="ctopic">Target Topic</label>
+                        <input type="text" id="ctopic" value="topicname" placeholder="e.g., firewall_logs" required
+                            class="w-full bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition font-mono shadow-inner" />
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+                        <button type="submit" id="start"
+                            class="bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 active:scale-[0.98] transition font-bold font-mono text-xs uppercase px-4 py-3 rounded-lg shadow-lg shadow-sky-500/20 text-slate-950 tracking-wider">
+                            Initialize Ingest
+                        </button>
+                        <button type="button" id="downloadcsv"
+                            class="bg-slate-950/80 hover:bg-slate-900 border border-white/10 hover:border-white/20 active:scale-[0.98] transition font-bold font-mono text-xs uppercase px-4 py-3 rounded-lg tracking-wider text-slate-300 flex items-center justify-center gap-2">
+                            Export Matrix Data
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-indigo flex flex-col gap-3 flex-1 min-h-[250px]">
+                <div class="border-b border-white/10 pb-2 flex items-center justify-between">
+                    <h2 class="text-sm font-bold font-mono text-indigo-400 tracking-wide uppercase">Live Pipeline Stream</h2>
+                    <div class="h-2 w-2 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_8px_#6366f1]"></div>
+                </div>
+                <div id="pipelogger" class="flex-1 bg-slate-950/80 border border-white/5 rounded-lg p-3 font-mono text-[11px] text-emerald-400/90 overflow-x-auto overflow-y-auto scroller leading-relaxed h-[250px] whitespace-nowrap shadow-inner">
+                    <p class="text-slate-500">[SYSTEM] Awaiting Bus Stream Command Sequence...</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="lg:col-span-8 flex flex-col gap-6">
+            
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-cyan flex flex-col gap-4">
+                <div class="border-b border-white/10 pb-2">
+                    <h2 class="text-sm font-bold font-mono text-sky-400 tracking-wide uppercase">Realtime Matrix Analytics</h2>
+                </div>
+                <div class="w-full overflow-x-auto scroller pb-2">
+                    <div class="min-w-[700px] grid grid-cols-2 gap-4">
+                        <div class="bg-slate-950/40 border border-white/5 rounded-lg p-2 backdrop-blur-sm shadow-md">
+                            <div id="chart_div" class="w-full h-[240px]"></div>
+                        </div>
+                        <div class="bg-slate-950/40 border border-white/5 rounded-lg p-2 backdrop-blur-sm shadow-md">
+                            <div id="chart_div2" class="w-full h-[240px]"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="rounded-xl border border-white/10 bg-slate-900/20 backdrop-blur-md p-5 cyber-glow-indigo flex flex-col gap-3">
+                <div class="border-b border-white/10 pb-2">
+                    <h2 class="text-sm font-bold font-mono text-indigo-400 tracking-wide uppercase">Sensor Metrics Ledger</h2>
+                </div>
+                <div class="w-full overflow-x-auto scroller border border-white/5 rounded-lg bg-slate-950/50 shadow-inner">
+                    <div class="min-w-[800px]">
+                        <div id="table_div" class="w-full text-sm font-mono p-1"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-white/10 bg-slate-950/60 backdrop-blur-md px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono text-slate-500 shadow-2xl">
+        <p>&copy; 2026 AegisRTMS Intelligence Operations Inc. All Rights Reserved.</p>
+        <div class="flex items-center gap-4">
+            <span class="flex items-center gap-1.5">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> 
+                SSL_ENCRYPTED
+            </span>
+            <span class="text-slate-600">|</span>
+            <span>NODE_V2.14_STABLE</span>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart', 'controls', 'table'] });
+
+        var ws = null;
+        var START = 0;
+        var datatbl;
+        var chart;
+        var chart2;
+        var table;
+        var totalrows = 0;
+
+        function appendLogMessage(message, level = 'INFO') {
+            const logger = $('#pipelogger');
+            const timestamp = new Date().toISOString().split('T')[1].substring(0, 8);
+            let colorClass = 'text-emerald-400/90';
+            
+            if (level === 'WARN') colorClass = 'text-amber-400';
+            if (level === 'ERROR') colorClass = 'text-rose-400 font-bold drop-shadow-[0_0_6px_rgba(244,63,94,0.4)]';
+            if (level === 'SYSTEM') colorClass = 'text-sky-400';
+
+            logger.append(`<p class="${colorClass}">[${timestamp}] [${level}] ${message}</p>`);
+            logger.scrollTop(logger[0].scrollHeight);
+        }
+
+        function streamLiveKafkaData() {
+            if ("WebSocket" in window) {
+                var url = window.location.host;
+                mainport = url.split(":")[1];
+
+                var urlParams = new URLSearchParams(window.location.search);
+                var entries = urlParams.entries();
+                for (pair of entries) {
+                    if (pair[0] == "topic") topic = pair[1];
+                    if (pair[0] == "topictype") topictype = pair[1];
+                    if (pair[0] == "secure") secure = pair[1];
+                    if (pair[0] == "vipertoken") vipertoken = pair[1];
+                    if (pair[0] == "consumerid") consumerid = pair[1];
+                    if (pair[0] == "offset") offset = pair[1];
+                    if (pair[0] == "rollbackoffset") rollbackoffset = pair[1];
+                    if (pair[0] == "groupid") groupid = pair[1];
+                    if (pair[0] == "append") append = pair[1];
+                }
+
+                if (window.location.href.indexOf("http://") != -1) {
+                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("ws://"+url+"/viz/ws") : new WebSocket("ws://"+url+"/ws");
+                } else {
+                    ws = (window.location.href.indexOf("/viz/") != -1) ? new WebSocket("wss://"+url+"/viz/ws") : new WebSocket("wss://"+url+"/ws");
+                }
+
+                ws.onmessage = function (event) {
+                    var obj;
+                    var curTime = new Date();
+                    var eventdata = `${event.data}`;
+                    var maindata = eventdata;
+
+                    maindata = maindata.replace(/\\n/g, "\\n")
+                                       .replace(/\\',/g, "\\'")
+                                       .replace(/\\"/g, '\\"')
+                                       .replace(/\\&/g, "\\&")
+                                       .replace(/\\r/g, "\\r")
+                                       .replace(/\\t/g, "\\t")
+                                       .replace(/\\b/g, "\\b")
+                                       .replace(/\\f/g, "\\f");
+                    try {
+                        obj = JSON.parse(JSON.parse(maindata));
+                    } catch(e) {
+                        console.log("Json parse issue=", e.message);
+                        return;
+                    }
+
+                    if (obj.ERROR) {
+                        document.getElementById('statustext').innerHTML = "ERR: " + obj.ERROR;
+                        ws.close(1000);
+                        alert(obj.ERROR);
+                        ws = null;
+                        $("#start").attr("disabled", false).html("Initialize Ingest");
+                        return;
+                    }
+
+                    if (START == 0) {
+                        if (ws) ws.close(1000);
+                        ws = null;
+                        return;
+                    }
+                    if (append == 0) {
+                        dataintable.splice(0, dataintable.length);
+                        jsonhist = null;
+                        kafkakeyarr.splice(0, kafkakeyarr.length);
+                    }
+
+                    kafkacluster = obj.Webkafkacluster;
+                    mainkafkatopic = obj.Webtopic;
+                    document.getElementById('accesstime').innerHTML = curTime.toLocaleTimeString();
+                    document.getElementById('kafkacluster').innerHTML = "Cluster: " + kafkacluster + " // Segment: " + obj.Webtopic;
+                    
+                    drawChart(obj, mainkafkatopic);
+                    obj = null; maindata = null; eventdata = null;
+                };
+
+                ws.onclose = function (event) {
+                    if (ws) ws.close(1000);
+                    ws = null;
+                    document.getElementById('loaderdiv').style.display = "none";
+                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-zinc-700";
+                    $("#start").attr("disabled", false).html("Initialize Ingest");
+                    document.getElementById('statustext').innerHTML = "// BUS_DISCONNECTED";
+                };
+
+                ws.onopen = function (error) {
+                    var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
+                    ws.send(sendbuffer);
+                    document.getElementById('loaderdiv').style.display = "flex";
+                    document.getElementById('pulse-indicator').className = "h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_15px_rgba(14,165,233,1)] animate-pulse";
+                };
+
+                ws.onerror = function (error) {
+                    if (ws) ws.close(1000);
+                    document.getElementById('statustext').innerHTML = "CLUSTER BUS ERROR: " + error.message;
+                };
+            }
+        }
+        $("#downloadcsv").click(function () {
+            var topic = document.getElementById("ctopic").value;
+            if (topic.length > 0 && datatbl) {
+                appendLogMessage("Compiling and export local structural CSV data manifest...", "SYSTEM");
+                var headerRow = "";
+                var number_of_columns = datatbl.getNumberOfColumns();
+                for (var i = 0; i < number_of_columns; i++) {
+                    headerRow += datatbl.getColumnLabel(i).replace("\n", " : ");
+                    headerRow += (i === number_of_columns - 1) ? "\n" : ",";
+                }
+                var csvFormattedDataTable = headerRow + google.visualization.dataTableToCsv(datatbl);
+                var encodedUri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvFormattedDataTable);
+                this.href = encodedUri;
+                this.download = `aegis-matrix-${topic}.csv`;
+            } else {
+                alert("Error: Initialize matrix ingestion before attempting data output pipelines.");
+            }
+        });
+
+        $("#idForm").submit(function (e) {
+            e.preventDefault();
+            if (ws && START == 1) {
+                ws.close(1000);
+                ws = null;
+                START = 0;
+                $("#start").html("Initialize Ingest").attr("disabled", true);
+                document.getElementById('statustext').innerHTML = "TEARING_DOWN_BUS...";
+            } else {
+                START = 1;
+                document.getElementById('statustext').innerHTML = "ESTABLISHING_FEED...";
+                $("#start").html("Terminate Stream");
+                streamLiveKafkaData();
+            }
+        });
+    </script>
+</body>
+</html>
