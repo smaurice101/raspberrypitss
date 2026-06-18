@@ -7765,3 +7765,5 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 ✅ PIPELINE COMPLETE: maadsdocker/myawesometmlsolution-3f10-amd64 has been processed successfully.
 =============================================================
+[INFO 2026-06-18_21:08:20] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-3f10.py
+[INFO 2026-06-18_21:08:20] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-3f10.py
