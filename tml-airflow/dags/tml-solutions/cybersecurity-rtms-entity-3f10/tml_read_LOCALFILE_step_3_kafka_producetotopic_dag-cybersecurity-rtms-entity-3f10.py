@@ -33,6 +33,8 @@ default_args = {
   'doctopic' : 'rtms-log-data',  # This is the topic that will contain the docfolder file data
   'chunks' : 512, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
   'docingestinterval' : 30, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
+  'mitrejson': '/rawdata/mitre.json',
+  'mitrejsonscreenmap': '/rawdata/mitre-security-mapping.json'  
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
