@@ -121,7 +121,7 @@
              - name: step2raw_data_topic # STEP 2 
                value: 'rtms-raw-entity'                           
              - name: step2preprocess_data_topic # STEP 2 
-               value: 'rtms-entity-preprocess,rtms-preprocess'                           
+               value: 'rtms-entity-preprocess,rtms-preprocess,rtms-raw-preprocess'                           
              - name: step4raw_data_topic # STEP 4
                value: 'rtms-raw-entity'                           
              - name: step4preprocess_data_topic # STEP 4
