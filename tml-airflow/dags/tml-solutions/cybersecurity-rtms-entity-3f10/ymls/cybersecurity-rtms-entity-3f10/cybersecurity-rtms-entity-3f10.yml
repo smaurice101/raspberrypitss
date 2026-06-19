@@ -127,7 +127,7 @@
              - name: step4preprocess_data_topic # STEP 4
                value: 'rtms-raw-preprocess'                                                         
              - name: step4preprocesstypes # STEP 4
-               value: 'count'                                                         
+               value: 'countstr'                                                         
              - name: step4jsoncriteria # STEP 4
                value: 'uid=entity,filter:allrecords~subtopics=event_type,mitre_classification.tactic,mitre_classification.technique~values=event_type,mitre_classification.tactic,mitre_classification.technique~identifiers=event_type,mitre_classification.tactic,mitre_classification.technique~datetime=datetime~msgid=logfile~latlong=lat:long'                           
              - name: step4ajsoncriteria # STEP 4a 
