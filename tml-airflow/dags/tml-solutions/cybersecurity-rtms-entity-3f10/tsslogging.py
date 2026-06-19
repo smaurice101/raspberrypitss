@@ -2026,7 +2026,6 @@ class UniversalThreatAgent:
                     )
 
                 time.sleep(interval_seconds)
-                return global_interval_elements
         except KeyboardInterrupt:
             print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
 
