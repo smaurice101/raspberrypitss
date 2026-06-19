@@ -125,8 +125,10 @@ def extractlogentities():
     KAFKA_TOPIC = default_args['topics']
     VIPER_HOST = VIPERHOST
     VIPER_PORT = VIPERPORT
+    CONFIG_RULES = default_args['mitrejsonscreenmap']
+    MITRE_MATRIX = default_args['mitrejson']
     
-    if default_args['docfolder'] != '' and default_args['doctopic'] != '':
+    if default_args['docfolder'] != '' and default_args['doctopic'] != '' and CONFIG_RULES != '' and MITRE_MATRIX != '':
       try: 
         t = threading.Thread(name='child procs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
         t.start()
