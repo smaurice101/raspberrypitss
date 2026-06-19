@@ -1,7 +1,7 @@
 # TSS Logging
 
 import datetime
-from datetime import timezone 
+from datetime import datetime, timezone 
 from git import Repo
 import socketserver
 import subprocess
@@ -11,6 +11,8 @@ import time
 import fcntl
 import json
 from pypdf import PdfWriter
+import re
+from typing import Dict, Any, List
 
 class LockDirectory(object):
     def __init__(self, directory):
@@ -1701,3 +1703,275 @@ def mergepdf(opath,pdffiles,sname):
             os.remove(pdf)
       except Exception as e:
         pass
+
+############################################# LOG Entity
+
+class UniversalThreatAgent:
+    def __init__(self, patterns_config_path: str, mitre_json_path: str):
+        self.compiled_rules = {}
+        self.file_registry: Dict[str, int] = {}
+        self.active_locks: Dict[str, Any] = {} # 🟢 Track currently locked open file descriptors
+        
+        # Load and validate core MITRE framework matrix
+        if not os.path.exists(mitre_json_path):
+            print(f"[CRITICAL ERROR] Core mitre.json framework matrix file missing.", file=sys.stderr)
+            sys.exit(1)
+        with open(mitre_json_path, 'r', encoding='utf-8') as f:
+            self.mitre_matrix = json.load(f)
+            
+        # Compile rule configurations from mitre-security-mapping.json
+        if os.path.exists(patterns_config_path):
+            with open(patterns_config_path, 'r', encoding='utf-8') as f:
+                rules_data = json.load(f)
+                for alert_name, meta in rules_data.items():
+                    tactic = meta.get("mitre_tactic")
+                    technique = meta.get("mitre_technique")
+                    is_validated = (tactic in self.mitre_matrix and technique in self.mitre_matrix[tactic])
+                    self.compiled_rules[alert_name] = {
+                        "regex": re.compile(meta["pattern"]),
+                        "mitre_tactic": tactic,
+                        "mitre_technique": technique,
+                        "validated_by_matrix": is_validated
+                    }
+
+    def _get_formatted_date(self) -> str:
+        """
+        Returns high-resolution current calendar timestamp formatted explicitly as yyyy.mm.dd
+        """
+        return datetime.now(timezone.utc).strftime("%Y.%m.%d")
+
+    def _build_element(self, file_path: str, line_num: int, event_type: str, entity: str, mitre_meta: Dict[str, Any], attributes: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Constructs standardized structural object map bound to MITRE classification schemas.
+        """
+        element = {
+            "date": self._get_formatted_date(),
+            "datetime": datetime.now(timezone.utc).isoformat(),
+            "log_file": os.path.abspath(file_path),
+            "line_number": line_num,
+            "event_type": event_type,
+            "entity": str(entity),
+            "mitre_classification": mitre_meta
+        }
+        attr_idx = 1
+        for k, v in attributes.items():
+            if k != "entity" and v is not None:
+                element[f"attr{attr_idx}"] = str(v)
+                attr_idx += 1
+        return element
+
+    def extract_from_json(self, record: Dict[str, Any], file_path: str, line_num: int) -> Dict[str, Any]:
+        """
+        Handles incoming structured native JSON telemetry strings.
+        """
+        keys = list(record.keys())
+        entity_fallbacks = ["src_ip", "client_ip", "source_ip", "username", "user", "process_path", "image", "resource_arn", "device_id", "hostname"]
+        entity_key = next((anchor for anchor in entity_fallbacks if anchor in keys), keys[0] if keys else "unclassified")
+        mitre_meta = {"tactic": "Infrastructure Ingestion", "technique": "Structured Native Object Telemetry", "validated_by_matrix": False}
+        # 🟢 Safely grabs whatever capture group matched out of the OR filter
+        extracted_entity = match_dict.get("entity") or match_dict.get("entity_alt")
+        return self._build_element(file_path, line_num, alert_name, extracted_entity, mitre_meta, match_dict)
+
+#        return self._build_element(file_path, line_num, "native_structured_telemetry", record.get(entity_key), mitre_meta, {k: v for k, v in record.items() if k != entity_key})
+
+    def parse_fallback_text(self, line: str, file_path: str, line_num: int) -> Dict[str, Any]:
+        """
+        Hardened Zero-Trust Fallback Gateway. Filters structural metadata fragments,
+        chronological noise, and logs that don't match strict infrastructure parameters.
+        """
+        tokens = line.split()
+        entity = None
+        
+        ip_pattern = re.compile(r'\b\d{1,3}(?:\.\d{1,3}){3}\b')
+        router_pattern = re.compile(r'\b(Router|Switch|Firewall|Core-SW|Edge)-\S+\b', re.IGNORECASE)
+        
+        noise_filter = re.compile(
+            r'^(Info|Warning|Error|CBS|CSI|Loaded|Session|Read|Failed|Expecting|'
+            r'Create|Reboot|Scavenge|Starts|Begin|Commit|Calling|Perf|Trace|get|'
+            r'Completed|Terminated|Ending|Starting|Successfully|Initializing|To|The|'
+            r'attribute|packageExtended|name|next|app|WARN|INFO|ERROR|DEBUG|FATAL|'
+            r'Address|change|detected|status|state|code|exception|thread|trace|'
+            r'HRESULT|Unrecognized|element|package|attribute\b|'
+            r'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|'
+            r'January|February|March|April|June|July|August|September|October|November|December)$', 
+            re.IGNORECASE
+        )
+        
+        for token in tokens:
+            clean_token = token.strip(":,[]()\"'-_")
+            if ip_pattern.search(clean_token):
+                entity = ip_pattern.search(clean_token).group(0)
+                break
+                
+        if not entity:
+            for token in tokens:
+                clean_token = token.strip(":,[]()\"'-_")
+                if router_pattern.match(clean_token):
+                    entity = clean_token
+                    break
+
+        if not entity:
+            for token in tokens:
+                clean_token = token.strip(":,[]()\"'-_")
+                if clean_token.lower() in ['trustedinstaller', 'windowsupdateagent', 'sqm', 'sshd', 'kubelet', 'root']:
+                    entity = clean_token
+                    break
+                    
+        if not entity:
+            for token in tokens:
+                clean_token = token.strip(":,[]()\"'-_")
+                if (clean_token 
+                    and len(clean_token) > 3
+                    and any(c.isalnum() for c in clean_token)
+                    and not clean_token.isdigit()
+                    and not clean_token.lower().startswith('0x')
+                    and not re.match(r'^\d{4}[.-]\d{2}[.-]\d{2}$', clean_token)
+                    and not re.match(r'^\d{2}[.-]\d{2}$', clean_token)
+                    and not re.match(r'^\d{2}:\d{2}:\d{2}', clean_token)
+                    and not noise_filter.match(clean_token)
+                    and not clean_token.startswith('@')):
+                    
+                    entity = clean_token
+                    break
+
+        if not entity:
+            return {}
+
+        mitre_meta = {
+            "tactic": "Unclassified Context", 
+            "technique": "Network Infrastructure Fallback Stream", 
+            "validated_by_matrix": False
+        }
+        
+        attrs = {f"token_{i}": tok for i, tok in enumerate(tokens, start=1) if i <= 8}
+        return self._build_element(file_path, line_num, "unclassified_log_fallback", entity, mitre_meta, attrs)
+
+    def parse_line_to_object(self, raw_line: str, file_path: str, line_num: int) -> Dict[str, Any]:
+        """
+        Coordinates execution parsing maps across the engine for single telemetry rows.
+        """
+        cleaned = raw_line.strip()
+        if not cleaned: 
+            return {}
+
+        if cleaned.startswith('{') and cleaned.endswith('}'):
+            try: 
+                return self.extract_from_json(json.loads(cleaned), file_path, line_num)
+            except json.JSONDecodeError: 
+                pass
+
+        for alert_name, rule in self.compiled_rules.items():
+            match = rule["regex"].search(cleaned)
+            if match:
+                if alert_name == "windows_cbs_generic_stream":
+                    return {}
+                
+                match_dict = match.groupdict()
+                mitre_meta = {
+                    "tactic": rule["mitre_tactic"],
+                    "technique": rule["mitre_technique"],
+                    "validated_by_matrix": rule["validated_by_matrix"]
+                }
+                return self._build_element(file_path, line_num, alert_name, match_dict.get("entity"), mitre_meta, match_dict)
+
+        return self.parse_fallback_text(cleaned, file_path, line_num)
+    
+    def scan_file_incremental(self, file_path: str) -> List[Dict[str, Any]]:
+        """
+        Performs sequential, container-safe data block tracking using exclusive file descriptors.
+        """
+        elements_collected = []
+        last_position = self.file_registry.get(file_path, 0)
+        
+        try: 
+            current_size = os.path.getsize(file_path)
+        except FileNotFoundError: 
+            return []
+            
+        if current_size < last_position: 
+            last_position = 0
+        if current_size == last_position: 
+            return [] 
+            
+        f = None
+        try:
+            # Open file stream with persistent reference for lock tracking
+            f = open(file_path, 'r', encoding='utf-8', errors='ignore')
+            
+            # 🟢 FIX: Use fcntl.LOCK_EX, fcntl.LOCK_NB, and fcntl.LOCK_UN directly
+            fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            
+            line_count = 1
+            if last_position > 0:
+                f.seek(0)
+                for line in f:
+                    if f.tell() > last_position:
+                        break
+                    line_count += 1
+            else:
+                f.seek(0)
+            
+            for line in f:
+                parsed_element = self.parse_line_to_object(line, file_path, line_count)
+                if parsed_element:
+                    elements_collected.append(parsed_element)
+                line_count += 1
+                
+            self.file_registry[file_path] = f.tell()
+            
+            # 🟢 FIX: Reference the module directly here as well
+            fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+            f.close()
+            
+        except (IOError, OSError):
+            # 🟢 File is currently being processed by another container node; skip gracefully
+            if f:
+                f.close()
+            return []
+        except Exception as e:
+            print(f"[ERROR] Disk operations exception on {file_path}: {str(e)}", file=sys.stderr)
+            if f:
+                try: f.close()
+                except: pass
+        return elements_collected
+
+    def watch_directories(self, folders: List[str], interval_seconds: int):
+        print(f"[STARTUP] Multi-Entity Agent Monitoring {len(folders)} paths every {interval_seconds}s.", file=sys.stderr)
+        try:
+            while True:
+                global_interval_elements = []
+                for target_folder in folders:
+                    if not os.path.exists(target_folder): 
+                        continue
+                    
+                    # 🟢 Sort files alpha-numerically to achieve deterministic, sequential order across nodes
+                    try:
+                        entries = sorted(
+                            [e for e in os.scandir(target_folder) if e.is_file()],
+                            key=lambda x: x.name
+                        )
+                    except Exception:
+                        continue
+
+                    for entry in entries:
+                        file_elements = self.scan_file_incremental(entry.path)
+                        if file_elements:
+                            global_interval_elements.extend(file_elements)
+                
+                if global_interval_elements:
+                    print(json.dumps(global_interval_elements), flush=True)
+                    
+                time.sleep(interval_seconds)
+        except KeyboardInterrupt:
+            print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
+
+#if __name__ == "__main__":
+#    CONFIG_RULES = "mitre-security-mapping.json"
+#    MITRE_MATRIX = "mitre.json"
+#    user_folders_raw = "/mnt/c/maads/tml-airflow/rawdata/mylogs"
+#    target_folders = [f.strip() for f in user_folders_raw.split(",") if f.strip()]
+#    try: user_interval = 4
+#    except ValueError: user_interval = 5
+#    if not target_folders: sys.exit(1)
+#    agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
+#    agent.watch_directories(folders=target_folders, interval_seconds=user_interval)
