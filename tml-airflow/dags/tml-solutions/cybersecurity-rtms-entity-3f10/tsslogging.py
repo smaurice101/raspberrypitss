@@ -1953,7 +1953,7 @@ class UniversalThreatAgent:
                 # Use your maadtml production engine to publish to the cluster
                 # Adjust parameters if your signature requires specific key/configs
 #                maadstml.producetokafka(token,topic, host, port, payload)
-                inputbuf=element
+                inputbuf=payload
                 topicid=int(args['topicid'])
                 delay = int(args['delay'])
                 enabletls = int(args['enabletls'])
