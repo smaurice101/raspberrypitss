@@ -119,9 +119,9 @@
              - name: step4crtmsmaxwindows # STEP 4c adjust RTMSMAXWINDOWS for Step 4c
                value: ''                                       
              - name: step2raw_data_topic # STEP 2 
-               value: 'iot-raw-data'                           
+               value: 'rtms-raw-entity'                           
              - name: step2preprocess_data_topic # STEP 2 
-               value: 'iot-preprocess,iot-preprocess2'                           
+               value: 'rtms-entity-preprocess,rtms-preprocess'                           
              - name: step4raw_data_topic # STEP 4
                value: 'rtms-raw-entity'                           
              - name: step4preprocess_data_topic # STEP 4
