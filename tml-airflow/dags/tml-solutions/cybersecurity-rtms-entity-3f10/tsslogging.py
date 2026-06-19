@@ -13,6 +13,8 @@ import json
 from pypdf import PdfWriter
 import re
 from typing import Dict, Any, List
+from concurrent.futures import ThreadPoolExecutor
+import math
 
 class LockDirectory(object):
     def __init__(self, directory):
