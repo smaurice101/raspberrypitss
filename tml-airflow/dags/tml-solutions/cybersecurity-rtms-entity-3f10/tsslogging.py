@@ -1751,7 +1751,7 @@ class UniversalThreatAgent:
         """
         element = {
             "date": self._get_formatted_date(),
-            "datetime": datetime.now(timezone.utc).isoformat(),
+            "datetime": datetime.datetime.now(timezone.utc).isoformat(),
             "log_file": os.path.abspath(file_path),
             "line_number": line_num,
             "event_type": event_type,
