@@ -1965,6 +1965,10 @@ class UniversalThreatAgent:
         except KeyboardInterrupt:
             print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
 
+def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval ):
+    agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
+    agent.watch_directories(folders=target_folders, interval_seconds=user_interval)
+
 #if __name__ == "__main__":
 #    CONFIG_RULES = "mitre-security-mapping.json"
 #    MITRE_MATRIX = "mitre.json"
