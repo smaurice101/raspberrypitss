@@ -15,6 +15,7 @@ import re
 from typing import Dict, Any, List
 from concurrent.futures import ThreadPoolExecutor
 import math
+import maadstml
 
 class LockDirectory(object):
     def __init__(self, directory):
@@ -1937,7 +1938,7 @@ class UniversalThreatAgent:
                 except: pass
         return elements_collected
 
-    def stream_chunk_to_kafka(chunk_data: list, topic: str, host: str, port: str):
+    def stream_chunk_to_kafka(self,chunk_data: list, topic: str, host: str, port: str):
         """
         Worker function executed inside individual threads.
         Streams an isolated slice of the parsed log array into Kafka.
@@ -1949,14 +1950,14 @@ class UniversalThreatAgent:
                 
                 # Use your maadtml production engine to publish to the cluster
                 # Adjust parameters if your signature requires specific key/configs
-                maadtml.producetokafka(topic, host, port, payload)
+                maadstml.producetokafka(topic, host, port, payload)
                 
             except Exception as e:
                 # Prevent a single bad serialization or network drop from killing the thread
                 import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
     
-    def parallel_stream_to_kafka(global_elements: list, topic: str, host: str, port: str, num_threads: int = 4):
+    def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, num_threads: int = 4):
         """
         Splits the global array into balanced segments and hands them off
         to a ThreadPoolExecutor for concurrent execution.
