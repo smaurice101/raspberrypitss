@@ -126,7 +126,7 @@ def extractlogentities():
     
     if default_args['docfolder'] != '' and default_args['doctopic'] != '':
       try: 
-        t = threading.Thread(name='child procs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN))      
+        t = threading.Thread(name='child procs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
         t.start()
       except Exception as e:
         print(e)
