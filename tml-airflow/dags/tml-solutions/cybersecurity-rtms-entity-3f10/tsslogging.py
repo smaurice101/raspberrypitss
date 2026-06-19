@@ -1950,7 +1950,10 @@ class UniversalThreatAgent:
                 
                 # Use your maadtml production engine to publish to the cluster
                 # Adjust parameters if your signature requires specific key/configs
-                maadstml.producetokafka(token,topic, host, port, payload)
+#                maadstml.producetokafka(token,topic, host, port, payload)
+                result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-entity",enabletls,delay,'','', '',0,inputbuf,substream,
+                                        topicid,identifier)
+
                 
             except Exception as e:
                 # Prevent a single bad serialization or network drop from killing the thread
