@@ -2044,7 +2044,7 @@ class UniversalThreatAgent:
 
 def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,KAFKA_HOST,KAFKA_PORT, VIPERTOKEN, args ):
     agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
-    agent.watch_directories(folders=target_folders, interval_seconds=user_interval,
+    agent.watch_directories(folders=user_folders, interval_seconds=user_interval,
                            topic=KAFKA_TOPIC,
                            host=KAFKA_HOST,
                            port=KAFKA_PORT,
