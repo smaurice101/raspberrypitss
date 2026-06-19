@@ -1996,7 +1996,7 @@ class UniversalThreatAgent:
                     continue
                     
                 # Submit the task to the pool execution queue
-                future = executor.submit(stream_chunk_to_kafka, chunk, topic, host, port,token,args)
+                future = executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port,token,args)
                 futures.append(future)
                 
             # Optional: Wait for all threads to finish their chunks before returning
