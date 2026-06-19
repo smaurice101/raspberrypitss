@@ -93,31 +93,31 @@
              - name: step4bmaxrows # STEP 4b maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
                value: '-1'               
              - name: step4cmaxrows # STEP 4c maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
-               value: '-1'               
+               value: '200'               
              - name: step4crawdatatopic # STEP 4c
-               value: ''               
+               value: 'rtms-entity-preprocess'               
              - name: step4csearchterms # STEP 4c 
-               value: ''               
+               value: 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown--entity--'               
              - name: step4crememberpastwindows # STEP 4c 
-               value: ''               
+               value: '500'               
              - name: step4cpatternwindowthreshold # STEP 4c 
-               value: ''               
+               value: '30'               
              - name: step4crtmsscorethreshold # STEP 4c 
-               value: '' 
+               value: '0.6' 
              - name: step4cattackscorethreshold # STEP 4c 
-               value: '' 
+               value: '0.6' 
              - name: step4cpatternscorethreshold # STEP 4c 
-               value: ''                
+               value: '0.6'                
              - name: step4crtmsstream # STEP 4c 
-               value: ''                              
+               value: 'rtms-stream-mylogs'                              
              - name: step4clocalsearchtermfolder # STEP 4c 
-               value: ''                              
+               value: '|/rawdata/mysearchfile1,|/rawdata/mysearchfile2'                              
              - name: step4clocalsearchtermfolderinterval # STEP 4c 
-               value: ''                                                            
+               value: '60'                                                            
              - name: step4crtmsfoldername # STEP 4c 
-               value: ''                                                                           
+               value: 'rtms'                                                                           
              - name: step4crtmsmaxwindows # STEP 4c adjust RTMSMAXWINDOWS for Step 4c
-               value: ''                                       
+               value: '10000'                                       
              - name: step2raw_data_topic # STEP 2 
                value: 'rtms-raw-entity'                           
              - name: step2preprocess_data_topic # STEP 2 
