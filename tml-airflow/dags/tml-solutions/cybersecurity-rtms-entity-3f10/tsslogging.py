@@ -1938,7 +1938,7 @@ class UniversalThreatAgent:
                 except: pass
         return elements_collected
 
-    def stream_chunk_to_kafka(self,chunk_data: list, topic: str, host: str, port: str, token: str):
+    def stream_chunk_to_kafka(self,chunk_data: list, topic: str, host: str, port: str, token: str, args: Dict):
         """
         Worker function executed inside individual threads.
         Streams an isolated slice of the parsed log array into Kafka.
@@ -1951,7 +1951,12 @@ class UniversalThreatAgent:
                 # Use your maadtml production engine to publish to the cluster
                 # Adjust parameters if your signature requires specific key/configs
 #                maadstml.producetokafka(token,topic, host, port, payload)
-                result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-entity",enabletls,delay,'','', '',0,inputbuf,substream,
+                inputbuf=element
+                topicid=int(args['topicid'])
+                delay = int(args['delay'])
+                enabletls = int(args['enabletls'])
+                identifier = args['identifier']
+                result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-entity",enabletls,delay,'','', '',0,inputbuf,"",
                                         topicid,identifier)
 
                 
@@ -1960,7 +1965,7 @@ class UniversalThreatAgent:
                 import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
     
-    def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, token: str, num_threads: int = 4):
+    def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
         """
         Splits the global array into balanced segments and hands them off
         to a ThreadPoolExecutor for concurrent execution.
@@ -1989,7 +1994,7 @@ class UniversalThreatAgent:
                     continue
                     
                 # Submit the task to the pool execution queue
-                future = executor.submit(stream_chunk_to_kafka, chunk, topic, host, port,token)
+                future = executor.submit(stream_chunk_to_kafka, chunk, topic, host, port,token,args)
                 futures.append(future)
                 
             # Optional: Wait for all threads to finish their chunks before returning
@@ -1998,7 +2003,7 @@ class UniversalThreatAgent:
     
         print("[KAFKA INGEST] Parallel streaming batch completed successfully.")
     
-    def watch_directories(self, folders: List[str], interval_seconds: int, topic: str, host: str, port: str, token: str):
+    def watch_directories(self, folders: List[str], interval_seconds: int, topic: str, host: str, port: str, token: str, args: Dict):
         print(f"[STARTUP] Multi-Entity Agent Monitoring {len(folders)} paths every {interval_seconds}s.", file=sys.stderr)
         try:
             while True:
@@ -2029,6 +2034,7 @@ class UniversalThreatAgent:
                         host=host,
                         port=port,
                         token=token,
+                        args=args,
                         num_threads=4
                     )
 
@@ -2036,13 +2042,14 @@ class UniversalThreatAgent:
         except KeyboardInterrupt:
             print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
 
-def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,KAFKA_HOST,KAFKA_PORT, VIPERTOKEN ):
+def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,KAFKA_HOST,KAFKA_PORT, VIPERTOKEN, args ):
     agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
     agent.watch_directories(folders=target_folders, interval_seconds=user_interval,
                            topic=KAFKA_TOPIC,
                            host=KAFKA_HOST,
                            port=KAFKA_PORT,
-                           token=VIPERTOKEN)
+                           token=VIPERTOKEN,
+                           args=args)
 #if __name__ == "__main__":
 #    CONFIG_RULES = "mitre-security-mapping.json"
 #    MITRE_MATRIX = "mitre.json"
