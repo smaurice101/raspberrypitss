@@ -95,7 +95,7 @@
              - name: step4cmaxrows # STEP 4c maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
                value: '200'               
              - name: step4crawdatatopic # STEP 4c
-               value: 'rtms-entity-preprocess'               
+               value: 'rtms-raw-preprocess'               
              - name: step4csearchterms # STEP 4c 
                value: 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown--entity--'               
              - name: step4crememberpastwindows # STEP 4c 
@@ -109,7 +109,7 @@
              - name: step4cpatternscorethreshold # STEP 4c 
                value: '0.6'                
              - name: step4crtmsstream # STEP 4c 
-               value: 'rtms-stream-mylogs'                              
+               value: 'rtms-log-data'                              
              - name: step4clocalsearchtermfolder # STEP 4c 
                value: '|/rawdata/mysearchfile1,|/rawdata/mysearchfile2'                              
              - name: step4clocalsearchtermfolderinterval # STEP 4c 
