@@ -1935,7 +1935,64 @@ class UniversalThreatAgent:
                 except: pass
         return elements_collected
 
-    def watch_directories(self, folders: List[str], interval_seconds: int):
+    def stream_chunk_to_kafka(chunk_data: list, topic: str, host: str, port: str):
+        """
+        Worker function executed inside individual threads.
+        Streams an isolated slice of the parsed log array into Kafka.
+        """
+        for element in chunk_data:
+            try:
+                # Convert individual log objects to a string payload
+                payload = json.dumps(element)
+                
+                # Use your maadtml production engine to publish to the cluster
+                # Adjust parameters if your signature requires specific key/configs
+                maadtml.producetokafka(topic, host, port, payload)
+                
+            except Exception as e:
+                # Prevent a single bad serialization or network drop from killing the thread
+                import sys
+                print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
+    
+    def parallel_stream_to_kafka(global_elements: list, topic: str, host: str, port: str, num_threads: int = 4):
+        """
+        Splits the global array into balanced segments and hands them off
+        to a ThreadPoolExecutor for concurrent execution.
+        """
+        total_elements = len(global_elements)
+        if total_elements == 0:
+            return
+    
+        # Determine chunk sizing dynamically based on array length and target thread count
+        chunk_size = math.ceil(total_elements / num_threads)
+        
+        print(f"[KAFKA INGEST] Distributing {total_elements} records across {num_threads} threads (Chunk size: ~{chunk_size}).")
+    
+        # Initialize a pool of independent concurrent worker routines
+        with ThreadPoolExecutor(max_workers=num_threads) as executor:
+            futures = []
+            
+            for i in range(num_threads):
+                start_idx = i * chunk_size
+                end_idx = min(start_idx + chunk_size, total_elements)
+                
+                # Extract an isolated slice (delta segment) for this specific worker thread
+                chunk = global_elements[start_idx:end_idx]
+                
+                if not chunk:
+                    continue
+                    
+                # Submit the task to the pool execution queue
+                future = executor.submit(stream_chunk_to_kafka, chunk, topic, host, port)
+                futures.append(future)
+                
+            # Optional: Wait for all threads to finish their chunks before returning
+            for future in futures:
+                future.result()
+    
+        print("[KAFKA INGEST] Parallel streaming batch completed successfully.")
+    
+    def watch_directories(self, folders: List[str], interval_seconds: int, topic: str, host: str, port: str):
         print(f"[STARTUP] Multi-Entity Agent Monitoring {len(folders)} paths every {interval_seconds}s.", file=sys.stderr)
         try:
             while True:
@@ -1960,15 +2017,25 @@ class UniversalThreatAgent:
                 
                 if global_interval_elements:
                     print(json.dumps(global_interval_elements), flush=True)
-                    
+                    self.parallel_stream_to_kafka(
+                        global_elements=global_interval_elements,
+                        topic=topic,
+                        host=host,
+                        port=port,
+                        num_threads=4
+                    )
+
                 time.sleep(interval_seconds)
+                return global_interval_elements
         except KeyboardInterrupt:
             print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
 
-def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval ):
+def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,KAFKA_HOST,KAFKA_PORT ):
     agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
-    agent.watch_directories(folders=target_folders, interval_seconds=user_interval)
-
+    agent.watch_directories(folders=target_folders, interval_seconds=user_interval,
+                           topic=KAFKA_TOPIC,
+                           host=KAFKA_HOST,
+                           port=KAFKA_PORT)
 #if __name__ == "__main__":
 #    CONFIG_RULES = "mitre-security-mapping.json"
 #    MITRE_MATRIX = "mitre.json"
