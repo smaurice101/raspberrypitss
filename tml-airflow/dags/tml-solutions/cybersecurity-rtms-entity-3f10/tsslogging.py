@@ -1,7 +1,7 @@
 # TSS Logging
 
 import datetime
-from datetime import datetime, timezone 
+from datetime import timezone 
 from git import Repo
 import socketserver
 import subprocess
