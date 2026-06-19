@@ -177,6 +177,7 @@ def readdata():
   producerid = args['producerid']
 
   startdirread()
+  extractlogentities()
   
   if maintopic=='' or inputfile=='':
      return
