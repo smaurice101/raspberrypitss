@@ -1743,7 +1743,7 @@ class UniversalThreatAgent:
         """
         Returns high-resolution current calendar timestamp formatted explicitly as yyyy.mm.dd
         """
-        return datetime.now(timezone.utc).strftime("%Y.%m.%d")
+        return datetime.datetime.now(timezone.utc).strftime("%Y.%m.%d")
 
     def _build_element(self, file_path: str, line_num: int, event_type: str, entity: str, mitre_meta: Dict[str, Any], attributes: Dict[str, Any]) -> Dict[str, Any]:
         """
