@@ -23,16 +23,16 @@ default_args = {
   'enabletls': '1', # <<< *** 1=connection is encrypted, 0=no encryption
   'microserviceid' : '', # <<< *** leave blank
   'producerid' : 'iotsolution',   # <<< *** Change as needed   
-  'topics' : 'iot-raw-data', # *************** This is one of the topic you created in SYSTEM STEP 2
+  'topics' : 'rtms-raw-entity', # *************** This is one of the topic you created in SYSTEM STEP 2
   'identifier' : 'TML solution',   # <<< *** Change as needed   
-  'inputfile' : '/rawdatademo/IoTData.txt',  # <<< ***** replace ?  to input file name to read. NOTE this data file should be JSON messages per line and stored in the HOST folder mapped to /rawdata folder 
+  'inputfile' : '',  # <<< ***** replace ?  to input file name to read. NOTE this data file should be JSON messages per line and stored in the HOST folder mapped to /rawdata folder 
   'delay' : '7000', # << ******* 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
   'topicid' : '-999', # <<< ********* do not modify  
   'sleep' : 0.15, # << Control how fast data streams - if 0 - the data will stream as fast as possible - BUT this may cause connecion reset by peer 
-  'docfolder' : '', # You can read TEXT files or any file in these folders that are inside the volume mapped to /rawdata
-  'doctopic' : '',  # This is the topic that will contain the docfolder file data
-  'chunks' : 0, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
-  'docingestinterval' : 0, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
+  'docfolder' : '/rawdata/mylogs', # You can read TEXT files or any file in these folders that are inside the volume mapped to /rawdata
+  'doctopic' : 'rtms-log-data',  # This is the topic that will contain the docfolder file data
+  'chunks' : 512, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
+  'docingestinterval' : 30, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -116,7 +116,15 @@ def ingestfiles():
          break
        else:  
         time.sleep(interval)         
-      
+
+def extractlogentities():
+    if default_args['docfolder'] != '' and default_args['doctopic'] != '':
+      try: 
+        t = threading.Thread(name='child procs', target=tsslogging.extract())      
+        t.start()
+      except Exception as e:
+        print(e)
+
 def startdirread():
   if 'docfolder' not in default_args and 'doctopic' not in default_args and 'chunks' not in default_args and 'docingestinterval' not in default_args:
      return
