@@ -461,6 +461,7 @@ if __name__ == '__main__':
          if not os.path.exists(directory):
             os.makedirs(directory)
         except Exception as e:
+           print("Error creating folder=",e)
            tsslogging.locallogs("ERROR", "STEP 4c: Cannot make directory {} in {} {}".format(rtmsfoldername,os.path.basename(__file__),e))         
 
         startdirread()
