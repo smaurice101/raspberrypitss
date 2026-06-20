@@ -2025,7 +2025,7 @@ class UniversalThreatAgent:
                         )
                     except Exception:
                         continue
-
+                    print("entries in folder==",entries)
                     for entry in entries:
                         file_elements = self.scan_file_incremental(entry.path)
                         if file_elements:
