@@ -115,7 +115,7 @@
              - name: step4clocalsearchtermfolderinterval # STEP 4c 
                value: '60'                                                            
              - name: step4crtmsfoldername # STEP 4c 
-               value: '/rawdata/rtms'                                                                           
+               value: 'rtms'                                                                           
              - name: step4crtmsmaxwindows # STEP 4c adjust RTMSMAXWINDOWS for Step 4c
                value: '10000'                                       
              - name: step2raw_data_topic # STEP 2 
