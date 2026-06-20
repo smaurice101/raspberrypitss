@@ -2013,6 +2013,7 @@ class UniversalThreatAgent:
             while True:
                 global_interval_elements = []
                 for target_folder in folders:
+                    print("folders in watch dir ---", folders)
                     if not os.path.exists(target_folder): 
                         continue
                     
