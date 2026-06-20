@@ -2013,7 +2013,7 @@ class UniversalThreatAgent:
             while True:
                 global_interval_elements = []
                 for target_folder in folders:
-                    print("folders in watch dir ---", folders)
+                    print("folders in watch dir ---", )
                     if not os.path.exists(target_folder): 
                         continue
                     
@@ -2025,6 +2025,7 @@ class UniversalThreatAgent:
                         )
                     except Exception:
                         continue
+
                     print("entries in folder==",entries)
                     for entry in entries:
                         file_elements = self.scan_file_incremental(entry.path)
@@ -2051,8 +2052,9 @@ def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interv
     agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
  
     print("folder====",user_folders_raw)
+    userfolders = user_folders_raw.split(",")
 
-    agent.watch_directories(folders=user_folders_raw, interval_seconds=user_interval,
+    agent.watch_directories(folders=userfolders, interval_seconds=user_interval,
                            topic=KAFKA_TOPIC,
                            host=KAFKA_HOST,
                            port=KAFKA_PORT,
