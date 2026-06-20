@@ -1959,7 +1959,7 @@ class UniversalThreatAgent:
                 enabletls = int(args['enabletls'])
                 identifier = args['identifier']
                 
-                print("json=============",inputbuf)
+#                print("json=============",inputbuf)
                 result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-entity",enabletls,delay,'','', '',0,inputbuf,"",
                                         topicid,identifier)
 
