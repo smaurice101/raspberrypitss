@@ -58,7 +58,7 @@ default_args = {
   'attackscorethresholdtopic': 'attacktopic',   # All attack score greater than attackscorethreshold will be streamed to this topic
   'patternscorethreshold': '0.6',   # Pattern score threshold i.e. '0.8'   
   'patternscorethresholdtopic': 'patterntopic',   # All pattern score greater thn patternscorethreshold will be streamed to this topic
-  'rtmsfoldername': 'rtms',
+  'rtmsfoldername': '/rawdata/rtms',
   'rtmsmaxwindows': '10000'
 }
 
