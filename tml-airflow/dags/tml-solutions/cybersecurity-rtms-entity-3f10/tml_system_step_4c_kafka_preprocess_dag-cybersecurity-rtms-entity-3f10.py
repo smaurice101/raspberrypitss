@@ -459,7 +459,10 @@ if __name__ == '__main__':
         try:
          directory="{}".format(rtmsfoldername)         
          if not os.path.exists(directory):
-            os.makedirs(directory)
+            if "/" in rtmsfoldername:
+               os.makedirs(rtmsfoldername, exist_ok=True)
+            else:
+               os.makedirs(f"/rawdata/{rtmsfoldername}", exist_ok=True)
         except Exception as e:
            print("Error creating folder=",e)
            tsslogging.locallogs("ERROR", "STEP 4c: Cannot make directory {} in {} {}".format(rtmsfoldername,os.path.basename(__file__),e))         
