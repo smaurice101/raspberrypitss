@@ -34,7 +34,8 @@ default_args = {
   'chunks' : 5120, # if 0 the files in docfolder are read line by line, otherwise they are read by chunks i.e. 512
   'docingestinterval' : 30, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
   'mitrejson': '/rawdata/mitre.json',
-  'mitrejsonscreenmap': '/rawdata/mitre-security-mapping.json'  
+  'mitrejsonscreenmap': '/rawdata/mitre-security-mapping.json',
+  'update_interval_hours': 24
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
@@ -127,10 +128,11 @@ def extractlogentities():
     VIPER_PORT = VIPERPORT
     CONFIG_RULES = default_args['mitrejsonscreenmap']
     MITRE_MATRIX = default_args['mitrejson']
-    
+    update_interval_hours = default_args['mitrejson']
+  
     if default_args['docfolder'] != '' and default_args['doctopic'] != '' and CONFIG_RULES != '' and MITRE_MATRIX != '':
       try: 
-        t = threading.Thread(name='rtmsprocs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
+        t = threading.Thread(name='rtmsprocs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,update_interval_hours,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
         t.start()
       except Exception as e:
         print(e)
