@@ -1981,6 +1981,12 @@ class UniversalThreatAgent:
                 delay = int(args.get('delay', 0))
                 enabletls = int(args.get('enabletls', 0))
                 identifier = args.get('identifier', '')
+                try:
+                    result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-stream",enabletls,delay,'','', '',0,payload,"",
+                                                        topicid,identifier)
+                except Exception as e:
+                    print("ERROR:",e)
+     
             except Exception as e:
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
               
