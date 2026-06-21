@@ -128,7 +128,7 @@ def extractlogentities():
     VIPER_PORT = VIPERPORT
     CONFIG_RULES = default_args['mitrejsonscreenmap']
     MITRE_MATRIX = default_args['mitrejson']
-    update_interval_hours = default_args['mitrejson']
+    update_interval_hours = default_args['update_interval_hours']
   
     if default_args['docfolder'] != '' and default_args['doctopic'] != '' and CONFIG_RULES != '' and MITRE_MATRIX != '':
       try: 
