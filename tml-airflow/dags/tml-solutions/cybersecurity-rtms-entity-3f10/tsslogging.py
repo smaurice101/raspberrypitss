@@ -1968,6 +1968,42 @@ class UniversalThreatAgent:
                 # Prevent a single bad serialization or network drop from killing the thread
                 import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
+
+    def clean_and_load_json(file_content):
+        # Strip out the stream metadata annotations like ''
+        #cleaned_content = re.sub(r"\\", "", file_content)
+    
+        # Clean up dangling line numbers or splits if any were cut awkwardly
+        cleaned_content = file_content.strip()
+    
+        try:
+            return json.loads(cleaned_content)
+        except json.JSONDecodeError as e:
+            print(f"Error parsing JSON: {e}")
+            # Secondary fallback logic to parse what we can line-by-line if required
+            return None
+              
+    def calculate_baseline(log_data, field_name):
+        """Computes the statistical baseline distribution (%) for a given field."""
+        # Extract values for the target field across all log objects
+        values = [item[field_name] for item in log_data if field_name in item]
+        total_count = len(values)
+    
+        if total_count == 0:
+            return {}
+    
+        # Count frequencies
+        counts = Counter(values)
+    
+        # Convert to probability/percentage distribution
+        distribution = {
+            key: round(count / total_count, 4) for key, count in counts.items()
+        }
+    
+        # Sort by highest frequency for presentation
+        return dict(
+            sorted(distribution.items(), key=lambda item: item[1], reverse=True)
+        )
     
     def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
         """
