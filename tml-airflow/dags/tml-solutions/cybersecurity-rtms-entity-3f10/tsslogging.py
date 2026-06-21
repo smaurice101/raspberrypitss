@@ -1716,6 +1716,9 @@ class UniversalThreatAgent:
         self.compiled_rules = {}
         self.file_registry: Dict[str, int] = {}
         self.active_locks: Dict[str, Any] = {} # 🟢 Track currently locked open file descriptors
+        # 🕒 New variables to track baseline cache and timing in-memory
+        self.baseline_cache: Dict[str, Any] = {}
+        self.last_baseline_time: datetime.datetime = None
         
         # Load and validate core MITRE framework matrix
         if not os.path.exists(mitre_json_path):
@@ -1968,24 +1971,23 @@ class UniversalThreatAgent:
                 # Prevent a single bad serialization or network drop from killing the thread
                 import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
-
-    def clean_and_load_json(file_content):
-        # Strip out the stream metadata annotations like ''
-        #cleaned_content = re.sub(r"\\", "", file_content)
-    
-        # Clean up dangling line numbers or splits if any were cut awkwardly
-        cleaned_content = file_content.strip()
-    
-        try:
-            return json.loads(cleaned_content)
-        except json.JSONDecodeError as e:
-            print(f"Error parsing JSON: {e}")
-            # Secondary fallback logic to parse what we can line-by-line if required
-            return None
               
-    def calculate_baseline(log_data, field_name):
-        """Computes the statistical baseline distribution (%) for a given field."""
-        # Extract values for the target field across all log objects
+    def calculate_baseline(self, log_data, field_name, update_interval_hours=24):
+        """Computes the statistical baseline distribution (%) for a given field.
+    
+        Bypasses calculation if the cached baseline is still fresh based on
+        update_interval_hours.
+        """
+        now = datetime.datetime.now(datetime.timezone.utc)
+    
+        # 1. Check if cache exists and hasn't expired yet
+        if self.last_baseline_time is not None:
+            hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
+            if hours_elapsed < update_interval_hours:
+                # Short-circuit and return the cached dictionary immediately
+                return self.baseline_cache
+    
+        # 2. Cache is stale or empty -> Run your original processing math
         values = [item[field_name] for item in log_data if field_name in item]
         total_count = len(values)
     
@@ -2000,10 +2002,13 @@ class UniversalThreatAgent:
             key: round(count / total_count, 4) for key, count in counts.items()
         }
     
-        # Sort by highest frequency for presentation
-        return dict(
+        # 3. Update the state cache and timestamp before returning
+        self.last_baseline_time = now
+        self.baseline_cache = dict(
             sorted(distribution.items(), key=lambda item: item[1], reverse=True)
         )
+    
+        return self.baseline_cache
     
     def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
         """
@@ -2066,7 +2071,17 @@ class UniversalThreatAgent:
                         if file_elements:
                             global_interval_elements.extend(file_elements)
                 
-                if global_interval_elements:
+                if global_interval_elements:                
+                    print("--- BASELINE DISTRIBUTION FOR 'entity' ---")
+                    entity_baseline = self.calculate_baseline(global_interval_elements, "entity")
+                    for entity, pct in entity_baseline.items():
+                        print(f"{entity:<25} : {pct * 100:>6.2f}% (probability: {pct})")
+                
+                    print("\n--- BASELINE DISTRIBUTION FOR 'event_type' ---")
+                    event_baseline = self.calculate_baseline(global_interval_elements, "event_type")
+                    for event, pct in event_baseline.items():
+                        print(f"{event:<25} : {pct * 100:>6.2f}% (probability: {pct})")
+        
                     print(json.dumps(global_interval_elements), flush=True)
                     self.parallel_stream_to_kafka(
                         global_elements=global_interval_elements,
