@@ -1972,43 +1972,62 @@ class UniversalThreatAgent:
                 import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
               
-    def calculate_baseline(self, log_data, field_name, update_interval_hours=24):
-        """Computes the statistical baseline distribution (%) for a given field.
+    def calculate_baseline(self, log_data: List[Dict[str, Any]], field_name: str, update_interval_hours: int = 24) -> Dict[str, float]:
+            """
+            Computes baseline distributions and calculates category-specific PSI scores,
+            stamping the precise drift contribution of each event_type onto its respective log items.
+            """
+            now = datetime.datetime.now(timezone.utc)
+            
+            # 1. Extract current real-time values and compute the actual batch distribution
+            current_values = [item[field_name] for item in log_data if field_name in item]
+            total_count = len(current_values)
+            
+            if total_count == 0:
+                return {}
+                
+            current_counts = Counter(current_values)
+            actual_dist = {
+                key: round(count / total_count, 4) for key, count in current_counts.items()
+            }
+            
+            # 2. Map out a unique PSI contribution score for EACH unique category
+            category_psi_lookup = {}
+            
+            if self.last_baseline_time is not None and self.baseline_cache:
+                # Combine all unique categories found across both historical and current snapshots
+                all_categories = set(self.baseline_cache.keys()).union(set(actual_dist.keys()))
+                
+                for category in all_categories:
+                    # Use a small epsilon fallback (0.0001) to avoid division-by-zero or log(0) errors
+                    b = self.baseline_cache.get(category, 0.0001)
+                    a = actual_dist.get(category, 0.0001)
+                    
+                    # Calculate this specific category's PSI contribution
+                    category_psi = (a - b) * math.log(a / b)
+                    category_psi_lookup[category] = round(category_psi, 4)
+            else:
+                # First run fallback if no historical baseline exists yet
+                category_psi_lookup = {cat: 0.0 for cat in actual_dist.keys()}
     
-        Bypasses calculation if the cached baseline is still fresh based on
-        update_interval_hours.
-        """
-        now = datetime.datetime.now(datetime.timezone.utc)
+            # 3. Inject the specific category-level PSI score matching this item's event type
+            for item in log_data:
+                item_type = item.get(field_name)
+                # Fetch the specific drift score for this type; default to 0.0 if not found
+                item["PSI"] = category_psi_lookup.get(item_type, 0.0)
     
-        # 1. Check if cache exists and hasn't expired yet
-        if self.last_baseline_time is not None:
-            hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
-            if hours_elapsed < update_interval_hours:
-                # Short-circuit and return the cached dictionary immediately
+            # 4. Check if we need to refresh our historical baseline profile cache
+            should_update_cache = (self.last_baseline_time is None) or \
+                                  ((now - self.last_baseline_time).total_seconds() / 3600 >= update_interval_hours)
+                    
+            if should_update_cache:
+                self.last_baseline_time = now
+                self.baseline_cache = dict(
+                    sorted(actual_dist.items(), key=lambda item: item[1], reverse=True)
+                )
                 return self.baseline_cache
     
-        # 2. Cache is stale or empty -> Run your original processing math
-        values = [item[field_name] for item in log_data if field_name in item]
-        total_count = len(values)
-    
-        if total_count == 0:
-            return {}
-    
-        # Count frequencies
-        counts = Counter(values)
-    
-        # Convert to probability/percentage distribution
-        distribution = {
-            key: round(count / total_count, 4) for key, count in counts.items()
-        }
-    
-        # 3. Update the state cache and timestamp before returning
-        self.last_baseline_time = now
-        self.baseline_cache = dict(
-            sorted(distribution.items(), key=lambda item: item[1], reverse=True)
-        )
-    
-        return self.baseline_cache
+            return self.baseline_cache
     
     def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
         """
