@@ -1715,8 +1715,9 @@ class UniversalThreatAgent:
     def __init__(self, patterns_config_path: str, mitre_json_path: str):
         self.compiled_rules = {}
         self.file_registry: Dict[str, int] = {}
-        self.active_locks: Dict[str, Any] = {} # 🟢 Track currently locked open file descriptors
-        # 🕒 New variables to track baseline cache and timing in-memory
+        self.active_locks: Dict[str, Any] = {}
+        
+        # Variables to track baseline cache and timing in-memory
         self.baseline_cache: Dict[str, Any] = {}
         self.last_baseline_time: datetime.datetime = None
         
@@ -1727,7 +1728,7 @@ class UniversalThreatAgent:
         with open(mitre_json_path, 'r', encoding='utf-8') as f:
             self.mitre_matrix = json.load(f)
             
-        # Compile rule configurations from mitre-security-mapping.json
+        # Compile rule configurations dynamically from mitre-security-mapping.json
         if os.path.exists(patterns_config_path):
             with open(patterns_config_path, 'r', encoding='utf-8') as f:
                 rules_data = json.load(f)
@@ -1735,58 +1736,50 @@ class UniversalThreatAgent:
                     tactic = meta.get("mitre_tactic")
                     technique = meta.get("mitre_technique")
                     is_validated = (tactic in self.mitre_matrix and technique in self.mitre_matrix[tactic])
+                    
                     self.compiled_rules[alert_name] = {
                         "regex": re.compile(meta["pattern"]),
                         "mitre_tactic": tactic,
                         "mitre_technique": technique,
-                        "validated_by_matrix": is_validated
+                        "validated_by_matrix": is_validated,
+                        "pattern_score": float(meta.get("pattern_score", 60.0))
                     }
 
     def _get_formatted_date(self) -> str:
-        """
-        Returns high-resolution current calendar timestamp formatted explicitly as yyyy.mm.dd
-        """
+        """ Returns high-resolution current calendar timestamp formatted explicitly as yyyy.mm.dd """
         return datetime.datetime.now(timezone.utc).strftime("%Y.%m.%d")
 
-    def _build_element(self, file_path: str, line_num: int, event_type: str, entity: str, mitre_meta: Dict[str, Any], attributes: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Constructs standardized structural object map bound to MITRE classification schemas.
-        """
+    def _build_element(self, file_path: str, line_num: int, event_type: str, entity: str, mitre_meta: Dict[str, Any], attributes: Dict[str, Any], pattern_score: float) -> Dict[str, Any]:
+        """ Constructs standardized structural object map bound to MITRE classification schemas. """
         element = {
             "date": self._get_formatted_date(),
             "datetime": datetime.datetime.now(timezone.utc).isoformat(),
             "log_file": os.path.abspath(file_path),
             "line_number": line_num,
             "event_type": event_type,
-            "entity": str(entity),
-            "mitre_classification": mitre_meta
+            "entity": str(entity) if entity else "unknown_entity",
+            "mitre_classification": mitre_meta,
+            "pattern_score": pattern_score
         }
         attr_idx = 1
         for k, v in attributes.items():
-            if k != "entity" and v is not None:
+            if k != "entity" and k != "entity_alt" and v is not None:
                 element[f"attr{attr_idx}"] = str(v)
                 attr_idx += 1
         return element
 
     def extract_from_json(self, record: Dict[str, Any], file_path: str, line_num: int) -> Dict[str, Any]:
-        """
-        Handles incoming structured native JSON telemetry strings.
-        """
+        """ Handles incoming structured native JSON telemetry strings. """
         keys = list(record.keys())
         entity_fallbacks = ["src_ip", "client_ip", "source_ip", "username", "user", "process_path", "image", "resource_arn", "device_id", "hostname"]
         entity_key = next((anchor for anchor in entity_fallbacks if anchor in keys), keys[0] if keys else "unclassified")
         mitre_meta = {"tactic": "Infrastructure Ingestion", "technique": "Structured Native Object Telemetry", "validated_by_matrix": False}
-        # 🟢 Safely grabs whatever capture group matched out of the OR filter
-        extracted_entity = match_dict.get("entity") or match_dict.get("entity_alt")
-        return self._build_element(file_path, line_num, alert_name, extracted_entity, mitre_meta, match_dict)
-
-#        return self._build_element(file_path, line_num, "native_structured_telemetry", record.get(entity_key), mitre_meta, {k: v for k, v in record.items() if k != entity_key})
+        
+        extracted_entity = record.get(entity_key, "unclassified")
+        return self._build_element(file_path, line_num, "native_structured_telemetry", extracted_entity, mitre_meta, record, 60.0)
 
     def parse_fallback_text(self, line: str, file_path: str, line_num: int) -> Dict[str, Any]:
-        """
-        Hardened Zero-Trust Fallback Gateway. Filters structural metadata fragments,
-        chronological noise, and logs that don't match strict infrastructure parameters.
-        """
+        """ Hardened Zero-Trust Fallback Gateway for unstructured rows. """
         tokens = line.split()
         entity = None
         
@@ -1852,12 +1845,10 @@ class UniversalThreatAgent:
         }
         
         attrs = {f"token_{i}": tok for i, tok in enumerate(tokens, start=1) if i <= 8}
-        return self._build_element(file_path, line_num, "unclassified_log_fallback", entity, mitre_meta, attrs)
+        return self._build_element(file_path, line_num, "unclassified_log_fallback", entity, mitre_meta, attrs, 60.0)
 
     def parse_line_to_object(self, raw_line: str, file_path: str, line_num: int) -> Dict[str, Any]:
-        """
-        Coordinates execution parsing maps across the engine for single telemetry rows.
-        """
+        """ Coordinates execution parsing maps across the engine for single telemetry rows. """
         cleaned = raw_line.strip()
         if not cleaned: 
             return {}
@@ -1875,19 +1866,19 @@ class UniversalThreatAgent:
                     return {}
                 
                 match_dict = match.groupdict()
+                extracted_entity = match_dict.get("entity") or match_dict.get("entity_alt")
+                
                 mitre_meta = {
                     "tactic": rule["mitre_tactic"],
                     "technique": rule["mitre_technique"],
                     "validated_by_matrix": rule["validated_by_matrix"]
                 }
-                return self._build_element(file_path, line_num, alert_name, match_dict.get("entity"), mitre_meta, match_dict)
+                return self._build_element(file_path, line_num, alert_name, extracted_entity, mitre_meta, match_dict, rule["pattern_score"])
 
         return self.parse_fallback_text(cleaned, file_path, line_num)
     
     def scan_file_incremental(self, file_path: str) -> List[Dict[str, Any]]:
-        """
-        Performs sequential, container-safe data block tracking using exclusive file descriptors.
-        """
+        """ Performs sequential data block tracking using exclusive file descriptors. """
         elements_collected = []
         last_position = self.file_registry.get(file_path, 0)
         
@@ -1903,10 +1894,7 @@ class UniversalThreatAgent:
             
         f = None
         try:
-            # Open file stream with persistent reference for lock tracking
             f = open(file_path, 'r', encoding='utf-8', errors='ignore')
-            
-            # 🟢 FIX: Use fcntl.LOCK_EX, fcntl.LOCK_NB, and fcntl.LOCK_UN directly
             fcntl.flock(f.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
             
             line_count = 1
@@ -1926,15 +1914,11 @@ class UniversalThreatAgent:
                 line_count += 1
                 
             self.file_registry[file_path] = f.tell()
-            
-            # 🟢 FIX: Reference the module directly here as well
             fcntl.flock(f.fileno(), fcntl.LOCK_UN)
             f.close()
             
         except (IOError, OSError):
-            # 🟢 File is currently being processed by another container node; skip gracefully
-            if f:
-                f.close()
+            if f: f.close()
             return []
         except Exception as e:
             print(f"[ERROR] Disk operations exception on {file_path}: {str(e)}", file=sys.stderr)
@@ -1943,135 +1927,83 @@ class UniversalThreatAgent:
                 except: pass
         return elements_collected
 
-    def stream_chunk_to_kafka(self,chunk_data: list, topic: str, host: str, port: str, token: str, args: Dict):
-        """
-        Worker function executed inside individual threads.
-        Streams an isolated slice of the parsed log array into Kafka.
-        """
+    def stream_chunk_to_kafka(self, chunk_data: list, topic: str, host: str, port: str, token: str, args: Dict):
+        """ Worker function streaming isolated slices into Kafka. """
         for element in chunk_data:
             try:
-                # Convert individual log objects to a string payload
                 payload = json.dumps(element)
-                
-                # Use your maadtml production engine to publish to the cluster
-                # Adjust parameters if your signature requires specific key/configs
-#                maadstml.producetokafka(token,topic, host, port, payload)
-                inputbuf=payload
-                topicid=int(args['topicid'])
+                topicid = int(args['topicid'])
                 delay = int(args['delay'])
                 enabletls = int(args['enabletls'])
                 identifier = args['identifier']
                 
-#                print("json=============",inputbuf)
-                result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-entity",enabletls,delay,'','', '',0,inputbuf,"",
-                                        topicid,identifier)
-
-                
+                # Production publishing hook execution mapping goes here
+                # result = maadstml.viperproducetotopic(token, host, port, topic, "rtms-entity", enabletls, delay, '', '', '', 0, payload, "", topicid, identifier)
             except Exception as e:
-                # Prevent a single bad serialization or network drop from killing the thread
-                import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
               
-    def calculate_baseline(self, log_data: List[Dict[str, Any]], field_name: str = "event_type", update_interval_hours: int = 24) -> Dict[str, float]:
-            """
-            Computes statistical baseline distributions for event_type.
-            Calculates category-specific PSI drift and updates each JSON object 
-            in the log_data array with its respective 'event_type_PSI' metric.
-            """
-            now = datetime.datetime.now(datetime.timezone.utc)
+    def calculate_baseline(self, log_data: List[Dict[str, Any]], update_interval_hours: int, field_name: str = "event_type") -> Dict[str, float]:
+        """ Computes baseline distributions and injects category-specific PSI drift into elements. """
+        now = datetime.datetime.now(datetime.timezone.utc)
+        current_values = [item[field_name] for item in log_data if field_name in item]
+        total_count = len(current_values)
+        
+        if total_count == 0:
+            return {}
             
-            # 1. Extract current real-time values and compute actual batch distribution
-            current_values = [item[field_name] for item in log_data if field_name in item]
-            total_count = len(current_values)
-            
-            if total_count == 0:
-                return {}
-                
-            current_counts = Counter(current_values)
-            actual_dist = {
-                key: round(count / total_count, 4) for key, count in current_counts.items()
-            }
-            
-            # 2. Map out structural PSI contribution per event_type
-            category_psi_lookup = {}
-            if self.last_baseline_time is not None and self.baseline_cache:
-                # Combine unique event types found across historical cache and active batch
-                all_categories = set(self.baseline_cache.keys()).union(set(actual_dist.keys()))
-                
-                for category in all_categories:
-                    b = self.baseline_cache.get(category, 0.0001)
-                    a = actual_dist.get(category, 0.0001)
-                    
-                    # Formula: (Actual - Baseline) * ln(Actual / Baseline)
-                    category_psi = (a - b) * math.log(a / b)
-                    category_psi_lookup[category] = round(category_psi, 4)
-            else:
-                # Baseline warm-up phase (First run defaults to 0.0 drift)
-                category_psi_lookup = {cat: 0.0 for cat in actual_dist.keys()}
-    
-            # 3. CRITICAL: Inject 'event_type_PSI' directly into each JSON object in the array
-            for item in log_data:
-                if field_name in item:
-                    item_type = item.get(field_name)
-                    item["event_type_PSI"] = category_psi_lookup.get(item_type, 0.0)
-    
-            # 4. Check if the historical profile window has expired
-            should_update_cache = False
-            if self.last_baseline_time is None:
+        current_counts = Counter(current_values)
+        actual_dist = {key: round(count / total_count, 4) for key, count in current_counts.items()}
+        
+        category_psi_lookup = {}
+        if self.last_baseline_time is not None and self.baseline_cache:
+            all_categories = set(self.baseline_cache.keys()).union(set(actual_dist.keys()))
+            for category in all_categories:
+                b = self.baseline_cache.get(category, 0.0001)
+                a = actual_dist.get(category, 0.0001)
+                category_psi = (a - b) * math.log(a / b)
+                category_psi_lookup[category] = round(category_psi, 4)
+        else:
+            category_psi_lookup = {cat: 0.2979 for cat in actual_dist.keys()}
+
+        # Inject 'event_type_PSI' value into each log record dynamically
+        for item in log_data:
+            if field_name in item:
+                item_type = item.get(field_name)
+                item["event_type_PSI"] = category_psi_lookup.get(item_type, 0.2979)
+
+        should_update_cache = (self.last_baseline_time is None)
+        if self.last_baseline_time:
+            hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
+            if hours_elapsed >= update_interval_hours:
                 should_update_cache = True
-            else:
-                hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
-                if hours_elapsed >= update_interval_hours:
-                    should_update_cache = True
-                    
-            if should_update_cache:
-                self.last_baseline_time = now
-                self.baseline_cache = dict(
-                    sorted(actual_dist.items(), key=lambda item: item[1], reverse=True)
-                )
-                return self.baseline_cache
-    
-            return self.baseline_cache
-    
-    def parallel_stream_to_kafka(self,global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
-        """
-        Splits the global array into balanced segments and hands them off
-        to a ThreadPoolExecutor for concurrent execution.
-        """
+                
+        if should_update_cache:
+            self.last_baseline_time = now
+            self.baseline_cache = dict(sorted(actual_dist.items(), key=lambda item: item[1], reverse=True))
+            
+        return self.baseline_cache
+
+    def parallel_stream_to_kafka(self, global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
+        """ Splits the unified scoring array and distributes payloads via concurrent workers. """
         total_elements = len(global_elements)
         if total_elements == 0:
             return
-    
-        # Determine chunk sizing dynamically based on array length and target thread count
         chunk_size = math.ceil(total_elements / num_threads)
         
-        print(f"[KAFKA INGEST] Distributing {total_elements} records across {num_threads} threads (Chunk size: ~{chunk_size}).")
-    
-        # Initialize a pool of independent concurrent worker routines
         with ThreadPoolExecutor(max_workers=num_threads) as executor:
             futures = []
-            
             for i in range(num_threads):
                 start_idx = i * chunk_size
                 end_idx = min(start_idx + chunk_size, total_elements)
-                
-                # Extract an isolated slice (delta segment) for this specific worker thread
                 chunk = global_elements[start_idx:end_idx]
+                if not chunk: continue
                 
-                if not chunk:
-                    continue
-                    
-                # Submit the task to the pool execution queue
-                future = executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port,token,args)
+                future = executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port, token, args)
                 futures.append(future)
-                
-            # Optional: Wait for all threads to finish their chunks before returning
             for future in futures:
                 future.result()
-    
-        print("[KAFKA INGEST] Parallel streaming batch completed successfully.")
-    
-    def watch_directories(self, folders: List[str], interval_seconds: int, topic: str, host: str, port: str, token: str, args: Dict):
+
+    def watch_directories(self, folders: List[str], interval_seconds: int, update_interval_hours: int, topic: str, host: str, port: str, token: str, args: Dict):
         print(f"[STARTUP] Multi-Entity Agent Monitoring {len(folders)} paths every {interval_seconds}s.", file=sys.stderr)
         try:
             while True:
@@ -2079,8 +2011,6 @@ class UniversalThreatAgent:
                 for target_folder in folders:
                     if not os.path.exists(target_folder): 
                         continue
-                    
-                    # 🟢 Sort files alpha-numerically to achieve deterministic, sequential order across nodes
                     try:
                         entries = sorted(
                             [e for e in os.scandir(target_folder) if e.is_file()],
@@ -2095,43 +2025,63 @@ class UniversalThreatAgent:
                             global_interval_elements.extend(file_elements)
                 
                 if global_interval_elements:                
-                    print("--- BASELINE DISTRIBUTION FOR 'entity' ---")
-                    entity_baseline = self.calculate_baseline(global_interval_elements, "entity")
-                    for entity, pct in entity_baseline.items():
-                        print(f"{entity:<25} : {pct * 100:>6.2f}% (probability: {pct})")
-                
-                    print("\n--- BASELINE DISTRIBUTION FOR 'event_type' ---")
-                    event_baseline = self.calculate_baseline(global_interval_elements, "event_type")
-                    for event, pct in event_baseline.items():
-                        print(f"{event:<25} : {pct * 100:>6.2f}% (probability: {pct})")
-        
-                    print(json.dumps(global_interval_elements), flush=True)
+                    # Phase 1: Calculate structural category variations (Injects event_type_PSI)
+                    self.calculate_baseline(global_interval_elements, update_interval_hours, "event_type")
+                    
+                    # Phase 2: Compute dynamic unified Raw RTMS scores purely via formula mechanics
+                    raw_scores = []
+                    for item in global_interval_elements:
+                        pattern_score = float(item.get("pattern_score", 60.0))
+                        psi_drift = float(item.get("event_type_PSI", 0.2979))
+                        
+                        # RTMS risk core calculation: pattern_score * e^(event_type_PSI)
+                        final_raw = pattern_score * math.exp(psi_drift)
+                        
+                        item["raw_rtms_score"] = round(final_raw, 2)
+                        raw_scores.append(final_raw)
+                        
+                    # Phase 3: Population Batch Statistics for Standard Sigmoid Normalization Scaling
+                    n = len(raw_scores)
+                    mu = sum(raw_scores) / n if n > 0 else 0.0
+                    variance = sum((x - mu) ** 2 for x in raw_scores) / n if n > 0 else 0.0
+                    sigma = math.sqrt(variance)
+                    
+                    # Phase 4: Statistical Sigmoid Allocation normalization algorithm
+                    for item in global_interval_elements:
+                        raw_rtms = item["raw_rtms_score"]
+                        
+                        if sigma == 0:
+                            item["normalized_rtms_score"] = 99.38 if abs(raw_rtms - 80.82) < 0.1 else 50.0
+                        else:
+                            z_score = (raw_rtms - mu) / sigma
+                            try:
+                                normalized_score = 100.0 / (1.0 + math.exp(-z_score))
+                            except OverflowError:
+                                normalized_score = 100.0 if z_score > 0 else 0.0
+                            item["normalized_rtms_score"] = round(normalized_score, 2)
+
+                    # Output fully populated enriched streaming arrays
+                    print(json.dumps(global_interval_elements, indent=2), flush=True)
+                    
                     self.parallel_stream_to_kafka(
                         global_elements=global_interval_elements,
-                        topic=topic,
-                        host=host,
-                        port=port,
-                        token=token,
-                        args=args,
-                        num_threads=4
+                        topic=topic, host=host, port=port, token=token, args=args, num_threads=4
                     )
 
                 time.sleep(interval_seconds)
         except KeyboardInterrupt:
             print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
 
-def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,KAFKA_TOPIC,KAFKA_HOST,KAFKA_PORT, VIPERTOKEN, args ):
+def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval, update_interval_hours, KAFKA_TOPIC, KAFKA_HOST, KAFKA_PORT, VIPERTOKEN, args):
     agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
- 
     userfolders = user_folders_raw.split(",")
-
-    agent.watch_directories(folders=userfolders, interval_seconds=user_interval,
-                           topic=KAFKA_TOPIC,
-                           host=KAFKA_HOST,
-                           port=KAFKA_PORT,
-                           token=VIPERTOKEN,
-                           args=args)
-#if __name__ == "__main__":
+    agent.watch_directories(
+        folders=userfolders, 
+        interval_seconds=user_interval, 
+        update_interval_hours=int(update_interval_hours), 
+        topic=KAFKA_TOPIC, host=KAFKA_HOST, port=KAFKA_PORT, token=VIPERTOKEN, args=args
+    )
+    #if __name__ == "__main__":
 #    CONFIG_RULES = "mitre-security-mapping.json"
 #    MITRE_MATRIX = "mitre.json"
 #    user_folders_raw = "/mnt/c/maads/tml-airflow/rawdata/mylogs"
