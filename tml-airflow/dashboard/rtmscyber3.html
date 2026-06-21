@@ -484,6 +484,7 @@
                                        .replace(/\\t/g, "\\t")
                                        .replace(/\\b/g, "\\b")
                                        .replace(/\\f/g, "\\f");
+                    console.log("maindata=",maindata);
                     try {
                         obj = JSON.parse(JSON.parse(maindata));
                     } catch(e) {
