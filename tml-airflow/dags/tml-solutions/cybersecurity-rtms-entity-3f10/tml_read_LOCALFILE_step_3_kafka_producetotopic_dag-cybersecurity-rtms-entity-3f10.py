@@ -35,6 +35,7 @@ default_args = {
   'docingestinterval' : 30, # specify the frequency in seconds to read files in docfolder - if 0 the files are read ONCE
   'mitrejson': '/rawdata/mitre.json',
   'mitrejsonscreenmap': '/rawdata/mitre-security-mapping.json',
+  'weightsvectorjson': '/rawdata/threatsweightprofile.json',
   'update_interval_hours': 24
 }
 
