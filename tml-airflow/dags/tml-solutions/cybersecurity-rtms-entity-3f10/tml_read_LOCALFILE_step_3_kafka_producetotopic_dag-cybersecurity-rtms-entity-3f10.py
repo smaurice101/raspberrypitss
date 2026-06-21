@@ -129,11 +129,12 @@ def extractlogentities():
     VIPER_PORT = VIPERPORT
     CONFIG_RULES = default_args['mitrejsonscreenmap']
     MITRE_MATRIX = default_args['mitrejson']
+    WEIGHTS_MATRIX = default_args['weightsvectorjson']
     update_interval_hours = default_args['update_interval_hours']
   
     if default_args['docfolder'] != '' and default_args['doctopic'] != '' and CONFIG_RULES != '' and MITRE_MATRIX != '':
       try: 
-        t = threading.Thread(name='rtmsprocs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, user_folders_raw, user_interval,update_interval_hours,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
+        t = threading.Thread(name='rtmsprocs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_MATRIX, user_folders_raw, user_interval,update_interval_hours,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
         t.start()
       except Exception as e:
         print(e)
