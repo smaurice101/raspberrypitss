@@ -1972,14 +1972,15 @@ class UniversalThreatAgent:
                 import sys
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
               
-    def calculate_baseline(self, log_data: List[Dict[str, Any]], field_name: str, update_interval_hours: int = 24) -> Dict[str, float]:
+    def calculate_baseline(self, log_data: List[Dict[str, Any]], field_name: str = "event_type", update_interval_hours: int = 24) -> Dict[str, float]:
             """
-            Computes baseline distributions and calculates category-specific PSI scores,
-            stamping the precise drift contribution of each event_type onto its respective log items.
+            Computes statistical baseline distributions for event_type.
+            Calculates category-specific PSI drift and updates each JSON object 
+            in the log_data array with its respective 'event_type_PSI' metric.
             """
-            now = datetime.datetime.now(timezone.utc)
+            now = datetime.datetime.now(datetime.timezone.utc)
             
-            # 1. Extract current real-time values and compute the actual batch distribution
+            # 1. Extract current real-time values and compute actual batch distribution
             current_values = [item[field_name] for item in log_data if field_name in item]
             total_count = len(current_values)
             
@@ -1991,34 +1992,37 @@ class UniversalThreatAgent:
                 key: round(count / total_count, 4) for key, count in current_counts.items()
             }
             
-            # 2. Map out a unique PSI contribution score for EACH unique category
+            # 2. Map out structural PSI contribution per event_type
             category_psi_lookup = {}
-            
             if self.last_baseline_time is not None and self.baseline_cache:
-                # Combine all unique categories found across both historical and current snapshots
+                # Combine unique event types found across historical cache and active batch
                 all_categories = set(self.baseline_cache.keys()).union(set(actual_dist.keys()))
                 
                 for category in all_categories:
-                    # Use a small epsilon fallback (0.0001) to avoid division-by-zero or log(0) errors
                     b = self.baseline_cache.get(category, 0.0001)
                     a = actual_dist.get(category, 0.0001)
                     
-                    # Calculate this specific category's PSI contribution
+                    # Formula: (Actual - Baseline) * ln(Actual / Baseline)
                     category_psi = (a - b) * math.log(a / b)
                     category_psi_lookup[category] = round(category_psi, 4)
             else:
-                # First run fallback if no historical baseline exists yet
+                # Baseline warm-up phase (First run defaults to 0.0 drift)
                 category_psi_lookup = {cat: 0.0 for cat in actual_dist.keys()}
     
-            # 3. Inject the specific category-level PSI score matching this item's event type
+            # 3. CRITICAL: Inject 'event_type_PSI' directly into each JSON object in the array
             for item in log_data:
-                item_type = item.get(field_name)
-                # Fetch the specific drift score for this type; default to 0.0 if not found
-                item["PSI"] = category_psi_lookup.get(item_type, 0.0)
+                if field_name in item:
+                    item_type = item.get(field_name)
+                    item["event_type_PSI"] = category_psi_lookup.get(item_type, 0.0)
     
-            # 4. Check if we need to refresh our historical baseline profile cache
-            should_update_cache = (self.last_baseline_time is None) or \
-                                  ((now - self.last_baseline_time).total_seconds() / 3600 >= update_interval_hours)
+            # 4. Check if the historical profile window has expired
+            should_update_cache = False
+            if self.last_baseline_time is None:
+                should_update_cache = True
+            else:
+                hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
+                if hours_elapsed >= update_interval_hours:
+                    should_update_cache = True
                     
             if should_update_cache:
                 self.last_baseline_time = now
