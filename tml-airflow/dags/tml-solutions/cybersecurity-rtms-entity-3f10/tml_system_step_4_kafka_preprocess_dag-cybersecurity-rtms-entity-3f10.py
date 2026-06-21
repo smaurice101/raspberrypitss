@@ -37,15 +37,15 @@ default_args = {
   'usemysql' : '1', # do not modify
   'streamstojoin' : '', # leave blank
   'identifier' : 'RTMS Cybersecurity Mutation Detection', # <<< ** Change as needed
-  'preprocesstypes' : 'countstr', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'preprocesstypes' : 'avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
   'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
   'jsoncriteria' : 'uid=entity,filter:allrecords~\
-subtopics=event_type,mitre_classification.tactic,mitre_classification.technique~\
-values=event_type,mitre_classification.tactic,mitre_classification.technique~\
-identifiers=event_type,mitre_classification.tactic,mitre_classification.technique~\
+subtopics=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~\
+values=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~\
+identifiers=mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic~\
 datetime=datetime~\
 msgid=logfile~\
-latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
+latlong=lat:long'  # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
