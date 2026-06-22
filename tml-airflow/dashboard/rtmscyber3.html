@@ -342,7 +342,7 @@
 			}
 
 			// 4. Return the calculated metric
-			return [rtms, scores.pattern_score, scores.event_type_PSI, tattack, tpattern];
+			return [rtms, scores.pattern_score, scores.event_type_PSI, tattack, tpattern,scores.mitre_classification.tactic,mitre_classification.technique];
 		}		
 		
         function drawChart(jsondata, topic) {
@@ -390,6 +390,9 @@
                         rtms = mainrtms[0];
 						rpattern = mainrtms[1];
 						psi = mainrtms[2];
+                        tactic = mainrtms[5];
+                        technique = mainrtms[6]; 
+
                         let lastRtms="0", lastAttack="0", lastPattern="0", lastPSI="0",lastRPattern="0";						
                         if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
                         if(attack) lastAttack = parseFloat(attack).toFixed(2);
@@ -397,7 +400,7 @@
                         if(psi){ lastPSI = parseFloat(psi).toFixed(2);}
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
 
-                        var arr = [createdon, lastRtms, lastAttack, lastPattern, lastPSI,lastRPattern,entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
+                        var arr = [createdon, tactic,technique,lastRtms, lastAttack, lastPattern, lastPSI,lastRPattern,entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
                     }
@@ -444,6 +447,9 @@
                 datatbl = new google.visualization.DataTable();
 
                 datatbl.addColumn('string', 'Date/Time');
+                datatbl.addColumn('string', 'MITRE TACTIC');
+                datatbl.addColumn('string', 'MITRE TECHNIQUE');
+                datatbl.addColumn('string', 'Attack Score');
                 datatbl.addColumn('string', 'RTMS Score');
                 datatbl.addColumn('string', 'Attack Score');
                 datatbl.addColumn('string', 'Pattern Score');
