@@ -351,6 +351,15 @@
 			return [rtms, scores.pattern_score, scores.event_type_PSI, tattack, tpattern,scores["mitre_classification.tactic"],scores["mitre_classification.technique"]];
 		}		
 		
+      function isStringUndefined(val) {
+        return (
+           val === undefined || 
+           val === null || 
+           String(val).trim() === "undefined" || 
+            String(val).trim() === ""
+        );
+     }
+
         function drawChart(jsondata, topic) {
             if (jsondata) {
                 var createdon, entity, rtms, attack, pattern, numattack, numpattern;
@@ -399,7 +408,7 @@
                         tactic = mainrtms[5];
                         technique = mainrtms[6]; 
                        
-                        console.log(mainrtms);
+              //          console.log(mainrtms);
 
                         let lastRtms="0", lastAttack="0", lastPattern="0", lastPSI="0",lastRPattern="0";						
                         if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
@@ -408,7 +417,7 @@
                         if(psi){ lastPSI = parseFloat(psi).toFixed(2);}
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
                         
-                        if (rtms  > 0){
+                        if (rtms  > 0 && !isStringUndefined(tactic)){
                         var arr = [createdon, tactic,technique,lastRtms, searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern,entity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
