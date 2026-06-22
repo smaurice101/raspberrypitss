@@ -349,7 +349,7 @@
                         if(attack) lastAttack = parseFloat(attack).toFixed(2);
                         if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
 
-                        var arr = [createdon, rtms, attack, pattern, "192.168." + entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
+                        var arr = [createdon, rtms, attack, pattern, entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
                     }
