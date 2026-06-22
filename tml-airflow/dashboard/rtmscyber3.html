@@ -327,6 +327,7 @@
                         jsonhist = jsonhist + JSON.stringify(jsondata.TopicReads[j]) + ",";
             
                         entity = jsondata.TopicReads[j].Entity;
+                        entity = entity.split(",")[0];
                         rtms = jsondata.TopicReads[j].hyperprediction;
                         attack = jsondata.TopicReads[j].FinalAttackScore;
                         pattern = jsondata.TopicReads[j].FinalPatternScore;
