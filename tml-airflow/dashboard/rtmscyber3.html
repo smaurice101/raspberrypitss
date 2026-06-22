@@ -338,7 +338,7 @@
                         patternthresh = jsondata.TopicReads[j].PatternThreshold;
                         activity = jsondata.TopicReads[j].ActivityLevel;
                         comment = jsondata.TopicReads[j].TMLComment;
-                        searchfound = jsondata.TopicReads[j].SearchTextFound.toString();
+                        searchfound = jsondata.TopicReads[j].SearchTextFound.toString().slice(0,512);
                         topic = jsondata.TopicReads[j].Topic;
                         Maintopic = jsondata.TopicReads[j].Maintopic;
                         offset = jsondata.TopicReads[j].Offset;
