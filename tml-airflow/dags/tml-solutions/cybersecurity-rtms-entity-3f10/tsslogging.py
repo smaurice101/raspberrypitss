@@ -1986,12 +1986,20 @@ class UniversalThreatAgent:
         for element in chunk_data:
             try:
                 payload = json.dumps(element)
+                # Production Producer implementation logic wraps directly here
                 topicid = int(args.get('topicid', 0))
                 delay = int(args.get('delay', 0))
                 enabletls = int(args.get('enabletls', 0))
                 identifier = args.get('identifier', '')
+                try:
+                    result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-stream",enabletls,delay,'','', '',0,payload,"",
+                                                        topicid,identifier)
+                except Exception as e:
+                    print("ERROR:",e)
+     
             except Exception as e:
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
+
 
     def calculate_baseline(self, log_data: List[Dict[str, Any]], update_interval_hours: int, field_name: str = "event_type") -> Dict[str, float]:
         """ Calculates structural baseline drifting profiles securely against division by zero """
