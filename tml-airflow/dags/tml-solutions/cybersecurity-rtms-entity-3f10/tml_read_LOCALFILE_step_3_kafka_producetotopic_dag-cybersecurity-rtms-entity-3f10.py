@@ -180,7 +180,7 @@ def readdata():
   maintopic = args['topics']
   producerid = args['producerid']
 
-#  startdirread()
+  startdirread()
   extractlogentities()
   
   if maintopic=='' or inputfile=='':
