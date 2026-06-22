@@ -101,7 +101,7 @@
              - name: step4crememberpastwindows # STEP 4c 
                value: '500'               
              - name: step4cpatternwindowthreshold # STEP 4c 
-               value: '30'               
+               value: '100'               
              - name: step4crtmsscorethreshold # STEP 4c 
                value: '0.6' 
              - name: step4cattackscorethreshold # STEP 4c 
