@@ -328,7 +328,7 @@
 				const normRTMS = scores.normalized_rtms_score || 0.0;
                   
 				// 3. Fixed Math.exp syntax
-				rtms = (normRTMS) * tattack * (1 + tpattern);
+				rtms = (normRTMS) * tattack * (tpattern);
 				rtms = Math.min(rtms,100);
 			}else{
 				const patternScore = scores.pattern_score || 0.0;
@@ -336,7 +336,7 @@
 				const normRTMS = scores.normalized_rtms_score || 0.0;
 
 				// 3. Fixed Math.exp syntax
-				rtms = (normRTMS) * (1 + tpattern);			
+				rtms = (normRTMS) * (tpattern);			
         		rtms = Math.min(rtms,100);
 
 			}
