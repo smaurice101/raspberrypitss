@@ -51,7 +51,7 @@ default_args = {
   'localsearchtermfolderinterval': '60', # This is the number of seconds between reading the localsearchtermfolder.  For example, if 60, 
                                        # The files will be read every 60 seconds - and searchterms will be updated
   'rememberpastwindows' : '500', # Past windows to remember
-  'patternwindowthreshold' : '30', # check for the number of patterns for the items in searchterms
+  'patternwindowthreshold' : '100', # check for the number of patterns for the items in searchterms
   'rtmsscorethreshold': '0.6',  # RTMS score threshold i.e. '0.8'   
   'rtmsscorethresholdtopic': 'rtmstopic',   # All rtms score greater than rtmsscorethreshold will be streamed to this topic
   'attackscorethreshold': '0.6',   # Attack score threshold i.e. '0.8'   
