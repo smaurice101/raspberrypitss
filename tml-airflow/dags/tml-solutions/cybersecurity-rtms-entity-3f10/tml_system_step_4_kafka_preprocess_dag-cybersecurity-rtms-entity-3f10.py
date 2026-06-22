@@ -44,7 +44,7 @@ subtopics=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~\
 values=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~\
 identifiers=mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic~\
 datetime=datetime~\
-msgid=logfile,event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~\
+msgid=logfile,event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score,mitre_classification.tactic,mitre_classification.technique~\
 latlong=lat:long'  # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
