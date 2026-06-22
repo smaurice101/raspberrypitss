@@ -418,7 +418,7 @@
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
                         
                         if (rtms  > 0 && !isStringUndefined(tactic)){
-                        var arr = [createdon, tactic,technique,lastRtms, searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern,entity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
+                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
                        }
@@ -469,14 +469,14 @@
                 datatbl.addColumn('string', 'MITRE TACTIC');
                 datatbl.addColumn('string', 'MITRE TECHNIQUE');
                 datatbl.addColumn('string', 'RTMS Score');
+                datatbl.addColumn('string', 'Entity');
                 datatbl.addColumn('string', 'Search Text Logs');
-                datatbl.addColumn('string', 'Search Entity');        				
+                datatbl.addColumn('string', 'User Search');        				
                 datatbl.addColumn('string', 'TML Comment');
                 datatbl.addColumn('string', 'Attack Score');
                 datatbl.addColumn('string', 'Pattern Score');
                 datatbl.addColumn('string', 'PSI');
                 datatbl.addColumn('string', 'AttackEntityPattern Score');				
-                datatbl.addColumn('string', 'Entity');
                 datatbl.addColumn('string', 'Attack Windows');
                 datatbl.addColumn('string', 'Pattern Windows');
                 datatbl.addColumn('string', 'Processtype');
