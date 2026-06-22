@@ -406,6 +406,7 @@
                         if(psi){ lastPSI = parseFloat(psi).toFixed(2);}
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
 
+                        if (tactic === "") continue;
                         var arr = [createdon, tactic,technique,lastRtms, lastAttack, lastPattern, lastPSI,lastRPattern,entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
