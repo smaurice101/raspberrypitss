@@ -405,7 +405,8 @@
                         if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
                         if(psi){ lastPSI = parseFloat(psi).toFixed(2);}
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
-
+                        
+                        console.log(scores);
                         if (rtms  > 0){
                         var arr = [createdon, tactic,technique,lastRtms, searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern,entity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
