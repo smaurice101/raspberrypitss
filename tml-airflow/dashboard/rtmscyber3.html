@@ -307,6 +307,39 @@
             new Attention.Prompt({ title: titletext, content: helptext });
         }
 
+		function computeRTMS(msgidcustom, tattack, tpattern) {
+			// 1. Properly declare variables to avoid leaking scope
+			const pairs = msgidcustom.split("---");
+			const scores = {};
+
+			pairs.forEach(pair => {
+				const [key, value] = pair.split(":");
+				if (key && value) {
+					scores[key] = parseFloat(value);
+				}
+			});
+			
+			let rtms = 0.0;
+
+			if (tattack > 0) {
+				// 2. Safeguard: Fallback to 0 if a metric is missing from the split string
+				const patternScore = scores.pattern_score || 0.0;
+				const eventPSI = scores.event_type_PSI || 0.0;
+
+				// 3. Fixed Math.exp syntax
+				rtms = patternScore * Math.exp(eventPSI) * tattack * (1 + tpattern);
+			}else{
+				const patternScore = scores.pattern_score || 0.0;
+				const eventPSI = scores.event_type_PSI || 0.0;
+
+				// 3. Fixed Math.exp syntax
+				rtms = patternScore * Math.exp(eventPSI) * (1 + tpattern);			
+			}
+
+			// 4. Return the calculated metric
+			return [rtms, scores.pattern_score, scores.event_type_PSI, tattack, tpattern);
+		}		
+		
         function drawChart(jsondata, topic) {
             if (jsondata) {
                 var createdon, entity, rtms, attack, pattern, numattack, numpattern;
@@ -347,12 +380,17 @@
                         offset = jsondata.TopicReads[j].Offset;
                         partition = jsondata.TopicReads[j].Partition;
                         searchentity = jsondata.TopicReads[j].SearchEntity;
-
+                        msgidcustom = jsondata.TopicReads[j].msgidcustom;
+						mainrtms = computeRTMS(msgidcustom,attack,pattern);
+                        rtms = mainrtms[0];
+						rpattern = mainrtms[1];
+						psi = mainrtms[2];
+						
                         if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
                         if(attack) lastAttack = parseFloat(attack).toFixed(2);
                         if(pattern) lastPattern = parseFloat(pattern).toFixed(2);
 
-                        var arr = [createdon, rtms, attack, pattern, entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
+                        var arr = [createdon, rtms, attack, pattern, psi,rpattern,entity, comment, searchfound, searchentity, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
                         dataintable.push(arr);
                         rownum++;
                     }
@@ -402,6 +440,8 @@
                 datatbl.addColumn('string', 'RTMS Score');
                 datatbl.addColumn('string', 'Attack Score');
                 datatbl.addColumn('string', 'Pattern Score');
+                datatbl.addColumn('string', 'PSI');
+                datatbl.addColumn('string', 'AttackEntityPattern Score');				
                 datatbl.addColumn('string', 'Entity');
                 datatbl.addColumn('string', 'TML Comment');
                 datatbl.addColumn('string', 'Search Text Logs');
