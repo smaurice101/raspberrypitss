@@ -1712,15 +1712,16 @@ def mergepdf(opath,pdffiles,sname):
 ############################################# LOG Entity
 
 class UniversalThreatAgent:
-    def __init__(self, patterns_config_path: str, mitre_json_path: str, weights_profile_path: str):
+    def __init__(self, patterns_config_path: str, mitre_json_path: str, weights_profile_path: str, baseline_state_path: str = "/rawdata/rtmsbaseline.txt"):
         self.compiled_rules = {}
         self.file_registry: Dict[str, int] = {}
         self.active_locks: Dict[str, Any] = {}
         
-        self.baseline_cache: Dict[str, Any] = {}
+        self.baseline_state_path = baseline_state_path
+        self.baseline_cache: Dict[str, float] = {}
         self.last_baseline_time: datetime.datetime = None
         
-        # 1. Dynamically load the external threat weights profile configuration (Zero Hardcoding)
+        # 1. Load the external threat weights profile configuration
         if not os.path.exists(weights_profile_path):
             print(f"[CRITICAL ERROR] Threat weights profile configuration file missing: {weights_profile_path}", file=sys.stderr)
             sys.exit(1)
@@ -1731,7 +1732,26 @@ class UniversalThreatAgent:
             self.vulnerability_map = profile.get("entity_vulnerability_weights", {})
             self.fallbacks = profile.get("fallbacks", {})
 
-        # 2. Load and validate core framework matrix
+        # 2. Load persistent baseline storage history from disk if available to avoid PSI resets
+        baseline_dir = os.path.dirname(self.baseline_state_path)
+        if baseline_dir and not os.path.exists(baseline_dir):
+            try:
+                os.makedirs(baseline_dir, exist_ok=True)
+            except Exception as e:
+                print(f"[WARN] Failed to pre-create directory structure {baseline_dir}: {e}", file=sys.stderr)
+
+        if os.path.exists(self.baseline_state_path):
+            try:
+                with open(self.baseline_state_path, 'r', encoding='utf-8') as f:
+                    state = json.load(f)
+                    self.baseline_cache = state.get("cache", {})
+                    if state.get("last_baseline_time"):
+                        self.last_baseline_time = datetime.datetime.fromisoformat(state["last_baseline_time"])
+                print(f"[INIT] Successfully loaded persistent baseline historical profiles from {self.baseline_state_path}", file=sys.stderr)
+            except Exception as e:
+                print(f"[WARN] Persistent baseline state could not be loaded from {self.baseline_state_path}, initializing cold start: {e}", file=sys.stderr)
+
+        # 3. Load and validate core framework matrix
         if not os.path.exists(mitre_json_path):
             print(f"[CRITICAL ERROR] Core mitre.json framework matrix file missing: {mitre_json_path}", file=sys.stderr)
             sys.exit(1)
@@ -1739,7 +1759,7 @@ class UniversalThreatAgent:
         with open(mitre_json_path, 'r', encoding='utf-8') as f:
             self.mitre_matrix = json.load(f)
             
-        # 3. Compile rule configurations from JSON map
+        # 4. Compile rule configurations from JSON map
         if os.path.exists(patterns_config_path):
             with open(patterns_config_path, 'r', encoding='utf-8') as f:
                 rules_data = json.load(f)
@@ -1759,30 +1779,22 @@ class UniversalThreatAgent:
         return datetime.datetime.now(timezone.utc).strftime("%Y.%m.%d")
 
     def _calculate_dynamic_pattern_score(self, tactic: str, technique: str, entity: str) -> float:
-        """
-        Dynamically calculates the pattern score based on threat complexity profiles
-        and entity interaction severity configuration maps with zero hardcoded values.
-        """
         tactic_lower = tactic.lower()
         technique_lower = technique.lower()
         entity_lower = str(entity).lower()
 
-        # 1. Dynamically evaluate Attack Complexity Weight (A_w) from configuration maps
-        # Uses loop mapping to match complex multi-word tactics or techniques safely
         a_w = self.fallbacks.get("default_a_w", 5.0)
         for keyword, weight in self.complexity_map.items():
             if keyword in tactic_lower or keyword in technique_lower:
                 a_w = weight
                 break 
 
-        # 2. Dynamically evaluate Entity Vulnerability Factor (E_w) from configuration maps
         e_w = None
         for keyword, weight in self.vulnerability_map.items():
             if keyword in entity_lower:
                 e_w = weight
                 break
 
-        # If no explicit configuration keyword matches, inspect network verification boundaries dynamically
         if e_w is None:
             ip_pattern = re.compile(r'\b\d{1,3}(?:\.\d{1,3}){3}\b')
             if ip_pattern.search(entity):
@@ -1790,12 +1802,10 @@ class UniversalThreatAgent:
             else:
                 e_w = self.fallbacks.get("default_e_w", 4.5)
 
-        # 3. Geometric dynamic score convergence formula: sqrt(A_w * E_w) scaled to a 100-point ceiling
         dynamic_score = math.sqrt(a_w * e_w) * 10.0
         return round(dynamic_score, 2)
 
     def _build_element(self, file_path: str, line_num: int, event_type: str, entity: str, mitre_meta: Dict[str, Any], attributes: Dict[str, Any]) -> Dict[str, Any]:
-        """ Standard element structural builder. """
         element = {
             "date": self._get_formatted_date(),
             "datetime": datetime.datetime.now(timezone.utc).isoformat(),
@@ -1976,33 +1986,28 @@ class UniversalThreatAgent:
         for element in chunk_data:
             try:
                 payload = json.dumps(element)
-                # Production Producer implementation logic wraps directly here
                 topicid = int(args.get('topicid', 0))
                 delay = int(args.get('delay', 0))
                 enabletls = int(args.get('enabletls', 0))
                 identifier = args.get('identifier', '')
-                try:
-                    result=maadstml.viperproducetotopic(token,host,port,topic,"rtms-stream",enabletls,delay,'','', '',0,payload,"",
-                                                        topicid,identifier)
-                except Exception as e:
-                    print("ERROR:",e)
-     
             except Exception as e:
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
               
     def calculate_baseline(self, log_data: List[Dict[str, Any]], update_interval_hours: int, field_name: str = "event_type") -> Dict[str, float]:
+        """ Calculates structural baseline drifting profiles and saves states persistently to storage """
         now = datetime.datetime.now(datetime.timezone.utc)
         current_values = [item[field_name] for item in log_data if field_name in item]
         total_count = len(current_values)
         
         if total_count == 0:
-            return {}
+            return self.baseline_cache
             
         current_counts = Counter(current_values)
         actual_dist = {key: round(count / total_count, 4) for key, count in current_counts.items()}
         
         category_psi_lookup = {}
-        if self.last_baseline_time is not None and self.baseline_cache:
+        # Calculate live metric variation if reference profiles are active
+        if self.baseline_cache:
             all_categories = set(self.baseline_cache.keys()).union(set(actual_dist.keys()))
             for category in all_categories:
                 b = self.baseline_cache.get(category, 0.0001)
@@ -2017,6 +2022,7 @@ class UniversalThreatAgent:
                 item_type = item.get(field_name)
                 item["event_type_PSI"] = category_psi_lookup.get(item_type, 0.2979)
 
+        # Handle chronological time windows and write tracking state directly to /rawdata/rtmsbaseline.txt
         should_update_cache = (self.last_baseline_time is None)
         if self.last_baseline_time:
             hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
@@ -2025,7 +2031,17 @@ class UniversalThreatAgent:
                 
         if should_update_cache:
             self.last_baseline_time = now
-            self.baseline_cache = dict(sorted(actual_dist.items(), key=lambda item: item[1], reverse=True))
+            self.baseline_cache = dict(sorted(actual_dist.items(), key=lambda x: x[1], reverse=True))
+            
+            try:
+                state_payload = {
+                    "last_baseline_time": self.last_baseline_time.isoformat(),
+                    "cache": self.baseline_cache
+                }
+                with open(self.baseline_state_path, 'w', encoding='utf-8') as f:
+                    json.dump(state_payload, f, indent=2)
+            except Exception as e:
+                print(f"[ERROR] Failed writing persistent tracking state out to {self.baseline_state_path}: {e}", file=sys.stderr)
             
         return self.baseline_cache
 
@@ -2070,10 +2086,8 @@ class UniversalThreatAgent:
                             global_interval_elements.extend(file_elements)
                 
                 if global_interval_elements:                
-                    # Phase 1: Calculate structural category variations (Injects event_type_PSI)
                     self.calculate_baseline(global_interval_elements, update_interval_hours, "event_type")
                     
-                    # Phase 2: Compute dynamic pattern scores and unified Raw RTMS scores
                     raw_scores = []
                     for item in global_interval_elements:
                         mitre = item.get("mitre_classification", {})
@@ -2081,27 +2095,21 @@ class UniversalThreatAgent:
                         technique = mitre.get("technique", "Unknown")
                         entity = item.get("entity", "unknown_entity")
                         
-                        # Late evaluation pattern calculation from configuration weights profile
                         pattern_score = self._calculate_dynamic_pattern_score(tactic, technique, entity)
                         item["pattern_score"] = pattern_score
                         
                         psi_drift = float(item.get("event_type_PSI", 0.2979))
-                        
-                        # RTMS Risk Core Equation execution: pattern_score * e^(event_type_PSI)
                         final_raw = pattern_score * math.exp(psi_drift)
                         item["raw_rtms_score"] = round(final_raw, 2)
                         raw_scores.append(final_raw)
                         
-                    # Phase 3: Population Batch Statistics for Standard Sigmoid Normalization Scaling
                     n = len(raw_scores)
                     mu = sum(raw_scores) / n if n > 0 else 0.0
                     variance = sum((x - mu) ** 2 for x in raw_scores) / n if n > 0 else 0.0
                     sigma = math.sqrt(variance)
                     
-                    # Phase 4: Dynamic Sigmoid Normalization Scaling
                     for item in global_interval_elements:
                         raw_rtms = item["raw_rtms_score"]
-                        
                         if sigma == 0:
                             item["normalized_rtms_score"] = 50.0
                         else:
@@ -2112,7 +2120,6 @@ class UniversalThreatAgent:
                                 normalized_score = 100.0 if z_score > 0 else 0.0
                             item["normalized_rtms_score"] = round(normalized_score, 2)
 
-                    # Output fully populated dynamic enriched streaming arrays
                     print(json.dumps(global_interval_elements, indent=2), flush=True)
                     
                     self.parallel_stream_to_kafka(
@@ -2128,7 +2135,8 @@ def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_PROFILE, user_folders
     agent = UniversalThreatAgent(
         patterns_config_path=CONFIG_RULES, 
         mitre_json_path=MITRE_MATRIX, 
-        weights_profile_path=WEIGHTS_PROFILE
+        weights_profile_path=WEIGHTS_PROFILE,
+        baseline_state_path="/rawdata/rtmsbaseline.txt"
     )
     userfolders = user_folders_raw.split(",")
     agent.watch_directories(
@@ -2137,6 +2145,7 @@ def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_PROFILE, user_folders
         update_interval_hours=int(update_interval_hours), 
         topic=KAFKA_TOPIC, host=KAFKA_HOST, port=KAFKA_PORT, token=VIPERTOKEN, args=args
     )
+    
     #if __name__ == "__main__":
 #    CONFIG_RULES = "mitre-security-mapping.json"
 #    MITRE_MATRIX = "mitre.json"
