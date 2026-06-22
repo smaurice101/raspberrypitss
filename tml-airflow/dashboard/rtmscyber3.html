@@ -325,15 +325,20 @@
 				// 2. Safeguard: Fallback to 0 if a metric is missing from the split string
 				const patternScore = scores.pattern_score || 0.0;
 				const eventPSI = scores.event_type_PSI || 0.0;
-
+				const normRTMS = scores.normalized_rtms_score || 0.0;
+                  
 				// 3. Fixed Math.exp syntax
-				rtms = patternScore * Math.exp(eventPSI) * tattack * (1 + tpattern);
+				rtms = (normRTMS) * tattack * (1 + tpattern);
+				rtms = Math.min(rtms,100);
 			}else{
 				const patternScore = scores.pattern_score || 0.0;
 				const eventPSI = scores.event_type_PSI || 0.0;
+				const normRTMS = scores.normalized_rtms_score || 0.0;
 
 				// 3. Fixed Math.exp syntax
-				rtms = patternScore * Math.exp(eventPSI) * (1 + tpattern);			
+				rtms = (normRTMS) * (1 + tpattern);			
+        		rtms = Math.min(rtms,100);
+
 			}
 
 			// 4. Return the calculated metric
@@ -536,7 +541,7 @@
                         console.log("Json parse issue=", e.message);
                         return;
                     }
-//                    console.log("maindata=",obj);
+                    console.log("maindata=",obj);
 
                     if (obj.ERROR) {
                         document.getElementById('statustext').innerHTML = "ERR: " + obj.ERROR;
