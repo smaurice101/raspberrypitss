@@ -1992,9 +1992,9 @@ class UniversalThreatAgent:
                 identifier = args.get('identifier', '')
             except Exception as e:
                 print(f"[THREAD ERROR] Failed to produce record: {str(e)}", file=sys.stderr)
-              
+
     def calculate_baseline(self, log_data: List[Dict[str, Any]], update_interval_hours: int, field_name: str = "event_type") -> Dict[str, float]:
-        """ Calculates structural baseline drifting profiles and saves states persistently to storage """
+        """ Calculates structural baseline drifting profiles securely against division by zero """
         now = datetime.datetime.now(datetime.timezone.utc)
         current_values = [item[field_name] for item in log_data if field_name in item]
         total_count = len(current_values)
@@ -2010,11 +2010,15 @@ class UniversalThreatAgent:
         if self.baseline_cache:
             all_categories = set(self.baseline_cache.keys()).union(set(actual_dist.keys()))
             for category in all_categories:
-                b = self.baseline_cache.get(category, 0.0001)
-                a = actual_dist.get(category, 0.0001)
+                # Use max() to securely prevent zero denominators if 0 or 0.0 is explicitly saved in the file
+                b = max(float(self.baseline_cache.get(category, 0.0001)), 0.0001)
+                a = max(float(actual_dist.get(category, 0.0001)), 0.0001)
+                
+                # Safe from zero-division and log(0) domain issues
                 category_psi = (a - b) * math.log(a / b)
                 category_psi_lookup[category] = round(category_psi, 4)
         else:
+            # Initial cold start fallback metric value
             category_psi_lookup = {cat: 0.2979 for cat in actual_dist.keys()}
 
         for item in log_data:
@@ -2022,7 +2026,7 @@ class UniversalThreatAgent:
                 item_type = item.get(field_name)
                 item["event_type_PSI"] = category_psi_lookup.get(item_type, 0.2979)
 
-        # Handle chronological time windows and write tracking state directly to /rawdata/rtmsbaseline.txt
+        # Handle chronological time windows and write tracking state directly to disk
         should_update_cache = (self.last_baseline_time is None)
         if self.last_baseline_time:
             hours_elapsed = (now - self.last_baseline_time).total_seconds() / 3600
@@ -2044,6 +2048,7 @@ class UniversalThreatAgent:
                 print(f"[ERROR] Failed writing persistent tracking state out to {self.baseline_state_path}: {e}", file=sys.stderr)
             
         return self.baseline_cache
+              
 
     def parallel_stream_to_kafka(self, global_elements: list, topic: str, host: str, port: str, token: str, args: Dict, num_threads: int = 4):
         total_elements = len(global_elements)
