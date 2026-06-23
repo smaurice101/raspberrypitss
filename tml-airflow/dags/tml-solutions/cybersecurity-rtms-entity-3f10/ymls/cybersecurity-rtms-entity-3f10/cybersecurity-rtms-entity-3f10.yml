@@ -129,7 +129,7 @@
              - name: step4preprocesstypes # STEP 4
                value: 'avg'                                                         
              - name: step4jsoncriteria # STEP 4
-               value: 'uid=entity,filter:allrecords~subtopics=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~values=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~identifiers=mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic~datetime=datetime~msgid=logfile,event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score,mitre_classification.tactic,mitre_classification.technique~latlong=lat:long'                           
+               value: 'uid=entity,filter:allrecords~subtopics=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~values=event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score~identifiers=mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic,mitre_classification.tactic~datetime=datetime~msgid=logfile,event_type_PSI,pattern_score,raw_rtms_score,normalized_rtms_score,mitre_classification.tactic,mitre_classification.technique,log_file~latlong=lat:long'                           
              - name: step4ajsoncriteria # STEP 4a 
                value: ''                           
              - name: step4amaxrows # STEP 4a
