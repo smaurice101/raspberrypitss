@@ -1839,71 +1839,81 @@ class UniversalThreatAgent:
     def parse_fallback_text(self, line: str, file_path: str, line_num: int) -> Dict[str, Any]:
         tokens = line.split()
         entity = None
+        entity_category = "unclassified"
         
+        # 1. Advanced Threat Extraction Patterns
         ip_pattern = re.compile(r'\b\d{1,3}(?:\.\d{1,3}){3}\b')
-        router_pattern = re.compile(r'\b(Router|Switch|Firewall|Core-SW|Edge)-\S+\b', re.IGNORECASE)
+        ipv6_pattern = re.compile(r'\b(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}\b')
         
-        noise_filter = re.compile(
-            r'^(Info|Warning|Error|CBS|CSI|Loaded|Session|Read|Failed|Expecting|'
-            r'Create|Reboot|Scavenge|Starts|Begin|Commit|Calling|Perf|Trace|get|'
-            r'Completed|Terminated|Ending|Starting|Successfully|Initializing|To|The|'
-            r'attribute|packageExtended|name|next|app|WARN|INFO|ERROR|DEBUG|FATAL|'
-            r'Address|change|detected|status|state|code|exception|thread|trace|'
-            r'HRESULT|Unrecognized|element|package|attribute\b|'
-            r'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|'
-            r'January|February|March|April|June|July|August|September|October|November|December)$', 
+        # Filesystem paths, configuration records, binary files, and extensions
+        filesystem_pattern = re.compile(
+            r'(?:[a-zA-Z]:\\(?:[^\\\s<>:"/|?*]+\\)*[^\\\s<>:"/|?*]+|'  # Windows
+            r'/(?:bin|etc|var|usr|opt|tmp|root|home|sys|proc|lib|run|mnt)/[^\s<>:"|?*]+|' # Linux standard trees
+            r'\b[a-zA-Z0-9_\-.]+\.(?:exe|dll|bat|sh|ps1|vbs|py|elf|bin|conf|ini|cfg|log|zip|tar|gz)\b)', # Security sensitive extensions
             re.IGNORECASE
         )
         
+        # Network infrastructure indicators (URLs, Domains, Internal Appliances)
+        url_domain_pattern = re.compile(r'\b(?:https?://)?(?:[a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,}(?::\d+)?(?:/[^\s]*)?\b')
+        router_pattern = re.compile(r'\b(Router|Switch|Firewall|Core-SW|Edge|Gateway|LoadBalancer)-\S+\b', re.IGNORECASE)
+        
+        # --- Sequential Extraction Cascade Execution ---
         for token in tokens:
             clean_token = token.strip(":,[]()\"'-_")
+            if not clean_token:
+                continue
+
+            # Level A: IP Network Indicators
             if ip_pattern.search(clean_token):
                 entity = ip_pattern.search(clean_token).group(0)
+                entity_category = "network_ip"
                 break
-                
+            elif ipv6_pattern.search(clean_token):
+                entity = ipv6_pattern.search(clean_token).group(0)
+                entity_category = "network_ip_v6"
+                break
+
+            # Level B: Filesystem and System Targets
+            elif filesystem_pattern.search(clean_token):
+                entity = clean_token
+                entity_category = "filesystem_resource"
+                break
+
+            # Level C: Network Identifiers and Infrastructure Devices
+            elif url_domain_pattern.search(clean_token):
+                entity = clean_token
+                entity_category = "network_endpoint_domain"
+                break
+            elif router_pattern.match(clean_token):
+                entity = clean_token
+                entity_category = "network_appliance"
+                break
+
+        # Level D: High-Risk Attack Target Accounts (Fallback bucket)
         if not entity:
             for token in tokens:
                 clean_token = token.strip(":,[]()\"'-_")
-                if router_pattern.match(clean_token):
+                if clean_token.lower() in ['root', 'administrator', 'trustedinstaller', 'sshd', 'kubelet', 'system']:
                     entity = clean_token
+                    entity_category = "privileged_system_context"
                     break
 
-        if not entity:
-            for token in tokens:
-                clean_token = token.strip(":,[]()\"'-_")
-                if clean_token.lower() in ['trustedinstaller', 'windowsupdateagent', 'sqm', 'sshd', 'kubelet', 'root']:
-                    entity = clean_token
-                    break
-                    
-        if not entity:
-            for token in tokens:
-                clean_token = token.strip(":,[]()\"'-_")
-                if (clean_token 
-                    and len(clean_token) > 3
-                    and any(c.isalnum() for c in clean_token)
-                    and not clean_token.isdigit()
-                    and not clean_token.lower().startswith('0x')
-                    and not re.match(r'^\d{4}[.-]\d{2}[.-]\d{2}$', clean_token)
-                    and not re.match(r'^\d{2}[.-]\d{2}$', clean_token)
-                    and not re.match(r'^\d{2}:\d{2}:\d{2}', clean_token)
-                    and not noise_filter.match(clean_token)
-                    and not clean_token.startswith('@')):
-                    
-                    entity = clean_token
-                    break
-
+        # If nothing of threat significance is isolated, return an empty object to drop the telemetry slice
         if not entity:
             return {}
 
+        # Dynamically escalate context metadata mapping based on isolated vectors
         mitre_meta = {
-            "tactic": "Unclassified Context", 
-            "technique": "Network Infrastructure Fallback Stream", 
+            "tactic": "Defense Evasion" if entity_category == "filesystem_resource" else "Discovery", 
+            "technique": f"Targeted Resource Asset Isolation ({entity_category})", 
             "validated_by_matrix": False
         }
         
         attrs = {f"token_{i}": tok for i, tok in enumerate(tokens, start=1) if i <= 8}
-        return self._build_element(file_path, line_num, "unclassified_log_fallback", entity, mitre_meta, attrs)
-
+        attrs["extracted_entity_category"] = entity_category
+        
+        return self._build_element(file_path, line_num, f"threat_vector_{entity_category}", entity, mitre_meta, attrs)
+    
     def parse_line_to_object(self, raw_line: str, file_path: str, line_num: int) -> Dict[str, Any]:
         cleaned = raw_line.strip()
         if not cleaned: 
