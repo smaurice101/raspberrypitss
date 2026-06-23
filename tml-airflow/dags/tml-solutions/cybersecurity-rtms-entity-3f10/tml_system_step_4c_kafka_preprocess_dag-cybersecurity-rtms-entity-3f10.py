@@ -193,6 +193,8 @@ def ingestfiles():
       interval=int(default_args['localsearchtermfolderinterval'])
       searchtermsfile = ""
       dirbuf = buf.split(",")      
+
+      print("search folder==",buf)
       rgx = []      
       for dr in dirbuf:        
          filenames = []
