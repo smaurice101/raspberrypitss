@@ -97,7 +97,7 @@
              - name: step4crawdatatopic # STEP 4c
                value: 'rtms-raw-preprocess'               
              - name: step4csearchterms # STEP 4c 
-               value: 'rgx:p([a-z]+)ch ~~~ |authentication failure,--entity-- password failure ~~~ |unknown --entity--'               
+               value: '--entity-- password failure ~~~ |unknown error --entity--'               
              - name: step4crememberpastwindows # STEP 4c 
                value: '500'               
              - name: step4cpatternwindowthreshold # STEP 4c 
