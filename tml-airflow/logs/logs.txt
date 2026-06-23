@@ -5995,3 +5995,4 @@ Login Succeeded
 =============================================================
 [INFO 2026-06-23_13:36:17] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-entity-3f10.py
 [INFO 2026-06-23_15:19:02] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-entity-3f10.py
+[INFO 2026-06-23_15:35:04] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-entity-3f10.py
