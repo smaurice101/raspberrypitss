@@ -217,8 +217,10 @@ def ingestfiles():
 
          if len(filenames) > 0:
            filenames = set(filenames)
+            
            
            for fdr in filenames:            
+             print("fdr====",fdr)
              with open(fdr) as f:
               lines = [line.rstrip('\n').strip() for line in f]
               lines = set(lines)
