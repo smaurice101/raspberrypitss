@@ -5011,3 +5011,9 @@ Login Succeeded
 =============================================================
 cffc2462db61684a71dad3965e16c2d07037c38190144d7b97197051457860bd
 [INFO 2026-06-23_00:00:35] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-entity-3f10.py
+sha256:0c5bdc241a6815d9cc5b741333f8fca77150cdc62125cd754956783b86997304
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
