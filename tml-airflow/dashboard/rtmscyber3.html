@@ -348,7 +348,7 @@
 //           console.log("scores==",scores);
 
 			// 4. Return the calculated metric
-			return [rtms, scores.pattern_score, scores.event_type_PSI, tattack, tpattern,scores["mitre_classification.tactic"],scores["mitre_classification.technique"]];
+			return [rtms, scores.pattern_score, scores.event_type_PSI, tattack, tpattern,scores["mitre_classification.tactic"],scores["mitre_classification.technique"],scores.log_file];
 		}		
 		
       function isStringUndefined(val) {
@@ -407,6 +407,7 @@
 						psi = mainrtms[2];
                         tactic = mainrtms[5];
                         technique = mainrtms[6]; 
+                        logfile = mainrtms[7]; 
                        
               //          console.log(mainrtms);
 
@@ -418,7 +419,7 @@
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
                         
                         if (rtms  > 0 && !isStringUndefined(tactic)){
-                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition];
+                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition,logfile];
                         dataintable.push(arr);
                         rownum++;
                        }
@@ -488,6 +489,7 @@
                 datatbl.addColumn('string', 'Kafkakey');
                 datatbl.addColumn('number', 'Offset');
                 datatbl.addColumn('number', 'Partition');
+                datatbl.addColumn('string', 'LogFile');
 
                 datatbl.sort({ column: 1, desc: true });
                 maintable.clearChart();
