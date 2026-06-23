@@ -194,7 +194,7 @@ def ingestfiles():
       searchtermsfile = ""
       dirbuf = buf.split(",")      
 
-      print("search folder==",buf)
+#      print("search folder==",buf)
       rgx = []      
       for dr in dirbuf:        
          filenames = []
@@ -222,6 +222,8 @@ def ingestfiles():
              with open(fdr) as f:
               lines = [line.rstrip('\n').strip() for line in f]
               lines = set(lines)
+
+              print("lines===",lines)
               # check regex
               for m in lines:
                 if len(m) > 0:
