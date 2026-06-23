@@ -1947,6 +1947,9 @@ class UniversalThreatAgent:
         elements_collected = []
         last_position = self.file_registry.get(file_path, 0)
         
+        # 1. Instantiating here locks deduplication to ONLY this file session instance
+        seen_entities_per_file = set()
+        
         try: 
             current_size = os.path.getsize(file_path)
         except FileNotFoundError: 
@@ -1975,7 +1978,13 @@ class UniversalThreatAgent:
             for line in f:
                 parsed_element = self.parse_line_to_object(line, file_path, line_count)
                 if parsed_element:
-                    elements_collected.append(parsed_element)
+                    entity = parsed_element.get("entity")
+                    
+                    # 2. Check and enforce uniqueness per file boundary
+                    if entity and entity not in seen_entities_per_file:
+                        seen_entities_per_file.add(entity)
+                        elements_collected.append(parsed_element)
+                        
                 line_count += 1
                 
             self.file_registry[file_path] = f.tell()
@@ -1991,7 +2000,7 @@ class UniversalThreatAgent:
                 try: f.close()
                 except: pass
         return elements_collected
-
+    
     def stream_chunk_to_kafka(self, chunk_data: list, topic: str, host: str, port: str, token: str, args: Dict):
         for element in chunk_data:
             try:
