@@ -173,7 +173,8 @@ def updatesearchterms(searchtermsfile,regx):
        stcurrarrfile = set(stcurrarrfile)
        mainsearchterms = mainsearchterms + '~~~'.join(stcurrarrfile) 
        #mainsearchterms = mainsearchterms[:-1]
-      
+       
+    print("mainsearch terms===",mainsearchterms)         
       
     return  mainsearchterms
 
