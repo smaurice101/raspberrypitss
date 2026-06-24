@@ -555,33 +555,13 @@
                     var curTime = new Date();
                     var eventdata = `${event.data}`;
                     var maindata = eventdata;
-let rawPayload = maindata;
 
-try {
-    // 1. First, handle any nested double-escaping backslash issues
-    let normalizedPayload = rawPayload.replace(/\\\\"/g, '"');
-
-    // 2. Parse the root object
-maindata = JSON.parse(normalizedPayload);
-    console.log("Success:", maindata);
-} catch (e) {
-    console.warn("Standard parse failed, attempting regex log extraction repair...");
-    
-    // Fallback: If logs are corrupting structural symbols, extract fields manually using RegExp
-    const lastOffsetMatch = rawPayload.match(/"LastOffset_partition_0":\s*(\d+)/);
-    const clusterMatch = rawPayload.match(/"Webkafkacluster":\s*"([^"]+)"/);
-    
-    console.log("Extracted Data:", {
-        LastOffset: lastOffsetMatch ? lastOffsetMatch[1] : null,
-        Cluster: clusterMatch ? clusterMatch[1] : null
-    });
-}
-
-                    console.log("maindata=",maindata);
+//                    console.log("maindata=",maindata);
 
                     maindata = maindata.replace(/\\n/g, "\\n")
                                        .replace(/\\',/g, "\\'")
                                        .replace(/\\"/g, '\\"')
+                                       .replace(/\\\\"/g, '"')
                                        .replace(/\\&/g, "\\&")
                                        .replace(/\\r/g, "\\r")
                                        .replace(/\\t/g, "\\t")
