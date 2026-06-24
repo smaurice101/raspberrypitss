@@ -131,7 +131,6 @@ def processtransactiondata():
 
          searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
 
-         print("Search terms - befroe send==",searchterms)
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
