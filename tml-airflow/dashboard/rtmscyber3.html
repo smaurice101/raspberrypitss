@@ -312,7 +312,7 @@
 
 		function computeRTMS(msgidcustom, tattack, tpattern) {
 			// 1. Properly declare variables to avoid leaking scope
-			const pairs = msgidcustom.split("---");
+			const pairs = msgidcustom.split(",");
 			const scores = {};
            pairs.forEach(pair => {
              const [key, value] = pair.split(":");
