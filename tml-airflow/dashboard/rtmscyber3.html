@@ -567,12 +567,12 @@
                                        .replace(/\\t/g, "\\t")
                                        .replace(/\\b/g, "\\b")
                                        .replace(/\\f/g, "\\f");
-                    try {
+//                    try {
                         obj = JSON.parse(JSON.parse(maindata));
-                    } catch(e) {
-                        console.log("Json parse issue=", e.message);
-                        return;
-                    }
+  //                  } catch(e) {
+    //                    console.log("Json parse issue=", e.message);
+      //                  return;
+        //            }
                     console.log("maindata=",obj);
 
                     if (obj.ERROR) {
