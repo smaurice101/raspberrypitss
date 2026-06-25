@@ -13,6 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
         :root {
@@ -119,6 +120,9 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
             font-size: 12px !important;
             font-weight: 500;
+white-space: normal !important; /* Overrides default 'nowrap' behavior */
+  word-break: break-all;          /* Forces long log strings/tokens to split safely */
+  max-width: 400px;               /* Explicitly caps the column width constraint */
         }
 
         ::-webkit-scrollbar { width: 6px; height: 6px; }
