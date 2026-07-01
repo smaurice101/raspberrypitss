@@ -97,6 +97,7 @@
             border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
             padding: 20px 24px !important;
         }
+
         .google-visualization-table-table {
             background-color: transparent !important;
             color: #e2e8f0 !important;
@@ -142,6 +143,90 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
     width: 200px !important;
     white-space: normal !important;
     word-break: break-word;
+}
+/* Force all table headers to wrap text safely instead of cutting off */
+.columnTitle,
+.google-visualization-table-th {
+    white-space: normal !important;
+    word-break: break-word !important;
+    vertical-align: top !important; /* Forces the text to align to the top of the header cell */
+}
+        .google-visualization-table-table {
+            background-color: transparent !important;
+            color: #e2e8f0 !important;
+            border: none !important;
+            font-family: var(--font-mono) !important;
+            table-layout: fixed !important;
+            width: 120% !important;
+        }
+        .google-visualization-table-tr-odd, .beige-background {
+            background-color: rgba(255, 255, 255, 0.01) !important;
+        }
+        .google-visualization-table-tr-even {
+            background-color: transparent !important;
+        }
+        .google-visualization-table-tr-sel, .orange-background {
+            background-color: rgba(14, 165, 233, 0.15) !important;
+            color: #ffffff !important;
+            box-shadow: inset 4px 0 0 #0ea5e9;
+        }
+        .google-visualization-table-td {
+            padding: 18px 24px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+            font-size: 12px !important;
+            font-weight: 500;
+white-space: normal !important; /* Overrides default 'nowrap' behavior */
+  word-break: break-all;          /* Forces long log strings/tokens to split safely */
+  max-width: 100%;               /* Explicitly caps the column width constraint */
+        }
+
+
+/* 2. Target Entity Column (Column 5, or Index 6 with row numbers active) */
+.google-visualization-table-table tr th:nth-child(4),
+.google-visualization-table-table tr td:nth-child(4) {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 300px !important;
+    word-break: break-all !important;
+    white-space: normal !important;
+}
+
+.google-visualization-table-table tr th:nth-child(5),
+.google-visualization-table-table tr td:nth-child(5) {
+    width: 200px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+    word-break: break-all !important;
+    white-space: normal !important;
+}
+/* 2. Target Entity Column (Column 5, or Index 6 with row numbers active) */
+.google-visualization-table-table tr th:nth-child(6),
+.google-visualization-table-table tr td:nth-child(6) {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    word-break: break-all !important;
+    white-space: normal !important;
+}
+
+/* 3. Target Search Text Logs Column (Column 6, or Index 7 with row numbers active) */
+.google-visualization-table-table tr th:nth-child(7),
+.google-visualization-table-table tr td:nth-child(7) {
+    width: 450px !important; /* Adjusted to balance inside container */
+    min-width: 200px !important;
+    max-width: 900px !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+}
+
+/* 3. Target Search Text Logs Column (Column 6, or Index 7 with row numbers active) */
+.google-visualization-table-table tr th:nth-child(8),
+.google-visualization-table-table tr td:nth-child(8) {
+    width: 450px !important; /* Adjusted to balance inside container */
+    min-width: 200px !important;
+    max-width: 300px !important;
+    word-break: break-word !important;
+    white-space: normal !important;
 }
 
         ::-webkit-scrollbar { width: 6px; height: 6px; }
