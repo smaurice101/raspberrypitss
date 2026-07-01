@@ -445,7 +445,7 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
                         
                         if (rtms  > 0 && !isStringUndefined(tactic)){
-                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition,logfile];
+                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, patternthresh, activity, logfile];
                         dataintable.push(arr);
                         rownum++;
                        }
@@ -506,15 +506,15 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                 datatbl.addColumn('string', 'AttackEntityPattern Score');				
                 datatbl.addColumn('string', 'Attack Windows');
                 datatbl.addColumn('string', 'Pattern Windows');
-                datatbl.addColumn('string', 'Processtype');
-                datatbl.addColumn('string', 'Sliding Windows');
+//                datatbl.addColumn('string', 'Processtype');
+  //              datatbl.addColumn('string', 'Sliding Windows');
                 datatbl.addColumn('string', 'Pattern Threshold');
                 datatbl.addColumn('string', 'Risk Level');
-                datatbl.addColumn('string', 'Topic');
-                datatbl.addColumn('string', 'Main Topic');
-                datatbl.addColumn('string', 'Kafkakey');
-                datatbl.addColumn('number', 'Offset');
-                datatbl.addColumn('number', 'Partition');
+    //            datatbl.addColumn('string', 'Topic');
+   //             datatbl.addColumn('string', 'Main Topic');
+  //              datatbl.addColumn('string', 'Kafkakey');
+ //               datatbl.addColumn('number', 'Offset');
+//                datatbl.addColumn('number', 'Partition');
                 datatbl.addColumn('string', 'LogFile');
 
                 datatbl.sort({ column: 1, desc: true });
