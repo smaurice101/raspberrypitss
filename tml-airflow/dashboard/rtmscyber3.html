@@ -122,8 +122,27 @@
             font-weight: 500;
 white-space: normal !important; /* Overrides default 'nowrap' behavior */
   word-break: break-all;          /* Forces long log strings/tokens to split safely */
-  max-width: 400px;               /* Explicitly caps the column width constraint */
+  max-width: none;               /* Explicitly caps the column width constraint */
         }
+
+/* Target the 5th column: Entity (including header) */
+.google-visualization-table-table th:nth-child(6),
+.google-visualization-table-table td:nth-child(6) {
+    min-width: 200px !important;
+    max-width: 200px !important;
+    width: 200px !important;
+    word-break: break-all;
+}
+
+/* Target the 6th column: Search Text Logs (including header) */
+.google-visualization-table-table th:nth-child(7),
+.google-visualization-table-table td:nth-child(7) {
+    min-width: 200px !important;
+    max-width: 200px !important;
+    width: 200px !important;
+    white-space: normal !important;
+    word-break: break-word;
+}
 
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
