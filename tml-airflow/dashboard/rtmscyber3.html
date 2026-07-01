@@ -483,7 +483,7 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
                         
                         if (rtms  > 0 && !isStringUndefined(tactic)){
-                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, patternthresh, activity, logfile];
+                        var arr = [createdon, tactic,technique,lastRtms, activity,entity,searchfound, searchentity, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, patternthresh, logfile];
                         dataintable.push(arr);
                         rownum++;
                        }
@@ -534,6 +534,7 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                 datatbl.addColumn('string', 'MITRE TACTIC');
                 datatbl.addColumn('string', 'MITRE TECHNIQUE');
                 datatbl.addColumn('string', 'RTMS Score');
+                datatbl.addColumn('string', 'Risk Level');
                 datatbl.addColumn('string', 'Entity');
                 datatbl.addColumn('string', 'Search Text Logs');
                 datatbl.addColumn('string', 'User Search');        				
@@ -547,7 +548,6 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
 //                datatbl.addColumn('string', 'Processtype');
   //              datatbl.addColumn('string', 'Sliding Windows');
                 datatbl.addColumn('string', 'Pattern Threshold');
-                datatbl.addColumn('string', 'Risk Level');
     //            datatbl.addColumn('string', 'Topic');
    //             datatbl.addColumn('string', 'Main Topic');
   //              datatbl.addColumn('string', 'Kafkakey');
