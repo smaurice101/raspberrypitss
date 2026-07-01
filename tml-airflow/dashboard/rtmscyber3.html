@@ -134,12 +134,20 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
         }
 
 
+.google-visualization-table-table tr th:nth-child(3),
+.google-visualization-table-table tr td:nth-child(3) {
+    width: 200px !important;
+    min-width: 100px !important;
+    max-width: 200px !important;
+    word-break: break-all !important;
+    white-space: normal !important;
+}
 /* 2. Target Entity Column (Column 5, or Index 6 with row numbers active) */
 .google-visualization-table-table tr th:nth-child(4),
 .google-visualization-table-table tr td:nth-child(4) {
     width: 200px !important;
-    min-width: 200px !important;
-    max-width: 300px !important;
+    min-width: 100px !important;
+    max-width: 200px !important;
     word-break: break-all !important;
     white-space: normal !important;
 }
@@ -156,8 +164,8 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
 .google-visualization-table-table tr th:nth-child(6),
 .google-visualization-table-table tr td:nth-child(6) {
     width: 200px !important;
-    min-width: 200px !important;
-    max-width: 200px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
     word-break: break-all !important;
     white-space: normal !important;
 }
@@ -167,7 +175,7 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
 .google-visualization-table-table tr td:nth-child(7) {
     width: 450px !important; /* Adjusted to balance inside container */
     min-width: 200px !important;
-    max-width: 900px !important;
+    max-width: 250px !important;
     word-break: break-word !important;
     white-space: normal !important;
 }
@@ -175,6 +183,15 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
 /* 3. Target Search Text Logs Column (Column 6, or Index 7 with row numbers active) */
 .google-visualization-table-table tr th:nth-child(8),
 .google-visualization-table-table tr td:nth-child(8) {
+    width: 450px !important; /* Adjusted to balance inside container */
+    min-width: 200px !important;
+    max-width: 800px !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+}
+/* 3. Target Search Text Logs Column (Column 6, or Index 7 with row numbers active) */
+.google-visualization-table-table tr th:nth-child(9),
+.google-visualization-table-table tr td:nth-child(9) {
     width: 450px !important; /* Adjusted to balance inside container */
     min-width: 200px !important;
     max-width: 300px !important;
