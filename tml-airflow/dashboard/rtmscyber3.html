@@ -445,7 +445,7 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                         if(rpattern) lastRPattern = parseFloat(rpattern).toFixed(2);
                         
                         if (rtms  > 0 && !isStringUndefined(tactic)){
-                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, comment, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition,logfile];
+                        var arr = [createdon, tactic,technique,lastRtms, entity,searchfound, searchentity, lastAttack, lastPattern, lastPSI,lastRPattern, numattack, numpattern, processtype, remember, patternthresh, activity, topic, Maintopic, kafkakey, offset, partition,logfile];
                         dataintable.push(arr);
                         rownum++;
                        }
@@ -499,7 +499,7 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                 datatbl.addColumn('string', 'Entity');
                 datatbl.addColumn('string', 'Search Text Logs');
                 datatbl.addColumn('string', 'User Search');        				
-                datatbl.addColumn('string', 'TML Comment');
+      //          datatbl.addColumn('string', 'TML Comment');
                 datatbl.addColumn('string', 'Attack Score');
                 datatbl.addColumn('string', 'Pattern Score');
                 datatbl.addColumn('string', 'PSI');
