@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base target="/" />    
+    <base target="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -11,7 +11,7 @@
     <title>AegisRTMS Panel // Global Security Command Intelligence</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <style>
 
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
@@ -26,7 +26,7 @@
             background-color: #020306;
             color: #f8fafc;
             /* Institutional Grid Overlay with Deep Nebula Aura Radial Shifting */
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15), transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.12), transparent 50%),
                 linear-gradient(to right, rgba(255, 255, 255, 0.007) 1px, transparent 1px),
@@ -41,7 +41,7 @@
             backdrop-filter: blur(30px) saturate(220%);
             -webkit-backdrop-filter: blur(30px) saturate(220%);
             border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 
+            box-shadow:
                 0 30px 70px rgba(0, 0, 0, 0.8),
                 inset 0 1px 1px rgba(255, 255, 255, 0.12),
                 inset 0 0 20px rgba(14, 165, 233, 0.02);
@@ -51,7 +51,7 @@
         .glass-chassis:hover {
             border-color: rgba(14, 165, 233, 0.35);
             background: linear-gradient(135deg, rgba(12, 16, 28, 0.55) 0%, rgba(6, 8, 15, 0.75) 100%);
-            box-shadow: 
+            box-shadow:
                 0 40px 90px rgba(0, 0, 0, 0.9),
                 0 0 50px rgba(14, 165, 233, 0.08),
                 inset 0 1px 2px rgba(255, 255, 255, 0.2);
@@ -87,63 +87,16 @@
         .columnTitle {
             font-family: var(--font-sans) !important;
             /* Scaled up 20% from 12px to 14.4px */
-            font-size: 14.4px !important; 
+            font-size: 14.4px !important;
             font-weight: 800 !important;
             text-transform: uppercase !important;
             letter-spacing: 0.12em !important;
             /* Hard corporate black color */
-            color: #000000 !important; 
+            color: #000000 !important;
             background: rgba(15, 23, 42, 0.8) !important;
             border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
             padding: 20px 24px !important;
         }
-
-        .google-visualization-table-table {
-            background-color: transparent !important;
-            color: #e2e8f0 !important;
-            border: none !important;
-            font-family: var(--font-mono) !important;
-            width: 100% !important;
-        }
-        .google-visualization-table-tr-odd, .beige-background {
-            background-color: rgba(255, 255, 255, 0.01) !important;
-        }
-        .google-visualization-table-tr-even {
-            background-color: transparent !important;
-        }
-        .google-visualization-table-tr-sel, .orange-background {
-            background-color: rgba(14, 165, 233, 0.15) !important;
-            color: #ffffff !important;
-            box-shadow: inset 4px 0 0 #0ea5e9;
-        }
-        .google-visualization-table-td {
-            padding: 18px 24px !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
-            font-size: 12px !important;
-            font-weight: 500;
-white-space: normal !important; /* Overrides default 'nowrap' behavior */
-  word-break: break-all;          /* Forces long log strings/tokens to split safely */
-  max-width: none;               /* Explicitly caps the column width constraint */
-        }
-
-/* Target the 5th column: Entity (including header) */
-.google-visualization-table-table th:nth-child(6),
-.google-visualization-table-table td:nth-child(6) {
-    min-width: 200px !important;
-    max-width: 200px !important;
-    width: 200px !important;
-    word-break: break-all;
-}
-
-/* Target the 6th column: Search Text Logs (including header) */
-.google-visualization-table-table th:nth-child(7),
-.google-visualization-table-table td:nth-child(7) {
-    min-width: 200px !important;
-    max-width: 200px !important;
-    width: 200px !important;
-    white-space: normal !important;
-    word-break: break-word;
-}
 /* Force all table headers to wrap text safely instead of cutting off */
 .columnTitle,
 .google-visualization-table-th {
