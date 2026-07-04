@@ -7687,3 +7687,5 @@ Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
+✅ PIPELINE COMPLETE: maadsdocker/cybersecurityrtms-3f10-amd64 has been processed successfully.
+=============================================================
