@@ -9702,3 +9702,113 @@ Login Succeeded
 =============================================================
 [INFO 2026-07-16_20:18:04] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-entity-3f10.py
 [INFO 2026-07-16_20:18:11] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-cybersecurity-rtms-entity-3f10.py
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/index.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/index.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/logs.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:06] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:07] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/details.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/logs.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+[INFO 2026-07-16_20:19:08] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/operating.rst
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/cybersecurity-rtms-entity-3f10-amd64-tmlworking
+=============================================================
+64c9029755b3ef649443c65021be47f83524f51a4ea141b020c7e7d136524a74
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: /cybersecurity-rtms-entity-3f10/docs/source/kube.rst
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+[INFO 2026-07-16_20:19:09] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurity-rtms-entity-3f10/ymls/cybersecurity-rtms-entity-3f10/ollama.yml
+sha256:00a97dcf87193213de205dc513545357d64502d4249e17e0712458dac5015bc1
+[INFO 2026-07-16_20:19:11] {'name': ['Project with slug "cybersecurity-rtms-entity-3f10" already exists.']}
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
