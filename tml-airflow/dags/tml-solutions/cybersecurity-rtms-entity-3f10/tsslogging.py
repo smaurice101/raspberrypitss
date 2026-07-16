@@ -1726,7 +1726,7 @@ class UniversalThreatAgent:
         # 1. Load the external threat weights profile configuration
         if not os.path.exists(weights_profile_path):
             print(f"[CRITICAL ERROR] Threat weights profile configuration file missing: {weights_profile_path}", file=sys.stderr)
-            sys.exit(1)
+#            sys.exit(1)
             
         with open(weights_profile_path, 'r', encoding='utf-8') as f:
             profile = json.load(f)
