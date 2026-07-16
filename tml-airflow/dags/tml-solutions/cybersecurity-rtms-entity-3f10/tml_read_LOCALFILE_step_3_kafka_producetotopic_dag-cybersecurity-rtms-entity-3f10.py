@@ -231,8 +231,8 @@ def producetokafka(value, tmlid, identifier,producerid,maintopic,substream,args)
 def readdata():
 
   repo = tsslogging.getrepo()
-#  tsslogging.tsslogit("Localfile producing DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
- # tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")        
+  tsslogging.tsslogit("Localfile producing DAG in {}".format(os.path.basename(__file__)), "INFO" )                     
+  tsslogging.git_push("/{}".format(repo),"Entry from {}".format(os.path.basename(__file__)),"origin")        
 
   args = default_args  
   inputfile=args['inputfile']
