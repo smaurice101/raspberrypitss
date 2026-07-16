@@ -93,7 +93,7 @@
              - name: step4bmaxrows # STEP 4b maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
                value: '-1'               
              - name: step4cmaxrows # STEP 4c maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
-               value: '1000'               
+               value: '500'               
              - name: step4crawdatatopic # STEP 4c
                value: 'rtms-raw-preprocess'               
              - name: step4csearchterms # STEP 4c 
