@@ -206,7 +206,8 @@ def startdirread():
           KAFKA_PORT,
           VIPERTOKEN,
           args
-         )
+         ),
+         daemon=True
        )
       t.start()
 
