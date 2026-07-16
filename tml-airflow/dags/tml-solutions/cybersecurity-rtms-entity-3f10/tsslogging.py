@@ -1756,7 +1756,7 @@ class UniversalThreatAgent:
         # 3. Load and validate core framework matrix
         if not os.path.exists(mitre_json_path):
             print(f"[CRITICAL ERROR] Core mitre.json framework matrix file missing: {mitre_json_path}", file=sys.stderr)
-            sys.exit(1)
+#            sys.exit(1)
             
         with open(mitre_json_path, 'r', encoding='utf-8') as f:
             self.mitre_matrix = json.load(f)
