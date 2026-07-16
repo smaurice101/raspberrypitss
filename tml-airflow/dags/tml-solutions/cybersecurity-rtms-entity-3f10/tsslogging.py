@@ -18,6 +18,7 @@ import math
 import maadstml
 import sys
 from collections import Counter
+import traceback
 
 class LockDirectory(object):
     def __init__(self, directory):
