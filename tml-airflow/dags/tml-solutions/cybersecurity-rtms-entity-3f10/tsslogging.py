@@ -2095,8 +2095,20 @@ class UniversalThreatAgent:
             if not chunk: continue
             
             # Submit to the long-lived pool
-            future = self.executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port, token, args)
-            futures.append(future)
+            #future = self.executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port, token, args)
+#            futures.append(future)
+
+            try:
+                # Try using the executor first
+                future = self.executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port, token, args)
+                futures.append(future)
+            except RuntimeError as e:
+                if "shutdown" in str(e).lower():
+                    # WORKAROUND: If the executor is shutting down, execute it synchronously right here!
+                    print("[WARN] Executor is shutting down. Falling back to synchronous streaming.", file=sys.stderr)
+                    self.stream_chunk_to_kafka(chunk, topic, host, port, token, args)
+                else:
+                    raise e
             
         # Wait for the current batch to finish
         for future in futures:
