@@ -2170,6 +2170,7 @@ class UniversalThreatAgent:
             print("\n[SHUTDOWN] Exiting monitoring loop.", file=sys.stderr)
 
 def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_PROFILE, user_folders_raw, user_interval, update_interval_hours, KAFKA_TOPIC, KAFKA_HOST, KAFKA_PORT, VIPERTOKEN, args):
+   try:
     agent = UniversalThreatAgent(
         patterns_config_path=CONFIG_RULES, 
         mitre_json_path=MITRE_MATRIX, 
@@ -2183,6 +2184,11 @@ def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_PROFILE, user_folders
         update_interval_hours=int(update_interval_hours), 
         topic=KAFKA_TOPIC, host=KAFKA_HOST, port=KAFKA_PORT, token=VIPERTOKEN, args=args
     )
+   except Exception:
+    print("--- FATAL ERROR TRACEBACK ---")
+    traceback.print_exc()
+    sys.exit(1)
+
     
     #if __name__ == "__main__":
 #    CONFIG_RULES = "mitre-security-mapping.json"
