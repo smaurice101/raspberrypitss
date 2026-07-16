@@ -483,14 +483,14 @@ white-space: normal !important; /* Overrides default 'nowrap' behavior */
                         searchentity = jsondata.TopicReads[j].SearchEntity;
                         msgidcustom = jsondata.TopicReads[j].msgidcustom;
 						mainrtms = computeRTMS(msgidcustom,attack,pattern);
-                        rtms = mainrtms[0];
+                        //rtms = mainrtms[0];
 						rpattern = mainrtms[1];
 						psi = mainrtms[2];
                         tactic = mainrtms[5];
                         technique = mainrtms[6]; 
                         logfile = mainrtms[7]; 
                        
-                        console.log("mainrtms==",mainrtms);
+                      //  console.log("mainrtms==",mainrtms);
 
                         let lastRtms="0", lastAttack="0", lastPattern="0", lastPSI="0",lastRPattern="0";						
                         if(rtms) lastRtms = parseFloat(rtms).toFixed(3);
