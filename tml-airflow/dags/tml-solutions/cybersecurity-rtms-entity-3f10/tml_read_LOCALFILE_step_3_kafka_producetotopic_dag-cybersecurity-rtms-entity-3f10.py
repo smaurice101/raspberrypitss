@@ -189,7 +189,6 @@ def startdirread():
       KAFKA_TOPIC=default_args['topics']
       KAFKA_HOST=VIPERHOST
       KAFKA_PORT=VIPERPORT
-      VIPERTOKEN=VIPERTOKEN
       args=default_args
 
       t = threading.Thread(
