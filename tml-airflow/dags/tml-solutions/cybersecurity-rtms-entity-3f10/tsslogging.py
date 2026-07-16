@@ -1721,6 +1721,8 @@ class UniversalThreatAgent:
         self.baseline_cache: Dict[str, float] = {}
         self.last_baseline_time: datetime.datetime = None
         
+        self.executor = ThreadPoolExecutor(max_workers=4)
+
         # 1. Load the external threat weights profile configuration
         if not os.path.exists(weights_profile_path):
             print(f"[CRITICAL ERROR] Threat weights profile configuration file missing: {weights_profile_path}", file=sys.stderr)
@@ -2083,18 +2085,22 @@ class UniversalThreatAgent:
             return
         chunk_size = math.ceil(total_elements / num_threads)
         
-        with ThreadPoolExecutor(max_workers=num_threads) as executor:
-            futures = []
-            for i in range(num_threads):
-                start_idx = i * chunk_size
-                end_idx = min(start_idx + chunk_size, total_elements)
-                chunk = global_elements[start_idx:end_idx]
-                if not chunk: continue
-                
-                future = executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port, token, args)
-                futures.append(future)
-            for future in futures:
-                future.result()
+        # USE THE PERSISTENT EXECUTOR: No 'with' block, no automatic shutdown
+        futures = []
+        for i in range(num_threads):
+            start_idx = i * chunk_size
+            end_idx = min(start_idx + chunk_size, total_elements)
+            chunk = global_elements[start_idx:end_idx]
+            if not chunk: continue
+            
+            # Submit to the long-lived pool
+            future = self.executor.submit(self.stream_chunk_to_kafka, chunk, topic, host, port, token, args)
+            futures.append(future)
+            
+        # Wait for the current batch to finish
+        for future in futures:
+            future.result()
+
 
     def watch_directories(self, folders: List[str], interval_seconds: int, update_interval_hours: int, topic: str, host: str, port: str, token: str, args: Dict):
         print(f"[STARTUP] Multi-Entity Agent Monitoring {len(folders)} paths every {interval_seconds}s.", file=sys.stderr)
