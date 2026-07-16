@@ -169,25 +169,7 @@ def ingestfiles():
             break
         else:  
             time.sleep(interval)
-
-def extractlogentities():
-    user_folders_raw = default_args['docfolder']
-    user_interval = default_args['docingestinterval']
-    KAFKA_TOPIC = default_args['topics']
-    VIPER_HOST = VIPERHOST
-    VIPER_PORT = VIPERPORT
-    CONFIG_RULES = default_args['mitrejsonscreenmap']
-    MITRE_MATRIX = default_args['mitrejson']
-    WEIGHTS_MATRIX = default_args['weightsvectorjson']
-    update_interval_hours = default_args['update_interval_hours']
-  
-    if default_args['docfolder'] != '' and default_args['doctopic'] != '' and CONFIG_RULES != '' and MITRE_MATRIX != '':
-      try: 
-        t = threading.Thread(name='rtmsprocs', target=tsslogging.extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_MATRIX, user_folders_raw, user_interval,update_interval_hours,KAFKA_TOPIC,VIPER_HOST,VIPER_PORT,VIPERTOKEN,default_args))      
-        t.start()
-      except Exception as e:
-        print(e)
-
+          
 def startdirread():
   if 'docfolder' not in default_args and 'doctopic' not in default_args and 'chunks' not in default_args and 'docingestinterval' not in default_args:
      return
@@ -230,7 +212,6 @@ def readdata():
   producerid = args['producerid']
 
   startdirread()
-  extractlogentities()
   
   if maintopic=='' or inputfile=='':
      return
