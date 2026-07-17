@@ -392,6 +392,10 @@ function drawChart(jsondata, topic) {
 				offset = jsondata.TopicReads[j].Offset;
 				partition = jsondata.TopicReads[j].Partition;
                 searchentity=jsondata.TopicReads[j].SearchEntity;
+                 if(searchfound.length>=1024) {
+                        searchfound = jsondata.TopicReads[j].SearchTextFound.toString().slice(0,1024) 							
+                         searchfound = searchfound + "...[TRUNCATED]";
+                  }
 
 				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, remember,patternthresh,activity,comment,searchfound,searchentity,topic,Maintopic, kafkakey, offset, partition];
 				dataintable.push(arr)
