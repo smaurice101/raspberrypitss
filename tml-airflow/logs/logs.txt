@@ -1,2 +1,3 @@
 ✅ PIPELINE COMPLETE: maadsdocker/cybersecurity-rtms-entity-3f10-amd64 has been processed successfully.
 =============================================================
+[INFO 2026-07-17_01:05:08] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-cybersecurity-rtms-entity-3f10.py
