@@ -205,7 +205,7 @@ def startdirread():
           KAFKA_HOST, 
           KAFKA_PORT, 
           VIPERTOKEN,
-          default_Args
+          default_args
          )
        )
       t.start()
