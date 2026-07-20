@@ -2213,3 +2213,368 @@ def extractLogEntities(CONFIG_RULES, MITRE_MATRIX, WEIGHTS_PROFILE, user_folders
 #    if not target_folders: sys.exit(1)
 #    agent = UniversalThreatAgent(patterns_config_path=CONFIG_RULES, mitre_json_path=MITRE_MATRIX)
 #    agent.watch_directories(folders=target_folders, interval_seconds=user_interval)
+
+
+# Core Core Processing Engine Class
+# ========================================================
+class MockMaadstml:
+      def viperproducetotopic(self, topic: str, payload: Dict[str, Any]) -> None:
+          print(f"[STREAMING OUT -> TOPIC: {topic}] Payload: {json.dumps(payload)}")
+
+class SecureRestStreamEngine:
+    def __init__(self, config_dict: Dict[str, Any]):
+        self.config = config_dict
+        self.settings = self.config["ingestion_settings"]
+        self.active_system = self.settings["active_system"]
+        
+        if self.active_system not in self.config["systems"]:
+            print(f"[CRITICAL] Active system '{self.active_system}' not found in configurations.", file=sys.stderr)
+            sys.exit(1)
+            
+        self.system_config = self.config["systems"][self.active_system]
+        self.request_kwargs = self._build_http_parameters()
+
+    def _build_http_parameters(self) -> Dict[str, Any]:
+        """Compiles SSL, headers, authentication types, and mTLS certificates into Request kwargs."""
+        security = self.system_config.get("security", {})
+        kwargs = {"timeout": 10}
+        headers = {"Content-Type": "application/json"}
+
+        if security.get("verify_ssl", True):
+            if security.get("custom_ca_cert_path"):
+                kwargs["verify"] = security["custom_ca_cert_path"]
+            else:
+                kwargs["verify"] = True
+        else:
+            kwargs["verify"] = False
+
+        mtls = security.get("mtls", {})
+        if mtls.get("enabled", False):
+            cert_path = mtls.get("client_cert_path")
+            key_path = mtls.get("client_key_path")
+            if not os.path.exists(cert_path) or not os.path.exists(key_path):
+                print(f"[CRITICAL] mTLS cryptographic files missing on disk!\nCert: {cert_path}\nKey: {key_path}", file=sys.stderr)
+                sys.exit(1)
+            kwargs["cert"] = (cert_path, key_path)
+
+        auth_type = security.get("auth_type", "none")
+        if auth_type == "basic":
+            kwargs["auth"] = (security["username"], security["password"])
+        elif auth_type == "bearer":
+            headers["Authorization"] = f"Bearer {security['token']}"
+        elif auth_type == "custom_header":
+            headers[security["header_name"]] = security["header_value"]
+
+        kwargs["headers"] = headers
+        return kwargs
+
+    def _sanitize_and_extract_json(self, data: Any) -> Dict[str, Any] | None:
+        """Enforces type constraints: returns a valid dictionary payload or flushes anomalies."""
+        if data is None:
+            return None
+        if isinstance(data, dict):
+            return data
+        if isinstance(data, str):
+            try:
+                parsed = json.loads(data)
+                if isinstance(parsed, dict):
+                    return parsed
+            except json.JSONDecodeError:
+                pass
+        return None
+
+    def _navigate_json_path(self, target: Any, path: List[str]) -> Any:
+        """Helper to recursively step through configuration key paths dynamically."""
+        if not path or target is None:
+            return target
+        if isinstance(target, dict):
+            return self._navigate_json_path(target.get(path[0]), path[1:])
+        return None
+
+    def execute_ingestion_loop(self) -> None:
+        """Kicks off the persistent polling routine for the explicitly declared target platform."""
+        polling_delay = self.settings.get("polling_interval_seconds", 1.0)
+        print(f"[RUNNING] Initiating continuous ingestion loop targeting: {self.active_system.upper()}")
+
+        dispatch_map = {
+            "kafka": self._run_kafka_loop,
+            "rabbitmq": self._run_rabbitmq_loop,
+            "redis": self._run_redis_loop,
+            "scada": self._run_scada_loop,
+            "splunk": self._run_splunk_loop,
+            "elasticsearch": self._run_elasticsearch_loop,
+            "clickhouse": self._run_clickhouse_loop,
+            "influxdb": self._run_influxdb_loop,
+            "logstash": self._run_logstash_loop
+        }
+
+        if self.active_system in dispatch_map:
+            dispatch_map[self.active_system](polling_delay)
+        else:
+            print(f"[ERROR] Unsupported target platform system: {self.active_system}", file=sys.stderr)
+
+    # ==========================================
+    # Explicit Pipeline Implementations
+    # ==========================================
+
+    def _run_kafka_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        topic = cfg['topic_name']
+        output_topic = cfg.get("output_stream_topic", topic)
+        base_consumer_url = f"{cfg['proxy_url']}/consumers/{cfg['consumer_group']}/instances/{cfg['instance_name']}"
+        create_url = f"{cfg['proxy_url']}/consumers/{cfg['consumer_group']}"
+        
+        kafka_init_kwargs = self.request_kwargs.copy()
+        kafka_init_kwargs["headers"] = {**self.request_kwargs["headers"], "Content-Type": "application/vnd.kafka.v2+json"}
+        
+        kafka_action_kwargs = self.request_kwargs.copy()
+        kafka_action_kwargs["headers"] = {**self.request_kwargs["headers"], "Content-Type": "application/vnd.kafka.v2+json"}
+        
+        kafka_fetch_kwargs = self.request_kwargs.copy()
+        kafka_fetch_kwargs["headers"] = {**self.request_kwargs["headers"], "Accept": "application/vnd.kafka.json.v2+json"}
+
+        try:
+            init_payload = {"name": cfg['instance_name'], "format": "json", "auto.offset.reset": "earliest", "auto.commit.enable": "false"}
+            requests.post(create_url, data=json.dumps(init_payload), **kafka_init_kwargs)
+        except Exception as e:
+            print(f"[WARN] Consumer group init alert: {e}", file=sys.stderr)
+
+        target_offset = cfg.get("rollback_target_offset")
+        if target_offset is not None:
+            try:
+                meta_url = f"{cfg['proxy_url']}/topics/{topic}/partitions"
+                meta_resp = requests.get(meta_url, **self.request_kwargs)
+                if meta_resp.status_code == 200:
+                    dynamic_offsets = []
+                    for p in meta_resp.json():
+                        partition_id = int(p["partition"])
+                        resolved_offset = int(target_offset)
+                        
+                        if resolved_offset == -1:
+                            offsets_url = f"{cfg['proxy_url']}/topics/{topic}/partitions/{partition_id}/offsets"
+                            offsets_resp = requests.get(offsets_url, **self.request_kwargs)
+                            if offsets_resp.status_code == 200:
+                                resolved_offset = int(offsets_resp.json().get("end_offset", 0))
+                        
+                        dynamic_offsets.append({"topic": topic, "partition": partition_id, "offset": resolved_offset})
+                    
+                    if dynamic_offsets:
+                        requests.post(f"{base_consumer_url}/positions", data=json.dumps({"offsets": dynamic_offsets}), **kafka_action_kwargs)
+            except Exception as e:
+                print(f"[ERROR] Rolling positioning modification failure: {e}", file=sys.stderr)
+
+        payload_path = cfg.get("payload_key_path", ["value"])
+        max_bytes = cfg.get("max_bytes_per_batch", 5242880)
+        fetch_url = f"{base_consumer_url}/records?max_bytes={max_bytes}"
+        maadstml = MockMaadstml()
+
+        while True:
+            try:
+                response = requests.get(fetch_url, **kafka_fetch_kwargs)
+                if response.status_code == 200:
+                    records_batch = response.json()
+                    if records_batch:
+                        for element in records_batch:
+                            raw_target = self._navigate_json_path(element, payload_path)
+                            valid_json = self._sanitize_and_extract_json(raw_target)
+                            if valid_json is not None:
+                                maadstml.viperproducetotopic(output_topic, valid_json)
+                        requests.post(f"{base_consumer_url}/offsets", **kafka_action_kwargs)
+                elif response.status_code == 404:
+                    return
+            except Exception as e:
+                print(f"[ERROR] Live Kafka Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_rabbitmq_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "rabbitmq_stream")
+        url = f"{cfg['management_url']}/api/queues/{cfg['virtual_host']}/{cfg['queue_name']}/get"
+        payload = {"count": self.settings.get("max_batch_size", 100), "ack_mode": "ack_requeue_false", "encoding": "auto"}
+        payload_path = cfg.get("payload_key_path", ["payload"])
+        maadstml = MockMaadstml()
+
+        while True:
+            try:
+                response = requests.post(url, data=json.dumps(payload), **self.request_kwargs)
+                if response.status_code == 200:
+                    for msg in response.json():
+                        raw_target = self._navigate_json_path(msg, payload_path)
+                        valid_json = self._sanitize_and_extract_json(raw_target)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live RabbitMQ Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_redis_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "redis_stream")
+        url = f"{cfg['webdis_url']}/{cfg['redis_command']}/{cfg['key_name']}"
+        maadstml = MockMaadstml()
+
+        while True:
+            try:
+                response = requests.get(url, **self.request_kwargs)
+                if response.status_code == 200:
+                    raw_cmd_output = response.json().get(cfg['redis_command'])
+                    if isinstance(raw_cmd_output, list):
+                        for item in raw_cmd_output:
+                            valid_json = self._sanitize_and_extract_json(item)
+                            if valid_json is not None:
+                                maadstml.viperproducetotopic(output_topic, valid_json)
+                    else:
+                        valid_json = self._sanitize_and_extract_json(raw_cmd_output)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live Redis Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_scada_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "scada_stream")
+        url = f"{cfg['scada_url']}/{cfg['endpoint'].lstrip('/')}"
+        maadstml = MockMaadstml()
+
+        while True:
+            try:
+                response = requests.get(url, **self.request_kwargs)
+                if response.status_code == 200:
+                    res_data = response.json()
+                    if isinstance(res_data, list):
+                        for element in res_data:
+                            valid_json = self._sanitize_and_extract_json(element)
+                            if valid_json is not None:
+                                maadstml.viperproducetotopic(output_topic, valid_json)
+                    else:
+                        valid_json = self._sanitize_and_extract_json(res_data)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live SCADA Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_splunk_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "splunk_stream")
+        url = f"{cfg['management_url']}/services/search/jobs"
+        splunk_kwargs = self.request_kwargs.copy()
+        splunk_kwargs["headers"] = {**self.request_kwargs["headers"], "Content-Type": "application/x-www-form-urlencoded"}
+        maadstml = MockMaadstml()
+        
+        while True:
+            try:
+                payload = {"search": cfg["search_query"], "output_mode": "json", "exec_mode": "oneshot"}
+                response = requests.post(url, data=payload, **splunk_kwargs)
+                if response.status_code in [200, 201]:
+                    for record in response.json().get("results", []):
+                        valid_json = self._sanitize_and_extract_json(record)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live Splunk Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_elasticsearch_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "elasticsearch_stream")
+        url = f"{cfg['node_url']}/{cfg['index_pattern']}/_search"
+        root_path = cfg.get("root_array_path", ["hits", "hits"])
+        payload_path = cfg.get("payload_key_path", ["_source"])
+        maadstml = MockMaadstml()
+        
+        while True:
+            try:
+                response = requests.post(url, json=cfg["search_body"], **self.request_kwargs)
+                if response.status_code == 200:
+                    hits = self._navigate_json_path(response.json(), root_path) or []
+                    for hit in hits:
+                        raw_target = self._navigate_json_path(hit, payload_path)
+                        valid_json = self._sanitize_and_extract_json(raw_target)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live Elasticsearch Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_clickhouse_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "clickhouse_stream")
+        url = f"{cfg['http_url']}/?database={cfg['database']}"
+        root_path = cfg.get("root_array_path", ["data"])
+        maadstml = MockMaadstml()
+        
+        while True:
+            try:
+                response = requests.post(url, data=cfg["query"], **self.request_kwargs)
+                if response.status_code == 200:
+                    for row in (self._navigate_json_path(response.json(), root_path) or []):
+                        valid_json = self._sanitize_and_extract_json(row)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live ClickHouse Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_influxdb_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "influxdb_stream")
+        url = f"{cfg['host_url']}/api/v2/query?org={cfg['org']}"
+        influx_kwargs = self.request_kwargs.copy()
+        influx_kwargs["headers"] = {**self.request_kwargs["headers"], "Accept": "application/json"}
+        maadstml = MockMaadstml()
+
+        while True:
+            try:
+                response = requests.post(url, json={"query": cfg["flux_query"], "type": "flux"}, **influx_kwargs)
+                if response.status_code == 200:
+                    res_data = response.json()
+                    if isinstance(res_data, list):
+                        for row in res_data:
+                            valid_json = self._sanitize_and_extract_json(row)
+                            if valid_json is not None:
+                                maadstml.viperproducetotopic(output_topic, valid_json)
+                    else:
+                        valid_json = self._sanitize_and_extract_json(res_data)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live InfluxDB Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+    def _run_logstash_loop(self, delay: float) -> None:
+        cfg = self.system_config
+        output_topic = cfg.get("output_stream_topic", "logstash_stream")
+        url = f"{cfg['http_input_url']}/{cfg['endpoint'].lstrip('/')}"
+        maadstml = MockMaadstml()
+        
+        while True:
+            try:
+                response = requests.get(url, **self.request_kwargs)
+                if response.status_code == 200:
+                    res_data = response.json()
+                    if isinstance(res_data, list):
+                        for package in res_data:
+                            valid_json = self._sanitize_and_extract_json(package)
+                            if valid_json is not None:
+                                maadstml.viperproducetotopic(output_topic, valid_json)
+                    else:
+                        valid_json = self._sanitize_and_extract_json(res_data)
+                        if valid_json is not None:
+                            maadstml.viperproducetotopic(output_topic, valid_json)
+            except Exception as e:
+                print(f"[ERROR] Live Logstash Ingestion Failure: {e}", file=sys.stderr)
+            time.sleep(delay)
+
+# ========================================================
+# Operational Implementation Entrypoint
+# ========================================================
+#if __name__ == "__main__":
+def startstreamengine(default_args):
+    engine = SecureRestStreamEngine(config_dict=default_args)
+    try:
+        engine.execute_ingestion_loop()
+    except KeyboardInterrupt:
+        print("\n[INFO] Stream engine terminated cleanly.")
+        
