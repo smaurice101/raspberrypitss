@@ -55,11 +55,11 @@ default_args = {
   'topics' : 'iot-raw-data', # *************** This is one of the topic you created in SYSTEM STEP 2
   'identifier' : 'TML solution',  
   'tss_rest_port' : '9001',  # <<< ***** replace replace with port number i.e. this is listening on port 9000 
-  'rest_port' : '9002',  # <<< ***** replace replace with port number i.e. this is listening on port 9000     
+  'rest_port' : '',  # <<< ***** replace replace with port number i.e. this is listening on port 9000     
   'delay' : '7000', # << ******* 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
   'topicid' : '-999', # <<< ********* do not modify              
   "ingestion_settings": {
-    "active_system": "kafka",
+    "active_system": "", # You can specify: kafka, rabbitmq, redis, scada, splunk, elasticsearch, clickhouse, influxdb, logstash
     "polling_interval_seconds": 1.0,
     "max_batch_size": 10,
     "strict_json_validation": True
@@ -1527,5 +1527,9 @@ if __name__ == '__main__':
          os.environ['VIPERTOKEN']=VIPERTOKEN
          os.environ['VIPERHOST']=VIPERHOST
          os.environ['VIPERPORT']=VIPERPORT
-        
-         gettmlsystemsparams()
+
+         if default_args["ingestion_settings"]["active_system"] != ""
+           tsslogging.startstreamengine(default_args, VIPERHOST, VIPERPORT, VIPERTOKEN)
+         else:
+         # start the FastAPI sever
+           gettmlsystemsparams()
