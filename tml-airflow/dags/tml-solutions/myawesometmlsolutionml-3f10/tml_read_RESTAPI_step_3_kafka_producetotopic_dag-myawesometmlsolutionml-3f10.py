@@ -36,7 +36,7 @@ default_args = {
   'topicid' : '-999', # <<< ********* do not modify              
   "ingestion_settings": {
     "active_system": "", # You can specify: kafka, rabbitmq, redis, scada, splunk, elasticsearch, clickhouse, influxdb, logstash
-    "polling_interval_seconds": 1.0,
+    "polling_interval_seconds": 2.0,
     "max_batch_size": 10,
     "strict_json_validation": True
   },
