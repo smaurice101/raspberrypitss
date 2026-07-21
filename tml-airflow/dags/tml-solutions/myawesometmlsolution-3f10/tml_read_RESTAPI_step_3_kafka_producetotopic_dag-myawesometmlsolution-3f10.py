@@ -34,7 +34,12 @@ default_args = {
     'rest_port': 9002, # <<< ***** replace replace with port number i.e. this is listening on port 9000
     'delay': 7000, # << ******* 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
     'topicid': -999, # <<< ********* do not modify
-},
+  "ingestion_settings": {
+    "active_system": "", # You can specify: kafka, rabbitmq, redis, scada, splunk, elasticsearch, clickhouse, influxdb, logstash
+    "polling_interval_seconds": 1.0,
+    "max_batch_size": 10,
+    "strict_json_validation": True
+  },
   "systems": {
     "kafka": {
       "proxy_url": "https://secure-kafka-proxy.local:8443",
