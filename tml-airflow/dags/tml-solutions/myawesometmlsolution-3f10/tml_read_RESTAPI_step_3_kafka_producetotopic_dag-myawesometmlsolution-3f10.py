@@ -35,8 +35,8 @@ default_args = {
     'delay': 7000, # << ******* 7000 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic
     'topicid': -999, # <<< ********* do not modify
     'ingestion_settings': '{',
-    'active_system': '', # You can specify: kafka, rabbitmq, redis, scada, splunk, elasticsearch, clickhouse, influxdb, logstash
-    'polling_interval_seconds': 1.0,
+    'active_system': 'kafka', # You can specify: kafka, rabbitmq, redis, scada, splunk, elasticsearch, clickhouse, influxdb, logstash
+    'polling_interval_seconds': 2.0,
     'max_batch_size': 10,
     'strict_json_validation': True,
 },
