@@ -102,9 +102,9 @@ def producetokafka(value, tmlid, identifier,producerid,maintopic,substream,args,
      try:
         result=maadstml.viperproducetotopic(VIPERTOKEN,VIPERHOST,VIPERPORT,maintopic,producerid,enabletls,delay,'','', '',0,inputbuf,substream,
                                             topicid,identifier)
-#        print("produce result========",result)
+        print("produce result========",result)
      except Exception as e:
-        print("ERROR: in PRODUCE:",e)
+        print("ERROR:",e)
 
 
 # Check if tmux window exists BEFORE creating
@@ -117,9 +117,6 @@ def tmuxsession(windowinstance,steps):
     isnew2=0
     viperrun=''
     viperport=-1
-  #/Hpde/hpde-$mainos-$chip
-    hpdemlrun=''
-    hpdepredictrun=''
   
     if 'CHIP' in os.environ:
       chip=os.environ['CHIP']
@@ -134,11 +131,9 @@ def tmuxsession(windowinstance,steps):
     if steps=="5":      
        cdir="/Viper-ml"      
        viperrun=f"/Viper-ml/viper-{mainos}-{chip}"
-       hpdemlrun=f"/Hpde/hpde-{mainos}-{chip}"      
     if steps=="6":      
        cdir="/Viper-predict"            
        viperrun=f"/Viper-predict/viper-{mainos}-{chip}"
-       hpdepredictrun=f"/Hpde/hpde-{mainos}-{chip}"
     if steps=="9":      
        cdir="/Viper-preprocess-pgpt"                 
        viperrun=f"/Viper-preprocess-pgpt/viper-{mainos}-{chip}"      
@@ -155,20 +150,7 @@ def tmuxsession(windowinstance,steps):
           ["tmux", "has-session", "-t", f"plugin_{windowinstance}_{steps}"], 
           capture_output=True
       )
-
-    if windowinstance != 'default':
-      if hpdemlrun != "":
-        check_resulthm = subprocess.run(
-          ["tmux", "has-session", "-t", f"plugin_hpdeml_{windowinstance}"], 
-          capture_output=True
-        )
-      if hpdepredictrun != "":  
-        check_result2hp = subprocess.run(
-          ["tmux", "has-session", "-t", f"plugin_hpdepredict_{windowinstance}"], 
-          capture_output=True
-        )
-      
-      ##########################################################
+    
       if check_result.returncode != 0:
           # Window doesn't exist - create it
           subprocess.run(["tmux", "new-session", "-d", "-s", f"plugin_{windowinstance}"])
@@ -183,25 +165,7 @@ def tmuxsession(windowinstance,steps):
           isnew2=1
       else:
           subprocess.run(["tmux", "send-keys", "-t", f"plugin_{windowinstance}_{steps}", "C-c"])
-
-      if hpdemlrun != "": 
-        if check_resulthm.returncode != 0:
-          # Window doesn't exist - create it
-          subprocess.run(["tmux", "new-session", "-d", "-s", f"plugin_hpdeml_{windowinstance}"])
-          subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdeml_{windowinstance}", f"cd /Hpde", "ENTER"], capture_output=True, text=True)        
-          isnew1hm=1
-        else:
-         subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdeml_{windowinstance}", "C-c"])
-
-      if hpdepredictrun != "":       
-        if check_result2hp.returncode != 0:
-          # Window doesn't exist - create it
-          subprocess.run(["tmux", "new-session", "-d", "-s", f"plugin_hpdepredict_{windowinstance}"])
-          isnew2hp=1
-        else:
-          subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdepredict_{windowinstance}", "C-c"])
   
-  ###############################################################################################
     with open(f"{cdir}/viper.txt", 'r', encoding='utf-8') as file:
         line = file.readline()
         oldviperport=line.split(",")[1]
@@ -210,21 +174,6 @@ def tmuxsession(windowinstance,steps):
       subprocess.run(["tmux", "send-keys", "-t", f"plugin_{windowinstance}_{steps}", f"cd /{cdir}", "ENTER"], capture_output=True, text=True)
       subprocess.run(["tmux", "send-keys", "-t", f"plugin_{windowinstance}_{steps}", viperrun, "ENTER"], capture_output=True, text=True)
 
-      # start hpde
-      subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdeml_{windowinstance}", f"cd /Hpde", "ENTER"], capture_output=True, text=True)
-      subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdeml_{windowinstance}", hpdemlrun, "ENTER"], capture_output=True, text=True)
-      time.sleep(3)        
-      with open(f"/Hpde/hpde.txt", 'r', encoding='utf-8') as file:
-        line = file.readline()
-        hpdemlport=line.split(",")[1]
-
-      subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdepredict_{windowinstance}", f"cd /Hpde", "ENTER"], capture_output=True, text=True)
-      subprocess.run(["tmux", "send-keys", "-t", f"plugin_hpdepredict_{windowinstance}", hpdepredictrun, "ENTER"], capture_output=True, text=True)
-      time.sleep(3)              
-      with open(f"/Hpde/hpde.txt", 'r', encoding='utf-8') as file:
-        line = file.readline()
-        hpdepredictport=line.split(",")[1]
-      
     time.sleep(3)
     #if isnew2:
      # time.sleep(5)
@@ -234,7 +183,7 @@ def tmuxsession(windowinstance,steps):
         viperport=line.split(",")[1]
 
     
-    return oldviperport,viperport,f"plugin_{windowinstance}_{steps}",f"plugin_{windowinstance}",hpdemlport,hpdepredictport
+    return oldviperport,viperport,f"plugin_{windowinstance}_{steps}",f"plugin_{windowinstance}"
     #start the script
   #  subprocess.run(["tmux", "send-keys", "-t", f"plugin_{windowinstance}", new_pythonrun, "ENTER"], capture_output=True, text=True)
 
@@ -263,19 +212,18 @@ def flatten_for_shell(arg_list):
   
 def stopstart(step,stepsarr,windowinstance='default'):
 
-  print("inside  Stopstart")
+  print("Stopstart")
   pythonrun=''
 
   print("windowinstance==",windowinstance)
   print("step==",isinstance(step,str),step)
-  print(f"step='{step}'")
- # step=str(step)  
+  step=str(step)
   
-  if step=='4':
-    oldviperport,viperport,vwn,swn,hpdemlport,hpdepredictport=tmuxsession(windowinstance,step)    
+  if step=="4":
+    oldviperport,viperport,vwn,swn=tmuxsession(windowinstance,step)    
     if windowinstance=='default':
       viperport=oldviperport
-    
+      
     with open("/tmux/step4_preprocess.txt", 'r', encoding='utf-8') as file:
         lines = file.readlines()
         pythonrun = lines[2].strip()  # Index 2 = 3rd line     
@@ -291,10 +239,9 @@ def stopstart(step,stepsarr,windowinstance='default'):
       
         new_pythonrun = flatten_for_shell(args) #shlex.join(flatten_for_shell(args))
         print(f"new_pythonrun: {new_pythonrun}")      
+  elif step=="5":
     
-  if step=="5":
-    
-    oldviperport,viperport,vwn,swn,hpdemlport,hpdepredictport=tmuxsession(windowinstance,step)    
+    oldviperport,viperport,vwn,swn=tmuxsession(windowinstance,step)    
 
     if windowinstance=='default':
       viperport=oldviperport
@@ -306,8 +253,6 @@ def stopstart(step,stepsarr,windowinstance='default'):
         wn = lines[1].strip()
         args = shlex.split(pythonrun)      
         args[-11] = viperport  # viper port                 
-        args[-9] = hpdemlport  # hpde port                 
-      
         args[-8] = stepsarr[-8]           
         args[-7] = stepsarr[-7]    
         args[-6] = stepsarr[-6]       
@@ -319,8 +264,8 @@ def stopstart(step,stepsarr,windowinstance='default'):
         new_pythonrun = flatten_for_shell(args) #shlex.join(flatten_for_shell(args))
         print(f"STEP 5 new_pythonrun: {new_pythonrun}")
       
-  if step=="6":
-    oldviperport,viperport,vwn,swn,hpdemlport,hpdepredictport=tmuxsession(windowinstance,step)    
+  elif step=="6":
+    oldviperport,viperport,vwn,swn=tmuxsession(windowinstance,step)    
     if windowinstance=='default':
       viperport=oldviperport
     
@@ -330,8 +275,6 @@ def stopstart(step,stepsarr,windowinstance='default'):
         wn = lines[1].strip()
         args = shlex.split(pythonrun)      
         args[-10] = viperport  # viper port      
-        args[-8] = hpdepredictport  # hpde predict port                 
-      
         args[-7] = stepsarr[-7]    
         args[-6] = stepsarr[-6]       
         args[-5] = stepsarr[-5]    
@@ -341,8 +284,8 @@ def stopstart(step,stepsarr,windowinstance='default'):
         args[-1] = stepsarr[-1]    
         new_pythonrun = flatten_for_shell(args) #shlex.join(flatten_for_shell(args))
         print(f"new_pythonrun: {new_pythonrun}")
-  if step=="9":
-    oldviperport,viperport,vwn,swn,hpdemlport,hpdepredictport=tmuxsession(windowinstance,step)    
+  elif step=="9":
+    oldviperport,viperport,vwn,swn=tmuxsession(windowinstance,step)    
     if windowinstance=='default':
       viperport=oldviperport
     
@@ -375,8 +318,8 @@ def stopstart(step,stepsarr,windowinstance='default'):
         args[-1] = stepsarr[-1]    #vectordimension
         new_pythonrun = flatten_for_shell(args) #shlex.join(flatten_for_shell(args))
         print(f"new_pythonrun: {new_pythonrun}")      
-  if step=="9b":
-    oldviperport,viperport,vwn,swn,hpdemlport,hpdepredictport=tmuxsession(windowinstance,step)    
+  elif step=="9b":
+    oldviperport,viperport,vwn,swn=tmuxsession(windowinstance,step)    
     if windowinstance=='default':
       viperport=oldviperport
     
@@ -408,8 +351,6 @@ def stopstart(step,stepsarr,windowinstance='default'):
         print(f"new_pythonrun: {new_pythonrun}")
 
   new_pythonrun=new_pythonrun.replace("<<n>>",'\n')
-
-  
   if windowinstance=='default':
     subprocess.run(["tmux", "send-keys", "-t", wn, "C-c"])
     subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "{}".format(new_pythonrun), "ENTER"],capture_output=True, text=True)        
@@ -419,16 +360,7 @@ def stopstart(step,stepsarr,windowinstance='default'):
     
     #subprocess.run(["tmux", "new", "-d", "-s", "{}".format(windowinstance)])
     #subprocess.run(["tmux", "send-keys", "-t", "{}".format(windowinstance), "{}".format(new_pythonrun), "ENTER"],capture_output=True, text=True)        
-
-def terminatetmuxwindowsatstart():
-    result = subprocess.run(['tmux', 'list-sessions'], capture_output=True, text=True)
-    sessions = result.stdout.strip().split('\n')
     
-    for session in sessions:
-        if session.startswith('plugin_'):
-            session_name = session.split(':')[0]
-            subprocess.run(['tmux', 'kill-session', '-t', session_name])
-  
 def terminatetmuxwindows(step,wn):
   # Get all tmux sessions
   wt=""
@@ -633,8 +565,7 @@ def gettmlsystemsparams():
             windowinstance = jdata.get("windowinstance","default")                        
             step4arr = [step4raw_data_topic,step4preprocesstypes,step4jsoncriteria,step4preprocess_data_topic,rollbackoffset]
             stopstart(step,step4arr,windowinstance)
-            time.sleep(5)
-             
+            
            elif step=='4c':
              maxrows = jdata.get('maxrows',10)  
              searchterms = jdata.get('searchterms','')  
@@ -652,7 +583,6 @@ def gettmlsystemsparams():
              windowinstance = jdata.get("windowinstance","default")            
              step4carr = [maxrows,searchterms,rememberpastwindows,patternwindowthreshold,raw_data_topic,rtmsstream,rtmsscorethreshold,attackscorethreshold,patternscorethreshold,
                          localsearchtermfolder,localsearchtermfolderinterval,rtmsfoldername,rtmsmaxwindows]
-
              stopstart(step,step4carr,windowinstance)
 
            return {
@@ -936,7 +866,6 @@ def gettmlsystemsparams():
         @app.post('/api/v1/consume')
         def consumedata(jdata: dict):
 #          jdata = request.get_json()          
-          
           osdu = jdata.get('osdu','false')
           kind = jdata.get('kind','tml')  
 
@@ -957,13 +886,12 @@ def gettmlsystemsparams():
           maintopic = jdata.get('topic','')
           forwardurl = jdata.get('forwardurl','')  
           legal = jdata.get('legal','tml-legal')  
-
           
           forward_headers = {'Content-Type': 'application/json'}
 
           if maintopic != '':
            try: 
-            rollbackoffsets = int(jdata.get('rollbackoffsets','100'))
+            rollbackoffsets = int(jdata.get('rollbackoffsets',100))
             enabletls = int(jdata.get('enabletls',1))
             consumerid='tmlconsumerplugin'
             companyname='companyname'
@@ -1018,7 +946,7 @@ def gettmlsystemsparams():
                 }
   
             if forwardurl == '':
-                #print("response======",response)
+                #print("response=",response)
                 return response
             else:              
                farr = [fw.strip() for fw in forwardurl.split(",")]  # Clean whitespace              
@@ -1047,291 +975,28 @@ def gettmlsystemsparams():
              
 ##################### INDUSTRIAL API ##############################################################
 #-------------------------------- SCADA/MODBUS -----------------------------------------------------                        
-
-        def killlocalviper():  
-
-            command = (
-                  "tmux lsw -a -F '#{session_name}:#{window_index}:#{window_name}' | "
-                  "grep -E 'viper-ml|viper-predict|python-predict-|python-ml-|hpde-ml|hpde-predict|viper-preprocess1|viper-preprocess2|viper-preprocess3|viper-preprocess-pgpt|viper-preprocess-agenticai' | " # <--- Added Pipe here
-                  "cut -d: -f1,2 | "
-                  "xargs -r -I {} tmux killw -t {}"
-            )
-
-            result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True)
-          
-        def killalltmuxwindows(req : dict):
-              payload = req.get("preprocessing", {})
-              win = payload.get("windowinstance","")         
-              print("win===",win)        
-              if win != "":
-                win = win.replace("_","-")
-                #win = re.sub("_", "-", win)                
-                
-                sessionname = f"plugin_{win}_4" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                sessionname = f"plugin_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-
-              payload = req.get("preprocessing1", {})
-              win = payload.get("windowinstance","")         
-              print("win===",win)        
-              if win != "":
-                win = win.replace("_","-")
-                #win = re.sub("_", "-", win)                
-                
-                sessionname = f"plugin_{win}_4" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                sessionname = f"plugin_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-          
-              payload = req.get("machinelearning", {})
-              win = payload.get("windowinstance","")          
-              if win != "":
-                win=win.replace("_","-")                
-                sessionname = f"plugin_{win}_5" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                sessionname = f"plugin_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                
-                sessionname = f"plugin_hpdeml_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-
-              payload = req.get("predictions", {})
-              win = payload.get("windowinstance","")          
-              if win != "":
-                win=win.replace("_","-")                
-                sessionname = f"plugin_{win}_6" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                sessionname = f"plugin_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                
-                sessionname = f"plugin_hpdepredict_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                
-              payload = req.get("agenticai", {})
-              win = payload.get("windowinstance","")          
-              if win != "":
-                win=win.replace("_","-")                
-                sessionname = f"plugin_{win}_9b" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                sessionname = f"plugin_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-
-              payload = req.get("ai", {})
-              win = payload.get("windowinstance","")          
-              if win != "":
-                win=win.replace("_","-")                
-                sessionname = f"plugin_{win}_9" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-                sessionname = f"plugin_{win}" 
-                subprocess.run(['tmux', 'kill-session', '-t', sessionname])
-
-        @app.post("/api/v1/cleanupwindows")
-        def cleanup_viper_windows(req: dict):
-            """
-            Kills all user chosen windows 
-            """
-            try:
-                    # 1. Parse the JSON input
-                    targets = req.get("targets", [])
-            
-                    if not targets:
-                        return "No targets provided in JSON."
-            
-                    # 2. Construct the dynamic regex
-                    target_regex = "|".join(targets)
-            
-                    # 3. Construct the shell command
-                    # We use f-strings for the regex and double brackets to escape the tmux format braces
-                    command = (
-                        f"tmux lsw -a -F '#{{session_name}}:#{{window_index}}:#{{window_name}}' | "
-                        f"grep -E '{target_regex}' | "
-                        f"cut -d: -f1,2 | "
-                        f"xargs -r -I {{}} tmux killw -t {{}}"
-                    )
-            
-                    # 4. Execute
-                    result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True)
-                    # stop all threads
-                     #active_sim_threads = []
-                     #active_read_threads = []
-
-                    for th in sg.active_sim_threads:
-                        if th[0].is_alive(): 
-                          if th[1] not in sg.topologystop:
-                             sg.topologystop.append(th[1])
-                          th[0].join(timeout=5.0)
-  
-                    for th in sg.active_read_threads:
-                        if th[0].is_alive(): 
-                          if th[1] not in sg.scadatopologystop:
-                             sg.scadatopologystop.append(th[1])
-                          th[0].join(timeout=5.0)
-          
-                    return {
-                        "status": "success",
-                        "cleaned_regex": target_regex,
-                        "message": "Matching tmux windows terminated."
-                    }
-            
-            except json.JSONDecodeError:
-                 return {"status": "error", "message": "Invalid JSON format."}
-            except subprocess.CalledProcessError as e:
-                return {"status": "error", "message": str(e)}
-      
-        @app.post("/api/v1/scada_modbus_carryover")
-        def start_carryover(req: dict):
-            
-            job_id = str(time.time())
-          
-            try:
-                killlocalviper()
-                # step 1 get the user topology
-                topology = req.get("carryover_topology", "") # get the user topology
-                scadarawdatatopic = req.get("sendtotopic", "") # get the user topology
-                baseurl = req.get("base_url", "")
-                modestr = req.get("modestr", "carryover_snapshot")
-                callbackurl = req.get("callback_url", "")
-                timeinterval = req.get("time_interval", 30)
-              
-                #sg.mainmode =  modestr
-
-                #sg.mainmodes.append(modestr)
- #               return
-              
-                if topology == "" or baseurl == "":
-                   print(f"Error: cannot read topology or base_url empty")
-                   writeviperlogs("ERROR",f"cannot read topology or base_url empty: {e}",VIPERTOKEN,VIPERHOST,VIPERPORT)                                          
-                   return {
-                      "message": "Error: Topology is empty or base_url empty",
-                      "job_id": job_id,
-                   }
-
-          
-                vessels = topology.get("vessels", "") # get the user topology
-                flows = topology.get("flows", "") # get the user topology
-                physics = topology.get("physics", "") # get the user topology
-                solver = topology.get("solver", "") # get the user topology
-
-                sendtotopic = topology.get("sendtotopic", "") # get the user topology
-                topologyname = topology.get("topologyname", "") # get the user topology
-                localfoldername = topology.get("localfoldername", "") # get the user topology
-                rollbackoffsets = topology.get("rollbackoffsets", 300) # get the user topology
-                physicspreprocessedtopic = topology.get("preprocessed_physics_topic", "")
-                savetodiskfrequency = int(topology.get("savetodiskfrequency", 0)) # 1=save aLL, 0=save hourly, -1=dont save
-
-                if topologyname == "":
-                   print("ERROR: topology is empty")
-                   return {"Message": "topologyname is EMPTY - please give it a name" }
-
-                host = req.get("scada_host", "127.0.0.1")
-                port = req.get("scada_port", 2502)
- 
-                buf = f"{host}:{port}_{topologyname}_{modestr}"
-              
-                if localfoldername != "":
-                   os.makedirs(f"/rawdata/carryover/{localfoldername}", exist_ok=True)
-
-              ######################## PUT IN LOOP #########################################
-                #step get the Scada raw data and populate the topology and run the physics 
-                #sg.stop_sim.clear()          
-
-                with sim_lock:  # ✅ Thread-safe
-                  #if sg.sim_job and sg.sim_job["stop"]:
-                      # Don't sleep - just skip or queue
-                   #   pass
-                  if buf in sg.topologyrunning:
-                      print("=====Topology running:",buf)
-                      sg.topologystop.append(buf) 
-                      time.sleep(10)
-
-                    #= [v for v in sg.topologystop if v != buf]
-
-                  # Stop existing thread first
-                  #if sg.sim_thread and sg.sim_thread.is_alive():
-                   #  sg.sim_job["stop"] = True
-                    # sg.sim_thread.join(timeout=2.0)
-
-                  sg.sim_job = {"stop": False, "job_id": job_id}
-                  sg.sim_thread = threading.Thread(
-                  target=tsim.simloop,
-                  args=(
-                      scadarawdatatopic,
-                      sendtotopic,
-                      physicspreprocessedtopic,
-                      rollbackoffsets,
-                      solver,
-                      topology, 
-                      localfoldername,
-                      topologyname,
-                      modestr,
-                      baseurl,
-                      callbackurl,                    
-                      timeinterval,
-                      savetodiskfrequency,
-                      VIPERTOKEN,
-                      VIPERHOST,
-                      VIPERPORT,
-                      buf
-                     ),
-                     daemon=True,
-                  )
-                  sg.active_sim_threads.append([sg.sim_thread,buf])                  
-                  #vessels = [v for v in vessels if v != "Empty"]
-                  sg.topologyrunning.append(buf)
-                  sg.sim_thread.start()
-
-                 # print("THREADS============= running=", len(sg.active_sim_threads))
-                    
-                return {
-                  "message": "Carryover simulator started",
-                  "job_id": job_id
-                  }
-                                                
-            except Exception as e:
-                 print(f"Error: cannot read topology: {e}")          
-                 writeviperlogs("ERROR",f"cannot read topology: {e}",VIPERTOKEN,VIPERHOST,VIPERPORT)                            
-                 return {
-                      "message": f"Error: Cannot read topology {e}",
-                      "job_id": job_id,
-                 }
-              
-
-      
         @app.post("/api/v1/scada_modbus_read")
         def start_vessel_read(req: dict):
             
             #req = request.get_json()
             job_id = str(time.time())
-            topology = req.get("carryover_topology", "") # get the user topology
-            topologyname = topology.get("topologyname", "") # get the user topology
-            localfoldername = topology.get("localfoldername", "")
-            callback = topology.get("callback_url", "")
-            alertemails = topology.get("alertemails", "")
-            threshold = topology.get("carryoverthreshold", "")
-            preprocessedtopic = topology.get("preprocessed_physics_topic", "")
-          
-            if topologyname == "":
-                  return {"Message": "topologyname is EMPTY - please give it a name" }
-
+            
             scada_cfg = {
                 "host": req.get("scada_host", "127.0.0.1"),
                 "port": req.get("scada_port", 2502),
                 "unit_id": req.get("slave_id", 1),
-                "topologyname": topologyname
             }
-          
             baseurl = req.get("base_url", "")
-            #sg.stop_read.clear()          
-
-            buf = f"{scada_cfg['host']}:{scada_cfg['port']}"
-            if buf in sg.scadahostport:  # stop any running thread
-              sg.scadatopologystop.append(buf)
-              sg.scadahostport = [v for v in sg.scadahostport if v != buf]
-              time.sleep(2)
-          
             with lock:  # ✅ Thread-safe
-                            
+                if sg.read_job and sg.read_job["stop"]:
+                    # Don't sleep - just skip or queue
+                    pass
+        
+                # Stop existing thread first
+                if sg.read_thread and sg.read_thread.is_alive():
+                    sg.read_job["stop"] = True
+                    sg.read_thread.join(timeout=float(req.get("read_interval_seconds", 0.3))+1.0)
+            
                 # Helper to send optional payloads
                 def post_if_payload(key: str, endpoint: str) -> None:
                     payload = req.get(key, {})
@@ -1339,34 +1004,18 @@ def gettmlsystemsparams():
                     if payload:
                         try:
                             u = endpoint
-                            print("Endpoint=",u.strip())
-                            requests.post(u.strip(), json=payload, timeout=(5, 30))
+                            requests.post(u.strip(), json=payload, timeout=5.0)
                         except Exception as e:
                             print(f"Error: cannot send {key} post in scada modbus: {e}")
                             writeviperlogs("ERROR",f"cannot send {key} post in scada modbus: {e}",VIPERTOKEN,VIPERHOST,VIPERPORT)                            
 
 #                post_if_payload("terminatewindow", f"{baseurl}/api/v1/terminatewindow")            
                 post_if_payload("preprocessing", f"{baseurl}/api/v1/preprocess")
-                post_if_payload("preprocessing1", f"{baseurl}/api/v1/preprocess")              
                 post_if_payload("machinelearning", f"{baseurl}/api/v1/ml")
                 post_if_payload("predictions", f"{baseurl}/api/v1/predict")
                 post_if_payload("agenticai", f"{baseurl}/api/v1/agenticai")              
                 post_if_payload("ai", f"{baseurl}/api/v1/ai")                            
-
-#                startreg = req.get("start_register", 40001),
-                offset = 40001
-
-                startreg_raw = req.get("start_register",40001)
-                if isinstance(startreg_raw, tuple):
-                    startreg = startreg_raw[0] if startreg_raw[0] is not None else 40001
-                elif startreg_raw is None:
-                    startreg = 40001
-                else:
-                    startreg = startreg_raw
-
-                if startreg > 50000:
-                  offset = 50001
-  
+              
                 sg.read_job = {"stop": False, "job_id": job_id}
                 sg.read_thread = threading.Thread(
                 target=cv.modbus_read_loop,
@@ -1377,7 +1026,7 @@ def gettmlsystemsparams():
                     req.get("max_reads",-1),
                     req.get("fields", []),
                     req.get("scaling", {}),
-                    startreg - offset,
+                    req.get("start_register", 40001) - 40001,
                     req.get("sendtotopic", ""),            
                     job_id,
                     VIPERTOKEN,
@@ -1386,25 +1035,14 @@ def gettmlsystemsparams():
                     default_args,
                     req.get("vessel_names", {}),
                     req.get("preprocessing", {}),
-                    req.get("preprocessing1", {}),                  
                     req.get("machinelearning", {}),
                     req.get("predictions", {}),
                     req.get("agenticai", {}),
                     req.get("ai", {}),                
-                    req.get("validation_bounds", {}),                  
-                    localfoldername,
-                    topologyname,
-                    callback,
-                    alertemails,
-                    threshold,
-                    preprocessedtopic,                  
-                    req.get("createvariables", ""),  # ✅ Dynamic from request                  
+                    req.get("createvariables", "")  # ✅ Dynamic from request                  
                    ),
                    daemon=True,
                 )
-                sg.active_read_threads.append([sg.read_thread,buf])
-                #sg.scadatopologyrunning.append(topologyname)              
-                sg.scadahostport.append(buf)
                 sg.read_thread.start()
         
             return {
@@ -1435,55 +1073,27 @@ def gettmlsystemsparams():
                    pressure = val
                    break
     
-            #print(f"📨 Job {data.get('job_id', 'N/A')} | Vessel {vessel_id}: {pressure:.1f}")
-            #print(f"   Total fields: {len(vessel) if vessel else 0}")
+            print(f"📨 Job {data.get('job_id', 'N/A')} | Vessel {vessel_id}: {pressure:.1f}")
+            print(f"   Total fields: {len(vessel) if vessel else 0}")
     
             # DYNAMIC: Show computed vars (anything not in original fields list)
             original_fields = data.get('fields', [])
             computed_fields = {k: v for k, v in vessel.items() 
                               if k not in original_fields and isinstance(v, (int, float))}
     
-            #for field, value in list(computed_fields.items())[:3]:
-             #   print(f"   {field}: {value:.0f}")
+            for field, value in list(computed_fields.items())[:3]:
+                print(f"   {field}: {value:.0f}")
 
-#            print(json.dumps(data))
-          
+            print(json.dumps(data))
             return json.dumps(data)
 
 
         @app.post("/api/v1/scada_read_stop")
-        def stop_vessel_read(req: dict):
-
-           topology = req.get("carryover_topology", "") # get the user topology
-           topologyname = topology.get("topologyname", "") # get the user topology
-           if topologyname != "":
-                sg.scadatopologystop.append(topologyname)
-            
-           return {"message": "Stop signal sent"}
-
+        def stop_vessel_read():
+            if sg.read_job:
+                sg.read_job["stop"] = True
+            return {"message": "Stop signal sent"}
         
-        @app.post("/api/v1/scada_read_carryover_stop")
-        def stop_vessel_carryover_read(req: dict):
-           host = req.get("scada_host", "127.0.0.1")
-           port = req.get("scada_port", 2502)
-           modestr = req.get("modestr", "carryover_snapshot") 
-
-           topology = req.get("carryover_topology", "") # get the user topology
-           topologyname = topology.get("topologyname", "") # get the user topology
-
-           buf = f"{host}:{port}_{topologyname}_{modestr}"
-           print(f"Stopping carryover {buf}")
-           if topologyname != "":
-              for th in sg.active_sim_threads:
-                  if th[0].is_alive() and th[1] == buf:
-                       sg.topologystop.append(buf)
-                       th[0].join(timeout=5.0)             
-          
-           killalltmuxwindows(req)
-           time.sleep(2)
-      
-           return {"message": "Stop signal sent to carryover"}
-
         @app.get("/api/v1/scada_status")
         def status():
             return {
@@ -1547,7 +1157,6 @@ def gettmlsystemsparams():
                         writeviperlogs("ERROR",f"cannot send {key} post in scada modbus: {e}",VIPERTOKEN,VIPERHOST,VIPERPORT)                            
         
             post_if_payload("preprocessing", f"{baseurl}/api/v1/preprocess")
-            post_if_payload("preprocessing1", f"{baseurl}/api/v1/preprocess")            
             post_if_payload("machinelearning", f"{baseurl}/api/v1/ml")
             post_if_payload("predictions", f"{baseurl}/api/v1/predict")
             post_if_payload("agenticai", f"{baseurl}/api/v1/agenticai")              
@@ -1594,92 +1203,94 @@ def gettmlsystemsparams():
 ####################################################################################################
         @app.post('/api/v1/health')
         def tmux_health_check_json() -> Dict[str, Any]:
-
-           def is_pane_stopped(session: str, window: str) -> bool:
+            def run_tmux(cmd):
                 try:
-                    # 1. Get the shell PID for the pane
-                    cmd_pid = ['tmux', 'display-message', '-t', f'{session}:{window}.0', '-p', '#{pane_pid}']
-                    pid_res = subprocess.run(cmd_pid, capture_output=True, text=True, timeout=2)
-                    if not pid_res.stdout.strip(): return False
-                    shell_pid = int(pid_res.stdout.strip())
+                    result = subprocess.run(['tmux'] + cmd, capture_output=True, text=True, timeout=10)
+                    return result.stdout.strip()
+                except:
+                    return ""
+            
+            result = {
+                "timestamp": datetime.now().isoformat(),
+                "sessions": [],
+                "summary": {
+                    "total_plugin_windows": 0,
+                    "error_count": 0,
+                    "healthy": True
+                }
+            }
+            
+            # Get clean session list
+            sessions_raw = run_tmux(['ls', '-F', '#{session_name}']) or run_tmux(['list-sessions', '-F', '#{session_name}'])
+            sessions = [s.strip() for s in sessions_raw.split('\n') if s.strip()]
+            
+            crash_patterns = [r'panic[:\s]', r'fatal\s+error', r'segmentation.*fault', 
+                             r'SIGSEGV', r'runtime\s+error', r'goroutine\s+panic', 
+                             r'signal:.*killed', r'signal:.*abrt']
+            
+            for session_name in sessions:
+                # ✅ FIX 1: Check if SESSION starts with plugin_
+                is_plugin_session = session_name.startswith('plugin_')
+                session_name_user ="n/a"
+                if is_plugin_session:
+                  session_name_user=session_name.split("_")[1]
+                  
+                session_data = {
+                    "name": session_name,
+                    "user_session": session_name_user, 
+                    "is_plugin_session": is_plugin_session,
+                    "plugin_windows": [],
+                    "status": "healthy",
+                    "plugin_window_count": 0
+                }
+                
+                # Get windows for this session
+                windows_raw = run_tmux(['list-windows', '-t', session_name, 
+                                       '-F', '#{window_index}:#{window_name}'])
+                windows = [w for w in windows_raw.split('\n') if ':' in w]
+                
+                # ✅ FIX 2: Include ANY window starting with plugin_ OR session is plugin_
+                plugin_windows = []
+                for win in windows:
+                    win_index, win_name = win.split(':', 1)
+                    # Check if WINDOW starts with plugin_ OR SESSION is plugin_
+                    #if win_name.startswith('plugin_') or is_plugin_session:
+                    plugin_windows.append((win_index, win_name))
+                
+                # Process plugin windows
+                for win_index, win_name in plugin_windows:
+                    result["summary"]["total_plugin_windows"] += 1
+                    session_data["plugin_window_count"] += 1
+                    
+                    pane_content = run_tmux(['capture-pane', '-t', f'{session_name}:{win_index}.0', 
+                                           '-S', '-1000', '-e', '-q'])
+                    
+                    crashes = [line.strip() for line in pane_content.split('\n') 
+                              if any(re.search(p, line, re.IGNORECASE) for p in crash_patterns)]
+                    
+                    window_data = {
+                        "index": win_index,
+                        "name": win_name,
+                        "status": "healthy" if not crashes else "crashed",
+                        "crash_lines": crashes[:5]
+                    }
+                    
+                    if crashes:
+                        result["summary"]["error_count"] += 1
+                        session_data["status"] = "unhealthy"
+                        result["summary"]["healthy"] = False
+                    
+                    session_data["plugin_windows"].append(window_data)
+                
+                # ✅ FIX 3: Include ANY session with plugin activity
+                if session_data["plugin_window_count"] > 0 or is_plugin_session:
+                    result["sessions"].append(session_data)
+          
+            writeviperlogs("INFO",f"{result}",VIPERTOKEN,VIPERHOST,VIPERPORT)                            
+            
+            return result
 
-                    parent = psutil.Process(shell_pid)
-                    all_pids = [parent.pid] + [p.pid for p in parent.children(recursive=True)]
 
-                    for pid in all_pids:
-                        # Run ps command for this specific PID
-                        cmd_ps = ['ps', '-o', 'stat=', '-p', str(pid)]
-                        stat_res = subprocess.run(cmd_ps, capture_output=True, text=True)
-                        stat_str = stat_res.stdout.strip()
-
-                        # CRITICAL: Check if 'T' is anywhere in the status string
-                        # This catches 'Tl', 'T', 'Ts', etc.
-                        if 'T' in stat_str:
-                            return True
-
-                except (psutil.NoSuchProcess, ValueError, subprocess.SubprocessError):
-                    return False
-                return False
-
-
-           def run_tmux(cmd):
-             try:
-               result = subprocess.run(['tmux'] + cmd, capture_output=True, text=True, timeout=10)
-               return result.stdout.strip()
-             except:
-                return ""
-
-           result = {
-              "timestamp": datetime.now().isoformat(),
-              "sessions": [],
-              "summary": {"total_plugin_windows": 0, "error_count": 0, "healthy": True}
-             }
-
-           sessions_raw = run_tmux(['ls', '-F', '#{session_name}']) or run_tmux(['list-sessions', '-F', '#{session_name}'])
-           sessions = [s.strip() for s in sessions_raw.split('\n') if s.strip()]
-
-           crash_patterns = [r'panic[:\s]', r'fatal\s+error', r'segmentation.*fault', r'SIGSEGV',
-                      r'runtime\s+error', r'goroutine\s+panic', r'signal:.*killed', r'signal:.*abrt',
-                      r'stopped', r'killed']
-
-           for session_name in sessions:
-               is_plugin_session = session_name.startswith('plugin_')
-               session_data = {"name": session_name, "plugin_windows": [], "status": "healthy", "plugin_window_count": 0}
-
-               windows_raw = run_tmux(['list-windows', '-t', session_name, '-F', '#{window_index}:#{window_name}'])
-               windows = [w for w in windows_raw.split('\n') if ':' in w]
-
-               for win in windows:
-                 win_index, win_name = win.split(':', 1)
-
-            # Check OS status for this specific pane
-                 pane_stopped = is_pane_stopped(session_name, win_index)
-
-            # Capture log output
-                 pane_content = run_tmux(['capture-pane', '-t', f'{session_name}:{win_index}.0', '-S', '-1000', '-e', '-q'])
-                 crashes = [line.strip() for line in pane_content.split('\n') if any(re.search(p, line, re.IGNORECASE) for p in crash_patterns)]
-
-            # A window is "unhealthy" if it logs a crash OR the process is OS-Stopped
-                 is_unhealthy = len(crashes) > 0 or pane_stopped
-
-                 window_data = {
-                  "index": win_index, "name": win_name,
-                  "status": "healthy" if not is_unhealthy else ("stopped" if pane_stopped else "crashed"),
-                  "crash_lines": crashes[:5]
-                  }
-
-                 if is_unhealthy:
-                   result["summary"]["error_count"] += 1
-                   session_data["status"] = "unhealthy"
-                   result["summary"]["healthy"] = False
-
-                   session_data["plugin_windows"].append(window_data)
-                   session_data["plugin_window_count"] += 1
-                   result["summary"]["total_plugin_windows"] += 1
-
-               result["sessions"].append(session_data)
-
-           return result
       
 ####################################################################################################      
         #app.run(port=default_args['rest_port']) # for dev
@@ -1810,5 +1421,9 @@ if __name__ == '__main__':
          os.environ['VIPERTOKEN']=VIPERTOKEN
          os.environ['VIPERHOST']=VIPERHOST
          os.environ['VIPERPORT']=VIPERPORT
-         terminatetmuxwindowsatstart()
-         gettmlsystemsparams()
+        
+         if default_args["ingestion_settings"]["active_system"] != "":
+           tsslogging.startstreamengine(default_args, VIPERHOST, VIPERPORT, VIPERTOKEN)
+         else:
+         # start the FastAPI sever
+           gettmlsystemsparams()
