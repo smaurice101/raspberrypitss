@@ -41,7 +41,7 @@ default_args = {
   'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
   'jsoncriteria' : """uid=metadata.dsn,filter:allrecords~\
 subtopics=metadata.property_name~\
-values=metadata.property_name~\
+values=datapoint.value~\
 identifiers=metadata.display_name~\
 datetime=datapoint.updated_at~\
 msgid=datapoint.id~\
