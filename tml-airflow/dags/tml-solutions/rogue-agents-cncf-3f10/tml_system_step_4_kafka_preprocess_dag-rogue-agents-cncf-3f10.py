@@ -37,7 +37,7 @@ default_args = {
   'usemysql' : '1', # do not modify
   'streamstojoin' : '', # leave blank
   'identifier' : 'Rogue agent monitor', # <<< ** Change as needed
-  'preprocesstypes' : 'trend,avg,sum', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'preprocesstypes' : 'trend,avg,zscore', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
   'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
   'jsoncriteria' : 'uid=gen_ai.agent.id,filter:cncf~\
 subtopics=gen_ai.agent.execution_step,gen_ai.usage.input_tokens,gen_ai.usage.output_tokens,gen_ai.usage.total_tokens,metrics.api_call_rate,metrics.target_entropy,metrics.payload_bytes,security.privilege_level~\
