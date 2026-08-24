@@ -44,8 +44,8 @@ subtopics=gen_ai.agent.execution_step,gen_ai.usage.input_tokens,gen_ai.usage.out
 values=gen_ai.agent.execution_step,gen_ai.usage.input_tokens,gen_ai.usage.output_tokens,gen_ai.usage.total_tokens,metrics.api_call_rate,metrics.target_entropy,metrics.payload_bytes,security.privilege_level~\
 identifiers=service.instance.id,service.instance.id,service.instance.id,service.instance.id,service.instance.id,service.instance.id,service.instance.id,service.instance.id~\
 datetime=startTimeUnixNano~\
-msgid=datapoint.id~\
-latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
+msgid=traceId~\
+latlong=' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
