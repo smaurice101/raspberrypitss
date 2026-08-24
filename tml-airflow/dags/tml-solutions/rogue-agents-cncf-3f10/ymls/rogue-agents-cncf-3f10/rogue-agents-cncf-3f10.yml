@@ -85,7 +85,7 @@
              - name: KUBE
                value: '1'
              - name: step3localfileinputfile # STEP 3 localfile inputfile field can be adjusted here.
-               value: '/rawdata/rogueagentsdata.txt'
+               value: '/rawdatademo/rogueagentsdata.txt'
              - name: step3localfiledocfolder # STEP 3 # STEP 3 docfolder inputfile field can be adjusted here.
                value: ''               
              - name: step4maxrows # STEP 4 maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
@@ -237,7 +237,7 @@
              - name: step9blocalmodelsfolder
                value: ''                                             
              - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
-               value: 'My Solution Title'                              
+               value: 'Rogue Agent Monitoring Solution'                              
              - name: step1description # STEP 1 description field can be adjusted here. 
                value: 'This is an awesome real-time solution built by TSS'                                          
              - name: KUBEBROKERHOST
