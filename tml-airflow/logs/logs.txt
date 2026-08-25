@@ -3143,3 +3143,5 @@ Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
+✅ PIPELINE COMPLETE: maadsdocker/rogue-agents-cncf-3f10-amd64 has been processed successfully.
+=============================================================
