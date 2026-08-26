@@ -67,7 +67,7 @@ default_args = {
   "systems": {
     "kafka": {
       "proxy_url": "https://secure-kafka-proxy.local:8443",
-      "consumer_group": "threat_agent_group",
+      "consumer_group": "kafka_agent_group",
       "instance_name": "agent_01",
       "topic_name": "iot-raw-data",               # Added to fix KeyError
       "output_stream_topic": "iot-raw-data",       # Added for maadstml output routing
@@ -75,13 +75,13 @@ default_args = {
       "payload_key_path": ["value"],
       "security": {
         "auth_type": "bearer",
-        "token": "CLOUD_SECRET_TOKEN_ABC123",
+        "token": os.environ.get('KAFKACLOUDPASSWORD', '<Enter API secret>'),
         "verify_ssl": True,
-        "custom_ca_cert_path": "/raspberrypitss/certs/server_ca.crt",
+        "custom_ca_cert_path": "/rawdata/certs/server_ca.crt",
         "mtls": {
           "enabled": True,
-          "client_cert_path": "/raspberrypitss/certs/client_agent.crt",
-          "client_key_path": "/raspberrypitss/certs/client_agent.key"
+          "client_cert_path": "/rawdata/certs/client_agent.crt",
+          "client_key_path": "/rawdata/certs/client_agent.key"
         }
       }
     },
@@ -93,7 +93,7 @@ default_args = {
       "security": {
         "auth_type": "basic",
         "username": "guest",
-        "password": "secure_password_here",
+        "password": os.environ.get('RABBITMQPASSWORD', '<Enter API secret>'),
         "verify_ssl": False
       }
     },
@@ -104,7 +104,7 @@ default_args = {
       "security": {
         "auth_type": "custom_header",
         "header_name": "X-Webdis-Token",
-        "header_value": "secret-proxy-token-abc123",
+        "header_value": os.environ.get('REDISPASSWORD', '<Enter API token>'),
         "verify_ssl": False
       }
     },
@@ -121,7 +121,7 @@ default_args = {
       "search_query": "search index=security_alerts sourcetype=json | head 10",
       "security": {
         "auth_type": "bearer",
-        "token": "YOUR_SPLUNK_SESSION_OR_HEC_TOKEN",
+        "token": os.environ.get('SPLUNKPASSWORD', '<Enter Splunk secret>'),
         "verify_ssl": True
       }
     },
@@ -137,7 +137,7 @@ default_args = {
       "security": {
         "auth_type": "basic",
         "username": "elastic",
-        "password": "changeme",
+        "password": os.environ.get('ELASTICPASSWORD', '<Enter Elastic password>'),
         "verify_ssl": True
       }
     },
@@ -159,7 +159,7 @@ default_args = {
       "flux_query": "from(bucket: \"threat_metrics\") |> range(start: -5m) |> limit(n: 10)",
       "security": {
         "auth_type": "bearer",
-        "token": "YOUR_INFLUXDB_API_TOKEN",
+        "token": os.environ.get('INFLUXTOKEN', '<Enter API token>'),
         "verify_ssl": True
       }
     },
