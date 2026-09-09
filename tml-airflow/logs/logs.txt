@@ -4432,3 +4432,9 @@ Login Succeeded
 🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/myawesometmlsolution-3f10-amd64-tmlworking
 =============================================================
 b3a229d7e0399280e4f9d45774c529b79b05a9c9bb1b343e69a22fa7c62aa7f5
+sha256:7c4664433ea892e972ae8fb11da510823c528f62ac3d4594cef8176c0a28b95e
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
