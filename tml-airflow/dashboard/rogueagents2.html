@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArgusAI: Real-Time Multi-Agent Rogue Monitoring</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Annotation Plugin CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#36454F',
+                        cardbg: '#1e293b'
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { transform: 'translateX(100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        radarPulse: {
+                            '0%': { transform: 'scale(1)', opacity: '0.8' },
+                            '50%': { transform: 'scale(1.25)', opacity: '0.3' },
+                            '100%': { transform: 'scale(1)', opacity: '0.8' }
+                        }
+                    },
+                    animation: {
+                        'slide-in': 'slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'radar-pulse': 'radarPulse 1.8s infinite ease-in-out'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <div>
+        <!-- Non-Overlapping Toast Alert Container -->
+        <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 pointer-events-none max-w-sm w-full"></div>
+
+        <!-- Header / Navbar -->
+        <header class="border-b border-slate-800 bg-cardbg/50 backdrop-blur sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <!-- Logo & Title Container -->
+                <div class="flex items-center space-x-3.5">
+                    <img src="../img/rogueimage2.png" alt="Argus AI Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0 rounded-lg">
+                    
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-extrabold text-slate-100 tracking-tight leading-none">
+                            Argus AI: Real-Time Multi-Agent Monitoring Solution
+                        </h1>
+                        <p class="text-xs text-slate-400 font-medium mt-1">
+                            Real-time Rogue Agent Tracking
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <!-- Dynamic Animated Stream Control Button -->
+                    <button id="stream-toggle-btn" onclick="toggleSimulation()" class="relative group px-4 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-emerald-900/30 overflow-hidden">
+                        <span id="stream-btn-glow" class="hidden absolute inset-0 bg-rose-500/30 animate-radar-pulse"></span>
+                        <i id="stream-btn-icon" class="fa-solid fa-play relative z-10 transition-transform group-hover:scale-110"></i>
+                        <span id="stream-btn-text" class="relative z-10">Start Live Stream</span>
+                    </button>
+
+                    <!-- Connection Indicator Badge -->
+                    <span id="connection-badge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-400 border border-slate-700">
+                        <span id="connection-dot" class="w-2 h-2 rounded-full bg-slate-500"></span> 
+                        <span id="connection-text">Stream Idle</span>
+                    </span>
+
+                    <button onclick="toggleJsonModal()" class="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg transition-colors">
+                        <i class="fa-solid fa-code mr-1"></i> Paste JSON
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+            <!-- Email Alert Subscription Banner -->
+            <div class="bg-gradient-to-r from-blue-900/40 via-cardbg to-purple-900/40 rounded-xl p-4 border border-blue-500/30 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-blue-500/20 text-blue-400 rounded-lg border border-blue-500/30">
+                        <i class="fa-regular fa-bell text-xl animate-bounce"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white">Z-Score Alert Notifications</h3>
+                        <p class="text-xs text-slate-300">Receive instant alerts when any agent exceeds a Z-Score of <strong id="alert-banner-threshold" class="text-amber-400">3.50σ</strong>.</p>
+                    </div>
+                </div>
+                <form onsubmit="subscribeEmail(event)" class="flex items-center gap-2 w-full md:w-auto">
+                    <div class="relative w-full md:w-64">
+                        <i class="fa-solid fa-envelope absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                        <input type="email" id="alert-email" required placeholder="Enter developer email..." class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <button type="submit" class="px-4 py-1.5 text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- Top Metric Highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Dynamic Color Peak Anomaly Agent Card -->
+                <div id="kpi-top-card" class="bg-cardbg rounded-xl p-5 border border-emerald-500/40 shadow-lg relative overflow-hidden transition-all duration-300">
+                    <div id="kpi-top-glow" class="absolute -right-3 -top-3 w-16 h-16 bg-emerald-500/10 rounded-full blur-xl transition-all duration-300"></div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p id="kpi-top-title" class="text-xs font-semibold text-emerald-400 uppercase tracking-wider transition-colors">Peak Anomaly Agent</p>
+                            <h2 id="kpi-top-agent" class="text-xl font-black text-white mt-1">--</h2>
+                        </div>
+                        <div id="kpi-top-icon-box" class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-lg transition-colors">
+                            <i id="kpi-top-icon" class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between text-xs">
+                        <span class="text-slate-400">Max Z-Score:</span>
+                        <span id="kpi-top-zscore" class="text-emerald-400 font-mono font-bold text-sm transition-colors">--</span>
+                    </div>
+                </div>
+
+                <!-- Primary Entity Card -->
+                <div class="bg-cardbg rounded-xl p-5 border border-slate-800 shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active Subtopic</p>
+                            <h2 id="kpi-subtopic" class="text-base font-bold text-white mt-1 truncate max-w-[180px]">--</h2>
+                        </div>
+                        <div class="p-2.5 bg-blue-500/10 text-blue-400 rounded-lg">
+                            <i class="fa-solid fa-server text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-slate-400">
+                        <span>Active Agents: </span>
+                        <span id="kpi-agent-count" class="ml-1 text-blue-400 font-bold font-mono">--</span>
+                    </div>
+                </div>
+
+                <!-- Messages Count Card -->
+                <div class="bg-cardbg rounded-xl p-5 border border-slate-800 shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ingested Batches</p>
+                            <h2 id="kpi-msg-count" class="text-2xl font-bold text-white mt-1">0</h2>
+                        </div>
+                        <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-lg">
+                            <i class="fa-solid fa-database text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-slate-400">
+                        <span>Ingestion Rate: </span>
+                        <span id="kpi-producer" class="ml-1 text-slate-200 font-mono">2s / batch</span>
+                    </div>
+                </div>
+
+                <!-- Timestamp Card -->
+                <div class="bg-cardbg rounded-xl p-5 border border-slate-800 shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Last Packet Time</p>
+                            <h2 id="kpi-timestamp" class="text-xs font-bold text-white mt-2 font-mono">--</h2>
+                        </div>
+                        <div class="p-2.5 bg-purple-500/10 text-purple-400 rounded-lg">
+                            <i class="fa-regular fa-clock text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center text-xs text-slate-400">
+                        <span>Subscribers: </span>
+                        <span id="kpi-subscribed-email" class="ml-1 text-purple-300 font-medium">None</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multi-Agent Z-Score Chart with Threshold Control & Agent Rankings -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-cardbg rounded-xl p-6 border border-slate-800 shadow-lg flex flex-col justify-between">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                        <div>
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                Multi-Agent Z-Score Overlay
+                                <span class="flex h-2 w-2 relative">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                </span>
+                            </h3>
+                            <p class="text-xs text-slate-400">Comparing Z-Scores across all active stream agents</p>
+                        </div>
+
+                        <!-- Interactive Threshold Control Bar -->
+                        <div class="flex items-center gap-3 bg-slate-900 border border-slate-800 p-2 rounded-lg">
+                            <label for="threshold-slider" class="text-xs text-slate-300 font-medium flex items-center gap-1.5 whitespace-nowrap">
+                                <i class="fa-solid fa-sliders text-red-400"></i> Threshold:
+                            </label>
+                            <input type="range" id="threshold-slider" min="1.0" max="6.0" step="0.1" value="3.5" oninput="updateThresholdFromSlider(this.value)" class="w-24 accent-red-500 cursor-pointer">
+                            <div class="flex items-center gap-1">
+                                <input type="number" id="threshold-input" min="0.5" max="10.0" step="0.1" value="3.5" onchange="updateThresholdFromInput(this.value)" class="w-14 bg-slate-950 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-red-400 font-mono font-bold text-center focus:outline-none focus:border-red-500">
+                                <span class="text-xs text-red-400 font-mono font-bold">σ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative w-full h-[320px]">
+                        <canvas id="agentZscoreChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Agent Z-Score Rankings -->
+                <div class="bg-cardbg rounded-xl p-6 border border-slate-800 shadow-lg flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-arrow-down-wide-short text-blue-400"></i> Agent Rankings
+                            </h3>
+                            <p class="text-[11px] text-slate-400">Average Z-Score (Highest to Lowest)</p>
+                        </div>
+                        <span id="agent-rank-count" class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-mono font-bold border border-blue-500/20">4 Agents</span>
+                    </div>
+
+                    <!-- Live Agent Ranking Cards -->
+                    <div id="agent-rankings-container" class="space-y-2.5 overflow-y-auto max-h-[300px] pr-1">
+                        <!-- Dynamic Ranking List Items -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLLAPSIBLE Sortable Z-Score Table -->
+            <div class="bg-cardbg rounded-xl border border-slate-800 shadow-lg overflow-hidden transition-all duration-300">
+                <!-- Collapsible Table Header Bar -->
+                <div onclick="toggleTableCollapse()" class="w-full p-6 flex flex-col sm:flex-row sm:items-center justify-between cursor-pointer select-none hover:bg-slate-800/40 transition-colors gap-3">
+                    <div class="flex items-center gap-3">
+                        <button id="table-collapse-btn" class="p-1 text-slate-400 hover:text-white transition-transform">
+                            <i id="table-toggle-icon" class="fa-solid fa-chevron-up text-sm"></i>
+                        </button>
+                        <div>
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-table-list text-blue-400"></i> Sortable Multi-Agent Z-Score Table
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Click column headers to sort by score, entity, or value</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3" onclick="event.stopPropagation()">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <span>Sorted by:</span>
+                            <span id="sort-status-tag" class="text-blue-400 font-mono font-bold">Sequence (Asc)</span>
+                        </div>
+
+                        <!-- EXPORT TO CSV BUTTON -->
+                        <button onclick="exportTableToCSV()" class="px-3 py-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30 rounded-lg transition-all flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-file-csv text-emerald-400 text-sm"></i> Save CSV
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Collapsible Table Body Container -->
+                <div id="collapsible-table-container" class="px-6 pb-6 border-t border-slate-800/80 pt-4">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-900/80 text-slate-400 uppercase font-semibold text-[11px] tracking-wider border-b border-slate-800 select-none">
+                                <tr>
+                                    <th onclick="handleSort('seq')" class="py-3 px-4 cursor-pointer hover:text-white transition-colors">
+                                        # Sequence <i id="sort-icon-seq" class="fa-solid fa-sort text-slate-600 ml-1"></i>
+                                    </th>
+                                    <th onclick="handleSort('subtopic')" class="py-3 px-4 cursor-pointer hover:text-white transition-colors">
+                                        Subtopic Metric <i id="sort-icon-subtopic" class="fa-solid fa-sort text-slate-600 ml-1"></i>
+                                    </th>
+                                    <th onclick="handleSort('entity')" class="py-3 px-4 cursor-pointer hover:text-white transition-colors">
+                                        Entity Name <i id="sort-icon-entity" class="fa-solid fa-sort text-slate-600 ml-1"></i>
+                                    </th>
+                                    <th onclick="handleSort('raw')" class="py-3 px-4 cursor-pointer hover:text-white transition-colors">
+                                        Raw Metric Value <i id="sort-icon-raw" class="fa-solid fa-sort text-slate-600 ml-1"></i>
+                                    </th>
+                                    <th onclick="handleSort('zscore')" class="py-3 px-4 cursor-pointer hover:text-white transition-colors">
+                                        Calculated Z-Score <i id="sort-icon-zscore" class="fa-solid fa-sort text-slate-600 ml-1"></i>
+                                    </th>
+                                    <th onclick="handleSort('status')" class="py-3 px-4 text-center cursor-pointer hover:text-white transition-colors">
+                                        Status Flag <i id="sort-icon-status" class="fa-solid fa-sort text-slate-600 ml-1"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="zscore-table-body" class="divide-y divide-slate-800/60 font-mono">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raw JSON Inspector -->
+            <div class="bg-cardbg rounded-xl border border-slate-800 shadow-lg overflow-hidden">
+                <button onclick="toggleJsonViewer()" class="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-800/50 transition-colors">
+                    <span class="font-semibold text-sm text-slate-200 flex items-center gap-2">
+                        <i class="fa-solid fa-code text-blue-400"></i> View Raw Ingested Payload JSON
+                    </span>
+                    <i id="json-toggle-icon" class="fa-solid fa-chevron-down text-slate-400 text-xs transition-transform"></i>
+                </button>
+                <div id="json-viewer-container" class="hidden border-t border-slate-800 bg-slate-950 p-4">
+                    <pre id="json-pretty" class="text-xs font-mono text-emerald-400 overflow-x-auto leading-relaxed"></pre>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER: Otics Advanced Analytics -->
+    <footer class="mt-12 border-t border-slate-800 bg-slate-950 text-slate-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center space-x-3">
+                <div class="p-1.5 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-md text-white font-black text-sm">
+                    OAA
+                </div>
+                <div>
+                    <p class="font-bold text-slate-200 text-sm tracking-wide">Otics Advanced Analytics, Inc.</p>
+                    <p class="text-[11px] text-slate-500">Real-Time Multi-Agent Rogue Agent & Telemetry Anomaly Detection Platform</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6 text-slate-400 font-mono text-[11px]">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-microchip text-blue-400"></i> Go Stream Engine</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-chart-line text-emerald-400"></i> Dynamic Z-Score σ</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-purple-400"></i> ArgusAI v2.4</span>
+            </div>
+
+            <div class="text-right text-[11px] text-slate-500">
+                &copy; 2026 Otics Advanced Analytics. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Manual JSON Injection -->
+    <div id="jsonModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-cardbg border border-slate-700 rounded-xl max-w-xl w-full p-6 m-4 shadow-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-base font-bold text-white">Inject Custom Telemetry Payload</h3>
+                <button onclick="toggleJsonModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <textarea id="jsonInput" rows="10" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs font-mono text-slate-200 focus:outline-none focus:border-blue-500" placeholder="Paste JSON here..."></textarea>
+            <div class="flex justify-end gap-3 mt-4">
+                <button onclick="toggleJsonModal()" class="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white">Cancel</button>
+                <button onclick="loadCustomJson()" class="px-4 py-2 text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white rounded-lg">Push to Stream</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Store & Global State
+        let currentData = null;
+        let processedRows = [];
+        let agentZScoreMap = {};
+        let chartInstance = null;
+        let simulationInterval = null;
+        let payloadCounter = 0;
+        let subscribedUserEmail = null;
+
+        // WebSocket Streaming Global State
+        let ws = null;
+        let START = 0;
+
+        // Dynamic Threshold State
+        let alertThreshold = 3.5;
+
+        // Colors palette for chart and ranking cards
+        const agentColors = ['#3b82f6', '#10b981', '#a855f7', '#f59e0b', '#ec4899'];
+
+        // Sorting State
+        let currentSortColumn = 'seq';
+        let currentSortDirection = 'asc';
+
+        // Base Initial Object Template
+        const basePayload = {
+            "hyperprediction": "2.156",
+            "Maintopic": "iot-preprocess",
+            "Topic": "topicid36_metrics.api_call_rate_preprocessed_Zscore",
+            "PreprocessSubtopic": "metrics.api_call_rate",
+            "EntityName": "agent_support_30",
+            "Type": "External",
+            "ProducerId": "customjson",
+            "TimeStamp": "2026-09-09 14:17:39",
+            "Unixtime": 1788963459888639866,
+            "kafkacluster": "OAA-Kafka-Cluster-Prod",
+            "kafkakey": "OAA-xwzTQWkInHlFJRr3R0qVVnt6vmiXVG",
+            "Preprocesstype": "Zscore",
+            "WindowStartTime": "2026-09-09 14:17:39 +0000 UTC",
+            "WindowEndTime": "2026-09-09 14:17:39 +0000 UTC",
+            "WindowStartUnixTime": "1788963459000000000",
+            "WindowEndUnixTime": "1788963459000000000",
+            "Conditions": "",
+            "Identifier": "metrics.api_call_rate~iot-preprocess~uid:gen_ai.agent.id,subtopic:metrics.api_call_rate (metrics.api_call_rate),value:metrics.api_call_rate,identifier:service.instance.id,datetime:startTimeUnixNano,:cncf,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,Rogue agent monitor~Msgsjoined=~latlong=~mainuid=agent_support_30~msgidcustom=",
+            "PreprocessIdentifier": "",
+            "Numberofmessages": 16,
+            "RawData": [2.13, 2.74, 2.31, 2.57, 3.5, 3.27, 4.38, 3.94, 2.51, 1.5, 2, 3.07, 2.44, 2.99, 2.67, 1.96]
+        };
+
+        const agentsList = ["agent_support_30", "agent_support_31", "agent_support_32", "agent_support_33"];
+        
+        function initAgentMap() {
+            agentsList.forEach((agent, i) => {
+                agentZScoreMap[agent] = basePayload.RawData.map(val => (val + (i * 0.25)));
+            });
+        }
+        initAgentMap();
+
+        // WebSocket Integration
+        function streamLiveKafkaData() {
+            if (!("WebSocket" in window)) {
+                showToast("WebSocket NOT supported by your browser!", "danger");
+                stopStreamingUI();
+                return;
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const stopic = urlParams.get("topic") || basePayload.Topic;
+            const topictype = urlParams.get("topictype") || "preprocessed_Zscore";
+            const secureParam = urlParams.get("secure") || "1";
+            const vipertokenParam = urlParams.get("vipertoken") || "";
+            const consumeridParam = urlParams.get("consumerid") || "argus-agent-consumer";
+            const offsetParam = urlParams.get("offset") || "-1";
+            let rollbackoffset = parseInt(urlParams.get("rollbackoffset"), 10) || 70;
+            const groupid = urlParams.get("groupid") || "argus-monitoring-group";
+            const append = urlParams.get("append") || "0";
+
+            if (rollbackoffset > 1000) rollbackoffset = 500;
+
+            const host = window.location.host || "localhost:8080";
+            const isHttp = window.location.protocol === "http:";
+            const isViz = window.location.pathname.includes("/viz/");
+
+            const protocol = isHttp ? "ws://" : "wss://";
+            const path = isViz ? "/viz/ws" : "/ws";
+            const wsUrl = `${protocol}${host}${path}`;
+
+            try {
+                ws = new WebSocket(wsUrl);
+            } catch (e) {
+                console.warn("WebSocket creation failed, falling back to simulator mode.", e);
+                startDemoSimulation();
+                return;
+            }
+
+            ws.onopen = function () {
+                const sendbuffer = JSON.stringify({
+                    Topic: stopic,
+                    Topictype: topictype,
+                    Secure: parseInt(secureParam, 10),
+                    Vipertoken: vipertokenParam,
+                    Consumerid: consumeridParam,
+                    Offset: parseInt(offsetParam, 10),
+                    RollbackOffset: String(rollbackoffset),
+                    Groupid: groupid,
+                    Dashboardpassword: "iot_"
+                });
+
+                ws.send(sendbuffer);
+                updateConnectionStatus("Streaming Live Kafka Data", true);
+            };
+
+            ws.onmessage = function (event) {
+                let rawData = event.data;
+                let obj;
+
+                try {
+                    if (typeof rawData === 'string' && rawData.startsWith('"') && rawData.endsWith('"')) {
+                        rawData = JSON.parse(rawData);
+                    }
+                    obj = typeof rawData === 'object' ? rawData : JSON.parse(rawData);
+                } catch (e) {
+                    console.error("JSON parse error:", e.message, rawData);
+                    return;
+                }
+
+                if (obj.ERROR) {
+                    showToast("WebSocket Server Error: " + obj.ERROR, "danger");
+                    if (ws) ws.close(1000);
+                    stopStreamingUI();
+                    return;
+                }
+
+                if (START === 0) {
+                    if (ws) ws.close(1000);
+                    return;
+                }
+
+                if (append === "0" || append === 0) {
+                    processedRows = [];
+                }
+
+                ingestRealtimeJson(obj);
+            };
+
+            ws.onclose = function (event) {
+                updateConnectionStatus("WebSocket Closed", false);
+                stopStreamingUI();
+            };
+
+            ws.onerror = function (error) {
+                console.warn("WebSocket stream error, using client-side fallback stream.", error);
+                startDemoSimulation();
+            };
+        }
+
+        function updateConnectionStatus(text, isLive) {
+            const badgeDot = document.getElementById('connection-dot');
+            const badgeText = document.getElementById('connection-text');
+            badgeText.innerText = text;
+
+            if (isLive) {
+                badgeDot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
+            } else {
+                badgeDot.className = "w-2 h-2 rounded-full bg-slate-500";
+            }
+        }
+
+        // Collapsible Table Toggle Function
+        function toggleTableCollapse() {
+            const tableContainer = document.getElementById('collapsible-table-container');
+            const toggleIcon = document.getElementById('table-toggle-icon');
+            
+            tableContainer.classList.toggle('hidden');
+            toggleIcon.classList.toggle('rotate-180');
+        }
+
+        // Interactive Threshold Adjustment Functions
+        function updateThresholdFromSlider(val) {
+            alertThreshold = parseFloat(val);
+            document.getElementById('threshold-input').value = alertThreshold.toFixed(1);
+            syncThresholdChange();
+        }
+
+        function updateThresholdFromInput(val) {
+            let num = parseFloat(val);
+            if (isNaN(num) || num < 0.1) num = 0.5;
+            alertThreshold = num;
+            document.getElementById('threshold-slider').value = Math.min(Math.max(alertThreshold, 1.0), 6.0);
+            syncThresholdChange();
+        }
+
+        function syncThresholdChange() {
+            document.getElementById('alert-banner-threshold').innerText = alertThreshold.toFixed(2) + 'σ';
+            if (currentData) {
+                processTelemetryData(currentData);
+            }
+        }
+
+        // Core Ingestion Function
+        function ingestRealtimeJson(data) {
+            currentData = data;
+            payloadCounter++;
+            
+            document.getElementById('kpi-subtopic').innerText = data.PreprocessSubtopic || 'N/A';
+            document.getElementById('kpi-agent-count').innerText = Object.keys(agentZScoreMap).length;
+            document.getElementById('kpi-msg-count').innerText = payloadCounter;
+            document.getElementById('kpi-timestamp').innerText = data.TimeStamp || new Date().toISOString().replace('T', ' ').substring(0, 19);
+
+            document.getElementById('json-pretty').textContent = JSON.stringify(data, null, 2);
+
+            processTelemetryData(data);
+        }
+
+        // Process Statistical Metrics Across Agents
+        function processTelemetryData(data) {
+            processedRows = [];
+            let globalMaxZScore = -Infinity;
+            let topAgent = 'N/A';
+            const agentStatsList = [];
+
+            const primaryAgent = data.EntityName || "agent_support_30";
+            if (Array.isArray(data.RawData)) {
+                agentZScoreMap[primaryAgent] = data.RawData;
+            }
+
+            const agentKeys = Object.keys(agentZScoreMap);
+
+            agentKeys.forEach((agentName, idx) => {
+                const rawArr = agentZScoreMap[agentName];
+                const sum = rawArr.reduce((a, b) => a + b, 0);
+                const mean = sum / rawArr.length;
+                const variance = rawArr.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / rawArr.length;
+                const stdDev = Math.sqrt(variance) || 1;
+
+                let agentZSum = 0;
+                let agentMaxZ = -Infinity;
+
+                rawArr.forEach((val, index) => {
+                    const zScore = (val - mean) / stdDev;
+                    agentZSum += zScore;
+
+                    if (zScore > agentMaxZ) agentMaxZ = zScore;
+                    if (zScore > globalMaxZScore) {
+                        globalMaxZScore = zScore;
+                        topAgent = agentName;
+                    }
+
+                    if (zScore >= alertThreshold) {
+                        triggerThresholdAlert(agentName, zScore, val);
+                    }
+
+                    processedRows.push({
+                        seq: index + 1,
+                        subtopic: data.PreprocessSubtopic || 'metrics.api_call_rate',
+                        entity: agentName,
+                        raw: val,
+                        zscore: zScore,
+                        status: zScore >= alertThreshold ? 2 : (zScore >= 1.5 ? 1 : (zScore <= -1.5 ? -1 : 0))
+                    });
+                });
+
+                const avgZScore = agentZSum / rawArr.length;
+                agentStatsList.push({
+                    agent: agentName,
+                    avgZ: avgZScore,
+                    maxZ: agentMaxZ,
+                    color: agentColors[idx % agentColors.length]
+                });
+            });
+
+            document.getElementById('kpi-top-agent').innerText = topAgent;
+            document.getElementById('kpi-top-zscore').innerText = globalMaxZScore > -Infinity ? `+${globalMaxZScore.toFixed(3)}σ` : '--';
+
+            updatePeakAgentCardColor(globalMaxZScore);
+            renderAgentRankings(agentStatsList);
+            updateMultiAgentChart();
+            renderSortedTable();
+        }
+
+        // Render Agent Z-Score Leaderboard
+        function renderAgentRankings(agentStatsList) {
+            const container = document.getElementById('agent-rankings-container');
+            container.innerHTML = '';
+
+            document.getElementById('agent-rank-count').innerText = `${agentStatsList.length} Active Agents`;
+
+            const sortedAgents = [...agentStatsList].sort((a, b) => b.avgZ - a.avgZ);
+
+            sortedAgents.forEach((item, rank) => {
+                const isExceeded = item.maxZ >= alertThreshold;
+                const isNearThreshold = item.maxZ >= (alertThreshold - 0.75);
+
+                let badgeColorClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+                let badgeText = "Normal";
+
+                if (isExceeded) {
+                    badgeColorClass = "bg-red-500/20 text-red-400 border-red-500/30 animate-pulse";
+                    badgeText = "Exceeded";
+                } else if (isNearThreshold) {
+                    badgeColorClass = "bg-amber-500/15 text-amber-400 border-amber-500/30";
+                    badgeText = "High";
+                }
+
+                const rankCard = document.createElement('div');
+                rankCard.className = "p-3 bg-slate-900/90 border border-slate-800 rounded-lg flex items-center justify-between transition-all hover:border-slate-700";
+                rankCard.innerHTML = `
+                    <div class="flex items-center gap-2.5">
+                        <span class="text-xs font-black text-slate-500 font-mono w-4">#${rank + 1}</span>
+                        <div class="w-2.5 h-2.5 rounded-full" style="background-color: ${item.color}"></div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white font-mono">${item.agent}</h4>
+                            <p class="text-[10px] text-slate-400 font-mono">Max: <span class="text-slate-200">+${item.maxZ.toFixed(2)}σ</span></p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs font-black font-mono ${item.avgZ >= 0 ? 'text-purple-400' : 'text-blue-400'}">
+                            ${item.avgZ >= 0 ? '+' : ''}${item.avgZ.toFixed(3)}σ
+                        </div>
+                        <span class="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[9px] font-semibold border ${badgeColorClass}">
+                            ${badgeText}
+                        </span>
+                    </div>
+                `;
+                container.appendChild(rankCard);
+            });
+        }
+
+        // Color switching for Peak Anomaly Agent Card
+        function updatePeakAgentCardColor(maxZ) {
+            const card = document.getElementById('kpi-top-card');
+            const glow = document.getElementById('kpi-top-glow');
+            const title = document.getElementById('kpi-top-title');
+            const iconBox = document.getElementById('kpi-top-icon-box');
+            const icon = document.getElementById('kpi-top-icon');
+            const zVal = document.getElementById('kpi-top-zscore');
+
+            const warningMargin = 0.75; 
+
+            if (maxZ >= alertThreshold) {
+                card.className = "bg-cardbg rounded-xl p-5 border-2 border-red-500/80 shadow-lg shadow-red-950/40 relative overflow-hidden transition-all duration-300";
+                glow.className = "absolute -right-3 -top-3 w-20 h-20 bg-red-500/20 rounded-full blur-xl transition-all duration-300";
+                title.className = "text-xs font-bold text-red-400 uppercase tracking-wider transition-colors";
+                iconBox.className = "p-2.5 bg-red-500/20 text-red-400 rounded-lg transition-colors animate-pulse";
+                icon.className = "fa-solid fa-triangle-exclamation text-lg";
+                zVal.className = "text-red-400 font-mono font-bold text-sm transition-colors";
+            } else if (maxZ >= (alertThreshold - warningMargin)) {
+                card.className = "bg-cardbg rounded-xl p-5 border border-amber-500/80 shadow-lg shadow-amber-950/30 relative overflow-hidden transition-all duration-300";
+                glow.className = "absolute -right-3 -top-3 w-16 h-16 bg-amber-500/15 rounded-full blur-xl transition-all duration-300";
+                title.className = "text-xs font-semibold text-amber-400 uppercase tracking-wider transition-colors";
+                iconBox.className = "p-2.5 bg-amber-500/15 text-amber-400 rounded-lg transition-colors";
+                icon.className = "fa-solid fa-triangle-exclamation text-lg";
+                zVal.className = "text-amber-400 font-mono font-bold text-sm transition-colors";
+            } else {
+                card.className = "bg-cardbg rounded-xl p-5 border border-emerald-500/40 shadow-lg relative overflow-hidden transition-all duration-300";
+                glow.className = "absolute -right-3 -top-3 w-16 h-16 bg-emerald-500/10 rounded-full blur-xl transition-all duration-300";
+                title.className = "text-xs font-semibold text-emerald-400 uppercase tracking-wider transition-colors";
+                iconBox.className = "p-2.5 bg-emerald-500/10 text-emerald-400 rounded-lg transition-colors";
+                icon.className = "fa-solid fa-shield-halved text-lg";
+                zVal.className = "text-emerald-400 font-mono font-bold text-sm transition-colors";
+            }
+        }
+
+        // Multi-Agent Z-Score Chart Initialization
+        function initChart() {
+            const ctx = document.getElementById('agentZscoreChart').getContext('2d');
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: { labels: [], datasets: [] },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 300 },
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: '#94a3b8', font: { size: 10 } } },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            borderColor: '#334155',
+                            borderWidth: 1
+                        },
+                        annotation: {
+                            annotations: {
+                                thresholdLine: {
+                                    type: 'line',
+                                    yMin: alertThreshold,
+                                    yMax: alertThreshold,
+                                    borderColor: '#f43f5e',
+                                    borderWidth: 2,
+                                    borderDash: [6, 4],
+                                    label: {
+                                        display: true,
+                                        content: () => `Threshold: ${alertThreshold.toFixed(2)}σ`,
+                                        position: 'end',
+                                        backgroundColor: '#881337',
+                                        color: '#fecdd3',
+                                        font: { size: 10, weight: 'bold' },
+                                        padding: 4
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { color: 'rgba(51, 65, 85, 0.3)' }, ticks: { color: '#94a3b8' } },
+                        y: { 
+                            grid: { color: 'rgba(51, 65, 85, 0.3)' }, 
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Z-Score (σ)', color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateMultiAgentChart() {
+            const datasets = [];
+            const agentKeys = Object.keys(agentZScoreMap);
+            
+            const seqLength = agentZScoreMap[agentKeys[0]] ? agentZScoreMap[agentKeys[0]].length : 0;
+            const labels = Array.from({ length: seqLength }, (_, i) => `#${i + 1}`);
+
+            agentKeys.forEach((agent, index) => {
+                const rawArr = agentZScoreMap[agent];
+                const sum = rawArr.reduce((a, b) => a + b, 0);
+                const mean = sum / rawArr.length;
+                const variance = rawArr.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / rawArr.length;
+                const stdDev = Math.sqrt(variance) || 1;
+
+                const zScores = rawArr.map(val => parseFloat(((val - mean) / stdDev).toFixed(3)));
+
+                datasets.push({
+                    label: agent,
+                    data: zScores,
+                    borderColor: agentColors[index % agentColors.length],
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.35,
+                    pointRadius: 3
+                });
+            });
+
+            chartInstance.data.labels = labels;
+            chartInstance.data.datasets = datasets;
+
+            if (chartInstance.options.plugins.annotation) {
+                chartInstance.options.plugins.annotation.annotations.thresholdLine.yMin = alertThreshold;
+                chartInstance.options.plugins.annotation.annotations.thresholdLine.yMax = alertThreshold;
+            }
+
+            chartInstance.update();
+        }
+
+        // Table Sorting Logic
+        function handleSort(columnKey) {
+            if (currentSortColumn === columnKey) {
+                currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortColumn = columnKey;
+                currentSortDirection = 'asc';
+            }
+
+            ['seq', 'subtopic', 'entity', 'raw', 'zscore', 'status'].forEach(col => {
+                const icon = document.getElementById(`sort-icon-${col}`);
+                if (col === currentSortColumn) {
+                    icon.className = currentSortDirection === 'asc' ? 'fa-solid fa-sort-up text-blue-400 ml-1' : 'fa-solid fa-sort-down text-blue-400 ml-1';
+                } else {
+                    icon.className = 'fa-solid fa-sort text-slate-600 ml-1';
+                }
+            });
+
+            document.getElementById('sort-status-tag').innerText = `${columnKey.toUpperCase()} (${currentSortDirection.toUpperCase()})`;
+            renderSortedTable();
+        }
+
+        function renderSortedTable() {
+            const tbody = document.getElementById('zscore-table-body');
+            tbody.innerHTML = '';
+
+            const sorted = [...processedRows].sort((a, b) => {
+                let valA = a[currentSortColumn];
+                let valB = b[currentSortColumn];
+
+                if (typeof valA === 'string') {
+                    return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                }
+                return currentSortDirection === 'asc' ? valA - valB : valB - valA;
+            });
+
+            sorted.forEach((row) => {
+                const formattedZ = row.zscore.toFixed(3);
+                let badgeHTML = '';
+
+                if (row.zscore >= alertThreshold) {
+                    badgeHTML = `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-red-600/20 text-red-400 border border-red-500/30 animate-pulse"><i class="fa-solid fa-bell mr-1"></i> Threshold Exceeded (+${formattedZ}σ)</span>`;
+                } else if (row.zscore >= 1.5) {
+                    badgeHTML = `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20"><i class="fa-solid fa-triangle-exclamation mr-1"></i> High Spike (+${formattedZ}σ)</span>`;
+                } else if (row.zscore <= -1.5) {
+                    badgeHTML = `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20"><i class="fa-solid fa-circle-down mr-1"></i> Low Drop (${formattedZ}σ)</span>`;
+                } else {
+                    badgeHTML = `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"><i class="fa-solid fa-check mr-1"></i> Normal</span>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/40 transition-colors';
+                tr.innerHTML = `
+                    <td class="py-3 px-4 font-bold text-slate-400">#${row.seq}</td>
+                    <td class="py-3 px-4 text-blue-400 font-sans">${row.subtopic}</td>
+                    <td class="py-3 px-4 text-emerald-400 font-sans font-semibold">${row.entity}</td>
+                    <td class="py-3 px-4 font-bold text-white">${row.raw.toFixed(2)}</td>
+                    <td class="py-3 px-4 font-bold ${row.zscore >= alertThreshold ? 'text-red-400' : (row.zscore >= 0 ? 'text-purple-400' : 'text-blue-400')}">${row.zscore > 0 ? '+' : ''}${formattedZ}</td>
+                    <td class="py-3 px-4 text-center font-sans">${badgeHTML}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // CSV Export Function
+        function exportTableToCSV() {
+            if (!processedRows || processedRows.length === 0) {
+                showToast('No data available to export.', 'danger');
+                return;
+            }
+
+            const headers = ['Sequence', 'Subtopic Metric', 'Entity Name', 'Raw Metric Value', 'Calculated Z-Score', 'Status Flag'];
+            
+            const sortedData = [...processedRows].sort((a, b) => {
+                let valA = a[currentSortColumn];
+                let valB = b[currentSortColumn];
+                if (typeof valA === 'string') {
+                    return currentSortDirection === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                }
+                return currentSortDirection === 'asc' ? valA - valB : valB - valA;
+            });
+
+            const csvRows = [
+                headers.join(','),
+                ...sortedData.map(row => {
+                    let statusStr = 'Normal';
+                    if (row.zscore >= alertThreshold) statusStr = 'Threshold Exceeded';
+                    else if (row.zscore >= 1.5) statusStr = 'High Spike';
+                    else if (row.zscore <= -1.5) statusStr = 'Low Drop';
+
+                    return [
+                        row.seq,
+                        `"${row.subtopic}"`,
+                        `"${row.entity}"`,
+                        row.raw.toFixed(2),
+                        row.zscore.toFixed(3),
+                        `"${statusStr}"`
+                    ].join(',');
+                })
+            ];
+
+            const csvContent = csvRows.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            
+            const timestamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `telemetry_zscores_${timestamp}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast('Telemetry table exported to CSV successfully!', 'success');
+        }
+
+        // Email Alerting System
+        function subscribeEmail(e) {
+            e.preventDefault();
+            const input = document.getElementById('alert-email');
+            subscribedUserEmail = input.value;
+            document.getElementById('kpi-subscribed-email').innerText = subscribedUserEmail;
+            
+            showToast(`Subscribed ${subscribedUserEmail} to Z-Score > ${alertThreshold.toFixed(2)}σ alerts!`, 'success');
+        }
+
+        function triggerThresholdAlert(agentName, zscore, rawVal) {
+            const alertMsg = `Agent <strong class="text-white font-mono">${agentName}</strong> breached threshold (${alertThreshold.toFixed(2)}σ) with <strong class="text-red-400 font-mono">+${zscore.toFixed(2)}σ</strong> (Raw: ${rawVal.toFixed(2)})!`;
+            showToast(alertMsg, 'danger');
+        }
+
+        // Toast Notifications
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            const borderAccent = type === 'danger' ? 'border-l-4 border-l-red-500 border-red-500/30' : 'border-l-4 border-l-emerald-500 border-emerald-500/30';
+            const iconBg = type === 'danger' ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400';
+            const icon = type === 'danger' ? 'fa-triangle-exclamation animate-pulse' : 'fa-circle-check';
+            const titleText = type === 'danger' ? 'CRITICAL THRESHOLD ALERT' : 'NOTIFICATION';
+            const titleColor = type === 'danger' ? 'text-red-400' : 'text-emerald-400';
+
+            toast.className = `p-4 rounded-xl border bg-slate-900/95 backdrop-blur-md shadow-2xl flex items-start gap-3 text-xs pointer-events-auto animate-slide-in ${borderAccent}`;
+            toast.innerHTML = `
+                <div class="p-2 rounded-lg ${iconBg} shrink-0 mt-0.5">
+                    <i class="fa-solid ${icon} text-sm"></i>
+                </div>
+                <div class="flex-1 pr-1">
+                    <div class="font-bold uppercase tracking-wider text-[10px] ${titleColor}">${titleText}</div>
+                    <div class="mt-0.5 text-slate-200 leading-relaxed font-sans">${message}</div>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white transition-colors p-1">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            `;
+
+            container.appendChild(toast);
+            setTimeout(() => { 
+                toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+                setTimeout(() => toast.remove(), 300);
+            }, 5500);
+        }
+
+        // Multi-Agent Stream Controller Toggle (WebSocket & Simulation Fallback)
+        function toggleSimulation() {
+            const btn = document.getElementById('stream-toggle-btn');
+            const icon = document.getElementById('stream-btn-icon');
+            const text = document.getElementById('stream-btn-text');
+            const glow = document.getElementById('stream-btn-glow');
+
+            if (START === 1) {
+                START = 0;
+                if (ws) ws.close(1000);
+                if (simulationInterval) {
+                    clearInterval(simulationInterval);
+                    simulationInterval = null;
+                }
+                stopStreamingUI();
+            } else {
+                START = 1;
+
+                btn.className = "relative group px-4 py-1.5 text-xs font-semibold bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white rounded-lg transition-all flex items-center gap-2 shadow-xl shadow-rose-950/50 overflow-hidden ring-2 ring-rose-500/50";
+                icon.className = "fa-solid fa-satellite-dish relative z-10 animate-spin text-rose-200";
+                text.innerText = "Stop Live Stream";
+                glow.classList.remove('hidden');
+
+                streamLiveKafkaData();
+            }
+        }
+
+        function stopStreamingUI() {
+            START = 0;
+            const btn = document.getElementById('stream-toggle-btn');
+            const icon = document.getElementById('stream-btn-icon');
+            const text = document.getElementById('stream-btn-text');
+            const glow = document.getElementById('stream-btn-glow');
+
+            btn.className = "relative group px-4 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-emerald-900/30 overflow-hidden";
+            icon.className = "fa-solid fa-play relative z-10 transition-transform group-hover:scale-110";
+            text.innerText = "Start Live Stream";
+            glow.classList.add('hidden');
+
+            updateConnectionStatus("Stream Idle", false);
+        }
+
+        function startDemoSimulation() {
+            updateConnectionStatus("Demo Stream Active", true);
+
+            if (simulationInterval) clearInterval(simulationInterval);
+            simulationInterval = setInterval(() => {
+                if (START === 0) {
+                    clearInterval(simulationInterval);
+                    return;
+                }
+
+                const nextJson = JSON.parse(JSON.stringify(currentData || basePayload));
+                
+                Object.keys(agentZScoreMap).forEach((agent) => {
+                    nextJson.RawData.shift();
+                    
+                    const isSpike = Math.random() < 0.12;
+                    const randomVal = isSpike ? parseFloat((Math.random() * 5.0 + 7.5).toFixed(2)) : parseFloat((Math.random() * 3.0 + 1.2).toFixed(2));
+                    
+                    agentZScoreMap[agent].shift();
+                    agentZScoreMap[agent].push(randomVal);
+                });
+
+                nextJson.RawData = agentZScoreMap["agent_support_30"];
+                nextJson.TimeStamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
+                nextJson.Unixtime = Date.now() * 1000000;
+
+                ingestRealtimeJson(nextJson);
+            }, 2000);
+        }
+
+        // Modals & UI Controls
+        function toggleJsonViewer() {
+            const container = document.getElementById('json-viewer-container');
+            const icon = document.getElementById('json-toggle-icon');
+            container.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function toggleJsonModal() {
+            const modal = document.getElementById('jsonModal');
+            modal.classList.toggle('hidden');
+            if(!modal.classList.contains('hidden')){
+                document.getElementById('jsonInput').value = JSON.stringify(currentData || basePayload, null, 2);
+            }
+        }
+
+        function loadCustomJson() {
+            try {
+                const input = document.getElementById('jsonInput').value;
+                const parsed = JSON.parse(input);
+                ingestRealtimeJson(parsed);
+                toggleJsonModal();
+            } catch (e) {
+                alert('Invalid JSON format!');
+            }
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            initChart();
+            ingestRealtimeJson(basePayload);
+        });
+    </script>
+</body>
+</html>
