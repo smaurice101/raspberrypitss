@@ -498,9 +498,9 @@
                 }
 				var maindata=rawData.replace(/\\"/g,'"');
 			   maindata=maindata.substr(1, maindata.length-3);
-			   console.log("-------------maindata=",maindata);
 			   
 			   	obj = JSON.parse(maindata);
+ 			   console.log("-------------obj=",obj);
 
                 ingestRealtimeJson(obj['TopicReads']);
             };
