@@ -502,7 +502,7 @@
 			   
 			   	obj = JSON.parse(maindata);
 
-                ingestRealtimeJson(obj);
+                ingestRealtimeJson(obj['TopicReads']);
             };
 
             ws.onclose = function (event) {
