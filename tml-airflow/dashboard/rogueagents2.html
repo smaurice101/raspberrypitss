@@ -500,9 +500,9 @@
 			   maindata=maindata.substr(1, maindata.length-3);
 			   
 			   	obj = JSON.parse(maindata);
- 			   console.log("-------------obj=",obj);
+ 			   console.log("-------------obj=",obj['TopicReads']);
 
-                ingestRealtimeJson(obj['TopicReads']);
+                ingestRealtimeJson(obj);
             };
 
             ws.onclose = function (event) {
