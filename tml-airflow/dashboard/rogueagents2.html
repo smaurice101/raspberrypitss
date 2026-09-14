@@ -377,7 +377,7 @@
         let currentSortDirection = 'asc';
 
         // Base Initial Object Template
-        const basePayload = {
+        /*const basePayload = {
             "hyperprediction": "2.156",
             "Maintopic": "iot-preprocess",
             "Topic": "topicid36_metrics.api_call_rate_preprocessed_Zscore",
@@ -399,9 +399,12 @@
             "PreprocessIdentifier": "",
             "Numberofmessages": 16,
             "RawData": [2.13, 2.74, 2.31, 2.57, 3.5, 3.27, 4.38, 3.94, 2.51, 1.5, 2, 3.07, 2.44, 2.99, 2.67, 1.96]
-        };
+        };*/
 
-        const agentsList = ["agent_support_30", "agent_support_31", "agent_support_32", "agent_support_33"];
+         const basePayload = {};
+		 
+      //  const agentsList = ["agent_support_30", "agent_support_31", "agent_support_32", "agent_support_33"];
+          const agentsList = [];
         
         function initAgentMap() {
             agentsList.forEach((agent, i) => {
@@ -443,7 +446,7 @@
                 ws = new WebSocket(wsUrl);
             } catch (e) {
                 console.warn("WebSocket creation failed, falling back to simulator mode.", e);
-                startDemoSimulation();
+             //   startDemoSimulation();
                 return;
             }
 
@@ -504,7 +507,7 @@
 
             ws.onerror = function (error) {
                 console.warn("WebSocket stream error, using client-side fallback stream.", error);
-                startDemoSimulation();
+              //  startDemoSimulation();
             };
         }
 
@@ -573,7 +576,7 @@
             let topAgent = 'N/A';
             const agentStatsList = [];
 
-            const primaryAgent = data.EntityName || "agent_support_30";
+            const primaryAgent = data.EntityName || "";
             if (Array.isArray(data.RawData)) {
                 agentZScoreMap[primaryAgent] = data.RawData;
             }
@@ -606,7 +609,7 @@
 
                     processedRows.push({
                         seq: index + 1,
-                        subtopic: data.PreprocessSubtopic || 'metrics.api_call_rate',
+                        subtopic: data.PreprocessSubtopic,
                         entity: agentName,
                         raw: val,
                         zscore: zScore,
@@ -1031,7 +1034,8 @@
                     agentZScoreMap[agent].push(randomVal);
                 });
 
-                nextJson.RawData = agentZScoreMap["agent_support_30"];
+                //nextJson.RawData = agentZScoreMap["agent_support_30"];
+				nextJson.RawData = agentZScoreMap["agent_support_30"];
                 nextJson.TimeStamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
                 nextJson.Unixtime = Date.now() * 1000000;
 
