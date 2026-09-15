@@ -504,7 +504,7 @@
  			   console.log("-------------payloadarray=",payloadarray);
       
                payloadarray.forEach((oj) => {
-                  if (oj && !oj.ERROR) {
+                  if (oj && !oj.ERROR && oj.Preprocesstype=="Zscore") {
                     ingestRealtimeJson(oj);
                   }
                });
