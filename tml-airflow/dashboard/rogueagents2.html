@@ -467,49 +467,44 @@
                 updateConnectionStatus("Streaming Live Kafka Data", true);
             };
 
-ws.onmessage = function (event) {
-    let rawData = event.data;
-    let payloadArray;
+            ws.onmessage = function (event) {
+                let rawData = event.data;
+                let obj;
 
-    try {
-        // Strip stringified quotes if necessary
-        if (typeof rawData === 'string' && rawData.startsWith('"') && rawData.endsWith('"')) {
-            rawData = JSON.parse(rawData);
-        }
+                try {
+                    if (typeof rawData === 'string' && rawData.startsWith('"') && rawData.endsWith('"')) {
+                        rawData = JSON.parse(rawData);
+                    }
+                    obj = typeof rawData === 'object' ? rawData : JSON.parse(rawData);
+                } catch (e) {
+                    console.error("JSON parse error:", e.message, rawData);
+                    return;
+                }
 
-        // Unescape internal escaped JSON quotes if present
-        if (typeof rawData === 'string') {
-            let cleaned = rawData.replace(/\\"/g, '"');
-            if (cleaned.startsWith('"') && cleaned.endsWith('"')) {
-                cleaned = cleaned.substring(1, cleaned.length - 1);
-            }
-            payloadArray = JSON.parse(cleaned);
-        } else {
-            payloadArray = rawData;
-        }
-    } catch (e) {
-        console.error("JSON parse error:", e.message, rawData);
-        return;
-    }
+                if (obj.ERROR) {
+                    showToast("WebSocket Server Error: " + obj.ERROR, "danger");
+                    if (ws) ws.close(1000);
+                    stopStreamingUI();
+                    return;
+                }
 
-    if (START === 0) {
-        if (ws) ws.close(1000);
-        return;
-    }
+                if (START === 0) {
+                    if (ws) ws.close(1000);
+                    return;
+                }
 
-    if (append === "0" || append === 0) {
-        processedRows = [];
-    }
+                if (append === "0" || append === 0) {
+                    processedRows = [];
+                }
+				var maindata=rawData.replace(/\\"/g,'"');
+			   maindata=maindata.substr(1, maindata.length-3);
+			   
+			   	obj = JSON.parse(maindata);
+ 			   console.log("-------------obj=",obj['TopicReads']);
 
-    // Check if the payload is an array or object dictionary and iterate through it
-    const items = Array.isArray(payloadArray) ? payloadArray : Object.values(payloadArray);
+                ingestRealtimeJson(obj);
+            };
 
-    items.forEach((obj) => {
-        if (obj && !obj.ERROR) {
-            ingestRealtimeJson(obj);
-        }
-    });
-};
             ws.onclose = function (event) {
                 updateConnectionStatus("WebSocket Closed", false);
                 stopStreamingUI();
