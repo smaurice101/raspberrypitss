@@ -501,7 +501,7 @@
 			   
 			   	obj = JSON.parse(maindata);
                 payloadarray = obj['TopicReads'];
- 			   console.log("-------------payloadarray=",payloadarray);
+ 			  // console.log("-------------payloadarray=",payloadarray);
       
                payloadarray.forEach((oj) => {
                   if (oj && !oj.ERROR && oj.Preprocesstype=="Zscore") {
