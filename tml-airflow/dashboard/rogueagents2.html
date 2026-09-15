@@ -500,9 +500,15 @@
 			   maindata=maindata.substr(1, maindata.length-3);
 			   
 			   	obj = JSON.parse(maindata);
- 			   console.log("-------------obj=",obj['TopicReads']);
-
-                ingestRealtimeJson(obj);
+                payloadarray = obj['TopicReads'];
+ 			   console.log("-------------payloadarray=",payloadarray);
+      
+               items.forEach((oj) => {
+                  if (oj && !oj.ERROR) {
+                    ingestRealtimeJson(oj);
+                  }
+               });
+               
             };
 
             ws.onclose = function (event) {
