@@ -503,7 +503,7 @@
                 payloadarray = obj['TopicReads'];
  			   console.log("-------------payloadarray=",payloadarray);
       
-               items.forEach((oj) => {
+               payloadarray.forEach((oj) => {
                   if (oj && !oj.ERROR) {
                     ingestRealtimeJson(oj);
                   }
