@@ -5516,3 +5516,101 @@ Login Succeeded
 =============================================================
 [INFO 2026-09-16_13:49:40] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-rogue-agents-cncf-3f10.py
 [INFO 2026-09-16_13:49:47] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-rogue-agents-cncf-3f10.py
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/index.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/index.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/logs.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:18] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/details.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/logs.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:19] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/rogue-agents-cncf-3f10-amd64-tmlworking
+=============================================================
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+[INFO 2026-09-16_13:50:20] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/operating.rst
+acdf8350959ac51e5f869713c00f249b1ea92415cd2826168081a97c73160784
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: /rogue-agents-cncf-3f10/docs/source/kube.rst
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+[INFO 2026-09-16_13:50:21] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/rogue-agents-cncf-3f10/ymls/rogue-agents-cncf-3f10/ollama.yml
+sha256:ea4e89c750a10f04978d4b01609be87a56eb5f0f797b2432c16d440599368775
+[INFO 2026-09-16_13:50:23] {'name': ['Project with slug "rogue-agents-cncf-3f10" already exists.']}
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
