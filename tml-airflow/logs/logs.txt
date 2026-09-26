@@ -6507,6 +6507,7 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 [INFO 2026-09-25_21:27:48] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+<<<<<<< Updated upstream
 [INFO 2026-09-26_14:00:43] TML Solution Studio Started: DOCKERUSERNAME=maadsdocker, GITUSERNAME=smaurice101, GITREPOURL=https://github.com/smaurice101/raspberrypitss.git, AIRFLOWPORT=9000
 [INFO 2026-09-26_14:00:44] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
 Configure a credential helper to remove this warning. See
@@ -6524,3 +6525,15 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 [INFO 2026-09-26_14:00:44] TML Solution Studio: Github Remote Status: origin	https://github.com/smaurice101/raspberrypitss.git (fetch)
 origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypitss.git (push)
+=======
+[INFO 2026-09-26_14:02:50] TML Solution Studio: TML Project Creation: Creating new TML project: /raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10
+>>>>>>> Stashed changes
+[INFO 2026-09-26_14:02:50] TML Solution Studio: git pull --rebase --autostash origin main Status: From https://github.com/smaurice101/raspberrypitss
+ * branch            main       -> FETCH_HEAD
+ + 070b917...f7f3c8a main       -> origin/main  (forced update)
+Created autostash: 8e90099
+Applying autostash resulted in conflicts.
+Your changes are safe in the stash.
+You can run "git stash pop" or "git stash drop" at any time.
+Successfully rebased and updated refs/heads/main.
+[INFO 2026-09-26_14:03:42] TML Solution Studio: Starting Git commit process for project: quantstream-3f10
