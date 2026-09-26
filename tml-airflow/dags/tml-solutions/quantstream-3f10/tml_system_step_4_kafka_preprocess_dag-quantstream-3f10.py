@@ -37,15 +37,15 @@ default_args = {
   'usemysql' : '1', # do not modify
   'streamstojoin' : '', # leave blank
   'identifier' : 'IoT device performance and failures', # <<< ** Change as needed
-  'preprocesstypes' : 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'preprocesstypes' : 'raw', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
   'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
-  'jsoncriteria' : 'uid=metadata.dsn,filter:allrecords~\
-subtopics=metadata.property_name~\
-values=datapoint.value~\
-identifiers=metadata.display_name~\
-datetime=datapoint.updated_at~\
-msgid=datapoint.id~\
-latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'jsoncriteria' : 'uid=symbol,filter:allrecords~\
+subtopics=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x3_price_location,features_X.x4_range_drift,features_X.x5_window_return,features_X.x6_realized_volatility,features_X.x7_stochastic_position,features_X.x8_sma_distance,features_X.x9_acceleration~\
+values=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x3_price_location,features_X.x4_range_drift,features_X.x5_window_return,features_X.x6_realized_volatility,features_X.x7_stochastic_position,features_X.x8_sma_distance,features_X.x9_acceleration~\
+identifiers=symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol~\
+datetime=datetime_utc~\
+msgid=~\
+latlong=' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
