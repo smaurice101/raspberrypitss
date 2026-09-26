@@ -16,7 +16,7 @@ sys.dont_write_bytecode = True
 default_args = {
   'topic' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma - Viperviz will stream data from these topics to your browser
   'dashboardhtml': 'dashboard.html', # <<< *** name of your dashboard file: This one is ONLY for preprocessing
-  'dashboardhtml-ml': 'dashboard-ml.html', # <<< *** This one is IF you include ML dag
+  'dashboardhtml-ml': 'qs.php', # <<< *** This one is IF you include ML dag
   'topic-ml' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma
   'dashboardhtml-ai': 'dashboard-ai.html', # <<< *** This one is you include AI dag
   'topic-ai' : 'iot-preprocess,iot-preprocess2',    # <<< *** Separate multiple topics by a comma  
