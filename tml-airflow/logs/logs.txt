@@ -7774,3 +7774,5 @@ Login Succeeded
 [INFO 2026-09-27_13:57:45] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml_restapi/ollama.yml
 [INFO 2026-09-27_13:57:45] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml_restapi/ollama.yml
 [INFO 2026-09-27_13:57:45] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml_restapi/ollama.yml
+[INFO 2026-09-27_13:57:47] {'name': ['Project with slug "quantstream-3f10-ml-restapi" already exists.']}
+[INFO 2026-09-27_13:58:00] Dispatching API outbound trigger payload to: https://readthedocs.org/api/v3/projects/quantstream-3f10-ml_restapi/versions/latest/builds/
