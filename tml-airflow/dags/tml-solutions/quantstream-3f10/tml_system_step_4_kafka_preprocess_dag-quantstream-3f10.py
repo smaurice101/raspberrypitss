@@ -21,7 +21,7 @@ default_args = {
     'producerid': 'iotsolution', # <<< *** Change as needed
     'raw_data_topic': 'iot-raw-data', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
     'preprocess_data_topic': 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-    'maxrows': 800, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+    'maxrows': 600, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
     'offset': -1, # <<< Rollback from the end of the data streams
     'brokerhost': '', # <<< *** Leave as is
     'brokerport': -999, # <<< *** Leave as is
@@ -36,7 +36,7 @@ default_args = {
     'tmlfilepath': '', # leave blank
     'usemysql': 1, # do not modify
     'streamstojoin': '', # leave blank
-    'identifier': 'QuantStream AI Algorithmic trading', # <<< ** Change as needed
+    'identifier': 'QuantStream AI Mid-Frequency Algorithmic trading', # <<< ** Change as needed
     'preprocesstypes': 'raw', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
     'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed
     'jsoncriteria': """uid=symbol,filter:allrecords~
