@@ -8939,3 +8939,4 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 [INFO 2026-09-28_20:58:02] {'name': ['Project with slug "quantstream-3f10-ml-restapi" already exists.']}
+[INFO 2026-09-28_20:58:12] Dispatching API outbound trigger payload to: https://readthedocs.org/api/v3/projects/quantstream-3f10-ml_restapi/versions/latest/builds/
