@@ -15,40 +15,37 @@ import random
 sys.dont_write_bytecode = True
 ######################################## USER CHOOSEN PARAMETERS ########################################
 default_args = {
-    'myname': 'Sebastian Maurice', # <<< *** Change as needed
-    'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
-    'microserviceid': '', # <<< *** leave blank
-    'producerid': 'iotsolution', # <<< *** Change as needed
-    'preprocess_data_topic': 'iot-preprocess', # << *** topic/data to use for training datasets - You created this in STEP 2
-    'ml_data_topic': 'ml-data', # topic to store the trained algorithms  - You created this in STEP 2
-    'identifier': 'TML solution', # <<< *** Change as needed
-    'companyname': 'Your company', # <<< *** Change as needed
-    'myemail': 'Your email', # <<< *** Change as needed
-    'mylocation': 'Your location', # <<< *** Change as needed
-    'brokerhost': '', # <<< *** Leave as is
-    'brokerport': -999, # <<< *** Leave as is
-    'deploy': 1, # <<< *** do not modofy
-    'modelruns': 50, # <<< *** Change as needed
-    'offset': -1, # <<< *** Do not modify
-    'islogistic': 2, # <<< *** Change as needed, 1=logistic, 0=not logistic, 2=multinomial logistic
-    'networktimeout': 600, # <<< *** Change as needed
-    'modelsearchtuner': 90, # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.
-    'dependentvariable': 'failure', # <<< *** Change as needed,
-    'independentvariables': 'Power_preprocessed_AnomProb', # <<< *** Change as needed,
-    'rollbackoffsets': 1000, # <<< *** Change as needed,
-    'consumeridtrainingdata2': '', # leave blank
-    'partition_training': '', # leave blank
-    'consumefrom': '', # leave blank
-    'topicid': -1, # leave as is
-    'fullpathtotrainingdata': '/Viper-ml/viperlogs/iotlogistic', # # <<< *** Change as needed - add name for foldername that stores the training datasets
-    'processlogic': '', # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
-    'array': 0, # leave as is
-    'transformtype': '', # Sets the model to: log-lin,lin-log,log-log
-    'sendcoefto': '', # you can send coefficients to another topic for further processing -- MUST BE SET IN STEP 2
-    'coeftoprocess': '', # indicate the index of the coefficients to process i.e. 0,1,2 For example, for a 3 estimated parameters 0=constant, 1,2 are the other estmated paramters
-    'coefsubtopicnames': '', # Give the coefficients a name: constant,elasticity,elasticity2
-    'viperconfigfile': '/Viper-ml/viper.env', # Do not modify
-    'HPDEADDR': 'http://',
+  'owner' : 'Sebastian Maurice',  # <<< *** Change as needed      
+  'enabletls': '1', # <<< *** 1=connection is encrypted, 0=no encryption
+  'microserviceid' : '',  # <<< *** leave blank
+  'producerid' : 'iotsolution',   # <<< *** Change as needed   
+  'raw_data_topic' : 'iot-raw-data', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
+  'preprocess_data_topic' : 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
+  'maxrows' : '800', # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+  'offset' : '-1', # <<< Rollback from the end of the data streams  
+  'brokerhost' : '',   # <<< *** Leave as is
+  'brokerport' : '-999',  # <<< *** Leave as is   
+  'preprocessconditions' : '', ## <<< Leave blank      
+  'delay' : '70', # Add a 70 millisecond maximum delay for VIPER to wait for Kafka to return confirmation message is received and written to topic     
+  'array' : '0', # do not modify
+  'saveasarray' : '1', # do not modify
+  'topicid' : '-999', # do not modify
+  'rawdataoutput' : '1', # <<< 1 to output raw data used in the preprocessing, 0 do not output
+  'asynctimeout' : '120', # <<< 120 seconds for connection timeout 
+  'timedelay' : '0', # <<< connection delay
+  'tmlfilepath' : '', # leave blank
+  'usemysql' : '1', # do not modify
+  'streamstojoin' : '', # leave blank
+  'identifier' : 'IoT device performance and failures', # <<< ** Change as needed
+  'preprocesstypes' : 'anomprob,trend,avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
+  'pathtotmlattrs' : 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed     
+  'jsoncriteria' : 'uid=metadata.dsn,filter:allrecords~\
+subtopics=metadata.property_name~\
+values=datapoint.value~\
+identifiers=metadata.display_name~\
+datetime=datapoint.updated_at~\
+msgid=datapoint.id~\
+latlong=lat:long' # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
 ######################################## DO NOT MODIFY BELOW #############################################
