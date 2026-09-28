@@ -34,7 +34,7 @@ default_args = {
     'networktimeout': 600, # <<< *** Change as needed
     'modelsearchtuner': 90, # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.
     'dependentvariable': 'target_Y_preprocessed_raw', # <<< *** Change as needed,
-    'independentvariables': 'features_X.x1_tick_return_preprocessed_raw,features_X.x2_session_return_preprocessed_raw,features_X.x3_price_location_preprocessed_raw,features_X.x4_range_drift_preprocessed_raw,features_X.x5_window_return_preprocessed_raw,features_X.x6_realized_volatility_preprocessed_raw,features_X.x7_stochastic_position_preprocessed_raw,features_X.x8_sma_distance_preprocessed_raw,features_X.x9_acceleration_preprocessed_raw', # <<< *** Change as needed,
+    'independentvariables': 'features_X.x1_tick_return_preprocessed_raw,features_X.x2_session_return_preprocessed_raw,features_X.x4_range_drift_preprocessed_raw,features_X.x6_realized_volatility_preprocessed_raw,features_X.x8_sma_distance_preprocessed_raw,features_X.x9_acceleration_preprocessed_raw', # <<< *** Change as needed,
     'rollbackoffsets': 1000, # <<< *** Change as needed,
     'consumeridtrainingdata2': '', # leave blank
     'partition_training': '', # leave blank
