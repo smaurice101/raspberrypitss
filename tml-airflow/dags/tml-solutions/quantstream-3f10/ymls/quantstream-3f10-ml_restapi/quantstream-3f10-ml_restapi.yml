@@ -130,10 +130,10 @@
              - name: step4preprocesstypes # STEP 4
                value: 'raw'                                          
              - name: step4jsoncriteria # STEP 4
-               value: 'uid=symbol,filter:allrecords~
-subtopics=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x3_price_location,features_X.x4_range_drift,features_X.x5_window_return,features_X.x6_realized_volatility,features_X.x7_stochastic_position,features_X.x8_sma_distance,features_X.x9_acceleration~
-values=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x3_price_location,features_X.x4_range_drift,features_X.x5_window_return,features_X.x6_realized_volatility,features_X.x7_stochastic_position,features_X.x8_sma_distance,features_X.x9_acceleration~
-identifiers=symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol,symbol~
+               value: 'uid=date,filter:allrecords~
+subtopics=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
+values=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
+identifiers=symbol,symbol,symbol,symbol,symbol,symbol,symbol~
 datetime=datetime_utc~
 msgid=symbol~
 latlong=lat:long'                           
@@ -160,7 +160,7 @@ latlong=lat:long'
              - name: step5processlogic # STEP 5 processlogic field can be adjusted here.  
                value: ''                                 
              - name: step5independentvariables # STEP 5 independent variables can be adjusted here.  
-               value: 'features_X.x1_tick_return_preprocessed_raw,features_X.x2_session_return_preprocessed_raw,features_X.x3_price_location_preprocessed_raw,features_X.x4_range_drift_preprocessed_raw,features_X.x5_window_return_preprocessed_raw,features_X.x6_realized_volatility_preprocessed_raw,features_X.x7_stochastic_position_preprocessed_raw,features_X.x8_sma_distance_preprocessed_raw,features_X.x9_acceleration_preprocessed_raw'                                                               
+               value: 'features_X.x1_tick_return_preprocessed_raw,features_X.x2_session_return_preprocessed_raw,features_X.x4_range_drift_preprocessed_raw,features_X.x6_realized_volatility_preprocessed_raw,features_X.x8_sma_distance_preprocessed_raw,features_X.x9_acceleration_preprocessed_raw'                                                               
              - name: step6maxrows # STEP 6 maxrows field can be adjusted here.  Higher the number more predictions to make, BUT more memory needed.
                value: '50'                              
              - name: step9rollbackoffset # STEP 9 rollbackoffset field can be adjusted here.  Higher the number more information sent to privateGPT, BUT more memory needed.
