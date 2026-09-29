@@ -155,11 +155,11 @@ latlong=lat:long'
              - name: step4bpreprocess_data_topic # STEP 4b 
                value: ''                                          
              - name: step5rollbackoffsets # STEP 5 rollbackoffsets field can be adjusted here.  Higher the number more training data to process, BUT more memory needed.
-               value: '1000'                              
+               value: '500'                              
              - name: step5processlogic # STEP 5 processlogic field can be adjusted here.  
                value: ''                                                
              - name: step5independentvariables # STEP 5 independent variables can be adjusted here.  
-               value: 'features_X.x1_tick_return_preprocessed_raw,features_X.x2_session_return_preprocessed_raw,features_X.x4_range_drift_preprocessed_raw,features_X.x6_realized_volatility_preprocessed_raw,features_X.x8_sma_distance_preprocessed_raw,features_X.x9_acceleration_preprocessed_raw'                                                                              
+               value: 'features_X.x1_tick_return_preprocessed_Raw,features_X.x2_session_return_preprocessed_Raw,features_X.x4_range_drift_preprocessed_Raw,features_X.x6_realized_volatility_preprocessed_Raw,features_X.x8_sma_distance_preprocessed_Raw,features_X.x9_acceleration_preprocessed_Raw'                                                                              
              - name: step6maxrows # STEP 6 maxrows field can be adjusted here.  Higher the number more predictions to make, BUT more memory needed.
                value: '50'                              
              - name: step9rollbackoffset # STEP 9 rollbackoffset field can be adjusted here.  Higher the number more information sent to privateGPT, BUT more memory needed.
