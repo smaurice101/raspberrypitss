@@ -9708,3 +9708,8 @@ Login Succeeded
 =============================================================
 2f326b3b4ea11357b1d5d1ce5a8d4c1a8646be24461111c797a53f5f381e5ac4
 sha256:a1905e781d944e0eb443bff0f2963edf423beed848fe34c6497a1cec144e5a10
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
