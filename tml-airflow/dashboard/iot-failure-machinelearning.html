@@ -2686,22 +2686,26 @@ datetime:timestamp,:allrecords,Joinedidentifiers:~oem:n/a~lat:42.58942256332994~
                 curTime = new Date();
 				var eventdata=`${event.data}`;
 			 //  console.log("-------------maindata=",eventdata);
-			
-				var maindata=eventdata.replace(/\\"/g,'"');
+//////////////////////////////////////////////////////////			
+				var maindata=eventdata.replace(/\\"/g,'\"');
 			   maindata=maindata.substr(1, maindata.length-3);
 
-			    console.log("-------------eventdata=",eventdata);
+//			    console.log("-------------eventdata=",eventdata);
 
-
+///////////////////////////////////////////////////////////////
 			   
 			   var obj;
 			   try{
-				obj = JSON.parse(maindata);
+		//		obj = JSON.parse(event.data);
+                 var innerJsonString = JSON.parse(event.data); // unwraps the outer string layer
+                  obj = JSON.parse(innerJsonString);   
+
 				}catch(e){
 				   console.log("Json parse issue=",e.message);
 				   return;
 				}
 				
+
 				 if (obj.ERROR){
 //				   $("#statustext").val("Websocket ERROR.."+obj.ERROR);
 				     document.getElementById('statustext').innerHTML="Websocket ERROR.."+obj.ERROR;
