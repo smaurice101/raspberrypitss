@@ -10676,3 +10676,4 @@ Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
+[INFO 2026-09-29_21:13:10] {'name': ['Project with slug "myawesometmlsolutionml-3f10-ml" already exists.']}
