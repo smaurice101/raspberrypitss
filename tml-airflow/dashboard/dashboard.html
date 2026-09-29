@@ -635,6 +635,8 @@ function image(thetype,mess) {
                   curTime = new Date();
                   var eventdata = `${event.data}`;  <!-- ******** REAL-TIME DATA  FROM VIPERVIZ ** -->
              
+                  console.log("RAW:", event.data);
+
                   var maindata = eventdata.replace(/\\"/g, '"');
                   maindata = maindata.substr(1, maindata.length - 3);
                   if (maindata == "") {
