@@ -2180,3 +2180,4 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
 [INFO 2026-09-30_00:17:26] {'name': ['Project with slug "quantstream-3f10-ml" already exists.']}
+[INFO 2026-09-30_00:17:36] Dispatching API outbound trigger payload to: https://readthedocs.org/api/v3/projects/quantstream-3f10-ml/versions/latest/builds/
