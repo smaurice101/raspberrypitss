@@ -127,12 +127,12 @@
              - name: step4preprocess_data_topic # STEP 4
                value: 'iot-preprocess'                                                         
              - name: step4preprocesstypes # STEP 4
-               value: 'raw'                                                         
+               value: 'avg'                                                         
              - name: step4jsoncriteria # STEP 4
                value: 'uid=date,filter:allrecords~
-subtopics=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
-values=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
-identifiers=symbol,symbol,symbol,symbol,symbol,symbol,symbol~
+subtopics=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
+values=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
+identifiers=symbol,symbol,symbol,symbol,symbol,symbol~
 datetime=datetime_utc~
 msgid=symbol~
 latlong=lat:long'                           
@@ -157,9 +157,9 @@ latlong=lat:long'
              - name: step5rollbackoffsets # STEP 5 rollbackoffsets field can be adjusted here.  Higher the number more training data to process, BUT more memory needed.
                value: '500'                              
              - name: step5processlogic # STEP 5 processlogic field can be adjusted here.  
-               value: ''                                                
+               value: 'classification_name=decision_prob:features_X.x1_tick_return_preprocessed_Avg=0.00029,n:features_X.x9_acceleration_preprocessed_Avg=0,n~features_X.x1_tick_return_preprocessed_Avg=-n,-0.00029:features_X.x9_acceleration_preprocessed_Avg=-n,0'                                                
              - name: step5independentvariables # STEP 5 independent variables can be adjusted here.  
-               value: 'features_X.x1_tick_return_preprocessed_Raw,features_X.x2_session_return_preprocessed_Raw,features_X.x4_range_drift_preprocessed_Raw,features_X.x6_realized_volatility_preprocessed_Raw,features_X.x8_sma_distance_preprocessed_Raw,features_X.x9_acceleration_preprocessed_Raw'                                                                              
+               value: 'features_X.x1_tick_return_preprocessed_Avg,features_X.x2_session_return_preprocessed_Avg,features_X.x4_range_drift_preprocessed_Avg,features_X.x6_realized_volatility_preprocessed_Avg,features_X.x8_sma_distance_preprocessed_Avg,features_X.x9_acceleration_preprocessed_Avg'                                                                              
              - name: step6maxrows # STEP 6 maxrows field can be adjusted here.  Higher the number more predictions to make, BUT more memory needed.
                value: '50'                              
              - name: step9rollbackoffset # STEP 9 rollbackoffset field can be adjusted here.  Higher the number more information sent to privateGPT, BUT more memory needed.
