@@ -4130,3 +4130,105 @@ Login Succeeded
 =============================================================
 [INFO 2026-09-30_21:22:26] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-quantstream-3f10.py
 [INFO 2026-09-30_21:22:37] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-quantstream-3f10.py
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/index.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/index.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/logs.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:01] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:02] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:02] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:02] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:02] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:02] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/details.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/logs.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/quantstream-3f10-ml-amd64-tmlworking
+=============================================================
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:03] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:04] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:04] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+[INFO 2026-09-30_21:23:04] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/operating.rst
+cf30002ccbc7ca436c3efa1e82c741c86fc69db2a6008f5d99a38736d4ecd7dd
+sha256:5c69ce28edec97c971ef40cec2e2f4b7aa6f35f32b3b3e7f9687315f7c9ea08a
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: /quantstream-3f10-ml/docs/source/kube.rst
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-09-30_21:23:05] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-09-30_21:23:08] {'name': ['Project with slug "quantstream-3f10-ml" already exists.']}
