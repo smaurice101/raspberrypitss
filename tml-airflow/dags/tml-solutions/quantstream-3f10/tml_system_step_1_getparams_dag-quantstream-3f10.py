@@ -61,7 +61,7 @@ default_args = {
  'MYSQLDB' : 'tmlids',
  'MYSQLUSER' : 'root',    
  'SASLMECHANISM' : 'PLAIN',
- 'MINFORECASTACCURACY' : '55',
+ 'MINFORECASTACCURACY' : '40',
  'COMPRESSIONTYPE' : 'gzip',
  'MAILSERVER' : '', #i.e.  smtp.broadband.rogers.com,
  'MAILPORT' : '', #i.e. 465,
