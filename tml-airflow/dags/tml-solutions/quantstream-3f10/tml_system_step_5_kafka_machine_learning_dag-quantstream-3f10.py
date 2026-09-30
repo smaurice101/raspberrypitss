@@ -33,15 +33,15 @@ default_args = {
     'islogistic': 2, # <<< *** Change as needed, 1=logistic, 0=not logistic, 2=multinomial logistic
     'networktimeout': 600, # <<< *** Change as needed
     'modelsearchtuner': 90, # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.
-    'dependentvariable': 'target_Y_preprocessed_Raw', # <<< *** Change as needed,
-    'independentvariables': 'features_X.x1_tick_return_preprocessed_Raw,features_X.x2_session_return_preprocessed_Raw,features_X.x4_range_drift_preprocessed_Raw,features_X.x6_realized_volatility_preprocessed_Raw,features_X.x8_sma_distance_preprocessed_Raw,features_X.x9_acceleration_preprocessed_Raw', # <<< *** Change as needed,
+    'dependentvariable': 'decision', # <<< *** Change as needed,
+    'independentvariables': 'features_X.x1_tick_return_preprocessed_Avg,features_X.x2_session_return_preprocessed_Avg,features_X.x4_range_drift_preprocessed_Avg,features_X.x6_realized_volatility_preprocessed_Avg,features_X.x8_sma_distance_preprocessed_Avg,features_X.x9_acceleration_preprocessed_Avg', # <<< *** Change as needed,
     'rollbackoffsets': 500, # <<< *** Change as needed,
     'consumeridtrainingdata2': '', # leave blank
     'partition_training': '', # leave blank
     'consumefrom': '', # leave blank
     'topicid': -1, # leave as is
     'fullpathtotrainingdata': '/rawdata/quantstream', # # <<< *** Change as needed - add name for foldername that stores the training datasets
-    'processlogic': '', # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
+    'processlogic': 'classification_name=decision_prob:features_X.x1_tick_return_preprocessed_Avg=0.00029,n:features_X.x9_acceleration_preprocessed_Avg=0,n~features_X.x1_tick_return_preprocessed_Avg=-n,-0.00029:features_X.x9_acceleration_preprocessed_Avg=-n,0', # <<< *** Change as needed, i.e. classification_name=failure_prob:Voltage_preprocessed_AnomProb=55,n:Current_preprocessed_AnomProb=55,n
     'array': 0, # leave as is
     'transformtype': '', # Sets the model to: log-lin,lin-log,log-log
     'sendcoefto': '', # you can send coefficients to another topic for further processing -- MUST BE SET IN STEP 2
