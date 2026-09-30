@@ -40,9 +40,9 @@ default_args = {
     'preprocesstypes': 'avg', # <<< **** MAIN PREPROCESS TYPES CHNAGE AS NEEDED refer to https://tml-readthedocs.readthedocs.io/en/latest/
     'pathtotmlattrs': 'oem=n/a,lat=n/a,long=n/a,location=n/a,identifier=n/a', # Change as needed
     'jsoncriteria': """uid=date,filter:allrecords~
-subtopics=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
-values=target_Y,features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
-identifiers=symbol,symbol,symbol,symbol,symbol,symbol,symbol~
+subtopics=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
+values=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
+identifiers=symbol,symbol,symbol,symbol,symbol,symbol~
 datetime=datetime_utc~
 msgid=symbol~
 latlong=lat:long""" # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
