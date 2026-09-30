@@ -27,7 +27,7 @@ default_args = {
   'mylocation' : 'Your location', # <<< *** Change as needed      
   'brokerhost' : '', # <<< *** Leave as is 
   'brokerport' : '-999', # <<< *** Leave as is
-  'streamstojoin' : 'features_X.x1_tick_return_preprocessed_raw,features_X.x2_session_return_preprocessed_raw,features_X.x4_range_drift_preprocessed_raw,features_X.x6_realized_volatility_preprocessed_raw,features_X.x8_sma_distance_preprocessed_raw,features_X.x9_acceleration_preprocessed_raw', # << ** These are the streams in the preprocess_data_topic for these independent variables
+  'streamstojoin' : 'features_X.x1_tick_return_preprocessed_Avg,features_X.x2_session_return_preprocessed_Avg,features_X.x4_range_drift_preprocessed_Avg,features_X.x6_realized_volatility_preprocessed_Avg,features_X.x8_sma_distance_preprocessed_Avg,features_X.x9_acceleration_preprocessed_Avg', # << ** These are the streams in the preprocess_data_topic for these independent variables
   'inputdata' : '', # << ** You can specify independent variables manually - rather than consuming from the preprocess_data_topic stream
   'consumefrom' : 'ml-data', # << This is ml_data_topic in STEP 5 that contains the estimated parameters
   'mainalgokey' : '', # leave blank
