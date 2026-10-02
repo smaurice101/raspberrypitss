@@ -44,7 +44,7 @@ subtopics=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_r
 values=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
 identifiers=price,price,price,price,price,price~
 datetime=datetime_utc~
-msgid=symbol~
+msgid=symbol,price~
 latlong=lat:long""" # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
 }
 
