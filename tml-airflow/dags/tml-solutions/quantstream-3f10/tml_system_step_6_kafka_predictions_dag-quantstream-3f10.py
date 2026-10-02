@@ -19,7 +19,7 @@ default_args = {
     'enabletls': 1, # <<< *** 1=connection is encrypted, 0=no encryption
     'microserviceid': '', # <<< *** leave blank
     'producerid': 'iotsolution', # <<< *** Change as needed
-    'preprocess_data_topic': 'iot-preprocess', # << *** data for the independent variables - You created this in STEP 2
+    'preprocess_data_topic': 'iot-raw-data', # << *** data for the independent variables - You created this in STEP 2
     'ml_prediction_topic': 'iot-ml-prediction-results-output', # topic to store the predictions - You created this in STEP 2
     'description': 'TML solution', # <<< *** Change as needed
     'companyname': 'Otics', # <<< *** Change as needed
@@ -27,7 +27,7 @@ default_args = {
     'mylocation': 'Your location', # <<< *** Change as needed
     'brokerhost': '', # <<< *** Leave as is
     'brokerport': -999, # <<< *** Leave as is
-    'streamstojoin': 'features_X.x1_tick_return_preprocessed_Raw,features_X.x2_session_return_preprocessed_Raw,features_X.x4_range_drift_preprocessed_Raw,features_X.x6_realized_volatility_preprocessed_Raw,features_X.x8_sma_distance_preprocessed_Raw,features_X.x9_acceleration_preprocessed_Raw', # << ** These are the streams in the preprocess_data_topic for these independent variables
+    'streamstojoin': 'features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration', # << ** These are the streams in the preprocess_data_topic for these independent variables
     'inputdata': '', # << ** You can specify independent variables manually - rather than consuming from the preprocess_data_topic stream
     'consumefrom': 'ml-data', # << This is ml_data_topic in STEP 5 that contains the estimated parameters
     'mainalgokey': '', # leave blank
