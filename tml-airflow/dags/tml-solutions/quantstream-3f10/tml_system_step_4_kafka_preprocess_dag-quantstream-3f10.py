@@ -21,7 +21,7 @@ default_args = {
     'producerid': 'iotsolution', # <<< *** Change as needed
     'raw_data_topic': 'iot-raw-data', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
     'preprocess_data_topic': 'iot-preprocess', # *************** INCLUDE ONLY ONE TOPIC - This is one of the topic you created in SYSTEM STEP 2
-    'maxrows': 2, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
+    'maxrows': 1, # <<< ********** Number of offsets to rollback the data stream -i.e. rollback stream by 500 offsets
     'offset': -1, # <<< Rollback from the end of the data streams
     'brokerhost': '', # <<< *** Leave as is
     'brokerport': -999, # <<< *** Leave as is
@@ -42,7 +42,7 @@ default_args = {
     'jsoncriteria': """uid=date,filter:allrecords~
 subtopics=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
 values=features_X.x1_tick_return,features_X.x2_session_return,features_X.x4_range_drift,features_X.x6_realized_volatility,features_X.x8_sma_distance,features_X.x9_acceleration~
-identifiers=symbol,symbol,symbol,symbol,symbol,symbol~
+identifiers=price,price,price,price,price,price~
 datetime=datetime_utc~
 msgid=symbol~
 latlong=lat:long""" # <<< **** Specify your json criteria. Here is an example of a multiline json --  refer to https://tml-readthedocs.readthedocs.io/en/latest/
