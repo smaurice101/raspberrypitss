@@ -9903,3 +9903,4 @@ Login Succeeded
 [INFO 2026-10-03_14:32:07] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
 [INFO 2026-10-03_14:32:07] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
 [INFO 2026-10-03_14:32:07] DAG 10: Successfully processed inline template criteria tokens for asset: //raspberrypitss/tml-airflow/dags/tml-solutions/quantstream-3f10/ymls/quantstream-3f10-ml/ollama.yml
+[INFO 2026-10-03_14:32:09] {'name': ['Project with slug "quantstream-3f10-ml" already exists.']}
