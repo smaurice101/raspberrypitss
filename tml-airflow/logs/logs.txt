@@ -10,3 +10,9 @@
 cfb23bf7b3721b07ec75e04cf56c786fa2e8dc66d51551c493006c43d73a9c4d
 sha256:4179a6f95f697482f981f8cb94a8f81eab8574b7bfb75b57c7dfce28df797af4
 [INFO 2026-10-03_15:43:33] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-quantstream-3f10.py
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2026-10-03_15:43:45] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-quantstream-3f10.py
