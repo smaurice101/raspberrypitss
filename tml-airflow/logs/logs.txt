@@ -9140,3 +9140,13 @@ Login Succeeded
 =============================================================
 [INFO 2026-10-03_14:02:58] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-quantstream-3f10.py
 [INFO 2026-10-03_14:03:08] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-quantstream-3f10.py
+=============================================================
+🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/quantstream-3f10-ml-amd64-tmlworking
+=============================================================
+f7d54368ec294ee96156e8172bad314e4fd4c541ad6edfa6fbe16dc4b0367baa
+sha256:f6983692b07b162e72c3fdb65dc384fcbfecbf7c436eebb159fcb6afb183ace7
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
