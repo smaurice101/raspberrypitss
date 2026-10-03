@@ -85,7 +85,7 @@
              - name: KUBE
                value: '1'
              - name: step3localfileinputfile # STEP 3 localfile inputfile field can be adjusted here.
-               value: '/rawdata/qsdata.txt'
+               value: ''
              - name: step3localfiledocfolder # STEP 3 # STEP 3 docfolder inputfile field can be adjusted here.
                value: ''               
              - name: step4maxrows # STEP 4 maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
@@ -123,7 +123,7 @@
              - name: step2preprocess_data_topic # STEP 2 
                value: 'iot-preprocess,iot-preprocess2'                           
              - name: step4raw_data_topic # STEP 4
-               value: 'iot-raw-data'                           
+               value: 'quantstream-raw-data'                           
              - name: step4preprocess_data_topic # STEP 4
                value: 'iot-preprocess'                                                         
              - name: step4preprocesstypes # STEP 4
