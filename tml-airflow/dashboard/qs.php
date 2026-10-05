@@ -94,97 +94,114 @@
 
     <!-- Top Navigation Header with Increased Vertical Spacing -->
 <header class="glass-panel sticky top-0 z-50 border-b border-cardborder px-3 sm:px-5 py-3 sm:py-4">
-        <div class="max-w-[2400px] mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-center gap-4 lg:gap-6">
-            
-            <div class="flex items-center justify-between lg:justify-start gap-4 lg:gap-8">
-                <div class="flex items-center gap-3">
-                    <div>
-<div class="flex items-center gap-2 flex-nowrap whitespace-nowrap">
-    <img src="../img/qsicon.png" alt="QuantStream Logo" class="w-10 h-9 sm:w-14 sm:h-12 object-contain shrink-0">
-    <span class="font-semibold text-white text-base sm:text-xl" style="display: inline-block; transform: scaleX(1);">QuantStream AI</span>
-    <span class="text-accentcyan font-mono font-normal text-xs ml-1.5 px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 shrink-0">v3.0</span>
-</div>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-mono tracking-wider mt-0.5">QUANTITATIVE ALPHA PREDICTION ENGINE</p>
-                    </div>
-                </div>
+    <div class="max-w-[2400px] mx-auto grid grid-cols-1 lg:grid-cols-3 items-center gap-1 lg:gap-3">
 
-                <div class="flex items-center gap-2 sm:gap-3">
-                    <div id="statusBadge" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] sm:text-xs font-mono">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-fast shrink-0"></span>
-                        <span id="statusText" class="truncate max-w-[110px] sm:max-w-none">STREAMING WS</span>
-                    </div>
-                    <div class="hidden sm:flex flex-col text-right font-mono text-xs text-slate-400">
-                        <span id="utcClock" class="font-semibold text-slate-200">00:00:00 UTC</span>
-                        <span class="text-[10px] text-slate-500">TICK FREQ: 750ms</span>
-                    </div>
+        <!-- LEFT: Status & Clock -->
+        <div class="flex items-center justify-between lg:justify-start gap-2 lg:gap-4">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div id="statusBadge" class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] sm:text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-fast shrink-0"></span>
+                    <span id="statusText" class="truncate max-w-[110px] sm:max-w-none">STREAMING WS</span>
+                </div>
+                <div class="hidden sm:flex flex-col text-right font-mono text-xs text-slate-400">
+                    <span id="utcClock" class="font-semibold text-slate-200 tabular-nums">00:00:00 UTC</span>
+                    <span class="text-[10px] text-slate-500">TICK FREQ: 750ms</span>
                 </div>
             </div>
-
-            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-1 bg-slate-600/50 p-2 sm:p-2.5 rounded-xl border border-white/5">
-                
-                <!-- PROMINENT Interactive Brokers Execution Switch with Official Logo & Disk Persistence -->
-                <div id="ibkrContainerBox" class="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-3 px-3.5 py-2 rounded-xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-2 border-red-500/50 shadow-lg transition-all duration-300">
-                    <div class="flex items-center gap-2.5">
-                        <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 border border-white/10 p-1 shrink-0">
-                            <a href='https://www.interactivebrokers.ca/en/home.php' target=new><img src="../img/ibicon.png" alt="Interactive Brokers Logo" class="w-full h-full object-contain"></a>
-                        </div>
-                        <div class="flex flex-col">
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-300">Interactive Brokers</span>
-                                <span class="px-1 py-0.2 rounded text-[8px] font-mono bg-red-500/20 text-red-400 border border-red-500/30">LIVE API</span>
-                            </div>
-                            <span id="ibkrStatusLabel" class="text-xs font-mono font-extrabold text-red-400 tracking-wide">AUTO-TRADING OFF</span>
-                        </div>
-                    </div>
-                    <label class="relative inline-flex items-center cursor-pointer ml-2">
-                        <input type="checkbox" id="ibkrToggle" class="sr-only peer">
-                        <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
-                    </label>
-                </div>
-
-                <div class="h-4 w-px bg-slate-800 hidden sm:block"></div>
-
-                <div class="flex items-center gap-2 w-full sm:w-auto justify-center">
-                    <button id="toggleStreamBtn" class="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-all shadow-md">
-                        <i data-lucide="pause" id="toggleStreamIcon" class="w-3.5 h-3.5"></i>
-                        <span id="toggleStreamText">Pause Stream</span>
-                    </button>
-
-                    <div class="flex items-center gap-1">
-                        <button id="shockCrashBtn" class="px-2.5 sm:px-3 py-2 rounded-lg bg-red-600/20 hover:bg-red-600/40 border border-red-500/30 text-red-300 font-mono text-[11px] transition-all">
-                            ⚡ Flash Crash
-                        </button>
-                        <button id="shockRallyBtn" class="px-2.5 sm:px-3 py-2 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 border border-emerald-500/30 text-emerald-300 font-mono text-[11px] transition-all">
-                            🚀 Bull Rally
-                        </button>
-                    </div>
-                </div>
-
-                <div class="h-4 w-px bg-slate-800 hidden sm:block"></div>
-
-                <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-mono px-2 w-full sm:w-auto pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-700/50">
-                    <div class="flex items-center gap-2">
-                        <label for="sliderK" class="text-slate-400">Lookahead <span class="text-slate-200 font-bold">k</span>:</label>
-                        <input id="sliderK" type="range" min="1" max="10" value="3" class="w-16 accent-accentblue cursor-pointer">
-                        <span id="valK" class="text-accentblue font-bold w-3">3</span>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <label for="sliderDelta" class="text-slate-400">Threshold <span class="text-slate-200 font-bold">δ</span>:</label>
-                        <input id="sliderDelta" type="range" min="0.0001" max="0.005" step="0.0001" value="0.0012" class="w-16 accent-accentcyan cursor-pointer">
-                        <span id="valDelta" class="text-accentcyan font-bold w-12">0.0012</span>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <label for="sliderM" class="text-slate-400">Lookback <span class="text-slate-200 font-bold">m</span>:</label>
-                        <input id="sliderM" type="range" min="5" max="40" value="20" class="w-16 accent-accentpurple cursor-pointer">
-                        <span id="valM" class="text-accentpurple font-bold w-5">20</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </header>
+
+        <!-- CENTER: Logo & Title -->
+        <div class="flex justify-center items-center my-2 lg:my-0">
+            <div class="relative flex items-center gap-1">
+                <!-- Single signature touch: a soft glow behind the brand mark, nowhere else -->
+                <div class="pointer-events-none absolute -inset-x-8 -inset-y-3 bg-cyan-500/10 blur-2xl rounded-full"></div>
+                <div class="relative">
+                    <div class="flex items-center gap-2 flex-nowrap whitespace-nowrap">
+                        <img src="../img/qsicon.png" alt="QuantStream Logo" class="w-10 h-9 sm:w-14 sm:h-12 object-contain shrink-0">
+                        <span class="font-semibold text-white text-lg sm:text-2xl tracking-tight">QuantStream AI</span>
+                        <span class="text-accentcyan font-mono font-normal text-xs ml-1.5 px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 shrink-0">v3.0</span>
+                    </div>
+                    <p class="text-[9px] sm:text-[10px] text-slate-400 font-mono tracking-wider mt-0.5 text-center">MID-FREQUENCY ALGORITHMIC TRADING ENGINE</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Controls & Toggles -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-end gap-3 sm:gap-3 bg-white/[0.03] p-2 sm:p-2.5 rounded-xl border border-white/5">
+
+            <!-- Interactive Brokers Execution Switch. Default/OFF state is intentionally
+                 calm (neutral border, muted status text) rather than alarming - a live-money
+                 control should reserve its most urgent styling for when it's actually armed.
+                 Suggested JS hook: toggle an `.is-armed` class on #ibkrContainerBox when the
+                 checkbox becomes checked, swapping border-slate-700 -> border-red-500/60 and
+                 shadow-md -> shadow-lg shadow-red-950/50, and the status label from
+                 text-slate-400 -> text-red-400 with "AUTO-TRADING LIVE". -->
+            <div id="ibkrContainerBox" class="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-2.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-slate-700 shadow-md transition-all duration-300">
+                <div class="flex items-center gap-1.5">
+                    <div class="flex items-center justify-center w-7 h-7 rounded-lg bg-white/5 border border-white/10 p-1 shrink-0">
+                        <a id="brokerLinkIcon" href="https://www.interactivebrokers.ca/en/home.php" target="_new"><img src="../img/ibicon.png" alt="Broker Logo" class="w-full h-full object-contain"></a>
+                    </div>
+                    <div class="flex flex-col leading-tight">
+                        <div class="flex items-center gap-1.5">
+                            <span id="brokerNameLabel" class="text-[9px] font-mono font-bold uppercase tracking-wide text-slate-400">Interactive Brokers</span>
+                            <span class="px-1 py-px rounded text-[7px] font-mono bg-white/5 text-slate-400 border border-white/10 leading-tight">LIVE API</span>
+                        </div>
+                        <span id="ibkrStatusLabel" class="text-[10px] font-mono font-bold text-slate-400 tracking-wide">AUTO-TRADING OFF</span>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                    <input type="checkbox" id="ibkrToggle" class="sr-only peer">
+                    <div class="w-9 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+                </label>
+            </div>
+
+            <!-- CONFIG PARAMS SETTINGS BUTTON -->
+            <button id="openConfigModalBtn" class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 text-slate-300 hover:text-cyan-400 font-mono text-xs transition-all">
+                <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+                <span>Config</span>
+            </button>
+
+            <div class="h-5 w-px bg-white/10 hidden sm:block"></div>
+
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-center">
+                <button id="toggleStreamBtn" class="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-all shadow-md shadow-emerald-950/40">
+                    <i data-lucide="pause" id="toggleStreamIcon" class="w-3.5 h-3.5"></i>
+                    <span id="toggleStreamText">Pause Stream</span>
+                </button>
+
+                <div class="hidden flex items-center gap-1">
+                    <button id="shockCrashBtn" class="px-2.5 sm:px-3 py-2 rounded-lg bg-red-600/20 hover:bg-red-600/40 border border-red-500/30 text-red-300 font-mono text-[11px] transition-all">
+                        ⚡ Flash Crash
+                    </button>
+                    <button id="shockRallyBtn" class="px-2.5 sm:px-3 py-2 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/40 border border-emerald-500/30 text-emerald-300 font-mono text-[11px] transition-all">
+                        🚀 Bull Rally
+                    </button>
+                </div>
+            </div>
+
+            <div class="h-5 w-px bg-white/10 hidden sm:block"></div>
+
+            <div class="hidden flex flex-wrap items-center justify-center gap-3 text-xs font-mono px-2 w-full sm:w-auto pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-700/50">
+                <div class="flex items-center gap-2">
+                    <label for="sliderK" class="text-slate-400">Lookahead <span class="text-slate-200 font-bold">k</span>:</label>
+                    <input id="sliderK" type="range" min="1" max="10" value="3" class="w-16 accent-accentblue cursor-pointer">
+                    <span id="valK" class="text-accentblue font-bold w-3">3</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label for="sliderDelta" class="text-slate-400">Threshold <span class="text-slate-200 font-bold">δ</span>:</label>
+                    <input id="sliderDelta" type="range" min="0.0001" max="0.005" step="0.0001" value="0.0012" class="w-16 accent-accentcyan cursor-pointer">
+                    <span id="valDelta" class="text-accentcyan font-bold w-12">0.0012</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label for="sliderM" class="text-slate-400">Lookback <span class="text-slate-200 font-bold">m</span>:</label>
+                    <input id="sliderM" type="range" min="5" max="40" value="20" class="w-16 accent-accentpurple cursor-pointer">
+                    <span id="valM" class="text-accentpurple font-bold w-5">20</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</header>
 	
     <main class="max-w-[1800px] w-full mx-auto p-3 sm:p-5 space-y-4 flex-1">
 
@@ -201,10 +218,10 @@
                 </div>
 
                 <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 font-mono text-xs">
-                    <button id="openAddStockModalBtn" class="col-span-2 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-md">
+                     <button id="openAddStockModalBtn" class="hidden col-span-2 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-md">
                         <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
                         <span>Add Ticker</span>
-                    </button>
+                    </button> 
 
                     <div class="flex items-center gap-1.5 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5">
                         <i data-lucide="filter" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
@@ -231,6 +248,57 @@
             <div id="heatmapGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-2.5"></div>
         </section>
 
+        <!-- 4 REALLY COOL LOOKING METRIC BOXES -->
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <!-- 1. Notional PnL -->
+            <div class="glass-panel rounded-2xl p-3 sm:p-4 border border-cardborder flex items-center justify-between shadow-lg relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+                <div>
+                    <div class="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider">Notional PnL</div>
+                    <div id="boxNotionalPnl" class="text-base sm:text-lg font-black font-mono text-emerald-400 mt-0.5">+$1,450.00</div>
+                    <div class="text-[9px] font-mono text-slate-500 mt-0.5">Unrealized Alpha MTM</div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 shadow-sm">
+                    <i data-lucide="dollar-sign" class="w-5 h-5"></i>
+                </div>
+            </div>
+
+            <!-- 2. Trading Budget -->
+            <div class="glass-panel rounded-2xl p-3 sm:p-4 border border-cardborder flex items-center justify-between shadow-lg relative overflow-hidden group hover:border-blue-500/40 transition-all">
+                <div>
+                    <div class="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider">Trading Budget</div>
+                    <div id="boxTradingBudget" class="text-base sm:text-lg font-black font-mono text-blue-400 mt-0.5">$1,000,000</div>
+                    <div class="text-[9px] font-mono text-slate-500 mt-0.5">Allocated Capital Pool</div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0 shadow-sm">
+                    <i data-lucide="wallet" class="w-5 h-5"></i>
+                </div>
+            </div>
+
+            <!-- 3. Actual PnL -->
+            <div class="glass-panel rounded-2xl p-3 sm:p-4 border border-cardborder flex items-center justify-between shadow-lg relative overflow-hidden group hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider">Actual PnL</div>
+                    <div id="boxActualPnl" class="text-base sm:text-lg font-black font-mono text-emerald-400 mt-0.5">+$928.40</div>
+                    <div class="text-[9px] font-mono text-slate-500 mt-0.5">Realized Execution Net</div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 shadow-sm">
+                    <i data-lucide="trending-up" class="w-5 h-5"></i>
+                </div>
+            </div>
+
+            <!-- 4. Drawdown Percentage -->
+            <div class="glass-panel rounded-2xl p-3 sm:p-4 border border-cardborder flex items-center justify-between shadow-lg relative overflow-hidden group hover:border-red-500/40 transition-all">
+                <div>
+                    <div class="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider">Drawdown Percentage</div>
+                    <div id="boxDrawdown" class="text-base sm:text-lg font-black font-mono text-red-400 mt-0.5">-0.42%</div>
+                    <div class="text-[9px] font-mono text-slate-500 mt-0.5">Peak-to-Trough Risk</div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0 shadow-sm">
+                    <i data-lucide="trending-down" class="w-5 h-5"></i>
+                </div>
+            </div>
+        </section>
+		
         <section class="glass-panel rounded-2xl p-3 sm:p-4 border border-cardborder">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div class="flex items-start sm:items-center gap-3.5">
@@ -271,6 +339,8 @@
                 </div>
             </div>
         </section>
+
+
 
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div class="lg:col-span-2 glass-panel rounded-2xl p-3 sm:p-4 border border-cardborder flex flex-col justify-between">
@@ -418,6 +488,7 @@
 
     </main>
 
+    <!-- ADD STOCK MODAL -->
     <div id="addStockModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="glass-panel w-full max-w-md rounded-2xl p-5 sm:p-6 border border-cardborder shadow-2xl space-y-4">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -454,6 +525,85 @@
         </div>
     </div>
 
+    <!-- CONFIG PARAMETERS MODAL -->
+    <div id="configModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-panel w-full max-w-lg rounded-2xl p-5 sm:p-6 border border-cardborder shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-cyan-400"></i>
+                    <h3 class="font-bold text-base text-white font-mono">Terminal Risk & Broker Configuration</h3>
+                </div>
+                <button id="closeConfigModalBtn" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form id="configForm" class="space-y-3 font-mono text-xs">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">Min Price ($)</label>
+                        <input id="cfgMinPrice" type="number" step="0.01" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">Max Price ($)</label>
+                        <input id="cfgMaxPrice" type="number" step="0.01" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">Volume Filter</label>
+                        <input id="cfgVolume" type="number" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">Volatility (%)</label>
+                        <input id="cfgVolatility" type="number" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 mb-1">Trade Budget ($)</label>
+                    <input id="cfgTradeBudget" type="number" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                </div>
+
+                <div class="grid grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">Market</label>
+                        <input id="cfgMarket" type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white uppercase focus:outline-none focus:border-accentcyan">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">Exchange</label>
+                        <input id="cfgExchange" type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white uppercase focus:outline-none focus:border-accentcyan">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">Max Loss Not Exceed (%)</label>
+                        <input id="cfgTradeLoss" type="number" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 mb-1">Exchange Name</label>
+                    <input id="cfgExchangeName" type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 mb-1">Broker Name</label>
+                    <input id="cfgBroker" type="text" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 mb-1">Broker URL</label>
+                    <input id="cfgBrokerUrl" type="url" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-accentcyan">
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+                    <button type="button" id="cancelConfigModalBtn" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium">Cancel</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg bg-accentcyan hover:bg-cyan-500 text-slate-950 font-bold shadow-lg shadow-cyan-500/25">Save Configuration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         let SYMBOLS = ['AAPL', 'NVDA', 'TSLA', 'SPY', 'MSFT', 'AMD', 'QQQ', 'AMZN', 'META', 'GOOGL'];
 
@@ -473,6 +623,21 @@
         // Load persisted IBKR state from local disk (localStorage)
         const savedIbkrState = localStorage.getItem('quantstream_ibkr_autotrading');
         const initialIbkrValue = savedIbkrState === 'true';
+
+        // Load or initialize config parameters with user requested defaults
+        let terminalConfig = {
+            minprice: parseFloat(localStorage.getItem('qs_minprice')) || 5,
+            maxprice: parseFloat(localStorage.getItem('qs_maxprice')) || 100,
+            volume: parseInt(localStorage.getItem('qs_volume')) || 50000,
+            volatility: parseInt(localStorage.getItem('qs_volatility')) || 40,
+            tradebudget: parseFloat(localStorage.getItem('qs_tradebudget')) || 1000000,
+            market: localStorage.getItem('qs_market') || 'US',
+            exchange: localStorage.getItem('qs_exchange') || 'XNAS',
+            exchangename: localStorage.getItem('qs_exchangename') || 'NASDAQ',
+            tradelossnotexceed: parseFloat(localStorage.getItem('qs_tradelossnotexceed')) || 50,
+            broker: localStorage.getItem('qs_broker') || 'Interactive_Brokers',
+            brokerurl: localStorage.getItem('qs_brokerurl') || 'https://www.interactivebrokers.ca/en/home.php'
+        };
 
         let state = {
             activeSymbol: 'AAPL',
@@ -747,6 +912,24 @@
             }
 
             document.getElementById('confidenceVal').innerText = `${stock.confidence.toFixed(1)}%`;
+
+            // Update 4 new metric boxes dynamically
+            const notionalPnl = (last.c - stock.basePrice) * 1250;
+            const actualPnl = notionalPnl * 0.78;
+            const drawdownPct = Math.min(0, Math.max(-5.0, -Math.abs(stock.volatility * 350) + (last.d < 0 ? last.dp * 0.5 : 0)));
+
+            const notionalElem = document.getElementById('boxNotionalPnl');
+            notionalElem.innerText = `${notionalPnl >= 0 ? '+' : ''}$${notionalPnl.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            notionalElem.className = notionalPnl >= 0 ? 'text-base sm:text-lg font-black font-mono text-emerald-400 mt-0.5' : 'text-base sm:text-lg font-black font-mono text-red-400 mt-0.5';
+
+            document.getElementById('boxTradingBudget').innerText = `$${terminalConfig.tradebudget.toLocaleString()}`;
+
+            const actualElem = document.getElementById('boxActualPnl');
+            actualElem.innerText = `${actualPnl >= 0 ? '+' : ''}$${actualPnl.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            actualElem.className = actualPnl >= 0 ? 'text-base sm:text-lg font-black font-mono text-emerald-400 mt-0.5' : 'text-base sm:text-lg font-black font-mono text-red-400 mt-0.5';
+
+            const ddElem = document.getElementById('boxDrawdown');
+            ddElem.innerText = `${drawdownPct.toFixed(2)}%`;
 
             renderFeatureBars(stock.featureVector);
             updateCharts();
@@ -1027,10 +1210,10 @@
             
             let yBadge = '<span class="text-slate-500">[HOLD]</span>';
             if (Y === 1) {
-                const execTag = state.ibkrAutoTrading ? '<span class="text-amber-300 bg-amber-500/20 px-1 rounded ml-1 font-bold">[IBKR BUY]</span>' : '<span class="text-slate-500 ml-1">[DISARMED]</span>';
+                const execTag = state.ibkrAutoTrading ? '<span class="text-amber-300 bg-amber-500/20 px-1 rounded ml-1 font-bold">[EXEC BUY]</span>' : '<span class="text-slate-500 ml-1">[DISARMED]</span>';
                 yBadge = `<span class="text-emerald-400 font-bold">[BUY]</span>${execTag}`;
             } else if (Y === -1) {
-                const execTag = state.ibkrAutoTrading ? '<span class="text-amber-300 bg-amber-500/20 px-1 rounded ml-1 font-bold">[IBKR SELL]</span>' : '<span class="text-slate-500 ml-1">[DISARMED]</span>';
+                const execTag = state.ibkrAutoTrading ? '<span class="text-amber-300 bg-amber-500/20 px-1 rounded ml-1 font-bold">[EXEC SELL]</span>' : '<span class="text-slate-500 ml-1">[DISARMED]</span>';
                 yBadge = `<span class="text-red-400 font-bold">[SELL]</span>${execTag}`;
             }
 
@@ -1053,7 +1236,7 @@
                 const last = stock.history[stock.history.length - 1];
 
                 const shock = (Math.random() - 0.495) * (last.c * 0.0025);
-                const newPrice = Math.max(1, last.c + shock);
+                const newPrice = Math.max(terminalConfig.minprice, Math.min(terminalConfig.maxprice * 10, last.c + shock));
 
                 const newTick = {
                     c: newPrice,
@@ -1080,17 +1263,21 @@
             updateDashboardUI();
         }
 
-        // Apply visual styling based on initial disk state
+        // Apply visual styling based on initial disk state & config
         function applyIbkrVisuals(isActive) {
             const containerBox = document.getElementById('ibkrContainerBox');
             const label = document.getElementById('ibkrStatusLabel');
             const toggle = document.getElementById('ibkrToggle');
+            const brokerNameLabel = document.getElementById('brokerNameLabel');
+            const brokerLinkIcon = document.getElementById('brokerLinkIcon');
 
             toggle.checked = isActive;
+            brokerNameLabel.innerText = terminalConfig.broker.replace(/_/g, ' ');
+            brokerLinkIcon.href = terminalConfig.brokerurl;
 
             if (isActive) {
                 containerBox.className = 'w-full sm:w-auto flex items-center justify-between sm:justify-start gap-3 px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-emerald-950/60 border-2 border-emerald-500 shadow-lg shadow-emerald-950/50 transition-all duration-300';
-                label.innerText = 'AUTO-TRADING ACTIVE';
+                label.innerText = `${terminalConfig.exchangename} ACTIVE`;
                 label.className = 'text-xs font-mono font-extrabold text-emerald-400 tracking-wide';
             } else {
                 containerBox.className = 'w-full sm:w-auto flex items-center justify-between sm:justify-start gap-3 px-3.5 py-2 rounded-xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-2 border-red-500/50 shadow-lg transition-all duration-300';
@@ -1099,14 +1286,84 @@
             }
         }
 
+        // Populate Config Form Inputs
+        function populateConfigForm() {
+            document.getElementById('cfgMinPrice').value = terminalConfig.minprice;
+            document.getElementById('cfgMaxPrice').value = terminalConfig.maxprice;
+            document.getElementById('cfgVolume').value = terminalConfig.volume;
+            document.getElementById('cfgVolatility').value = terminalConfig.volatility;
+            document.getElementById('cfgTradeBudget').value = terminalConfig.tradebudget;
+            document.getElementById('cfgMarket').value = terminalConfig.market;
+            document.getElementById('cfgExchange').value = terminalConfig.exchange;
+            document.getElementById('cfgExchangeName').value = terminalConfig.exchangename;
+            document.getElementById('cfgTradeLoss').value = terminalConfig.tradelossnotexceed;
+            document.getElementById('cfgBroker').value = terminalConfig.broker;
+            document.getElementById('cfgBrokerUrl').value = terminalConfig.brokerurl;
+        }
+
+        // Config Modal Event Listeners
+        document.getElementById('openConfigModalBtn').addEventListener('click', () => {
+            populateConfigForm();
+            document.getElementById('configModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeConfigModalBtn').addEventListener('click', () => {
+            document.getElementById('configModal').classList.add('hidden');
+        });
+
+        document.getElementById('cancelConfigModalBtn').addEventListener('click', () => {
+            document.getElementById('configModal').classList.add('hidden');
+        });
+
+        document.getElementById('configForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            terminalConfig.minprice = parseFloat(document.getElementById('cfgMinPrice').value);
+            terminalConfig.maxprice = parseFloat(document.getElementById('cfgMaxPrice').value);
+            terminalConfig.volume = parseInt(document.getElementById('cfgVolume').value);
+            terminalConfig.volatility = parseInt(document.getElementById('cfgVolatility').value);
+            terminalConfig.tradebudget = parseFloat(document.getElementById('cfgTradeBudget').value);
+            terminalConfig.market = document.getElementById('cfgMarket').value.trim();
+            terminalConfig.exchange = document.getElementById('cfgExchange').value.trim();
+            terminalConfig.exchangename = document.getElementById('cfgExchangeName').value.trim();
+            terminalConfig.tradelossnotexceed = parseFloat(document.getElementById('cfgTradeLoss').value);
+            terminalConfig.broker = document.getElementById('cfgBroker').value.trim();
+            terminalConfig.brokerurl = document.getElementById('cfgBrokerUrl').value.trim();
+
+            // Save to localStorage so settings persist
+            localStorage.setItem('qs_minprice', terminalConfig.minprice);
+            localStorage.setItem('qs_maxprice', terminalConfig.maxprice);
+            localStorage.setItem('qs_volume', terminalConfig.volume);
+            localStorage.setItem('qs_volatility', terminalConfig.volatility);
+            localStorage.setItem('qs_tradebudget', terminalConfig.tradebudget);
+            localStorage.setItem('qs_market', terminalConfig.market);
+            localStorage.setItem('qs_exchange', terminalConfig.exchange);
+            localStorage.setItem('qs_exchangename', terminalConfig.exchangename);
+            localStorage.setItem('qs_tradelossnotexceed', terminalConfig.tradelossnotexceed);
+            localStorage.setItem('qs_broker', terminalConfig.broker);
+            localStorage.setItem('qs_brokerurl', terminalConfig.brokerurl);
+
+            applyIbkrVisuals(state.ibkrAutoTrading);
+            document.getElementById('configModal').classList.add('hidden');
+        });
+
         // Interactive Brokers Toggle Switch Listener + Disk Storage (localStorage)
         document.getElementById('ibkrToggle').addEventListener('change', (e) => {
             state.ibkrAutoTrading = e.target.checked;
-            
-            // Write ON or OFF preference directly to browser disk
             localStorage.setItem('quantstream_ibkr_autotrading', state.ibkrAutoTrading);
-
             applyIbkrVisuals(state.ibkrAutoTrading);
+
+            const fileName = state.ibkrAutoTrading ? 'ON.txt' : 'OFF.txt';
+            const fileContent = `${terminalConfig.broker} Auto-Trading: ${state.ibkrAutoTrading ? 'ACTIVE' : 'OFF'}\nMarket: ${terminalConfig.market} (${terminalConfig.exchangename})\nBudget: $${terminalConfig.tradebudget}\nTimestamp: ${new Date().toISOString()}`;
+
+            const blob = new Blob([fileContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         });
 
         document.getElementById('openAddStockModalBtn').addEventListener('click', () => {
@@ -1233,7 +1490,7 @@
             lucide.createIcons();
             initCharts();
 
-            // Apply disk-persisted state visually on boot
+            // Apply disk-persisted state & config visually on boot
             applyIbkrVisuals(state.ibkrAutoTrading);
 
             SYMBOLS.forEach(sym => computeQuantFeatures(sym));
@@ -1243,33 +1500,6 @@
 
             setInterval(simulateIncomingTicks, 750);
         };
-		
-// Interactive Brokers Toggle Switch Listener + Local Disk File Writer
-// Interactive Brokers Toggle Switch Listener (Simple Browser Download Approach)
-document.getElementById('ibkrToggle').addEventListener('change', (e) => {
-    state.ibkrAutoTrading = e.target.checked;
-    
-    // Save preference in browser storage
-    localStorage.setItem('quantstream_ibkr_autotrading', state.ibkrAutoTrading);
-    applyIbkrVisuals(state.ibkrAutoTrading);
-
-    // Create and download ON.txt or OFF.txt instantly
-    const fileName = state.ibkrAutoTrading ? 'ON.txt' : 'OFF.txt';
-    const fileContent = `Interactive Brokers Auto-Trading: ${state.ibkrAutoTrading ? 'ACTIVE' : 'OFF'}\nTimestamp: ${new Date().toISOString()}`;
-
-    const blob = new Blob([fileContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    
-    document.body.appendChild(a);
-    a.click();
-    
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-});
-		
     </script>
 <!-- Quantitative Trading Disclaimer -->
 <section class="max-w-[1800px] mx-auto px-3 sm:px-5 pb-5">
