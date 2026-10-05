@@ -3425,3 +3425,4 @@ Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
+[INFO 2026-10-05_02:41:38] {'name': ['Project with slug "quantstream-3f10-ml" already exists.']}
