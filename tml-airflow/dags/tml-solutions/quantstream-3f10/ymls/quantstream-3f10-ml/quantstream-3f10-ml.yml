@@ -157,7 +157,7 @@ latlong=lat:long'
              - name: step5rollbackoffsets # STEP 5 rollbackoffsets field can be adjusted here.  Higher the number more training data to process, BUT more memory needed.
                value: '500'                              
              - name: step5processlogic # STEP 5 processlogic field can be adjusted here.  
-               value: 'classification_name=decision_prob:features_X.x1_tick_return_preprocessed_Raw=0.000015,n:features_X.x9_acceleration_preprocessed_Raw=0,n~features_X.x1_tick_return_preprocessed_Raw=-n,-0.000015:features_X.x9_acceleration_preprocessed_Raw=-n,0'                                                
+               value: 'classification_name=decision_prob:features_X.x1_tick_return_preprocessed_Raw=0.00005,n:features_X.x9_acceleration_preprocessed_Raw=0.00005,n~features_X.x1_tick_return_preprocessed_Raw=-n,-0.00005:features_X.x9_acceleration_preprocessed_Raw=-n,0'                                                
              - name: step5independentvariables # STEP 5 independent variables can be adjusted here.  
                value: 'features_X.x1_tick_return_preprocessed_Raw,features_X.x2_session_return_preprocessed_Raw,features_X.x4_range_drift_preprocessed_Raw,features_X.x6_realized_volatility_preprocessed_Raw,features_X.x8_sma_distance_preprocessed_Raw,features_X.x9_acceleration_preprocessed_Raw'                                                                              
              - name: step6maxrows # STEP 6 maxrows field can be adjusted here.  Higher the number more predictions to make, BUT more memory needed.
