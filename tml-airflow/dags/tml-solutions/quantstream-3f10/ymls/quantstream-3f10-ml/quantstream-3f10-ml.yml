@@ -53,7 +53,7 @@
              - name: EXTERNALPORT
                value: '39399'
              - name: KAFKACLOUDUSERNAME
-               value: ''
+               value: '<Enter API key>'
              - name: VIPERVIZPORT
                value: '9689'
              - name: MQTTUSERNAME
