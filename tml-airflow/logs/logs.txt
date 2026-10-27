@@ -5803,3 +5803,9 @@ origin	https://<personal access token hidden>@github.com/smaurice101/raspberrypi
 🚀 STARTING 4-STEP OPTIMIZATION FOR: maadsdocker/quantstream-3f10-ml-amd64-tmlworking
 =============================================================
 1c61b52406628691ecdd5b2e320b0bdbe4587862036358a639bf189588e6091d
+sha256:60da657871dfff16eeee48f16fdc84ba6784c52d2f3dac0c479576852a4a129b
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
