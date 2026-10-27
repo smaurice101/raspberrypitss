@@ -6,6 +6,7 @@ session_start();
 
 $iniFile = '/rawdata/qs_tradedata/qsconfig.ini';
 
+clearstatcache(true, $iniFile);
 $config = parse_ini_file($iniFile, true);
 $settings = $config['TradingSettings'] ?? [
     'minprice' => 15, 'maxprice' => 250, 'volume' => 100000, 'minstocks' => 30, 'maxstocks' => 50, 'minvolatility' => 20,'maxvolatility' => 50,
@@ -17,6 +18,87 @@ $settings = $config['TradingSettings'] ?? [
 	'mindaysonbooks' => 7, 'autotradebudget' => 1, 'autoqsagentstrategy' => 1
 ];
 
+/////////////////////// COPY QS files ///////////////////////
+
+function syncPostMarketData() {
+    $sourceBaseWin = 'C:/MAADS/tml-airflow/rawdata/qs_tradedata';
+    $sourceBaseUnix = '/rawdata/qs_tradedata';
+
+    // Helper function to recursively copy a directory and create missing folders
+    $recursiveCopy = function($src, $dst) use (&$recursiveCopy) {
+        if (!is_dir($src)) return;
+        if (!is_dir($dst)) {
+            mkdir($dst, 0755, true);
+        }
+        $dir = opendir($src);
+        while (($file = readdir($dir)) !== false) {
+            if ($file !== '.' && $file !== '..') {
+                $srcPath = $src . '/' . $file;
+                $dstPath = $dst . '/' . $file;
+                if (is_dir($srcPath)) {
+                    $recursiveCopy($srcPath, $dstPath);
+                } else {
+                    copy($srcPath, $dstPath);
+                }
+            }
+        }
+        closedir($dir);
+    };
+
+    // Helper function to create destination and copy CSV files containing "_trade_log"
+    $copyTradeLogs = function($srcDir, $dstDir) {
+        if (!is_dir($srcDir)) return;
+        if (!is_dir($dstDir)) {
+            mkdir($dstDir, 0755, true);
+        }
+        $files = glob($srcDir . '/*.csv');
+        foreach ($files as $file) {
+            $filename = basename($file);
+            if (stripos($filename, '_trade_log') !== false) {
+                copy($file, $dstDir . '/' . $filename);
+            }
+        }
+    };
+
+    // 1. Check C:/xampp/htdocs/tmlstock
+    $target1 = 'C:/xampp/htdocs/tmlstock';
+    if (is_dir($target1)) {
+        $recursiveCopy($sourceBaseWin . '/logs', $target1 . '/logs');
+        $recursiveCopy($sourceBaseWin . '/pdfreports', $target1 . '/pdfreports');
+        $copyTradeLogs($sourceBaseWin, $target1 . '/tradedata');
+    }
+
+    // 2. Check C:\inetpub\wwwroot\T2A_WEBSITE\MAADSWEB\quantstream
+    $target2 = 'C:/inetpub/wwwroot/T2A_WEBSITE/MAADSWEB/quantstream';
+    if (is_dir($target2)) {
+        $recursiveCopy($sourceBaseWin . '/logs', $target2 . '/logs');
+        $recursiveCopy($sourceBaseWin . '/pdfreports', $target2 . '/pdfreports');
+        $copyTradeLogs($sourceBaseWin, $target2 . '/tradedata');
+    }
+
+    // 3. Check /Viperviz/viperviz/views
+    $target3 = '/Viperviz/viperviz/views';
+    if (is_dir($target3)) {
+        $recursiveCopy($sourceBaseUnix . '/logs', $target3 . '/quantstream/logs');
+        $recursiveCopy($sourceBaseUnix . '/pdfreports', $target3 . '/quantstream/pdfreports');
+        $copyTradeLogs($sourceBaseUnix, $target3 . '/quantstream/tradedata');
+    }
+}
+
+// Handle Post-Market Sync AJAX Request
+if (isset($_GET['action']) && $_GET['action'] === 'run_market_sync') {
+    header('Content-Type: application/json');
+    // Optional: Add authentication check here if required
+    try {
+        syncPostMarketData();
+        echo json_encode(['status' => 'success', 'message' => 'Post-market sync completed successfully.']);
+    } catch (Exception $e) {
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    }
+    exit;
+}
+
+/////////////////////////////////////////////////////////////
 
 // Handle Secure Randomized Log Export
 if (isset($_GET['action']) && $_GET['action'] === 'export_random_excel') {
@@ -128,40 +210,151 @@ if (is_dir($pdfDir)) {
 // Handle Config Form POST requests[cite: 1]
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_config') {
     header('Content-Type: application/json');
+    
+    $errors = [];
+
+    // 1. Numerical & Boundary Validations
+    $minprice = filter_var($_POST['minprice'] ?? 10, FILTER_VALIDATE_FLOAT);
+    $maxprice = filter_var($_POST['maxprice'] ?? 250, FILTER_VALIDATE_FLOAT);
+    if ($minprice === false || $minprice < 0) $errors[] = "minprice must be a valid non-negative number.";
+    if ($maxprice === false || $maxprice <= $minprice) $errors[] = "maxprice must be greater than minprice.";
+
+    $volume = filter_var($_POST['volume'] ?? 100000, FILTER_VALIDATE_INT);
+    if ($volume === false || $volume < 0) $errors[] = "volume must be a valid non-negative integer.";
+
+    $minstocks = filter_var($_POST['minstocks'] ?? 30, FILTER_VALIDATE_INT);
+    $maxstocks = filter_var($_POST['maxstocks'] ?? 50, FILTER_VALIDATE_INT);
+    if ($minstocks === false || $minstocks < 0) $errors[] = "minstocks must be a valid non-negative integer.";
+    if ($maxstocks === false || $maxstocks < $minstocks) $errors[] = "maxstocks must be greater than or equal to minstocks.";
+
+    $minvolatility = filter_var($_POST['minvolatility'] ?? 20, FILTER_VALIDATE_INT);
+    $maxvolatility = filter_var($_POST['maxvolatility'] ?? 50, FILTER_VALIDATE_INT);
+    if ($minvolatility === false || $minvolatility < 0) $errors[] = "minvolatility must be a valid non-negative integer.";
+    if ($maxvolatility === false || $maxvolatility < $minvolatility) $errors[] = "maxvolatility must be greater than or equal to minvolatility.";
+
+    $tradebudget = filter_var($_POST['tradebudget'] ?? 10000, FILTER_VALIDATE_FLOAT);
+    if ($tradebudget === false || $tradebudget <= 0) $errors[] = "tradebudget must be greater than 0.";
+
+    // 2. String Sanity Checks
+    $market = trim($_POST['market'] ?? 'US');
+    if (empty($market)) $errors[] = "market cannot be empty.";
+    $market = htmlspecialchars($market, ENT_QUOTES, 'UTF-8');
+
+    $exchange = trim($_POST['exchange'] ?? 'XNAS');
+    if (empty($exchange)) $errors[] = "exchange cannot be empty.";
+    $exchange = htmlspecialchars($exchange, ENT_QUOTES, 'UTF-8');
+
+    $exchangename = trim($_POST['exchangename'] ?? 'NASDAQ');
+    if (empty($exchangename)) $errors[] = "exchangename cannot be empty.";
+    $exchangename = htmlspecialchars($exchangename, ENT_QUOTES, 'UTF-8');
+
+    $broker = trim($_POST['broker'] ?? 'Interactive_Brokers');
+    if (empty($broker)) $errors[] = "broker cannot be empty.";
+    $broker = htmlspecialchars($broker, ENT_QUOTES, 'UTF-8');
+
+    $brokerurl = filter_var($_POST['brokerurl'] ?? '', FILTER_VALIDATE_URL);
+    if ($brokerurl === false && !empty($_POST['brokerurl'])) {
+        $errors[] = "brokerurl must be a valid URL format.";
+    }
+    $brokerurl = $brokerurl ? $brokerurl : '';
+
+    // 3. Risk & Trading Parameter Validations
+    $tradelossnotexceed = filter_var($_POST['tradelossnotexceed'] ?? 50, FILTER_VALIDATE_FLOAT);
+    if ($tradelossnotexceed === false || $tradelossnotexceed < 0) $errors[] = "tradelossnotexceed must be non-negative.";
+
+    $maxopenpositions = filter_var($_POST['maxopenpositions'] ?? 10, FILTER_VALIDATE_INT);
+    if ($maxopenpositions === false || $maxopenpositions <= 0) $errors[] = "maxopenpositions must be greater than 0.";
+
+    $maxpctsellloss = filter_var($_POST['maxpctsellloss'] ?? 0.01, FILTER_VALIDATE_FLOAT);
+    if ($maxpctsellloss === false || $maxpctsellloss < 0 || $maxpctsellloss > 1) $errors[] = "maxpctsellloss must be between 0 and 1.";
+
+    $minholdseconds = filter_var($_POST['minholdseconds'] ?? 2, FILTER_VALIDATE_INT);
+    if ($minholdseconds === false || $minholdseconds < 0) $errors[] = "minholdseconds must be non-negative.";
+
+    $minentryeconds = filter_var($_POST['minentryeconds'] ?? 2, FILTER_VALIDATE_INT);
+    if ($minentryeconds === false || $minentryeconds < 0) $errors[] = "minentryeconds must be non-negative.";
+
+    $notionalpct = filter_var($_POST['notionalpct'] ?? 0.1, FILTER_VALIDATE_FLOAT);
+    if ($notionalpct === false || $notionalpct <= 0 || $notionalpct > 1) $errors[] = "notionalpct must be between 0 and 1.";
+
+    $maxpricedrop = filter_var($_POST['maxpricedrop'] ?? 0.1, FILTER_VALIDATE_FLOAT);
+    if ($maxpricedrop === false || $maxpricedrop < 0 || $maxpricedrop > 1) $errors[] = "maxpricedrop must be between 0 and 1.";
+
+    $addlimitorder = filter_var($_POST['addlimitorder'] ?? 1, FILTER_VALIDATE_INT);
+    if ($addlimitorder !== 0 && $addlimitorder !== 1) $errors[] = "addlimitorder must be either 0 or 1.";
+
+    $mindaysonbooks = filter_var($_POST['mindaysonbooks'] ?? 5, FILTER_VALIDATE_INT);
+    $maxdaysonbooks = filter_var($_POST['maxdaysonbooks'] ?? 30, FILTER_VALIDATE_INT);
+    if ($mindaysonbooks === false || $mindaysonbooks < 0) $errors[] = "mindaysonbooks must be non-negative.";
+    if ($maxdaysonbooks === false || $maxdaysonbooks < $mindaysonbooks) $errors[] = "maxdaysonbooks must be greater than or equal to mindaysonbooks.";
+
+    $maxtrades = filter_var($_POST['maxtrades'] ?? 70, FILTER_VALIDATE_INT);
+    if ($maxtrades === false || $maxtrades < 0) $errors[] = "maxtrades must be non-negative.";
+
+    $maxshares = filter_var($_POST['maxshares'] ?? 4000, FILTER_VALIDATE_INT);
+    if ($maxshares === false || $maxshares < 0) $errors[] = "maxshares must be non-negative.";
+
+    $minpredictionaccuracy = filter_var($_POST['minpredictionaccuracy'] ?? 0.7, FILTER_VALIDATE_FLOAT);
+    if ($minpredictionaccuracy === false || $minpredictionaccuracy < 0 || $minpredictionaccuracy > 1) $errors[] = "minpredictionaccuracy must be between 0 and 1.";
+
+    $cost_per_trade = filter_var($_POST['cost_per_trade'] ?? 1.00, FILTER_VALIDATE_FLOAT);
+    if ($cost_per_trade === false || $cost_per_trade < 0) $errors[] = "cost_per_trade must be non-negative.";
+
+    $cost_per_share = filter_var($_POST['cost_per_share'] ?? 0.0035, FILTER_VALIDATE_FLOAT);
+    if ($cost_per_share === false || $cost_per_share < 0) $errors[] = "cost_per_share must be non-negative.";
+
+    $take_profit_pct = filter_var($_POST['take_profit_pct'] ?? 0.001, FILTER_VALIDATE_FLOAT);
+    if ($take_profit_pct === false || $take_profit_pct < 0) $errors[] = "take_profit_pct must be non-negative.";
+
+    $maxsharespertrade = filter_var($_POST['maxsharespertrade'] ?? 50, FILTER_VALIDATE_INT);
+    if ($maxsharespertrade === false || $maxsharespertrade < 0) $errors[] = "maxsharespertrade must be non-negative.";
+
+    $autotradebudget = filter_var($_POST['autotradebudget'] ?? 1, FILTER_VALIDATE_INT);
+    if ($autotradebudget !== 0 && $autotradebudget !== 1) $errors[] = "autotradebudget must be either 0 or 1.";
+
+    $autoqsagentstrategy = filter_var($_POST['autoqsagentstrategy'] ?? 1, FILTER_VALIDATE_INT);
+    if ($autoqsagentstrategy !== 1 && $autoqsagentstrategy !== 2) $errors[] = "autoqsagentstrategy must be either 1 or 2.";
+
+    // If validation errors exist, halt execution and return JSON error list
+    if (!empty($errors)) {
+        echo json_encode(['status' => 'error', 'message' => 'Validation failed', 'errors' => $errors]);
+        exit;
+    }
+
     $newConfig = [
         'TradingSettings' => [
-            'minprice' => floatval($_POST['minprice'] ?? 5),
-            'maxprice' => floatval($_POST['maxprice'] ?? 100),
-            'volume' => intval($_POST['volume'] ?? 100000),
-            'minstocks' => intval($_POST['minstocks'] ?? 30),
-            'maxstocks' => intval($_POST['maxstocks'] ?? 50),
-            'minvolatility' => intval($_POST['minvolatility'] ?? 20),
-            'maxvolatility' => intval($_POST['maxvolatility'] ?? 50),			
-            'tradebudget' => floatval($_POST['tradebudget'] ?? 10000),
-            'market' => sanitize($_POST['market'] ?? 'US'),
-            'exchange' => sanitize($_POST['exchange'] ?? 'XNAS'),
-            'exchangename' => sanitize($_POST['exchangename'] ?? 'NASDAQ'),
-            'broker' => sanitize($_POST['broker'] ?? 'Interactive_Brokers'),
-            'brokerurl' => filter_var($_POST['brokerurl'], FILTER_SANITIZE_URL),
-            'tradelossnotexceed' => floatval($_POST['tradelossnotexceed'] ?? 50),
-            'maxopenpositions' => intval($_POST['maxopenpositions'] ?? 10),
-            'maxpctsellloss' => floatval($_POST['maxpctsellloss'] ?? 0.01),
-            'minholdseconds' => intval($_POST['minholdseconds'] ?? 2),
-            'minentryeconds' => intval($_POST['minentryeconds'] ?? 2),
-            'notionalpct' => floatval($_POST['notionalpct'] ?? 0.1),
-            'maxpricedrop' => floatval($_POST['maxpricedrop'] ?? 0.1),						
-            'addlimitorder' => intval($_POST['addlimitorder'] ?? 1),						
-            'maxdaysonbooks' => intval($_POST['maxdaysonbooks'] ?? 30),						
-            'maxtrades' => intval($_POST['maxtrades'] ?? 70),						
-            'maxshares' => intval($_POST['maxshares'] ?? 1400),						
-            'minpredictionaccuracy' => floatval($_POST['minpredictionaccuracy'] ?? 0.7),						
-            'cost_per_trade' => floatval($_POST['cost_per_trade'] ?? 1.00),						
-            'cost_per_share' => floatval($_POST['cost_per_share'] ?? 0.0035),
-            'take_profit_pct' => floatval($_POST['take_profit_pct'] ?? 0.05),									
-			'maxsharespertrade' => intval($_POST['maxsharespertrade'] ?? 50),
-        	'mindaysonbooks' => intval($_POST['mindaysonbooks'] ?? 7),
-			'autotradebudget' => intval($_POST['autotradebudget'] ?? 1),
-			'autoqsagentstrategy'=> intval($_POST['autoqsagentstrategy'] ?? 1)
+            'minprice' => $minprice,
+            'maxprice' => $maxprice,
+            'volume' => $volume,
+            'minstocks' => $minstocks,
+            'maxstocks' => $maxstocks,
+            'minvolatility' => $minvolatility,
+            'maxvolatility' => $maxvolatility,
+            'tradebudget' => $tradebudget,
+            'market' => $market,
+            'exchange' => $exchange,
+            'exchangename' => $exchangename,
+            'broker' => $broker,
+            'brokerurl' => $brokerurl,
+            'tradelossnotexceed' => $tradelossnotexceed,
+            'maxopenpositions' => $maxopenpositions,
+            'maxpctsellloss' => $maxpctsellloss,
+            'minholdseconds' => $minholdseconds,
+            'minentryeconds' => $minentryeconds,
+            'notionalpct' => $notionalpct,
+            'maxpricedrop' => $maxpricedrop,
+            'addlimitorder' => $addlimitorder,
+            'maxdaysonbooks' => $maxdaysonbooks,
+            'maxtrades' => $maxtrades,
+            'maxshares' => $maxshares,
+            'minpredictionaccuracy' => $minpredictionaccuracy,
+            'cost_per_trade' => $cost_per_trade,
+            'cost_per_share' => $cost_per_share,
+            'take_profit_pct' => $take_profit_pct,
+            'maxsharespertrade' => $maxsharespertrade,
+            'mindaysonbooks' => $mindaysonbooks,
+            'autotradebudget' => $autotradebudget,
+            'autoqsagentstrategy' => $autoqsagentstrategy
         ]
     ];
     
@@ -169,6 +362,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     foreach ($newConfig['TradingSettings'] as $key => $val) {
         $iniContent .= "$key = $val\n";
     }
+    
     if (file_put_contents($iniFile, "[TradingSettings]\n" . $iniContent)) {
         echo json_encode(['status' => 'success', 'message' => 'Configuration updated successfully in qsconfig.ini']);
     } else {
@@ -177,11 +371,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit;
 }
 
+
 function getSystemLogs($logsDir, $currentDate, $market, $exchange) {
     $logLines = [];
     $safe_market = strtolower(trim($market));
     $safe_exchange = strtolower(trim($exchange));
-    $targetLogFile = "{$logsDir}/{$currentDate}_{$safe_market}_{$safe_exchange}_trade_audit.log";
+    $targetLogFile = "{$logsDir}/{$currentDate}_{$safe_market}_{$safe_exchange}_trade_audit.txt";
     
     if (file_exists($targetLogFile)) {
         $lines = file($targetLogFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -189,7 +384,7 @@ function getSystemLogs($logsDir, $currentDate, $market, $exchange) {
             $logLines = array_reverse($lines);
         }
     } elseif (is_dir($logsDir)) {
-        $allLogs = glob("{$logsDir}/*.log");
+        $allLogs = glob("{$logsDir}/*.txt");
         if (!empty($allLogs)) {
             rsort($allLogs);
             $lines = file($allLogs[0], FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -199,6 +394,23 @@ function getSystemLogs($logsDir, $currentDate, $market, $exchange) {
         }
     }
     return $logLines;
+}
+
+// Handle AJAX Request to Fetch Latest Config Values
+if (isset($_GET['action']) && $_GET['action'] === 'get_config') {
+    header('Content-Type: application/json');
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    
+    clearstatcache(true, $iniFile);
+    $iniContent = file_exists($iniFile) ? file_get_contents($iniFile) : '';
+    $config = parse_ini_string($iniContent, true);
+    $settings = $config['TradingSettings'] ?? [];
+
+    echo json_encode([
+        'status' => 'success',
+        'settings' => $settings
+    ]);
+    exit;
 }
 
 // Handle AJAX CSV Data Fetching for Real-Time UI Refresh & Symbol Filtering[cite: 1]
@@ -237,6 +449,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
                 if (count($data) >= count($headers)) {
                     $row = array_combine($headers, array_slice($data, 0, count($headers)));
                     $pnl = floatval($row['trade_pnl'] ?? 0);
+                    $cpnl = floatval($row['cumulative_pnl'] ?? 0);
+
                     $price = floatval($row['price'] ?? 0);
                     $qty = floatval($row['quantity'] ?? 0);
                     $signal = strtoupper(trim($row['signal'] ?? 'BUY'));
@@ -286,7 +500,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
                     } /*else {
                         $notionalPnl += $pnl;
                     }*/
-					$notionalPnl += $pnl;
+//					$notionalPnl += $pnl;
+					$notionalPnl = $cpnl;
 
                     if ($signal === 'BUY') {
                         $buyCount++;
@@ -914,7 +1129,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             <div class="glass-panel rounded-2xl p-4 border border-cardborder flex items-center justify-between shadow-lg">
                 <div>
-                    <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Notional PnL (ALL Trades)</div>
+                    <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Cumulative PnL (ALL Trades)</div>
                     <div id="boxNotionalPnl" class="text-xl font-black font-mono text-emerald-400 mt-1">+$<?php echo number_format($notionalPnl, 2); ?></div>
                     <div class="text-[10px] font-mono text-slate-500 mt-0.5">Unrealized TML Simulation</div>
                 </div>
@@ -1106,7 +1321,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         $logFilesFiltered = [];
         if (is_dir($logsDir)) {
             foreach (scandir($logsDir) as $file) {
-                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'log') {
+                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'txt') {
                     if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) {
                         continue;
                     }
@@ -1125,7 +1340,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         $tradeDataDir = 'C:/MAADS/tml-airflow/rawdata/qs_tradedata/';
         if (is_dir($tradeDataDir)) {
             foreach (scandir($tradeDataDir) as $file) {
-                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'csv') {
+                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'csv' && $file !== "global_pnl_report.csv" ) {
                     if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) {
                         continue;
                     }
@@ -1156,7 +1371,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
                         <?php foreach ($pdfFilesFiltered as $pdf): ?>
-                            <a href="pdfreports/<?php echo urlencode($pdf['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+                            <a href="quantstream/pdfreports/<?php echo urlencode($pdf['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
                                 <div class="flex items-center gap-2 overflow-hidden">
                                     <i data-lucide="file-badge" class="w-4 h-4 text-red-400 shrink-0 group-hover:scale-110 transition-transform"></i>
                                     <div class="truncate">
@@ -1185,7 +1400,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
 					<?php foreach ($logFilesFiltered as $logFile): ?>
-						<a href="logs/<?php echo urlencode($logFile['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+						<a href="quantstream/logs/<?php echo urlencode($logFile['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
 							<div class="flex items-center gap-2 overflow-hidden">
 								<i data-lucide="file-code" class="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform"></i>
 								<div class="truncate">
@@ -1214,7 +1429,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
 					<?php foreach ($tradeDataFilesFiltered as $tradeFile): ?>
-						<a href="tradedata/<?php echo urlencode($tradeFile['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+						<a href="quantstream/tradedata/<?php echo urlencode($tradeFile['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
 							<div class="flex items-center gap-2 overflow-hidden">
 								<i data-lucide="table" class="w-4 h-4 text-amber-400 shrink-0 group-hover:scale-110 transition-transform"></i>
 								<div class="truncate">
@@ -1747,7 +1962,34 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         document.getElementById('closeHelpModalBtnBottom').addEventListener('click', () => helpModal.classList.add('hidden'));
 
         const configModal = document.getElementById('configModal');
-        document.getElementById('openConfigModalBtn').addEventListener('click', () => configModal.classList.remove('hidden'));
+        ////////////////////////
+//		document.getElementById('openConfigModalBtn').addEventListener('click', () => configModal.classList.remove('hidden'));
+		document.getElementById('openConfigModalBtn').addEventListener('click', async () => {
+			try {
+				// Fetch the absolute latest settings from the server/INI file on click
+				const res = await fetch(currentScript + '?action=get_config&_t=' + Date.now());
+				const data = await res.json();
+				
+				if (data.status === 'success' && data.settings) {
+					const settings = data.settings;
+					const form = document.getElementById('configForm');
+					
+					// Dynamically populate every input field matching the INI keys
+					for (const [key, value] of Object.entries(settings)) {
+						if (form.elements[key]) {
+							form.elements[key].value = value;
+						}
+					}
+				}
+			} catch (err) {
+				console.error('Error loading latest configuration:', err);
+			}
+			
+			// Display the config modal after inputs are refreshed
+			configModal.classList.remove('hidden');
+		});
+		
+		//////////////
         document.getElementById('closeConfigModalBtn').addEventListener('click', () => configModal.classList.add('hidden'));
         document.getElementById('cancelConfigModalBtn').addEventListener('click', () => configModal.classList.add('hidden'));
 
@@ -2091,6 +2333,50 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         }
 
         pollInterval = setInterval(pollLiveData, 5000);	 
+		
+///////////////////////////////////////
+		let hasSyncedOnClose = false;
+
+		// Function to call the PHP sync endpoint
+		async function triggerMarketSync(triggerReason) {
+			try {
+				console.log(`[Sync] Triggering post-market sync (${triggerReason})...`);
+				const response = await fetch('qsmain.php?action=run_market_sync&_t=' + Date.now());
+				const data = await response.json();
+				console.log(`[Sync Response]`, data.message);
+			} catch (err) {
+				console.error('[Sync Error] Failed to execute market sync:', err);
+			}
+		}
+
+		// 1. Trigger ONCE when the site loads
+		document.addEventListener('DOMContentLoaded', () => {
+			triggerMarketSync('Site Load');
+		});
+
+		// 2. Check for Market Close and trigger when it closes
+		async function checkMarketCloseStatus() {
+			try {
+				const res = await fetch('marketstatus.txt?_t=' + Date.now());
+				const statusText = await res.text();
+				const marketState = statusText.trim().toUpperCase();
+
+				// Check if market has closed and we haven't already synced this session
+				if (marketState === 'CLOSE' && !hasSyncedOnClose) {
+					hasSyncedOnClose = true; // Lock so it only fires once upon closing
+					triggerMarketSync('Market Closed');
+				} else if (marketState === 'OPEN') {
+					// Reset the lock if the market re-opens (optional safety measure)
+					hasSyncedOnClose = false;
+				}
+			} catch (err) {
+				console.error('Error checking market status for sync:', err);
+			}
+		}
+
+		// Poll market status every 30 seconds to catch the close event promptly
+		setInterval(checkMarketCloseStatus, 30000);
+		
     </script>
 
     <!-- Quantitative Trading Disclaimer -->
