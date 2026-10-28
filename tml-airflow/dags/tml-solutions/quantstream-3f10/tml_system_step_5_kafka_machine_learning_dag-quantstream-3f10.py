@@ -35,7 +35,7 @@ default_args = {
     'modelsearchtuner': 90, # <<< *This parameter will attempt to fine tune the model search space - A number close to 100 means you will have fewer models but their predictive quality will be higher.
     'dependentvariable': 'decision', # <<< *** Change as needed,
     'independentvariables': 'features_X.x1_tick_return_preprocessed_Raw,features_X.x2_session_return_preprocessed_Raw,features_X.x4_range_drift_preprocessed_Raw,features_X.x6_realized_volatility_preprocessed_Raw,features_X.x8_sma_distance_preprocessed_Raw,features_X.x9_acceleration_preprocessed_Raw', # <<< *** Change as needed,
-    'rollbackoffsets': 500, # <<< *** Change as needed,
+    'rollbackoffsets': 250, # <<< *** Change as needed,
     'consumeridtrainingdata2': '', # leave blank
     'partition_training': '', # leave blank
     'consumefrom': '', # leave blank
