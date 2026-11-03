@@ -1,6 +1,6 @@
 <?php
 // qsmain.php - QuantStream AI Institutional Execution & TML Engine
-// SEC Rule 17a-4 & CRA/OSFI Audit Compliant[cite: 1]
+// SEC Rule 17a-4 & CRA/OSFI Audit Compliant
 
 session_start();
 
@@ -24,7 +24,6 @@ function syncPostMarketData() {
     $sourceBaseWin = 'C:/MAADS/tml-airflow/rawdata/qs_tradedata';
     $sourceBaseUnix = '/rawdata/qs_tradedata';
 
-    // Helper function to recursively copy a directory and create missing folders
     $recursiveCopy = function($src, $dst) use (&$recursiveCopy) {
         if (!is_dir($src)) return;
         if (!is_dir($dst)) {
@@ -45,7 +44,6 @@ function syncPostMarketData() {
         closedir($dir);
     };
 
-    // Helper function to create destination and copy CSV files containing "_trade_log"
     $copyTradeLogs = function($srcDir, $dstDir) {
         if (!is_dir($srcDir)) return;
         if (!is_dir($dstDir)) {
@@ -54,13 +52,12 @@ function syncPostMarketData() {
         $files = glob($srcDir . '/*.csv');
         foreach ($files as $file) {
             $filename = basename($file);
-            if (stripos($filename, '_trade_log') !== false) {
+            if (stripos($filename, '_trade_log') !== false || $filename === 'global_pnl_report.csv') {
                 copy($file, $dstDir . '/' . $filename);
             }
         }
     };
 
-    // 1. Check C:/xampp/htdocs/tmlstock
     $target1 = 'C:/xampp/htdocs/tmlstock';
     if (is_dir($target1)) {
         $recursiveCopy($sourceBaseWin . '/logs', $target1 . '/logs');
@@ -68,15 +65,17 @@ function syncPostMarketData() {
         $copyTradeLogs($sourceBaseWin, $target1 . '/tradedata');
     }
 
-    // 2. Check C:\inetpub\wwwroot\T2A_WEBSITE\MAADSWEB\quantstream
     $target2 = 'C:/inetpub/wwwroot/T2A_WEBSITE/MAADSWEB/quantstream';
     if (is_dir($target2)) {
         $recursiveCopy($sourceBaseWin . '/logs', $target2 . '/logs');
         $recursiveCopy($sourceBaseWin . '/pdfreports', $target2 . '/pdfreports');
         $copyTradeLogs($sourceBaseWin, $target2 . '/tradedata');
+        $marketStatusSrc = 'C:/MAADS/tml-airflow/rawdata/qs_tradedata/marketstatus.txt';
+        if (file_exists($marketStatusSrc)) {
+            copy($marketStatusSrc, $target2 . '/marketstatus.txt');
+        }		
     }
 
-    // 3. Check /Viperviz/viperviz/views
     $target3 = '/Viperviz/viperviz/views';
     if (is_dir($target3)) {
         $recursiveCopy($sourceBaseUnix . '/logs', $target3 . '/quantstream/logs');
@@ -88,7 +87,6 @@ function syncPostMarketData() {
 // Handle Post-Market Sync AJAX Request
 if (isset($_GET['action']) && $_GET['action'] === 'run_market_sync') {
     header('Content-Type: application/json');
-    // Optional: Add authentication check here if required
     try {
         syncPostMarketData();
         echo json_encode(['status' => 'success', 'message' => 'Post-market sync completed successfully.']);
@@ -98,15 +96,13 @@ if (isset($_GET['action']) && $_GET['action'] === 'run_market_sync') {
     exit;
 }
 
-/////////////////////////////////////////////////////////////
-
 // Handle Secure Randomized Log Export
 if (isset($_GET['action']) && $_GET['action'] === 'export_random_excel') {
     if (ob_get_level()) {
         ob_end_clean();
     }
 
-    $exportDate = isset($currentDate) ? $currentDate : (new DateTime('now', new DateTimeZone('America/New_York')))->format('Y-m-d');
+    $exportDate = isset($_GET['replay_date']) && !empty($_GET['replay_date']) ? trim($_GET['replay_date']) : (new DateTime('now', new DateTimeZone('America/New_York')))->format('Y-m-d');
     $exportLogsDir = isset($logsDir) ? $logsDir : '/rawdata/qs_tradedata/logs';
     $exportMarket = isset($market) ? $market : ($settings['market'] ?? 'US');
     $exportExchange = isset($exchange) ? $exchange : ($settings['exchange'] ?? 'XNAS');
@@ -132,7 +128,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'export_random_excel') {
     exit;
 }
 
-// Handle Simple Authentication POST[cite: 1]
+// Handle Simple Authentication POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
     header('Content-Type: application/json');
     $username = trim($_POST['username'] ?? '');
@@ -152,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit;
 }
 
-// Handle Logout[cite: 1]
+// Handle Logout
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
     header('Location: ' . basename(__FILE__));
@@ -167,11 +163,89 @@ $currentDate = $easternDate->format('Y-m-d');
 $market=$settings['market'];
 $exchange=$settings['exchange'];
 
-$csvFile = "/rawdata/qs_tradedata/{$currentDate}_{$market}_{$exchange}_trade_log.csv";
-$logsDir = '/rawdata/qs_tradedata/logs';
-$pdfDir  = '/rawdata/qs_tradedata/pdfreports';
+$tradeDataDir = '/rawdata/qs_tradedata';
+$csvFile = "{$tradeDataDir}/{$currentDate}_{$market}_{$exchange}_trade_log.csv";
+$logsDir = "{$tradeDataDir}/logs";
+$pdfDir  = "{$tradeDataDir}/pdfreports";
 
-$tradingStatusFile = '/rawdata/qs_tradedata/tradingstatus.txt';
+// Function to fetch Global PnL report record by date
+function getGlobalPnlRecordForDate($tradeDataDir, $targetDateStr) {
+    $globalPnlFile = "{$tradeDataDir}/global_pnl_report.csv";
+    if (file_exists($globalPnlFile)) {
+        if (($handle = fopen($globalPnlFile, 'r')) !== FALSE) {
+            $headers = fgetcsv($handle, 1000, ',');
+            while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                if (count($data) >= count($headers)) {
+                    $row = array_combine($headers, array_slice($data, 0, count($headers)));
+                    $ts = trim($row['timestampeastern'] ?? '');
+                    if (strpos($ts, $targetDateStr) === 0) {
+                        fclose($handle);
+                        return $row;
+                    }
+                }
+            }
+            fclose($handle);
+        }
+    }
+    return null;
+}
+
+// Helper function to scan available trade log dates and gather PnL & accuracy info for dropdown
+// Helper function to scan trade log dates for dropdown (restricted to last 45 days)
+function getAvailableTradeLogSummaries($tradeDataDir, $market, $exchange) {
+    $summaries = [];
+    $cutoffDate = new DateTime('-45 days');
+
+    if (is_dir($tradeDataDir)) {
+        $files = glob($tradeDataDir . '/*_trade_log.csv');
+        foreach ($files as $file) {
+            $base = basename($file);
+            $parts = explode('_', $base);
+            if (!empty($parts[0]) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $parts[0])) {
+                $dt = $parts[0];
+                $fileDate = DateTime::createFromFormat('Y-m-d', $dt);
+                
+                // Exclude dates older than 45 days for optimized page loads
+                if ($fileDate && $fileDate < $cutoffDate) {
+                    continue;
+                }
+
+                $pnl = 0.0;
+                $ret = 0.0;
+                $budget = 0.0;
+                
+                $gRecord = getGlobalPnlRecordForDate($tradeDataDir, $dt);
+                if ($gRecord) {
+                    $pnl = floatval($gRecord['cumulative_pnl'] ?? 0);
+                    $ret = floatval($gRecord['totalreturn'] ?? 0);
+                } else {
+                    if (($handle = fopen($file, 'r')) !== FALSE) {
+                        $headers = fgetcsv($handle, 1000, ',');
+                        while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                            if (count($data) >= count($headers)) {
+                                $row = array_combine($headers, array_slice($data, 0, count($headers)));
+                                $pnl = floatval($row['cumulative_pnl'] ?? 0);
+                                if (isset($row['tradebudget']) && floatval($row['tradebudget']) > 0) {
+                                    $budget = floatval($row['tradebudget']);
+                                }
+                            }
+                        }
+                        fclose($handle);
+                        if ($budget <= 0) $budget = 10000.0;
+                        $ret = ($pnl / $budget) * 100;
+                    }
+                }
+                $summaries[$dt] = ['date' => $dt, 'pnl' => $pnl, 'return' => $ret];
+            }
+        }
+    }
+    krsort($summaries);
+    return $summaries;
+}
+
+$availableSummaries = getAvailableTradeLogSummaries($tradeDataDir, $market, $exchange);
+
+$tradingStatusFile = "{$tradeDataDir}/tradingstatus.txt";
 if (!file_exists($tradingStatusFile)) {
     file_put_contents($tradingStatusFile, 'NO');
 }
@@ -193,27 +267,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit;
 }
 
-$pdfFiles = [];
-if (is_dir($pdfDir)) {
-    $scanFiles = scandir($pdfDir);
-    foreach ($scanFiles as $file) {
-        if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'pdf') {
-            $pdfFiles[] = [
-                'name' => $file,
-                'size' => filesize($pdfDir . '/' . $file),
-                'mtime' => filemtime($pdfDir . '/' . $file)
-            ];
-        }
-    }
-}
-
-// Handle Config Form POST requests[cite: 1]
+// Handle Config Form POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_config') {
     header('Content-Type: application/json');
-    
     $errors = [];
 
-    // 1. Numerical & Boundary Validations
     $minprice = filter_var($_POST['minprice'] ?? 10, FILTER_VALIDATE_FLOAT);
     $maxprice = filter_var($_POST['maxprice'] ?? 250, FILTER_VALIDATE_FLOAT);
     if ($minprice === false || $minprice < 0) $errors[] = "minprice must be a valid non-negative number.";
@@ -235,7 +293,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $tradebudget = filter_var($_POST['tradebudget'] ?? 10000, FILTER_VALIDATE_FLOAT);
     if ($tradebudget === false || $tradebudget <= 0) $errors[] = "tradebudget must be greater than 0.";
 
-    // 2. String Sanity Checks
     $market = trim($_POST['market'] ?? 'US');
     if (empty($market)) $errors[] = "market cannot be empty.";
     $market = htmlspecialchars($market, ENT_QUOTES, 'UTF-8');
@@ -258,7 +315,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
     $brokerurl = $brokerurl ? $brokerurl : '';
 
-    // 3. Risk & Trading Parameter Validations
     $tradelossnotexceed = filter_var($_POST['tradelossnotexceed'] ?? 50, FILTER_VALIDATE_FLOAT);
     if ($tradelossnotexceed === false || $tradelossnotexceed < 0) $errors[] = "tradelossnotexceed must be non-negative.";
 
@@ -315,7 +371,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $autoqsagentstrategy = filter_var($_POST['autoqsagentstrategy'] ?? 1, FILTER_VALIDATE_INT);
     if ($autoqsagentstrategy !== 1 && $autoqsagentstrategy !== 2) $errors[] = "autoqsagentstrategy must be either 1 or 2.";
 
-    // If validation errors exist, halt execution and return JSON error list
     if (!empty($errors)) {
         echo json_encode(['status' => 'error', 'message' => 'Validation failed', 'errors' => $errors]);
         exit;
@@ -371,7 +426,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit;
 }
 
-
 function getSystemLogs($logsDir, $currentDate, $market, $exchange) {
     $logLines = [];
     $safe_market = strtolower(trim($market));
@@ -413,7 +467,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_config') {
     exit;
 }
 
-// Handle AJAX CSV Data Fetching for Real-Time UI Refresh & Symbol Filtering[cite: 1]
+// Handle AJAX CSV Data Fetching for Real-Time UI Refresh & Symbol/Snapshot Filtering
 if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
     header('Content-Type: application/json');
     header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
@@ -421,7 +475,17 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
     header('Pragma: no-cache');
 	
     $filterSymbol = isset($_GET['symbol']) ? strtoupper(trim($_GET['symbol'])) : '';
+    $replayDate   = isset($_GET['replay_date']) ? trim($_GET['replay_date']) : '';
     
+    $targetDate = (!empty($replayDate) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $replayDate)) ? $replayDate : $currentDate;
+    $targetCsvFile = "{$tradeDataDir}/{$targetDate}_{$market}_{$exchange}_trade_log.csv";
+    if (!file_exists($targetCsvFile)) {
+        $matchingLogs = glob("{$tradeDataDir}/{$targetDate}_*_trade_log.csv");
+        if (!empty($matchingLogs)) {
+            $targetCsvFile = $matchingLogs[0];
+        }
+    }
+
     $trades = [];
     $filteredTrades = [];
     $notionalPnl = 0.0;
@@ -441,21 +505,38 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
     $symbolLatestPrice = [];
     $symbolBuyPrice = [];
     $totalQuantity = 0.0;
+    $symbolEntryTimestamps = [];
 
-    if (file_exists($csvFile)) {
-        if (($handle = fopen($csvFile, 'r')) !== FALSE) {
+    $marketStatusSrc = '/rawdata/qs_tradedata/marketstatus.txt';
+    $target2Dir = '/Viperviz/viperviz/views';
+    if (file_exists($marketStatusSrc) && is_dir($target2Dir)) {
+        @copy($marketStatusSrc, $target2Dir . '/marketstatus.txt');
+    }
+	
+$tradeTimestamps = []; // Array to store timestamps for throughput calculation
+
+    if (file_exists($targetCsvFile)) {
+        if (($handle = fopen($targetCsvFile, 'r')) !== FALSE) {
             $headers = fgetcsv($handle, 1000, ',');
             while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
                 if (count($data) >= count($headers)) {
                     $row = array_combine($headers, array_slice($data, 0, count($headers)));
                     $pnl = floatval($row['trade_pnl'] ?? 0);
                     $cpnl = floatval($row['cumulative_pnl'] ?? 0);
-
+					
                     $price = floatval($row['price'] ?? 0);
                     $qty = floatval($row['quantity'] ?? 0);
                     $signal = strtoupper(trim($row['signal'] ?? 'BUY'));
                     $isExecuted = strtolower(trim($row['brokerexecuted'] ?? 'no')) === 'yes';
                     $sym = trim($row['symbol'] ?? '');
+
+                    // Collect timestamps for throughput calculation
+                    if (!empty($row['timestamp'])) {
+                        $ts = strtotime($row['timestamp']);
+                        if ($ts !== FALSE) {
+                            $tradeTimestamps[] = $ts;
+                        }
+                    }
                     
                     if ($sym) {
                         $symbolLatestPrice[$sym] = $price;
@@ -497,10 +578,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
 
                     if ($isExecuted) {
                         $actualPnl += $pnl;
-                    } /*else {
-                        $notionalPnl += $pnl;
-                    }*/
-//					$notionalPnl += $pnl;
+                    }
 					$notionalPnl = $cpnl;
 
                     if ($signal === 'BUY') {
@@ -517,12 +595,51 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
                             $grossLoss += abs($pnl);
                         }
                     }
+/////////////////////////////////////////////////////////////////////////////////
+						$dt = new DateTime($row['timestamp'] ?? 'now', new DateTimeZone('UTC'));
+						$rowTimestamp = $dt->getTimestamp(); // Unix timestamp
 
-                    $totalHoldSeconds += intval($row['hold_seconds'] ?? 125);
+						$sym = trim($row['symbol'] ?? '');
+						$signal = strtoupper(trim($row['signal'] ?? ''));
+
+						$holdSeconds = 125; // default fallback
+
+						if ($signal === 'BUY') {
+							$symbolEntryTimestamps[$sym] = $rowTimestamp;
+							$openPositionsMap[$sym] = [
+								'symbol' => $sym,
+								'qty' => $qty,
+								'price' => $price
+							];
+						} elseif ($signal === 'SELL') {
+							if (isset($symbolEntryTimestamps[$sym])) {
+								$holdSeconds = max(0, $rowTimestamp - $symbolEntryTimestamps[$sym]);
+								unset($symbolEntryTimestamps[$sym]); // clear after exit
+							}
+							unset($openPositionsMap[$sym]);
+						}
+
+						$totalHoldSeconds += $holdSeconds;					
+					
+//////////////////////////////////////////////////////////////////////////////////					
+					
                 }
             }
             fclose($handle);
         }
+    }
+
+    // Compute dynamic stream throughput from trade log timestamps
+    $throughput = 0.1;
+    if (count($tradeTimestamps) > 1) {
+        $duration = max($tradeTimestamps) - min($tradeTimestamps);
+        if ($duration > 0) {
+            $throughput = round(count($tradeTimestamps) / $duration, 4);
+        } else {
+            $throughput = count($tradeTimestamps);
+        }
+    } elseif (count($tradeTimestamps) === 1) {
+        $throughput = 1.0;
     }
 
     foreach ($symbols as $sym => &$sData) {
@@ -541,12 +658,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
     $equitySeries = [];
     $drawdownSeries = [];
     $timeLabels = [];
-	$runningMaxEquity = floatval($settings['tradebudget'] ?? 10000);
-    $maxDrawdownUsdVal = 0.0;
-    $maxDrawdownPctVal = 0.0;
 
-	$initialBudget = floatval($settings['tradebudget'] ?? 10000.0);
-	$runningMaxEquity = $initialBudget;		
+    $globalPnlRecord = getGlobalPnlRecordForDate($tradeDataDir, $targetDate);
+    $initialBudget = $globalPnlRecord ? floatval($globalPnlRecord['startingtradingbudget']) : floatval($settings['tradebudget'] ?? 10000.0);
+    $runningMaxEquity = $initialBudget;		
 
     foreach ($filteredTrades as $ft) {
         $currentEquity = $initialBudget + floatval($ft['cumulative_pnl'] ?? 0);
@@ -557,7 +672,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
         $ddUsd = $currentEquity - $runningMaxEquity;
         $ddPct = $runningMaxEquity > 0 ? ($ddUsd / $runningMaxEquity) * 100 : 0.0;
 
-        if ($ddUsd < $maxDrawdownUsdVal) {
+        if (!isset($maxDrawdownUsdVal) || $ddUsd < $maxDrawdownUsdVal) {
             $maxDrawdownUsdVal = $ddUsd;
             $maxDrawdownPctVal = $ddPct;
         }
@@ -573,26 +688,26 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
         $timeLabels = ['00:00'];
         $equitySeries = [$initialBudget];
         $drawdownSeries = [0.0];
+        $maxDrawdownUsdVal = 0.0;
+        $maxDrawdownPctVal = 0.0;
     }
 
     $totalTrades = count($filteredTrades);
     $avgHoldTime = $totalTrades > 0 ? round($totalHoldSeconds / $totalTrades, 1) : 125.3;
-    $throughput = 0.1;
+    //$throughput = 0.1;
     $profitFactor = $grossLoss > 0 ? round($grossProfit / $grossLoss, 2) : ($grossProfit > 0 ? 99.0 : 0.00);
     $winRate = $sellCount > 0 ? round(($winningTrades / $sellCount) * 100, 1) : 0.0;
 
-	$config = parse_ini_file($iniFile, true);
-	$settings = $config['TradingSettings'] ?? [];
-
-	$tradeBudgetVal = floatval(str_replace(',', '', $settings['tradebudget'] ?? 0));
+	$tradeBudgetVal = $initialBudget;
 	$notionalreturn = $tradeBudgetVal > 0 ? number_format(($notionalPnl / $tradeBudgetVal) * 100, 2) : '0.00';
 	$actualreturn   = $tradeBudgetVal > 0 ? number_format(($actualPnl / $tradeBudgetVal) * 100, 2) : '0.00';
 	$tradebudgetDisplay = number_format($tradeBudgetVal, 2);
 
-    $liveLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
+    $liveLogs = getSystemLogs($logsDir, $targetDate, $market, $exchange);
 
     echo json_encode([
         'status' => 'success',
+        'targetDate' => $targetDate,
         'filterSymbol' => $filterSymbol,
         'trades' => $filteredTrades,
         'allTrades' => $trades,
@@ -628,7 +743,6 @@ function sanitize($data) {
     return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
 }
 
-
 $trades = [];
 $notionalPnl = 0.0;
 $notionalreturn = 0.0;
@@ -660,7 +774,7 @@ if (file_exists($csvFile)) {
                 $pnl = floatval($row['trade_pnl'] ?? 0);
                 $isExecuted = strtolower(trim($row['brokerexecuted'] ?? 'no')) === 'yes';
                 
-                if ($isExecuted) { $actualPnl += $pnl; } //else { $notionalPnl += $pnl; }
+                if ($isExecuted) { $actualPnl += $pnl; }
                 $notionalPnl += $pnl;
 				
                 $sym = trim($row['symbol'] ?? '');
@@ -911,18 +1025,36 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0b0f19; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+		
+.overflow-x-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+}
+
+#realtimeLogContainer {
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}		
+@media (max-width: 1024px) {
+    header.sticky {
+        transition: transform 0.3s ease-in-out;
+    }
+    header.sticky.header-hidden {
+        transform: translateY(-100%);
+    }
+}
     </style>
 </head>
 <body class="min-h-screen flex flex-col font-sans antialiased text-slate-200">
 
     <?php if (!$isAuthenticated): ?>
-    <!-- ========================================== -->
-    <!-- COOL INSTITUTIONAL LOGIN OVERLAY PAGE      -->
-    <!-- ========================================== -->
     <div id="loginOverlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#0b0f19]/90 backdrop-blur-xl">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0,transparent_70%)] pointer-events-none"></div>
         
-        <div class="glass-panel w-full max-w-md rounded-3xl p-8 border border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.2)] relative z-10 space-y-6">
+<div class="glass-panel w-full max-w-md rounded-3xl p-8 border border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.2)] relative z-10 space-y-6">
             <div class="text-center space-y-2">
                 <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl">
 					<img src="../img/qsicon.png" alt="Logo" class="w-14 h-13 object-contain animate-bounce">
@@ -974,8 +1106,19 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 </div>
             </form>
 
-            <div class="pt-4 border-t border-slate-800 text-center text-[10px] font-mono text-slate-300">
-                Otics Advanced Analytics, Inc. • Secure Execution Gateway v3.0
+            <div class="pt-4 border-t border-slate-800 text-center text-[10px] font-mono text-slate-300 space-y-2">
+                <div>
+                    <a href="https://www.otics.ca" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 underline transition-colors">Otics Advanced Analytics, Inc.</a> • Secure Execution Gateway v3.0
+                </div>
+                <div class="flex items-center justify-center gap-3 text-cyan-400">
+                    <a href="https://www.youtube.com/watch?v=Oe9MF_rvebs" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1">
+                        <i data-lucide="video" class="w-3 h-3"></i> YouTube Demo
+                    </a>
+                    <span class="text-slate-600">•</span>
+                    <a href="https://tml.readthedocs.io/en/latest/quantstream.html" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1">
+                        <i data-lucide="book-open" class="w-3 h-3"></i> Documentation
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1002,6 +1145,26 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             </div>
 
             <div class="flex flex-wrap items-center justify-center gap-3">
+                <!-- HISTORICAL REPLAY SNAPSHOT DROPDOWN WITH PNL & RETURNS -->
+                <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 font-mono text-xs">
+                    <i data-lucide="history" class="w-4 h-4 text-amber-400 shrink-0"></i>
+                    <span class="text-slate-400 text-[10px] uppercase">Last 45 Day Snapshot:</span>
+                    <select id="replayDateSelect" onchange="onReplayDateChange()" class="bg-slate-950 border border-slate-700 text-cyan-400 font-bold rounded-lg px-2 py-1 focus:outline-none focus:border-cyan-400 text-xs">
+                        <option value="">LIVE REAL-TIME FEED</option>
+                        <?php foreach ($availableSummaries as $dt => $info): ?>
+                            <?php 
+                                $pnlVal = $info['pnl'];
+                                $retVal = $info['return'];
+                                $pnlSign = $pnlVal >= 0 ? '+' : '';
+                                $retSign = $retVal >= 0 ? '+' : '';
+                                $emoji = $pnlVal >= 0 ? '🟢' : '🔴';
+                                $labelDisplay = "{$emoji} {$dt} | PnL: {$pnlSign}$" . number_format($pnlVal, 2) . " ({$retSign}" . number_format($retVal, 2) . "%)";
+                            ?>
+                            <option value="<?php echo htmlspecialchars($dt); ?>"><?php echo htmlspecialchars($labelDisplay); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
                 <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700">
                     <a href="<?php echo $settings['brokerurl']; ?>" target="_blank"><img src="../img/ibicon.png" alt="Broker" class="w-5 h-5 object-contain"></a>
                     <div class="flex flex-col">
@@ -1189,7 +1352,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             </div>
         </section>
 
-        <!-- LIVE UNIQUE SYMBOLS UNIVERSE (FLASHY REAL-TIME PRICES & SPREAD CARDS) -->
+        <!-- LIVE UNIQUE SYMBOLS UNIVERSE -->
         <section class="glass-panel rounded-2xl p-4 border border-cardborder">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 border-b border-slate-800 pb-2 gap-1">
                 <h3 class="font-mono font-bold text-sm text-white flex items-center gap-2">
@@ -1267,97 +1430,103 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             </div>
         </section>
 
-        <!-- REAL-TIME SYSTEM AUDIT LOGS TERMINAL (NEW) -->
-        <section class="glass-panel rounded-2xl p-4 border border-cardborder">
-             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 border-b border-slate-800 pb-2 gap-2">
-                <h3 class="font-mono font-bold text-sm text-cyan-400 flex items-center gap-2">
-                    <i data-lucide="terminal" class="w-4 h-4 text-cyan-400 animate-pulse shrink-0"></i>
-                    <span>Real-Time System Audit Logs (<span id="logCountLabel"><?php echo count($initialLogs); ?></span> Entries • Latest to Oldest)</span>
-                </h3>
-                <div class="flex flex-wrap items-center gap-3">
-                    <button onclick="window.location.href='?action=export_random_excel'" class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-xs transition-all cursor-pointer">
-                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                        <span>Download Excel Report</span>
-                    </button>
-                    <span class="text-[11px] font-mono text-slate-400 truncate max-w-[200px]">/rawdata/qs_tradedata/logs/</span>
-                </div>
-            </div>
+<!-- Real-Time System Audit Logs Window -->
+<section class="glass-panel rounded-2xl p-4 border border-cardborder">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 border-b border-slate-800 pb-2 gap-2">
+        <h3 class="font-mono font-bold text-sm text-cyan-400 flex items-center gap-2">
+            <i data-lucide="terminal" class="w-4 h-4 text-cyan-400 animate-pulse shrink-0"></i>
+            <span>Real-Time System Audit Logs (<span id="logCountLabel"><?php echo count($initialLogs); ?></span> Entries • Latest to Oldest)</span>
+        </h3>
+        <div class="flex flex-wrap items-center gap-3">
+            <button onclick="downloadExcelReport()" class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-mono text-xs transition-all cursor-pointer">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>Download Excel Report</span>
+            </button>
+            <span class="text-[11px] font-mono text-slate-400 truncate max-w-[200px]">/rawdata/qs_tradedata/logs/</span>
+        </div>
+    </div>
 
-            <div id="realtimeLogContainer" class="bg-slate-950/90 rounded-xl p-3 border border-slate-800 font-mono text-xs text-emerald-400 h-[220px] overflow-y-auto space-y-1 shadow-inner">
-                <?php if (empty($initialLogs)): ?>
-                    <div class="text-slate-500 italic">No log entries recorded for today yet...</div>
-                <?php else: ?>
-                    <?php foreach (array_slice($initialLogs, 0, 100) as $logLine): ?>
-                        <div class="py-0.5 border-b border-slate-900/50 truncate hover:text-white transition-colors"><?php echo htmlspecialchars($logLine); ?></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
-        </section>
+    <div class="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div id="realtimeLogContainer" class="bg-slate-950/90 rounded-xl p-3 border border-slate-800 font-mono text-xs text-emerald-400 h-[220px] overflow-y-auto space-y-1 shadow-inner min-w-[600px]">
+            <?php if (empty($initialLogs)): ?>
+                <div class="text-slate-500 italic">No log entries recorded for today yet...</div>
+            <?php else: ?>
+                <?php foreach (array_slice($initialLogs, 0, 100) as $logLine): ?>
+                    <div class="py-0.5 border-b border-slate-900/50 hover:text-white transition-colors"><?php echo htmlspecialchars($logLine); ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
 
         <?php
         $easternNow = new DateTime('now', new DateTimeZone('America/New_York'));
         $isAfter4pm = (int)$easternNow->format('H') >= 16;
         $currentDateStr = $easternNow->format('Y-m-d');
 
-        // 1. Filter PDF Reports
-        $pdfFilesFiltered = [];
-        if (is_dir($pdfDir)) {
-            foreach (scandir($pdfDir) as $file) {
-                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'pdf') {
-                    if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) {
-                        continue;
-                    }
-                    $pdfFilesFiltered[] = [
-                        'name' => $file,
-                        'size' => filesize($pdfDir . '/' . $file),
-                        'mtime' => filemtime($pdfDir . '/' . $file)
-                    ];
-                }
-            }
-            usort($pdfFilesFiltered, function($a, $b) { return $b['mtime'] - $a['mtime']; });
-        }
+		$cutoffTimestamp = time() - (45 * 86400); // 45 days in seconds
 
-        // 2. Filter Audit Log files (/logs)
-        $logFilesFiltered = [];
-        if (is_dir($logsDir)) {
-            foreach (scandir($logsDir) as $file) {
-                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'txt') {
-                    if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) {
-                        continue;
-                    }
-                    $logFilesFiltered[] = [
-                        'name' => $file,
-                        'size' => filesize($logsDir . '/' . $file),
-                        'mtime' => filemtime($logsDir . '/' . $file)
-                    ];
-                }
-            }
-            usort($logFilesFiltered, function($a, $b) { return $b['mtime'] - $a['mtime']; });
-        }
+		// 1. PDF Files (Last 45 Days)
+		$pdfFilesFiltered = [];
+		if (is_dir($pdfDir)) {
+			foreach (scandir($pdfDir) as $file) {
+				$filePath = $pdfDir . '/' . $file;
+				if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'pdf') {
+					if (filemtime($filePath) >= $cutoffTimestamp) {
+						if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) continue;
+						$pdfFilesFiltered[] = [
+							'name' => $file,
+							'size' => filesize($filePath),
+							'mtime' => filemtime($filePath)
+						];
+					}
+				}
+			}
+			usort($pdfFilesFiltered, function($a, $b) { return $b['mtime'] - $a['mtime']; });
+		}
 
-        // 3. Filter Trade Data files (/tradedata)
-        $tradeDataFilesFiltered = [];
-        $tradeDataDir = 'C:/MAADS/tml-airflow/rawdata/qs_tradedata/';
-        if (is_dir($tradeDataDir)) {
-            foreach (scandir($tradeDataDir) as $file) {
-                if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'csv' && $file !== "global_pnl_report.csv" ) {
-                    if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) {
-                        continue;
-                    }
-                    $tradeDataFilesFiltered[] = [
-                        'name' => $file,
-                        'size' => filesize($tradeDataDir . '/' . $file),
-                        'mtime' => filemtime($tradeDataDir . '/' . $file)
-                    ];
-                }
-            }
-            usort($tradeDataFilesFiltered, function($a, $b) { return $b['mtime'] - $a['mtime']; });
-        }
+		// 2. Audit Log Files (Last 45 Days)
+		$logFilesFiltered = [];
+		if (is_dir($logsDir)) {
+			foreach (scandir($logsDir) as $file) {
+				$filePath = $logsDir . '/' . $file;
+				if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'txt') {
+					if (filemtime($filePath) >= $cutoffTimestamp) {
+						if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) continue;
+						$logFilesFiltered[] = [
+							'name' => $file,
+							'size' => filesize($filePath),
+							'mtime' => filemtime($filePath)
+						];
+					}
+				}
+			}
+			usort($logFilesFiltered, function($a, $b) { return $b['mtime'] - $a['mtime']; });
+		}
+
+		// 3. Trade Data Files (Last 45 Days)
+		$tradeDataFilesFiltered = [];
+		if (is_dir($tradeDataDir)) {
+			foreach (scandir($tradeDataDir) as $file) {
+				$filePath = $tradeDataDir . '/' . $file;
+				if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'csv' && $file !== "global_pnl_report.csv") {
+					if (filemtime($filePath) >= $cutoffTimestamp) {
+						if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) continue;
+						$tradeDataFilesFiltered[] = [
+							'name' => $file,
+							'size' => filesize($filePath),
+							'mtime' => filemtime($filePath)
+						];
+					}
+				}
+			}
+			usort($tradeDataFilesFiltered, function($a, $b) { return $b['mtime'] - $a['mtime']; });
+		}
+
         ?>
 
-        <!-- 3 WINDOWS ARCHIVE SECTION (/pdfreports, /logs, /tradedata) -->
+        <!-- 3 WINDOWS ARCHIVE SECTION -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <!-- Window 1: PDF Reports -->
             <div class="glass-panel rounded-2xl p-4 border border-cardborder flex flex-col justify-between">
                 <div class="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
                     <h3 class="font-mono font-bold text-xs text-cyan-400 flex items-center gap-2 truncate">
@@ -1386,7 +1555,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php endif; ?>
             </div>
 
-            <!-- Window 2: Audit Log Files -->
             <div class="glass-panel rounded-2xl p-4 border border-cardborder flex flex-col justify-between">
                 <div class="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
                     <h3 class="font-mono font-bold text-xs text-cyan-400 flex items-center gap-2 truncate">
@@ -1415,7 +1583,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php endif; ?>
             </div>
 
-            <!-- Window 3: Trade Data Files -->
             <div class="glass-panel rounded-2xl p-4 border border-cardborder flex flex-col justify-between">
                 <div class="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
                     <h3 class="font-mono font-bold text-xs text-cyan-400 flex items-center gap-2 truncate">
@@ -1485,7 +1652,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                     <i data-lucide="database" class="w-4 h-4 text-accentcyan shrink-0"></i>
                     <span>Server CSV Trade Execution Log (<span id="tradeCountLabel"><?php echo count($trades); ?></span> Total Executions)</span>
                 </h3>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+                <span id="logMonitoringBadge" class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                     <span>Live Monitoring Active</span>
                 </span>
@@ -1579,7 +1746,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                         <span>Win Rate (%)</span>
                     </div>
                     <p class="text-slate-300 mt-1 text-[11px] leading-relaxed">
-                        The percentage of closed trades (triggered by SELL signals) that resulted in zero or positive PnL compared against total closed positions ($(\text{Winning Trades} / \text{Total Closed Trades}) \times 100$).
+                        The percentage of closed trades (triggered by SELL signals) that resulted in zero or positive PnL compared against total closed positions.
                     </p>
                 </div>
 
@@ -1588,7 +1755,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                         <span>Profit Factor</span>
                     </div>
                     <p class="text-slate-300 mt-1 text-[11px] leading-relaxed">
-                        The ratio of gross winning profits to gross losing losses ($\text{Gross Profit} / \text{Gross Loss}$). Values above 1.5 indicate robust trading system profitability.
+                        The ratio of gross winning profits to gross losing losses. Values above 1.5 indicate robust trading system profitability.
                     </p>
                 </div>
 
@@ -1606,8 +1773,8 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                         <span>Gross Buy Turnover & Sell Proceeds</span>
                     </div>
                     <p class="text-slate-300 mt-1 text-[11px] leading-relaxed">
-                        <strong>Gross Buy Turnover:</strong> Total capital deployed purchasing assets ($\sum \text{Price} \times \text{Quantity}$ for BUY signals). <br>
-                        <strong>Gross Sell Proceeds:</strong> Total capital realized liquidating positions ($\sum \text{Price} \times \text{Quantity}$ for SELL signals).
+                        <strong>Gross Buy Turnover:</strong> Total capital deployed purchasing assets. <br>
+                        <strong>Gross Sell Proceeds:</strong> Total capital realized liquidating positions.
                     </p>
                 </div>
 
@@ -1665,8 +1832,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
     </div>
 
     <!-- CONFIG PARAMETERS MODAL -->
-<!-- CONFIG PARAMETERS MODAL -->
-<!-- CONFIG PARAMETERS MODAL -->
     <div id="configModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 border border-cardborder shadow-2xl space-y-5 max-h-[95vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -1682,7 +1847,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             <form id="configForm" class="space-y-4 font-mono text-xs">
                 <input type="hidden" name="action" value="update_config">
 
-                <!-- SECTION 1: MARKET & INSTRUMENT FILTERS (Fixed at Startup) -->
                 <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-4 space-y-3">
                     <div class="flex items-center gap-2 text-cyan-400 font-bold border-b border-slate-800 pb-2">
                         <i data-lucide="globe" class="w-4 h-4 shrink-0"></i>
@@ -1713,10 +1877,10 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                             <label class="block text-slate-400 mb-1">Broker Name</label>
                             <input name="broker" type="text" value="<?php echo $settings['broker']; ?>" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
                         </div>
-<div class="col-span-full">
-        <label class="block text-slate-400 mb-1">Broker URL</label>
-        <input name="brokerurl" type="text" value="<?php echo $settings['brokerurl']; ?>" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
-    </div>						
+                        <div class="col-span-full">
+                            <label class="block text-slate-400 mb-1">Broker URL</label>
+                            <input name="brokerurl" type="text" value="<?php echo $settings['brokerurl']; ?>" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+                        </div>						
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         <div>
@@ -1747,11 +1911,9 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                             <label class="block text-slate-400 mb-1">Max Volatility (%)</label>
                             <input name="maxvolatility" type="text" value="<?php echo $settings['maxvolatility']; ?>" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
                         </div>
-						
                     </div>
                 </div>
 
-                <!-- SECTION 2: RISK MANAGEMENT & POSITION LIMITS (Real-Time) -->
                 <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-4 space-y-3">
                     <div class="flex items-center gap-2 text-emerald-400 font-bold border-b border-slate-800 pb-2">
                         <i data-lucide="shield-alert" class="w-4 h-4 shrink-0"></i>
@@ -1809,7 +1971,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                     </div>
                 </div>
 
-                <!-- SECTION 3: EXECUTION, FEES & BROKER SETTINGS (Real-Time) -->
                 <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-4 space-y-3">
                     <div class="flex items-center gap-2 text-amber-400 font-bold border-b border-slate-800 pb-2">
                         <i data-lucide="cpu" class="w-4 h-4 shrink-0"></i>
@@ -1832,7 +1993,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                             <label class="block text-slate-400 mb-1">Take Profit %</label>
                             <input name="take_profit_pct" type="text" value="<?php echo $settings['take_profit_pct']; ?>" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
                         </div>
-												
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
                         <div>
@@ -1847,9 +2007,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                             <label class="block text-slate-400 mb-1">Auto QuantStream Agent Strategy</label>
                             <input name="autoqsagentstrategy" type="text" value="<?php echo $settings['autoqsagentstrategy']; ?>" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
                         </div>						
-						
                     </div>
-					
                 </div>
 
                 <?php 
@@ -1896,17 +2054,17 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         }
 
         let currentSelectedSymbol = '';
+        let currentReplayDate = '';
         const currentScript = window.location.pathname.split('/').pop() || 'qsmain.php';
 
 		const ibkrToggle = document.getElementById('ibkrToggle');
 		const ibkrStatusLabel = document.getElementById('ibkrStatusLabel');
-       if (ibkrToggle) {
+        if (ibkrToggle) {
 			ibkrToggle.addEventListener('change', function() {
-				// Prevent execution and notify if the session user is quantdemo
-               const qs_user = "<?php echo $_SESSION['qs_user'] ?? ''; ?>";				
+                const qs_user = "<?php echo $_SESSION['qs_user'] ?? ''; ?>";				
 				if (typeof qs_user !== 'undefined' && qs_user === 'quantdemo') {
 					alert('Demo accounts are not permitted to modify auto-trading settings.');
-					this.checked = !this.checked; // Reset toggle state
+					this.checked = !this.checked;
 					return;
 				}
 
@@ -1962,11 +2120,8 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         document.getElementById('closeHelpModalBtnBottom').addEventListener('click', () => helpModal.classList.add('hidden'));
 
         const configModal = document.getElementById('configModal');
-        ////////////////////////
-//		document.getElementById('openConfigModalBtn').addEventListener('click', () => configModal.classList.remove('hidden'));
 		document.getElementById('openConfigModalBtn').addEventListener('click', async () => {
 			try {
-				// Fetch the absolute latest settings from the server/INI file on click
 				const res = await fetch(currentScript + '?action=get_config&_t=' + Date.now());
 				const data = await res.json();
 				
@@ -1974,7 +2129,6 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
 					const settings = data.settings;
 					const form = document.getElementById('configForm');
 					
-					// Dynamically populate every input field matching the INI keys
 					for (const [key, value] of Object.entries(settings)) {
 						if (form.elements[key]) {
 							form.elements[key].value = value;
@@ -1985,11 +2139,9 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
 				console.error('Error loading latest configuration:', err);
 			}
 			
-			// Display the config modal after inputs are refreshed
 			configModal.classList.remove('hidden');
 		});
 		
-		//////////////
         document.getElementById('closeConfigModalBtn').addEventListener('click', () => configModal.classList.add('hidden'));
         document.getElementById('cancelConfigModalBtn').addEventListener('click', () => configModal.classList.add('hidden'));
 
@@ -2008,7 +2160,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
         setInterval(() => {
             const now = new Date();
 			const options = { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' };
-			const formatter = new Intl.DateTimeFormat('en-CA', options); // 'en-CA' gives YYYY-MM-DD format
+			const formatter = new Intl.DateTimeFormat('en-CA', options);
 			const currentDate = formatter.format(new Date());
 			
             const easternTime = now.toLocaleTimeString('en-US', {
@@ -2113,13 +2265,16 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             pollLiveData();
         }
 
-        function updateStreamStatus(message, isActive) {
+        function updateStreamStatus(message, isActive, isHistorical = false) {
             const textSpan = document.querySelector('#streamIndicator span:nth-of-type(2)');
             const dotSpan = document.querySelector('#streamIndicator span:first-of-type');
             const container = document.getElementById('streamIndicator');
             
             textSpan.textContent = message;
-            if (isActive) {
+            if (isHistorical) {
+                container.className = "relative flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-400 font-mono text-xs";
+                dotSpan.className = "w-2.5 h-2.5 rounded-full bg-amber-400";
+            } else if (isActive) {
                 container.className = "relative flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono text-xs stream-pulse";
                 dotSpan.className = "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping";
             } else {
@@ -2128,37 +2283,78 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             }
         }
 
+        function onReplayDateChange() {
+            const selectEl = document.getElementById('replayDateSelect');
+            currentReplayDate = selectEl.value;
+            const logMonitoringBadge = document.getElementById('logMonitoringBadge');
+
+            if (currentReplayDate) {
+                if (pollInterval) {
+                    clearInterval(pollInterval);
+                    pollInterval = null;
+                }
+                updateStreamStatus(`HISTORICAL REPLAY MODE (${currentReplayDate})`, false, true);
+                if (logMonitoringBadge) {
+                    logMonitoringBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="text-amber-400">Historical Snapshot Active</span>`;
+                }
+            } else {
+                updateStreamStatus("LIVE US NASDAQ/NYSE FEED ACTIVE (5s POLL)", true);
+                if (logMonitoringBadge) {
+                    logMonitoringBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span><span>Live Monitoring Active</span>`;
+                }
+                if (!pollInterval) {
+                    pollInterval = setInterval(pollLiveData, 5000);
+                }
+            }
+            pollLiveData();
+        }
+
+        function downloadExcelReport() {
+            let url = '?action=export_random_excel';
+            if (currentReplayDate) {
+                url += '&replay_date=' + encodeURIComponent(currentReplayDate);
+            }
+            window.location.href = url;
+        }
+
         let pollInterval = null;
 
         async function pollLiveData() {
 			let marketopen=0;
             try {
-                const statusRes = await fetch('marketstatus.txt?_t=' + Date.now());		
-                const statusText = await statusRes.text();
-                const marketState = statusText.trim().toUpperCase();
-                				
-                if (marketState === 'CLOSE') {
-                    const indicator = document.getElementById('streamIndicator');
-                    if (indicator){ 
-                        indicator.className = '';
-                        updateStreamStatus("US:NASDAQ/NYSE MARKET CLOSED", false);
-						marketopen=0;
+                if (!currentReplayDate) {
+                    const statusRes = await fetch('marketstatus.txt?_t=' + Date.now());		
+                    const statusText = await statusRes.text();
+                    const marketState = statusText.trim().toUpperCase();
+                                    
+                    if (marketState === 'CLOSE') {
+                        const indicator = document.getElementById('streamIndicator');
+                        if (indicator){ 
+                            indicator.className = '';
+                            updateStreamStatus("US:NASDAQ/NYSE MARKET CLOSED", false);
+                            marketopen=0;
+                        }
+                    } else {
+                        marketopen=1;
+                        const indicator = document.getElementById('streamIndicator');
+                        if (indicator){ 
+                            indicator.className = 'relative flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono text-xs stream-pulse';
+                            updateStreamStatus("LIVE US NASDAQ/NYSE FEED ACTIVE (5s POLL)", true);								
+                        }			
                     }
                 } else {
-					marketopen=1;
-                    const indicator = document.getElementById('streamIndicator');
-                    if (indicator){ 
-                        indicator.className = 'relative flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono text-xs stream-pulse';
-                        updateStreamStatus("LIVE US NASDAQ/NYSE FEED ACTIVE (5s POLL)", true);								
-                    }			
+                    updateStreamStatus(`HISTORICAL REPLAY MODE (${currentReplayDate})`, false, true);
                 }
 
                 const indicator = document.getElementById('streamIndicator');
-                if (indicator) indicator.classList.add('bg-cyan-500/30', 'scale-105');
+                if (indicator && !currentReplayDate) indicator.classList.add('bg-cyan-500/30', 'scale-105');
                 
                 let url = currentScript + '?action=get_live_data&_t=' + Date.now();
                 if (currentSelectedSymbol) {
                     url += '&symbol=' + encodeURIComponent(currentSelectedSymbol);
+                }
+                if (currentReplayDate) {
+                    url += '&replay_date=' + encodeURIComponent(currentReplayDate);
                 }
                 
                 const res = await fetch(url);
@@ -2197,18 +2393,65 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                     document.getElementById('statTotalTrades').innerHTML = `${data.totalTrades} <span class="text-xs text-slate-400">(${data.buyCount}B / ${data.sellCount}S)</span>`;
                     document.getElementById('statTotalShares').innerText = Number(data.totalQuantity || 0).toLocaleString();
                     document.getElementById('statAvgHold').innerHTML = `${data.avgHoldTime} sec <span class="text-[10px] text-slate-400">(${(data.avgHoldTime/60).toFixed(2)}m)</span>`;
-                    document.getElementById('statThroughput').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> <span>${data.throughput} msgs/sec</span>`;
+                    document.getElementById('statThroughput').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 ${currentReplayDate ? '' : 'animate-ping'}"></span> <span>${data.throughput} msgs/sec</span>`;
                     document.getElementById('statMaxDd').innerText = `$${Number(data.maxDrawdownUsd).toFixed(2)} (${Number(data.maxDrawdownPct).toFixed(2)}%)`;
                     document.getElementById('statBuyTurnover').innerText = '$' + Number(data.grossBuyTurnover).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
                     document.getElementById('statSellProceeds').innerText = '$' + Number(data.grossSellProceeds).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
                     document.getElementById('statProfitFactor').innerText = Number(data.profitFactor).toFixed(2);
                     document.getElementById('statWinRate').innerText = Number(data.winRate).toFixed(1) + '%';
 
+                    let closedCount = 0;
+                    let realizedPnlSum = 0;
+                    let wins = 0;
+                    let losses = 0;
+                    let breakevens = 0;
+                    let sumWins = 0;
+                    let sumLosses = 0;
+                    let maxWinVal = 0;
+                    let maxWinSym = 'N/A';
+                    let maxLossVal = 0;
+                    let maxLossSym = 'N/A';
+
+                    data.trades.forEach(t => {
+                        if ((t.signal || '').toUpperCase() === 'SELL') {
+                            closedCount++;
+                            let pnl = parseFloat(t.trade_pnl || 0);
+                            realizedPnlSum += pnl;
+                            let sym = t.symbol || 'N/A';
+                            if (pnl > 0) {
+                                wins++;
+                                sumWins += pnl;
+                                if (pnl > maxWinVal) { maxWinVal = pnl; maxWinSym = sym; }
+                            } else if (pnl < 0) {
+                                losses++;
+                                sumLosses += Math.abs(pnl);
+                                if (pnl < maxLossVal) { maxLossVal = pnl; maxLossSym = sym; }
+                            } else {
+                                breakevens++;
+                            }
+                        }
+                    });
+
+                    document.getElementById('metricTotalClosed').innerHTML = `${closedCount} <span class="text-[10px] text-slate-400">(SELLs)</span>`;
+                    let pnlColor = realizedPnlSum >= 0 ? 'text-emerald-400' : 'text-red-400';
+                    document.getElementById('metricRealizedPnl').className = `text-base font-bold ${pnlColor} mt-1`;
+                    document.getElementById('metricRealizedPnl').innerText = (realizedPnlSum >= 0 ? '+' : '') + '$' + realizedPnlSum.toFixed(2);
+                    let calcWinRate = closedCount > 0 ? ((wins / closedCount) * 100).toFixed(1) : '0.0';
+                    document.getElementById('metricWinRate').innerText = calcWinRate + '%';
+                    document.getElementById('metricWinBreakdown').innerText = `${wins}W / ${losses}L / ${breakevens}BE`;
+                    let avgW = wins > 0 ? (sumWins / wins).toFixed(2) : '0.00';
+                    let avgL = losses > 0 ? (sumLosses / losses).toFixed(2) : '0.00';
+                    document.getElementById('metricAvgWinLoss').innerHTML = `<span class="text-emerald-400">+$${avgW}</span> / <span class="text-red-400">-$${avgL}</span>`;
+                    document.getElementById('metricLargestWinHeader').innerText = `Largest Win (${maxWinSym})`;
+                    document.getElementById('metricLargestWin').innerText = `+$${maxWinVal.toFixed(2)}`;
+                    document.getElementById('metricLargestLossHeader').innerText = `Largest Loss (${maxLossSym})`;
+                    document.getElementById('metricLargestLoss').innerText = `-$${Math.abs(maxLossVal).toFixed(2)}`;
+
                     const logContainer = document.getElementById('realtimeLogContainer');
                     if (logContainer && data.logs) {
                         document.getElementById('logCountLabel').innerText = data.logs.length;
                         if (data.logs.length === 0) {
-                            logContainer.innerHTML = '<div class="text-slate-500 italic">No log entries recorded for today yet...</div>';
+                            logContainer.innerHTML = '<div class="text-slate-500 italic">No log entries recorded for this date...</div>';
                         } else {
                             logContainer.innerHTML = '';
                             data.logs.forEach(line => {
@@ -2236,13 +2479,12 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                             card.setAttribute('data-symbol', symObj.symbol);
                             card.onclick = () => filterBySymbol(symObj.symbol);
                             
-                             card.innerHTML = `
+                            card.innerHTML = `
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
                                         <span class="font-mono font-black text-base text-white tracking-wider group-hover:text-cyan-300 transition-colors">${symObj.symbol}</span>
-                                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        <span class="w-2 h-2 rounded-full bg-emerald-400 ${currentReplayDate ? '' : 'animate-pulse'}"></span>
                                     </div>
-
                                 </div>
                                 <div class="my-2 grid grid-cols-2 gap-2 text-[11px] font-mono">
                                     <div class="bg-slate-900/80 rounded-lg p-1.5 border border-slate-800">
@@ -2323,50 +2565,42 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                         ddPanel.classList.remove('graph-updated');
                     }, 1200);
                 }
-                if (indicator) setTimeout(() => indicator.classList.remove('bg-cyan-500/30', 'scale-105'), 1200);
+                if (indicator && !currentReplayDate) setTimeout(() => indicator.classList.remove('bg-cyan-500/30', 'scale-105'), 1200);
 
             } catch (err) {
                 console.error('Error polling live data or market status:', err);
                 const indicator = document.getElementById('streamIndicator');
-                if (indicator) indicator.classList.remove('bg-cyan-500/30', 'scale-105');
+                if (indicator && !currentReplayDate) indicator.classList.remove('bg-cyan-500/30', 'scale-105');
             }
         }
 
         pollInterval = setInterval(pollLiveData, 5000);	 
-		
-///////////////////////////////////////
+
 		let hasSyncedOnClose = false;
 
-		// Function to call the PHP sync endpoint
 		async function triggerMarketSync(triggerReason) {
 			try {
-				console.log(`[Sync] Triggering post-market sync (${triggerReason})...`);
 				const response = await fetch('qsmain.php?action=run_market_sync&_t=' + Date.now());
 				const data = await response.json();
-				console.log(`[Sync Response]`, data.message);
 			} catch (err) {
 				console.error('[Sync Error] Failed to execute market sync:', err);
 			}
 		}
 
-		// 1. Trigger ONCE when the site loads
 		document.addEventListener('DOMContentLoaded', () => {
 			triggerMarketSync('Site Load');
 		});
 
-		// 2. Check for Market Close and trigger when it closes
 		async function checkMarketCloseStatus() {
 			try {
 				const res = await fetch('marketstatus.txt?_t=' + Date.now());
 				const statusText = await res.text();
 				const marketState = statusText.trim().toUpperCase();
 
-				// Check if market has closed and we haven't already synced this session
 				if (marketState === 'CLOSE' && !hasSyncedOnClose) {
-					hasSyncedOnClose = true; // Lock so it only fires once upon closing
+					hasSyncedOnClose = true;
 					triggerMarketSync('Market Closed');
 				} else if (marketState === 'OPEN') {
-					// Reset the lock if the market re-opens (optional safety measure)
 					hasSyncedOnClose = false;
 				}
 			} catch (err) {
@@ -2374,9 +2608,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
 			}
 		}
 
-		// Poll market status every 30 seconds to catch the close event promptly
 		setInterval(checkMarketCloseStatus, 30000);
-		
     </script>
 
     <!-- Quantitative Trading Disclaimer -->
@@ -2403,6 +2635,40 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
             </div>
         </div>
     </footer>	
-	
+
+<script>
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const headerElement = document.querySelector('header.sticky');
+
+    function isMobileDevice() {
+        return window.innerWidth <= 1024;
+    }
+
+    window.addEventListener('touchstart', (e) => {
+        if (!isMobileDevice()) return;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+        if (!isMobileDevice() || !headerElement) return;
+        touchEndY = e.changedTouches[0].screenY;
+        
+        handleSwipeGesture();
+    }, { passive: true });
+
+    function handleSwipeGesture() {
+        const swipeThreshold = 30;
+        const diff = touchEndY - touchStartY;
+
+        if (Math.abs(diff) < swipeThreshold) return;
+
+        if (diff < 0) {
+            headerElement.classList.add('header-hidden');
+        } else {
+            headerElement.classList.remove('header-hidden');
+        }
+    }
+</script>	
 </body>
 </html>
