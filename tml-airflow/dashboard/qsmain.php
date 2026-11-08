@@ -1545,7 +1545,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
                         <?php foreach ($pdfFilesFiltered as $pdf): ?>
-                            <a href="quantstream/pdfreports/<?php echo urlencode($pdf['name']); ?>?t=<?php echo $tradeFile['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+                            <a href="quantstream/pdfreports/<?php echo urlencode($pdf['name']); ?>?t=<?php echo $pdf['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
                                 <div class="flex items-center gap-2 overflow-hidden">
                                     <i data-lucide="file-badge" class="w-4 h-4 text-red-400 shrink-0 group-hover:scale-110 transition-transform"></i>
                                     <div class="truncate">
@@ -1573,7 +1573,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
 					<?php foreach ($logFilesFiltered as $logFile): ?>
-						<a href="quantstream/logs/<?php echo urlencode($logFile['name']); ?>?t=<?php echo $tradeFile['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+						<a href="quantstream/logs/<?php echo urlencode($logFile['name']); ?>?t=<?php echo $logFile['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
 							<div class="flex items-center gap-2 overflow-hidden">
 								<i data-lucide="file-code" class="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform"></i>
 								<div class="truncate">
