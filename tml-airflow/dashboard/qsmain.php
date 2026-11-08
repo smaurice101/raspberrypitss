@@ -52,7 +52,10 @@ function syncPostMarketData() {
         $files = glob($srcDir . '/*.csv');
         foreach ($files as $file) {
             $filename = basename($file);
-            if (stripos($filename, '_trade_log') !== false || $filename === 'global_pnl_report.csv') {
+            if (stripos($filename, '_trade_log') !== false || $filename === 'global_pnl_report.csv' || 
+			    $filename === 'best_stock_candidates.csv' || $filename === 'gold_mine_candidates.csv' || 
+				$filename === 'daily_audit_tax_schedule.csv' || $filename === 'deadwood_audit_ledger.csv' ||
+                $filename === 'screener_alpha_audit_ledger.csv'				) {
                 copy($file, $dstDir . '/' . $filename);
             }
         }
@@ -505,10 +508,11 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_live_data') {
     $symbolLatestPrice = [];
     $symbolBuyPrice = [];
     $totalQuantity = 0.0;
+
     $symbolEntryTimestamps = [];
 
     $marketStatusSrc = '/rawdata/qs_tradedata/marketstatus.txt';
-    $target2Dir = '/Viperviz/viperviz/views';
+    $target2Dir = '/Viperviz/viperviz/views/';
     if (file_exists($marketStatusSrc) && is_dir($target2Dir)) {
         @copy($marketStatusSrc, $target2Dir . '/marketstatus.txt');
     }
@@ -641,7 +645,8 @@ $tradeTimestamps = []; // Array to store timestamps for throughput calculation
     } elseif (count($tradeTimestamps) === 1) {
         $throughput = 1.0;
     }
-
+	
+/////////////////////////////////////////////////////////////////
     foreach ($symbols as $sym => &$sData) {
         $bPrice = $symbolBuyPrice[$sym] ?? $sData['buy_price'];
         $cPrice = $symbolLatestPrice[$sym] ?? $sData['current_price'];
@@ -1148,7 +1153,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <!-- HISTORICAL REPLAY SNAPSHOT DROPDOWN WITH PNL & RETURNS -->
                 <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 font-mono text-xs">
                     <i data-lucide="history" class="w-4 h-4 text-amber-400 shrink-0"></i>
-                    <span class="text-slate-400 text-[10px] uppercase">Last 45 Day Snapshot:</span>
+                    <span class="text-slate-400 text-[10px] uppercase">Last 45 day Snapshot:</span>
                     <select id="replayDateSelect" onchange="onReplayDateChange()" class="bg-slate-950 border border-slate-700 text-cyan-400 font-bold rounded-lg px-2 py-1 focus:outline-none focus:border-cyan-400 text-xs">
                         <option value="">LIVE REAL-TIME FEED</option>
                         <?php foreach ($availableSummaries as $dt => $info): ?>
@@ -1509,7 +1514,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
 		if (is_dir($tradeDataDir)) {
 			foreach (scandir($tradeDataDir) as $file) {
 				$filePath = $tradeDataDir . '/' . $file;
-				if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'csv' && $file !== "global_pnl_report.csv") {
+				if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) === 'csv' ) {
 					if (filemtime($filePath) >= $cutoffTimestamp) {
 						if (!$isAfter4pm && strpos($file, $currentDateStr) !== false) continue;
 						$tradeDataFilesFiltered[] = [
@@ -1540,7 +1545,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
                         <?php foreach ($pdfFilesFiltered as $pdf): ?>
-                            <a href="quantstream/pdfreports/<?php echo urlencode($pdf['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+                            <a href="quantstream/pdfreports/<?php echo urlencode($pdf['name']); ?>?t=<?php echo $tradeFile['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
                                 <div class="flex items-center gap-2 overflow-hidden">
                                     <i data-lucide="file-badge" class="w-4 h-4 text-red-400 shrink-0 group-hover:scale-110 transition-transform"></i>
                                     <div class="truncate">
@@ -1568,7 +1573,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
 					<?php foreach ($logFilesFiltered as $logFile): ?>
-						<a href="quantstream/logs/<?php echo urlencode($logFile['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+						<a href="quantstream/logs/<?php echo urlencode($logFile['name']); ?>?t=<?php echo $tradeFile['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
 							<div class="flex items-center gap-2 overflow-hidden">
 								<i data-lucide="file-code" class="w-4 h-4 text-emerald-400 shrink-0 group-hover:scale-110 transition-transform"></i>
 								<div class="truncate">
@@ -1596,7 +1601,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                 <?php else: ?>
                     <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1">
 					<?php foreach ($tradeDataFilesFiltered as $tradeFile): ?>
-						<a href="quantstream/tradedata/<?php echo urlencode($tradeFile['name']); ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
+						<a href="quantstream/tradedata/<?php echo urlencode($tradeFile['name']); ?>?t=<?php echo $tradeFile['mtime']; ?>" target="_blank" class="p-2.5 bg-slate-900/85 hover:bg-slate-800/95 border border-slate-800 hover:border-cyan-500/50 rounded-xl flex items-center justify-between transition-all group">
 							<div class="flex items-center gap-2 overflow-hidden">
 								<i data-lucide="table" class="w-4 h-4 text-amber-400 shrink-0 group-hover:scale-110 transition-transform"></i>
 								<div class="truncate">
@@ -2373,6 +2378,9 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                         ' <span class="text-base font-normal">(' + (data.notionalreturn >= 0 ? '+' : '') + Number(data.notionalreturn).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '%)</span>';
 
                     document.getElementById('liveEquityBadge').innerText = "Baseline: $" + data.tradebudget;
+                    
+                    // Dynamically update the Trading Budget card with the historical replay value
+                    document.getElementById('boxTradingBudget').innerText = '$' + data.tradebudget;
 
                     let actualEl = document.getElementById('boxActualPnl');
                     let actualColor = data.actualPnl >= 0 ? 'text-emerald-400' : 'text-red-400';
