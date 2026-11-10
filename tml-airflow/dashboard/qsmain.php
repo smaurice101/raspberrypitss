@@ -1085,7 +1085,7 @@ $initialLogs = getSystemLogs($logsDir, $currentDate, $market, $exchange);
                     <label class="block text-slate-400 mb-1.5 uppercase text-[10px]">Institutional User ID</label>
                     <div class="relative">
                         <i data-lucide="user" class="w-4 h-4 text-slate-500 absolute left-3.5 top-3"></i>
-                        <input type="text" id="loginUsername" name="username" value="quantdemo" required class="w-full bg-slate-950/90 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                        <input type="text" id="loginUsername" name="username" value="quantadmin" required class="w-full bg-slate-950/90 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-white focus:outline-none focus:border-cyan-400 transition-colors">
                     </div>
                 </div>
 
